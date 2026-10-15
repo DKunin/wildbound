@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Wildbound — an original browser wildlife survival simulation."
+    />
+    <title>Wildbound</title>
+  </head>
+  <body>
+    <main id="game-shell" aria-label="Wildbound wildlife survival game">
+      <div id="game" aria-hidden="true"></div>
+      <div id="daylight" aria-hidden="true"></div>
+
+      <header class="brand" aria-label="Game title">WILDBOUND</header>
+
+      <section class="world-status" aria-label="World status">
+        <div class="time-row"><span id="time-icon" class="sun" aria-hidden="true">◐</span> <span id="time">DAY 1&nbsp;&nbsp;18:42</span></div>
+        <div class="weather">
+          <span id="weather">DUSK</span>
+          <span id="wind" class="wind-readout"><span id="wind-arrow" class="wind-arrow" aria-hidden="true">↗</span><span id="wind-label">STEADY WIND</span></span>
+        </div>
+        <div id="territory" class="territory">PINE RIDGE</div>
+        <div id="save-status" class="save-status" aria-live="polite"></div>
+      </section>
+
+      <section id="pack-status" class="pack-status" aria-label="Nearby pack members" hidden>
+        <div class="pack-title">PACK</div>
+        <div class="pack-member"><i class="pack-dot niva-dot" aria-hidden="true"></i><span>NIVA</span><strong id="niva-status">NEAR</strong></div>
+        <div class="pack-member"><i class="pack-dot torr-dot" aria-hidden="true"></i><span>TORR</span><strong id="torr-status">NEAR</strong></div>
+      </section>
+
+      <section id="sound-readout" class="sound-readout" aria-live="polite" hidden>
+        <span class="sound-arcs" aria-hidden="true">)))</span>
+        <span id="sound-summary">DISTANT HOOVES</span>
+      </section>
+
+      <section class="needs" aria-label="Wolf survival needs">
+        <div class="need-row">
+          <span class="need-icon health-icon" aria-hidden="true">♥</span>
+          <span class="need-label">HEALTH</span>
+          <span class="meter"><span id="health-bar" class="meter-fill health-fill"></span></span>
+          <span id="health-value" class="sr-only">100 percent</span>
+        </div>
+        <div class="need-row">
+          <span class="need-icon hunger-icon" aria-hidden="true">◆</span>
+          <span class="need-label">HUNGER</span>
+          <span class="meter"><span id="hunger-bar" class="meter-fill hunger-fill"></span></span>
+          <span id="hunger-value" class="sr-only">32 percent</span>
+        </div>
+        <div class="need-row">
+          <span class="need-icon thirst-icon" aria-hidden="true">●</span>
+          <span class="need-label">THIRST</span>
+          <span class="meter"><span id="thirst-bar" class="meter-fill thirst-fill"></span></span>
+          <span id="thirst-value" class="sr-only">25 percent</span>
+        </div>
+        <div class="need-row">
+          <span class="need-icon stamina-icon" aria-hidden="true">››</span>
+          <span class="need-label">STAMINA</span>
+          <span class="meter"><span id="stamina-bar" class="meter-fill stamina-fill"></span></span>
+          <span id="stamina-value" class="sr-only">100 percent</span>
+        </div>
+      </section>
+
+      <section id="scent-readout" class="scent-readout" aria-live="polite" hidden>
+        <span class="scent-direction" aria-hidden="true"><strong id="scent-direction-arrow">•</strong><small id="scent-direction-label">HERE</small></span>
+        <span class="scent-copy"><span class="scent-title">SCENT</span><span id="scent-summary">The wind carries faint traces.</span></span>
+      </section>
+
+      <section class="controls" aria-label="Controls">
+        <span><kbd>E</kbd> <span id="context-action">INTERACT</span></span>
+        <span><kbd>Q</kbd> SCENT</span>
+        <span id="sneak-control" class="sneak-control" aria-label="Sneaking disabled"><kbd>C</kbd> <span id="sneak-label">SNEAK</span></span>
+        <span data-pack-control hidden><kbd>H</kbd> HOWL</span>
+        <span class="save-control"><kbd>F5</kbd> SAVE</span>
+      </section>
+
+      <section class="objective" aria-label="Current objective">
+        <span class="objective-mark" aria-hidden="true"></span>
+        <span id="objective-title">SURVIVE THE WILD</span>
+        <small id="event-line">Listen to the forest.</small>
+      </section>
+
+      <section id="pause-panel" class="modal-panel" role="dialog" aria-modal="true" hidden>
+        <p class="modal-kicker">THE WILDERNESS WAITS</p>
+        <h1 id="modal-title">Paused</h1>
+        <p id="modal-copy">Press Space to return to the forest.</p>
+        <div class="modal-controls">
+          <span><kbd>WASD</kbd> move</span>
+          <span><kbd>CLICK</kbd> travel</span>
+          <span><kbd>E</kbd> act / attack</span>
+          <span><kbd>Q</kbd> scent</span>
+          <span><kbd>C</kbd> crouch / sneak</span>
+          <span data-pack-control hidden><kbd>H</kbd> howl</span>
+          <span><kbd>R</kbd> rest</span>
+          <span><kbd>F5</kbd> save</span>
+          <span><kbd>F9</kbd> load</span>
+          <span><kbd>WHEEL</kbd> zoom</span>
+        </div>
+        <div class="modal-actions">
+          <button id="resume-button" type="button">RETURN TO THE WILD</button>
+          <button id="load-button" class="secondary-button" type="button">LOAD LAST SAVE</button>
+        </div>
+      </section>
+
+      <section id="death-panel" class="modal-panel death-panel" role="dialog" aria-modal="true" hidden>
+        <p class="modal-kicker">AN ORDINARY LIFE, ENDED</p>
+        <h1>You did not survive</h1>
+        <p id="death-copy">The forest carries on without you.</p>
+        <button id="restart-button" type="button">BEGIN AGAIN</button>
+      </section>
+
+      <div id="vignette" aria-hidden="true"></div>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

@@ -1,0 +1,1450 @@
+{
+  "version": 1,
+  "frameSize": 181,
+  "atlases": {
+    "rabbit": [
+      {
+        "bbox": [
+          19,
+          57,
+          134,
+          115
+        ],
+        "components": [
+          8726
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "f677042c5bd4b483df1002b2865408d98a6e0bfe7154da7f421664ba67be9e74",
+        "opaquePixels": 8726
+      },
+      {
+        "bbox": [
+          43,
+          59,
+          103,
+          115
+        ],
+        "components": [
+          6654
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "1423d16ff20b55b2f434d90b4bc907d1c389b38a4f78a698b9204c8853a6d8a7",
+        "opaquePixels": 6654
+      },
+      {
+        "bbox": [
+          60,
+          47,
+          58,
+          128
+        ],
+        "components": [
+          4977
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "8089d2294a3f667f3dcc90b7713f75174880a2c70358666fb33adf03c58b99c3",
+        "opaquePixels": 4977
+      },
+      {
+        "bbox": [
+          40,
+          59,
+          99,
+          116
+        ],
+        "components": [
+          6512
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "740004b2a5be3e3bb9ba56e05c6ad2fe2e9a0b394c1407894db0c04eea72d477",
+        "opaquePixels": 6512
+      },
+      {
+        "bbox": [
+          29,
+          73,
+          122,
+          102
+        ],
+        "components": [
+          6934
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "02717526f9173e236e7f960bb24ae462f6a36b9cdfa4076038adf936181b9795",
+        "opaquePixels": 6934
+      },
+      {
+        "bbox": [
+          44,
+          70,
+          100,
+          105
+        ],
+        "components": [
+          6254
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "7b75e961ed461ff47db02f44f105a275209c1e6e0eae3c12c40c247e942b2e9d",
+        "opaquePixels": 6254
+      },
+      {
+        "bbox": [
+          62,
+          49,
+          60,
+          122
+        ],
+        "components": [
+          4907
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "40e1caf5a0c42f200a43e749fc2e07b6b23091285c240d2405e247013ab6d259",
+        "opaquePixels": 4907
+      },
+      {
+        "bbox": [
+          39,
+          71,
+          102,
+          103
+        ],
+        "components": [
+          6333
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "30bcc733864726a532266a123c21a23b24b231058d5e9b8cef38c0773182e294",
+        "opaquePixels": 6333
+      },
+      {
+        "bbox": [
+          24,
+          56,
+          134,
+          113
+        ],
+        "components": [
+          8583
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "ffab7793f8f3efc760b46eb3d039d95dc36cff5719a81596ec88fa5d956729fb",
+        "opaquePixels": 8583
+      },
+      {
+        "bbox": [
+          42,
+          53,
+          102,
+          115
+        ],
+        "components": [
+          6638
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "9f0b1d689fabfd2132088ac42f9e531ea124e2289a1f57ddbdd01f894260705f",
+        "opaquePixels": 6638
+      },
+      {
+        "bbox": [
+          61,
+          40,
+          57,
+          127
+        ],
+        "components": [
+          4929
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "b807c5340bdf040cf4e873acc270b98db89682c75b5248c984bd73bcc449e81b",
+        "opaquePixels": 4929
+      },
+      {
+        "bbox": [
+          39,
+          47,
+          98,
+          115
+        ],
+        "components": [
+          6497
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "6b8b158a6a312a6d8ef73abbdf3eb4933b5809831bebc0a1a4ec5548810dd68d",
+        "opaquePixels": 6497
+      },
+      {
+        "bbox": [
+          27,
+          72,
+          121,
+          97
+        ],
+        "components": [
+          6824
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "31b6357c0da5bdf95107d283d0590085d520529b7a36213b31a0432e91419d6c",
+        "opaquePixels": 6824
+      },
+      {
+        "bbox": [
+          42,
+          66,
+          100,
+          104
+        ],
+        "components": [
+          6232
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "929bf3a1bbdf6d9dfb56671be8dbd6f93b2c11b88acbc50c23b8799588f5a5f3",
+        "opaquePixels": 6232
+      },
+      {
+        "bbox": [
+          65,
+          48,
+          61,
+          122
+        ],
+        "components": [
+          4862
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "c8514f0f60ed84051ca7705c2df31b606b301e1906f3cd39edea3117147d5f22",
+        "opaquePixels": 4862
+      },
+      {
+        "bbox": [
+          40,
+          66,
+          102,
+          105
+        ],
+        "components": [
+          6317
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "5affb0242838bc06aa62ed878b13db91e0ffbcffdb498ae294cb4bd282c55332",
+        "opaquePixels": 6317
+      },
+      {
+        "bbox": [
+          22,
+          84,
+          139,
+          86
+        ],
+        "components": [
+          7329
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "f4ebb72225ef9ee20041f2602bff1237ca4fb99db995cf88d3ddd66c08de87b9",
+        "opaquePixels": 7329
+      },
+      {
+        "bbox": [
+          76,
+          33,
+          70,
+          103
+        ],
+        "components": [
+          4854
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "9ca549091580e3f94a8c5b5f2fe4b48f577c6b9f3d087509bf78543ef6aa2186",
+        "opaquePixels": 4854
+      },
+      {
+        "bbox": [
+          66,
+          33,
+          54,
+          107
+        ],
+        "components": [
+          4255
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "aee23768e8a41bc3d45e5e4980133f7e77920caa3fba2fe8fc3670ef722d1d67",
+        "opaquePixels": 4255
+      },
+      {
+        "bbox": [
+          39,
+          35,
+          69,
+          103
+        ],
+        "components": [
+          4847
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "508d8d080b68843b7ebbdfdf8c9958336a15dce37947bb1630f2ce32419b52b2",
+        "opaquePixels": 4847
+      },
+      {
+        "bbox": [
+          27,
+          80,
+          128,
+          91
+        ],
+        "components": [
+          7099
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "7e0d66912829f8f907c82778bba6fabf6a9fe71735ac25ff0e8481dbaf7db127",
+        "opaquePixels": 7099
+      },
+      {
+        "bbox": [
+          43,
+          71,
+          99,
+          101
+        ],
+        "components": [
+          5508
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "2611659d71b26fecbfbacbbd5e3afed1c657ab19c8e6a79d91f6644ea887592e",
+        "opaquePixels": 5508
+      },
+      {
+        "bbox": [
+          63,
+          47,
+          55,
+          123
+        ],
+        "components": [
+          4799
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "c5949f263963fbda7224c899faa91055b41592f5d464934c4ac7d981864e7ea6",
+        "opaquePixels": 4799
+      },
+      {
+        "bbox": [
+          44,
+          69,
+          96,
+          100
+        ],
+        "components": [
+          5434
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "7401d2a4a97083f2f654826124e6682c80e80bb5bcd9c42e101cecc95e12447f",
+        "opaquePixels": 5434
+      },
+      {
+        "bbox": [
+          23,
+          82,
+          140,
+          87
+        ],
+        "components": [
+          7443
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "e9b97129681e446e9312eae767d125251a54b65905c7ea9eee60b8066095d13b",
+        "opaquePixels": 7443
+      },
+      {
+        "bbox": [
+          76,
+          24,
+          70,
+          139
+        ],
+        "components": [
+          4329
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "5cb41ffb2284c76878463598ad07494404a454ae4db8769bf2280dd1eccec97d",
+        "opaquePixels": 4336
+      },
+      {
+        "bbox": [
+          71,
+          17,
+          50,
+          128
+        ],
+        "components": [
+          4187
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "f52810b9eaa8d46d1ecbb9c778e8a8f38991445e9fe9fb7c8391673e5bb710b8",
+        "opaquePixels": 4187
+      },
+      {
+        "bbox": [
+          37,
+          19,
+          78,
+          150
+        ],
+        "components": [
+          5045
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "b0907c2c761fd0b41b7340d62c6860605a8d5c5337c17885ba0311a1a836a770",
+        "opaquePixels": 5060
+      },
+      {
+        "bbox": [
+          24,
+          83,
+          135,
+          92
+        ],
+        "components": [
+          7025
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "03f1ecf182639aa2bbda4b2cbcda7eabdafa2842676fc3bf98adc1cad0cb469f",
+        "opaquePixels": 7025
+      },
+      {
+        "bbox": [
+          44,
+          48,
+          96,
+          122
+        ],
+        "components": [
+          6090
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "ac47f7ce4bdece0119892c1a7a037916c42bf2353a3af32a4d1edd984d06d4be",
+        "opaquePixels": 6090
+      },
+      {
+        "bbox": [
+          64,
+          37,
+          55,
+          132
+        ],
+        "components": [
+          5235
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "1186f04f5e7968d8f3d26cf8fded9bf9f1fbadfda7148e7676bc50a9882a0ad8",
+        "opaquePixels": 5235
+      },
+      {
+        "bbox": [
+          44,
+          50,
+          98,
+          125
+        ],
+        "components": [
+          6096
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "6429041416a3bf15d1ddf70182dd0185fa096d4b990c35dbb4f1a7754655ed6c",
+        "opaquePixels": 6096
+      },
+      {
+        "bbox": [
+          12,
+          87,
+          160,
+          82
+        ],
+        "components": [
+          8152
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "31ef3fc063c386e32f8b8aa2a3d71e76e5e3f4c5918352a052111984acf6c2c8",
+        "opaquePixels": 8152
+      },
+      {
+        "bbox": [
+          42,
+          11,
+          97,
+          136
+        ],
+        "components": [
+          4958
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "10a463d6bd56132f48fa32da64f4327b835dea213cdf68522563ee6e9b1a0268",
+        "opaquePixels": 4958
+      },
+      {
+        "bbox": [
+          66,
+          16,
+          52,
+          144
+        ],
+        "components": [
+          5249
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "95a1a101a334c05d1d661fc109a72a6e6e62cc024ebf58cb57169d7cbeb4220d",
+        "opaquePixels": 5249
+      },
+      {
+        "bbox": [
+          39,
+          11,
+          101,
+          136
+        ],
+        "components": [
+          5055
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "0b22d4e608258e6b29a8e62dea4884baed04d5c4728fe6712f318af4c255c5ad",
+        "opaquePixels": 5055
+      },
+      {
+        "bbox": [
+          14,
+          89,
+          157,
+          78
+        ],
+        "components": [
+          7598
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "4d88b699822680e0862fd23246a9e79f202c78b07f217ba186f2eaad3b34619e",
+        "opaquePixels": 7598
+      },
+      {
+        "bbox": [
+          40,
+          50,
+          111,
+          118
+        ],
+        "components": [
+          5994
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "7c1bcccb990680dc2ff0a168d2d1f8c5ca833d7cc17ab1ac03d3be9f27d1af92",
+        "opaquePixels": 5994
+      },
+      {
+        "bbox": [
+          64,
+          52,
+          52,
+          119
+        ],
+        "components": [
+          4718
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "2ce3d291353e3924d520dee8fcebf7c5eed8ac64b6c6f1755e5d27e3dfc6a152",
+        "opaquePixels": 4718
+      },
+      {
+        "bbox": [
+          37,
+          59,
+          116,
+          115
+        ],
+        "components": [
+          6061
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "94548bfb8b190936ce46dff4dc2c8efa78d2fea2951da41d5f21b48b2589d8c8",
+        "opaquePixels": 6061
+      },
+      {
+        "bbox": [
+          22,
+          87,
+          134,
+          82
+        ],
+        "components": [
+          6352
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "7acb4971fe7513f0cde7e2cf8fb96e1477e2493d2f7bfff16a955493be127b45",
+        "opaquePixels": 6352
+      },
+      {
+        "bbox": [
+          31,
+          93,
+          119,
+          77
+        ],
+        "components": [
+          5339
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "14f7550b04af635fd579329aa21459571d6f914fdb2dfb68dbe63a210f145f80",
+        "opaquePixels": 5339
+      },
+      {
+        "bbox": [
+          45,
+          76,
+          89,
+          99
+        ],
+        "components": [
+          5354
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "650efe95c5ea8a9d810f6d54bd610d12c42498ec2b18724ff5f430760ca31c75",
+        "opaquePixels": 5354
+      },
+      {
+        "bbox": [
+          38,
+          88,
+          104,
+          87
+        ],
+        "components": [
+          5348
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "c3c55b5bb1879639c8cc897d55ab83f1981e90cf0a73132b87ede7987a5d3cf0",
+        "opaquePixels": 5348
+      },
+      {
+        "bbox": [
+          28,
+          91,
+          125,
+          84
+        ],
+        "components": [
+          6130
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "e6d1097b06e60ff064f97d0f1973def62a9630cc402164d54c1c010b6df23779",
+        "opaquePixels": 6130
+      },
+      {
+        "bbox": [
+          38,
+          85,
+          104,
+          91
+        ],
+        "components": [
+          5487
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "d4100f2e4ba2e5d971ad3d8f0dbcad0af1eae9d3630ad75276cc59215bb82837",
+        "opaquePixels": 5487
+      },
+      {
+        "bbox": [
+          45,
+          74,
+          95,
+          100
+        ],
+        "components": [
+          5220
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "1f54488af2c591ea8a97562b10c64d1524eb102b4a184b243c95010f79fba87e",
+        "opaquePixels": 5220
+      },
+      {
+        "bbox": [
+          34,
+          86,
+          110,
+          85
+        ],
+        "components": [
+          5133
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "f5e257c3bea8f6b5c750c46a6433e2387f52d6f48788570c111f5e970bd74c2c",
+        "opaquePixels": 5133
+      }
+    ],
+    "deer": [
+      {
+        "bbox": [
+          37,
+          69,
+          114,
+          100
+        ],
+        "components": [
+          4913
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "0252d31274902400460ec09124b26a381295dcae6cb753b49f1fd65d14f50c4c",
+        "opaquePixels": 4913
+      },
+      {
+        "bbox": [
+          39,
+          56,
+          89,
+          104
+        ],
+        "components": [
+          4090
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "aec9ea4a616abb633ea2be0b2f7ced0335b21794591858f6c4bcf9c2e5d41701",
+        "opaquePixels": 4090
+      },
+      {
+        "bbox": [
+          69,
+          57,
+          44,
+          117
+        ],
+        "components": [
+          3018
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "b19c42f014016a8a9bff0c9b784b7634174028babd573eda6ad74500a29839ee",
+        "opaquePixels": 3018
+      },
+      {
+        "bbox": [
+          54,
+          69,
+          68,
+          101
+        ],
+        "components": [
+          3601
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "9cb0de5b5df3004926e63437db33453556712a6b30c5707a4205251b2430f291",
+        "opaquePixels": 3601
+      },
+      {
+        "bbox": [
+          22,
+          60,
+          113,
+          98
+        ],
+        "components": [
+          4906
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "1281e6215fd115ce95ca42aa6502a05b42239a84364a94b2a1468e7506cc2be4",
+        "opaquePixels": 4906
+      },
+      {
+        "bbox": [
+          53,
+          62,
+          77,
+          110
+        ],
+        "components": [
+          3745
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "ad052bf5302224c6f9944721dce33aa01664e643d6774250e5e1cadee7dbcf92",
+        "opaquePixels": 3745
+      },
+      {
+        "bbox": [
+          57,
+          53,
+          39,
+          113
+        ],
+        "components": [
+          2963
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "d9f6612c9c4ad6c2b3ecc2f269e1da8c16d5ddda03f8f44526c4c4d10746d028",
+        "opaquePixels": 2963
+      },
+      {
+        "bbox": [
+          45,
+          47,
+          84,
+          110
+        ],
+        "components": [
+          3905
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "2e543fab2d032738148c45f6b557f0400fc5593c4ab6ebbf555dc032641c769d",
+        "opaquePixels": 3905
+      },
+      {
+        "bbox": [
+          32,
+          44,
+          110,
+          102
+        ],
+        "components": [
+          4922
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "057d0019d5293f8beff812d30aedb16df65cd880ca01eca19d0c16acfd3acb8d",
+        "opaquePixels": 4922
+      },
+      {
+        "bbox": [
+          47,
+          63,
+          89,
+          105
+        ],
+        "components": [
+          4107
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "b358547170e2e11cbc3cec37350f8cfef97c9329bfcfd11207635106d42f60d7",
+        "opaquePixels": 4107
+      },
+      {
+        "bbox": [
+          79,
+          48,
+          43,
+          116
+        ],
+        "components": [
+          2924
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "3321da1fd9210af543f160a8068219a76fcf4a74d0640d63fdd3e5264a91301f",
+        "opaquePixels": 2924
+      },
+      {
+        "bbox": [
+          38,
+          59,
+          70,
+          98
+        ],
+        "components": [
+          3577
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "c892eb44e179a21c2a2c653f107a619a0e3a37c40f3f36a5e790c98102fdb06e",
+        "opaquePixels": 3577
+      },
+      {
+        "bbox": [
+          26,
+          47,
+          109,
+          101
+        ],
+        "components": [
+          4844
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "4447515115d7bcc53b7e9d87e4ebaab3a9f805509f271ba97826d037b4011ce3",
+        "opaquePixels": 4844
+      },
+      {
+        "bbox": [
+          55,
+          53,
+          76,
+          111
+        ],
+        "components": [
+          3821
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "5c11a9c00d181b91f507730aa3718b6eb08c2949082c6f2cce10aca1ff3a4bd7",
+        "opaquePixels": 3821
+      },
+      {
+        "bbox": [
+          73,
+          50,
+          39,
+          114
+        ],
+        "components": [
+          2978
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "761dcf955ed7758428e7fe2f997fede19e42c36ec6d753e1ef9c0fed029358ee",
+        "opaquePixels": 2978
+      },
+      {
+        "bbox": [
+          48,
+          49,
+          83,
+          110
+        ],
+        "components": [
+          3886
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "39ebec37cc759925ffba47252870c9b9e89a71553ab9a702bc2b7af86622214d",
+        "opaquePixels": 3886
+      },
+      {
+        "bbox": [
+          35,
+          72,
+          116,
+          89
+        ],
+        "components": [
+          4764
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "f08343b62e7ecccd680e2b57e10e9a6db9e6e3ae17bd7c86ad5a700329d15f16",
+        "opaquePixels": 4764
+      },
+      {
+        "bbox": [
+          46,
+          60,
+          91,
+          93
+        ],
+        "components": [
+          3822
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "4bd0424b2916f87f323edca13a719ab8c97c37ca8fc6039244a22e3895502a6f",
+        "opaquePixels": 3822
+      },
+      {
+        "bbox": [
+          68,
+          54,
+          44,
+          119
+        ],
+        "components": [
+          2901
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "c72a00148e35a22f914acd0a31df4934576ea42af963300d3c4c6a7be2ba9ced",
+        "opaquePixels": 2901
+      },
+      {
+        "bbox": [
+          42,
+          68,
+          77,
+          96
+        ],
+        "components": [
+          3565
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "178d949e7cf89be7845093cca799b5b1eb50983fbf8914108c37c449637e9a80",
+        "opaquePixels": 3565
+      },
+      {
+        "bbox": [
+          31,
+          71,
+          112,
+          84
+        ],
+        "components": [
+          4598
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "e331a03ae1f25e27715a25fa73a0360a20dbe6c269b691b8f666ea28e82b37ac",
+        "opaquePixels": 4598
+      },
+      {
+        "bbox": [
+          80,
+          38,
+          69,
+          115
+        ],
+        "components": [
+          3969
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "846a384b881f0d00f8f5ae8b7ecb16aec67b60393ed682eaa4072ced8b0737b7",
+        "opaquePixels": 3969
+      },
+      {
+        "bbox": [
+          69,
+          35,
+          54,
+          119
+        ],
+        "components": [
+          4161
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "45bdc0d0db35af1f13006c3eccb9279815164f1dd371dcb06be8e2480ada0650",
+        "opaquePixels": 4161
+      },
+      {
+        "bbox": [
+          33,
+          28,
+          73,
+          122
+        ],
+        "components": [
+          4436
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "de78549adc6fda8cd8e89d0880e9ee8e7b039dda37606708ebd9cafb3273b513",
+        "opaquePixels": 4436
+      },
+      {
+        "bbox": [
+          21,
+          76,
+          131,
+          91
+        ],
+        "components": [
+          4993
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "868133c2d2d90d238e06ee3cec1011154121f180587ce89ccb47f7f4df0629f2",
+        "opaquePixels": 4993
+      },
+      {
+        "bbox": [
+          45,
+          67,
+          92,
+          96
+        ],
+        "components": [
+          4072
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "7697033d4c5f877c7f2c9df60ce2dc445ccc22acfa4bee1b2cbf9478d418893b",
+        "opaquePixels": 4072
+      },
+      {
+        "bbox": [
+          69,
+          51,
+          43,
+          122
+        ],
+        "components": [
+          2901
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "af8aae60f19f0e9f1fc8be05b6da816f1b98f09ddd9b08f64268e978b6db0a22",
+        "opaquePixels": 2901
+      },
+      {
+        "bbox": [
+          54,
+          58,
+          79,
+          100
+        ],
+        "components": [
+          3612
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "5dec40179ce092455fc91a603ede4d442698398803cca28cc4017614422cf0f2",
+        "opaquePixels": 3612
+      },
+      {
+        "bbox": [
+          25,
+          70,
+          131,
+          90
+        ],
+        "components": [
+          4966
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "38fe2a7be7dc5006146872a7ccbe141777115ad830e620f7428771bfdcd8e06a",
+        "opaquePixels": 4966
+      },
+      {
+        "bbox": [
+          79,
+          33,
+          73,
+          118
+        ],
+        "components": [
+          4258
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "9c31c4afb83e0bae3e919191081ffe1aeaf5cdc157bb48691aa28f47dc679243",
+        "opaquePixels": 4258
+      },
+      {
+        "bbox": [
+          67,
+          31,
+          47,
+          122
+        ],
+        "components": [
+          3788
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "76f2624dd58081548723a20bf542b5c7ead48e5f955b45a363f7d358410dbfa6",
+        "opaquePixels": 3788
+      },
+      {
+        "bbox": [
+          40,
+          28,
+          82,
+          139
+        ],
+        "components": [
+          5652
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "665d89a6bb762e68c7d51b644e858a1c4826b0f856e9438ecff407f8e66be934",
+        "opaquePixels": 5652
+      },
+      {
+        "bbox": [
+          18,
+          88,
+          132,
+          83
+        ],
+        "components": [
+          4588
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "8a331b62e00525804af7d9cc3ba96abd8bd86575766d96eb99a81ebc455899f2",
+        "opaquePixels": 4588
+      },
+      {
+        "bbox": [
+          36,
+          76,
+          81,
+          93
+        ],
+        "components": [
+          3589
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "34257c77d33ab66fcf67475b1865cd658406d4dfb7cbd0a81b1750c766665772",
+        "opaquePixels": 3589
+      },
+      {
+        "bbox": [
+          74,
+          41,
+          40,
+          126
+        ],
+        "components": [
+          3039
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "c2acd91408bd20c18c384356995d00ee3a4a4163aad04b6f585711159c0819a8",
+        "opaquePixels": 3039
+      },
+      {
+        "bbox": [
+          51,
+          72,
+          78,
+          97
+        ],
+        "components": [
+          3511
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "66012beab39aa2d38e14ed8112b26c4dd1dfb09892d348e471e18e5422fa9a54",
+        "opaquePixels": 3511
+      },
+      {
+        "bbox": [
+          21,
+          89,
+          139,
+          83
+        ],
+        "components": [
+          4560
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "64c84d9ff2f4b501ca8a5e7edd1ae7b35c1e974137003fea2031a6a5eac5a342",
+        "opaquePixels": 4560
+      },
+      {
+        "bbox": [
+          61,
+          20,
+          90,
+          129
+        ],
+        "components": [
+          4501
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "3711595dfd21fe224712e9f2f9958e51d6ea28709c0c17ae872373deb71d7cc5",
+        "opaquePixels": 4501
+      },
+      {
+        "bbox": [
+          68,
+          19,
+          46,
+          137
+        ],
+        "components": [
+          4358
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "88d9f43eb6b3881fefbaf56249c0092fe82abb55496f30fdcc448a2ee7f204ae",
+        "opaquePixels": 4358
+      },
+      {
+        "bbox": [
+          30,
+          18,
+          90,
+          131
+        ],
+        "components": [
+          4487
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "caa65b6ca10a17d7fa2a3541a07033f7b70f8c574155da13878ed39c2e5fe3fa",
+        "opaquePixels": 4487
+      },
+      {
+        "bbox": [
+          26,
+          128,
+          113,
+          47
+        ],
+        "components": [
+          3502
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "3fb873ff35e42b76671473615659895ac413598981757cc084a5cbd8a63e128f",
+        "opaquePixels": 3502
+      },
+      {
+        "bbox": [
+          42,
+          116,
+          104,
+          54
+        ],
+        "components": [
+          3474
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "75a0154e9dc8fcc6585c2d8c43427bd1676886005c52279563fb8f9e6bcfc9aa",
+        "opaquePixels": 3474
+      },
+      {
+        "bbox": [
+          45,
+          95,
+          91,
+          59
+        ],
+        "components": [
+          2909
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "00a56d11bdd49ddcfd64822c4ba919ee8d98871762debef2f0961ba684accf05",
+        "opaquePixels": 2909
+      },
+      {
+        "bbox": [
+          37,
+          106,
+          106,
+          51
+        ],
+        "components": [
+          3493
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "da8426c56903a5eff6dba624efe96548887d4e503aeeca2da680087c6bd9e97d",
+        "opaquePixels": 3493
+      },
+      {
+        "bbox": [
+          38,
+          103,
+          121,
+          52
+        ],
+        "components": [
+          3871
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "0e895680986c4b7c364be4985702c3fcf7cb46e46b6808695dd0b25bf00d21cb",
+        "opaquePixels": 3871
+      },
+      {
+        "bbox": [
+          48,
+          106,
+          105,
+          51
+        ],
+        "components": [
+          3356
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "a151feb022fcb82597ad2d9e08702716d4321b06d4a509c0852d72b8e758774f",
+        "opaquePixels": 3356
+      },
+      {
+        "bbox": [
+          49,
+          100,
+          89,
+          59
+        ],
+        "components": [
+          2742
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "26db54820eb324ffbacd868ddcd8ba3b6fe3cf29865e6e8c283490289f1e8b23",
+        "opaquePixels": 2742
+      },
+      {
+        "bbox": [
+          45,
+          111,
+          109,
+          45
+        ],
+        "components": [
+          3472
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "3e9f0981aa70c4848db41dc99a287bf7163ea3b3053e1aa72f2b405fd034238a",
+        "opaquePixels": 3472
+      }
+    ]
+  }
+}

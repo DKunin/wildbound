@@ -1,0 +1,38 @@
+{
+  "frames": {
+    "south-0": {
+      "frame": { "x": 0, "y": 0, "w": 345, "h": 330 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 345, "h": 330 },
+      "sourceSize": { "w": 345, "h": 330 }
+    },
+    "south-1": {
+      "frame": { "x": 345, "y": 0, "w": 345, "h": 330 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 345, "h": 330 },
+      "sourceSize": { "w": 345, "h": 330 }
+    },
+    "south-2": {
+      "frame": { "x": 690, "y": 0, "w": 345, "h": 330 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 345, "h": 330 },
+      "sourceSize": { "w": 345, "h": 330 }
+    },
+    "south-3": {
+      "frame": { "x": 1035, "y": 0, "w": 345, "h": 330 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 345, "h": 330 },
+      "sourceSize": { "w": 345, "h": 330 }
+    }
+  },
+  "meta": {
+    "image": "wolf-south-sheet.png",
+    "format": "RGBA8888",
+    "size": { "w": 1383, "h": 1137 },
+    "scale": "1"
+  }
+}
