@@ -3,19 +3,21 @@ import type { PlayerDirection } from './DirectionalSpriteSystem';
 export const PLAYER_REST_DELAY_MS = 20_000;
 
 export type PlayerActionState = 'attacking' | 'eating' | 'drinking';
-export type PlayerAnimationState = 'idle' | 'walking' | 'sneaking' | 'running' | 'laying-down' | 'resting' | 'getting-up' | PlayerActionState;
+export type PlayerAnimationState = 'idle' | 'walking' | 'crouching' | 'sneaking' | 'running' | 'laying-down' | 'resting' | 'getting-up' | PlayerActionState;
 
-export const getPlayerAnimationKey = (state: PlayerAnimationState, direction: PlayerDirection): string => {
-  if (state === 'walking') return `player-${direction}-walk`;
-  if (state === 'sneaking') return `player-${direction}-walk`;
-  if (state === 'running') return `player-${direction}-run`;
-  if (state === 'laying-down') return `player-${direction}-lay`;
-  if (state === 'resting') return `player-${direction}-rest-breathe`;
-  if (state === 'getting-up') return `player-${direction}-get-up`;
+export const getPlayerAnimationKey = (state: PlayerAnimationState, direction: PlayerDirection, carrying = false): string => {
+  const prefix = `player-${direction}-${carrying ? 'carry-' : ''}`;
+  if (state === 'walking') return `${prefix}walk`;
+  if (state === 'crouching') return `${prefix}crouch-idle`;
+  if (state === 'sneaking') return `${prefix}crawl`;
+  if (state === 'running') return `${prefix}run`;
+  if (state === 'laying-down') return `${prefix}lay`;
+  if (state === 'resting') return `${prefix}rest-breathe`;
+  if (state === 'getting-up') return `${prefix}get-up`;
   if (state === 'attacking') return `player-${direction}-attack`;
   if (state === 'eating') return `player-${direction}-eat`;
   if (state === 'drinking') return `player-${direction}-drink`;
-  return `player-${direction}-idle`;
+  return `${prefix}idle`;
 };
 
 const isActionState = (state: PlayerAnimationState): state is PlayerActionState => (
@@ -89,13 +91,21 @@ export class PlayerAnimationSystem {
     }
 
     if (this.state === 'walking' || this.state === 'sneaking' || this.state === 'running') {
-      this.state = 'idle';
+      this.state = input.sneaking ? 'crouching' : 'idle';
       this.idleDurationMs = 0;
     } else {
       this.idleDurationMs += Math.max(0, deltaMs);
     }
 
-    if (input.restRequested || this.idleDurationMs >= this.restDelayMs) this.state = 'laying-down';
+    if (this.state === 'crouching') {
+      this.idleDurationMs = 0;
+      if (!input.sneaking) this.state = 'idle';
+    } else if (this.state === 'idle' && input.sneaking) {
+      this.state = 'crouching';
+      this.idleDurationMs = 0;
+    } else if (this.state === 'idle' && (input.restRequested || this.idleDurationMs >= this.restDelayMs)) {
+      this.state = 'laying-down';
+    }
     return this.decision(false);
   }
 
@@ -130,7 +140,7 @@ export class PlayerAnimationSystem {
       direction: this.direction,
       movementAllowed,
       running: this.state === 'running',
-      sneaking: this.state === 'sneaking',
+      sneaking: this.state === 'crouching' || this.state === 'sneaking',
     };
   }
 }

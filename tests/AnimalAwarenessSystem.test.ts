@@ -67,6 +67,25 @@ describe('animal awareness', () => {
     expect(downwind.scent).toBeGreaterThan(upwind.scent);
   });
 
+  it('makes an against-wind approach substantially harder to smell', () => {
+    const scented = { ...threat, visualSignature: 0, scentSignature: 1 };
+    const strongWind = { ...environment, windStrength: 0.9 };
+    const approachingAgainstWind = system.evaluate(observer, { ...scented, x: 180 }, strongWind);
+    const approachingWithWind = system.evaluate(observer, { ...scented, x: -180 }, strongWind);
+
+    expect(approachingAgainstWind.scent).toBeLessThan(0.08);
+    expect(approachingWithWind.scent).toBeGreaterThan(approachingAgainstWind.scent * 8);
+  });
+
+  it('keeps scent comparatively even when the air is nearly calm', () => {
+    const scented = { ...threat, visualSignature: 0, scentSignature: 1 };
+    const calm = { ...environment, windStrength: 0.02 };
+    const east = system.evaluate(observer, scented, calm);
+    const west = system.evaluate(observer, { ...scented, x: -180 }, calm);
+
+    expect(Math.abs(east.scent - west.scent)).toBeLessThan(0.03);
+  });
+
   it('makes a sneaking wolf harder to combine across senses', () => {
     const walking = system.evaluate(observer, {
       ...threat,

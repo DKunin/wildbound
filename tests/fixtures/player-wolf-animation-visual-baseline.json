@@ -314,6 +314,314 @@
         "opaquePixels": 34808
       }
     ],
+    "east-crawl": [
+      {
+        "anchor": [
+          173,
+          279
+        ],
+        "bbox": [
+          18,
+          148,
+          311,
+          132
+        ],
+        "components": [
+          27586
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "04364f2c2495fb32fd06990350dc2c6836497c6946f0b8c4d9f88a9b66ce8d14",
+        "opaquePixels": 27586
+      },
+      {
+        "anchor": [
+          173,
+          279
+        ],
+        "bbox": [
+          16,
+          152,
+          315,
+          128
+        ],
+        "components": [
+          28397
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "017bb8d32ad89880efe137749fe544fd74c203cae7e6573d2d0066dbbc7cfc35",
+        "opaquePixels": 28397
+      },
+      {
+        "anchor": [
+          172.5,
+          279
+        ],
+        "bbox": [
+          15,
+          151,
+          316,
+          129
+        ],
+        "components": [
+          27092
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "f0d46f51179d049609cbc6d17394130371454858e554548a34bc21dd5298435d",
+        "opaquePixels": 27092
+      },
+      {
+        "anchor": [
+          172.5,
+          279
+        ],
+        "bbox": [
+          19,
+          151,
+          308,
+          129
+        ],
+        "components": [
+          26921
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "9d81f2b4c32c468d0ac45123079c1ad89c41ca84f7a39261a67842095e24942b",
+        "opaquePixels": 26921
+      },
+      {
+        "anchor": [
+          172.5,
+          279
+        ],
+        "bbox": [
+          16,
+          149,
+          314,
+          131
+        ],
+        "components": [
+          27178
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "87de337c645752c7587008cd6d9460ce6756dd80afc0bb55be6ed9da533c37e2",
+        "opaquePixels": 27178
+      },
+      {
+        "anchor": [
+          172.5,
+          279
+        ],
+        "bbox": [
+          15,
+          155,
+          316,
+          125
+        ],
+        "components": [
+          27730
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "2cf08115e4fb4215e6fb2d59ed6d62d33e0a4ba44168615b770c4f6ac2008454",
+        "opaquePixels": 27730
+      },
+      {
+        "anchor": [
+          172.5,
+          279
+        ],
+        "bbox": [
+          14,
+          152,
+          318,
+          128
+        ],
+        "components": [
+          28061
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "f90dfd8a09ec2595ee8ff5928805be9954d04f5092f59d1684d0d468a5762aba",
+        "opaquePixels": 28061
+      },
+      {
+        "anchor": [
+          172.5,
+          279
+        ],
+        "bbox": [
+          18,
+          151,
+          310,
+          129
+        ],
+        "components": [
+          27274
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "87c4206c79569de40723c5dfdae38199f7843f306761a452930d1195cd1c2747",
+        "opaquePixels": 27274
+      }
+    ],
+    "east-crouch-idle": [
+      {
+        "anchor": [
+          172.5,
+          279
+        ],
+        "bbox": [
+          19,
+          166,
+          308,
+          114
+        ],
+        "components": [
+          25103
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "280af33b16bfe4a5e8422039eb69ac03187a8be7e6458a87c1c83c4a65a9c119",
+        "opaquePixels": 25103
+      },
+      {
+        "anchor": [
+          172.5,
+          279
+        ],
+        "bbox": [
+          17,
+          162,
+          312,
+          118
+        ],
+        "components": [
+          25402
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "7fc88fb93d475949df028df99068873541092655832d1f7ae4273b7d6e20c49b",
+        "opaquePixels": 25402
+      },
+      {
+        "anchor": [
+          173,
+          279
+        ],
+        "bbox": [
+          19,
+          166,
+          309,
+          114
+        ],
+        "components": [
+          25090
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "42d9dc5aaa823e09d4ec24249d9835de6fbce189c597044a5d926342eeec57b2",
+        "opaquePixels": 25090
+      },
+      {
+        "anchor": [
+          173,
+          279
+        ],
+        "bbox": [
+          16,
+          165,
+          315,
+          115
+        ],
+        "components": [
+          25572
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "7c0f20d98894ff2caa46b095bc0c2135085b2d7e0c5c66d8af23db0e01a78635",
+        "opaquePixels": 25572
+      },
+      {
+        "anchor": [
+          173,
+          279
+        ],
+        "bbox": [
+          18,
+          151,
+          311,
+          129
+        ],
+        "components": [
+          27216
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "6ba0e868bcfc88c02e4979736a2964b08219abaf395ae9d014c6b910d7f2dfe3",
+        "opaquePixels": 27216
+      },
+      {
+        "anchor": [
+          172.5,
+          279
+        ],
+        "bbox": [
+          15,
+          149,
+          316,
+          131
+        ],
+        "components": [
+          27019
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "40f0113fce31f367b7c022e5285a6970a3d45e9497266422bd207438c9d08df8",
+        "opaquePixels": 27019
+      },
+      {
+        "anchor": [
+          172.5,
+          279
+        ],
+        "bbox": [
+          14,
+          153,
+          318,
+          127
+        ],
+        "components": [
+          27301
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "0db4fa28f0cd1bc806b9745c2eff2e35df44c9ce888187f4eb9cb640c30448c3",
+        "opaquePixels": 27301
+      },
+      {
+        "anchor": [
+          173,
+          279
+        ],
+        "bbox": [
+          18,
+          152,
+          311,
+          128
+        ],
+        "components": [
+          27812
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "f7bfbcc8b2d54ef8d39dbbc047de731d6dad268729ae339da0e9cdcb113e8039",
+        "opaquePixels": 27812
+      }
+    ],
     "east-run": [
       {
         "anchor": [
@@ -1664,6 +1972,314 @@
         "edgeShare": 0,
         "hash": "128dee8e71d58b1dbea03472f1fc69d11508cdf13cfc775edb439bfbbd77e008",
         "opaquePixels": 29854
+      }
+    ],
+    "northeast-crawl": [
+      {
+        "anchor": [
+          173,
+          279
+        ],
+        "bbox": [
+          31,
+          65,
+          285,
+          215
+        ],
+        "components": [
+          27991
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "638d6e09ca596422454d21b0d1a2b0961fe0f8d51319a889c3475f61f7934ff7",
+        "opaquePixels": 27991
+      },
+      {
+        "anchor": [
+          173,
+          279
+        ],
+        "bbox": [
+          24,
+          57,
+          299,
+          223
+        ],
+        "components": [
+          29110
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "8315395ae19209dc8f02efd565019eaece4416ccaf476a8a5e83de17b272646b",
+        "opaquePixels": 29110
+      },
+      {
+        "anchor": [
+          172.5,
+          279
+        ],
+        "bbox": [
+          26,
+          64,
+          294,
+          216
+        ],
+        "components": [
+          28047
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "53eeca03264ad4c4ff81872b746910343526e8ebbfcbd30124dfc2e8316c1e2b",
+        "opaquePixels": 28047
+      },
+      {
+        "anchor": [
+          172.5,
+          279
+        ],
+        "bbox": [
+          18,
+          59,
+          310,
+          221
+        ],
+        "components": [
+          31234
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "5147b2cac3e80103de4bcc5dce22a87f3884675282a565c289c852a1a75cbb8b",
+        "opaquePixels": 31234
+      },
+      {
+        "anchor": [
+          173,
+          279
+        ],
+        "bbox": [
+          32,
+          65,
+          283,
+          215
+        ],
+        "components": [
+          28820
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "854710feef89e766a3b0466fc30db340e1e19b6aa2351057473c762e0384dfa4",
+        "opaquePixels": 28820
+      },
+      {
+        "anchor": [
+          172.5,
+          279
+        ],
+        "bbox": [
+          30,
+          70,
+          286,
+          210
+        ],
+        "components": [
+          28330
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "91d0c1eba479153e7d036b53682ce94a72524452e6c7589e7cfa77240638ad95",
+        "opaquePixels": 28330
+      },
+      {
+        "anchor": [
+          173,
+          279
+        ],
+        "bbox": [
+          34,
+          72,
+          279,
+          208
+        ],
+        "components": [
+          26716
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "d8e9baa783b616527e7ff524a3f328fe53828c056f6d52a61a3155350754f018",
+        "opaquePixels": 26716
+      },
+      {
+        "anchor": [
+          173,
+          279
+        ],
+        "bbox": [
+          25,
+          58,
+          297,
+          222
+        ],
+        "components": [
+          29407
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "14b030abe7b2ef93f177399e4b67c99f8eb8fe4040d169716979f0eef606f942",
+        "opaquePixels": 29407
+      }
+    ],
+    "northeast-crouch-idle": [
+      {
+        "anchor": [
+          172.5,
+          279
+        ],
+        "bbox": [
+          34,
+          73,
+          278,
+          207
+        ],
+        "components": [
+          26648
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "ebfa000ebe17a9901afb101f89fe51bc7e40f93aa742e3a1908487e64d2cf793",
+        "opaquePixels": 26648
+      },
+      {
+        "anchor": [
+          173,
+          279
+        ],
+        "bbox": [
+          31,
+          70,
+          285,
+          210
+        ],
+        "components": [
+          27274
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "936a1fe2354beb1937822a54c343c8a2598736df3ba4b16a6da598492ca36e8d",
+        "opaquePixels": 27274
+      },
+      {
+        "anchor": [
+          173,
+          279
+        ],
+        "bbox": [
+          34,
+          72,
+          279,
+          208
+        ],
+        "components": [
+          26949
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "f70baeb00f6964699abca28dec30fc7791d4bc0dea35a84e9698303677682833",
+        "opaquePixels": 26949
+      },
+      {
+        "anchor": [
+          173,
+          279
+        ],
+        "bbox": [
+          34,
+          70,
+          279,
+          210
+        ],
+        "components": [
+          27233
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "dd98db435641aeab42450b3793919c8edad44f087fdbff6743bed26663d54841",
+        "opaquePixels": 27233
+      },
+      {
+        "anchor": [
+          172.5,
+          279
+        ],
+        "bbox": [
+          33,
+          63,
+          280,
+          217
+        ],
+        "components": [
+          28033
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "add99b52dd9cce7ffd0aec91b2b2a9ef3c4fad7534082092b61d5fe5ea0ab9c9",
+        "opaquePixels": 28033
+      },
+      {
+        "anchor": [
+          172.5,
+          279
+        ],
+        "bbox": [
+          22,
+          59,
+          302,
+          221
+        ],
+        "components": [
+          30513
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "f0fd508abf2e4f8de041d72574408372cd30f3c4c0f4e0caac248a484d13c264",
+        "opaquePixels": 30513
+      },
+      {
+        "anchor": [
+          172.5,
+          279
+        ],
+        "bbox": [
+          26,
+          59,
+          294,
+          221
+        ],
+        "components": [
+          29884
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "eb653544661246f0f9f2b188a54ea2d69d06e1bd8fe516654991052f0f661d9e",
+        "opaquePixels": 29884
+      },
+      {
+        "anchor": [
+          172.5,
+          279
+        ],
+        "bbox": [
+          34,
+          67,
+          278,
+          213
+        ],
+        "components": [
+          27641
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "ca531d59657b166a72e4a2b3a17b9a8fa227e084f1e489e613b6ee92e92425a6",
+        "opaquePixels": 27641
       }
     ],
     "northeast-run": [
@@ -3018,6 +3634,314 @@
         "opaquePixels": 13779
       }
     ],
+    "north-crawl": [
+      {
+        "anchor": [
+          172.5,
+          4
+        ],
+        "bbox": [
+          121,
+          4,
+          104,
+          253
+        ],
+        "components": [
+          18292
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "4d66986ba9fa5f7456138e6fceaf325f4d009ea9a23a6fe52581384b7420a894",
+        "opaquePixels": 18292
+      },
+      {
+        "anchor": [
+          172.5,
+          4
+        ],
+        "bbox": [
+          123,
+          4,
+          100,
+          253
+        ],
+        "components": [
+          18475
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "a9effd3358574d3e0bd67bd00391ca3730a02f99a6fea91a198d0eac64f5d1df",
+        "opaquePixels": 18475
+      },
+      {
+        "anchor": [
+          173,
+          4
+        ],
+        "bbox": [
+          120,
+          4,
+          107,
+          240
+        ],
+        "components": [
+          17053
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "d0baaca9d66b4b531468bc0e5fa0f7893c691c3c3c8cf1172e45f50443d32363",
+        "opaquePixels": 17053
+      },
+      {
+        "anchor": [
+          172.5,
+          4
+        ],
+        "bbox": [
+          125,
+          4,
+          96,
+          243
+        ],
+        "components": [
+          16927
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "b7231b44b1362878010d70f6e1fd8f4c74e89f1128ff1e2614455bc9f57756dd",
+        "opaquePixels": 16927
+      },
+      {
+        "anchor": [
+          172.5,
+          4
+        ],
+        "bbox": [
+          125,
+          4,
+          96,
+          237
+        ],
+        "components": [
+          16108
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "83bf6f9967d158ec8e1aef8c38f3227e70a3c63b0d392457de1a1ab2201855e2",
+        "opaquePixels": 16108
+      },
+      {
+        "anchor": [
+          173,
+          4
+        ],
+        "bbox": [
+          125,
+          4,
+          97,
+          236
+        ],
+        "components": [
+          15986
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "32a692172006b2dde2ea5a3a16f4f85cc5c9fd106fbd85a924c9494bbf8d8c23",
+        "opaquePixels": 15986
+      },
+      {
+        "anchor": [
+          172.5,
+          4
+        ],
+        "bbox": [
+          124,
+          4,
+          98,
+          237
+        ],
+        "components": [
+          16814
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "1ed4e57a7e69fb9c325be44524c454723b9d39aaaff9664257d3d148be79f7a9",
+        "opaquePixels": 16814
+      },
+      {
+        "anchor": [
+          173,
+          4
+        ],
+        "bbox": [
+          126,
+          4,
+          95,
+          237
+        ],
+        "components": [
+          16709
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "6665eb763131d995150adba44465e05d1085a2f7b3bb51c4886ab6ddb3747ee0",
+        "opaquePixels": 16709
+      }
+    ],
+    "north-crouch-idle": [
+      {
+        "anchor": [
+          172.5,
+          4
+        ],
+        "bbox": [
+          124,
+          4,
+          98,
+          210
+        ],
+        "components": [
+          14715
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "3128e814d7e1e689daaff31e3f058672c9cc236b871465144d4778059d18250e",
+        "opaquePixels": 14715
+      },
+      {
+        "anchor": [
+          173,
+          4
+        ],
+        "bbox": [
+          120,
+          4,
+          107,
+          212
+        ],
+        "components": [
+          15137
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "d4b1518d93c8783271ef64560bb86ccc82b316cc2b2e6655091fc18029d659b7",
+        "opaquePixels": 15137
+      },
+      {
+        "anchor": [
+          173,
+          4
+        ],
+        "bbox": [
+          123,
+          4,
+          101,
+          214
+        ],
+        "components": [
+          15081
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "65ddffc97cf28b746382275b29fee289873b33e7ceface19c1424cb6074387b9",
+        "opaquePixels": 15081
+      },
+      {
+        "anchor": [
+          173,
+          4
+        ],
+        "bbox": [
+          122,
+          4,
+          103,
+          214
+        ],
+        "components": [
+          14728
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "117b3cf4cc7cd411b11f2154a321c18f9b98be2a1f65b4e02c82c06852afe42f",
+        "opaquePixels": 14728
+      },
+      {
+        "anchor": [
+          172.5,
+          4
+        ],
+        "bbox": [
+          120,
+          4,
+          106,
+          193
+        ],
+        "components": [
+          14470
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "3978137f54ed487812b5c9ed4b4fd269e783ff7f7e0a03a4152574ee59765fc9",
+        "opaquePixels": 14470
+      },
+      {
+        "anchor": [
+          172.5,
+          4
+        ],
+        "bbox": [
+          122,
+          4,
+          102,
+          198
+        ],
+        "components": [
+          14377
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "0c78a1621b96869952db34199c7b49f83a1c9c2613f6e00796159cbee15c8ce9",
+        "opaquePixels": 14377
+      },
+      {
+        "anchor": [
+          173,
+          4
+        ],
+        "bbox": [
+          114,
+          4,
+          119,
+          194
+        ],
+        "components": [
+          14528
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "3ebb8fd6ae0b4f64489d5e0def12ef596ef798e931e6ec244586e3129e1a72ea",
+        "opaquePixels": 14528
+      },
+      {
+        "anchor": [
+          172.5,
+          4
+        ],
+        "bbox": [
+          108,
+          4,
+          130,
+          209
+        ],
+        "components": [
+          16904
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "c9a53bd110172dd8c469d197dc62f2613ee5fa7aca6b5ec8d293f67c67ecc2d2",
+        "opaquePixels": 16904
+      }
+    ],
     "north-run": [
       {
         "anchor": [
@@ -4368,6 +5292,314 @@
         "edgeShare": 0,
         "hash": "8ab6944f5859b8e66f48d997e088f2913d7a919008ede36d7bb0213c8f02bb29",
         "opaquePixels": 30690
+      }
+    ],
+    "northwest-crawl": [
+      {
+        "anchor": [
+          172,
+          279
+        ],
+        "bbox": [
+          30,
+          65,
+          285,
+          215
+        ],
+        "components": [
+          27991
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "eb4585e5514539614e1fb0930847bc7bb741b2b990e798141b3eb8ad6959946a",
+        "opaquePixels": 27991
+      },
+      {
+        "anchor": [
+          172,
+          279
+        ],
+        "bbox": [
+          23,
+          57,
+          299,
+          223
+        ],
+        "components": [
+          29110
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "c41ab33e546b33a240716eb40f70f2e8d5aed08f81fee6a7aeb83d070dc9764d",
+        "opaquePixels": 29110
+      },
+      {
+        "anchor": [
+          172.5,
+          279
+        ],
+        "bbox": [
+          26,
+          64,
+          294,
+          216
+        ],
+        "components": [
+          28047
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "7d0e7350cb805bd0c89609e03751c5a1fb0998555e1ace90d5b9b1aed0786ee0",
+        "opaquePixels": 28047
+      },
+      {
+        "anchor": [
+          172.5,
+          279
+        ],
+        "bbox": [
+          18,
+          59,
+          310,
+          221
+        ],
+        "components": [
+          31234
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "705ff95dfbc86e606561d16d3a91bffc74fd8e9311f4a3a5d2321f83767d6fc9",
+        "opaquePixels": 31234
+      },
+      {
+        "anchor": [
+          172,
+          279
+        ],
+        "bbox": [
+          31,
+          65,
+          283,
+          215
+        ],
+        "components": [
+          28820
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "4cd24bea484f22b6105a116ddba0d31a68e3684a9b52f24f89a69e3c1c48cb1c",
+        "opaquePixels": 28820
+      },
+      {
+        "anchor": [
+          172.5,
+          279
+        ],
+        "bbox": [
+          30,
+          70,
+          286,
+          210
+        ],
+        "components": [
+          28330
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "93f62cbe2366b20b09a383da9dfe4d5cc3b990de3573da0db2928949d6f67a9b",
+        "opaquePixels": 28330
+      },
+      {
+        "anchor": [
+          172,
+          279
+        ],
+        "bbox": [
+          33,
+          72,
+          279,
+          208
+        ],
+        "components": [
+          26716
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "24e08b35049095b611445ca9ccff7b3d2dcd49e0a402708d93099a055f40c69c",
+        "opaquePixels": 26716
+      },
+      {
+        "anchor": [
+          172,
+          279
+        ],
+        "bbox": [
+          24,
+          58,
+          297,
+          222
+        ],
+        "components": [
+          29407
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "a37be5a8dcb26236856c78136516d4097c132da668aa214bb429abf8023f10f5",
+        "opaquePixels": 29407
+      }
+    ],
+    "northwest-crouch-idle": [
+      {
+        "anchor": [
+          172.5,
+          279
+        ],
+        "bbox": [
+          34,
+          73,
+          278,
+          207
+        ],
+        "components": [
+          26648
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "38d91c013db59ddc33a0c94f380f17daa7c94bc6eec4e5d26e2487a07c5d3f96",
+        "opaquePixels": 26648
+      },
+      {
+        "anchor": [
+          172,
+          279
+        ],
+        "bbox": [
+          30,
+          70,
+          285,
+          210
+        ],
+        "components": [
+          27274
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "6143a5e1436996f3aa4db07af4c06b1b2332a01c46c3a3cc7e304aeebaaac809",
+        "opaquePixels": 27274
+      },
+      {
+        "anchor": [
+          172,
+          279
+        ],
+        "bbox": [
+          33,
+          72,
+          279,
+          208
+        ],
+        "components": [
+          26949
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "ba1e5ab32fc897aa4cf538b8a3029a6407a5c32520ea7d73400b55fafc5f31bd",
+        "opaquePixels": 26949
+      },
+      {
+        "anchor": [
+          172,
+          279
+        ],
+        "bbox": [
+          33,
+          70,
+          279,
+          210
+        ],
+        "components": [
+          27233
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "016e7cdf824d17ada9a8e0d80af19ac4cf4cdecec3c04e2aa5a8c9c1f6d50f17",
+        "opaquePixels": 27233
+      },
+      {
+        "anchor": [
+          172.5,
+          279
+        ],
+        "bbox": [
+          33,
+          63,
+          280,
+          217
+        ],
+        "components": [
+          28033
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "52fbbd96f51904be655d3c4cd52b415b107455940781bb26046693f05e79ead1",
+        "opaquePixels": 28033
+      },
+      {
+        "anchor": [
+          172.5,
+          279
+        ],
+        "bbox": [
+          22,
+          59,
+          302,
+          221
+        ],
+        "components": [
+          30513
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "a2582c4a0a4cd1a4c013a1d7cac977af07bcee27fe93643bd98e2361e4f08465",
+        "opaquePixels": 30513
+      },
+      {
+        "anchor": [
+          172.5,
+          279
+        ],
+        "bbox": [
+          26,
+          59,
+          294,
+          221
+        ],
+        "components": [
+          29884
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "f9c0d3b2ae9df2d393b7dc206d6a898db1430421377d92ef27f32cca8804937c",
+        "opaquePixels": 29884
+      },
+      {
+        "anchor": [
+          172.5,
+          279
+        ],
+        "bbox": [
+          34,
+          67,
+          278,
+          213
+        ],
+        "components": [
+          27641
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "110f8343ec6894e8a4ac077076e0f2c52968c759ae78b9ea6355ab86889f53b0",
+        "opaquePixels": 27641
       }
     ],
     "northwest-run": [
@@ -5722,6 +6954,314 @@
         "opaquePixels": 30378
       }
     ],
+    "west-crawl": [
+      {
+        "anchor": [
+          172,
+          279
+        ],
+        "bbox": [
+          17,
+          148,
+          311,
+          132
+        ],
+        "components": [
+          27586
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "e1572fcfa621c0612c28d87b841926564febfca0089c90f3bc3e959c7f3a36fe",
+        "opaquePixels": 27586
+      },
+      {
+        "anchor": [
+          172,
+          279
+        ],
+        "bbox": [
+          15,
+          152,
+          315,
+          128
+        ],
+        "components": [
+          28397
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "e6035a9e5a4cd0c45ca85798ccfeba3b0d5a2205fbc53f8a922667040cf45251",
+        "opaquePixels": 28397
+      },
+      {
+        "anchor": [
+          172.5,
+          279
+        ],
+        "bbox": [
+          15,
+          151,
+          316,
+          129
+        ],
+        "components": [
+          27092
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "7ef23805150ff4d53f358580170fa90109fc0b4fb206edc43bc6daf514786dcd",
+        "opaquePixels": 27092
+      },
+      {
+        "anchor": [
+          172.5,
+          279
+        ],
+        "bbox": [
+          19,
+          151,
+          308,
+          129
+        ],
+        "components": [
+          26921
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "805915c82275030b40fa0099525c236009f7f87bbd83b84f03822c236ee62312",
+        "opaquePixels": 26921
+      },
+      {
+        "anchor": [
+          172.5,
+          279
+        ],
+        "bbox": [
+          16,
+          149,
+          314,
+          131
+        ],
+        "components": [
+          27178
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "846be749a657d5f752315ef140de18452fcbeb0a445ed6df97b1ddb19722a7fb",
+        "opaquePixels": 27178
+      },
+      {
+        "anchor": [
+          172.5,
+          279
+        ],
+        "bbox": [
+          15,
+          155,
+          316,
+          125
+        ],
+        "components": [
+          27730
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "b1ef734a903a36fbc4594bac8a2dc0bcdb38f894fdf36f5fdfb37498eeeb7fe3",
+        "opaquePixels": 27730
+      },
+      {
+        "anchor": [
+          172.5,
+          279
+        ],
+        "bbox": [
+          14,
+          152,
+          318,
+          128
+        ],
+        "components": [
+          28061
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "99ad26919b140028a3f1aaa2146ef1f8b31b0c43330be0a1a9d02fa7a7668feb",
+        "opaquePixels": 28061
+      },
+      {
+        "anchor": [
+          172.5,
+          279
+        ],
+        "bbox": [
+          18,
+          151,
+          310,
+          129
+        ],
+        "components": [
+          27274
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "6dc87d7bd47cf9acb82f658350432aaa8cae3c5767a02a343cee86b8ff8b47f9",
+        "opaquePixels": 27274
+      }
+    ],
+    "west-crouch-idle": [
+      {
+        "anchor": [
+          172.5,
+          279
+        ],
+        "bbox": [
+          19,
+          166,
+          308,
+          114
+        ],
+        "components": [
+          25103
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "f93240fad98e9135356db56ec86e44953a94d732f46427fc0789e8fc0c3d8c3f",
+        "opaquePixels": 25103
+      },
+      {
+        "anchor": [
+          172.5,
+          279
+        ],
+        "bbox": [
+          17,
+          162,
+          312,
+          118
+        ],
+        "components": [
+          25402
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "3f6c01287424cc7afb53589706a79a85abd86a3dd974812bc24e5c92beaa5ae8",
+        "opaquePixels": 25402
+      },
+      {
+        "anchor": [
+          172,
+          279
+        ],
+        "bbox": [
+          18,
+          166,
+          309,
+          114
+        ],
+        "components": [
+          25090
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "bd78df532b3f93bad9b8194337ab08f6e89f28bc01852b03dac28642e7954f22",
+        "opaquePixels": 25090
+      },
+      {
+        "anchor": [
+          172,
+          279
+        ],
+        "bbox": [
+          15,
+          165,
+          315,
+          115
+        ],
+        "components": [
+          25572
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "36bbd7d44193fb1e738d211a570b7c76aeb79a0df8c8c7e8ca69221a5e97bdf3",
+        "opaquePixels": 25572
+      },
+      {
+        "anchor": [
+          172,
+          279
+        ],
+        "bbox": [
+          17,
+          151,
+          311,
+          129
+        ],
+        "components": [
+          27216
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "40b509ebee6fc344bc15b5ba35f196559ff861236876ceb413da9c5941e78f34",
+        "opaquePixels": 27216
+      },
+      {
+        "anchor": [
+          172.5,
+          279
+        ],
+        "bbox": [
+          15,
+          149,
+          316,
+          131
+        ],
+        "components": [
+          27019
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "7c9dae93834ea1cce4e3d9fdf70cda5b0429fe0504a9ad1017c6737bd6aade94",
+        "opaquePixels": 27019
+      },
+      {
+        "anchor": [
+          172.5,
+          279
+        ],
+        "bbox": [
+          14,
+          153,
+          318,
+          127
+        ],
+        "components": [
+          27301
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "738742579c5ecc02e788642e58a67ed767e3ee171404d251280b0e64d0635621",
+        "opaquePixels": 27301
+      },
+      {
+        "anchor": [
+          172,
+          279
+        ],
+        "bbox": [
+          17,
+          152,
+          311,
+          128
+        ],
+        "components": [
+          27812
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "808698b8e3c9c41260fba16ba7304279f07b660bf045a568c1fe167ebc24e395",
+        "opaquePixels": 27812
+      }
+    ],
     "west-run": [
       {
         "anchor": [
@@ -7072,6 +8612,314 @@
         "edgeShare": 0,
         "hash": "faa359c2457cc30d3489fb9fb9ce16ab051269e536a3bf7ac6ba025f55044b97",
         "opaquePixels": 32864
+      }
+    ],
+    "southwest-crawl": [
+      {
+        "anchor": [
+          172,
+          279
+        ],
+        "bbox": [
+          20,
+          59,
+          305,
+          221
+        ],
+        "components": [
+          31166
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "6569f95a5924e6ded05e29ad0b3621e2d410e945b90d07fc20090984eda913af",
+        "opaquePixels": 31166
+      },
+      {
+        "anchor": [
+          172.5,
+          279
+        ],
+        "bbox": [
+          19,
+          75,
+          308,
+          205
+        ],
+        "components": [
+          31983
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "01d5ed3df3fd26057c69f9088db5a315a22ea25bbb056756c5c89d6b03b296e3",
+        "opaquePixels": 31983
+      },
+      {
+        "anchor": [
+          172,
+          279
+        ],
+        "bbox": [
+          20,
+          61,
+          305,
+          219
+        ],
+        "components": [
+          32304
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "23465f192b2fda56923f8ac5bcb42fcb458e1e6379f526457a1ea4615bae5e79",
+        "opaquePixels": 32304
+      },
+      {
+        "anchor": [
+          172.5,
+          279
+        ],
+        "bbox": [
+          22,
+          57,
+          302,
+          223
+        ],
+        "components": [
+          32338
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "7a574976c379ad7081aa255874e9a8ecf59760945979ba77632a20b5375a67ae",
+        "opaquePixels": 32338
+      },
+      {
+        "anchor": [
+          172.5,
+          279
+        ],
+        "bbox": [
+          26,
+          70,
+          294,
+          210
+        ],
+        "components": [
+          30233
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "b62c79f6f3483f40ef5793143ca0b70f85c789ba068d37514626d6daf0b2344b",
+        "opaquePixels": 30233
+      },
+      {
+        "anchor": [
+          172,
+          279
+        ],
+        "bbox": [
+          27,
+          78,
+          291,
+          202
+        ],
+        "components": [
+          29027
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "cb93ee60342f6306ca1e7f73f80b2dd5d038c289f72fc381945b91fbcf31392e",
+        "opaquePixels": 29027
+      },
+      {
+        "anchor": [
+          172,
+          279
+        ],
+        "bbox": [
+          31,
+          63,
+          283,
+          217
+        ],
+        "components": [
+          29429
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "12245bb983cad5f5590ff6578609ab0caf20e0c256eab6be36312bec33bae6c2",
+        "opaquePixels": 29429
+      },
+      {
+        "anchor": [
+          172,
+          279
+        ],
+        "bbox": [
+          34,
+          88,
+          277,
+          192
+        ],
+        "components": [
+          27443
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "38f96fbff6959801e5f747105a81b844fc0d5140d37a9afbce1de50c610bd86a",
+        "opaquePixels": 27443
+      }
+    ],
+    "southwest-crouch-idle": [
+      {
+        "anchor": [
+          172,
+          279
+        ],
+        "bbox": [
+          28,
+          83,
+          289,
+          197
+        ],
+        "components": [
+          29168
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "f25e987e55eb813ebe5eb9646f5b0c9c8c9232d2ec84b094c0a4e76563453a7b",
+        "opaquePixels": 29168
+      },
+      {
+        "anchor": [
+          172,
+          279
+        ],
+        "bbox": [
+          30,
+          76,
+          285,
+          204
+        ],
+        "components": [
+          28549
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "9e74bb365b882ec9440d69739daec3270495ab53fcefe82022d8fb5168dcf40a",
+        "opaquePixels": 28549
+      },
+      {
+        "anchor": [
+          172,
+          279
+        ],
+        "bbox": [
+          28,
+          76,
+          289,
+          204
+        ],
+        "components": [
+          29612
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "23dc2805d246fc65204bec4825d4033077fecbb7bed3b4d37933376f0970427e",
+        "opaquePixels": 29612
+      },
+      {
+        "anchor": [
+          172,
+          279
+        ],
+        "bbox": [
+          34,
+          78,
+          277,
+          202
+        ],
+        "components": [
+          28136
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "73d3135cc721019a2309f97adad558f91d4a0cbca855eb86b4eaae425ffd0f22",
+        "opaquePixels": 28136
+      },
+      {
+        "anchor": [
+          172,
+          279
+        ],
+        "bbox": [
+          29,
+          86,
+          287,
+          194
+        ],
+        "components": [
+          28285
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "d40d355fd32df1ebf6b9551a13ac589ad4c6e865f0fce7cb1effcebae29e1d7d",
+        "opaquePixels": 28285
+      },
+      {
+        "anchor": [
+          172,
+          279
+        ],
+        "bbox": [
+          25,
+          61,
+          295,
+          219
+        ],
+        "components": [
+          31441
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "3c499f1800f13c908e34ea5d895ffa9a4c67720011e5e4550857fe205d7d337e",
+        "opaquePixels": 31441
+      },
+      {
+        "anchor": [
+          172,
+          279
+        ],
+        "bbox": [
+          25,
+          66,
+          295,
+          214
+        ],
+        "components": [
+          31211
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "925b6fa283a5232cca83916ef6113d340a0bce4d06ef337fffc043126699b2e9",
+        "opaquePixels": 31211
+      },
+      {
+        "anchor": [
+          172.5,
+          279
+        ],
+        "bbox": [
+          23,
+          63,
+          300,
+          217
+        ],
+        "components": [
+          32843
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "d1232765e0e5a86a8a0371042b1038462c98dca43e98e9660faeb1081c8317b1",
+        "opaquePixels": 32843
       }
     ],
     "southwest-run": [
@@ -8426,6 +10274,314 @@
         "opaquePixels": 16783
       }
     ],
+    "south-crawl": [
+      {
+        "anchor": [
+          173,
+          279
+        ],
+        "bbox": [
+          121,
+          48,
+          105,
+          232
+        ],
+        "components": [
+          17626
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "d9979a2ed5251655bec88394ccd0766677e2213362f199859acadfad3a8bf0f9",
+        "opaquePixels": 17626
+      },
+      {
+        "anchor": [
+          172.5,
+          279
+        ],
+        "bbox": [
+          118,
+          57,
+          110,
+          223
+        ],
+        "components": [
+          17669
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "efcec5b48b50ae6884e32dc019566470291d7b2696179f0f82a3e79c6b5e1612",
+        "opaquePixels": 17669
+      },
+      {
+        "anchor": [
+          172.5,
+          279
+        ],
+        "bbox": [
+          118,
+          52,
+          110,
+          228
+        ],
+        "components": [
+          17492
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "e9271bb01377188e7c8dfadb6b59fb2e0dba2d42a8e1717070bea9c5ec4946f1",
+        "opaquePixels": 17492
+      },
+      {
+        "anchor": [
+          172.5,
+          279
+        ],
+        "bbox": [
+          116,
+          56,
+          114,
+          224
+        ],
+        "components": [
+          17919
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "ecba865dba8cc65b3bb06b3f1cfb77ed137a331d1ebb1d387ddf9580b7fdb159",
+        "opaquePixels": 17919
+      },
+      {
+        "anchor": [
+          172.5,
+          279
+        ],
+        "bbox": [
+          119,
+          69,
+          108,
+          211
+        ],
+        "components": [
+          16901
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "815bfa52e8bf40737e2a5f903710cda78bdb0e665370738d590fe92a2af81399",
+        "opaquePixels": 16901
+      },
+      {
+        "anchor": [
+          173,
+          279
+        ],
+        "bbox": [
+          121,
+          61,
+          105,
+          219
+        ],
+        "components": [
+          16400
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "465ac471cb1280372a11a7601de9305b17fd91a1f7303c412bbc9b5615395b19",
+        "opaquePixels": 16400
+      },
+      {
+        "anchor": [
+          173,
+          279
+        ],
+        "bbox": [
+          122,
+          70,
+          103,
+          210
+        ],
+        "components": [
+          15890
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "840fe21fe419c4c2a94cf9b5c5b2ca40ed39452816137b23d5afe4002c3f43a5",
+        "opaquePixels": 15890
+      },
+      {
+        "anchor": [
+          173,
+          279
+        ],
+        "bbox": [
+          112,
+          70,
+          123,
+          210
+        ],
+        "components": [
+          16099
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "3f3eb018f016c32af58fd7a2ab8b60e02bfe68219dcb96fc0b24bf4f7af52812",
+        "opaquePixels": 16099
+      }
+    ],
+    "south-crouch-idle": [
+      {
+        "anchor": [
+          172.5,
+          279
+        ],
+        "bbox": [
+          118,
+          85,
+          110,
+          195
+        ],
+        "components": [
+          16127
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "305012d22bf0126e7aeb355f8e4503067d737040ecbec9a37b42a5ad9f1f70bb",
+        "opaquePixels": 16127
+      },
+      {
+        "anchor": [
+          172.5,
+          279
+        ],
+        "bbox": [
+          122,
+          92,
+          102,
+          188
+        ],
+        "components": [
+          14905
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "789094185c2685978e5cd1775560043e64b7f0bb4c8da24bbfdcbafc322e056c",
+        "opaquePixels": 14905
+      },
+      {
+        "anchor": [
+          173,
+          279
+        ],
+        "bbox": [
+          120,
+          90,
+          107,
+          190
+        ],
+        "components": [
+          15260
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "b60ea1d31c86b8b7f825508fbe28b284d23f81cd27cc8b31fef341d4f25494b6",
+        "opaquePixels": 15260
+      },
+      {
+        "anchor": [
+          172.5,
+          279
+        ],
+        "bbox": [
+          113,
+          71,
+          120,
+          209
+        ],
+        "components": [
+          18242
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "2ba0e7109b09fa80b16b88daea5ec5ee4d30d7653718f9ba3a398ff2e98cc329",
+        "opaquePixels": 18242
+      },
+      {
+        "anchor": [
+          172.5,
+          279
+        ],
+        "bbox": [
+          116,
+          70,
+          114,
+          210
+        ],
+        "components": [
+          18134
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "37c9ca9313cdb298a64a5f7b67583721c2c1f7c85019fa02d7b9f2e587cd06a9",
+        "opaquePixels": 18134
+      },
+      {
+        "anchor": [
+          172.5,
+          279
+        ],
+        "bbox": [
+          118,
+          80,
+          110,
+          200
+        ],
+        "components": [
+          16554
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "623804c7cc4fe190783854279683bce983b668bb4cb0a4a223e9846b96d2ee79",
+        "opaquePixels": 16554
+      },
+      {
+        "anchor": [
+          172.5,
+          279
+        ],
+        "bbox": [
+          119,
+          78,
+          108,
+          202
+        ],
+        "components": [
+          16484
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "676c5e2537f8533f3f2878027633dd3f8e24f4ee70249f35f61e2d5c93b069d4",
+        "opaquePixels": 16484
+      },
+      {
+        "anchor": [
+          173,
+          279
+        ],
+        "bbox": [
+          119,
+          85,
+          109,
+          195
+        ],
+        "components": [
+          15748
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "d70c8658881de7f6dec6a3fef4a60c6aa3d1753fe53ab56cbc5a968251f62b5b",
+        "opaquePixels": 15748
+      }
+    ],
     "south-run": [
       {
         "anchor": [
@@ -9776,6 +11932,314 @@
         "edgeShare": 0,
         "hash": "eb53ab57c57e8584d1f293d38c0725276134b0f767ba94f3f28287491701c719",
         "opaquePixels": 33021
+      }
+    ],
+    "southeast-crawl": [
+      {
+        "anchor": [
+          173,
+          279
+        ],
+        "bbox": [
+          21,
+          59,
+          305,
+          221
+        ],
+        "components": [
+          31166
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "4a78917b59c56dcd0d8c6a2fd8d73d420474be28492ff9b77d21768d52a7a0ac",
+        "opaquePixels": 31166
+      },
+      {
+        "anchor": [
+          172.5,
+          279
+        ],
+        "bbox": [
+          19,
+          75,
+          308,
+          205
+        ],
+        "components": [
+          31983
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "b3de942741b87d754d0aee0d0ab0a5efe84178249b8901dc362fede35984ecf7",
+        "opaquePixels": 31983
+      },
+      {
+        "anchor": [
+          173,
+          279
+        ],
+        "bbox": [
+          21,
+          61,
+          305,
+          219
+        ],
+        "components": [
+          32304
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "8c760bba8c9af46370099a9b6c023d41df3085667b9de7bacd96c49a57033526",
+        "opaquePixels": 32304
+      },
+      {
+        "anchor": [
+          172.5,
+          279
+        ],
+        "bbox": [
+          22,
+          57,
+          302,
+          223
+        ],
+        "components": [
+          32338
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "e7c8c0b764b02bc3cd4ea51ec6a25c4f29bf2e140039ebf3d3426533bd98e0a5",
+        "opaquePixels": 32338
+      },
+      {
+        "anchor": [
+          172.5,
+          279
+        ],
+        "bbox": [
+          26,
+          70,
+          294,
+          210
+        ],
+        "components": [
+          30233
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "ca058e303303b2feefb75842d701332f0d07019c946d2aa578e71e5e9b892d48",
+        "opaquePixels": 30233
+      },
+      {
+        "anchor": [
+          173,
+          279
+        ],
+        "bbox": [
+          28,
+          78,
+          291,
+          202
+        ],
+        "components": [
+          29027
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "80686b03e79e78008eff88ede0bb9f7dfb927e16ad97fde515c485f8f9d29e1e",
+        "opaquePixels": 29027
+      },
+      {
+        "anchor": [
+          173,
+          279
+        ],
+        "bbox": [
+          32,
+          63,
+          283,
+          217
+        ],
+        "components": [
+          29429
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "10821e74919517b8f3b8481f96aad4ae2a20a0922141efb238c2f5c9f033c411",
+        "opaquePixels": 29429
+      },
+      {
+        "anchor": [
+          173,
+          279
+        ],
+        "bbox": [
+          35,
+          88,
+          277,
+          192
+        ],
+        "components": [
+          27443
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "05ab12dd89b6aa90c00084bf4ea961e7eeb7e27ce9e49c4a3b107207b08af05c",
+        "opaquePixels": 27443
+      }
+    ],
+    "southeast-crouch-idle": [
+      {
+        "anchor": [
+          173,
+          279
+        ],
+        "bbox": [
+          29,
+          83,
+          289,
+          197
+        ],
+        "components": [
+          29168
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "e833507fd17fc1b232be7f9a34b4c35cfd381d8c48e11611681985073e3d2bee",
+        "opaquePixels": 29168
+      },
+      {
+        "anchor": [
+          173,
+          279
+        ],
+        "bbox": [
+          31,
+          76,
+          285,
+          204
+        ],
+        "components": [
+          28549
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "fa1e9a6072a0fe4a01d991a2276d3273c36a3f9aa4b58def7160ec921cab88ee",
+        "opaquePixels": 28549
+      },
+      {
+        "anchor": [
+          173,
+          279
+        ],
+        "bbox": [
+          29,
+          76,
+          289,
+          204
+        ],
+        "components": [
+          29612
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "88e0cad542e27aa2fb77a315110cd768d221d4a29ff02b78c5c955c5e4d5b4f7",
+        "opaquePixels": 29612
+      },
+      {
+        "anchor": [
+          173,
+          279
+        ],
+        "bbox": [
+          35,
+          78,
+          277,
+          202
+        ],
+        "components": [
+          28136
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "348846a7190a0a72b5897455fd1ac96f04d07d8344e49b42c9e70d6d1479b7b3",
+        "opaquePixels": 28136
+      },
+      {
+        "anchor": [
+          173,
+          279
+        ],
+        "bbox": [
+          30,
+          86,
+          287,
+          194
+        ],
+        "components": [
+          28285
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "d1081ff5260e22ca6e691d419952f92b1fb5bf54420c76c4efbd2d921bde7bb0",
+        "opaquePixels": 28285
+      },
+      {
+        "anchor": [
+          173,
+          279
+        ],
+        "bbox": [
+          26,
+          61,
+          295,
+          219
+        ],
+        "components": [
+          31441
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "c03a15b1d442892f6d98002f00584880b32264b203330a26570795a6a7fc918b",
+        "opaquePixels": 31441
+      },
+      {
+        "anchor": [
+          173,
+          279
+        ],
+        "bbox": [
+          26,
+          66,
+          295,
+          214
+        ],
+        "components": [
+          31211
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "c9e2976e4777abe461b37d87f98b21bbc0abb7b1357803de45d2edff06bcc12d",
+        "opaquePixels": 31211
+      },
+      {
+        "anchor": [
+          172.5,
+          279
+        ],
+        "bbox": [
+          23,
+          63,
+          300,
+          217
+        ],
+        "components": [
+          32843
+        ],
+        "detachedShare": 0,
+        "edgeShare": 0,
+        "hash": "1da5a6feef5eac90e5ec9ccc69c3b283feff03150a67120f995287c4a4cd9b51",
+        "opaquePixels": 32843
       }
     ],
     "southeast-run": [

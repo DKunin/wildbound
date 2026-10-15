@@ -1,3 +1,5 @@
+import { findEscapePath as buildEscapePath } from './PreyEscapeSystem';
+
 export const WORLD_SEED = 'pine-ridge-expanded-2026';
 export const WORLD_TILE_SIZE = 256;
 export const WORLD_COLUMNS = 32;
@@ -224,6 +226,18 @@ export class ProceduralWorld {
       }
     }
     return [];
+  }
+
+  findEscapePath(start: WorldPoint, threat: WorldPoint): WorldPoint[] {
+    return buildEscapePath(start, threat, {
+      columns: WORLD_COLUMNS,
+      rows: WORLD_ROWS,
+      tileSize: WORLD_TILE_SIZE,
+      isPassable: (column, row) => {
+        const cell = this.getCell(column, row);
+        return cell !== undefined && !cell.blocked && !cell.water;
+      },
+    });
   }
 
   hasLineOfSight(start: WorldPoint, end: WorldPoint): boolean {

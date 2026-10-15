@@ -66,6 +66,21 @@ describe('procedural territory', () => {
     expect(path.every((point) => !world.getCellAt(point)?.blocked)).toBe(true);
   });
 
+  it('builds escape routes through open, dry cells and away from a nearby threat', () => {
+    const world = new ProceduralWorld();
+    const start = world.findOpenPositionNear({ x: WORLD_WIDTH * 0.5, y: WORLD_HEIGHT * 0.5 });
+    const threat = world.findOpenPositionNear({ x: start.x - 300, y: start.y });
+    const path = world.findEscapePath(start, threat);
+
+    expect(path.length).toBeGreaterThan(0);
+    expect(path.every((point) => {
+      const pathCell = world.getCellAt(point);
+      return pathCell !== undefined && !pathCell.blocked && !pathCell.water;
+    })).toBe(true);
+    expect(Math.hypot(path.at(-1)!.x - threat.x, path.at(-1)!.y - threat.y))
+      .toBeGreaterThan(Math.hypot(start.x - threat.x, start.y - threat.y));
+  });
+
   it('exposes open food, water-bank, shelter, and exploration habitat for both prey species', () => {
     const world = new ProceduralWorld();
     for (const species of ['rabbit', 'deer'] as const) {
@@ -77,6 +92,7 @@ describe('procedural territory', () => {
           return cell !== undefined && !cell.blocked && !cell.water;
         })).toBe(true);
       }
+      expect(habitat.food.length).toBeGreaterThan(species === 'rabbit' ? 250 : 450);
     }
   });
 

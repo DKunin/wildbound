@@ -5,6 +5,10 @@ export interface SavedAnimal {
   species: PreySpecies;
   x: number;
   y: number;
+  carcass?: {
+    meat: number;
+    state: 'exposed' | 'buried' | 'carried';
+  };
 }
 
 export interface SavedPackWolf {
@@ -12,6 +16,8 @@ export interface SavedPackWolf {
   x: number;
   y: number;
   hunger: number;
+  stamina?: number;
+  recoveryDebt?: number;
 }
 
 export interface SaveData {
@@ -32,6 +38,18 @@ const isPosition = (value: unknown): value is { x: number; y: number } => {
   const position = value as { x?: unknown; y?: unknown };
   return isFiniteNumber(position.x) && isFiniteNumber(position.y);
 };
+const isSavedAnimal = (value: unknown): value is SavedAnimal => {
+  if (!value || typeof value !== 'object') return false;
+  const animal = value as Partial<SavedAnimal>;
+  if ((animal.species !== 'rabbit' && animal.species !== 'deer') || !isPosition(animal)) return false;
+  const carcass = (value as Partial<SavedAnimal>).carcass;
+  if (carcass === undefined) return true;
+  return typeof carcass === 'object'
+    && carcass !== null
+    && isFiniteNumber(carcass.meat)
+    && carcass.meat > 0
+    && (carcass.state === 'exposed' || carcass.state === 'buried' || carcass.state === 'carried');
+};
 
 export const isSaveData = (value: unknown): value is SaveData => {
   if (!value || typeof value !== 'object') return false;
@@ -43,14 +61,19 @@ export const isSaveData = (value: unknown): value is SaveData => {
     && isFiniteNumber(data.simulationTime)
     && isPosition(data.player)
     && Array.isArray(data.prey)
-    && data.prey.every((animal) => (animal.species === 'rabbit' || animal.species === 'deer') && isPosition(animal))
+    && data.prey.every(isSavedAnimal)
     && Array.isArray(data.pack)
-    && data.pack.every((wolf) => (wolf.name === 'Niva' || wolf.name === 'Torr') && isPosition(wolf) && isFiniteNumber(wolf.hunger))
+    && data.pack.every((wolf) => (wolf.name === 'Niva' || wolf.name === 'Torr')
+      && isPosition(wolf)
+      && isFiniteNumber(wolf.hunger)
+      && (wolf.stamina === undefined || isFiniteNumber(wolf.stamina))
+      && (wolf.recoveryDebt === undefined || isFiniteNumber(wolf.recoveryDebt)))
     && typeof data.scentActive === 'boolean'
     && isFiniteNumber(data.needs?.health)
     && isFiniteNumber(data.needs.hunger)
     && isFiniteNumber(data.needs.thirst)
     && isFiniteNumber(data.needs.stamina)
+    && (data.needs.recoveryDebt === undefined || isFiniteNumber(data.needs.recoveryDebt))
     && typeof data.needs.alive === 'boolean';
 };
 

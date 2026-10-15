@@ -27,12 +27,50 @@ describe('player animation state machine', () => {
     expect(getPlayerAnimationKey(walking.state, walking.direction)).toBe('player-east-walk');
   });
 
-  it('uses the walk artwork at a distinct sneaking state', () => {
+  it('uses dedicated crawl artwork while moving in stealth', () => {
     const animation = new PlayerAnimationSystem();
     const sneaking = animation.update(16, { direction: 'west', running: false, sneaking: true, restRequested: false });
 
     expect(sneaking).toMatchObject({ state: 'sneaking', movementAllowed: true, sneaking: true, running: false });
-    expect(getPlayerAnimationKey(sneaking.state, sneaking.direction)).toBe('player-west-walk');
+    expect(getPlayerAnimationKey(sneaking.state, sneaking.direction)).toBe('player-west-crawl');
+  });
+
+  it('keeps a visible crouch while stealth is active but the wolf is still', () => {
+    const animation = new PlayerAnimationSystem();
+
+    const crouching = animation.update(16, { ...still, sneaking: true });
+    expect(crouching).toMatchObject({ state: 'crouching', movementAllowed: false, sneaking: true });
+    expect(getPlayerAnimationKey(crouching.state, crouching.direction)).toBe('player-south-crouch-idle');
+  });
+
+  it('selects complete carrying variants without changing action animations', () => {
+    const expected = {
+      idle: 'idle',
+      walking: 'walk',
+      crouching: 'crouch-idle',
+      sneaking: 'crawl',
+      running: 'run',
+      'laying-down': 'lay',
+      resting: 'rest-breathe',
+      'getting-up': 'get-up',
+    } as const;
+
+    for (const [state, suffix] of Object.entries(expected)) {
+      expect(getPlayerAnimationKey(state as keyof typeof expected, 'northwest', true))
+        .toBe(`player-northwest-carry-${suffix}`);
+    }
+    expect(getPlayerAnimationKey('attacking', 'northwest', true)).toBe('player-northwest-attack');
+    expect(getPlayerAnimationKey('eating', 'northwest', true)).toBe('player-northwest-eat');
+    expect(getPlayerAnimationKey('drinking', 'northwest', true)).toBe('player-northwest-drink');
+  });
+
+  it('switches directly from a crawl to running when stealth is released for a lunge', () => {
+    const animation = new PlayerAnimationSystem();
+    animation.update(16, { direction: 'east', running: false, sneaking: true, restRequested: false });
+
+    expect(animation.update(16, { direction: 'east', running: true, sneaking: false, restRequested: false })).toMatchObject({
+      state: 'running', direction: 'east', movementAllowed: true, running: true, sneaking: false,
+    });
   });
 
   it('lies down after twenty seconds of uninterrupted inactivity', () => {

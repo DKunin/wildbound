@@ -8,7 +8,7 @@ const ALPHA_THRESHOLD = 38;
 const MIN_COMPONENT_AREA = 100;
 const CELL_MARGIN = 4;
 const directions = ['east', 'northeast', 'north', 'northwest', 'west', 'southwest', 'south', 'southeast'];
-const atlasKinds = ['motion', 'run', 'rest', 'action'];
+const atlasKinds = ['motion', 'run', 'rest', 'action', 'crouch'];
 
 const args = process.argv.slice(2);
 const sourceFlag = args.indexOf('--source');
@@ -278,6 +278,24 @@ const writeAtlas = (sourceImage, sprites, scale, direction, outputPath) => {
   writeFileSync(outputPath, PNG.sync.write(output));
 };
 
+const mirrorAtlasByCell = (sourcePath, outputPath) => {
+  const source = PNG.sync.read(readFileSync(sourcePath));
+  const output = new PNG({ width: source.width, height: source.height, colorType: 6 });
+  output.data.fill(0);
+  for (let frame = 0; frame < 16; frame += 1) {
+    const cellX = (frame % 4) * FRAME_WIDTH;
+    const cellY = Math.floor(frame / 4) * FRAME_HEIGHT;
+    for (let y = 0; y < FRAME_HEIGHT; y += 1) {
+      for (let x = 0; x < FRAME_WIDTH; x += 1) {
+        const sourceOffset = ((cellY + y) * source.width + cellX + x) * 4;
+        const targetOffset = ((cellY + y) * output.width + cellX + FRAME_WIDTH - 1 - x) * 4;
+        source.data.copy(output.data, targetOffset, sourceOffset, sourceOffset + 4);
+      }
+    }
+  }
+  writeFileSync(outputPath, PNG.sync.write(output));
+};
+
 const reports = [];
 for (const direction of directions) {
   const atlases = atlasKinds.map((atlasKind) => {
@@ -297,6 +315,17 @@ for (const direction of directions) {
     writeAtlas(atlas.image, atlas.sprites, scale, direction, resolve(outputRoot, atlas.fileName));
   }
   reports.push(`${direction}: ${atlasKinds.length * 16} complete silhouettes, scale ${(scale * 100).toFixed(1)}%`);
+}
+
+for (const [rightDirection, leftDirection] of [
+  ['east', 'west'],
+  ['northeast', 'northwest'],
+  ['southeast', 'southwest'],
+]) {
+  mirrorAtlasByCell(
+    resolve(outputRoot, `wolf-${rightDirection}-crouch.png`),
+    resolve(outputRoot, `wolf-${leftDirection}-crouch.png`),
+  );
 }
 
 console.log(`Repacked ${directions.length * atlasKinds.length * 16} frames into ${outputRoot}`);

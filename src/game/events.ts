@@ -13,6 +13,7 @@ export interface HudState {
   windLabel: string;
   territoryLabel: string;
   contextAction: string;
+  willEatMeat: boolean;
   eventLine: string;
   scentActive: boolean;
   scentSummary: string;
@@ -24,6 +25,11 @@ export interface HudState {
   ambientColor: string;
   ambientOpacity: number;
   saveStatus: string;
+}
+
+export interface HuntLogEntry {
+  time: string;
+  message: string;
 }
 
 export const gameEvents = new Phaser.Events.EventEmitter();

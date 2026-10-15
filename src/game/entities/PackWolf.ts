@@ -2,6 +2,7 @@ import Phaser from 'phaser';
 import type { Prey } from './Prey';
 import { resolveDirectionalFacing, type BaseDirection } from '../systems/DirectionalSpriteSystem';
 import { LivingShadow } from '../systems/LivingShadow';
+import { EnduranceSystem } from '../systems/EnduranceSystem';
 
 export type PackWolfName = 'Niva' | 'Torr';
 export type PackWolfState = 'near' | 'returning' | 'flanking' | 'feeding' | 'resting';
@@ -11,6 +12,8 @@ export interface PackWolfSnapshot {
   x: number;
   y: number;
   hunger: number;
+  stamina?: number;
+  recoveryDebt?: number;
 }
 
 export class PackWolf extends Phaser.Physics.Arcade.Sprite {
@@ -24,6 +27,7 @@ export class PackWolf extends Phaser.Physics.Arcade.Sprite {
   private readonly shadow: LivingShadow;
   private animationDirection: BaseDirection = 'down-right';
   private animationRotation = 0;
+  private readonly endurance = new EnduranceSystem();
 
   constructor(
     scene: Phaser.Scene,
@@ -58,6 +62,15 @@ export class PackWolf extends Phaser.Physics.Arcade.Sprite {
     flankSide: -1 | 1,
   ): PackWolfState {
     this.hunger = Phaser.Math.Clamp(this.hunger + deltaSeconds * 0.035, 0, 100);
+    const previousBody = this.body as Phaser.Physics.Arcade.Body;
+    const previousSpeed = previousBody.velocity.length();
+    this.endurance.update(deltaSeconds, this.packState === 'resting'
+      ? 'resting'
+      : previousSpeed > 175
+        ? 'sprinting'
+        : previousSpeed > 4
+          ? 'moving'
+          : 'idle');
     if (time < this.avoidanceUntil) {
       this.setVelocity(this.avoidanceDirection.x * 138, this.avoidanceDirection.y * 138);
       this.updateAnimation(8);
@@ -87,7 +100,8 @@ export class PackWolf extends Phaser.Physics.Arcade.Sprite {
         this.lastAttackAt = time;
         target.attack('pack');
       }
-      this.moveToward(flankPoint, distance > 82 ? 202 : 94);
+      const chaseSpeed = 202 * this.endurance.getSprintSpeedFactor();
+      this.moveToward(flankPoint, distance > 82 ? chaseSpeed : 94);
       this.updateAnimation(distance > 160 ? 11 : 8);
       return this.packState;
     }
@@ -118,6 +132,7 @@ export class PackWolf extends Phaser.Physics.Arcade.Sprite {
   }
 
   getHudStatus(): string {
+    if (this.endurance.snapshot().stamina < 8 && this.packState !== 'resting' && this.packState !== 'feeding') return 'EXHAUSTED';
     switch (this.packState) {
       case 'flanking': return 'FLANKING';
       case 'returning': return 'RETURNING';
@@ -128,12 +143,21 @@ export class PackWolf extends Phaser.Physics.Arcade.Sprite {
   }
 
   snapshot(): PackWolfSnapshot {
-    return { name: this.wolfName, x: this.x, y: this.y, hunger: this.hunger };
+    const endurance = this.endurance.snapshot();
+    return {
+      name: this.wolfName,
+      x: this.x,
+      y: this.y,
+      hunger: this.hunger,
+      stamina: endurance.stamina,
+      recoveryDebt: endurance.recoveryDebt,
+    };
   }
 
   restore(snapshot: PackWolfSnapshot): void {
     this.setPosition(snapshot.x, snapshot.y);
     this.hunger = Phaser.Math.Clamp(snapshot.hunger, 0, 100);
+    this.endurance.restore({ stamina: snapshot.stamina, recoveryDebt: snapshot.recoveryDebt });
     this.packState = 'near';
   }
 
@@ -170,6 +194,7 @@ export class PackWolf extends Phaser.Physics.Arcade.Sprite {
     let nearest: { animal: Prey; distance: number } | undefined;
     for (const animal of prey) {
       if (!animal.active || animal.isDead() !== dead) continue;
+      if (dead && (!animal.hasEdibleMeat() || animal.isBuried() || animal.isCarried())) continue;
       const distance = Phaser.Math.Distance.Between(this.x, this.y, animal.x, animal.y);
       if (!nearest || distance < nearest.distance) nearest = { animal, distance };
     }

@@ -18,13 +18,28 @@ describe('procedural-world save validation', () => {
     expect(isSaveData(valid)).toBe(true);
   });
 
+  it('persists exposed carrion plus buried and carried meat caches', () => {
+    expect(isSaveData({
+      ...valid,
+      prey: [
+        { species: 'deer', x: 410, y: 720, carcass: { meat: 65, state: 'exposed' } },
+        { species: 'rabbit', x: 610, y: 890, carcass: { meat: 21, state: 'carried' } },
+        { species: 'deer', x: 1_200, y: 700, carcass: { meat: 84, state: 'buried' } },
+      ],
+    })).toBe(true);
+  });
+
   it('rejects older or incomplete save records', () => {
     expect(isSaveData({ ...valid, version: 3 })).toBe(false);
     expect(isSaveData({ ...valid, worldSeed: '' })).toBe(false);
     expect(isSaveData({ ...valid, player: { x: 'wrong', y: 1 } })).toBe(false);
     expect(isSaveData({ ...valid, pack: undefined })).toBe(false);
     expect(isSaveData({ ...valid, prey: [{ species: 'bear', x: 10, y: 20 }] })).toBe(false);
+    expect(isSaveData({ ...valid, prey: [{ species: 'deer', x: 10, y: 20, carcass: { meat: 0, state: 'buried' } }] })).toBe(false);
+    expect(isSaveData({ ...valid, prey: [{ species: 'deer', x: 10, y: 20, carcass: { meat: 10, state: 'hidden' } }] })).toBe(false);
     expect(isSaveData({ ...valid, pack: [{ name: 'Niva', x: 10, y: 20, hunger: Number.NaN }] })).toBe(false);
     expect(isSaveData({ ...valid, needs: { ...valid.needs, thirst: 'unknown' } })).toBe(false);
+    expect(isSaveData({ ...valid, needs: { ...valid.needs, recoveryDebt: Number.NaN } })).toBe(false);
+    expect(isSaveData({ ...valid, pack: [{ ...valid.pack[0], stamina: 'tired' }] })).toBe(false);
   });
 });

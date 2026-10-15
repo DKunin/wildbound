@@ -14,6 +14,22 @@
       <div id="game" aria-hidden="true"></div>
       <div id="daylight" aria-hidden="true"></div>
 
+      <section id="main-menu" class="main-menu" role="dialog" aria-modal="true" aria-labelledby="main-menu-title">
+        <div class="modal-panel main-menu-panel">
+          <p class="modal-kicker">ENTER THE LIVING WILDERNESS</p>
+          <h1 id="main-menu-title">Wildbound</h1>
+          <p>Survive as a lone wolf by reading the land, the wind, and the animals around you.</p>
+          <button id="log-mode-toggle" class="log-mode-toggle" type="button" role="switch" aria-checked="false" data-log-mode-toggle>
+            <span class="toggle-track" aria-hidden="true"><span class="toggle-knob"></span></span>
+            <span class="toggle-copy"><strong>LOG MODE</strong><small>Show animal perception and hunting-state events.</small></span>
+            <span id="log-mode-state" class="toggle-state" data-log-mode-state>OFF</span>
+          </button>
+          <div class="modal-actions main-menu-actions">
+            <button id="start-button" type="button">ENTER THE WILD</button>
+          </div>
+        </div>
+      </section>
+
       <header class="brand" aria-label="Game title">WILDBOUND</header>
 
       <section class="world-status" aria-label="World status">
@@ -37,6 +53,16 @@
         <span id="sound-summary">DISTANT HOOVES</span>
       </section>
 
+      <aside id="hunt-log" class="hunt-log" aria-labelledby="hunt-log-title" hidden>
+        <div class="hunt-log-heading">
+          <strong id="hunt-log-title">HUNT LOG</strong>
+          <span>LIVE AWARENESS</span>
+        </div>
+        <ol id="hunt-log-list" aria-live="polite" aria-relevant="additions">
+          <li class="hunt-log-empty" data-log-placeholder>Waiting for an animal to notice you.</li>
+        </ol>
+      </aside>
+
       <section class="needs" aria-label="Wolf survival needs">
         <div class="need-row">
           <span class="need-icon health-icon" aria-hidden="true">♥</span>
@@ -44,10 +70,16 @@
           <span class="meter"><span id="health-bar" class="meter-fill health-fill"></span></span>
           <span id="health-value" class="sr-only">100 percent</span>
         </div>
-        <div class="need-row">
+        <div class="need-row hunger-row">
           <span class="need-icon hunger-icon" aria-hidden="true">◆</span>
           <span class="need-label">HUNGER</span>
-          <span class="meter"><span id="hunger-bar" class="meter-fill hunger-fill"></span></span>
+          <span class="hunger-meter-wrap">
+            <span class="meter">
+              <span id="hunger-bar" class="meter-fill hunger-fill"></span>
+              <i class="hunger-threshold" title="The wolf begins eating at 26 percent hunger" aria-hidden="true"></i>
+            </span>
+            <small id="hunger-mode" class="hunger-mode hungry" role="status" aria-live="polite">HUNGRY · WILL EAT</small>
+          </span>
           <span id="hunger-value" class="sr-only">32 percent</span>
         </div>
         <div class="need-row">
@@ -86,7 +118,7 @@
       <section id="pause-panel" class="modal-panel" role="dialog" aria-modal="true" hidden>
         <p class="modal-kicker">THE WILDERNESS WAITS</p>
         <h1 id="modal-title">Paused</h1>
-        <p id="modal-copy">Press Space to return to the forest.</p>
+        <p id="modal-copy">Press Escape or Space to return to the forest.</p>
         <div class="modal-controls">
           <span><kbd>WASD</kbd> move</span>
           <span><kbd>CLICK</kbd> travel</span>
@@ -99,6 +131,11 @@
           <span><kbd>F9</kbd> load</span>
           <span><kbd>WHEEL</kbd> zoom</span>
         </div>
+        <button id="pause-log-mode-toggle" class="log-mode-toggle" type="button" role="switch" aria-checked="false" data-log-mode-toggle>
+          <span class="toggle-track" aria-hidden="true"><span class="toggle-knob"></span></span>
+          <span class="toggle-copy"><strong>LOG MODE</strong><small>Show animal perception and hunting-state events.</small></span>
+          <span class="toggle-state" data-log-mode-state>OFF</span>
+        </button>
         <div class="modal-actions">
           <button id="resume-button" type="button">RETURN TO THE WILD</button>
           <button id="load-button" class="secondary-button" type="button">LOAD LAST SAVE</button>

@@ -2,13 +2,16 @@ import { describe, expect, it } from 'vitest';
 import { NeedsSystem } from '../src/game/systems/NeedsSystem';
 
 describe('NeedsSystem', () => {
-  it('drains stamina faster while running and recovers it at rest', () => {
+  it('drains stamina while running and carries exertion into recovery', () => {
     const needs = new NeedsSystem();
     const afterRun = needs.update(2, { moving: true, running: true, resting: false });
     expect(afterRun.stamina).toBeCloseTo(54);
+    expect(afterRun.recoveryDebt).toBeCloseTo(16);
 
     const afterRest = needs.update(1, { moving: false, running: false, resting: true });
-    expect(afterRest.stamina).toBeCloseTo(79);
+    expect(afterRest.stamina).toBeGreaterThan(75);
+    expect(afterRest.stamina).toBeLessThan(79);
+    expect(afterRest.recoveryDebt).toBeCloseTo(7);
   });
 
   it('reduces hunger and thirst through feeding and drinking', () => {
@@ -16,6 +19,24 @@ describe('NeedsSystem', () => {
     needs.update(10, { moving: true, running: false, resting: false });
     expect(needs.feed(20).hunger).toBeLessThan(20);
     expect(needs.drink(18).thirst).toBeLessThan(10);
+  });
+
+  it('stops eating when the wolf is satiated', () => {
+    const needs = new NeedsSystem();
+    expect(needs.canEat()).toBe(true);
+    expect(needs.getFoodNeed()).toBe(14);
+
+    const full = needs.feed(1_000);
+    expect(full.hunger).toBe(18);
+    expect(needs.canEat()).toBe(false);
+    expect(needs.getFoodNeed()).toBe(0);
+    expect(needs.feed(10).hunger).toBe(18);
+
+    needs.restore({ health: 100, hunger: 25.9, thirst: 20, stamina: 100, alive: true });
+    expect(needs.canEat()).toBe(false);
+    expect(needs.feed(10).hunger).toBe(25.9);
+    needs.restore({ health: 100, hunger: 26, thirst: 20, stamina: 100, alive: true });
+    expect(needs.canEat()).toBe(true);
   });
 
   it('records injury as the cause of death', () => {
@@ -42,5 +63,34 @@ describe('NeedsSystem', () => {
     const needs = new NeedsSystem();
     const restored = needs.restore({ health: 81, hunger: 52, thirst: 44, stamina: 63, alive: true });
     expect(restored).toMatchObject({ health: 81, hunger: 52, thirst: 44, stamina: 63, alive: true });
+  });
+
+  it('restores older saves without endurance debt', () => {
+    const needs = new NeedsSystem();
+    expect(needs.restore({ health: 90, hunger: 30, thirst: 20, stamina: 40, alive: true }).recoveryDebt).toBe(0);
+  });
+
+  it('makes accumulated exhaustion worsen wolf hunger, thirst, and health', () => {
+    const fresh = new NeedsSystem();
+    const exhausted = new NeedsSystem();
+    fresh.restore({ health: 100, hunger: 20, thirst: 20, stamina: 100, recoveryDebt: 0, alive: true });
+    exhausted.restore({ health: 100, hunger: 20, thirst: 20, stamina: 0, recoveryDebt: 100, alive: true });
+
+    const freshResult = fresh.update(1, { moving: true, running: false, resting: false });
+    const exhaustedResult = exhausted.update(1, { moving: true, running: false, resting: false });
+
+    expect(exhaustedResult.hunger).toBeGreaterThan(freshResult.hunger);
+    expect(exhaustedResult.thirst).toBeGreaterThan(freshResult.thirst);
+    expect(exhaustedResult.health).toBeLessThan(freshResult.health);
+  });
+
+  it('can identify lethal accumulated exhaustion', () => {
+    const needs = new NeedsSystem();
+    needs.restore({ health: 0.1, hunger: 20, thirst: 20, stamina: 0, recoveryDebt: 100, alive: true });
+
+    const result = needs.update(1, { moving: true, running: false, resting: false });
+
+    expect(result.alive).toBe(false);
+    expect(result.deathCause).toBe('Exhaustion took you.');
   });
 });

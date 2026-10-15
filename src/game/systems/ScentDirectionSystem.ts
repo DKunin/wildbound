@@ -5,6 +5,7 @@ export interface ScentDirection {
 
 export const SCENT_TRAIL_LIFETIME_MS = 22_000;
 export const SCENT_RENDER_RADIUS = 720;
+export const CACHED_MEAT_SCENT_RADIUS = 2_400;
 
 const DIRECTIONS: readonly ScentDirection[] = [
   { arrow: '→', label: 'E' },
@@ -28,3 +29,7 @@ export const getScentTrailStrength = (ageMs: number, distance: number): number =
   const distanceStrength = 1 - Math.max(0, distance) / (SCENT_RENDER_RADIUS + 140);
   return Math.max(0, ageStrength * distanceStrength);
 };
+
+export const getCachedMeatScentStrength = (distance: number): number => (
+  Math.max(0, 1 - Math.max(0, distance) / CACHED_MEAT_SCENT_RADIUS)
+);

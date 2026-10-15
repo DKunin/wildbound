@@ -3,6 +3,8 @@ import type { Prey } from '../entities/Prey';
 import type { PackWolf } from '../entities/PackWolf';
 import { distanceToAreas, type AxisAlignedArea, type PointLike } from './geometry';
 import {
+  CACHED_MEAT_SCENT_RADIUS,
+  getCachedMeatScentStrength,
   getScentDirection,
   getScentTrailStrength,
   SCENT_RENDER_RADIUS,
@@ -29,6 +31,7 @@ export const EMPTY_SCENT_READING: ScentReading = {
 export class ScentSystem {
   private readonly graphics: Phaser.GameObjects.Graphics;
   private readonly marks: ScentMark[] = [];
+  private cachedFood: Prey[] = [];
   private lastMarkAt = 0;
   private active = false;
 
@@ -62,7 +65,9 @@ export class ScentSystem {
   record(time: number, prey: readonly Prey[], pack: readonly PackWolf[] = []): void {
     if (time - this.lastMarkAt < 580) return;
     this.lastMarkAt = time;
+    this.cachedFood = prey.filter((animal) => animal.active && animal.isBuried() && animal.hasEdibleMeat());
     for (const animal of prey) {
+      if (animal.isBuried() || animal.isCarried()) continue;
       const species = getAnimalScentSpecies(animal.species, animal.isDead(), animal.hasEdibleMeat());
       if (species) this.marks.push({ x: animal.x, y: animal.y, createdAt: time, species });
     }
@@ -103,6 +108,23 @@ export class ScentSystem {
       this.graphics.strokeCircle(x, y, 9 + strength * 10);
     }
 
+    let strongestCache: { strength: number; x: number; y: number } | undefined;
+    for (const [index, cache] of this.cachedFood.entries()) {
+      if (!cache.active || !cache.isBuried() || !cache.hasEdibleMeat()) continue;
+      const distance = Phaser.Math.Distance.Between(player.x, player.y, cache.x, cache.y);
+      if (distance > CACHED_MEAT_SCENT_RADIUS) continue;
+      const strength = getCachedMeatScentStrength(distance);
+      if (!strongestCache || strength > strongestCache.strength) strongestCache = { strength, x: cache.x, y: cache.y };
+      if (!strongest || strength > strongest.strength) strongest = { strength, x: cache.x, y: cache.y };
+      if (distance <= SCENT_RENDER_RADIUS) {
+        const pulse = 4 + Math.sin(time / 420 + index) * 1.4;
+        this.graphics.fillStyle(0xdf9a68, Phaser.Math.Clamp(strength * 0.42, 0.08, 0.38));
+        this.graphics.fillCircle(cache.x, cache.y, pulse + strength * 5);
+        this.graphics.lineStyle(2, 0xdf9a68, strength * 0.34);
+        this.graphics.strokeCircle(cache.x, cache.y, 16 + strength * 18);
+      }
+    }
+
     const waterDistance = distanceToAreas(player, this.waterAreas);
     if (waterDistance < 520) {
       for (let index = 0; index < 9; index += 1) {
@@ -132,6 +154,10 @@ export class ScentSystem {
     addClue('deer', 'faint deer musk');
     addClue('carcass', 'carrion nearby');
     addClue('pack', 'pack nearby');
+    if (strongestCache) {
+      const cacheDirection = getScentDirection(strongestCache.x - player.x, strongestCache.y - player.y);
+      clues.push(`${cacheDirection.arrow} ${cacheDirection.label} buried meat cache`);
+    }
     if (waterDistance < 520) clues.push('cold water upwind');
     const direction = strongest
       ? getScentDirection(strongest.x - player.x, strongest.y - player.y)
@@ -146,5 +172,6 @@ export class ScentSystem {
   destroy(): void {
     this.graphics.destroy();
     this.marks.length = 0;
+    this.cachedFood.length = 0;
   }
 }

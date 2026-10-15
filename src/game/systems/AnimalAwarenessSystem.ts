@@ -98,11 +98,15 @@ export class AnimalAwarenessSystem {
     const windY = environment.windY / windLength;
     const downwindAlignment = (-directionX) * windX + (-directionY) * windY;
     const windStrength = clamp01(environment.windStrength);
-    const downwindFactor = clamp01((downwindAlignment + 0.15) / 1.15);
-    const directionalStrength = 0.42 + downwindFactor * windStrength * 0.58;
+    const plumeAlignment = clamp01((downwindAlignment + 0.25) / 1.25);
+    const plumeStrength = Math.pow(plumeAlignment, 1.6);
+    const stillAirStrength = 0.72;
+    const windDirectedStrength = 0.08 + plumeStrength * 0.92;
+    const directionalStrength = stillAirStrength * (1 - windStrength) + windDirectedStrength * windStrength;
+    const rangeMultiplier = 0.9 + windStrength * (-0.15 + plumeStrength * 0.75);
     const range = observer.scentRange
       * Math.max(0, threat.scentSignature)
-      * (0.7 + windStrength * 0.55);
+      * rangeMultiplier;
     return range > 0 ? clamp01(1 - distance / range) * directionalStrength : 0;
   }
 }

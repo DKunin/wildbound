@@ -28,7 +28,7 @@ const directions = [
 ] as const;
 
 type Direction = typeof directions[number];
-type AtlasKind = 'motion' | 'run' | 'rest' | 'action';
+type AtlasKind = 'motion' | 'run' | 'rest' | 'action' | 'crouch';
 
 interface AnimationSpec {
   atlas: AtlasKind;
@@ -55,6 +55,8 @@ interface VisualBaseline {
 const animationSpecs: AnimationSpec[] = [
   { name: 'walk', atlas: 'motion', frames: [0, 1, 2, 3, 4, 5, 6, 7] },
   { name: 'idle', atlas: 'motion', frames: [8, 9, 10, 11, 12, 13, 14, 15] },
+  { name: 'crawl', atlas: 'crouch', frames: [0, 1, 2, 3, 4, 5, 6, 7] },
+  { name: 'crouch-idle', atlas: 'crouch', frames: [8, 9, 10, 11, 12, 13, 14, 15] },
   { name: 'run', atlas: 'run', frames: Array.from({ length: 16 }, (_, index) => index) },
   { name: 'lay-down', atlas: 'rest', frames: [0, 1, 2, 3, 4, 5] },
   { name: 'rest-breathe', atlas: 'rest', frames: [6, 7] },
@@ -208,6 +210,38 @@ describe('player wolf animation visual regressions', () => {
           failures.push(`${animation}[${index}] touches atlas edge ${(frame.edgeShare * 100).toFixed(2)}%`);
         }
       });
+    }
+    expect(failures).toEqual([]);
+  });
+
+  it('keeps left-facing stealth artwork as exact mirrors of the matching right-facing frames', () => {
+    const failures: string[] = [];
+    const pairs = [
+      ['east', 'west'],
+      ['northeast', 'northwest'],
+      ['southeast', 'southwest'],
+    ] as const;
+    for (const [rightDirection, leftDirection] of pairs) {
+      const rightAtlas = readAtlas(atlasPath(rightDirection, 'crouch'));
+      const leftAtlas = readAtlas(atlasPath(leftDirection, 'crouch'));
+      for (let frame = 0; frame < 16; frame += 1) {
+        const right = framePixels(rightAtlas, frame);
+        const left = framePixels(leftAtlas, frame);
+        let mirrored = true;
+        for (let y = 0; y < FRAME_HEIGHT && mirrored; y += 1) {
+          for (let x = 0; x < FRAME_WIDTH && mirrored; x += 1) {
+            const rightOffset = (y * FRAME_WIDTH + x) * 4;
+            const leftOffset = (y * FRAME_WIDTH + (FRAME_WIDTH - 1 - x)) * 4;
+            for (let channel = 0; channel < 4; channel += 1) {
+              if (right[rightOffset + channel] !== left[leftOffset + channel]) {
+                mirrored = false;
+                break;
+              }
+            }
+          }
+        }
+        if (!mirrored) failures.push(`${leftDirection} crouch frame ${frame} is not the mirror of ${rightDirection}`);
+      }
     }
     expect(failures).toEqual([]);
   });

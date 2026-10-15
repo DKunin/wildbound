@@ -19,6 +19,8 @@ import { SoundSystem } from './systems/SoundSystem';
 import { WindSystem, type WindState } from './systems/WindSystem';
 import { WorldSystem } from './systems/WorldSystem';
 import { getWolfMovementProfile, SNEAK_ANIMATION_TIME_SCALE } from './systems/WolfStealthSystem';
+import { HuntLogSystem } from './systems/HuntLogSystem';
+import { getCacheBurialPosition } from './systems/CachePlacementSystem';
 
 interface ControlKeys {
   up: Phaser.Input.Keyboard.Key;
@@ -29,8 +31,6 @@ interface ControlKeys {
   interact: Phaser.Input.Keyboard.Key;
   howl: Phaser.Input.Keyboard.Key;
   rest: Phaser.Input.Keyboard.Key;
-  pause: Phaser.Input.Keyboard.Key;
-  escape: Phaser.Input.Keyboard.Key;
 }
 
 interface PlayerActivity {
@@ -48,6 +48,7 @@ export class WildScene extends Phaser.Scene {
   private playerShadow!: LivingShadow;
   private world!: WorldSystem;
   private prey: Prey[] = [];
+  private carriedCarcass?: Prey;
   private preyHabitats!: Record<PreySpecies, PreyHabitat>;
   private pack: PackWolf[] = [];
   private needs = new NeedsSystem();
@@ -60,6 +61,7 @@ export class WildScene extends Phaser.Scene {
   private readonly dayNight = new DayNightSystem();
   private readonly wind = new WindSystem();
   private readonly saves = new SaveSystem();
+  private readonly huntLog = new HuntLogSystem();
   private keys!: ControlKeys;
   private route: Phaser.Math.Vector2[] = [];
   private snapshot: NeedsSnapshot = this.needs.snapshot();
@@ -80,6 +82,8 @@ export class WildScene extends Phaser.Scene {
   private dead = false;
   private loadingSave = false;
   private sneaking = false;
+  private logMode = false;
+  private lungeUntil = 0;
   private nextRestMicroAt = 0;
   private readonly preyStates = new WeakMap<Prey, PreyState>();
   private random = new Phaser.Math.RandomDataGenerator([WORLD_SEED]);
@@ -91,6 +95,9 @@ export class WildScene extends Phaser.Scene {
     } else if (event.key === 'F9') {
       event.preventDefault();
       void this.restoreLatestSave(true);
+    } else if ((event.code === 'Escape' || event.code === 'Space') && !event.repeat && !this.dead && !this.loadingSave) {
+      event.preventDefault();
+      this.setPaused(!this.paused);
     } else if (event.code === 'KeyQ' && !event.repeat && !this.paused && !this.dead && !this.loadingSave) {
       const active = this.scent.toggle();
       this.setEvent(active ? 'You lift your muzzle into the wind.' : 'The forest returns to ordinary sight.');
@@ -115,6 +122,10 @@ export class WildScene extends Phaser.Scene {
       this.load.atlas(`wolf-${direction}-run`, `assets/player-wolf-v2/wolf-${direction}-run.png`, 'assets/player-wolf-v2/wolf-grid-atlas.json');
       this.load.atlas(`wolf-${direction}-rest`, `assets/player-wolf-v2/wolf-${direction}-rest.png`, 'assets/player-wolf-v2/wolf-grid-atlas.json');
       this.load.atlas(`wolf-${direction}-action`, `assets/player-wolf-v2/wolf-${direction}-action.png`, 'assets/player-wolf-v2/wolf-grid-atlas.json');
+      this.load.atlas(`wolf-${direction}-crouch`, `assets/player-wolf-v2/wolf-${direction}-crouch.png`, 'assets/player-wolf-v2/wolf-grid-atlas.json');
+      for (const kind of ['motion', 'run', 'rest', 'crouch'] as const) {
+        this.load.atlas(`wolf-${direction}-${kind}-carry`, `assets/player-wolf-v2/wolf-${direction}-${kind}-carry.png`, 'assets/player-wolf-v2/wolf-grid-atlas.json');
+      }
     }
     this.load.spritesheet('niva', 'assets/niva-sheet.png', { frameWidth: 346, frameHeight: 284 });
     this.load.spritesheet('torr', 'assets/torr-sheet.png', { frameWidth: 346, frameHeight: 284 });
@@ -122,6 +133,7 @@ export class WildScene extends Phaser.Scene {
     this.load.spritesheet('deer', 'assets/prey-v2/deer-atlas.png', { frameWidth: 181, frameHeight: 181 });
     this.load.spritesheet('rabbit-actions', 'assets/prey-v2/rabbit-actions.png', { frameWidth: 181, frameHeight: 181 });
     this.load.spritesheet('deer-actions', 'assets/prey-v2/deer-actions.png', { frameWidth: 181, frameHeight: 181 });
+    this.load.image('cache-mound', 'assets/cache-mound-v1.png');
     this.load.spritesheet('tracks', 'assets/tracks-sheet.png', { frameWidth: 321, frameHeight: 305 });
   }
 
@@ -131,6 +143,7 @@ export class WildScene extends Phaser.Scene {
     this.random = new Phaser.Math.RandomDataGenerator([WORLD_SEED]);
     this.snapshot = this.needs.snapshot();
     this.prey = [];
+    this.carriedCarcass = undefined;
     this.pack = [];
     this.route = [];
     this.playerAnimation.reset();
@@ -140,6 +153,9 @@ export class WildScene extends Phaser.Scene {
     this.dead = false;
     this.loadingSave = false;
     this.sneaking = false;
+    this.logMode = this.registry.get('logMode') === true;
+    this.huntLog.reset();
+    this.lungeUntil = 0;
     this.nextRestMicroAt = 0;
     this.rallyUntil = 0;
     this.eventLine = 'Listen to the forest.';
@@ -190,12 +206,12 @@ export class WildScene extends Phaser.Scene {
       gameEvents.off('resume-request', this.resumeFromRequest, this);
       gameEvents.off('restart-request', this.restartFromRequest, this);
       gameEvents.off('load-request', this.loadFromRequest, this);
+      gameEvents.off('log-mode-request', this.logModeFromRequest, this);
     });
   }
 
   update(time: number, delta: number): void {
     this.playerShadow.sync(this.player, !this.dead, this.playerAnimation.snapshot().state === 'resting');
-    if (Phaser.Input.Keyboard.JustDown(this.keys.pause) || Phaser.Input.Keyboard.JustDown(this.keys.escape)) this.setPaused(!this.paused);
     if (this.paused || this.dead || this.loadingSave) {
       this.player.setVelocity(0, 0);
       return;
@@ -204,6 +220,7 @@ export class WildScene extends Phaser.Scene {
 
     const deltaSeconds = Math.min(delta / 1000, 0.05);
     const activity = this.updatePlayerMovement(time, delta);
+    this.updateCarriedCarcass();
     this.snapshot = this.needs.update(deltaSeconds, activity);
     this.simulationTime += deltaSeconds * 1.8;
     this.dayState = this.dayNight.getState(this.simulationTime);
@@ -275,17 +292,28 @@ export class WildScene extends Phaser.Scene {
       const runTexture = `wolf-${direction}-run`;
       const restTexture = `wolf-${direction}-rest`;
       const actionTexture = `wolf-${direction}-action`;
+      const crouchTexture = `wolf-${direction}-crouch`;
       const create = (key: string, frames: Phaser.Types.Animations.AnimationFrame[], frameRate: number, repeat: number): void => {
         if (!this.anims.exists(key)) this.anims.create({ key, frames, frameRate, repeat });
       };
-      create(`player-${direction}-walk`, this.anims.generateFrameNames(motionTexture, { prefix: 'frame-', start: 0, end: 7 }), 8, -1);
-      create(`player-${direction}-run`, this.anims.generateFrameNames(runTexture, { prefix: 'frame-', start: 0, end: 15 }), 16, -1);
-      create(`player-${direction}-idle`, this.anims.generateFrameNames(motionTexture, { prefix: 'frame-', start: 8, end: 15 }), 3, -1);
-      create(`player-${direction}-lay`, this.anims.generateFrameNames(restTexture, { prefix: 'frame-', start: 0, end: 5 }), 6, 0);
-      create(`player-${direction}-rest-breathe`, this.anims.generateFrameNames(restTexture, { prefix: 'frame-', start: 6, end: 7 }), 0.8, -1);
-      create(`player-${direction}-rest-micro-ear`, [6, 8, 6, 7].map((frame) => ({ key: restTexture, frame: `frame-${frame}` })), 3, 0);
-      create(`player-${direction}-rest-micro-head`, [6, 9, 7, 6].map((frame) => ({ key: restTexture, frame: `frame-${frame}` })), 2, 0);
-      create(`player-${direction}-get-up`, this.anims.generateFrameNames(restTexture, { prefix: 'frame-', start: 10, end: 15 }), 6, 0);
+      for (const carrying of [false, true]) {
+        const carryPrefix = carrying ? 'carry-' : '';
+        const textureSuffix = carrying ? '-carry' : '';
+        const animationMotionTexture = `${motionTexture}${textureSuffix}`;
+        const animationRunTexture = `${runTexture}${textureSuffix}`;
+        const animationRestTexture = `${restTexture}${textureSuffix}`;
+        const animationCrouchTexture = `${crouchTexture}${textureSuffix}`;
+        create(`player-${direction}-${carryPrefix}walk`, this.anims.generateFrameNames(animationMotionTexture, { prefix: 'frame-', start: 0, end: 7 }), 8, -1);
+        create(`player-${direction}-${carryPrefix}run`, this.anims.generateFrameNames(animationRunTexture, { prefix: 'frame-', start: 0, end: 15 }), 16, -1);
+        create(`player-${direction}-${carryPrefix}idle`, this.anims.generateFrameNames(animationMotionTexture, { prefix: 'frame-', start: 8, end: 15 }), 3, -1);
+        create(`player-${direction}-${carryPrefix}crawl`, this.anims.generateFrameNames(animationCrouchTexture, { prefix: 'frame-', start: 0, end: 7 }), 8, -1);
+        create(`player-${direction}-${carryPrefix}crouch-idle`, this.anims.generateFrameNames(animationCrouchTexture, { prefix: 'frame-', start: 8, end: 15 }), 2.4, -1);
+        create(`player-${direction}-${carryPrefix}lay`, this.anims.generateFrameNames(animationRestTexture, { prefix: 'frame-', start: 0, end: 5 }), 6, 0);
+        create(`player-${direction}-${carryPrefix}rest-breathe`, this.anims.generateFrameNames(animationRestTexture, { prefix: 'frame-', start: 6, end: 7 }), 0.8, -1);
+        create(`player-${direction}-${carryPrefix}rest-micro-ear`, [6, 8, 6, 7].map((frame) => ({ key: animationRestTexture, frame: `frame-${frame}` })), 3, 0);
+        create(`player-${direction}-${carryPrefix}rest-micro-head`, [6, 9, 7, 6].map((frame) => ({ key: animationRestTexture, frame: `frame-${frame}` })), 2, 0);
+        create(`player-${direction}-${carryPrefix}get-up`, this.anims.generateFrameNames(animationRestTexture, { prefix: 'frame-', start: 10, end: 15 }), 6, 0);
+      }
       create(`player-${direction}-attack`, this.anims.generateFrameNames(actionTexture, { prefix: 'frame-', start: 0, end: 4 }), 10, 0);
       create(`player-${direction}-eat`, this.anims.generateFrameNames(actionTexture, { prefix: 'frame-', start: 5, end: 9 }), 7, 0);
       create(`player-${direction}-drink`, this.anims.generateFrameNames(actionTexture, { prefix: 'frame-', start: 10, end: 15 }), 7, 0);
@@ -334,6 +362,7 @@ export class WildScene extends Phaser.Scene {
     return {
       ...resources,
       findPath: (start, destination) => this.world.layout.findPath(start, destination),
+      findEscapePath: (start, threat) => this.world.layout.findEscapePath(start, threat),
     };
   }
 
@@ -345,8 +374,7 @@ export class WildScene extends Phaser.Scene {
       left: keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A), right: keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D),
       run: keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SHIFT), interact: keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E),
       howl: keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.H),
-      rest: keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.R), pause: keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE),
-      escape: keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC),
+      rest: keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.R),
     };
   }
 
@@ -370,11 +398,13 @@ export class WildScene extends Phaser.Scene {
     gameEvents.on('resume-request', this.resumeFromRequest, this);
     gameEvents.on('restart-request', this.restartFromRequest, this);
     gameEvents.on('load-request', this.loadFromRequest, this);
+    gameEvents.on('log-mode-request', this.logModeFromRequest, this);
   }
 
   private resumeFromRequest(): void { this.setPaused(false); }
   private restartFromRequest(): void { void this.restartFresh(); }
   private loadFromRequest(): void { void this.restoreLatestSave(true); }
+  private logModeFromRequest(enabled: boolean): void { this.logMode = enabled; }
 
   private updatePlayerMovement(time: number, delta: number): PlayerActivity {
     const direction = new Phaser.Math.Vector2(Number(this.keys.right.isDown) - Number(this.keys.left.isDown), Number(this.keys.down.isDown) - Number(this.keys.up.isDown));
@@ -390,15 +420,27 @@ export class WildScene extends Phaser.Scene {
       }
       if (direction.lengthSq() > 0) direction.normalize();
     }
-    const requestedFacing = direction.lengthSq() > 0 ? resolvePlayerFacing(direction.x, direction.y) : undefined;
-    const running = this.runControl.update(!this.sneaking && this.keys.run.isDown, this.needs.canRun()) && requestedFacing !== undefined;
+    const directionalFacing = direction.lengthSq() > 0 ? resolvePlayerFacing(direction.x, direction.y) : undefined;
+    const lungeRequested = this.sneaking && Phaser.Input.Keyboard.JustDown(this.keys.run);
+    if (lungeRequested) {
+      this.sneaking = false;
+      this.lungeUntil = time + 360;
+      this.route = [];
+      this.runControl.reset();
+      this.setEvent(this.needs.canRun() ? 'You burst from cover into a lunge.' : 'You rise from cover, too exhausted to lunge.');
+    }
+    const lungeActive = time < this.lungeUntil;
+    const requestedFacing = directionalFacing ?? (lungeActive
+      ? { animationDirection: this.playerAnimation.snapshot().direction, rotation: 0 }
+      : undefined);
+    const running = this.runControl.update(!this.sneaking && (this.keys.run.isDown || lungeActive), this.needs.canRun()) && requestedFacing !== undefined;
     const decision = this.playerAnimation.update(delta, {
       direction: requestedFacing?.animationDirection,
       running,
       sneaking: this.sneaking,
       restRequested: this.keys.rest.isDown && requestedFacing === undefined,
     });
-    const movement = requestedFacing
+    const movement = directionalFacing
       ? direction
       : decision.movementAllowed ? new Phaser.Math.Vector2(...getPlayerDirectionVector(decision.direction)) : new Phaser.Math.Vector2();
     const moving = decision.movementAllowed && movement.lengthSq() > 0;
@@ -421,9 +463,13 @@ export class WildScene extends Phaser.Scene {
     const animation = this.playerAnimation.snapshot();
     const currentKey = this.player.anims.currentAnim?.key ?? '';
     if (animation.state === 'resting' && currentKey.includes('-rest-micro-') && this.player.anims.isPlaying) return;
-    const key = getPlayerAnimationKey(animation.state, animation.direction);
+    const carrying = this.isCarryingCarcass();
+    const key = getPlayerAnimationKey(animation.state, animation.direction, carrying);
     if (currentKey !== key || !this.player.anims.isPlaying) {
-      const preserveGaitPhase = currentKey === `player-${animation.direction}-walk` || currentKey === `player-${animation.direction}-run`;
+      const preserveGaitPhase = (['walking', 'sneaking', 'running'] as const).some((state) => (
+        currentKey === getPlayerAnimationKey(state, animation.direction, false)
+        || currentKey === getPlayerAnimationKey(state, animation.direction, true)
+      ));
       const gaitProgress = preserveGaitPhase ? this.player.anims.getProgress() : 0;
       this.player.anims.play(key);
       if (preserveGaitPhase && (animation.state === 'walking' || animation.state === 'sneaking' || animation.state === 'running')) {
@@ -441,7 +487,7 @@ export class WildScene extends Phaser.Scene {
     if (animation.state !== 'resting' || time < this.nextRestMicroAt) return;
     const micro = this.random.integerInRange(0, 1) === 0 ? 'ear' : 'head';
     this.nextRestMicroAt = 0;
-    this.player.anims.play(`player-${animation.direction}-rest-micro-${micro}`);
+    this.player.anims.play(`player-${animation.direction}-${this.isCarryingCarcass() ? 'carry-' : ''}rest-micro-${micro}`);
   }
 
   private scheduleRestMicroAnimation(time: number): void {
@@ -450,7 +496,7 @@ export class WildScene extends Phaser.Scene {
 
   private handlePlayerAnimationComplete(animation: Phaser.Animations.Animation): void {
     const state = this.playerAnimation.snapshot();
-    if (animation.key === getPlayerAnimationKey(state.state, state.direction)
+    if (animation.key === getPlayerAnimationKey(state.state, state.direction, this.isCarryingCarcass())
       && (state.state === 'laying-down' || state.state === 'getting-up'
         || state.state === 'attacking' || state.state === 'eating' || state.state === 'drinking')) {
       this.playerAnimation.completeTransition();
@@ -503,8 +549,22 @@ export class WildScene extends Phaser.Scene {
         this.preyHabitats[animal.species],
         this.simulationTime,
       );
+      for (const event of this.huntLog.observe(animal, animal.species, next, animal.getAwarenessReading(), time)) {
+        this.emitHuntLog(event.message);
+      }
       if (next === 'flee') this.hearing.emitTracked(time, animal, animal.species === 'deer' ? 'DISTANT HOOVES' : 'RUSTLING BRUSH');
-      if (FEATURE_FLAGS.pack && next === 'dead' && previous !== 'dead') this.setEvent(`The pack brings down a ${animal.species}.`);
+      if (next === 'dead' && previous !== 'dead') {
+        const naturalCause = animal.getDeathCause();
+        let deathEvent = '';
+        if (naturalCause === 'thirst') deathEvent = `A ${animal.species} collapses from thirst, leaving fresh carrion.`;
+        else if (naturalCause === 'starvation') deathEvent = `A starving ${animal.species} falls, leaving fresh carrion.`;
+        else if (naturalCause === 'exhaustion') deathEvent = `An exhausted ${animal.species} collapses, leaving fresh carrion.`;
+        else if (FEATURE_FLAGS.pack) deathEvent = `The pack brings down a ${animal.species}.`;
+        if (deathEvent) {
+          this.setEvent(deathEvent);
+          this.emitHuntLog(deathEvent);
+        }
+      }
       this.preyStates.set(animal, next);
     }
     this.prey = this.prey.filter((animal) => animal.active);
@@ -530,15 +590,54 @@ export class WildScene extends Phaser.Scene {
   }
 
   private interact(time: number): void {
+    if (this.carriedCarcass?.active && this.carriedCarcass.hasEdibleMeat()) {
+      const cached = this.carriedCarcass;
+      const [directionX, directionY] = getPlayerDirectionVector(this.playerAnimation.snapshot().direction);
+      const cachePosition = getCacheBurialPosition({
+        x: this.player.x,
+        y: this.player.y,
+        directionX,
+        directionY,
+        clearance: cached.species === 'deer' ? 165 : 135,
+        bounds: { width: WORLD_WIDTH, height: WORLD_HEIGHT, margin: 90 },
+      });
+      if (cached.buryAt(cachePosition.x, cachePosition.y)) {
+        this.carriedCarcass = undefined;
+        this.syncPlayerAnimation(this.time.now);
+        this.setEvent(`You bury the ${cached.species} remains. Its scent will carry a long way.`);
+      }
+      return;
+    }
+    this.carriedCarcass = undefined;
+
     const nearest = this.findNearestPrey();
     if (nearest && nearest.distance < 105) {
       const direction = resolvePlayerFacing(nearest.animal.x - this.player.x, nearest.animal.y - this.player.y).animationDirection;
       if (nearest.animal.isDead()) {
+        if (!nearest.animal.hasEdibleMeat()) return;
+        if (!this.needs.canEat()) {
+          if (nearest.animal.isBuried()) nearest.animal.unbury();
+          if (nearest.animal.pickUp()) {
+            this.carriedCarcass = nearest.animal;
+            this.updateCarriedCarcass();
+            this.syncPlayerAnimation(this.time.now);
+            this.setEvent(`You lift the ${nearest.animal.species} remains. Move away or press E again to bury them here.`);
+          }
+          return;
+        }
+        if (nearest.animal.isBuried()) {
+          nearest.animal.unbury();
+          this.setEvent(`You uncover the cached ${nearest.animal.species} meat.`);
+        }
         if (!this.startPlayerAction('eating', direction)) return;
-        const eaten = nearest.animal.consume(24);
+        const eaten = nearest.animal.consume(Math.min(24, this.needs.getFoodNeed() / 0.72));
         if (eaten > 0) {
           this.snapshot = this.needs.feed(eaten * 0.72);
-          this.setEvent(FEATURE_FLAGS.pack ? `You feed beside the pack on the ${nearest.animal.species}.` : `You feed on the ${nearest.animal.species}.`);
+          if (!this.needs.canEat() && nearest.animal.active && nearest.animal.hasEdibleMeat()) {
+            this.setEvent(`You are full. The remaining ${nearest.animal.species} meat can be carried and cached.`);
+          } else {
+            this.setEvent(FEATURE_FLAGS.pack ? `You feed beside the pack on the ${nearest.animal.species}.` : `You feed on the ${nearest.animal.species}.`);
+          }
         }
         return;
       }
@@ -578,6 +677,21 @@ export class WildScene extends Phaser.Scene {
     return true;
   }
 
+  private updateCarriedCarcass(): void {
+    const carcass = this.carriedCarcass;
+    if (!carcass?.active || !carcass.isCarried() || !carcass.hasEdibleMeat()) {
+      this.carriedCarcass = undefined;
+      return;
+    }
+    carcass.setCarriedPosition(this.player.x, this.player.y);
+  }
+
+  private isCarryingCarcass(): boolean {
+    return this.carriedCarcass?.active === true
+      && this.carriedCarcass.isCarried()
+      && this.carriedCarcass.hasEdibleMeat();
+  }
+
   private getWaterDirection(): ReturnType<typeof resolvePlayerFacing>['animationDirection'] {
     let nearest: { x: number; y: number; distance: number } | undefined;
     for (const area of this.world.getWaterAreas()) {
@@ -593,7 +707,7 @@ export class WildScene extends Phaser.Scene {
   private findNearestPrey(): { animal: Prey; distance: number } | undefined {
     let result: { animal: Prey; distance: number } | undefined;
     for (const animal of this.prey) {
-      if (!animal.active) continue;
+      if (!animal.active || animal.isCarried()) continue;
       const distance = Phaser.Math.Distance.Between(this.player.x, this.player.y, animal.x, animal.y);
       if (!result || distance < result.distance) result = { animal, distance };
     }
@@ -603,8 +717,13 @@ export class WildScene extends Phaser.Scene {
   private distanceToWater(): number { return this.world.distanceToWater(this.player); }
 
   private getContextAction(): string {
+    if (this.carriedCarcass?.active && this.carriedCarcass.hasEdibleMeat()) return 'BURY CACHE';
     const nearest = this.findNearestPrey();
-    if (nearest && nearest.distance < 105) return nearest.animal.isDead() ? 'EAT' : 'ATTACK';
+    if (nearest && nearest.distance < 105) {
+      if (!nearest.animal.isDead()) return 'ATTACK';
+      if (nearest.animal.isBuried()) return this.needs.canEat() ? 'DIG & EAT' : 'DIG & CARRY';
+      return this.needs.canEat() ? 'EAT' : 'CARRY';
+    }
     if (this.distanceToWater() < 125) return 'DRINK';
     return 'INTERACT';
   }
@@ -628,20 +747,30 @@ export class WildScene extends Phaser.Scene {
 
   private setEvent(message: string): void { this.eventLine = message; this.lastEventAt = this.time.now; }
 
+  private emitHuntLog(message: string): void {
+    if (!this.logMode) return;
+    gameEvents.emit('hunt-log', { time: this.getSimulationClock(), message });
+  }
+
+  private getSimulationClock(): string {
+    const minutes = Math.floor(this.simulationTime) % 1440;
+    return `${Math.floor(minutes / 60).toString().padStart(2, '0')}:${(minutes % 60).toString().padStart(2, '0')}`;
+  }
+
   private emitHud(forceOrDue: boolean): void {
     if (!forceOrDue) return;
     this.lastHudAt = this.time.now;
-    const minutes = Math.floor(this.simulationTime) % 1440;
     const state: HudState = {
       ...this.snapshot,
       day: Math.floor(this.simulationTime / 1440) + 1,
-      time: `${Math.floor(minutes / 60).toString().padStart(2, '0')}:${(minutes % 60).toString().padStart(2, '0')}`,
+      time: this.getSimulationClock(),
       timeIcon: this.dayState.icon,
       phaseLabel: this.dayState.phase,
       windArrow: this.windState.arrow,
       windLabel: this.windState.label,
       territoryLabel: this.world.getTerritoryName(this.player),
       contextAction: this.getContextAction(),
+      willEatMeat: this.needs.canEat(),
       eventLine: this.eventLine,
       scentActive: this.scent.isActive(),
       scentSummary: this.scentReading.summary,
@@ -686,7 +815,19 @@ export class WildScene extends Phaser.Scene {
       simulationTime: this.simulationTime,
       player: { x: this.player.x, y: this.player.y },
       needs: this.needs.snapshot(),
-      prey: this.prey.filter((animal) => animal.active && !animal.isDead()).map((animal) => ({ species: animal.species, x: animal.x, y: animal.y })),
+      prey: this.prey
+        .filter((animal) => animal.active && (!animal.isDead() || animal.hasEdibleMeat()))
+        .map((animal) => ({
+          species: animal.species,
+          x: animal.x,
+          y: animal.y,
+          ...(animal.isDead() ? {
+            carcass: {
+              meat: animal.getMeatAmount(),
+              state: animal.isBuried() ? 'buried' as const : animal.isCarried() ? 'carried' as const : 'exposed' as const,
+            },
+          } : {}),
+        })),
       pack: this.pack.map((wolf) => wolf.snapshot()),
       scentActive: this.scent.isActive(),
     };
@@ -713,12 +854,22 @@ export class WildScene extends Phaser.Scene {
       this.player.setPosition(data.player.x, data.player.y).clearTint().setAlpha(1).setAngle(0);
       this.playerAnimation.reset(this.playerAnimation.snapshot().direction);
       this.runControl.reset();
+      this.lungeUntil = 0;
       this.nextRestMicroAt = 0;
       this.syncPlayerAnimation(this.time.now);
       this.snapshot = this.needs.restore(data.needs);
       for (const animal of this.prey) animal.destroy();
       this.prey = [];
-      for (const animal of data.prey) this.spawnPrey(animal.species, animal.x, animal.y);
+      this.carriedCarcass = undefined;
+      for (const animal of data.prey) {
+        const spawned = this.spawnPrey(animal.species, animal.x, animal.y);
+        if (animal.carcass) {
+          spawned.restoreCarcass(animal.carcass.meat, animal.carcass.state);
+          if (animal.carcass.state === 'carried') this.carriedCarcass = spawned;
+        }
+      }
+      this.updateCarriedCarcass();
+      this.syncPlayerAnimation(this.time.now);
       for (const wolf of this.pack) {
         const saved = data.pack.find((candidate) => candidate.name === wolf.wolfName);
         if (saved) wolf.restore(saved);

@@ -1,7 +1,7 @@
 import Phaser from 'phaser';
 import './styles.css';
 import { WildScene } from './game/WildScene';
-import { gameEvents, type HudState } from './game/events';
+import { gameEvents, type HudState, type HuntLogEntry } from './game/events';
 
 const clampPercent = (value: number) => `${Math.max(0, Math.min(100, value))}%`;
 
@@ -25,7 +25,90 @@ const daylight = document.querySelector<HTMLElement>('#daylight');
 const vignette = document.querySelector<HTMLElement>('#vignette');
 const packStatus = document.querySelector<HTMLElement>('#pack-status');
 const sneakControl = document.querySelector<HTMLElement>('#sneak-control');
+const hungerMode = document.querySelector<HTMLElement>('#hunger-mode');
 const packControls = document.querySelectorAll<HTMLElement>('[data-pack-control]');
+const mainMenu = document.querySelector<HTMLElement>('#main-menu');
+const logModeToggles = document.querySelectorAll<HTMLButtonElement>('[data-log-mode-toggle]');
+const logModeStates = document.querySelectorAll<HTMLElement>('[data-log-mode-state]');
+const huntLog = document.querySelector<HTMLElement>('#hunt-log');
+const huntLogList = document.querySelector<HTMLOListElement>('#hunt-log-list');
+let logModeEnabled = false;
+let game: Phaser.Game | undefined;
+
+const renderLogMode = () => {
+  for (const toggle of logModeToggles) toggle.setAttribute('aria-checked', String(logModeEnabled));
+  for (const state of logModeStates) state.textContent = logModeEnabled ? 'ON' : 'OFF';
+};
+
+const setLogMode = (enabled: boolean) => {
+  logModeEnabled = enabled;
+  renderLogMode();
+  if (huntLog) huntLog.hidden = !enabled;
+  if (game) {
+    game.registry.set('logMode', enabled);
+    gameEvents.emit('log-mode-request', enabled);
+  }
+};
+
+const clearHuntLog = () => {
+  if (!huntLogList) return;
+  huntLogList.replaceChildren();
+  const placeholder = document.createElement('li');
+  placeholder.className = 'hunt-log-empty';
+  placeholder.dataset.logPlaceholder = '';
+  placeholder.textContent = 'Waiting for an animal to notice you.';
+  huntLogList.append(placeholder);
+};
+
+const appendHuntLog = ({ time, message }: HuntLogEntry) => {
+  if (!logModeEnabled || !huntLogList) return;
+  huntLogList.querySelector('[data-log-placeholder]')?.remove();
+  const item = document.createElement('li');
+  const timestamp = document.createElement('time');
+  const copy = document.createElement('span');
+  timestamp.textContent = time;
+  copy.textContent = message;
+  item.append(timestamp, copy);
+  huntLogList.prepend(item);
+  while (huntLogList.children.length > 8) huntLogList.lastElementChild?.remove();
+};
+
+const startGame = () => {
+  if (game) return;
+  if (mainMenu) mainMenu.hidden = true;
+  if (huntLog) huntLog.hidden = !logModeEnabled;
+  game = new Phaser.Game({
+    type: Phaser.AUTO,
+    parent: 'game',
+    backgroundColor: '#101813',
+    pixelArt: false,
+    render: {
+      antialias: true,
+      roundPixels: true,
+    },
+    scale: {
+      mode: Phaser.Scale.RESIZE,
+      width: window.innerWidth,
+      height: window.innerHeight,
+    },
+    physics: {
+      default: 'arcade',
+      arcade: {
+        gravity: { x: 0, y: 0 },
+        debug: false,
+      },
+    },
+    callbacks: {
+      preBoot: (createdGame) => createdGame.registry.set('logMode', logModeEnabled),
+    },
+    scene: [WildScene],
+  });
+};
+
+for (const toggle of logModeToggles) toggle.addEventListener('click', () => setLogMode(!logModeEnabled));
+document.querySelector('#start-button')?.addEventListener('click', startGame);
+gameEvents.on('hunt-log', appendHuntLog);
+renderLogMode();
 
 gameEvents.on('hud', (state: HudState) => {
   setMeter('health', state.health);
@@ -39,6 +122,8 @@ gameEvents.on('hud', (state: HudState) => {
   setText('#wind-label', state.windLabel);
   setText('#territory', state.territoryLabel);
   setText('#context-action', state.contextAction);
+  setText('#hunger-mode', state.willEatMeat ? 'HUNGRY · WILL EAT' : 'SATIATED · WILL CACHE');
+  hungerMode?.classList.toggle('hungry', state.willEatMeat);
   setText('#event-line', state.eventLine);
   setText('#scent-summary', state.scentSummary);
   setText('#scent-direction-arrow', state.scentDirectionArrow);
@@ -81,29 +166,6 @@ document.querySelector('#resume-button')?.addEventListener('click', () => gameEv
 document.querySelector('#load-button')?.addEventListener('click', () => gameEvents.emit('load-request'));
 document.querySelector('#restart-button')?.addEventListener('click', () => {
   if (deathPanel) deathPanel.hidden = true;
+  clearHuntLog();
   gameEvents.emit('restart-request');
-});
-
-new Phaser.Game({
-  type: Phaser.AUTO,
-  parent: 'game',
-  backgroundColor: '#101813',
-  pixelArt: false,
-  render: {
-    antialias: true,
-    roundPixels: true,
-  },
-  scale: {
-    mode: Phaser.Scale.RESIZE,
-    width: window.innerWidth,
-    height: window.innerHeight,
-  },
-  physics: {
-    default: 'arcade',
-    arcade: {
-      gravity: { x: 0, y: 0 },
-      debug: false,
-    },
-  },
-  scene: [WildScene],
 });
