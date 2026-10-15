@@ -31,12 +31,29 @@ describe('procedural territory', () => {
 
   it('keeps still puddles drinkable but out of the flowing-water sound set', () => {
     const world = new ProceduralWorld();
+    const puddles = world.getPuddleAreas();
     expect(world.getFlowingWaterAreas().every((area) => area.kind === 'flowing')).toBe(true);
-    expect(world.getPuddleAreas().every((area) => area.kind === 'still')).toBe(true);
-    expect(world.getPuddleAreas().every((area) => {
+    expect(puddles.every((area) => area.kind === 'still')).toBe(true);
+    expect(puddles.every((area) => {
       const center = { x: area.x + area.width / 2, y: area.y + area.height / 2 };
       const cell = world.getCellAt(center);
       return cell !== undefined && !cell.blocked && !cell.water;
+    })).toBe(true);
+    expect(puddles.filter((area) => area.width < 120)).toHaveLength(4);
+    expect(puddles.filter((area) => area.width >= 120 && area.width < 210)).toHaveLength(4);
+    expect(puddles.filter((area) => area.width >= 210)).toHaveLength(4);
+    expect(Math.max(...puddles.map((area) => area.width)) - Math.min(...puddles.map((area) => area.width))).toBeGreaterThan(120);
+    expect(puddles.every((area) => {
+      const center = { x: area.x + area.width / 2, y: area.y + area.height / 2 };
+      const cell = world.getCellAt(center);
+      if (!cell) return false;
+      for (let rowOffset = -1; rowOffset <= 1; rowOffset += 1) {
+        for (let columnOffset = -1; columnOffset <= 1; columnOffset += 1) {
+          const neighbor = world.getCell(cell.column + columnOffset, cell.row + rowOffset);
+          if (!neighbor || neighbor.blocked || neighbor.water) return false;
+        }
+      }
+      return true;
     })).toBe(true);
   });
 

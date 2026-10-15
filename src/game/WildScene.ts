@@ -7,9 +7,10 @@ import { DayNightSystem, type DayNightState } from './systems/DayNightSystem';
 import { getPlayerDirectionVector, PLAYER_DIRECTIONS, resolvePlayerFacing } from './systems/DirectionalSpriteSystem';
 import { FootprintSystem } from './systems/FootprintSystem';
 import { NeedsSystem, type NeedsSnapshot } from './systems/NeedsSystem';
+import { LivingShadow } from './systems/LivingShadow';
 import { getPlayerAnimationKey, PlayerAnimationSystem, type PlayerActionState } from './systems/PlayerAnimationSystem';
 import { PopulationSystem } from './systems/PopulationSystem';
-import { getPreyAnimationFrames, getPreyAnimationKey, type PreyAnimationState } from './systems/PreyAnimationSystem';
+import { getPreyAnimationFrames, getPreyAnimationKey, getPreyAnimationTextureKey, type PreyAnimationState } from './systems/PreyAnimationSystem';
 import { WORLD_HEIGHT, WORLD_SEED, WORLD_WIDTH } from './systems/ProceduralWorld';
 import { RunControlSystem } from './systems/RunControlSystem';
 import { SaveSystem, type SaveData } from './systems/SaveSystem';
@@ -44,6 +45,7 @@ interface PlayerActivity {
 
 export class WildScene extends Phaser.Scene {
   private player!: Phaser.Physics.Arcade.Sprite;
+  private playerShadow!: LivingShadow;
   private world!: WorldSystem;
   private prey: Prey[] = [];
   private preyHabitats!: Record<PreySpecies, PreyHabitat>;
@@ -107,6 +109,7 @@ export class WildScene extends Phaser.Scene {
     this.load.image('ground-base', 'assets/ground-base-v2.png');
     this.load.spritesheet('terrain-overlays', 'assets/terrain-overlays-v2.png', { frameWidth: 313, frameHeight: 313 });
     this.load.spritesheet('obstacle-atlas', 'assets/obstacle-atlas-v2.png', { frameWidth: 313, frameHeight: 313 });
+    this.load.spritesheet('water-tiles', 'assets/water-tiles-v2.png', { frameWidth: 313, frameHeight: 313 });
     for (const direction of PLAYER_DIRECTIONS) {
       this.load.atlas(`wolf-${direction}-motion`, `assets/player-wolf-v2/wolf-${direction}-motion.png`, 'assets/player-wolf-v2/wolf-grid-atlas.json');
       this.load.atlas(`wolf-${direction}-run`, `assets/player-wolf-v2/wolf-${direction}-run.png`, 'assets/player-wolf-v2/wolf-grid-atlas.json');
@@ -117,6 +120,8 @@ export class WildScene extends Phaser.Scene {
     this.load.spritesheet('torr', 'assets/torr-sheet.png', { frameWidth: 346, frameHeight: 284 });
     this.load.spritesheet('rabbit', 'assets/prey-v2/rabbit-atlas.png', { frameWidth: 181, frameHeight: 181 });
     this.load.spritesheet('deer', 'assets/prey-v2/deer-atlas.png', { frameWidth: 181, frameHeight: 181 });
+    this.load.spritesheet('rabbit-actions', 'assets/prey-v2/rabbit-actions.png', { frameWidth: 181, frameHeight: 181 });
+    this.load.spritesheet('deer-actions', 'assets/prey-v2/deer-actions.png', { frameWidth: 181, frameHeight: 181 });
     this.load.spritesheet('tracks', 'assets/tracks-sheet.png', { frameWidth: 321, frameHeight: 305 });
   }
 
@@ -153,6 +158,8 @@ export class WildScene extends Phaser.Scene {
 
     const spawn = this.world.getSpawnPoint();
     this.player = this.physics.add.sprite(spawn.x, spawn.y, 'wolf-south-motion', 'frame-8').setScale(0.42).setDepth(spawn.y + 30);
+    this.playerShadow = new LivingShadow(this, { width: 92, height: 27, offsetY: 38, alpha: 0.24 });
+    this.playerShadow.sync(this.player);
     this.player.setCollideWorldBounds(true);
     this.player.setBodySize(150, 82).setOffset(98, 160);
     this.player.on(Phaser.Animations.Events.ANIMATION_COMPLETE, this.handlePlayerAnimationComplete, this);
@@ -187,6 +194,7 @@ export class WildScene extends Phaser.Scene {
   }
 
   update(time: number, delta: number): void {
+    this.playerShadow.sync(this.player, !this.dead, this.playerAnimation.snapshot().state === 'resting');
     if (Phaser.Input.Keyboard.JustDown(this.keys.pause) || Phaser.Input.Keyboard.JustDown(this.keys.escape)) this.setPaused(!this.paused);
     if (this.paused || this.dead || this.loadingSave) {
       this.player.setVelocity(0, 0);
@@ -226,23 +234,35 @@ export class WildScene extends Phaser.Scene {
           const key = `${wolf}-${direction}-${rate}`;
           if (!this.anims.exists(key)) this.anims.create({ key, frames: this.anims.generateFrameNumbers(wolf, { start: row * 4, end: row * 4 + 3 }), frameRate: rate, repeat: -1 });
         }
+        const restKey = `${wolf}-${direction}-rest`;
+        const feedKey = `${wolf}-${direction}-feed`;
+        if (!this.anims.exists(restKey)) this.anims.create({ key: restKey, frames: [{ key: wolf, frame: row * 4 }], frameRate: 1, repeat: -1 });
+        if (!this.anims.exists(feedKey)) this.anims.create({
+          key: feedKey,
+          frames: [0, 1, 0, 2].map((offset) => ({ key: wolf, frame: row * 4 + offset })),
+          frameRate: 3,
+          repeat: -1,
+        });
       }
     }
     const preyAnimationSettings: Record<PreyAnimationState, { frameRate: number; repeat: number }> = {
       idle: { frameRate: 0.8, repeat: -1 },
       walk: { frameRate: 6, repeat: -1 },
       flee: { frameRate: 11, repeat: -1 },
+      foraging: { frameRate: 1.6, repeat: -1 },
+      drinking: { frameRate: 1.25, repeat: -1 },
+      resting: { frameRate: 0.7, repeat: -1 },
       dead: { frameRate: 1, repeat: 0 },
     };
     for (const species of ['rabbit', 'deer'] as const) {
       for (const direction of PLAYER_DIRECTIONS) {
-        for (const state of ['idle', 'walk', 'flee', 'dead'] as const) {
+        for (const state of ['idle', 'walk', 'flee', 'foraging', 'drinking', 'resting', 'dead'] as const) {
           const key = getPreyAnimationKey(species, direction, state);
           if (!this.anims.exists(key)) {
             const settings = preyAnimationSettings[state];
             this.anims.create({
               key,
-              frames: getPreyAnimationFrames(direction, state).map((frame) => ({ key: species, frame })),
+              frames: getPreyAnimationFrames(direction, state).map((frame) => ({ key: getPreyAnimationTextureKey(species, state), frame })),
               frameRate: settings.frameRate,
               repeat: settings.repeat,
             });
@@ -652,6 +672,7 @@ export class WildScene extends Phaser.Scene {
   private handleDeath(): void {
     this.dead = true;
     this.player.setVelocity(0, 0).setTint(0x8e7d74).setAlpha(0.72).setAngle(8);
+    this.playerShadow.sync(this.player, false);
     this.cameras.main.shake(250, 0.002);
     gameEvents.emit('death', this.snapshot.deathCause ?? 'Your strength failed.');
   }

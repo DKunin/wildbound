@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 import { getPlayerDirectionVector, resolvePlayerFacing, type PlayerDirection } from '../systems/DirectionalSpriteSystem';
-import { getPreyAnimationFrames, getPreyAnimationKey } from '../systems/PreyAnimationSystem';
+import { getPreyAnimationFrames, getPreyAnimationKey, type PreyAnimationState } from '../systems/PreyAnimationSystem';
+import { LivingShadow } from '../systems/LivingShadow';
 import { PreyThreatSystem } from '../systems/PreyThreatSystem';
 import {
   AnimalNeedsSystem,
@@ -58,6 +59,8 @@ export class Prey extends Phaser.Physics.Arcade.Sprite {
   private habitat?: PreyHabitat;
   private animationDirection: PlayerDirection = 'south';
   private worldSize = 2200;
+  private readonly baseScale: number;
+  private readonly shadow: LivingShadow;
 
   constructor(
     scene: Phaser.Scene,
@@ -70,14 +73,18 @@ export class Prey extends Phaser.Physics.Arcade.Sprite {
     this.species = species;
     this.health = species === 'rabbit' ? 1 : 3;
     this.meat = species === 'rabbit' ? 46 : 120;
+    this.baseScale = species === 'rabbit' ? 0.36 : 0.68;
     this.needs = new AnimalNeedsSystem(species, {
       hunger: random.integerInRange(24, 67),
       thirst: random.integerInRange(18, species === 'rabbit' ? 58 : 72),
       fatigue: random.integerInRange(12, 62),
     });
+    this.shadow = new LivingShadow(scene, species === 'rabbit'
+      ? { width: 42, height: 13, offsetY: 22, alpha: 0.2 }
+      : { width: 78, height: 22, offsetY: 44, alpha: 0.22 });
     scene.add.existing(this);
     scene.physics.add.existing(this);
-    this.setScale(species === 'rabbit' ? 0.36 : 0.68);
+    this.setScale(this.baseScale);
     this.setCollideWorldBounds(true);
     this.setBodySize(this.width * 0.52, this.height * 0.35);
     this.setOffset(this.width * 0.24, this.height * 0.56);
@@ -159,6 +166,7 @@ export class Prey extends Phaser.Physics.Arcade.Sprite {
 
     this.updateAnimation();
     this.setDepth(this.y + 20);
+    this.shadow.sync(this, true, this.activity === 'resting');
     return this.aiState;
   }
 
@@ -170,9 +178,11 @@ export class Prey extends Phaser.Physics.Arcade.Sprite {
       this.aiState = 'dead';
       this.setVelocity(0, 0);
       this.anims.stop();
-      this.setFrame(getPreyAnimationFrames(this.animationDirection, 'dead')[0]);
+      this.setScale(this.baseScale);
+      this.setTexture(this.species, getPreyAnimationFrames(this.animationDirection, 'dead')[0]);
       this.clearTint().setAngle(0).setRotation(0).setAlpha(0.9);
       this.setDepth(this.y - 2);
+      this.shadow.sync(this, false);
       const body = this.body as Phaser.Physics.Arcade.Body;
       body.enable = false;
     } else {
@@ -204,6 +214,11 @@ export class Prey extends Phaser.Physics.Arcade.Sprite {
 
   getState(): PreyState {
     return this.aiState;
+  }
+
+  override destroy(fromScene?: boolean): void {
+    this.shadow.destroy();
+    super.destroy(fromScene);
   }
 
   handleTerrainCollision(): void {
@@ -283,10 +298,19 @@ export class Prey extends Phaser.Physics.Arcade.Sprite {
   private updateAnimation(): void {
     const body = this.body as Phaser.Physics.Arcade.Body;
     if (body.velocity.lengthSq() < 4) {
+      const state: PreyAnimationState = this.activity === 'foraging'
+        ? 'foraging'
+        : this.activity === 'drinking'
+          ? 'drinking'
+          : this.activity === 'resting'
+            ? 'resting'
+            : 'idle';
+      this.setScale(this.baseScale);
       this.setRotation(0);
-      this.anims.play(getPreyAnimationKey(this.species, this.animationDirection, 'idle'), true);
+      this.anims.play(getPreyAnimationKey(this.species, this.animationDirection, state), true);
       return;
     }
+    this.setScale(this.baseScale);
     const facing = resolvePlayerFacing(body.velocity.x, body.velocity.y);
     this.animationDirection = facing.animationDirection;
     this.setRotation(0);

@@ -1,14 +1,14 @@
 {
   "name": "wildbound",
   "private": true,
-  "version": "0.4.0",
+  "version": "0.4.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
     "test": "vitest run",
-    "test:visual": "vitest run tests/PlayerWolfVisualRegression.test.ts tests/PreyVisualRegression.test.ts",
-    "test:visual:update": "UPDATE_WOLF_VISUAL_BASELINE=1 UPDATE_PREY_VISUAL_BASELINE=1 vitest run tests/PlayerWolfVisualRegression.test.ts tests/PreyVisualRegression.test.ts",
+    "test:visual": "vitest run tests/PlayerWolfVisualRegression.test.ts tests/PreyVisualRegression.test.ts tests/PackWolfVisualRegression.test.ts",
+    "test:visual:update": "UPDATE_WOLF_VISUAL_BASELINE=1 UPDATE_PREY_VISUAL_BASELINE=1 UPDATE_PACK_VISUAL_BASELINE=1 vitest run tests/PlayerWolfVisualRegression.test.ts tests/PreyVisualRegression.test.ts tests/PackWolfVisualRegression.test.ts",
     "test:watch": "vitest",
     "lint": "tsc --noEmit"
   },

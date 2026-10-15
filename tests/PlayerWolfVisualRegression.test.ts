@@ -255,4 +255,25 @@ describe('player wolf animation visual regressions', () => {
     }
     expect(failures).toEqual([]);
   });
+
+  it('keeps ground anchors continuous when entering and leaving rest', () => {
+    const failures: string[] = [];
+    for (const direction of directions) {
+      const transitions = [
+        ['idle', -1, 'lay-down', 0],
+        ['lay-down', -1, 'rest-breathe', 0],
+        ['rest-breathe', -1, 'get-up', 0],
+        ['get-up', -1, 'idle', 0],
+      ] as const;
+      for (const [fromName, fromIndex, toName, toIndex] of transitions) {
+        const fromFrames = actual.animations[`${direction}-${fromName}`];
+        const toFrames = actual.animations[`${direction}-${toName}`];
+        const from = fromFrames[fromIndex < 0 ? fromFrames.length + fromIndex : fromIndex];
+        const to = toFrames[toIndex];
+        const step = Math.hypot(from.anchor[0] - to.anchor[0], from.anchor[1] - to.anchor[1]);
+        if (step > MAX_ANCHOR_STEP_PX) failures.push(`${direction} ${fromName}->${toName} anchor step ${step.toFixed(1)}px`);
+      }
+    }
+    expect(failures).toEqual([]);
+  });
 });

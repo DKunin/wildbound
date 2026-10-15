@@ -308,17 +308,34 @@ export class ProceduralWorld {
   private generatePuddles(): WaterArea[] {
     const candidates = this.cells
       .filter((cell) => !cell.blocked && !cell.water && cell.ground !== 'path' && cell.decorations.length === 0
-        && Math.hypot(cell.column - this.spawnCell.column, cell.row - this.spawnCell.row) > 3.2)
+        && Math.hypot(cell.column - this.spawnCell.column, cell.row - this.spawnCell.row) > 3.2
+        && this.hasPuddleClearance(cell))
       .sort((a, b) => randomAt(this.seedNumber, a.column, a.row, 40) - randomAt(this.seedNumber, b.column, b.row, 40))
       .slice(0, 12);
-    return candidates.map((cell) => {
-      const width = 118 + Math.round(randomAt(this.seedNumber, cell.column, cell.row, 41) * 92);
-      const height = 72 + Math.round(randomAt(this.seedNumber, cell.column, cell.row, 42) * 78);
+    const sizes = [
+      { minWidth: 82, widthRange: 30, minHeight: 52, heightRange: 20 },
+      { minWidth: 142, widthRange: 48, minHeight: 82, heightRange: 34 },
+      { minWidth: 218, widthRange: 54, minHeight: 132, heightRange: 42 },
+    ] as const;
+    return candidates.map((cell, index) => {
+      const size = sizes[index % sizes.length];
+      const width = size.minWidth + Math.round(randomAt(this.seedNumber, cell.column, cell.row, 41) * size.widthRange);
+      const height = size.minHeight + Math.round(randomAt(this.seedNumber, cell.column, cell.row, 42) * size.heightRange);
       const center = this.getCellCenter(cell.column, cell.row);
       const jitterX = Math.round((randomAt(this.seedNumber, cell.column, cell.row, 43) - 0.5) * 28);
       const jitterY = Math.round((randomAt(this.seedNumber, cell.column, cell.row, 44) - 0.5) * 28);
       return { x: center.x + jitterX - width / 2, y: center.y + jitterY - height / 2, width, height, kind: 'still' as const };
     });
+  }
+
+  private hasPuddleClearance(cell: WorldCell): boolean {
+    for (let rowOffset = -1; rowOffset <= 1; rowOffset += 1) {
+      for (let columnOffset = -1; columnOffset <= 1; columnOffset += 1) {
+        const neighbor = this.getCell(cell.column + columnOffset, cell.row + rowOffset);
+        if (!neighbor || neighbor.blocked || neighbor.water) return false;
+      }
+    }
+    return true;
   }
 
   private overlayFrame(kind: GroundKind, column: number, row: number): number {

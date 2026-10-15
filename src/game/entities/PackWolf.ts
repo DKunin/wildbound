@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 import type { Prey } from './Prey';
-import { resolveDirectionalFacing } from '../systems/DirectionalSpriteSystem';
+import { resolveDirectionalFacing, type BaseDirection } from '../systems/DirectionalSpriteSystem';
+import { LivingShadow } from '../systems/LivingShadow';
 
 export type PackWolfName = 'Niva' | 'Torr';
 export type PackWolfState = 'near' | 'returning' | 'flanking' | 'feeding' | 'resting';
@@ -20,6 +21,9 @@ export class PackWolf extends Phaser.Physics.Arcade.Sprite {
   private lastFedAt = 0;
   private avoidanceUntil = 0;
   private readonly avoidanceDirection = new Phaser.Math.Vector2();
+  private readonly shadow: LivingShadow;
+  private animationDirection: BaseDirection = 'down-right';
+  private animationRotation = 0;
 
   constructor(
     scene: Phaser.Scene,
@@ -32,6 +36,12 @@ export class PackWolf extends Phaser.Physics.Arcade.Sprite {
     super(scene, x, y, texture, 0);
     this.wolfName = name;
     this.hunger = hunger;
+    this.shadow = new LivingShadow(scene, {
+      width: name === 'Niva' ? 82 : 92,
+      height: name === 'Niva' ? 24 : 27,
+      offsetY: name === 'Niva' ? 35 : 39,
+      alpha: 0.22,
+    });
     scene.add.existing(this);
     scene.physics.add.existing(this);
     this.setScale(name === 'Niva' ? 0.34 : 0.39);
@@ -97,7 +107,7 @@ export class PackWolf extends Phaser.Physics.Arcade.Sprite {
     } else {
       this.packState = 'resting';
       this.setVelocity(0, 0);
-      this.stop();
+      this.updateAnimation(6);
     }
     this.setDepth(this.y + 24);
     return this.packState;
@@ -125,6 +135,11 @@ export class PackWolf extends Phaser.Physics.Arcade.Sprite {
     this.setPosition(snapshot.x, snapshot.y);
     this.hunger = Phaser.Math.Clamp(snapshot.hunger, 0, 100);
     this.packState = 'near';
+  }
+
+  override destroy(fromScene?: boolean): void {
+    this.shadow.destroy();
+    super.destroy(fromScene);
   }
 
   handleTerrainCollision(): void {
@@ -162,11 +177,17 @@ export class PackWolf extends Phaser.Physics.Arcade.Sprite {
   }
 
   private moveToward(target: { x: number; y: number }, speed: number): void {
+    const direction = new Phaser.Math.Vector2(target.x - this.x, target.y - this.y);
+    if (direction.lengthSq() > 1) {
+      const facing = resolveDirectionalFacing(direction.x, direction.y);
+      this.animationDirection = facing.animationDirection;
+      this.animationRotation = facing.rotation;
+      this.setRotation(facing.rotation);
+    }
     if (speed === 0) {
       this.setVelocity(0, 0);
       return;
     }
-    const direction = new Phaser.Math.Vector2(target.x - this.x, target.y - this.y);
     if (direction.lengthSq() > 1) direction.normalize();
     this.setVelocity(direction.x * speed, direction.y * speed);
     this.setDepth(this.y + 24);
@@ -175,11 +196,18 @@ export class PackWolf extends Phaser.Physics.Arcade.Sprite {
   private updateAnimation(rate: number): void {
     const body = this.body as Phaser.Physics.Arcade.Body;
     if (body.velocity.lengthSq() < 4) {
-      this.stop();
+      if (this.packState === 'feeding') this.anims.play(`${this.wolfName.toLowerCase()}-${this.animationDirection}-feed`, true);
+      else if (this.packState === 'resting') this.anims.play(`${this.wolfName.toLowerCase()}-${this.animationDirection}-rest`, true);
+      else this.stop();
+      this.setRotation(this.animationRotation);
+      this.shadow.sync(this, true, this.packState === 'resting');
       return;
     }
     const facing = resolveDirectionalFacing(body.velocity.x, body.velocity.y);
+    this.animationDirection = facing.animationDirection;
+    this.animationRotation = facing.rotation;
     this.setRotation(facing.rotation);
     this.anims.play(`${this.wolfName.toLowerCase()}-${facing.animationDirection}-${rate}`, true);
+    this.shadow.sync(this);
   }
 }
