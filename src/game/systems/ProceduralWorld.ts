@@ -1,7 +1,7 @@
-export const WORLD_SEED = 'pine-ridge-2026';
+export const WORLD_SEED = 'pine-ridge-expanded-2026';
 export const WORLD_TILE_SIZE = 256;
-export const WORLD_COLUMNS = 24;
-export const WORLD_ROWS = 24;
+export const WORLD_COLUMNS = 32;
+export const WORLD_ROWS = 32;
 export const WORLD_WIDTH = WORLD_COLUMNS * WORLD_TILE_SIZE;
 export const WORLD_HEIGHT = WORLD_ROWS * WORLD_TILE_SIZE;
 
@@ -13,6 +13,7 @@ export interface WorldPoint {
 export interface WaterArea extends WorldPoint {
   width: number;
   height: number;
+  kind: 'flowing' | 'still';
 }
 
 export interface HabitatResources {
@@ -23,12 +24,24 @@ export interface HabitatResources {
 }
 
 export type GroundKind = 'meadow' | 'forest' | 'path' | 'flowers' | 'bank';
-export type ObstacleKind = 'tree' | 'rock' | 'log' | 'mountain';
+export type ObstacleKind = 'pine' | 'birch' | 'boulder' | 'rockFormation' | 'fallenLog' | 'cliff';
+export type DecorationKind = 'sapling' | 'brush' | 'stones' | 'wildflowers' | 'fallenBranch';
 
 export interface ProceduralObstacle {
   kind: ObstacleKind;
   frame: number;
   scale: number;
+}
+
+export interface ProceduralDecoration {
+  kind: DecorationKind;
+  atlas: 'obstacle' | 'terrain';
+  frame: number;
+  scale: number;
+  offsetX: number;
+  offsetY: number;
+  flipX: boolean;
+  alpha: number;
 }
 
 export interface WorldCell {
@@ -40,6 +53,7 @@ export interface WorldCell {
   waterFrame: number;
   blocked: boolean;
   obstacle?: ProceduralObstacle;
+  decorations: ProceduralDecoration[];
 }
 
 const hashSeed = (seed: string): number => {
@@ -61,9 +75,11 @@ const cellKey = (column: number, row: number): string => `${column},${row}`;
 
 export class ProceduralWorld {
   readonly cells: WorldCell[];
-  readonly spawnCell = { column: 9, row: 15 };
+  readonly spawnCell = { column: 12, row: 20 };
   private readonly seedNumber: number;
   private readonly waterRuns: ReadonlyArray<{ column: number; startRow: number; endRow: number }>;
+  private readonly flowingWaterAreas: ReadonlyArray<WaterArea>;
+  private readonly puddleAreas: ReadonlyArray<WaterArea>;
   private readonly waterAreas: ReadonlyArray<WaterArea>;
 
   constructor(readonly seed = WORLD_SEED) {
@@ -71,25 +87,28 @@ export class ProceduralWorld {
     this.waterRuns = [
       { column: Math.round(WORLD_COLUMNS * 0.73), startRow: 0, endRow: WORLD_ROWS - 1 },
       {
-        column: 4 + Math.floor(randomAt(this.seedNumber, 0, 0, 20) * 3),
+        column: Math.round(WORLD_COLUMNS * 0.2) + Math.floor(randomAt(this.seedNumber, 0, 0, 20) * 3) - 1,
         startRow: 1,
-        endRow: 9 + Math.floor(randomAt(this.seedNumber, 0, 0, 21) * 3),
+        endRow: Math.round(WORLD_ROWS * 0.37) + Math.floor(randomAt(this.seedNumber, 0, 0, 21) * 3),
       },
       {
-        column: 10 + Math.floor(randomAt(this.seedNumber, 0, 0, 22) * 3),
-        startRow: 18 + Math.floor(randomAt(this.seedNumber, 0, 0, 23) * 2),
+        column: Math.round(WORLD_COLUMNS * 0.44) + Math.floor(randomAt(this.seedNumber, 0, 0, 22) * 3) - 1,
+        startRow: Math.round(WORLD_ROWS * 0.73) + Math.floor(randomAt(this.seedNumber, 0, 0, 23) * 2),
         endRow: WORLD_ROWS - 1,
       },
     ];
     this.cells = this.generate();
-    this.waterAreas = this.cells
+    this.flowingWaterAreas = this.cells
       .filter((cell) => cell.water)
       .map((cell) => ({
         x: (cell.column + 0.5) * WORLD_TILE_SIZE,
         y: cell.row * WORLD_TILE_SIZE,
         width: 0,
         height: WORLD_TILE_SIZE,
+        kind: 'flowing',
       }));
+    this.puddleAreas = this.generatePuddles();
+    this.waterAreas = [...this.flowingWaterAreas, ...this.puddleAreas];
   }
 
   getCell(column: number, row: number): WorldCell | undefined {
@@ -120,6 +139,14 @@ export class ProceduralWorld {
     return this.waterAreas;
   }
 
+  getFlowingWaterAreas(): readonly WaterArea[] {
+    return this.flowingWaterAreas;
+  }
+
+  getPuddleAreas(): readonly WaterArea[] {
+    return this.puddleAreas;
+  }
+
   getHabitatResources(species: 'rabbit' | 'deer'): HabitatResources {
     const open = this.cells.filter((cell) => !cell.blocked && !cell.water);
     const points = (cells: readonly WorldCell[]): WorldPoint[] => cells.map((cell) => this.getCellCenter(cell.column, cell.row));
@@ -129,10 +156,13 @@ export class ProceduralWorld {
     const shelter = open.filter((cell) => species === 'rabbit'
       ? cell.ground === 'forest' || cell.ground === 'bank'
       : cell.ground === 'forest');
-    const water = open.filter((cell) => cell.ground === 'bank');
+    const water = [
+      ...points(open.filter((cell) => cell.ground === 'bank')),
+      ...this.puddleAreas.map((area) => ({ x: area.x + area.width / 2, y: area.y + area.height / 2 })),
+    ];
     return {
       food: points(food),
-      water: points(water),
+      water,
       shelter: points(shelter),
       explore: points(open.filter((cell) => cell.ground === 'path' || cell.ground === 'meadow')),
     };
@@ -142,10 +172,12 @@ export class ProceduralWorld {
     const cell = this.getCellAt(point);
     if (!cell) return 'WILDERNESS EDGE';
     if (Math.hypot(cell.column - this.spawnCell.column, cell.row - this.spawnCell.row) < 4.5) return 'PINE RIDGE';
+    if (this.puddleAreas.some((area) => point.x >= area.x && point.x <= area.x + area.width && point.y >= area.y && point.y <= area.y + area.height)) return 'MIRROR POOLS';
     if (cell.water || cell.ground === 'bank') return 'STONE RUN';
-    if (cell.row < 8) return 'PINE RIDGE';
-    if (cell.column < 9) return 'BIRCH HOLLOW';
-    if (cell.ground === 'flowers' || cell.row > 16) return 'ELK MEADOW';
+    if (cell.row < WORLD_ROWS * 0.25) return 'PINE RIDGE';
+    if (cell.column < WORLD_COLUMNS * 0.34) return 'BIRCH HOLLOW';
+    if (cell.ground === 'flowers' || cell.row > WORLD_ROWS * 0.72) return 'ELK MEADOW';
+    if (cell.column > WORLD_COLUMNS * 0.77) return 'CEDAR BASIN';
     return 'NORTHWOOD';
   }
 
@@ -222,10 +254,11 @@ export class ProceduralWorld {
         const groundFrame = this.overlayFrame(ground, column, row);
         const safeFromSpawn = Math.hypot(column - this.spawnCell.column, row - this.spawnCell.row) > 1.4;
         const obstacle = border
-          ? { kind: 'mountain' as const, frame: 13 + Math.floor(randomAt(this.seedNumber, column, row, 2) * 3), scale: 1.03 }
+          ? { kind: 'cliff' as const, frame: 13 + Math.floor(randomAt(this.seedNumber, column, row, 2) * 3), scale: 1.03 }
           : !water && !onPath && safeFromSpawn
             ? this.createObstacle(ground, column, row)
             : undefined;
+        const decorations = this.createDecorations(ground, column, row, Boolean(obstacle), water, onPath);
         cells.push({
           column,
           row,
@@ -235,6 +268,7 @@ export class ProceduralWorld {
           waterFrame: this.waterFrame(row),
           blocked: Boolean(obstacle),
           obstacle,
+          decorations,
         });
       }
     }
@@ -242,15 +276,49 @@ export class ProceduralWorld {
   }
 
   private createObstacle(ground: GroundKind, column: number, row: number): ProceduralObstacle | undefined {
-    const chance = ground === 'forest' ? 0.7 : ground === 'meadow' ? 0.28 : ground === 'flowers' ? 0.2 : 0.3;
+    const chance = ground === 'forest' ? 0.52 : ground === 'meadow' ? 0.18 : ground === 'flowers' ? 0.12 : 0.1;
     const roll = randomAt(this.seedNumber, column, row, 3);
     if (roll >= chance) return undefined;
     const kindRoll = randomAt(this.seedNumber, column, row, 4);
     const variation = randomAt(this.seedNumber, column, row, 5);
-    if (kindRoll < 0.56) return { kind: 'tree', frame: Math.floor(variation * 7), scale: 0.96 + variation * 0.26 };
-    if (kindRoll < 0.8) return { kind: 'rock', frame: 7 + Math.floor(variation * 4), scale: 0.84 + variation * 0.24 };
-    if (kindRoll < 0.92) return { kind: 'log', frame: 11 + Math.floor(variation * 2), scale: 0.88 + variation * 0.2 };
-    return { kind: 'mountain', frame: 13 + Math.floor(variation * 3), scale: 0.98 + variation * 0.24 };
+    if (kindRoll < 0.38) return { kind: 'pine', frame: Math.floor(variation * 5), scale: 0.92 + variation * 0.3 };
+    if (kindRoll < 0.55) return { kind: 'birch', frame: 5 + Math.floor(variation * 2), scale: 0.92 + variation * 0.25 };
+    if (kindRoll < 0.69) return { kind: 'boulder', frame: 7, scale: 0.82 + variation * 0.24 };
+    if (kindRoll < 0.84) return { kind: 'rockFormation', frame: 8 + Math.floor(variation * 3), scale: 0.82 + variation * 0.22 };
+    if (kindRoll < 0.94) return { kind: 'fallenLog', frame: 11 + Math.floor(variation * 2), scale: 0.86 + variation * 0.2 };
+    return { kind: 'cliff', frame: 13 + Math.floor(variation * 3), scale: 0.94 + variation * 0.2 };
+  }
+
+  private createDecorations(ground: GroundKind, column: number, row: number, blocked: boolean, water: boolean, onPath: boolean): ProceduralDecoration[] {
+    if (blocked || water || onPath || randomAt(this.seedNumber, column, row, 30) > 0.48) return [];
+    const roll = randomAt(this.seedNumber, column, row, 31);
+    const variation = randomAt(this.seedNumber, column, row, 32);
+    const common = {
+      offsetX: Math.round((randomAt(this.seedNumber, column, row, 33) - 0.5) * 130),
+      offsetY: Math.round((randomAt(this.seedNumber, column, row, 34) - 0.5) * 120),
+      flipX: randomAt(this.seedNumber, column, row, 35) > 0.5,
+    };
+    if (roll < 0.22 && ground === 'forest') return [{ ...common, kind: 'sapling', atlas: 'obstacle', frame: Math.floor(variation * 7), scale: 0.3 + variation * 0.16, alpha: 0.94 }];
+    if (roll < 0.44) return [{ ...common, kind: 'brush', atlas: 'terrain', frame: Math.floor(variation * 4), scale: 0.28 + variation * 0.2, alpha: 0.82 }];
+    if (roll < 0.64) return [{ ...common, kind: 'stones', atlas: 'obstacle', frame: 7 + Math.floor(variation * 4), scale: 0.24 + variation * 0.14, alpha: 0.92 }];
+    if (roll < 0.84 || ground === 'flowers') return [{ ...common, kind: 'wildflowers', atlas: 'terrain', frame: 4 + Math.floor(variation * 4), scale: 0.26 + variation * 0.18, alpha: 0.9 }];
+    return [{ ...common, kind: 'fallenBranch', atlas: 'obstacle', frame: 11 + Math.floor(variation * 2), scale: 0.25 + variation * 0.14, alpha: 0.92 }];
+  }
+
+  private generatePuddles(): WaterArea[] {
+    const candidates = this.cells
+      .filter((cell) => !cell.blocked && !cell.water && cell.ground !== 'path' && cell.decorations.length === 0
+        && Math.hypot(cell.column - this.spawnCell.column, cell.row - this.spawnCell.row) > 3.2)
+      .sort((a, b) => randomAt(this.seedNumber, a.column, a.row, 40) - randomAt(this.seedNumber, b.column, b.row, 40))
+      .slice(0, 12);
+    return candidates.map((cell) => {
+      const width = 118 + Math.round(randomAt(this.seedNumber, cell.column, cell.row, 41) * 92);
+      const height = 72 + Math.round(randomAt(this.seedNumber, cell.column, cell.row, 42) * 78);
+      const center = this.getCellCenter(cell.column, cell.row);
+      const jitterX = Math.round((randomAt(this.seedNumber, cell.column, cell.row, 43) - 0.5) * 28);
+      const jitterY = Math.round((randomAt(this.seedNumber, cell.column, cell.row, 44) - 0.5) * 28);
+      return { x: center.x + jitterX - width / 2, y: center.y + jitterY - height / 2, width, height, kind: 'still' as const };
+    });
   }
 
   private overlayFrame(kind: GroundKind, column: number, row: number): number {

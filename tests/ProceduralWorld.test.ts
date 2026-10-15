@@ -12,19 +12,32 @@ describe('procedural territory', () => {
 
   it('creates a larger world with water, routes, and solid obstacles', () => {
     const world = new ProceduralWorld();
-    expect(WORLD_WIDTH).toBe(6_144);
-    expect(WORLD_HEIGHT).toBe(6_144);
+    expect(WORLD_WIDTH).toBe(8_192);
+    expect(WORLD_HEIGHT).toBe(8_192);
     const waterCells = world.cells.filter((cell) => cell.water);
-    expect(waterCells.length).toBeGreaterThan(30);
-    expect(world.getWaterAreas()).toHaveLength(waterCells.length);
+    expect(waterCells.length).toBeGreaterThan(40);
+    expect(world.getFlowingWaterAreas()).toHaveLength(waterCells.length);
+    expect(world.getPuddleAreas()).toHaveLength(12);
+    expect(world.getWaterAreas()).toHaveLength(waterCells.length + world.getPuddleAreas().length);
     expect(world.getWaterPaths()).toHaveLength(3);
     expect(world.getWaterPaths().every((path) => path.length >= 5)).toBe(true);
-    expect(waterCells.some((cell) => cell.column < 9 && cell.row < 10)).toBe(true);
-    expect(waterCells.some((cell) => cell.column < 15 && cell.row > 17)).toBe(true);
+    expect(waterCells.some((cell) => cell.column < 12 && cell.row < 15)).toBe(true);
+    expect(waterCells.some((cell) => cell.column < 20 && cell.row > 22)).toBe(true);
     expect(world.getCell(world.spawnCell.column, world.spawnCell.row)?.water).toBe(false);
     expect(world.cells.some((cell) => cell.ground === 'path')).toBe(true);
-    expect(world.cells.some((cell) => cell.obstacle?.kind === 'tree')).toBe(true);
-    expect(world.cells.some((cell) => cell.obstacle?.kind === 'mountain')).toBe(true);
+    expect(new Set(world.cells.flatMap((cell) => cell.obstacle?.kind ?? [])).size).toBe(6);
+    expect(new Set(world.cells.flatMap((cell) => cell.decorations.map((decoration) => decoration.kind))).size).toBeGreaterThanOrEqual(4);
+  });
+
+  it('keeps still puddles drinkable but out of the flowing-water sound set', () => {
+    const world = new ProceduralWorld();
+    expect(world.getFlowingWaterAreas().every((area) => area.kind === 'flowing')).toBe(true);
+    expect(world.getPuddleAreas().every((area) => area.kind === 'still')).toBe(true);
+    expect(world.getPuddleAreas().every((area) => {
+      const center = { x: area.x + area.width / 2, y: area.y + area.height / 2 };
+      const cell = world.getCellAt(center);
+      return cell !== undefined && !cell.blocked && !cell.water;
+    })).toBe(true);
   });
 
   it('routes around blocked terrain to an open destination', () => {

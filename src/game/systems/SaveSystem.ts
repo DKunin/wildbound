@@ -15,7 +15,7 @@ export interface SavedPackWolf {
 }
 
 export interface SaveData {
-  version: 3;
+  version: 4;
   worldSeed: string;
   savedAt: number;
   simulationTime: number;
@@ -36,7 +36,7 @@ const isPosition = (value: unknown): value is { x: number; y: number } => {
 export const isSaveData = (value: unknown): value is SaveData => {
   if (!value || typeof value !== 'object') return false;
   const data = value as Partial<SaveData>;
-  return data.version === 3
+  return data.version === 4
     && typeof data.worldSeed === 'string'
     && data.worldSeed.length > 0
     && isFiniteNumber(data.savedAt)
@@ -57,7 +57,7 @@ export const isSaveData = (value: unknown): value is SaveData => {
 export class SaveSystem {
   private readonly databaseName = 'wildbound';
   private readonly storeName = 'saves';
-  private readonly key = 'pine-ridge-2026-autosave';
+  private readonly key = 'pine-ridge-expanded-2026-autosave';
 
   async save(data: SaveData): Promise<void> {
     if (typeof indexedDB === 'undefined') {

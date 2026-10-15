@@ -163,7 +163,7 @@ export class WildScene extends Phaser.Scene {
     if (FEATURE_FLAGS.pack) this.spawnPack();
     this.scent = new ScentSystem(this, this.world.getWaterAreas());
     this.hearing = new SoundSystem(this);
-    this.hearing.addAmbientAreas(this.world.getWaterAreas(), 'FLOWING WATER', 720, 0.68);
+    this.hearing.addAmbientAreas(this.world.getFlowingWaterAreas(), 'FLOWING WATER', 720, 0.68);
     this.footprints = new FootprintSystem(this);
     this.keys = this.createKeys();
     this.configureCamera();
@@ -273,11 +273,12 @@ export class WildScene extends Phaser.Scene {
   }
 
   private spawnInitialPopulation(): void {
-    for (let index = 0; index < 12; index += 1) {
+    const desired = this.population.getDesired();
+    for (let index = 0; index < desired.rabbit; index += 1) {
       this.spawnPrey('rabbit', this.random.integerInRange(420, WORLD_WIDTH - 420), this.random.integerInRange(420, WORLD_HEIGHT - 420));
     }
     const herdCenter = new Phaser.Math.Vector2(WORLD_WIDTH * 0.73, WORLD_HEIGHT * 0.27);
-    for (let index = 0; index < 14; index += 1) {
+    for (let index = 0; index < desired.deer; index += 1) {
       this.spawnPrey('deer', herdCenter.x + this.random.integerInRange(-620, 620), herdCenter.y + this.random.integerInRange(-480, 480));
     }
   }
@@ -658,7 +659,7 @@ export class WildScene extends Phaser.Scene {
   private async saveGame(manual: boolean): Promise<void> {
     if (this.dead || this.loadingSave) return;
     const data: SaveData = {
-      version: 3,
+      version: 4,
       worldSeed: WORLD_SEED,
       savedAt: Date.now(),
       simulationTime: this.simulationTime,

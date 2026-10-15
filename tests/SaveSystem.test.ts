@@ -3,8 +3,8 @@ import { isSaveData, type SaveData } from '../src/game/systems/SaveSystem';
 
 describe('procedural-world save validation', () => {
   const valid: SaveData = {
-    version: 3,
-    worldSeed: 'pine-ridge-2026',
+    version: 4,
+    worldSeed: 'pine-ridge-expanded-2026',
     savedAt: 123,
     simulationTime: 1_122,
     player: { x: 600, y: 900 },
@@ -19,7 +19,7 @@ describe('procedural-world save validation', () => {
   });
 
   it('rejects older or incomplete save records', () => {
-    expect(isSaveData({ ...valid, version: 2 })).toBe(false);
+    expect(isSaveData({ ...valid, version: 3 })).toBe(false);
     expect(isSaveData({ ...valid, worldSeed: '' })).toBe(false);
     expect(isSaveData({ ...valid, player: { x: 'wrong', y: 1 } })).toBe(false);
     expect(isSaveData({ ...valid, pack: undefined })).toBe(false);

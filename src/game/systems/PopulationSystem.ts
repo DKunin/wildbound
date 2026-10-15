@@ -6,7 +6,7 @@ export interface PopulationCounts {
 }
 
 export class PopulationSystem {
-  private readonly desired: PopulationCounts = { rabbit: 12, deer: 14 };
+  private readonly desired: PopulationCounts = { rabbit: 20, deer: 22 };
   private readonly nextSpawn = new Map<PreySpecies, number>();
 
   update(time: number, living: PopulationCounts): PreySpecies[] {
