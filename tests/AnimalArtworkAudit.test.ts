@@ -21,6 +21,7 @@ const specs: AtlasSpec[] = [
   atlas('public/assets/prey-v3/elk-actions.png', 181, 181),
   atlas('public/assets/prey-v4/boar-atlas.png', 181, 181),
   atlas('public/assets/prey-v4/boar-actions.png', 181, 181),
+  atlas('public/assets/prey-v4/boar-charge.png', 181, 181),
   atlas('public/assets/balance-v1/deer-kick.png', 181, 181),
   ...readdirSync(PLAYER_ROOT)
     .filter((file) => file.endsWith('.png') && file !== 'wolf-model-v2.png')

@@ -56,7 +56,7 @@ const createCompositionSheet = (): WoundManifestSheet => ({
 
 describe('wound texture contract', () => {
   it('selects every generated wolf and prey manifest sheet by its original source', () => {
-    expect(manifest.spritesheets).toHaveLength(87);
+    expect(manifest.spritesheets).toHaveLength(88);
     expect(getWoundManifestSheet(manifest, 'wolf-south-motion.png')).toMatchObject({
       width: 1_385,
       sourceHeight: 1_136,
@@ -74,6 +74,12 @@ describe('wound texture contract', () => {
       frameHeight: 181,
     });
     expect(getWoundManifestSheet(manifest, 'boar-actions.png')).toMatchObject({
+      frameWidth: 181,
+      frameHeight: 181,
+    });
+    expect(getWoundManifestSheet(manifest, 'boar-charge.png')).toMatchObject({
+      columns: 4,
+      rows: 8,
       frameWidth: 181,
       frameHeight: 181,
     });
@@ -123,12 +129,12 @@ describe('wound texture contract', () => {
 
   it('bounds registered wound canvases to one reusable wolf sheet and all prey wound tiers', () => {
     const keys = getRuntimeWoundTextureKeys();
-    expect(keys).toHaveLength(22);
-    expect(new Set(keys)).toHaveLength(22);
+    expect(keys).toHaveLength(25);
+    expect(new Set(keys)).toHaveLength(25);
     expect(keys.filter((key) => key === PLAYER_WOUND_RUNTIME_TEXTURE_KEY)).toHaveLength(1);
     expect(keys.filter((key) => key.startsWith('deer'))).toHaveLength(9);
     expect(keys.filter((key) => key.startsWith('elk'))).toHaveLength(6);
-    expect(keys.filter((key) => key.startsWith('boar'))).toHaveLength(6);
+    expect(keys.filter((key) => key.startsWith('boar'))).toHaveLength(9);
     expect(keys.some((key) => key.includes('wounds-mask'))).toBe(false);
   });
 

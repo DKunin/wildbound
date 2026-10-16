@@ -14,11 +14,11 @@ const DIRECTIONS: ReadonlyArray<readonly [number, number]> = [
   [1, 0], [1, -1], [0, -1], [-1, -1], [-1, 0], [-1, 1], [0, 1], [1, 1],
 ];
 
-const metrics = (file: string, rows: number) => {
+const metrics = (file: string, rows: number, columns = 8) => {
   const image = PNG.sync.read(readFileSync(resolve(ASSET_ROOT, file)));
   const frames = [];
   for (let row = 0; row < rows; row += 1) {
-    for (let column = 0; column < 8; column += 1) {
+    for (let column = 0; column < columns; column += 1) {
       const pixels = Buffer.alloc(FRAME_SIZE * FRAME_SIZE * 4);
       let visiblePixels = 0;
       let edgePixels = 0;
@@ -77,8 +77,9 @@ const directionBoard = (): Buffer => {
 };
 
 const movement = metrics('boar-atlas.png', 6);
-const actions = metrics('boar-actions.png', 3);
-const baseline = { version: 1, movement: movement.frames, actions: actions.frames };
+const actions = metrics('boar-actions.png', 12);
+const charge = metrics('boar-charge.png', 8, 4);
+const baseline = { version: 2, movement: movement.frames, actions: actions.frames, charge: charge.frames };
 const board = directionBoard();
 if (process.env.UPDATE_BOAR_VISUAL_BASELINE === '1') {
   writeFileSync(BASELINE_PATH, `${JSON.stringify(baseline, null, 2)}\n`);
@@ -86,12 +87,14 @@ if (process.env.UPDATE_BOAR_VISUAL_BASELINE === '1') {
 }
 
 describe('boar artwork', () => {
-  it('provides complete movement, carcass, and action coverage in all eight directions', () => {
+  it('provides complete movement, carcass, action, and retaliation coverage in all eight directions', () => {
     expect(movement).toMatchObject({ width: 1_448, height: 1_086 });
-    expect(actions).toMatchObject({ width: 1_448, height: 543 });
+    expect(actions).toMatchObject({ width: 1_448, height: 2_172 });
+    expect(charge).toMatchObject({ width: 724, height: 1_448 });
     expect(movement.frames).toHaveLength(48);
-    expect(actions.frames).toHaveLength(24);
-    for (const frame of [...movement.frames, ...actions.frames]) {
+    expect(actions.frames).toHaveLength(96);
+    expect(charge.frames).toHaveLength(32);
+    for (const frame of [...movement.frames, ...actions.frames, ...charge.frames]) {
       expect(frame.visiblePixels).toBeGreaterThan(900);
       expect(frame.edgePixels).toBe(0);
     }

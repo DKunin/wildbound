@@ -378,6 +378,7 @@ if (!DRY_RUN) {
   for (const script of [
     'build-player-wolf-carry-atlases.mjs',
     'build-player-wolf-bury-atlases.mjs',
+    'build-animal-action-atlases.mjs',
     'build-wounded-spritesheets.mjs',
   ]) {
     const result = spawnSync(process.execPath, [resolve(ROOT, 'scripts', script)], { stdio: 'inherit' });

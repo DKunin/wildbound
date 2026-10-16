@@ -1,0 +1,125 @@
+{
+  "version": 2,
+  "cellSize": 181,
+  "directions": [
+    "east",
+    "northeast",
+    "north",
+    "northwest",
+    "west",
+    "southwest",
+    "south",
+    "southeast"
+  ],
+  "transitionLimits": {
+    "groundContactY": 2
+  },
+  "species": {
+    "rabbit": {
+      "assetRoot": "prey-v2",
+      "wounds": false,
+      "retaliationAsset": null,
+      "retaliationAssetRoot": null
+    },
+    "deer": {
+      "assetRoot": "prey-v2",
+      "wounds": true,
+      "retaliationAsset": "deer-kick",
+      "retaliationAssetRoot": "balance-v1"
+    },
+    "elk": {
+      "assetRoot": "prey-v3",
+      "wounds": true,
+      "retaliationAsset": null,
+      "retaliationAssetRoot": null
+    },
+    "boar": {
+      "assetRoot": "prey-v4",
+      "wounds": true,
+      "retaliationAsset": "boar-charge",
+      "retaliationAssetRoot": "prey-v4"
+    }
+  },
+  "states": {
+    "idle": {
+      "sheet": "atlas",
+      "layout": "phaseRows",
+      "rows": [0, 1],
+      "frameRate": 0.8,
+      "repeat": -1,
+      "motionClass": "ambient",
+      "minFrames": 2,
+      "minUniquePoses": 2
+    },
+    "walk": {
+      "sheet": "atlas",
+      "layout": "phaseRows",
+      "rows": [2, 3],
+      "frameRate": 6,
+      "repeat": -1,
+      "motionClass": "locomotion",
+      "minFrames": 2,
+      "minUniquePoses": 2
+    },
+    "flee": {
+      "sheet": "atlas",
+      "layout": "phaseRows",
+      "rows": [2, 3, 4, 3],
+      "frameRate": 11,
+      "repeat": -1,
+      "motionClass": "locomotion",
+      "minFrames": 4,
+      "minUniquePoses": 3
+    },
+    "resting": {
+      "sheet": "actions",
+      "layout": "phaseRows",
+      "rows": [0, 1, 2, 3],
+      "frameRate": 1.2,
+      "repeat": -1,
+      "motionClass": "ambient",
+      "minFrames": 4,
+      "minUniquePoses": 3
+    },
+    "foraging": {
+      "sheet": "actions",
+      "layout": "phaseRows",
+      "rows": [4, 5, 6, 7],
+      "frameRate": 2,
+      "repeat": -1,
+      "motionClass": "action",
+      "minFrames": 4,
+      "minUniquePoses": 3
+    },
+    "drinking": {
+      "sheet": "actions",
+      "layout": "phaseRows",
+      "rows": [8, 9, 10, 11],
+      "frameRate": 1.6,
+      "repeat": -1,
+      "motionClass": "action",
+      "minFrames": 4,
+      "minUniquePoses": 3
+    },
+    "dead": {
+      "sheet": "atlas",
+      "layout": "phaseRows",
+      "rows": [5],
+      "frameRate": 1,
+      "repeat": 0,
+      "motionClass": "static",
+      "minFrames": 1,
+      "minUniquePoses": 1
+    },
+    "retaliating": {
+      "sheet": "retaliation",
+      "layout": "directionRows",
+      "rows": [0, 1, 2, 3],
+      "frameRate": 5,
+      "repeat": 0,
+      "motionClass": "one-shot",
+      "minFrames": 4,
+      "minUniquePoses": 3
+    }
+  }
+}

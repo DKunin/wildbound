@@ -1,0 +1,6123 @@
+{
+  "schemaVersion": 1,
+  "generator": "scripts/build-animal-action-atlases.mjs",
+  "art_source": "existing",
+  "cellSize": 181,
+  "directions": [
+    "east",
+    "northeast",
+    "north",
+    "northwest",
+    "west",
+    "southwest",
+    "south",
+    "southeast"
+  ],
+  "actions": {
+    "layout": "phaseRows",
+    "rows": {
+      "resting": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "foraging": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "drinking": [
+        8,
+        9,
+        10,
+        11
+      ]
+    }
+  },
+  "species": {
+    "rabbit": {
+      "source": "art-source/prey-actions-v2/sources/rabbit-actions-source.png",
+      "sourceSha256": "0de787339a2362b2165883740d8e3a147269d2b3f4d3619d09ec9d2b5a970a26",
+      "movement": "public/assets/prey-v2/rabbit-atlas.png",
+      "movementSha256": "08fb6a6be2390d7fd38be9c8c9ce49e40da5738a3089e63dc10183c6652e0738",
+      "movementQuality": {
+        "faintAlphaPixels": 0,
+        "edgePixels": 0,
+        "minVisiblePixels": 4252,
+        "minimumUniquePoses": 2
+      },
+      "idleAlignment": [
+        {
+          "direction": "east",
+          "phase": 0,
+          "requested": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "applied": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 84.855,
+            "y": 119.892
+          },
+          "idleGroundY": 172,
+          "sourceRootBefore": {
+            "x": 84.855,
+            "y": 119.892
+          },
+          "rootAfter": {
+            "x": 84.855,
+            "y": 119.892
+          },
+          "groundYBefore": 172,
+          "groundYAfter": 172,
+          "rootDeltaX": 0,
+          "rootDeltaY": 0,
+          "groundDeltaY": 0
+        },
+        {
+          "direction": "east",
+          "phase": 1,
+          "requested": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "applied": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 84.855,
+            "y": 119.892
+          },
+          "idleGroundY": 172,
+          "sourceRootBefore": {
+            "x": 84.679,
+            "y": 120.344
+          },
+          "rootAfter": {
+            "x": 84.679,
+            "y": 120.344
+          },
+          "groundYBefore": 172,
+          "groundYAfter": 172,
+          "rootDeltaX": -0.176,
+          "rootDeltaY": 0.452,
+          "groundDeltaY": 0
+        },
+        {
+          "direction": "northeast",
+          "phase": 0,
+          "requested": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "applied": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 94.315,
+            "y": 126.127
+          },
+          "idleGroundY": 173,
+          "sourceRootBefore": {
+            "x": 94.315,
+            "y": 126.127
+          },
+          "rootAfter": {
+            "x": 94.315,
+            "y": 126.127
+          },
+          "groundYBefore": 173,
+          "groundYAfter": 173,
+          "rootDeltaX": 0,
+          "rootDeltaY": 0,
+          "groundDeltaY": 0
+        },
+        {
+          "direction": "northeast",
+          "phase": 1,
+          "requested": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "applied": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 94.315,
+            "y": 126.127
+          },
+          "idleGroundY": 173,
+          "sourceRootBefore": {
+            "x": 93.845,
+            "y": 126.339
+          },
+          "rootAfter": {
+            "x": 93.845,
+            "y": 126.339
+          },
+          "groundYBefore": 173,
+          "groundYAfter": 173,
+          "rootDeltaX": -0.47,
+          "rootDeltaY": 0.212,
+          "groundDeltaY": 0
+        },
+        {
+          "direction": "north",
+          "phase": 0,
+          "requested": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "applied": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 88.704,
+            "y": 117.282
+          },
+          "idleGroundY": 174,
+          "sourceRootBefore": {
+            "x": 88.704,
+            "y": 117.282
+          },
+          "rootAfter": {
+            "x": 88.704,
+            "y": 117.282
+          },
+          "groundYBefore": 174,
+          "groundYAfter": 174,
+          "rootDeltaX": 0,
+          "rootDeltaY": 0,
+          "groundDeltaY": 0
+        },
+        {
+          "direction": "north",
+          "phase": 1,
+          "requested": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "applied": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 88.704,
+            "y": 117.282
+          },
+          "idleGroundY": 174,
+          "sourceRootBefore": {
+            "x": 88.732,
+            "y": 116.837
+          },
+          "rootAfter": {
+            "x": 88.732,
+            "y": 116.837
+          },
+          "groundYBefore": 174,
+          "groundYAfter": 174,
+          "rootDeltaX": 0.028,
+          "rootDeltaY": -0.445,
+          "groundDeltaY": 0
+        },
+        {
+          "direction": "northwest",
+          "phase": 0,
+          "requested": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "applied": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 87.686,
+            "y": 126.557
+          },
+          "idleGroundY": 174,
+          "sourceRootBefore": {
+            "x": 87.686,
+            "y": 126.557
+          },
+          "rootAfter": {
+            "x": 87.686,
+            "y": 126.557
+          },
+          "groundYBefore": 174,
+          "groundYAfter": 174,
+          "rootDeltaX": 0,
+          "rootDeltaY": 0,
+          "groundDeltaY": 0
+        },
+        {
+          "direction": "northwest",
+          "phase": 1,
+          "requested": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "applied": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 87.686,
+            "y": 126.557
+          },
+          "idleGroundY": 174,
+          "sourceRootBefore": {
+            "x": 87.199,
+            "y": 126.538
+          },
+          "rootAfter": {
+            "x": 87.199,
+            "y": 126.538
+          },
+          "groundYBefore": 174,
+          "groundYAfter": 174,
+          "rootDeltaX": -0.488,
+          "rootDeltaY": -0.019,
+          "groundDeltaY": 0
+        },
+        {
+          "direction": "west",
+          "phase": 0,
+          "requested": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "applied": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 88.796,
+            "y": 130.144
+          },
+          "idleGroundY": 174,
+          "sourceRootBefore": {
+            "x": 88.796,
+            "y": 130.144
+          },
+          "rootAfter": {
+            "x": 88.796,
+            "y": 130.144
+          },
+          "groundYBefore": 174,
+          "groundYAfter": 174,
+          "rootDeltaX": 0,
+          "rootDeltaY": 0,
+          "groundDeltaY": 0
+        },
+        {
+          "direction": "west",
+          "phase": 1,
+          "requested": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "applied": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 88.796,
+            "y": 130.144
+          },
+          "idleGroundY": 174,
+          "sourceRootBefore": {
+            "x": 88.481,
+            "y": 130.372
+          },
+          "rootAfter": {
+            "x": 88.481,
+            "y": 130.372
+          },
+          "groundYBefore": 174,
+          "groundYAfter": 174,
+          "rootDeltaX": -0.315,
+          "rootDeltaY": 0.228,
+          "groundDeltaY": 0
+        },
+        {
+          "direction": "southwest",
+          "phase": 0,
+          "requested": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "applied": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 93.536,
+            "y": 123.278
+          },
+          "idleGroundY": 174,
+          "sourceRootBefore": {
+            "x": 93.536,
+            "y": 123.278
+          },
+          "rootAfter": {
+            "x": 93.536,
+            "y": 123.278
+          },
+          "groundYBefore": 174,
+          "groundYAfter": 174,
+          "rootDeltaX": 0,
+          "rootDeltaY": 0,
+          "groundDeltaY": 0
+        },
+        {
+          "direction": "southwest",
+          "phase": 1,
+          "requested": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "applied": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 93.536,
+            "y": 123.278
+          },
+          "idleGroundY": 174,
+          "sourceRootBefore": {
+            "x": 93.411,
+            "y": 123.368
+          },
+          "rootAfter": {
+            "x": 93.411,
+            "y": 123.368
+          },
+          "groundYBefore": 174,
+          "groundYAfter": 174,
+          "rootDeltaX": -0.125,
+          "rootDeltaY": 0.09,
+          "groundDeltaY": 0
+        },
+        {
+          "direction": "south",
+          "phase": 0,
+          "requested": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "applied": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 91.088,
+            "y": 117.108
+          },
+          "idleGroundY": 170,
+          "sourceRootBefore": {
+            "x": 91.088,
+            "y": 117.108
+          },
+          "rootAfter": {
+            "x": 91.088,
+            "y": 117.108
+          },
+          "groundYBefore": 170,
+          "groundYAfter": 170,
+          "rootDeltaX": 0,
+          "rootDeltaY": 0,
+          "groundDeltaY": 0
+        },
+        {
+          "direction": "south",
+          "phase": 1,
+          "requested": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "applied": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 91.088,
+            "y": 117.108
+          },
+          "idleGroundY": 170,
+          "sourceRootBefore": {
+            "x": 90.825,
+            "y": 117.283
+          },
+          "rootAfter": {
+            "x": 90.825,
+            "y": 117.283
+          },
+          "groundYBefore": 170,
+          "groundYAfter": 170,
+          "rootDeltaX": -0.263,
+          "rootDeltaY": 0.175,
+          "groundDeltaY": 0
+        },
+        {
+          "direction": "southeast",
+          "phase": 0,
+          "requested": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "applied": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 89.272,
+            "y": 122.395
+          },
+          "idleGroundY": 173,
+          "sourceRootBefore": {
+            "x": 89.272,
+            "y": 122.395
+          },
+          "rootAfter": {
+            "x": 89.272,
+            "y": 122.395
+          },
+          "groundYBefore": 173,
+          "groundYAfter": 173,
+          "rootDeltaX": 0,
+          "rootDeltaY": 0,
+          "groundDeltaY": 0
+        },
+        {
+          "direction": "southeast",
+          "phase": 1,
+          "requested": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "applied": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 89.272,
+            "y": 122.395
+          },
+          "idleGroundY": 173,
+          "sourceRootBefore": {
+            "x": 89.693,
+            "y": 122.365
+          },
+          "rootAfter": {
+            "x": 89.693,
+            "y": 122.365
+          },
+          "groundYBefore": 173,
+          "groundYAfter": 173,
+          "rootDeltaX": 0.421,
+          "rootDeltaY": -0.03,
+          "groundDeltaY": 0
+        }
+      ],
+      "output": "public/assets/prey-v2/rabbit-actions.png",
+      "outputSha256": "0ab981fd42f7420029ed612373f9acb7643fef988ba498cb8739e34a702e75e0",
+      "width": 1448,
+      "height": 2172,
+      "frames": 96,
+      "quality": {
+        "faintAlphaPixels": 0,
+        "edgePixels": 0,
+        "minVisiblePixels": 6984,
+        "minimumUniquePoses": 4
+      },
+      "alignment": [
+        {
+          "action": "resting",
+          "direction": "east",
+          "requested": {
+            "x": -14,
+            "y": 0
+          },
+          "applied": {
+            "x": -14,
+            "y": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 84.855,
+            "y": 119.892
+          },
+          "idleGroundY": 172,
+          "sourceRootBefore": {
+            "x": 98.862,
+            "y": 125.253
+          },
+          "rootAfter": {
+            "x": 84.862,
+            "y": 125.253
+          },
+          "groundYBefore": 172,
+          "groundYAfter": 172,
+          "rootDeltaX": 0.007,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "resting",
+          "direction": "northeast",
+          "requested": {
+            "x": -11,
+            "y": 1
+          },
+          "applied": {
+            "x": -11,
+            "y": 1
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 94.315,
+            "y": 126.127
+          },
+          "idleGroundY": 173,
+          "sourceRootBefore": {
+            "x": 105.295,
+            "y": 123.801
+          },
+          "rootAfter": {
+            "x": 94.295,
+            "y": 124.801
+          },
+          "groundYBefore": 172,
+          "groundYAfter": 173,
+          "rootDeltaX": -0.02,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "resting",
+          "direction": "north",
+          "requested": {
+            "x": -7,
+            "y": -3
+          },
+          "applied": {
+            "x": -7,
+            "y": -3
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 88.704,
+            "y": 117.282
+          },
+          "idleGroundY": 174,
+          "sourceRootBefore": {
+            "x": 95.298,
+            "y": 117.587
+          },
+          "rootAfter": {
+            "x": 88.298,
+            "y": 114.587
+          },
+          "groundYBefore": 177,
+          "groundYAfter": 174,
+          "rootDeltaX": -0.406,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "resting",
+          "direction": "northwest",
+          "requested": {
+            "x": 6,
+            "y": 2
+          },
+          "applied": {
+            "x": 6,
+            "y": 2
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 87.686,
+            "y": 126.557
+          },
+          "idleGroundY": 174,
+          "sourceRootBefore": {
+            "x": 81.996,
+            "y": 123.66
+          },
+          "rootAfter": {
+            "x": 87.996,
+            "y": 125.66
+          },
+          "groundYBefore": 172,
+          "groundYAfter": 174,
+          "rootDeltaX": 0.31,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "resting",
+          "direction": "west",
+          "requested": {
+            "x": 0,
+            "y": 1
+          },
+          "applied": {
+            "x": 0,
+            "y": 1
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 88.796,
+            "y": 130.144
+          },
+          "idleGroundY": 174,
+          "sourceRootBefore": {
+            "x": 89.116,
+            "y": 131.04
+          },
+          "rootAfter": {
+            "x": 89.116,
+            "y": 132.04
+          },
+          "groundYBefore": 173,
+          "groundYAfter": 174,
+          "rootDeltaX": 0.32,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "resting",
+          "direction": "southwest",
+          "requested": {
+            "x": -1,
+            "y": 3
+          },
+          "applied": {
+            "x": -1,
+            "y": 3
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 93.536,
+            "y": 123.278
+          },
+          "idleGroundY": 174,
+          "sourceRootBefore": {
+            "x": 94.799,
+            "y": 124.839
+          },
+          "rootAfter": {
+            "x": 93.799,
+            "y": 127.839
+          },
+          "groundYBefore": 171,
+          "groundYAfter": 174,
+          "rootDeltaX": 0.263,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "resting",
+          "direction": "south",
+          "requested": {
+            "x": 7,
+            "y": -7
+          },
+          "applied": {
+            "x": 7,
+            "y": -7
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 91.088,
+            "y": 117.108
+          },
+          "idleGroundY": 170,
+          "sourceRootBefore": {
+            "x": 84.122,
+            "y": 117.702
+          },
+          "rootAfter": {
+            "x": 91.122,
+            "y": 110.702
+          },
+          "groundYBefore": 177,
+          "groundYAfter": 170,
+          "rootDeltaX": 0.033,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "resting",
+          "direction": "southeast",
+          "requested": {
+            "x": 7,
+            "y": 1
+          },
+          "applied": {
+            "x": 7,
+            "y": 1
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 89.272,
+            "y": 122.395
+          },
+          "idleGroundY": 173,
+          "sourceRootBefore": {
+            "x": 82.395,
+            "y": 125.342
+          },
+          "rootAfter": {
+            "x": 89.395,
+            "y": 126.342
+          },
+          "groundYBefore": 172,
+          "groundYAfter": 173,
+          "rootDeltaX": 0.122,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "foraging",
+          "direction": "east",
+          "requested": {
+            "x": -16,
+            "y": 11
+          },
+          "applied": {
+            "x": -16,
+            "y": 11
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 84.855,
+            "y": 119.892
+          },
+          "idleGroundY": 172,
+          "sourceRootBefore": {
+            "x": 100.778,
+            "y": 113.402
+          },
+          "rootAfter": {
+            "x": 84.778,
+            "y": 124.402
+          },
+          "groundYBefore": 161,
+          "groundYAfter": 172,
+          "rootDeltaX": -0.077,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "foraging",
+          "direction": "northeast",
+          "requested": {
+            "x": -12,
+            "y": 14
+          },
+          "applied": {
+            "x": -12,
+            "y": 14
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 94.315,
+            "y": 126.127
+          },
+          "idleGroundY": 173,
+          "sourceRootBefore": {
+            "x": 106.358,
+            "y": 109.933
+          },
+          "rootAfter": {
+            "x": 94.358,
+            "y": 123.933
+          },
+          "groundYBefore": 159,
+          "groundYAfter": 173,
+          "rootDeltaX": 0.043,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "foraging",
+          "direction": "north",
+          "requested": {
+            "x": -7,
+            "y": -2
+          },
+          "applied": {
+            "x": -7,
+            "y": -2
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 88.704,
+            "y": 117.282
+          },
+          "idleGroundY": 174,
+          "sourceRootBefore": {
+            "x": 95.289,
+            "y": 105.458
+          },
+          "rootAfter": {
+            "x": 88.289,
+            "y": 103.458
+          },
+          "groundYBefore": 176,
+          "groundYAfter": 174,
+          "rootDeltaX": -0.414,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "foraging",
+          "direction": "northwest",
+          "requested": {
+            "x": 6,
+            "y": 15
+          },
+          "applied": {
+            "x": 6,
+            "y": 15
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 87.686,
+            "y": 126.557
+          },
+          "idleGroundY": 174,
+          "sourceRootBefore": {
+            "x": 81.887,
+            "y": 109.911
+          },
+          "rootAfter": {
+            "x": 87.887,
+            "y": 124.911
+          },
+          "groundYBefore": 159,
+          "groundYAfter": 174,
+          "rootDeltaX": 0.201,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "foraging",
+          "direction": "west",
+          "requested": {
+            "x": 4,
+            "y": 13
+          },
+          "applied": {
+            "x": 4,
+            "y": 13
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 88.796,
+            "y": 130.144
+          },
+          "idleGroundY": 174,
+          "sourceRootBefore": {
+            "x": 84.711,
+            "y": 115.039
+          },
+          "rootAfter": {
+            "x": 88.711,
+            "y": 128.039
+          },
+          "groundYBefore": 161,
+          "groundYAfter": 174,
+          "rootDeltaX": -0.085,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "foraging",
+          "direction": "southwest",
+          "requested": {
+            "x": -2,
+            "y": 7
+          },
+          "applied": {
+            "x": -2,
+            "y": 7
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 93.536,
+            "y": 123.278
+          },
+          "idleGroundY": 174,
+          "sourceRootBefore": {
+            "x": 95.835,
+            "y": 109.93
+          },
+          "rootAfter": {
+            "x": 93.835,
+            "y": 116.93
+          },
+          "groundYBefore": 167,
+          "groundYAfter": 174,
+          "rootDeltaX": 0.299,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "foraging",
+          "direction": "south",
+          "requested": {
+            "x": 6,
+            "y": -6
+          },
+          "applied": {
+            "x": 6,
+            "y": -6
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 91.088,
+            "y": 117.108
+          },
+          "idleGroundY": 170,
+          "sourceRootBefore": {
+            "x": 84.864,
+            "y": 104.747
+          },
+          "rootAfter": {
+            "x": 90.864,
+            "y": 98.747
+          },
+          "groundYBefore": 176,
+          "groundYAfter": 170,
+          "rootDeltaX": -0.225,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "foraging",
+          "direction": "southeast",
+          "requested": {
+            "x": 6,
+            "y": 6
+          },
+          "applied": {
+            "x": 6,
+            "y": 6
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 89.272,
+            "y": 122.395
+          },
+          "idleGroundY": 173,
+          "sourceRootBefore": {
+            "x": 82.775,
+            "y": 109.305
+          },
+          "rootAfter": {
+            "x": 88.775,
+            "y": 115.305
+          },
+          "groundYBefore": 167,
+          "groundYAfter": 173,
+          "rootDeltaX": -0.497,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "drinking",
+          "direction": "east",
+          "requested": {
+            "x": -19,
+            "y": 27
+          },
+          "applied": {
+            "x": -19,
+            "y": 27
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 84.855,
+            "y": 119.892
+          },
+          "idleGroundY": 172,
+          "sourceRootBefore": {
+            "x": 104.085,
+            "y": 100.187
+          },
+          "rootAfter": {
+            "x": 85.085,
+            "y": 127.187
+          },
+          "groundYBefore": 145,
+          "groundYAfter": 172,
+          "rootDeltaX": 0.23,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "drinking",
+          "direction": "northeast",
+          "requested": {
+            "x": -16,
+            "y": 28
+          },
+          "applied": {
+            "x": -16,
+            "y": 28
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 94.315,
+            "y": 126.127
+          },
+          "idleGroundY": 173,
+          "sourceRootBefore": {
+            "x": 110.75,
+            "y": 99.66
+          },
+          "rootAfter": {
+            "x": 94.75,
+            "y": 127.66
+          },
+          "groundYBefore": 145,
+          "groundYAfter": 173,
+          "rootDeltaX": 0.435,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "drinking",
+          "direction": "north",
+          "requested": {
+            "x": -6,
+            "y": 18
+          },
+          "applied": {
+            "x": -6,
+            "y": 18
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 88.704,
+            "y": 117.282
+          },
+          "idleGroundY": 174,
+          "sourceRootBefore": {
+            "x": 95.192,
+            "y": 89.098
+          },
+          "rootAfter": {
+            "x": 89.192,
+            "y": 107.098
+          },
+          "groundYBefore": 156,
+          "groundYAfter": 174,
+          "rootDeltaX": 0.489,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "drinking",
+          "direction": "northwest",
+          "requested": {
+            "x": 10,
+            "y": 29
+          },
+          "applied": {
+            "x": 10,
+            "y": 29
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 87.686,
+            "y": 126.557
+          },
+          "idleGroundY": 174,
+          "sourceRootBefore": {
+            "x": 77.47,
+            "y": 99.844
+          },
+          "rootAfter": {
+            "x": 87.47,
+            "y": 128.844
+          },
+          "groundYBefore": 145,
+          "groundYAfter": 174,
+          "rootDeltaX": -0.216,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "drinking",
+          "direction": "west",
+          "requested": {
+            "x": 8,
+            "y": 29
+          },
+          "applied": {
+            "x": 8,
+            "y": 29
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 88.796,
+            "y": 130.144
+          },
+          "idleGroundY": 174,
+          "sourceRootBefore": {
+            "x": 80.404,
+            "y": 100.134
+          },
+          "rootAfter": {
+            "x": 88.404,
+            "y": 129.134
+          },
+          "groundYBefore": 145,
+          "groundYAfter": 174,
+          "rootDeltaX": -0.392,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "drinking",
+          "direction": "southwest",
+          "requested": {
+            "x": 3,
+            "y": 28
+          },
+          "applied": {
+            "x": 3,
+            "y": 28
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 93.536,
+            "y": 123.278
+          },
+          "idleGroundY": 174,
+          "sourceRootBefore": {
+            "x": 90.066,
+            "y": 87.802
+          },
+          "rootAfter": {
+            "x": 93.066,
+            "y": 115.802
+          },
+          "groundYBefore": 146,
+          "groundYAfter": 174,
+          "rootDeltaX": -0.471,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "drinking",
+          "direction": "south",
+          "requested": {
+            "x": 8,
+            "y": 14
+          },
+          "applied": {
+            "x": 8,
+            "y": 14
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 91.088,
+            "y": 117.108
+          },
+          "idleGroundY": 170,
+          "sourceRootBefore": {
+            "x": 83.532,
+            "y": 89.219
+          },
+          "rootAfter": {
+            "x": 91.532,
+            "y": 103.219
+          },
+          "groundYBefore": 156,
+          "groundYAfter": 170,
+          "rootDeltaX": 0.443,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "drinking",
+          "direction": "southeast",
+          "requested": {
+            "x": 2,
+            "y": 27
+          },
+          "applied": {
+            "x": 2,
+            "y": 27
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 89.272,
+            "y": 122.395
+          },
+          "idleGroundY": 173,
+          "sourceRootBefore": {
+            "x": 87.541,
+            "y": 87.533
+          },
+          "rootAfter": {
+            "x": 89.541,
+            "y": 114.533
+          },
+          "groundYBefore": 146,
+          "groundYAfter": 173,
+          "rootDeltaX": 0.269,
+          "groundDeltaY": 0
+        }
+      ]
+    },
+    "deer": {
+      "source": "art-source/prey-actions-v2/sources/deer-actions-source.png",
+      "sourceSha256": "f726dc5107dfabc303d9a3a41e0b8a11aa18650912ae8f6b9c08e94b57bb2608",
+      "movement": "public/assets/prey-v2/deer-atlas.png",
+      "movementSha256": "3892bbac8ffcd4855601988beaa35cc30ef761995a4ef265adeb2170a0467d81",
+      "movementQuality": {
+        "faintAlphaPixels": 0,
+        "edgePixels": 0,
+        "minVisiblePixels": 2818,
+        "minimumUniquePoses": 2
+      },
+      "idleAlignment": [
+        {
+          "direction": "east",
+          "phase": 0,
+          "requested": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "applied": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 89.044,
+            "y": 110.781
+          },
+          "idleGroundY": 168,
+          "sourceRootBefore": {
+            "x": 89.044,
+            "y": 110.781
+          },
+          "rootAfter": {
+            "x": 89.044,
+            "y": 110.781
+          },
+          "groundYBefore": 168,
+          "groundYAfter": 168,
+          "rootDeltaX": 0,
+          "rootDeltaY": 0,
+          "groundDeltaY": 0
+        },
+        {
+          "direction": "east",
+          "phase": 1,
+          "requested": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "applied": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 89.044,
+            "y": 110.781
+          },
+          "idleGroundY": 168,
+          "sourceRootBefore": {
+            "x": 89.124,
+            "y": 110.88
+          },
+          "rootAfter": {
+            "x": 89.124,
+            "y": 110.88
+          },
+          "groundYBefore": 168,
+          "groundYAfter": 168,
+          "rootDeltaX": 0.08,
+          "rootDeltaY": 0.099,
+          "groundDeltaY": 0
+        },
+        {
+          "direction": "northeast",
+          "phase": 0,
+          "requested": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "applied": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 79.465,
+            "y": 102.024
+          },
+          "idleGroundY": 159,
+          "sourceRootBefore": {
+            "x": 79.465,
+            "y": 102.024
+          },
+          "rootAfter": {
+            "x": 79.465,
+            "y": 102.024
+          },
+          "groundYBefore": 159,
+          "groundYAfter": 159,
+          "rootDeltaX": 0,
+          "rootDeltaY": 0,
+          "groundDeltaY": 0
+        },
+        {
+          "direction": "northeast",
+          "phase": 1,
+          "requested": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "applied": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 79.465,
+            "y": 102.024
+          },
+          "idleGroundY": 159,
+          "sourceRootBefore": {
+            "x": 79.02,
+            "y": 101.685
+          },
+          "rootAfter": {
+            "x": 79.02,
+            "y": 101.685
+          },
+          "groundYBefore": 159,
+          "groundYAfter": 159,
+          "rootDeltaX": -0.445,
+          "rootDeltaY": -0.339,
+          "groundDeltaY": 0
+        },
+        {
+          "direction": "north",
+          "phase": 0,
+          "requested": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "applied": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 90.197,
+            "y": 117.834
+          },
+          "idleGroundY": 174,
+          "sourceRootBefore": {
+            "x": 90.197,
+            "y": 117.834
+          },
+          "rootAfter": {
+            "x": 90.197,
+            "y": 117.834
+          },
+          "groundYBefore": 174,
+          "groundYAfter": 174,
+          "rootDeltaX": 0,
+          "rootDeltaY": 0,
+          "groundDeltaY": 0
+        },
+        {
+          "direction": "north",
+          "phase": 1,
+          "requested": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "applied": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 90.197,
+            "y": 117.834
+          },
+          "idleGroundY": 174,
+          "sourceRootBefore": {
+            "x": 90.526,
+            "y": 118.252
+          },
+          "rootAfter": {
+            "x": 90.526,
+            "y": 118.252
+          },
+          "groundYBefore": 174,
+          "groundYAfter": 174,
+          "rootDeltaX": 0.33,
+          "rootDeltaY": 0.418,
+          "groundDeltaY": 0
+        },
+        {
+          "direction": "northwest",
+          "phase": 0,
+          "requested": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "applied": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 100.535,
+            "y": 102.024
+          },
+          "idleGroundY": 159,
+          "sourceRootBefore": {
+            "x": 100.535,
+            "y": 102.024
+          },
+          "rootAfter": {
+            "x": 100.535,
+            "y": 102.024
+          },
+          "groundYBefore": 159,
+          "groundYAfter": 159,
+          "rootDeltaX": 0,
+          "rootDeltaY": 0,
+          "groundDeltaY": 0
+        },
+        {
+          "direction": "northwest",
+          "phase": 1,
+          "requested": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "applied": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 100.535,
+            "y": 102.024
+          },
+          "idleGroundY": 159,
+          "sourceRootBefore": {
+            "x": 100.98,
+            "y": 101.685
+          },
+          "rootAfter": {
+            "x": 100.98,
+            "y": 101.685
+          },
+          "groundYBefore": 159,
+          "groundYAfter": 159,
+          "rootDeltaX": 0.445,
+          "rootDeltaY": -0.339,
+          "groundDeltaY": 0
+        },
+        {
+          "direction": "west",
+          "phase": 0,
+          "requested": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "applied": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 81.891,
+            "y": 99.244
+          },
+          "idleGroundY": 155,
+          "sourceRootBefore": {
+            "x": 81.891,
+            "y": 99.244
+          },
+          "rootAfter": {
+            "x": 81.891,
+            "y": 99.244
+          },
+          "groundYBefore": 155,
+          "groundYAfter": 155,
+          "rootDeltaX": 0,
+          "rootDeltaY": 0,
+          "groundDeltaY": 0
+        },
+        {
+          "direction": "west",
+          "phase": 1,
+          "requested": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "applied": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 81.891,
+            "y": 99.244
+          },
+          "idleGroundY": 155,
+          "sourceRootBefore": {
+            "x": 81.71,
+            "y": 98.917
+          },
+          "rootAfter": {
+            "x": 81.71,
+            "y": 98.917
+          },
+          "groundYBefore": 155,
+          "groundYAfter": 155,
+          "rootDeltaX": -0.181,
+          "rootDeltaY": -0.327,
+          "groundDeltaY": 0
+        },
+        {
+          "direction": "southwest",
+          "phase": 0,
+          "requested": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "applied": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 90.088,
+            "y": 113.65
+          },
+          "idleGroundY": 171,
+          "sourceRootBefore": {
+            "x": 90.088,
+            "y": 113.65
+          },
+          "rootAfter": {
+            "x": 90.088,
+            "y": 113.65
+          },
+          "groundYBefore": 171,
+          "groundYAfter": 171,
+          "rootDeltaX": 0,
+          "rootDeltaY": 0,
+          "groundDeltaY": 0
+        },
+        {
+          "direction": "southwest",
+          "phase": 1,
+          "requested": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "applied": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 90.088,
+            "y": 113.65
+          },
+          "idleGroundY": 171,
+          "sourceRootBefore": {
+            "x": 90.539,
+            "y": 113.403
+          },
+          "rootAfter": {
+            "x": 90.539,
+            "y": 113.403
+          },
+          "groundYBefore": 171,
+          "groundYAfter": 171,
+          "rootDeltaX": 0.451,
+          "rootDeltaY": -0.247,
+          "groundDeltaY": 0
+        },
+        {
+          "direction": "south",
+          "phase": 0,
+          "requested": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "applied": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 75.966,
+            "y": 112.776
+          },
+          "idleGroundY": 166,
+          "sourceRootBefore": {
+            "x": 75.966,
+            "y": 112.776
+          },
+          "rootAfter": {
+            "x": 75.966,
+            "y": 112.776
+          },
+          "groundYBefore": 166,
+          "groundYAfter": 166,
+          "rootDeltaX": 0,
+          "rootDeltaY": 0,
+          "groundDeltaY": 0
+        },
+        {
+          "direction": "south",
+          "phase": 1,
+          "requested": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "applied": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 75.966,
+            "y": 112.776
+          },
+          "idleGroundY": 166,
+          "sourceRootBefore": {
+            "x": 75.557,
+            "y": 112.96
+          },
+          "rootAfter": {
+            "x": 75.557,
+            "y": 112.96
+          },
+          "groundYBefore": 166,
+          "groundYAfter": 166,
+          "rootDeltaX": -0.409,
+          "rootDeltaY": 0.184,
+          "groundDeltaY": 0
+        },
+        {
+          "direction": "southeast",
+          "phase": 0,
+          "requested": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "applied": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 86.84,
+            "y": 96.195
+          },
+          "idleGroundY": 156,
+          "sourceRootBefore": {
+            "x": 86.84,
+            "y": 96.195
+          },
+          "rootAfter": {
+            "x": 86.84,
+            "y": 96.195
+          },
+          "groundYBefore": 156,
+          "groundYAfter": 156,
+          "rootDeltaX": 0,
+          "rootDeltaY": 0,
+          "groundDeltaY": 0
+        },
+        {
+          "direction": "southeast",
+          "phase": 1,
+          "requested": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "applied": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 86.84,
+            "y": 96.195
+          },
+          "idleGroundY": 156,
+          "sourceRootBefore": {
+            "x": 87.073,
+            "y": 96.039
+          },
+          "rootAfter": {
+            "x": 87.073,
+            "y": 96.039
+          },
+          "groundYBefore": 156,
+          "groundYAfter": 156,
+          "rootDeltaX": 0.234,
+          "rootDeltaY": -0.156,
+          "groundDeltaY": 0
+        }
+      ],
+      "output": "public/assets/prey-v2/deer-actions.png",
+      "outputSha256": "a03511413322bd6e905690694af846decaa81d616146221661ad152081a4a6ee",
+      "width": 1448,
+      "height": 2172,
+      "frames": 96,
+      "quality": {
+        "faintAlphaPixels": 0,
+        "edgePixels": 0,
+        "minVisiblePixels": 4881,
+        "minimumUniquePoses": 4
+      },
+      "alignment": [
+        {
+          "action": "resting",
+          "direction": "east",
+          "requested": {
+            "x": -6,
+            "y": 21
+          },
+          "applied": {
+            "x": -6,
+            "y": 21
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 89.044,
+            "y": 110.781
+          },
+          "idleGroundY": 168,
+          "sourceRootBefore": {
+            "x": 94.855,
+            "y": 111.221
+          },
+          "rootAfter": {
+            "x": 88.855,
+            "y": 132.221
+          },
+          "groundYBefore": 147,
+          "groundYAfter": 168,
+          "rootDeltaX": -0.19,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "resting",
+          "direction": "northeast",
+          "requested": {
+            "x": -12,
+            "y": 12
+          },
+          "applied": {
+            "x": -12,
+            "y": 12
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 79.465,
+            "y": 102.024
+          },
+          "idleGroundY": 159,
+          "sourceRootBefore": {
+            "x": 91.623,
+            "y": 110.783
+          },
+          "rootAfter": {
+            "x": 79.623,
+            "y": 122.783
+          },
+          "groundYBefore": 147,
+          "groundYAfter": 159,
+          "rootDeltaX": 0.158,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "resting",
+          "direction": "north",
+          "requested": {
+            "x": 0,
+            "y": 16
+          },
+          "applied": {
+            "x": 0,
+            "y": 16
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 90.197,
+            "y": 117.834
+          },
+          "idleGroundY": 174,
+          "sourceRootBefore": {
+            "x": 89.861,
+            "y": 108.16
+          },
+          "rootAfter": {
+            "x": 89.861,
+            "y": 124.16
+          },
+          "groundYBefore": 158,
+          "groundYAfter": 174,
+          "rootDeltaX": -0.335,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "resting",
+          "direction": "northwest",
+          "requested": {
+            "x": 12,
+            "y": 12
+          },
+          "applied": {
+            "x": 12,
+            "y": 12
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 100.535,
+            "y": 102.024
+          },
+          "idleGroundY": 159,
+          "sourceRootBefore": {
+            "x": 88.377,
+            "y": 110.783
+          },
+          "rootAfter": {
+            "x": 100.377,
+            "y": 122.783
+          },
+          "groundYBefore": 147,
+          "groundYAfter": 159,
+          "rootDeltaX": -0.158,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "resting",
+          "direction": "west",
+          "requested": {
+            "x": -2,
+            "y": 9
+          },
+          "applied": {
+            "x": -2,
+            "y": 9
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 81.891,
+            "y": 99.244
+          },
+          "idleGroundY": 155,
+          "sourceRootBefore": {
+            "x": 83.962,
+            "y": 109.126
+          },
+          "rootAfter": {
+            "x": 81.962,
+            "y": 118.126
+          },
+          "groundYBefore": 146,
+          "groundYAfter": 155,
+          "rootDeltaX": 0.071,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "resting",
+          "direction": "southwest",
+          "requested": {
+            "x": -2,
+            "y": 13
+          },
+          "applied": {
+            "x": -2,
+            "y": 13
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 90.088,
+            "y": 113.65
+          },
+          "idleGroundY": 171,
+          "sourceRootBefore": {
+            "x": 91.814,
+            "y": 118.649
+          },
+          "rootAfter": {
+            "x": 89.814,
+            "y": 131.649
+          },
+          "groundYBefore": 158,
+          "groundYAfter": 171,
+          "rootDeltaX": -0.274,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "resting",
+          "direction": "south",
+          "requested": {
+            "x": -10,
+            "y": 2
+          },
+          "applied": {
+            "x": -10,
+            "y": 2
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 75.966,
+            "y": 112.776
+          },
+          "idleGroundY": 166,
+          "sourceRootBefore": {
+            "x": 86.057,
+            "y": 104.366
+          },
+          "rootAfter": {
+            "x": 76.057,
+            "y": 106.366
+          },
+          "groundYBefore": 164,
+          "groundYAfter": 166,
+          "rootDeltaX": 0.091,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "resting",
+          "direction": "southeast",
+          "requested": {
+            "x": 5,
+            "y": -2
+          },
+          "applied": {
+            "x": 5,
+            "y": -2
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 86.84,
+            "y": 96.195
+          },
+          "idleGroundY": 156,
+          "sourceRootBefore": {
+            "x": 81.633,
+            "y": 116.933
+          },
+          "rootAfter": {
+            "x": 86.633,
+            "y": 114.933
+          },
+          "groundYBefore": 158,
+          "groundYAfter": 156,
+          "rootDeltaX": -0.207,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "foraging",
+          "direction": "east",
+          "requested": {
+            "x": -3,
+            "y": 22
+          },
+          "applied": {
+            "x": -3,
+            "y": 22
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 89.044,
+            "y": 110.781
+          },
+          "idleGroundY": 168,
+          "sourceRootBefore": {
+            "x": 92.499,
+            "y": 90.946
+          },
+          "rootAfter": {
+            "x": 89.499,
+            "y": 112.946
+          },
+          "groundYBefore": 146,
+          "groundYAfter": 168,
+          "rootDeltaX": 0.454,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "foraging",
+          "direction": "northeast",
+          "requested": {
+            "x": -18,
+            "y": 11
+          },
+          "applied": {
+            "x": -18,
+            "y": 11
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 79.465,
+            "y": 102.024
+          },
+          "idleGroundY": 159,
+          "sourceRootBefore": {
+            "x": 96.995,
+            "y": 85.17
+          },
+          "rootAfter": {
+            "x": 78.995,
+            "y": 96.17
+          },
+          "groundYBefore": 148,
+          "groundYAfter": 159,
+          "rootDeltaX": -0.47,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "foraging",
+          "direction": "north",
+          "requested": {
+            "x": 0,
+            "y": 23
+          },
+          "applied": {
+            "x": 0,
+            "y": 23
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 90.197,
+            "y": 117.834
+          },
+          "idleGroundY": 174,
+          "sourceRootBefore": {
+            "x": 90.037,
+            "y": 84.808
+          },
+          "rootAfter": {
+            "x": 90.037,
+            "y": 107.808
+          },
+          "groundYBefore": 151,
+          "groundYAfter": 174,
+          "rootDeltaX": -0.16,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "foraging",
+          "direction": "northwest",
+          "requested": {
+            "x": 18,
+            "y": 11
+          },
+          "applied": {
+            "x": 18,
+            "y": 11
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 100.535,
+            "y": 102.024
+          },
+          "idleGroundY": 159,
+          "sourceRootBefore": {
+            "x": 83.005,
+            "y": 85.17
+          },
+          "rootAfter": {
+            "x": 101.005,
+            "y": 96.17
+          },
+          "groundYBefore": 148,
+          "groundYAfter": 159,
+          "rootDeltaX": 0.47,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "foraging",
+          "direction": "west",
+          "requested": {
+            "x": -4,
+            "y": 9
+          },
+          "applied": {
+            "x": -4,
+            "y": 9
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 81.891,
+            "y": 99.244
+          },
+          "idleGroundY": 155,
+          "sourceRootBefore": {
+            "x": 85.565,
+            "y": 90.121
+          },
+          "rootAfter": {
+            "x": 81.565,
+            "y": 99.121
+          },
+          "groundYBefore": 146,
+          "groundYAfter": 155,
+          "rootDeltaX": -0.325,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "foraging",
+          "direction": "southwest",
+          "requested": {
+            "x": -4,
+            "y": 21
+          },
+          "applied": {
+            "x": -4,
+            "y": 21
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 90.088,
+            "y": 113.65
+          },
+          "idleGroundY": 171,
+          "sourceRootBefore": {
+            "x": 93.712,
+            "y": 88.201
+          },
+          "rootAfter": {
+            "x": 89.712,
+            "y": 109.201
+          },
+          "groundYBefore": 150,
+          "groundYAfter": 171,
+          "rootDeltaX": -0.376,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "foraging",
+          "direction": "south",
+          "requested": {
+            "x": -10,
+            "y": 15
+          },
+          "applied": {
+            "x": -10,
+            "y": 15
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 75.966,
+            "y": 112.776
+          },
+          "idleGroundY": 166,
+          "sourceRootBefore": {
+            "x": 85.881,
+            "y": 88.873
+          },
+          "rootAfter": {
+            "x": 75.881,
+            "y": 103.873
+          },
+          "groundYBefore": 151,
+          "groundYAfter": 166,
+          "rootDeltaX": -0.085,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "foraging",
+          "direction": "southeast",
+          "requested": {
+            "x": 5,
+            "y": 6
+          },
+          "applied": {
+            "x": 5,
+            "y": 6
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 86.84,
+            "y": 96.195
+          },
+          "idleGroundY": 156,
+          "sourceRootBefore": {
+            "x": 81.891,
+            "y": 87.922
+          },
+          "rootAfter": {
+            "x": 86.891,
+            "y": 93.922
+          },
+          "groundYBefore": 150,
+          "groundYAfter": 156,
+          "rootDeltaX": 0.051,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "drinking",
+          "direction": "east",
+          "requested": {
+            "x": -8,
+            "y": 33
+          },
+          "applied": {
+            "x": -8,
+            "y": 33
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 89.044,
+            "y": 110.781
+          },
+          "idleGroundY": 168,
+          "sourceRootBefore": {
+            "x": 96.964,
+            "y": 82.118
+          },
+          "rootAfter": {
+            "x": 88.964,
+            "y": 115.118
+          },
+          "groundYBefore": 135,
+          "groundYAfter": 168,
+          "rootDeltaX": -0.08,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "drinking",
+          "direction": "northeast",
+          "requested": {
+            "x": -18,
+            "y": 29
+          },
+          "applied": {
+            "x": -18,
+            "y": 29
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 79.465,
+            "y": 102.024
+          },
+          "idleGroundY": 159,
+          "sourceRootBefore": {
+            "x": 97.532,
+            "y": 71.498
+          },
+          "rootAfter": {
+            "x": 79.532,
+            "y": 100.498
+          },
+          "groundYBefore": 130,
+          "groundYAfter": 159,
+          "rootDeltaX": 0.067,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "drinking",
+          "direction": "north",
+          "requested": {
+            "x": 0,
+            "y": 36
+          },
+          "applied": {
+            "x": 0,
+            "y": 36
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 90.197,
+            "y": 117.834
+          },
+          "idleGroundY": 174,
+          "sourceRootBefore": {
+            "x": 90.12,
+            "y": 63.714
+          },
+          "rootAfter": {
+            "x": 90.12,
+            "y": 99.714
+          },
+          "groundYBefore": 138,
+          "groundYAfter": 174,
+          "rootDeltaX": -0.077,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "drinking",
+          "direction": "northwest",
+          "requested": {
+            "x": 18,
+            "y": 29
+          },
+          "applied": {
+            "x": 18,
+            "y": 29
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 100.535,
+            "y": 102.024
+          },
+          "idleGroundY": 159,
+          "sourceRootBefore": {
+            "x": 82.468,
+            "y": 71.498
+          },
+          "rootAfter": {
+            "x": 100.468,
+            "y": 100.498
+          },
+          "groundYBefore": 130,
+          "groundYAfter": 159,
+          "rootDeltaX": -0.067,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "drinking",
+          "direction": "west",
+          "requested": {
+            "x": -1,
+            "y": 20
+          },
+          "applied": {
+            "x": -1,
+            "y": 20
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 81.891,
+            "y": 99.244
+          },
+          "idleGroundY": 155,
+          "sourceRootBefore": {
+            "x": 83.242,
+            "y": 82.131
+          },
+          "rootAfter": {
+            "x": 82.242,
+            "y": 102.131
+          },
+          "groundYBefore": 135,
+          "groundYAfter": 155,
+          "rootDeltaX": 0.351,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "drinking",
+          "direction": "southwest",
+          "requested": {
+            "x": -4,
+            "y": 34
+          },
+          "applied": {
+            "x": -4,
+            "y": 34
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 90.088,
+            "y": 113.65
+          },
+          "idleGroundY": 171,
+          "sourceRootBefore": {
+            "x": 93.664,
+            "y": 75.956
+          },
+          "rootAfter": {
+            "x": 89.664,
+            "y": 109.956
+          },
+          "groundYBefore": 137,
+          "groundYAfter": 171,
+          "rootDeltaX": -0.423,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "drinking",
+          "direction": "south",
+          "requested": {
+            "x": -10,
+            "y": 22
+          },
+          "applied": {
+            "x": -10,
+            "y": 22
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 75.966,
+            "y": 112.776
+          },
+          "idleGroundY": 166,
+          "sourceRootBefore": {
+            "x": 86.275,
+            "y": 70.659
+          },
+          "rootAfter": {
+            "x": 76.275,
+            "y": 92.659
+          },
+          "groundYBefore": 144,
+          "groundYAfter": 166,
+          "rootDeltaX": 0.309,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "drinking",
+          "direction": "southeast",
+          "requested": {
+            "x": 5,
+            "y": 20
+          },
+          "applied": {
+            "x": 5,
+            "y": 20
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 86.84,
+            "y": 96.195
+          },
+          "idleGroundY": 156,
+          "sourceRootBefore": {
+            "x": 82.036,
+            "y": 75.411
+          },
+          "rootAfter": {
+            "x": 87.036,
+            "y": 95.411
+          },
+          "groundYBefore": 136,
+          "groundYAfter": 156,
+          "rootDeltaX": 0.197,
+          "groundDeltaY": 0
+        }
+      ]
+    },
+    "elk": {
+      "source": "art-source/prey-actions-v2/sources/elk-actions-source.png",
+      "sourceSha256": "42c06f50d1d0fc9804d9e806ef0d87cb2bbecb1658e6d45672ca813f99a1b9e5",
+      "movement": "public/assets/prey-v3/elk-atlas.png",
+      "movementSha256": "b82567cfa63577f676106ac7712a71d512b28aaf847aa76f6e64bec1787d7b66",
+      "movementQuality": {
+        "faintAlphaPixels": 0,
+        "edgePixels": 0,
+        "minVisiblePixels": 5140,
+        "minimumUniquePoses": 2
+      },
+      "idleAlignment": [
+        {
+          "direction": "east",
+          "phase": 0,
+          "requested": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "applied": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 92.584,
+            "y": 120.556
+          },
+          "idleGroundY": 178,
+          "sourceRootBefore": {
+            "x": 92.584,
+            "y": 120.556
+          },
+          "rootAfter": {
+            "x": 92.584,
+            "y": 120.556
+          },
+          "groundYBefore": 178,
+          "groundYAfter": 178,
+          "rootDeltaX": 0,
+          "rootDeltaY": 0,
+          "groundDeltaY": 0
+        },
+        {
+          "direction": "east",
+          "phase": 1,
+          "requested": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "applied": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 92.584,
+            "y": 120.556
+          },
+          "idleGroundY": 178,
+          "sourceRootBefore": {
+            "x": 92.522,
+            "y": 121.031
+          },
+          "rootAfter": {
+            "x": 92.522,
+            "y": 121.031
+          },
+          "groundYBefore": 178,
+          "groundYAfter": 178,
+          "rootDeltaX": -0.062,
+          "rootDeltaY": 0.475,
+          "groundDeltaY": 0
+        },
+        {
+          "direction": "northeast",
+          "phase": 0,
+          "requested": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "applied": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 93.39,
+            "y": 102.881
+          },
+          "idleGroundY": 178,
+          "sourceRootBefore": {
+            "x": 93.39,
+            "y": 102.881
+          },
+          "rootAfter": {
+            "x": 93.39,
+            "y": 102.881
+          },
+          "groundYBefore": 178,
+          "groundYAfter": 178,
+          "rootDeltaX": 0,
+          "rootDeltaY": 0,
+          "groundDeltaY": 0
+        },
+        {
+          "direction": "northeast",
+          "phase": 1,
+          "requested": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "applied": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 93.39,
+            "y": 102.881
+          },
+          "idleGroundY": 178,
+          "sourceRootBefore": {
+            "x": 93.257,
+            "y": 103.146
+          },
+          "rootAfter": {
+            "x": 93.257,
+            "y": 103.146
+          },
+          "groundYBefore": 178,
+          "groundYAfter": 178,
+          "rootDeltaX": -0.133,
+          "rootDeltaY": 0.265,
+          "groundDeltaY": 0
+        },
+        {
+          "direction": "north",
+          "phase": 0,
+          "requested": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "applied": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 90.342,
+            "y": 96.753
+          },
+          "idleGroundY": 178,
+          "sourceRootBefore": {
+            "x": 90.342,
+            "y": 96.753
+          },
+          "rootAfter": {
+            "x": 90.342,
+            "y": 96.753
+          },
+          "groundYBefore": 178,
+          "groundYAfter": 178,
+          "rootDeltaX": 0,
+          "rootDeltaY": 0,
+          "groundDeltaY": 0
+        },
+        {
+          "direction": "north",
+          "phase": 1,
+          "requested": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "applied": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 90.342,
+            "y": 96.753
+          },
+          "idleGroundY": 178,
+          "sourceRootBefore": {
+            "x": 90.28,
+            "y": 97.209
+          },
+          "rootAfter": {
+            "x": 90.28,
+            "y": 97.209
+          },
+          "groundYBefore": 178,
+          "groundYAfter": 178,
+          "rootDeltaX": -0.061,
+          "rootDeltaY": 0.456,
+          "groundDeltaY": 0
+        },
+        {
+          "direction": "northwest",
+          "phase": 0,
+          "requested": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "applied": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 87.346,
+            "y": 104.613
+          },
+          "idleGroundY": 178,
+          "sourceRootBefore": {
+            "x": 87.346,
+            "y": 104.613
+          },
+          "rootAfter": {
+            "x": 87.346,
+            "y": 104.613
+          },
+          "groundYBefore": 178,
+          "groundYAfter": 178,
+          "rootDeltaX": 0,
+          "rootDeltaY": 0,
+          "groundDeltaY": 0
+        },
+        {
+          "direction": "northwest",
+          "phase": 1,
+          "requested": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "applied": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 87.346,
+            "y": 104.613
+          },
+          "idleGroundY": 178,
+          "sourceRootBefore": {
+            "x": 87.753,
+            "y": 104.686
+          },
+          "rootAfter": {
+            "x": 87.753,
+            "y": 104.686
+          },
+          "groundYBefore": 178,
+          "groundYAfter": 178,
+          "rootDeltaX": 0.407,
+          "rootDeltaY": 0.073,
+          "groundDeltaY": 0
+        },
+        {
+          "direction": "west",
+          "phase": 0,
+          "requested": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "applied": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 93.877,
+            "y": 121.845
+          },
+          "idleGroundY": 178,
+          "sourceRootBefore": {
+            "x": 93.877,
+            "y": 121.845
+          },
+          "rootAfter": {
+            "x": 93.877,
+            "y": 121.845
+          },
+          "groundYBefore": 178,
+          "groundYAfter": 178,
+          "rootDeltaX": 0,
+          "rootDeltaY": 0,
+          "groundDeltaY": 0
+        },
+        {
+          "direction": "west",
+          "phase": 1,
+          "requested": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "applied": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 93.877,
+            "y": 121.845
+          },
+          "idleGroundY": 178,
+          "sourceRootBefore": {
+            "x": 93.906,
+            "y": 122.24
+          },
+          "rootAfter": {
+            "x": 93.906,
+            "y": 122.24
+          },
+          "groundYBefore": 178,
+          "groundYAfter": 178,
+          "rootDeltaX": 0.029,
+          "rootDeltaY": 0.396,
+          "groundDeltaY": 0
+        },
+        {
+          "direction": "southwest",
+          "phase": 0,
+          "requested": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "applied": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 95.713,
+            "y": 107.325
+          },
+          "idleGroundY": 178,
+          "sourceRootBefore": {
+            "x": 95.713,
+            "y": 107.325
+          },
+          "rootAfter": {
+            "x": 95.713,
+            "y": 107.325
+          },
+          "groundYBefore": 178,
+          "groundYAfter": 178,
+          "rootDeltaX": 0,
+          "rootDeltaY": 0,
+          "groundDeltaY": 0
+        },
+        {
+          "direction": "southwest",
+          "phase": 1,
+          "requested": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "applied": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 95.713,
+            "y": 107.325
+          },
+          "idleGroundY": 178,
+          "sourceRootBefore": {
+            "x": 95.464,
+            "y": 107.774
+          },
+          "rootAfter": {
+            "x": 95.464,
+            "y": 107.774
+          },
+          "groundYBefore": 178,
+          "groundYAfter": 178,
+          "rootDeltaX": -0.249,
+          "rootDeltaY": 0.449,
+          "groundDeltaY": 0
+        },
+        {
+          "direction": "south",
+          "phase": 0,
+          "requested": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "applied": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 90.257,
+            "y": 101.592
+          },
+          "idleGroundY": 178,
+          "sourceRootBefore": {
+            "x": 90.257,
+            "y": 101.592
+          },
+          "rootAfter": {
+            "x": 90.257,
+            "y": 101.592
+          },
+          "groundYBefore": 178,
+          "groundYAfter": 178,
+          "rootDeltaX": 0,
+          "rootDeltaY": 0,
+          "groundDeltaY": 0
+        },
+        {
+          "direction": "south",
+          "phase": 1,
+          "requested": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "applied": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 90.257,
+            "y": 101.592
+          },
+          "idleGroundY": 178,
+          "sourceRootBefore": {
+            "x": 90.292,
+            "y": 101.482
+          },
+          "rootAfter": {
+            "x": 90.292,
+            "y": 101.482
+          },
+          "groundYBefore": 178,
+          "groundYAfter": 178,
+          "rootDeltaX": 0.035,
+          "rootDeltaY": -0.109,
+          "groundDeltaY": 0
+        },
+        {
+          "direction": "southeast",
+          "phase": 0,
+          "requested": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "applied": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 85.61,
+            "y": 107.589
+          },
+          "idleGroundY": 178,
+          "sourceRootBefore": {
+            "x": 85.61,
+            "y": 107.589
+          },
+          "rootAfter": {
+            "x": 85.61,
+            "y": 107.589
+          },
+          "groundYBefore": 178,
+          "groundYAfter": 178,
+          "rootDeltaX": 0,
+          "rootDeltaY": 0,
+          "groundDeltaY": 0
+        },
+        {
+          "direction": "southeast",
+          "phase": 1,
+          "requested": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "applied": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 85.61,
+            "y": 107.589
+          },
+          "idleGroundY": 178,
+          "sourceRootBefore": {
+            "x": 85.363,
+            "y": 108.004
+          },
+          "rootAfter": {
+            "x": 85.363,
+            "y": 108.004
+          },
+          "groundYBefore": 178,
+          "groundYAfter": 178,
+          "rootDeltaX": -0.247,
+          "rootDeltaY": 0.415,
+          "groundDeltaY": 0
+        }
+      ],
+      "output": "public/assets/prey-v3/elk-actions.png",
+      "outputSha256": "97a3068405d9b04250c301b665e225184b3aff412943d9e6d041715fea27219a",
+      "width": 1448,
+      "height": 2172,
+      "frames": 96,
+      "quality": {
+        "faintAlphaPixels": 0,
+        "edgePixels": 0,
+        "minVisiblePixels": 6451,
+        "minimumUniquePoses": 4
+      },
+      "alignment": [
+        {
+          "action": "resting",
+          "direction": "east",
+          "requested": {
+            "x": -2,
+            "y": 20
+          },
+          "applied": {
+            "x": -2,
+            "y": 20
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 92.584,
+            "y": 120.556
+          },
+          "idleGroundY": 178,
+          "sourceRootBefore": {
+            "x": 94.999,
+            "y": 123.344
+          },
+          "rootAfter": {
+            "x": 92.999,
+            "y": 143.344
+          },
+          "groundYBefore": 158,
+          "groundYAfter": 178,
+          "rootDeltaX": 0.415,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "resting",
+          "direction": "northeast",
+          "requested": {
+            "x": -9,
+            "y": 13
+          },
+          "applied": {
+            "x": -9,
+            "y": 13
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 93.39,
+            "y": 102.881
+          },
+          "idleGroundY": 178,
+          "sourceRootBefore": {
+            "x": 102.733,
+            "y": 115.466
+          },
+          "rootAfter": {
+            "x": 93.733,
+            "y": 128.466
+          },
+          "groundYBefore": 165,
+          "groundYAfter": 178,
+          "rootDeltaX": 0.343,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "resting",
+          "direction": "north",
+          "requested": {
+            "x": -5,
+            "y": 13
+          },
+          "applied": {
+            "x": -5,
+            "y": 13
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 90.342,
+            "y": 96.753
+          },
+          "idleGroundY": 178,
+          "sourceRootBefore": {
+            "x": 95.193,
+            "y": 108.588
+          },
+          "rootAfter": {
+            "x": 90.193,
+            "y": 121.588
+          },
+          "groundYBefore": 165,
+          "groundYAfter": 178,
+          "rootDeltaX": -0.149,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "resting",
+          "direction": "northwest",
+          "requested": {
+            "x": -4,
+            "y": 11
+          },
+          "applied": {
+            "x": -4,
+            "y": 11
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 87.346,
+            "y": 104.613
+          },
+          "idleGroundY": 178,
+          "sourceRootBefore": {
+            "x": 91.353,
+            "y": 118.685
+          },
+          "rootAfter": {
+            "x": 87.353,
+            "y": 129.685
+          },
+          "groundYBefore": 167,
+          "groundYAfter": 178,
+          "rootDeltaX": 0.007,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "resting",
+          "direction": "west",
+          "requested": {
+            "x": -5,
+            "y": 17
+          },
+          "applied": {
+            "x": -5,
+            "y": 17
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 93.877,
+            "y": 121.845
+          },
+          "idleGroundY": 178,
+          "sourceRootBefore": {
+            "x": 99.197,
+            "y": 126.354
+          },
+          "rootAfter": {
+            "x": 94.197,
+            "y": 143.354
+          },
+          "groundYBefore": 161,
+          "groundYAfter": 178,
+          "rootDeltaX": 0.32,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "resting",
+          "direction": "southwest",
+          "requested": {
+            "x": -7,
+            "y": 10
+          },
+          "applied": {
+            "x": -7,
+            "y": 10
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 95.713,
+            "y": 107.325
+          },
+          "idleGroundY": 178,
+          "sourceRootBefore": {
+            "x": 102.752,
+            "y": 116.583
+          },
+          "rootAfter": {
+            "x": 95.752,
+            "y": 126.583
+          },
+          "groundYBefore": 168,
+          "groundYAfter": 178,
+          "rootDeltaX": 0.039,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "resting",
+          "direction": "south",
+          "requested": {
+            "x": 3,
+            "y": 0
+          },
+          "applied": {
+            "x": 3,
+            "y": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 90.257,
+            "y": 101.592
+          },
+          "idleGroundY": 178,
+          "sourceRootBefore": {
+            "x": 87.146,
+            "y": 111.302
+          },
+          "rootAfter": {
+            "x": 90.146,
+            "y": 111.302
+          },
+          "groundYBefore": 178,
+          "groundYAfter": 178,
+          "rootDeltaX": -0.112,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "resting",
+          "direction": "southeast",
+          "requested": {
+            "x": 12,
+            "y": 11
+          },
+          "applied": {
+            "x": 12,
+            "y": 11
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 85.61,
+            "y": 107.589
+          },
+          "idleGroundY": 178,
+          "sourceRootBefore": {
+            "x": 73.985,
+            "y": 116.49
+          },
+          "rootAfter": {
+            "x": 85.985,
+            "y": 127.49
+          },
+          "groundYBefore": 167,
+          "groundYAfter": 178,
+          "rootDeltaX": 0.375,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "foraging",
+          "direction": "east",
+          "requested": {
+            "x": -4,
+            "y": 17
+          },
+          "applied": {
+            "x": -4,
+            "y": 17
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 92.584,
+            "y": 120.556
+          },
+          "idleGroundY": 178,
+          "sourceRootBefore": {
+            "x": 96.421,
+            "y": 92.401
+          },
+          "rootAfter": {
+            "x": 92.421,
+            "y": 109.401
+          },
+          "groundYBefore": 161,
+          "groundYAfter": 178,
+          "rootDeltaX": -0.163,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "foraging",
+          "direction": "northeast",
+          "requested": {
+            "x": 2,
+            "y": 7
+          },
+          "applied": {
+            "x": 2,
+            "y": 7
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 93.39,
+            "y": 102.881
+          },
+          "idleGroundY": 178,
+          "sourceRootBefore": {
+            "x": 91.179,
+            "y": 84.811
+          },
+          "rootAfter": {
+            "x": 93.179,
+            "y": 91.811
+          },
+          "groundYBefore": 171,
+          "groundYAfter": 178,
+          "rootDeltaX": -0.21,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "foraging",
+          "direction": "north",
+          "requested": {
+            "x": -5,
+            "y": 10
+          },
+          "applied": {
+            "x": -5,
+            "y": 10
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 90.342,
+            "y": 96.753
+          },
+          "idleGroundY": 178,
+          "sourceRootBefore": {
+            "x": 95.428,
+            "y": 85.54
+          },
+          "rootAfter": {
+            "x": 90.428,
+            "y": 95.54
+          },
+          "groundYBefore": 168,
+          "groundYAfter": 178,
+          "rootDeltaX": 0.087,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "foraging",
+          "direction": "northwest",
+          "requested": {
+            "x": -15,
+            "y": 7
+          },
+          "applied": {
+            "x": -15,
+            "y": 7
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 87.346,
+            "y": 104.613
+          },
+          "idleGroundY": 178,
+          "sourceRootBefore": {
+            "x": 102.379,
+            "y": 85.863
+          },
+          "rootAfter": {
+            "x": 87.379,
+            "y": 92.863
+          },
+          "groundYBefore": 171,
+          "groundYAfter": 178,
+          "rootDeltaX": 0.034,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "foraging",
+          "direction": "west",
+          "requested": {
+            "x": -7,
+            "y": 16
+          },
+          "applied": {
+            "x": -7,
+            "y": 16
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 93.877,
+            "y": 121.845
+          },
+          "idleGroundY": 178,
+          "sourceRootBefore": {
+            "x": 100.529,
+            "y": 90.312
+          },
+          "rootAfter": {
+            "x": 93.529,
+            "y": 106.312
+          },
+          "groundYBefore": 162,
+          "groundYAfter": 178,
+          "rootDeltaX": -0.348,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "foraging",
+          "direction": "southwest",
+          "requested": {
+            "x": -14,
+            "y": 11
+          },
+          "applied": {
+            "x": -14,
+            "y": 11
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 95.713,
+            "y": 107.325
+          },
+          "idleGroundY": 178,
+          "sourceRootBefore": {
+            "x": 109.788,
+            "y": 83.075
+          },
+          "rootAfter": {
+            "x": 95.788,
+            "y": 94.075
+          },
+          "groundYBefore": 167,
+          "groundYAfter": 178,
+          "rootDeltaX": 0.074,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "foraging",
+          "direction": "south",
+          "requested": {
+            "x": 3,
+            "y": 11
+          },
+          "applied": {
+            "x": 3,
+            "y": 11
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 90.257,
+            "y": 101.592
+          },
+          "idleGroundY": 178,
+          "sourceRootBefore": {
+            "x": 87.28,
+            "y": 87.758
+          },
+          "rootAfter": {
+            "x": 90.28,
+            "y": 98.758
+          },
+          "groundYBefore": 167,
+          "groundYAfter": 178,
+          "rootDeltaX": 0.022,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "foraging",
+          "direction": "southeast",
+          "requested": {
+            "x": 9,
+            "y": 10
+          },
+          "applied": {
+            "x": 9,
+            "y": 10
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 85.61,
+            "y": 107.589
+          },
+          "idleGroundY": 178,
+          "sourceRootBefore": {
+            "x": 76.343,
+            "y": 85.232
+          },
+          "rootAfter": {
+            "x": 85.343,
+            "y": 95.232
+          },
+          "groundYBefore": 168,
+          "groundYAfter": 178,
+          "rootDeltaX": -0.267,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "drinking",
+          "direction": "east",
+          "requested": {
+            "x": -3,
+            "y": 31
+          },
+          "applied": {
+            "x": -3,
+            "y": 31
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 92.584,
+            "y": 120.556
+          },
+          "idleGroundY": 178,
+          "sourceRootBefore": {
+            "x": 95.348,
+            "y": 83.151
+          },
+          "rootAfter": {
+            "x": 92.348,
+            "y": 114.151
+          },
+          "groundYBefore": 147,
+          "groundYAfter": 178,
+          "rootDeltaX": -0.236,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "drinking",
+          "direction": "northeast",
+          "requested": {
+            "x": 2,
+            "y": 17
+          },
+          "applied": {
+            "x": 2,
+            "y": 17
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 93.39,
+            "y": 102.881
+          },
+          "idleGroundY": 178,
+          "sourceRootBefore": {
+            "x": 91.886,
+            "y": 83.771
+          },
+          "rootAfter": {
+            "x": 93.886,
+            "y": 100.771
+          },
+          "groundYBefore": 161,
+          "groundYAfter": 178,
+          "rootDeltaX": 0.496,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "drinking",
+          "direction": "north",
+          "requested": {
+            "x": -6,
+            "y": 27
+          },
+          "applied": {
+            "x": -6,
+            "y": 27
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 90.342,
+            "y": 96.753
+          },
+          "idleGroundY": 178,
+          "sourceRootBefore": {
+            "x": 96.064,
+            "y": 76.298
+          },
+          "rootAfter": {
+            "x": 90.064,
+            "y": 103.298
+          },
+          "groundYBefore": 151,
+          "groundYAfter": 178,
+          "rootDeltaX": -0.278,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "drinking",
+          "direction": "northwest",
+          "requested": {
+            "x": -14,
+            "y": 16
+          },
+          "applied": {
+            "x": -14,
+            "y": 16
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 87.346,
+            "y": 104.613
+          },
+          "idleGroundY": 178,
+          "sourceRootBefore": {
+            "x": 101.556,
+            "y": 84.577
+          },
+          "rootAfter": {
+            "x": 87.556,
+            "y": 100.577
+          },
+          "groundYBefore": 162,
+          "groundYAfter": 178,
+          "rootDeltaX": 0.21,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "drinking",
+          "direction": "west",
+          "requested": {
+            "x": -14,
+            "y": 31
+          },
+          "applied": {
+            "x": -14,
+            "y": 31
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 93.877,
+            "y": 121.845
+          },
+          "idleGroundY": 178,
+          "sourceRootBefore": {
+            "x": 107.84,
+            "y": 84.277
+          },
+          "rootAfter": {
+            "x": 93.84,
+            "y": 115.277
+          },
+          "groundYBefore": 147,
+          "groundYAfter": 178,
+          "rootDeltaX": -0.037,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "drinking",
+          "direction": "southwest",
+          "requested": {
+            "x": -17,
+            "y": 28
+          },
+          "applied": {
+            "x": -17,
+            "y": 28
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 95.713,
+            "y": 107.325
+          },
+          "idleGroundY": 178,
+          "sourceRootBefore": {
+            "x": 112.336,
+            "y": 78.667
+          },
+          "rootAfter": {
+            "x": 95.336,
+            "y": 106.667
+          },
+          "groundYBefore": 150,
+          "groundYAfter": 178,
+          "rootDeltaX": -0.378,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "drinking",
+          "direction": "south",
+          "requested": {
+            "x": 3,
+            "y": 27
+          },
+          "applied": {
+            "x": 3,
+            "y": 27
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 90.257,
+            "y": 101.592
+          },
+          "idleGroundY": 178,
+          "sourceRootBefore": {
+            "x": 87.245,
+            "y": 70.849
+          },
+          "rootAfter": {
+            "x": 90.245,
+            "y": 97.849
+          },
+          "groundYBefore": 151,
+          "groundYAfter": 178,
+          "rootDeltaX": -0.012,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "drinking",
+          "direction": "southeast",
+          "requested": {
+            "x": 11,
+            "y": 32
+          },
+          "applied": {
+            "x": 11,
+            "y": 32
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 85.61,
+            "y": 107.589
+          },
+          "idleGroundY": 178,
+          "sourceRootBefore": {
+            "x": 74.376,
+            "y": 73.909
+          },
+          "rootAfter": {
+            "x": 85.376,
+            "y": 105.909
+          },
+          "groundYBefore": 146,
+          "groundYAfter": 178,
+          "rootDeltaX": -0.234,
+          "groundDeltaY": 0
+        }
+      ]
+    },
+    "boar": {
+      "source": "art-source/prey-actions-v2/sources/boar-actions-source.png",
+      "sourceSha256": "7cd457e9b7b0ea9d55d02d4fc086fbd3e176ea9f60638c95f7d4419b28bb164d",
+      "movement": "public/assets/prey-v4/boar-atlas.png",
+      "movementSha256": "2dba891eaa42b85cd882f7866bc5190ee4a5bae6147d72f08f05256bdb9d3413",
+      "movementQuality": {
+        "faintAlphaPixels": 0,
+        "edgePixels": 0,
+        "minVisiblePixels": 4752,
+        "minimumUniquePoses": 2
+      },
+      "idleAlignment": [
+        {
+          "direction": "east",
+          "phase": 0,
+          "requested": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "applied": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 90.416,
+            "y": 113.758
+          },
+          "idleGroundY": 171,
+          "sourceRootBefore": {
+            "x": 90.416,
+            "y": 113.758
+          },
+          "rootAfter": {
+            "x": 90.416,
+            "y": 113.758
+          },
+          "groundYBefore": 171,
+          "groundYAfter": 171,
+          "rootDeltaX": 0,
+          "rootDeltaY": 0,
+          "groundDeltaY": 0
+        },
+        {
+          "direction": "east",
+          "phase": 1,
+          "requested": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "applied": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 90.416,
+            "y": 113.758
+          },
+          "idleGroundY": 171,
+          "sourceRootBefore": {
+            "x": 90.043,
+            "y": 113.923
+          },
+          "rootAfter": {
+            "x": 90.043,
+            "y": 113.923
+          },
+          "groundYBefore": 171,
+          "groundYAfter": 171,
+          "rootDeltaX": -0.373,
+          "rootDeltaY": 0.165,
+          "groundDeltaY": 0
+        },
+        {
+          "direction": "northeast",
+          "phase": 0,
+          "requested": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "applied": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 84.98,
+            "y": 106.545
+          },
+          "idleGroundY": 169,
+          "sourceRootBefore": {
+            "x": 84.98,
+            "y": 106.545
+          },
+          "rootAfter": {
+            "x": 84.98,
+            "y": 106.545
+          },
+          "groundYBefore": 169,
+          "groundYAfter": 169,
+          "rootDeltaX": 0,
+          "rootDeltaY": 0,
+          "groundDeltaY": 0
+        },
+        {
+          "direction": "northeast",
+          "phase": 1,
+          "requested": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "applied": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 84.98,
+            "y": 106.545
+          },
+          "idleGroundY": 169,
+          "sourceRootBefore": {
+            "x": 85.027,
+            "y": 106.291
+          },
+          "rootAfter": {
+            "x": 85.027,
+            "y": 106.291
+          },
+          "groundYBefore": 169,
+          "groundYAfter": 169,
+          "rootDeltaX": 0.047,
+          "rootDeltaY": -0.254,
+          "groundDeltaY": 0
+        },
+        {
+          "direction": "north",
+          "phase": 0,
+          "requested": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "applied": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 89.355,
+            "y": 100.864
+          },
+          "idleGroundY": 172,
+          "sourceRootBefore": {
+            "x": 89.355,
+            "y": 100.864
+          },
+          "rootAfter": {
+            "x": 89.355,
+            "y": 100.864
+          },
+          "groundYBefore": 172,
+          "groundYAfter": 172,
+          "rootDeltaX": 0,
+          "rootDeltaY": 0,
+          "groundDeltaY": 0
+        },
+        {
+          "direction": "north",
+          "phase": 1,
+          "requested": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "applied": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 89.355,
+            "y": 100.864
+          },
+          "idleGroundY": 172,
+          "sourceRootBefore": {
+            "x": 89.589,
+            "y": 101.245
+          },
+          "rootAfter": {
+            "x": 89.589,
+            "y": 101.245
+          },
+          "groundYBefore": 172,
+          "groundYAfter": 172,
+          "rootDeltaX": 0.234,
+          "rootDeltaY": 0.381,
+          "groundDeltaY": 0
+        },
+        {
+          "direction": "northwest",
+          "phase": 0,
+          "requested": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "applied": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 94.407,
+            "y": 106.347
+          },
+          "idleGroundY": 170,
+          "sourceRootBefore": {
+            "x": 94.407,
+            "y": 106.347
+          },
+          "rootAfter": {
+            "x": 94.407,
+            "y": 106.347
+          },
+          "groundYBefore": 170,
+          "groundYAfter": 170,
+          "rootDeltaX": 0,
+          "rootDeltaY": 0,
+          "groundDeltaY": 0
+        },
+        {
+          "direction": "northwest",
+          "phase": 1,
+          "requested": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "applied": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 94.407,
+            "y": 106.347
+          },
+          "idleGroundY": 170,
+          "sourceRootBefore": {
+            "x": 94.201,
+            "y": 106.068
+          },
+          "rootAfter": {
+            "x": 94.201,
+            "y": 106.068
+          },
+          "groundYBefore": 170,
+          "groundYAfter": 170,
+          "rootDeltaX": -0.207,
+          "rootDeltaY": -0.279,
+          "groundDeltaY": 0
+        },
+        {
+          "direction": "west",
+          "phase": 0,
+          "requested": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "applied": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 98.097,
+            "y": 112.396
+          },
+          "idleGroundY": 171,
+          "sourceRootBefore": {
+            "x": 98.097,
+            "y": 112.396
+          },
+          "rootAfter": {
+            "x": 98.097,
+            "y": 112.396
+          },
+          "groundYBefore": 171,
+          "groundYAfter": 171,
+          "rootDeltaX": 0,
+          "rootDeltaY": 0,
+          "groundDeltaY": 0
+        },
+        {
+          "direction": "west",
+          "phase": 1,
+          "requested": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "applied": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 98.097,
+            "y": 112.396
+          },
+          "idleGroundY": 171,
+          "sourceRootBefore": {
+            "x": 98.547,
+            "y": 112.783
+          },
+          "rootAfter": {
+            "x": 98.547,
+            "y": 112.783
+          },
+          "groundYBefore": 171,
+          "groundYAfter": 171,
+          "rootDeltaX": 0.45,
+          "rootDeltaY": 0.387,
+          "groundDeltaY": 0
+        },
+        {
+          "direction": "southwest",
+          "phase": 0,
+          "requested": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "applied": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 95.654,
+            "y": 112.94
+          },
+          "idleGroundY": 171,
+          "sourceRootBefore": {
+            "x": 95.654,
+            "y": 112.94
+          },
+          "rootAfter": {
+            "x": 95.654,
+            "y": 112.94
+          },
+          "groundYBefore": 171,
+          "groundYAfter": 171,
+          "rootDeltaX": 0,
+          "rootDeltaY": 0,
+          "groundDeltaY": 0
+        },
+        {
+          "direction": "southwest",
+          "phase": 1,
+          "requested": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "applied": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 95.654,
+            "y": 112.94
+          },
+          "idleGroundY": 171,
+          "sourceRootBefore": {
+            "x": 95.67,
+            "y": 113.282
+          },
+          "rootAfter": {
+            "x": 95.67,
+            "y": 113.282
+          },
+          "groundYBefore": 171,
+          "groundYAfter": 171,
+          "rootDeltaX": 0.016,
+          "rootDeltaY": 0.342,
+          "groundDeltaY": 0
+        },
+        {
+          "direction": "south",
+          "phase": 0,
+          "requested": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "applied": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 89.321,
+            "y": 104.044
+          },
+          "idleGroundY": 171,
+          "sourceRootBefore": {
+            "x": 89.321,
+            "y": 104.044
+          },
+          "rootAfter": {
+            "x": 89.321,
+            "y": 104.044
+          },
+          "groundYBefore": 171,
+          "groundYAfter": 171,
+          "rootDeltaX": 0,
+          "rootDeltaY": 0,
+          "groundDeltaY": 0
+        },
+        {
+          "direction": "south",
+          "phase": 1,
+          "requested": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "applied": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 89.321,
+            "y": 104.044
+          },
+          "idleGroundY": 171,
+          "sourceRootBefore": {
+            "x": 89.216,
+            "y": 104.333
+          },
+          "rootAfter": {
+            "x": 89.216,
+            "y": 104.333
+          },
+          "groundYBefore": 171,
+          "groundYAfter": 171,
+          "rootDeltaX": -0.105,
+          "rootDeltaY": 0.289,
+          "groundDeltaY": 0
+        },
+        {
+          "direction": "southeast",
+          "phase": 0,
+          "requested": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "applied": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 83.54,
+            "y": 112.217
+          },
+          "idleGroundY": 170,
+          "sourceRootBefore": {
+            "x": 83.54,
+            "y": 112.217
+          },
+          "rootAfter": {
+            "x": 83.54,
+            "y": 112.217
+          },
+          "groundYBefore": 170,
+          "groundYAfter": 170,
+          "rootDeltaX": 0,
+          "rootDeltaY": 0,
+          "groundDeltaY": 0
+        },
+        {
+          "direction": "southeast",
+          "phase": 1,
+          "requested": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "applied": {
+            "x": 0,
+            "rootY": 0,
+            "groundY": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 83.54,
+            "y": 112.217
+          },
+          "idleGroundY": 170,
+          "sourceRootBefore": {
+            "x": 83.257,
+            "y": 112.31
+          },
+          "rootAfter": {
+            "x": 83.257,
+            "y": 112.31
+          },
+          "groundYBefore": 170,
+          "groundYAfter": 170,
+          "rootDeltaX": -0.284,
+          "rootDeltaY": 0.093,
+          "groundDeltaY": 0
+        }
+      ],
+      "output": "public/assets/prey-v4/boar-actions.png",
+      "outputSha256": "52957199008a8c3dbc4ac9cd0b0c69dfc183447b6b4c4de16aefddc53db0b55c",
+      "width": 1448,
+      "height": 2172,
+      "frames": 96,
+      "quality": {
+        "faintAlphaPixels": 0,
+        "edgePixels": 0,
+        "minVisiblePixels": 6780,
+        "minimumUniquePoses": 4
+      },
+      "alignment": [
+        {
+          "action": "resting",
+          "direction": "east",
+          "requested": {
+            "x": 2,
+            "y": 1
+          },
+          "applied": {
+            "x": 2,
+            "y": 1
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 90.416,
+            "y": 113.758
+          },
+          "idleGroundY": 171,
+          "sourceRootBefore": {
+            "x": 88.604,
+            "y": 130.926
+          },
+          "rootAfter": {
+            "x": 90.604,
+            "y": 131.926
+          },
+          "groundYBefore": 170,
+          "groundYAfter": 171,
+          "rootDeltaX": 0.189,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "resting",
+          "direction": "northeast",
+          "requested": {
+            "x": -1,
+            "y": -1
+          },
+          "applied": {
+            "x": -1,
+            "y": -1
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 84.98,
+            "y": 106.545
+          },
+          "idleGroundY": 169,
+          "sourceRootBefore": {
+            "x": 85.763,
+            "y": 117.313
+          },
+          "rootAfter": {
+            "x": 84.763,
+            "y": 116.313
+          },
+          "groundYBefore": 170,
+          "groundYAfter": 169,
+          "rootDeltaX": -0.217,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "resting",
+          "direction": "north",
+          "requested": {
+            "x": -1,
+            "y": 2
+          },
+          "applied": {
+            "x": -1,
+            "y": 2
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 89.355,
+            "y": 100.864
+          },
+          "idleGroundY": 172,
+          "sourceRootBefore": {
+            "x": 89.959,
+            "y": 108.687
+          },
+          "rootAfter": {
+            "x": 88.959,
+            "y": 110.687
+          },
+          "groundYBefore": 170,
+          "groundYAfter": 172,
+          "rootDeltaX": -0.396,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "resting",
+          "direction": "northwest",
+          "requested": {
+            "x": 1,
+            "y": 0
+          },
+          "applied": {
+            "x": 1,
+            "y": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 94.407,
+            "y": 106.347
+          },
+          "idleGroundY": 170,
+          "sourceRootBefore": {
+            "x": 93.612,
+            "y": 117.029
+          },
+          "rootAfter": {
+            "x": 94.612,
+            "y": 117.029
+          },
+          "groundYBefore": 170,
+          "groundYAfter": 170,
+          "rootDeltaX": 0.205,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "resting",
+          "direction": "west",
+          "requested": {
+            "x": 3,
+            "y": 1
+          },
+          "applied": {
+            "x": 3,
+            "y": 1
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 98.097,
+            "y": 112.396
+          },
+          "idleGroundY": 171,
+          "sourceRootBefore": {
+            "x": 95.482,
+            "y": 131.38
+          },
+          "rootAfter": {
+            "x": 98.482,
+            "y": 132.38
+          },
+          "groundYBefore": 170,
+          "groundYAfter": 171,
+          "rootDeltaX": 0.385,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "resting",
+          "direction": "southwest",
+          "requested": {
+            "x": 2,
+            "y": 1
+          },
+          "applied": {
+            "x": 2,
+            "y": 1
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 95.654,
+            "y": 112.94
+          },
+          "idleGroundY": 171,
+          "sourceRootBefore": {
+            "x": 93.655,
+            "y": 117.59
+          },
+          "rootAfter": {
+            "x": 95.655,
+            "y": 118.59
+          },
+          "groundYBefore": 170,
+          "groundYAfter": 171,
+          "rootDeltaX": 0.001,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "resting",
+          "direction": "south",
+          "requested": {
+            "x": -1,
+            "y": 1
+          },
+          "applied": {
+            "x": -1,
+            "y": 1
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 89.321,
+            "y": 104.044
+          },
+          "idleGroundY": 171,
+          "sourceRootBefore": {
+            "x": 90.058,
+            "y": 103.76
+          },
+          "rootAfter": {
+            "x": 89.058,
+            "y": 104.76
+          },
+          "groundYBefore": 170,
+          "groundYAfter": 171,
+          "rootDeltaX": -0.263,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "resting",
+          "direction": "southeast",
+          "requested": {
+            "x": -2,
+            "y": 0
+          },
+          "applied": {
+            "x": -2,
+            "y": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 83.54,
+            "y": 112.217
+          },
+          "idleGroundY": 170,
+          "sourceRootBefore": {
+            "x": 85.931,
+            "y": 118.341
+          },
+          "rootAfter": {
+            "x": 83.931,
+            "y": 118.341
+          },
+          "groundYBefore": 170,
+          "groundYAfter": 170,
+          "rootDeltaX": 0.39,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "foraging",
+          "direction": "east",
+          "requested": {
+            "x": 0,
+            "y": 1
+          },
+          "applied": {
+            "x": 0,
+            "y": 1
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 90.416,
+            "y": 113.758
+          },
+          "idleGroundY": 171,
+          "sourceRootBefore": {
+            "x": 90.592,
+            "y": 116.122
+          },
+          "rootAfter": {
+            "x": 90.592,
+            "y": 117.122
+          },
+          "groundYBefore": 170,
+          "groundYAfter": 171,
+          "rootDeltaX": 0.176,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "foraging",
+          "direction": "northeast",
+          "requested": {
+            "x": 1,
+            "y": -2
+          },
+          "applied": {
+            "x": 1,
+            "y": -2
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 84.98,
+            "y": 106.545
+          },
+          "idleGroundY": 169,
+          "sourceRootBefore": {
+            "x": 84.155,
+            "y": 96.519
+          },
+          "rootAfter": {
+            "x": 85.155,
+            "y": 94.519
+          },
+          "groundYBefore": 171,
+          "groundYAfter": 169,
+          "rootDeltaX": 0.175,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "foraging",
+          "direction": "north",
+          "requested": {
+            "x": -1,
+            "y": 2
+          },
+          "applied": {
+            "x": -1,
+            "y": 2
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 89.355,
+            "y": 100.864
+          },
+          "idleGroundY": 172,
+          "sourceRootBefore": {
+            "x": 90.083,
+            "y": 98.828
+          },
+          "rootAfter": {
+            "x": 89.083,
+            "y": 100.828
+          },
+          "groundYBefore": 170,
+          "groundYAfter": 172,
+          "rootDeltaX": -0.272,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "foraging",
+          "direction": "northwest",
+          "requested": {
+            "x": -2,
+            "y": -1
+          },
+          "applied": {
+            "x": -2,
+            "y": -1
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 94.407,
+            "y": 106.347
+          },
+          "idleGroundY": 170,
+          "sourceRootBefore": {
+            "x": 95.996,
+            "y": 96.21
+          },
+          "rootAfter": {
+            "x": 93.996,
+            "y": 95.21
+          },
+          "groundYBefore": 171,
+          "groundYAfter": 170,
+          "rootDeltaX": -0.411,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "foraging",
+          "direction": "west",
+          "requested": {
+            "x": 8,
+            "y": 1
+          },
+          "applied": {
+            "x": 8,
+            "y": 1
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 98.097,
+            "y": 112.396
+          },
+          "idleGroundY": 171,
+          "sourceRootBefore": {
+            "x": 89.802,
+            "y": 115.993
+          },
+          "rootAfter": {
+            "x": 97.802,
+            "y": 116.993
+          },
+          "groundYBefore": 170,
+          "groundYAfter": 171,
+          "rootDeltaX": -0.295,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "foraging",
+          "direction": "southwest",
+          "requested": {
+            "x": 3,
+            "y": 1
+          },
+          "applied": {
+            "x": 3,
+            "y": 1
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 95.654,
+            "y": 112.94
+          },
+          "idleGroundY": 171,
+          "sourceRootBefore": {
+            "x": 93.017,
+            "y": 102.084
+          },
+          "rootAfter": {
+            "x": 96.017,
+            "y": 103.084
+          },
+          "groundYBefore": 170,
+          "groundYAfter": 171,
+          "rootDeltaX": 0.363,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "foraging",
+          "direction": "south",
+          "requested": {
+            "x": 0,
+            "y": 1
+          },
+          "applied": {
+            "x": 0,
+            "y": 1
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 89.321,
+            "y": 104.044
+          },
+          "idleGroundY": 171,
+          "sourceRootBefore": {
+            "x": 89.629,
+            "y": 98.662
+          },
+          "rootAfter": {
+            "x": 89.629,
+            "y": 99.662
+          },
+          "groundYBefore": 170,
+          "groundYAfter": 171,
+          "rootDeltaX": 0.308,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "foraging",
+          "direction": "southeast",
+          "requested": {
+            "x": -4,
+            "y": 0
+          },
+          "applied": {
+            "x": -4,
+            "y": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 83.54,
+            "y": 112.217
+          },
+          "idleGroundY": 170,
+          "sourceRootBefore": {
+            "x": 87.578,
+            "y": 104.492
+          },
+          "rootAfter": {
+            "x": 83.578,
+            "y": 104.492
+          },
+          "groundYBefore": 170,
+          "groundYAfter": 170,
+          "rootDeltaX": 0.037,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "drinking",
+          "direction": "east",
+          "requested": {
+            "x": 0,
+            "y": 1
+          },
+          "applied": {
+            "x": 0,
+            "y": 1
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 90.416,
+            "y": 113.758
+          },
+          "idleGroundY": 171,
+          "sourceRootBefore": {
+            "x": 90.374,
+            "y": 121.453
+          },
+          "rootAfter": {
+            "x": 90.374,
+            "y": 122.453
+          },
+          "groundYBefore": 170,
+          "groundYAfter": 171,
+          "rootDeltaX": -0.042,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "drinking",
+          "direction": "northeast",
+          "requested": {
+            "x": 0,
+            "y": -1
+          },
+          "applied": {
+            "x": 0,
+            "y": -1
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 84.98,
+            "y": 106.545
+          },
+          "idleGroundY": 169,
+          "sourceRootBefore": {
+            "x": 85.251,
+            "y": 101.019
+          },
+          "rootAfter": {
+            "x": 85.251,
+            "y": 100.019
+          },
+          "groundYBefore": 170,
+          "groundYAfter": 169,
+          "rootDeltaX": 0.271,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "drinking",
+          "direction": "north",
+          "requested": {
+            "x": 0,
+            "y": 1
+          },
+          "applied": {
+            "x": 0,
+            "y": 1
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 89.355,
+            "y": 100.864
+          },
+          "idleGroundY": 172,
+          "sourceRootBefore": {
+            "x": 89.48,
+            "y": 102.809
+          },
+          "rootAfter": {
+            "x": 89.48,
+            "y": 103.809
+          },
+          "groundYBefore": 171,
+          "groundYAfter": 172,
+          "rootDeltaX": 0.125,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "drinking",
+          "direction": "northwest",
+          "requested": {
+            "x": 0,
+            "y": 0
+          },
+          "applied": {
+            "x": 0,
+            "y": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 94.407,
+            "y": 106.347
+          },
+          "idleGroundY": 170,
+          "sourceRootBefore": {
+            "x": 94.469,
+            "y": 100.757
+          },
+          "rootAfter": {
+            "x": 94.469,
+            "y": 100.757
+          },
+          "groundYBefore": 170,
+          "groundYAfter": 170,
+          "rootDeltaX": 0.062,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "drinking",
+          "direction": "west",
+          "requested": {
+            "x": 7,
+            "y": 1
+          },
+          "applied": {
+            "x": 7,
+            "y": 1
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 98.097,
+            "y": 112.396
+          },
+          "idleGroundY": 171,
+          "sourceRootBefore": {
+            "x": 90.622,
+            "y": 121.652
+          },
+          "rootAfter": {
+            "x": 97.622,
+            "y": 122.652
+          },
+          "groundYBefore": 170,
+          "groundYAfter": 171,
+          "rootDeltaX": -0.475,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "drinking",
+          "direction": "southwest",
+          "requested": {
+            "x": 3,
+            "y": 1
+          },
+          "applied": {
+            "x": 3,
+            "y": 1
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 95.654,
+            "y": 112.94
+          },
+          "idleGroundY": 171,
+          "sourceRootBefore": {
+            "x": 92.584,
+            "y": 112.005
+          },
+          "rootAfter": {
+            "x": 95.584,
+            "y": 113.005
+          },
+          "groundYBefore": 170,
+          "groundYAfter": 171,
+          "rootDeltaX": -0.07,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "drinking",
+          "direction": "south",
+          "requested": {
+            "x": -1,
+            "y": 1
+          },
+          "applied": {
+            "x": -1,
+            "y": 1
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 89.321,
+            "y": 104.044
+          },
+          "idleGroundY": 171,
+          "sourceRootBefore": {
+            "x": 90.057,
+            "y": 103.092
+          },
+          "rootAfter": {
+            "x": 89.057,
+            "y": 104.092
+          },
+          "groundYBefore": 170,
+          "groundYAfter": 171,
+          "rootDeltaX": -0.264,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "drinking",
+          "direction": "southeast",
+          "requested": {
+            "x": -4,
+            "y": 0
+          },
+          "applied": {
+            "x": -4,
+            "y": 0
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 83.54,
+            "y": 112.217
+          },
+          "idleGroundY": 170,
+          "sourceRootBefore": {
+            "x": 87.44,
+            "y": 111.607
+          },
+          "rootAfter": {
+            "x": 83.44,
+            "y": 111.607
+          },
+          "groundYBefore": 170,
+          "groundYAfter": 170,
+          "rootDeltaX": -0.1,
+          "groundDeltaY": 0
+        }
+      ]
+    }
+  },
+  "boarCharge": {
+    "output": "public/assets/prey-v4/boar-charge.png",
+    "outputSha256": "2b7ebbf377f6f85f94ae737c66cef8474d91d74ffbc58d7ee9252c0ed2eb3e3c",
+    "width": 724,
+    "height": 1448,
+    "frames": 32,
+    "layout": "directionRows",
+    "phases": [
+      "stride-anticipation",
+      "stride-compression",
+      "stride-extension",
+      "stride-recovery"
+    ],
+    "quality": {
+      "faintAlphaPixels": 0,
+      "edgePixels": 0,
+      "minVisiblePixels": 5348,
+      "minimumUniquePoses": 4
+    },
+    "alignment": [
+      {
+        "direction": "east",
+        "phase": "stride-anticipation",
+        "requested": {
+          "x": -3,
+          "y": -7
+        },
+        "applied": {
+          "x": -3,
+          "y": -7
+        },
+        "capped": false,
+        "idleRoot": {
+          "x": 90.416,
+          "y": 113.758
+        },
+        "idleGroundY": 171,
+        "sourceRootBefore": {
+          "x": 93.194,
+          "y": 124.622
+        },
+        "rootAfter": {
+          "x": 90.194,
+          "y": 117.622
+        },
+        "groundYBefore": 178,
+        "groundYAfter": 171,
+        "rootDeltaX": -0.222,
+        "groundDeltaY": 0
+      },
+      {
+        "direction": "east",
+        "phase": "stride-compression",
+        "requested": {
+          "x": -3,
+          "y": 5
+        },
+        "applied": {
+          "x": -3,
+          "y": 5
+        },
+        "capped": false,
+        "idleRoot": {
+          "x": 90.416,
+          "y": 113.758
+        },
+        "idleGroundY": 171,
+        "sourceRootBefore": {
+          "x": 92.955,
+          "y": 126.7
+        },
+        "rootAfter": {
+          "x": 89.955,
+          "y": 131.7
+        },
+        "groundYBefore": 166,
+        "groundYAfter": 171,
+        "rootDeltaX": -0.461,
+        "groundDeltaY": 0
+      },
+      {
+        "direction": "east",
+        "phase": "stride-extension",
+        "requested": {
+          "x": -2,
+          "y": 8
+        },
+        "applied": {
+          "x": -2,
+          "y": 8
+        },
+        "capped": false,
+        "idleRoot": {
+          "x": 90.416,
+          "y": 113.758
+        },
+        "idleGroundY": 171,
+        "sourceRootBefore": {
+          "x": 92.518,
+          "y": 124.751
+        },
+        "rootAfter": {
+          "x": 90.518,
+          "y": 132.751
+        },
+        "groundYBefore": 163,
+        "groundYAfter": 171,
+        "rootDeltaX": 0.102,
+        "groundDeltaY": 0
+      },
+      {
+        "direction": "east",
+        "phase": "stride-recovery",
+        "requested": {
+          "x": -2,
+          "y": 5
+        },
+        "applied": {
+          "x": -2,
+          "y": 5
+        },
+        "capped": false,
+        "idleRoot": {
+          "x": 90.416,
+          "y": 113.758
+        },
+        "idleGroundY": 171,
+        "sourceRootBefore": {
+          "x": 92.838,
+          "y": 124.777
+        },
+        "rootAfter": {
+          "x": 90.838,
+          "y": 129.777
+        },
+        "groundYBefore": 166,
+        "groundYAfter": 171,
+        "rootDeltaX": 0.422,
+        "groundDeltaY": 0
+      },
+      {
+        "direction": "northeast",
+        "phase": "stride-anticipation",
+        "requested": {
+          "x": -2,
+          "y": -8
+        },
+        "applied": {
+          "x": -2,
+          "y": -8
+        },
+        "capped": false,
+        "idleRoot": {
+          "x": 84.98,
+          "y": 106.545
+        },
+        "idleGroundY": 169,
+        "sourceRootBefore": {
+          "x": 86.736,
+          "y": 111.85
+        },
+        "rootAfter": {
+          "x": 84.736,
+          "y": 103.85
+        },
+        "groundYBefore": 177,
+        "groundYAfter": 169,
+        "rootDeltaX": -0.244,
+        "groundDeltaY": 0
+      },
+      {
+        "direction": "northeast",
+        "phase": "stride-compression",
+        "requested": {
+          "x": -2,
+          "y": -1
+        },
+        "applied": {
+          "x": -2,
+          "y": -1
+        },
+        "capped": false,
+        "idleRoot": {
+          "x": 84.98,
+          "y": 106.545
+        },
+        "idleGroundY": 169,
+        "sourceRootBefore": {
+          "x": 87.031,
+          "y": 115.022
+        },
+        "rootAfter": {
+          "x": 85.031,
+          "y": 114.022
+        },
+        "groundYBefore": 170,
+        "groundYAfter": 169,
+        "rootDeltaX": 0.051,
+        "groundDeltaY": 0
+      },
+      {
+        "direction": "northeast",
+        "phase": "stride-extension",
+        "requested": {
+          "x": -2,
+          "y": 6
+        },
+        "applied": {
+          "x": -2,
+          "y": 6
+        },
+        "capped": false,
+        "idleRoot": {
+          "x": 84.98,
+          "y": 106.545
+        },
+        "idleGroundY": 169,
+        "sourceRootBefore": {
+          "x": 86.877,
+          "y": 111.756
+        },
+        "rootAfter": {
+          "x": 84.877,
+          "y": 117.756
+        },
+        "groundYBefore": 163,
+        "groundYAfter": 169,
+        "rootDeltaX": -0.103,
+        "groundDeltaY": 0
+      },
+      {
+        "direction": "northeast",
+        "phase": "stride-recovery",
+        "requested": {
+          "x": -2,
+          "y": -1
+        },
+        "applied": {
+          "x": -2,
+          "y": -1
+        },
+        "capped": false,
+        "idleRoot": {
+          "x": 84.98,
+          "y": 106.545
+        },
+        "idleGroundY": 169,
+        "sourceRootBefore": {
+          "x": 87.09,
+          "y": 112.003
+        },
+        "rootAfter": {
+          "x": 85.09,
+          "y": 111.003
+        },
+        "groundYBefore": 170,
+        "groundYAfter": 169,
+        "rootDeltaX": 0.11,
+        "groundDeltaY": 0
+      },
+      {
+        "direction": "north",
+        "phase": "stride-anticipation",
+        "requested": {
+          "x": -1,
+          "y": -4
+        },
+        "applied": {
+          "x": -1,
+          "y": -4
+        },
+        "capped": false,
+        "idleRoot": {
+          "x": 89.355,
+          "y": 100.864
+        },
+        "idleGroundY": 172,
+        "sourceRootBefore": {
+          "x": 90.415,
+          "y": 112.794
+        },
+        "rootAfter": {
+          "x": 89.415,
+          "y": 108.794
+        },
+        "groundYBefore": 176,
+        "groundYAfter": 172,
+        "rootDeltaX": 0.06,
+        "groundDeltaY": 0
+      },
+      {
+        "direction": "north",
+        "phase": "stride-compression",
+        "requested": {
+          "x": -1,
+          "y": 2
+        },
+        "applied": {
+          "x": -1,
+          "y": 2
+        },
+        "capped": false,
+        "idleRoot": {
+          "x": 89.355,
+          "y": 100.864
+        },
+        "idleGroundY": 172,
+        "sourceRootBefore": {
+          "x": 90.59,
+          "y": 115.169
+        },
+        "rootAfter": {
+          "x": 89.59,
+          "y": 117.169
+        },
+        "groundYBefore": 170,
+        "groundYAfter": 172,
+        "rootDeltaX": 0.235,
+        "groundDeltaY": 0
+      },
+      {
+        "direction": "north",
+        "phase": "stride-extension",
+        "requested": {
+          "x": -1,
+          "y": 9
+        },
+        "applied": {
+          "x": -1,
+          "y": 9
+        },
+        "capped": false,
+        "idleRoot": {
+          "x": 89.355,
+          "y": 100.864
+        },
+        "idleGroundY": 172,
+        "sourceRootBefore": {
+          "x": 90.686,
+          "y": 112.478
+        },
+        "rootAfter": {
+          "x": 89.686,
+          "y": 121.478
+        },
+        "groundYBefore": 163,
+        "groundYAfter": 172,
+        "rootDeltaX": 0.331,
+        "groundDeltaY": 0
+      },
+      {
+        "direction": "north",
+        "phase": "stride-recovery",
+        "requested": {
+          "x": -1,
+          "y": 2
+        },
+        "applied": {
+          "x": -1,
+          "y": 2
+        },
+        "capped": false,
+        "idleRoot": {
+          "x": 89.355,
+          "y": 100.864
+        },
+        "idleGroundY": 172,
+        "sourceRootBefore": {
+          "x": 90.634,
+          "y": 112.428
+        },
+        "rootAfter": {
+          "x": 89.634,
+          "y": 114.428
+        },
+        "groundYBefore": 170,
+        "groundYAfter": 172,
+        "rootDeltaX": 0.279,
+        "groundDeltaY": 0
+      },
+      {
+        "direction": "northwest",
+        "phase": "stride-anticipation",
+        "requested": {
+          "x": 1,
+          "y": -6
+        },
+        "applied": {
+          "x": 1,
+          "y": -6
+        },
+        "capped": false,
+        "idleRoot": {
+          "x": 94.407,
+          "y": 106.347
+        },
+        "idleGroundY": 170,
+        "sourceRootBefore": {
+          "x": 93.113,
+          "y": 112.389
+        },
+        "rootAfter": {
+          "x": 94.113,
+          "y": 106.389
+        },
+        "groundYBefore": 176,
+        "groundYAfter": 170,
+        "rootDeltaX": -0.294,
+        "groundDeltaY": 0
+      },
+      {
+        "direction": "northwest",
+        "phase": "stride-compression",
+        "requested": {
+          "x": 1,
+          "y": 0
+        },
+        "applied": {
+          "x": 1,
+          "y": 0
+        },
+        "capped": false,
+        "idleRoot": {
+          "x": 94.407,
+          "y": 106.347
+        },
+        "idleGroundY": 170,
+        "sourceRootBefore": {
+          "x": 93.439,
+          "y": 115.562
+        },
+        "rootAfter": {
+          "x": 94.439,
+          "y": 115.562
+        },
+        "groundYBefore": 170,
+        "groundYAfter": 170,
+        "rootDeltaX": 0.032,
+        "groundDeltaY": 0
+      },
+      {
+        "direction": "northwest",
+        "phase": "stride-extension",
+        "requested": {
+          "x": 2,
+          "y": 6
+        },
+        "applied": {
+          "x": 2,
+          "y": 6
+        },
+        "capped": false,
+        "idleRoot": {
+          "x": 94.407,
+          "y": 106.347
+        },
+        "idleGroundY": 170,
+        "sourceRootBefore": {
+          "x": 92.85,
+          "y": 112.388
+        },
+        "rootAfter": {
+          "x": 94.85,
+          "y": 118.388
+        },
+        "groundYBefore": 164,
+        "groundYAfter": 170,
+        "rootDeltaX": 0.443,
+        "groundDeltaY": 0
+      },
+      {
+        "direction": "northwest",
+        "phase": "stride-recovery",
+        "requested": {
+          "x": 1,
+          "y": 0
+        },
+        "applied": {
+          "x": 1,
+          "y": 0
+        },
+        "capped": false,
+        "idleRoot": {
+          "x": 94.407,
+          "y": 106.347
+        },
+        "idleGroundY": 170,
+        "sourceRootBefore": {
+          "x": 93.279,
+          "y": 112.456
+        },
+        "rootAfter": {
+          "x": 94.279,
+          "y": 112.456
+        },
+        "groundYBefore": 170,
+        "groundYAfter": 170,
+        "rootDeltaX": -0.129,
+        "groundDeltaY": 0
+      },
+      {
+        "direction": "west",
+        "phase": "stride-anticipation",
+        "requested": {
+          "x": 3,
+          "y": -7
+        },
+        "applied": {
+          "x": 3,
+          "y": -7
+        },
+        "capped": false,
+        "idleRoot": {
+          "x": 98.097,
+          "y": 112.396
+        },
+        "idleGroundY": 171,
+        "sourceRootBefore": {
+          "x": 95.577,
+          "y": 123.75
+        },
+        "rootAfter": {
+          "x": 98.577,
+          "y": 116.75
+        },
+        "groundYBefore": 178,
+        "groundYAfter": 171,
+        "rootDeltaX": 0.48,
+        "groundDeltaY": 0
+      },
+      {
+        "direction": "west",
+        "phase": "stride-compression",
+        "requested": {
+          "x": 2,
+          "y": 6
+        },
+        "applied": {
+          "x": 2,
+          "y": 6
+        },
+        "capped": false,
+        "idleRoot": {
+          "x": 98.097,
+          "y": 112.396
+        },
+        "idleGroundY": 171,
+        "sourceRootBefore": {
+          "x": 95.855,
+          "y": 125.442
+        },
+        "rootAfter": {
+          "x": 97.855,
+          "y": 131.442
+        },
+        "groundYBefore": 165,
+        "groundYAfter": 171,
+        "rootDeltaX": -0.242,
+        "groundDeltaY": 0
+      },
+      {
+        "direction": "west",
+        "phase": "stride-extension",
+        "requested": {
+          "x": 3,
+          "y": 11
+        },
+        "applied": {
+          "x": 3,
+          "y": 11
+        },
+        "capped": false,
+        "idleRoot": {
+          "x": 98.097,
+          "y": 112.396
+        },
+        "idleGroundY": 171,
+        "sourceRootBefore": {
+          "x": 95.561,
+          "y": 123.792
+        },
+        "rootAfter": {
+          "x": 98.561,
+          "y": 134.792
+        },
+        "groundYBefore": 160,
+        "groundYAfter": 171,
+        "rootDeltaX": 0.464,
+        "groundDeltaY": 0
+      },
+      {
+        "direction": "west",
+        "phase": "stride-recovery",
+        "requested": {
+          "x": 2,
+          "y": 6
+        },
+        "applied": {
+          "x": 2,
+          "y": 6
+        },
+        "capped": false,
+        "idleRoot": {
+          "x": 98.097,
+          "y": 112.396
+        },
+        "idleGroundY": 171,
+        "sourceRootBefore": {
+          "x": 95.81,
+          "y": 123.457
+        },
+        "rootAfter": {
+          "x": 97.81,
+          "y": 129.457
+        },
+        "groundYBefore": 165,
+        "groundYAfter": 171,
+        "rootDeltaX": -0.287,
+        "groundDeltaY": 0
+      },
+      {
+        "direction": "southwest",
+        "phase": "stride-anticipation",
+        "requested": {
+          "x": 4,
+          "y": -5
+        },
+        "applied": {
+          "x": 4,
+          "y": -5
+        },
+        "capped": false,
+        "idleRoot": {
+          "x": 95.654,
+          "y": 112.94
+        },
+        "idleGroundY": 171,
+        "sourceRootBefore": {
+          "x": 91.819,
+          "y": 124.399
+        },
+        "rootAfter": {
+          "x": 95.819,
+          "y": 119.399
+        },
+        "groundYBefore": 176,
+        "groundYAfter": 171,
+        "rootDeltaX": 0.165,
+        "groundDeltaY": 0
+      },
+      {
+        "direction": "southwest",
+        "phase": "stride-compression",
+        "requested": {
+          "x": 4,
+          "y": 1
+        },
+        "applied": {
+          "x": 4,
+          "y": 1
+        },
+        "capped": false,
+        "idleRoot": {
+          "x": 95.654,
+          "y": 112.94
+        },
+        "idleGroundY": 171,
+        "sourceRootBefore": {
+          "x": 91.839,
+          "y": 126.597
+        },
+        "rootAfter": {
+          "x": 95.839,
+          "y": 127.597
+        },
+        "groundYBefore": 170,
+        "groundYAfter": 171,
+        "rootDeltaX": 0.185,
+        "groundDeltaY": 0
+      },
+      {
+        "direction": "southwest",
+        "phase": "stride-extension",
+        "requested": {
+          "x": 4,
+          "y": 5
+        },
+        "applied": {
+          "x": 4,
+          "y": 5
+        },
+        "capped": false,
+        "idleRoot": {
+          "x": 95.654,
+          "y": 112.94
+        },
+        "idleGroundY": 171,
+        "sourceRootBefore": {
+          "x": 91.721,
+          "y": 124.237
+        },
+        "rootAfter": {
+          "x": 95.721,
+          "y": 129.237
+        },
+        "groundYBefore": 166,
+        "groundYAfter": 171,
+        "rootDeltaX": 0.067,
+        "groundDeltaY": 0
+      },
+      {
+        "direction": "southwest",
+        "phase": "stride-recovery",
+        "requested": {
+          "x": 4,
+          "y": 1
+        },
+        "applied": {
+          "x": 4,
+          "y": 1
+        },
+        "capped": false,
+        "idleRoot": {
+          "x": 95.654,
+          "y": 112.94
+        },
+        "idleGroundY": 171,
+        "sourceRootBefore": {
+          "x": 91.858,
+          "y": 124.341
+        },
+        "rootAfter": {
+          "x": 95.858,
+          "y": 125.341
+        },
+        "groundYBefore": 170,
+        "groundYAfter": 171,
+        "rootDeltaX": 0.204,
+        "groundDeltaY": 0
+      },
+      {
+        "direction": "south",
+        "phase": "stride-anticipation",
+        "requested": {
+          "x": 0,
+          "y": -6
+        },
+        "applied": {
+          "x": 0,
+          "y": -6
+        },
+        "capped": false,
+        "idleRoot": {
+          "x": 89.321,
+          "y": 104.044
+        },
+        "idleGroundY": 171,
+        "sourceRootBefore": {
+          "x": 89.065,
+          "y": 112.492
+        },
+        "rootAfter": {
+          "x": 89.065,
+          "y": 106.492
+        },
+        "groundYBefore": 177,
+        "groundYAfter": 171,
+        "rootDeltaX": -0.256,
+        "groundDeltaY": 0
+      },
+      {
+        "direction": "south",
+        "phase": "stride-compression",
+        "requested": {
+          "x": 0,
+          "y": 1
+        },
+        "applied": {
+          "x": 0,
+          "y": 1
+        },
+        "capped": false,
+        "idleRoot": {
+          "x": 89.321,
+          "y": 104.044
+        },
+        "idleGroundY": 171,
+        "sourceRootBefore": {
+          "x": 89.46,
+          "y": 115.269
+        },
+        "rootAfter": {
+          "x": 89.46,
+          "y": 116.269
+        },
+        "groundYBefore": 170,
+        "groundYAfter": 171,
+        "rootDeltaX": 0.139,
+        "groundDeltaY": 0
+      },
+      {
+        "direction": "south",
+        "phase": "stride-extension",
+        "requested": {
+          "x": 0,
+          "y": 11
+        },
+        "applied": {
+          "x": 0,
+          "y": 11
+        },
+        "capped": false,
+        "idleRoot": {
+          "x": 89.321,
+          "y": 104.044
+        },
+        "idleGroundY": 171,
+        "sourceRootBefore": {
+          "x": 89.008,
+          "y": 111.973
+        },
+        "rootAfter": {
+          "x": 89.008,
+          "y": 122.973
+        },
+        "groundYBefore": 160,
+        "groundYAfter": 171,
+        "rootDeltaX": -0.313,
+        "groundDeltaY": 0
+      },
+      {
+        "direction": "south",
+        "phase": "stride-recovery",
+        "requested": {
+          "x": 0,
+          "y": 1
+        },
+        "applied": {
+          "x": 0,
+          "y": 1
+        },
+        "capped": false,
+        "idleRoot": {
+          "x": 89.321,
+          "y": 104.044
+        },
+        "idleGroundY": 171,
+        "sourceRootBefore": {
+          "x": 89.442,
+          "y": 112.426
+        },
+        "rootAfter": {
+          "x": 89.442,
+          "y": 113.426
+        },
+        "groundYBefore": 170,
+        "groundYAfter": 171,
+        "rootDeltaX": 0.121,
+        "groundDeltaY": 0
+      },
+      {
+        "direction": "southeast",
+        "phase": "stride-anticipation",
+        "requested": {
+          "x": -3,
+          "y": -7
+        },
+        "applied": {
+          "x": -3,
+          "y": -7
+        },
+        "capped": false,
+        "idleRoot": {
+          "x": 83.54,
+          "y": 112.217
+        },
+        "idleGroundY": 170,
+        "sourceRootBefore": {
+          "x": 86.768,
+          "y": 125.407
+        },
+        "rootAfter": {
+          "x": 83.768,
+          "y": 118.407
+        },
+        "groundYBefore": 177,
+        "groundYAfter": 170,
+        "rootDeltaX": 0.227,
+        "groundDeltaY": 0
+      },
+      {
+        "direction": "southeast",
+        "phase": "stride-compression",
+        "requested": {
+          "x": -3,
+          "y": 0
+        },
+        "applied": {
+          "x": -3,
+          "y": 0
+        },
+        "capped": false,
+        "idleRoot": {
+          "x": 83.54,
+          "y": 112.217
+        },
+        "idleGroundY": 170,
+        "sourceRootBefore": {
+          "x": 86.647,
+          "y": 127.487
+        },
+        "rootAfter": {
+          "x": 83.647,
+          "y": 127.487
+        },
+        "groundYBefore": 170,
+        "groundYAfter": 170,
+        "rootDeltaX": 0.107,
+        "groundDeltaY": 0
+      },
+      {
+        "direction": "southeast",
+        "phase": "stride-extension",
+        "requested": {
+          "x": -3,
+          "y": 3
+        },
+        "applied": {
+          "x": -3,
+          "y": 3
+        },
+        "capped": false,
+        "idleRoot": {
+          "x": 83.54,
+          "y": 112.217
+        },
+        "idleGroundY": 170,
+        "sourceRootBefore": {
+          "x": 86.845,
+          "y": 125.875
+        },
+        "rootAfter": {
+          "x": 83.845,
+          "y": 128.875
+        },
+        "groundYBefore": 167,
+        "groundYAfter": 170,
+        "rootDeltaX": 0.305,
+        "groundDeltaY": 0
+      },
+      {
+        "direction": "southeast",
+        "phase": "stride-recovery",
+        "requested": {
+          "x": -3,
+          "y": 0
+        },
+        "applied": {
+          "x": -3,
+          "y": 0
+        },
+        "capped": false,
+        "idleRoot": {
+          "x": 83.54,
+          "y": 112.217
+        },
+        "idleGroundY": 170,
+        "sourceRootBefore": {
+          "x": 86.747,
+          "y": 125.419
+        },
+        "rootAfter": {
+          "x": 83.747,
+          "y": 125.419
+        },
+        "groundYBefore": 170,
+        "groundYAfter": 170,
+        "rootDeltaX": 0.206,
+        "groundDeltaY": 0
+      }
+    ]
+  }
+}

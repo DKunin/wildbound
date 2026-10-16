@@ -80,6 +80,7 @@ const containmentSamples = new Set([
   'elk-actions-wounds.png',
   'boar-atlas-wounds.png',
   'boar-actions-wounds.png',
+  'boar-charge-wounds.png',
 ]);
 const directions = ['east', 'northeast', 'north', 'northwest', 'west', 'southwest', 'south', 'southeast'] as const;
 const burialWolfPoseByFrame = [5, 6, 7, 8, 9, 8, 7, 6, 6, 6, 6, 6, 6, 6, 6, 6] as const;
@@ -104,8 +105,8 @@ describe('baked wound spritesheets', () => {
   it('covers every wolf, deer, elk, and boar sheet, frame, and wound level', () => {
     expect(manifest.version).toBe(1);
     expect(manifest.levels).toBe(3);
-    expect(manifest.spritesheets).toHaveLength(87);
-    expect(new Set(manifest.spritesheets.map(({ file }) => file)).size).toBe(87);
+    expect(manifest.spritesheets).toHaveLength(88);
+    expect(new Set(manifest.spritesheets.map(({ file }) => file)).size).toBe(88);
 
     for (const sheet of manifest.spritesheets) {
       expect(existsSync(resolve(WOUND_ROOT, sheet.file)), sheet.file).toBe(true);
@@ -128,6 +129,20 @@ describe('baked wound spritesheets', () => {
     }
   });
 
+  it('covers every phase in the expanded prey actions and boar charge sheets', () => {
+    for (const species of ['deer', 'elk', 'boar']) {
+      const sheet = manifest.spritesheets.find(({ source }) => source === `${species}-actions.png`);
+      expect(sheet, species).toMatchObject({ columns: 8, rows: 12, frameWidth: 181, frameHeight: 181 });
+      expect(sheet?.pixelsByLevel.every((pixels) => pixels.length === 96), species).toBe(true);
+    }
+    expect(manifest.spritesheets.find(({ source }) => source === 'boar-charge.png')).toMatchObject({
+      columns: 4,
+      rows: 8,
+      frameWidth: 181,
+      frameHeight: 181,
+    });
+  });
+
   it('clips representative wounds into the animal silhouette rather than floating over it', () => {
     const samples = manifest.spritesheets.filter(({ file }) => containmentSamples.has(file));
     expect(samples.map(({ file }) => file).sort()).toEqual([...containmentSamples].sort());
@@ -148,7 +163,7 @@ describe('baked wound spritesheets', () => {
       }
       expect(visible, sheet.file).toBeGreaterThan(1_000);
     }
-  });
+  }, 15_000);
 
   it('holds the completed burial pose after frame 7 and keeps wounds on one body anchor', () => {
     for (const direction of directions) {

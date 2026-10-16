@@ -4,11 +4,19 @@ import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { PNG } from 'pngjs';
 import { describe, expect, it } from 'vitest';
+import preyAnimationContract from '../src/game/data/prey-animation-contract.json';
 
-const FRAME_SIZE = 181;
+const FRAME_SIZE = preyAnimationContract.cellSize;
 const FRAME_COUNT = 48;
 const ACTION_FRAME_SIZE = FRAME_SIZE;
-const ACTION_FRAME_COUNT = 24;
+const ACTION_STATES = ['resting', 'foraging', 'drinking'] as const;
+const ACTION_SOURCE_ROWS = ACTION_STATES.flatMap((state) => preyAnimationContract.states[state].rows);
+const ACTION_ROWS = ACTION_SOURCE_ROWS.length;
+const DIRECTION_COUNT = preyAnimationContract.directions.length;
+const ACTION_FRAME_COUNT = ACTION_ROWS * DIRECTION_COUNT;
+const ACTION_SPECIES = Object.keys(preyAnimationContract.species) as Array<keyof typeof preyAnimationContract.species>;
+const ACTION_BOARD_SPECIES_COLUMNS = 2;
+const CHARGE_PHASES = preyAnimationContract.states.retaliating.rows;
 const ALPHA_THRESHOLD = 38;
 const MIN_COMPONENT_AREA = 100;
 const MAX_DETACHED_SHARE = 0.02;
@@ -35,9 +43,19 @@ const ASSET_ROOT = resolve(ROOT, 'public/assets/prey-v2');
 const BASELINE_PATH = resolve(ROOT, 'tests/fixtures/prey-animation-visual-baseline.json');
 const RUN_DIRECTION_BOARD_PATH = resolve(ROOT, 'tests/fixtures/prey-running-direction-board.png');
 const ACTION_DIRECTION_BOARD_PATH = resolve(ROOT, 'tests/fixtures/prey-action-direction-board.png');
-const RUN_DIRECTIONS: ReadonlyArray<readonly [number, number]> = [
-  [1, 0], [1, -1], [0, -1], [-1, -1], [-1, 0], [-1, 1], [0, 1], [1, 1],
-];
+const BOAR_CHARGE_DIRECTION_BOARD_PATH = resolve(ROOT, 'tests/fixtures/boar-charge-direction-phase-board.png');
+const DIRECTION_VECTORS: Record<(typeof preyAnimationContract.directions)[number], readonly [number, number]> = {
+  east: [1, 0],
+  northeast: [1, -1],
+  north: [0, -1],
+  northwest: [-1, -1],
+  west: [-1, 0],
+  southwest: [-1, 1],
+  south: [0, 1],
+  southeast: [1, 1],
+};
+const RUN_DIRECTIONS = preyAnimationContract.directions.map((direction) => DIRECTION_VECTORS[direction]);
+const sha256 = (bytes: Uint8Array): string => createHash('sha256').update(bytes).digest('hex');
 
 const setPixel = (image: PNG, x: number, y: number, color: readonly [number, number, number, number]): void => {
   if (x < 0 || x >= image.width || y < 0 || y >= image.height) return;
@@ -110,7 +128,12 @@ const createRunningDirectionBoard = (): Buffer => {
 };
 
 const createActionDirectionBoard = (): Buffer => {
-  const board = new PNG({ width: ACTION_FRAME_SIZE * 8, height: ACTION_FRAME_SIZE * 6, colorType: 6 });
+  const speciesRows = Math.ceil(ACTION_SPECIES.length / ACTION_BOARD_SPECIES_COLUMNS);
+  const board = new PNG({
+    width: ACTION_FRAME_SIZE * DIRECTION_COUNT * ACTION_BOARD_SPECIES_COLUMNS,
+    height: ACTION_FRAME_SIZE * ACTION_ROWS * speciesRows,
+    colorType: 6,
+  });
   for (let index = 0; index < board.data.length; index += 4) {
     board.data[index] = 16;
     board.data[index + 1] = 24;
@@ -118,26 +141,77 @@ const createActionDirectionBoard = (): Buffer => {
     board.data[index + 3] = 255;
   }
 
-  for (const [speciesIndex, species] of ['rabbit', 'deer'].entries()) {
-    const atlas = PNG.sync.read(readFileSync(resolve(ASSET_ROOT, `${species}-actions.png`)));
-    for (let phase = 0; phase < 3; phase += 1) {
-      const sourceY = phase * ACTION_FRAME_SIZE;
-      const destinationY = (speciesIndex * 3 + phase) * ACTION_FRAME_SIZE;
-      for (let column = 0; column < 8; column += 1) {
+  for (const [speciesIndex, species] of ACTION_SPECIES.entries()) {
+    const definition = preyAnimationContract.species[species];
+    const atlasPath = resolve(ROOT, 'public/assets', definition.assetRoot, `${species}-actions.png`);
+    const atlas = PNG.sync.read(readFileSync(atlasPath));
+    const speciesColumn = speciesIndex % ACTION_BOARD_SPECIES_COLUMNS;
+    const speciesRow = Math.floor(speciesIndex / ACTION_BOARD_SPECIES_COLUMNS);
+    for (const [displayRow, sourceRow] of ACTION_SOURCE_ROWS.entries()) {
+      const sourceY = sourceRow * ACTION_FRAME_SIZE;
+      const destinationY = (speciesRow * ACTION_ROWS + displayRow) * ACTION_FRAME_SIZE;
+      for (let column = 0; column < DIRECTION_COUNT; column += 1) {
         const sourceX = column * ACTION_FRAME_SIZE;
+        const destinationX = (speciesColumn * DIRECTION_COUNT + column) * ACTION_FRAME_SIZE;
         for (let y = 0; y < ACTION_FRAME_SIZE; y += 1) {
           for (let x = 0; x < ACTION_FRAME_SIZE; x += 1) {
             const source = ((sourceY + y) * atlas.width + sourceX + x) * 4;
             const alpha = atlas.data[source + 3] / 255;
             if (alpha <= 0) continue;
-            const destination = ((destinationY + y) * board.width + sourceX + x) * 4;
+            const destination = ((destinationY + y) * board.width + destinationX + x) * 4;
             for (let channel = 0; channel < 3; channel += 1) {
               board.data[destination + channel] = Math.round(atlas.data[source + channel] * alpha + board.data[destination + channel] * (1 - alpha));
             }
           }
         }
-        drawDirectionArrow(board, sourceX, destinationY, RUN_DIRECTIONS[column]);
+        drawDirectionArrow(board, destinationX, destinationY, RUN_DIRECTIONS[column]);
       }
+    }
+  }
+  return PNG.sync.write(board);
+};
+
+const createBoarChargeDirectionBoard = (): Buffer => {
+  const definition = preyAnimationContract.species.boar;
+  if (!definition.retaliationAsset || !definition.retaliationAssetRoot) {
+    throw new Error('Boar animation contract must define dedicated retaliation artwork.');
+  }
+  const atlasPath = resolve(
+    ROOT,
+    'public/assets',
+    definition.retaliationAssetRoot,
+    `${definition.retaliationAsset}.png`,
+  );
+  const atlas = PNG.sync.read(readFileSync(atlasPath));
+  const board = new PNG({
+    width: ACTION_FRAME_SIZE * CHARGE_PHASES.length,
+    height: ACTION_FRAME_SIZE * DIRECTION_COUNT,
+    colorType: 6,
+  });
+  for (let index = 0; index < board.data.length; index += 4) {
+    board.data[index] = 16;
+    board.data[index + 1] = 24;
+    board.data[index + 2] = 19;
+    board.data[index + 3] = 255;
+  }
+
+  for (let direction = 0; direction < DIRECTION_COUNT; direction += 1) {
+    const sourceY = direction * ACTION_FRAME_SIZE;
+    for (const [displayPhase, sourcePhase] of CHARGE_PHASES.entries()) {
+      const sourceX = sourcePhase * ACTION_FRAME_SIZE;
+      const destinationX = displayPhase * ACTION_FRAME_SIZE;
+      for (let y = 0; y < ACTION_FRAME_SIZE; y += 1) {
+        for (let x = 0; x < ACTION_FRAME_SIZE; x += 1) {
+          const source = ((sourceY + y) * atlas.width + sourceX + x) * 4;
+          const alpha = atlas.data[source + 3] / 255;
+          if (alpha <= 0) continue;
+          const destination = ((sourceY + y) * board.width + destinationX + x) * 4;
+          for (let channel = 0; channel < 3; channel += 1) {
+            board.data[destination + channel] = Math.round(atlas.data[source + channel] * alpha + board.data[destination + channel] * (1 - alpha));
+          }
+        }
+      }
+      drawDirectionArrow(board, destinationX, sourceY, RUN_DIRECTIONS[direction]);
     }
   }
   return PNG.sync.write(board);
@@ -242,10 +316,12 @@ const collectBaseline = (): VisualBaseline => {
 const actual = collectBaseline();
 const runningDirectionBoard = createRunningDirectionBoard();
 const actionDirectionBoard = createActionDirectionBoard();
+const boarChargeDirectionBoard = createBoarChargeDirectionBoard();
 if (process.env.UPDATE_PREY_VISUAL_BASELINE === '1') {
   writeFileSync(BASELINE_PATH, `${JSON.stringify(actual, null, 2)}\n`);
   writeFileSync(RUN_DIRECTION_BOARD_PATH, runningDirectionBoard);
   writeFileSync(ACTION_DIRECTION_BOARD_PATH, actionDirectionBoard);
+  writeFileSync(BOAR_CHARGE_DIRECTION_BOARD_PATH, boarChargeDirectionBoard);
 }
 
 describe('prey animation visual regressions', () => {
@@ -281,7 +357,7 @@ describe('prey animation visual regressions', () => {
   });
 
   it('uses true northwest deer frames instead of southwest artwork', () => {
-    for (const [filename, rows] of [['deer-atlas.png', [2, 3, 4]], ['deer-actions.png', [0, 1, 2]]] as const) {
+    for (const [filename, rows] of [['deer-atlas.png', [2, 3, 4]], ['deer-actions.png', [0, 4, 8]]] as const) {
       const atlas = PNG.sync.read(readFileSync(resolve(ASSET_ROOT, filename)));
       for (const row of rows) {
         const northeast = Buffer.alloc(FRAME_SIZE * FRAME_SIZE * 4);
@@ -305,8 +381,13 @@ describe('prey animation visual regressions', () => {
     expect(runningDirectionBoard).toEqual(readFileSync(RUN_DIRECTION_BOARD_PATH));
   });
 
-  it('matches the reviewed rest, eating and drinking direction board', () => {
+  it('matches the reviewed four-species, four-phase rest, eating and drinking direction board', () => {
     expect(existsSync(ACTION_DIRECTION_BOARD_PATH)).toBe(true);
-    expect(actionDirectionBoard).toEqual(readFileSync(ACTION_DIRECTION_BOARD_PATH));
+    expect(sha256(actionDirectionBoard)).toBe(sha256(readFileSync(ACTION_DIRECTION_BOARD_PATH)));
+  });
+
+  it('matches the reviewed boar charge board across every direction and phase', () => {
+    expect(existsSync(BOAR_CHARGE_DIRECTION_BOARD_PATH)).toBe(true);
+    expect(sha256(boarChargeDirectionBoard)).toBe(sha256(readFileSync(BOAR_CHARGE_DIRECTION_BOARD_PATH)));
   });
 });

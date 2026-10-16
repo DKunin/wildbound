@@ -34,7 +34,7 @@ const atlasMetrics = (path: string, rows: number) => {
 };
 
 const movement = atlasMetrics(resolve(ROOT, 'public/assets/prey-v3/elk-atlas.png'), 6);
-const actions = atlasMetrics(resolve(ROOT, 'public/assets/prey-v3/elk-actions.png'), 3);
+const actions = atlasMetrics(resolve(ROOT, 'public/assets/prey-v3/elk-actions.png'), 12);
 const baseline = { version: 1, movement: movement.frames, actions: actions.frames };
 
 if (process.env.UPDATE_ELK_VISUAL_BASELINE === '1') {
@@ -52,10 +52,10 @@ describe('elk artwork', () => {
     }
   });
 
-  it('provides complete idle, graze, and drink animation rows', () => {
+  it('provides complete four-phase rest, graze, and drink animation rows', () => {
     expect(actions.width).toBe(1_448);
-    expect(actions.height).toBe(543);
-    expect(actions.frames).toHaveLength(24);
+    expect(actions.height).toBe(2_172);
+    expect(actions.frames).toHaveLength(96);
     for (const frame of actions.frames) {
       expect(frame.opaquePixels).toBeGreaterThan(1_000);
       expect(frame.edgePixels).toBe(0);

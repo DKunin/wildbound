@@ -108,6 +108,18 @@ const sourceAssetPath = (source) => {
   return `public/assets/prey-v2/${source}`;
 };
 
+const readPreyAnimationContract = (root) => {
+  const path = resolve(root, 'src/game/data/prey-animation-contract.json');
+  const contract = JSON.parse(readFileSync(path, 'utf8'));
+  if (contract.version !== 2 || contract.cellSize !== 181 || !Array.isArray(contract.directions)) {
+    throw new Error('Unsupported prey animation contract. Expected version 2 with 181px cells.');
+  }
+  if (JSON.stringify(contract.directions) !== JSON.stringify(DIRECTIONS)) {
+    throw new Error('Prey animation direction order differs from the animation lab.');
+  }
+  return contract;
+};
+
 const readWoundManifest = (root) => {
   const path = resolve(root, 'public/assets/wounds-v1/manifest.json');
   const manifest = JSON.parse(readFileSync(path, 'utf8'));
@@ -117,17 +129,22 @@ const readWoundManifest = (root) => {
   return manifest;
 };
 
-const frameRefs = (asset, frameWidth, frameHeight, indexes, woundSheet, woundLevel) => indexes.map((frame) => ({
-  asset,
-  frame,
-  frameWidth,
-  frameHeight,
-  ...(woundLevel > 0 ? {
-    woundAsset: `public/assets/wounds-v1/${woundSheet.file}`,
-    woundLevel,
-    woundSourceHeight: woundSheet.sourceHeight,
-  } : {}),
-}));
+const frameRefs = (asset, frameWidth, frameHeight, indexes, woundSheet, woundLevel) => {
+  if (woundLevel > 0 && !woundSheet) {
+    throw new Error(`Missing wound manifest entry for ${asset.split('/').at(-1)}.`);
+  }
+  return indexes.map((frame) => ({
+    asset,
+    frame,
+    frameWidth,
+    frameHeight,
+    ...(woundLevel > 0 ? {
+      woundAsset: `public/assets/wounds-v1/${woundSheet.file}`,
+      woundLevel,
+      woundSourceHeight: woundSheet.sourceHeight,
+    } : {}),
+  }));
+};
 
 const makeAnimation = ({
   family,
@@ -144,6 +161,8 @@ const makeAnimation = ({
   frameHeight,
   indexes,
   woundSheet,
+  minFrames,
+  minUniquePoses,
 }) => {
   const id = [family, subject, state, direction, carrying ? 'carry' : 'plain', `wound-${woundLevel}`].join('/');
   return {
@@ -157,6 +176,8 @@ const makeAnimation = ({
     frameRate,
     loop,
     motionClass,
+    ...(minFrames === undefined ? {} : { minFrames }),
+    ...(minUniquePoses === undefined ? {} : { minUniquePoses }),
     cell: { width: frameWidth, height: frameHeight },
     frames: frameRefs(asset, frameWidth, frameHeight, indexes, woundSheet, woundLevel),
   };
@@ -233,56 +254,51 @@ const addPackAnimations = (animations) => {
   }
 };
 
-const preyFrames = (directionIndex, state, species) => {
-  if (state === 'retaliating') return species === 'deer'
-    ? [0, 1, 2, 3].map((phase) => directionIndex * 4 + phase)
-    : [16 + directionIndex, 24 + directionIndex, 32 + directionIndex, 24 + directionIndex];
-  if (state === 'idle') return [directionIndex, 8 + directionIndex];
-  if (state === 'walk') return [16 + directionIndex, 24 + directionIndex];
-  if (state === 'flee') return [16 + directionIndex, 24 + directionIndex, 32 + directionIndex, 24 + directionIndex];
-  if (state === 'resting') return [directionIndex];
-  if (state === 'foraging') return [8 + directionIndex];
-  if (state === 'drinking') return [16 + directionIndex];
-  return [40 + directionIndex];
+const preyFrames = (directionIndex, state, contract) => {
+  const settings = contract.states[state];
+  if (settings.layout === 'directionRows') {
+    return settings.rows.map((phase) => directionIndex * settings.rows.length + phase);
+  }
+  return settings.rows.map((row) => row * contract.directions.length + directionIndex);
 };
 
-const preyAsset = (species, state) => {
-  if (species === 'deer' && state === 'retaliating') return 'public/assets/balance-v1/deer-kick.png';
-  const version = species === 'elk' ? 'prey-v3' : species === 'boar' ? 'prey-v4' : 'prey-v2';
-  const action = state === 'foraging' || state === 'drinking' || state === 'resting';
-  return `public/assets/${version}/${species}-${action ? 'actions' : 'atlas'}.png`;
+const preySource = (species, state, contract) => {
+  const definition = contract.species[species];
+  const sheet = contract.states[state].sheet;
+  if (sheet === 'retaliation') return `${definition.retaliationAsset}.png`;
+  return `${species}-${sheet === 'actions' ? 'actions' : 'atlas'}.png`;
 };
 
-const preySource = (species, state) => {
-  if (species === 'deer' && state === 'retaliating') return 'deer-kick.png';
-  const action = state === 'foraging' || state === 'drinking' || state === 'resting';
-  return `${species}-${action ? 'actions' : 'atlas'}.png`;
+const preyAsset = (species, state, contract) => {
+  const definition = contract.species[species];
+  const sheet = contract.states[state].sheet;
+  if (sheet === 'retaliation') {
+    return `public/assets/${definition.retaliationAssetRoot}/${definition.retaliationAsset}.png`;
+  }
+  return `public/assets/${definition.assetRoot}/${species}-${sheet === 'actions' ? 'actions' : 'atlas'}.png`;
 };
 
-const addPreyAnimations = (animations, woundBySource) => {
-  const settings = {
-    idle: { frameRate: 0.8, loop: true, motionClass: 'ambient' },
-    walk: { frameRate: 6, loop: true, motionClass: 'locomotion' },
-    flee: { frameRate: 11, loop: true, motionClass: 'locomotion' },
-    foraging: { frameRate: 1.6, loop: true, motionClass: 'static' },
-    drinking: { frameRate: 1.25, loop: true, motionClass: 'static' },
-    resting: { frameRate: 0.7, loop: true, motionClass: 'static' },
-    dead: { frameRate: 1, loop: false, motionClass: 'static' },
-    retaliating: { frameRate: 5, loop: false, motionClass: 'one-shot' },
-  };
+const addPreyAnimations = (animations, woundBySource, contract) => {
   for (const species of ['rabbit', 'deer', 'elk', 'boar']) {
     const states = ['idle', 'walk', 'flee', 'foraging', 'drinking', 'resting', 'dead'];
-    if (species === 'deer' || species === 'boar') states.push('retaliating');
-    const woundLevels = species === 'rabbit' ? [0] : WOUND_LEVELS;
+    if (contract.species[species].retaliationAsset) states.push('retaliating');
+    const woundLevels = contract.species[species].wounds ? WOUND_LEVELS : [0];
     for (const woundLevel of woundLevels) {
       for (const [directionIndex, direction] of DIRECTIONS.entries()) {
         for (const state of states) {
-          const source = preySource(species, state);
+          const definition = contract.states[state];
+          const source = preySource(species, state, contract);
           animations.push(makeAnimation({
             family: 'prey', subject: species, state, direction, woundLevel,
-            ...settings[state],
-            asset: preyAsset(species, state), frameWidth: 181, frameHeight: 181,
-            indexes: preyFrames(directionIndex, state, species),
+            frameRate: definition.frameRate,
+            loop: definition.repeat === -1,
+            motionClass: definition.motionClass,
+            minFrames: definition.minFrames,
+            minUniquePoses: definition.minUniquePoses,
+            asset: preyAsset(species, state, contract),
+            frameWidth: contract.cellSize,
+            frameHeight: contract.cellSize,
+            indexes: preyFrames(directionIndex, state, contract),
             woundSheet: woundLevel > 0 ? woundBySource.get(source) : undefined,
           }));
         }
@@ -295,14 +311,48 @@ const validateInventory = (root, animations, woundManifest) => {
   const failures = [];
   const ids = new Set();
   const referencedWoundSources = new Set();
+  const dimensions = new Map();
+  const imageDimensions = (path) => {
+    if (dimensions.has(path)) return dimensions.get(path);
+    const absolutePath = resolve(root, path);
+    if (!existsSync(absolutePath)) return undefined;
+    const bytes = readFileSync(absolutePath);
+    if (bytes.length < 24 || bytes.toString('ascii', 1, 4) !== 'PNG') {
+      failures.push(`invalid PNG asset: ${path}`);
+      return undefined;
+    }
+    const value = { width: bytes.readUInt32BE(16), height: bytes.readUInt32BE(20) };
+    dimensions.set(path, value);
+    return value;
+  };
   for (const animation of animations) {
     if (ids.has(animation.id)) failures.push(`duplicate animation id: ${animation.id}`);
     ids.add(animation.id);
     if (animation.frames.length === 0) failures.push(`empty runtime sequence: ${animation.id}`);
+    if (animation.minFrames !== undefined && animation.frames.length < animation.minFrames) {
+      failures.push(`short runtime sequence: ${animation.id} has ${animation.frames.length}, requires ${animation.minFrames}`);
+    }
     for (const frame of animation.frames) {
-      if (!existsSync(resolve(root, frame.asset))) failures.push(`missing asset: ${frame.asset}`);
+      const baseDimensions = imageDimensions(frame.asset);
+      if (!baseDimensions) failures.push(`missing asset: ${frame.asset}`);
+      else {
+        const columns = Math.floor(baseDimensions.width / frame.frameWidth);
+        const rows = Math.floor(baseDimensions.height / frame.frameHeight);
+        const maximumPadding = animation.family === 'prey' ? 0 : 1;
+        if (baseDimensions.width - columns * frame.frameWidth > maximumPadding
+          || baseDimensions.height - rows * frame.frameHeight > maximumPadding) {
+          failures.push(`invalid fixed-cell dimensions: ${frame.asset} is ${baseDimensions.width}x${baseDimensions.height}`);
+        } else if (frame.frame < 0 || frame.frame >= columns * rows) {
+          failures.push(`out-of-range frame ${frame.frame}: ${frame.asset} has ${columns * rows} cells`);
+        }
+      }
       if (frame.woundAsset) {
-        if (!existsSync(resolve(root, frame.woundAsset))) failures.push(`missing wound asset: ${frame.woundAsset}`);
+        const woundDimensions = imageDimensions(frame.woundAsset);
+        if (!woundDimensions) failures.push(`missing wound asset: ${frame.woundAsset}`);
+        else if (woundDimensions.width !== baseDimensions?.width
+          || woundDimensions.height !== frame.woundSourceHeight * woundManifest.levels) {
+          failures.push(`invalid wound atlas dimensions: ${frame.woundAsset}`);
+        }
         referencedWoundSources.add(frame.asset.split('/').at(-1));
       }
     }
@@ -314,12 +364,13 @@ const validateInventory = (root, animations, woundManifest) => {
 };
 
 export const buildInventory = (root = DEFAULT_ROOT) => {
+  const preyAnimationContract = readPreyAnimationContract(root);
   const woundManifest = readWoundManifest(root);
   const woundBySource = new Map(woundManifest.spritesheets.map((sheet) => [sheet.source, sheet]));
   const animations = [];
   addPlayerAnimations(animations, woundBySource);
   addPackAnimations(animations);
-  addPreyAnimations(animations, woundBySource);
+  addPreyAnimations(animations, woundBySource, preyAnimationContract);
   animations.sort((left, right) => left.id.localeCompare(right.id));
   validateInventory(root, animations, woundManifest);
 
@@ -547,7 +598,8 @@ const analyzeAnimation = (animation, cache) => {
   const seam = inspected.length > 1 ? compareFrames(inspected.at(-1), inspected[0]) : undefined;
   const semanticMotionScore = median(transitions.map(({ visualDelta }) => visualDelta));
   const transitionBaseline = Math.max(semanticMotionScore, 0.005);
-  const uniquePoseRatio = new Set(inspected.map(({ hash }) => hash)).size / inspected.length;
+  const uniquePoses = new Set(inspected.map(({ hash }) => hash)).size;
+  const uniquePoseRatio = uniquePoses / inspected.length;
   const metrics = {
     alphaAnchorXRange: normalizedRange(inspected.map(({ alphaCentroid }) => alphaCentroid.x), medianWidth),
     alphaAnchorYRange: normalizedRange(inspected.map(({ alphaCentroid }) => alphaCentroid.y), medianHeight),
@@ -566,6 +618,7 @@ const analyzeAnimation = (animation, cache) => {
     minimumTransitionDelta: transitions.length > 0 ? Math.min(...transitions.map(({ visualDelta }) => visualDelta)) : 0,
     nearDuplicateTransitions: transitions.filter(({ visualDelta }) => visualDelta < 0.012).length,
     duplicateTransitions: inspected.slice(1).filter((frame, index) => frame.hash === inspected[index].hash).length,
+    uniquePoses,
     uniquePoseRatio,
     loopSeamDelta: seam?.visualDelta ?? 0,
     loopSeamAlphaDelta: seam?.alphaDelta ?? 0,
@@ -599,6 +652,15 @@ const analyzeAnimation = (animation, cache) => {
     evaluateLowMetric(issues, 'uniquePoseRatio', metrics.uniquePoseRatio, 'Too few distinct rendered poses for the runtime sequence.');
     evaluateLowMetric(issues, 'semanticMotionScore', metrics.semanticMotionScore, 'Pose-to-pose visual change is too small to read as the named action.');
   }
+  if (animation.minUniquePoses !== undefined && uniquePoses < animation.minUniquePoses) {
+    issues.push(issue(
+      'fail',
+      'requiredUniquePoses',
+      uniquePoses,
+      animation.minUniquePoses,
+      `Runtime contract requires at least ${animation.minUniquePoses} unique poses.`,
+    ));
+  }
   issues.sort((left, right) => `${left.severity}/${left.metric}`.localeCompare(`${right.severity}/${right.metric}`));
   const status = issues.some(({ severity }) => severity === 'fail')
     ? 'fail'
@@ -627,6 +689,7 @@ const summarizeInventory = (inventory) => ({
 });
 
 export const runAudit = ({ root = DEFAULT_ROOT, families } = {}) => {
+  const preyAnimationContract = readPreyAnimationContract(root);
   const inventory = buildInventory(root);
   const selected = families?.length
     ? inventory.animations.filter(({ family, subject }) => families.includes(family) || families.includes(subject))
@@ -639,6 +702,41 @@ export const runAudit = ({ root = DEFAULT_ROOT, families } = {}) => {
   });
   const analyzed = analysisOrder.map((animation) => analyzeAnimation(animation, cache));
   analyzed.sort((left, right) => left.id.localeCompare(right.id));
+  const idleByVariant = new Map(analyzed
+    .filter(({ family, state }) => family === 'prey' && state === 'idle')
+    .map((animation) => [
+      `${animation.subject}/${animation.direction}/${animation.woundLevel}`,
+      animation,
+    ]));
+  const groundedTransitionStates = new Set(['resting', 'foraging', 'drinking', 'retaliating']);
+  for (const animation of analyzed) {
+    if (animation.family !== 'prey' || !groundedTransitionStates.has(animation.state)) continue;
+    const idle = idleByVariant.get(`${animation.subject}/${animation.direction}/${animation.woundLevel}`);
+    if (!idle) continue;
+    // Idle may be interrupted on either authored breathing phase. Needs and
+    // threats can interrupt looping actions on any rendered phase, while
+    // retaliation is locked until its one-shot animation completes.
+    const transitionFrames = animation.state === 'retaliating'
+      ? [animation.frameGeometry[0], animation.frameGeometry.at(-1)]
+      : animation.frameGeometry;
+    const transitionDeltas = idle.frameGeometry.flatMap((idleFrame) => transitionFrames.map((actionFrame) => (
+      Math.abs(actionFrame.groundContact.y - idleFrame.groundContact.y)
+    )));
+    const maximumDelta = Math.max(...transitionDeltas);
+    animation.metrics.idleTransitionGroundDeltaPx = round(maximumDelta);
+    animation.metrics.idleTransitionComparisons = transitionDeltas.length;
+    if (maximumDelta > preyAnimationContract.transitionLimits.groundContactY) {
+      animation.issues.push(issue(
+        'fail',
+        'idleTransitionGroundDeltaPx',
+        maximumDelta,
+        preyAnimationContract.transitionLimits.groundContactY,
+        'An action phase ground line does not match every same-direction idle phase.',
+      ));
+      animation.issues.sort((left, right) => `${left.severity}/${left.metric}`.localeCompare(`${right.severity}/${right.metric}`));
+      animation.status = 'fail';
+    }
+  }
   const flattenIssues = (severity) => analyzed.flatMap((animation) => animation.issues
     .filter((entry) => entry.severity === severity)
     .map((entry) => ({ animationId: animation.id, ...entry })))
@@ -652,6 +750,8 @@ export const runAudit = ({ root = DEFAULT_ROOT, families } = {}) => {
       alphaThreshold: ALPHA_THRESHOLD,
       coreAlphaThreshold: CORE_ALPHA_THRESHOLD,
       anchor: 'untrimmed fixed cell; alpha/core centroid plus lowest visible contact line',
+      preyGroundTransitionLimitPx: preyAnimationContract.transitionLimits.groundContactY,
+      preyGroundTransitionCoverage: 'all idle phases x all interruptible action phases; retaliation endpoints only',
       reportOrder: 'stable animation id; no wall-clock fields',
     },
     thresholds: THRESHOLDS,

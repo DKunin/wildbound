@@ -48,38 +48,38 @@
     },
     {
       "edgePixels": 0,
-      "hash": "7d0c7eb79cfc3ee4b750be5cfc010e2e5f67a00dd19eac2b4fc3d95f68410859",
-      "opaquePixels": 7500
+      "hash": "c2450bbe10fa4c6fb1c3f6fc4a9c8b09ac143ce6b3b4ae25336b78c7aec0c195",
+      "opaquePixels": 7621
     },
     {
       "edgePixels": 0,
-      "hash": "30ce74bd519f9fd7117729e01b8ba7c7581d397812574e0216d851136df2f51c",
-      "opaquePixels": 5948
+      "hash": "7a5d162931142bc37a992913f3f3f6e683d12803dde5fcc74ed42b107070b4a6",
+      "opaquePixels": 6094
     },
     {
       "edgePixels": 0,
-      "hash": "c18d977f54eaa0d514ccb983917a6397039b2de31b6115e95a562a9aa74aebc8",
-      "opaquePixels": 7404
+      "hash": "f8059aa555aae8a46b31030aa8960700a452e5815964c1b431ffe56b4517735e",
+      "opaquePixels": 7576
     },
     {
       "edgePixels": 0,
-      "hash": "9b70e4bbfd79f8a98f0c480dc8e1203a4632d6046640baa1b7b84767066dfba6",
-      "opaquePixels": 8054
+      "hash": "e5421dd9de773ad5c0ed7b5189fbb3dc3a16ad4d17047e2227daa7d10cf1caea",
+      "opaquePixels": 8204
     },
     {
       "edgePixels": 0,
-      "hash": "517521a78213147caed421a31d9b20ec28395fae9d3c1134ccf81b9be92959d9",
-      "opaquePixels": 6887
+      "hash": "fba7bcdd174b48815fb8efb2db1576a22e248a3a18e24ce27022b937a40a395c",
+      "opaquePixels": 7120
     },
     {
       "edgePixels": 0,
-      "hash": "bc0755f5f1959462bcae925bacb3aac07db8ad428e36beabc3ee15501bc47d43",
-      "opaquePixels": 5816
+      "hash": "4e5bcb18a3a0065ebfa7f4b832de42b37a891965fe907fd81a5ef3155e381b39",
+      "opaquePixels": 6112
     },
     {
       "edgePixels": 0,
-      "hash": "201f91dfc335b73b475e9842a1bd31881795d0a39befba1417777e950ac49428",
-      "opaquePixels": 7057
+      "hash": "f734b0fc1fdd1d097f7ee82a3e818dd5770323140bc2170ccb40dee94feaac9e",
+      "opaquePixels": 7283
     },
     {
       "edgePixels": 0,
@@ -245,123 +245,483 @@
   "actions": [
     {
       "edgePixels": 0,
-      "hash": "b600cceb6e0bfd479a96d97b91ab7c92674ec8f3314632fbd9bf0a02e25e2d02",
+      "hash": "f0ae278c40cb05ad245b57ac1cfa01c519396d2fdaa9684c33458c39e96999a9",
       "opaquePixels": 8060
     },
     {
       "edgePixels": 0,
-      "hash": "c9affafd6eb30d0c7b7b7c5f1464c67cd5f8f9072105a065c7fc1c13de9be070",
+      "hash": "d8887f219bcde8741bf406b0c04dd01d00da34cb521d8449d07d3ae9436998a1",
       "opaquePixels": 8582
     },
     {
       "edgePixels": 0,
-      "hash": "7697459e830e443d4d06fff4215c22b901544626c2b7fd071ef010f822f47cf7",
+      "hash": "cc04132df3428f2ea610172c89ffe2c695c78c5fc4f3eb84fe1160dc1d797eca",
       "opaquePixels": 6451
     },
     {
       "edgePixels": 0,
-      "hash": "8ddcf467a9758e1a5cc401506dd865ff33a21f5b4fabb0c3bd10b05da215a69d",
+      "hash": "2ddb9d0f9b31a3568826e8e985d07115dff161e496ba0f783e9e18727e1694bd",
       "opaquePixels": 8516
     },
     {
       "edgePixels": 0,
-      "hash": "1030977bdd00a0188bffa84f4878279fc4d5a9e44b0bf396843ab3a6e560a3d3",
+      "hash": "68b89093e8572bbb06a77eb2cdd499ef4415e964242431ad225eadd23703d89c",
       "opaquePixels": 8272
     },
     {
       "edgePixels": 0,
-      "hash": "24ecf9ec01649cc3cce6339bf89eec251ccbe19ade2a19b6db2bab5dec4ea450",
+      "hash": "037c5acd97fc735d493f0f56ffeab2960e3b73949aa6ee6be78c5dc518d98341",
       "opaquePixels": 8127
     },
     {
       "edgePixels": 0,
-      "hash": "baf6ba2fc08a14bcaff41f34deac690de8aedf3bcba33497ac690f05172149e5",
+      "hash": "833fe25973560b6889b1539a330689777b27e7759441c1e4042e8f1ac630364b",
       "opaquePixels": 6913
     },
     {
       "edgePixels": 0,
-      "hash": "07d65398ce60983bc8177647e04b6c459923a7881eda93714c2b256211cc3079",
+      "hash": "ca270a17b90facdde25d9b46fbcc6079901fa104ae4a5f4b85bcf91f61123915",
       "opaquePixels": 8175
     },
     {
       "edgePixels": 0,
-      "hash": "b795e7637dd8d404f79a856def53f575f4da7deb23feebd3dc31fadd90a66f05",
+      "hash": "36affeabf01b79211fd51fd2aab5f106880b9c0afa168df869c20b80ba19cce6",
+      "opaquePixels": 8411
+    },
+    {
+      "edgePixels": 0,
+      "hash": "a2080da9413a9b6ca9b2da5af5c879afffa340f92da8018bc65b9389e35a45c8",
+      "opaquePixels": 8943
+    },
+    {
+      "edgePixels": 0,
+      "hash": "996b244873c9edd6397e2bf83822db8cbbfa0c2f4e1dc74201ca8cc0a4037cf8",
+      "opaquePixels": 6741
+    },
+    {
+      "edgePixels": 0,
+      "hash": "5a537689b7dbd48b85add44fe193215aa259aa35cb5421518e6eaaa718307d23",
+      "opaquePixels": 8920
+    },
+    {
+      "edgePixels": 0,
+      "hash": "2343956e445130fca6b1aa1ccc2f58c2f6d0aabb69aaa24eb57f2d9699ce0f16",
+      "opaquePixels": 8672
+    },
+    {
+      "edgePixels": 0,
+      "hash": "4c629ec81594b9e76e4871d8bb5788ea5941fad057471c816ad0481c6de54703",
+      "opaquePixels": 8549
+    },
+    {
+      "edgePixels": 0,
+      "hash": "f4382c9d328ed100f0db3b8b138659f4538517d03c48dcda82cb3264333f3dae",
+      "opaquePixels": 7223
+    },
+    {
+      "edgePixels": 0,
+      "hash": "5e1c9a2c37097745007b0a922c9f4146c25d31534326afb977055c395f5062a3",
+      "opaquePixels": 8520
+    },
+    {
+      "edgePixels": 0,
+      "hash": "08154d092500b4b6c9a2ea5a70b0f975909507f0bfd2d5d12e17a69d495e3f57",
+      "opaquePixels": 8678
+    },
+    {
+      "edgePixels": 0,
+      "hash": "a33671e9be649e397ead5d6c0248eb93405b7330ff1b51107e4351c6f94431c1",
+      "opaquePixels": 9229
+    },
+    {
+      "edgePixels": 0,
+      "hash": "f055c348e2cdec9d229fbb43dbebfc88958737ea265ebc61a9b72100f74a56cb",
+      "opaquePixels": 6951
+    },
+    {
+      "edgePixels": 0,
+      "hash": "72bbdd6bb0d020acfb72e8d856e258f6707b1f7c48ffc91e52ce25445969052b",
+      "opaquePixels": 9214
+    },
+    {
+      "edgePixels": 0,
+      "hash": "93d4d817e5b2d8f13a01e9fcd7f1b8897a275ec99393fa72a537484ec21e0030",
+      "opaquePixels": 8995
+    },
+    {
+      "edgePixels": 0,
+      "hash": "56949ee463a3f8bfaa087bc860dcade03034dc7bb6fcc743c7ef11f7197a1364",
+      "opaquePixels": 8907
+    },
+    {
+      "edgePixels": 0,
+      "hash": "4083f958e37e1286c7c3a9da7c7b9bfc58fa2d564032ed337bb6e119ab1465dd",
+      "opaquePixels": 7506
+    },
+    {
+      "edgePixels": 0,
+      "hash": "b289998f626b5c6e20f592cf35d72b9d0ed4fe820d16ba95ab6faab1677b4dd9",
+      "opaquePixels": 8779
+    },
+    {
+      "edgePixels": 0,
+      "hash": "4876c1a115414027519e984a794e73d1245f8893af4178a4f1735b34a2cce15f",
+      "opaquePixels": 8415
+    },
+    {
+      "edgePixels": 0,
+      "hash": "cc2989645c03508683a3c8bc8bcf4ddecb382ab0155b306cb2146fc640a5ee78",
+      "opaquePixels": 8929
+    },
+    {
+      "edgePixels": 0,
+      "hash": "ce104335819ab84186d69ba1b40c7a6998a72de5acb1c8f772b672056b387f34",
+      "opaquePixels": 6698
+    },
+    {
+      "edgePixels": 0,
+      "hash": "5d1ead2f424abb40da38aa96e9261d76ed57aa3433f30237000694b9b452d805",
+      "opaquePixels": 8838
+    },
+    {
+      "edgePixels": 0,
+      "hash": "550380803dd2a827dfa9528b00bdffc4db50d0f9f70e25457cb23fff7e85bb27",
+      "opaquePixels": 8586
+    },
+    {
+      "edgePixels": 0,
+      "hash": "34d67968879ad63797c10e112dcdd509f6f37374bbbb0af9a62c0f9cc3f64df0",
+      "opaquePixels": 8413
+    },
+    {
+      "edgePixels": 0,
+      "hash": "db1de6d737557c912ce3df42462cf5f659940af0e4357a6fb7f6e61964de39b0",
+      "opaquePixels": 7187
+    },
+    {
+      "edgePixels": 0,
+      "hash": "739baa33bb2ff8975ecb820b323bf1a995c995f0f154830c63ad2cb3a54bdd3a",
+      "opaquePixels": 8538
+    },
+    {
+      "edgePixels": 0,
+      "hash": "49932b178cdc09d140b71045a367177df2e3db58776d9e9d5addcdf8989e54f0",
       "opaquePixels": 10324
     },
     {
       "edgePixels": 0,
-      "hash": "7e02636ec008b33e98292ba2f42bd3c6dd484adf0b04fbd0000e931080645bf3",
+      "hash": "2113fa2241d7c17c036dcd78237d43129ca0e09f5cb3d40f9a93ab91b347dbd3",
       "opaquePixels": 9204
     },
     {
       "edgePixels": 0,
-      "hash": "9f3b75bb75f5707dcdadfa2586306d095b04d152187fc4f0975564b4120dbaf3",
+      "hash": "4ef3b2b620f7eee343d749803796310e90116f497ac6a0111cfa3db5b10af3bf",
       "opaquePixels": 7151
     },
     {
       "edgePixels": 0,
-      "hash": "74c11d45c24904398c5e2c1bfb1a61cb2c6828157a4ec325a1e07679dbaec417",
+      "hash": "3c7c57d0654ebcf0e19664bcfd499135411d91e201b35a1f54ba85fa43fcef0f",
       "opaquePixels": 9274
     },
     {
       "edgePixels": 0,
-      "hash": "be2a400462642d2eb23fa4c32eafd409f708967926c317c6c6fa7d1f2dc80d90",
+      "hash": "e106dc1e0175d6ea193034f857aeb75ebca7009e6578f8e309a9d824b8e1938a",
       "opaquePixels": 11066
     },
     {
       "edgePixels": 0,
-      "hash": "f1a46da317c9ad4443e04cf8379a24e1a9c3a655e3c1c89f4c83f3bd546125f6",
+      "hash": "80328308bb7c01c6440fcbfbd49b7eb245a95c932ef13f4d959e88fa2a15191e",
       "opaquePixels": 9209
     },
     {
       "edgePixels": 0,
-      "hash": "4a1fb045a24c36e7baed92de8ad92ae9d2ebad1cd1d9662851896f02e87c9b37",
+      "hash": "bb96090042a87a6cdf1657741563bc4e9d6fb5feb2fde91b182f0785a1648a71",
       "opaquePixels": 6904
     },
     {
       "edgePixels": 0,
-      "hash": "c4b28158e1d4598fa22e82c9797686191e753074af502194081679ec9726edb4",
+      "hash": "de3370ad7cb0f3493c7c887e4033fd974982f4b75c994440d771208d6a63f8eb",
       "opaquePixels": 9030
     },
     {
       "edgePixels": 0,
-      "hash": "42677c6957a4e8d2e2877620ea4a999479bd669cacd244f08ff9fb63ccbf870b",
+      "hash": "d03d8b3ed2e439d683ca915294bbfc043411b96248d93487f1ca771f00ea7862",
+      "opaquePixels": 10643
+    },
+    {
+      "edgePixels": 0,
+      "hash": "7633a3a96db0683c1c4146bcc8b513c82b27f0eb26f20a481f0d225bcf531d94",
+      "opaquePixels": 9443
+    },
+    {
+      "edgePixels": 0,
+      "hash": "1fe86196f6c075d356265c430aff04b534768a6f6011abcf334852a42aa5a44d",
+      "opaquePixels": 7262
+    },
+    {
+      "edgePixels": 0,
+      "hash": "ded1b5ceb099fcf84ca4d2d7b3907a09cd183974e72e9330aad1a483dc1160da",
+      "opaquePixels": 9505
+    },
+    {
+      "edgePixels": 0,
+      "hash": "265e758ffb36ab2b6787e84d1ce9bbec217e9eb1b9fcf6a501e4183c8fe7e5c7",
+      "opaquePixels": 11373
+    },
+    {
+      "edgePixels": 0,
+      "hash": "185e66ea8c0e7994c41b73171e5ccb5acaf7820f144e49a4322a19e31b6392c5",
+      "opaquePixels": 9537
+    },
+    {
+      "edgePixels": 0,
+      "hash": "6862ad47d6002398c39e501e08e77994e6cd37ba7566163cc65af08c18c999a0",
+      "opaquePixels": 7089
+    },
+    {
+      "edgePixels": 0,
+      "hash": "b3d4dc5204a60052c66387e165dce97ece44ba2fc1ec2df6b0f4dab445d80e4a",
+      "opaquePixels": 9340
+    },
+    {
+      "edgePixels": 0,
+      "hash": "a4d628342965fcd5b268f10a420ea1db9a7fea9f67047114a08bf023dc8f37c7",
+      "opaquePixels": 10973
+    },
+    {
+      "edgePixels": 0,
+      "hash": "51b13a62ed4e5b1957b1cd9330fe9021f3063ec0e978ff7bf292240bd6d08a93",
+      "opaquePixels": 9662
+    },
+    {
+      "edgePixels": 0,
+      "hash": "b39e535bb7aba34a76315e92c801d0fa446401f0a88de4efe04144781bfadf76",
+      "opaquePixels": 7404
+    },
+    {
+      "edgePixels": 0,
+      "hash": "e17b905ccf6f26c2667f2bad0b84968779ff98046e0f6059d7f52beaa73a6693",
+      "opaquePixels": 9712
+    },
+    {
+      "edgePixels": 0,
+      "hash": "a26ec28a8fcbeca54ccf6ac9f18439d1bec1b7e5ea35eba899d6add9aa4b300c",
+      "opaquePixels": 11710
+    },
+    {
+      "edgePixels": 0,
+      "hash": "4674727b7991422870d3be0248a614c0824390b33ecb7844b7de54676fe7e8d6",
+      "opaquePixels": 9854
+    },
+    {
+      "edgePixels": 0,
+      "hash": "f876ea735fdd8ca9cce0a9189e397f946d039488551a9f5b8155ee6347405cb9",
+      "opaquePixels": 7331
+    },
+    {
+      "edgePixels": 0,
+      "hash": "4273972247800c1068b981647187b1c1a54d77ffdb7f04075a6979194f1c2e15",
+      "opaquePixels": 9661
+    },
+    {
+      "edgePixels": 0,
+      "hash": "6bfe72c0d1b21d415e5c3725a86db27639e18783e0a3147f6f30f690416695a8",
+      "opaquePixels": 10558
+    },
+    {
+      "edgePixels": 0,
+      "hash": "6fcfebc559b2aa93d8f0b28b337f53e86efeb648c68c44dfbe8fb8d7202c7492",
+      "opaquePixels": 9400
+    },
+    {
+      "edgePixels": 0,
+      "hash": "916738c3761aa28278c277f7e5fd0862b49a928ce9f54a62853f13ab499a68a0",
+      "opaquePixels": 7270
+    },
+    {
+      "edgePixels": 0,
+      "hash": "09c484e149f13de5a7250ffa638c230c5c67ba0ea190fa369e7e988eb81e2949",
+      "opaquePixels": 9425
+    },
+    {
+      "edgePixels": 0,
+      "hash": "122abadad8418aafa9c0449e1df7f7e4aad2ef6ec2737d346098ec1ae4f9cc01",
+      "opaquePixels": 11324
+    },
+    {
+      "edgePixels": 0,
+      "hash": "6d9c4638afd92da17a36f72b88ee2fb76d7d717130b0da9333ac4ad400f4170d",
+      "opaquePixels": 9416
+    },
+    {
+      "edgePixels": 0,
+      "hash": "0bb8d21fe554274c396f40571d2e0da2e38ef87aa2ab1b0ec256657a0b4dbd77",
+      "opaquePixels": 7042
+    },
+    {
+      "edgePixels": 0,
+      "hash": "78e9e8f3621932fbdfd8211c64e4843bde08b8dc9bf559ce0c31122054414e6f",
+      "opaquePixels": 9269
+    },
+    {
+      "edgePixels": 0,
+      "hash": "7b548df1b2d72863acd94454904de4e8f2e207c7fec17eb6eb04a25c74bc16e3",
       "opaquePixels": 10212
     },
     {
       "edgePixels": 0,
-      "hash": "cf113bf0d057c03b5e802dcfed4a09341a7ee8a67e210d03944bf8e1528efebb",
+      "hash": "bbe697dc2dda0966c0dd7cd3ff3784ca27a3cb24331bebf9e74909fbf2b5f4d5",
       "opaquePixels": 8862
     },
     {
       "edgePixels": 0,
-      "hash": "5ae06ff1f26b5ab41ca68efc27e922cca0f334729fe28eac38d47bb5d8563c4f",
+      "hash": "39b47656e9773fdfbfcff804fba7fb70ae88fe453b18b78c8def801d231900df",
       "opaquePixels": 6629
     },
     {
       "edgePixels": 0,
-      "hash": "a4ecfdb312b8e66c5ab587948fc9dcc2d83419da44a442808266430822a3d73b",
+      "hash": "f313e1cc0dd6a76f29bb0ca1b629cf8c770baadd539f209814fc30a7fde898db",
       "opaquePixels": 8499
     },
     {
       "edgePixels": 0,
-      "hash": "95c8da2f5179e6ac505947be3e00561f69b424d37bc6841311acb59745f9d835",
+      "hash": "88f4ad4e8c9e07a67d91cdc83fae96cdfc6b40bb9562c2351e9f71de197dc114",
       "opaquePixels": 10152
     },
     {
       "edgePixels": 0,
-      "hash": "624224bafccaf8cb724bbf31e3b745b327272e7476b03b66908f1dcd034f7a81",
+      "hash": "e17e249bd563b7962f0157accc46c8ea4af3f8bf3ccaed1eea7e43ef4998f4a1",
       "opaquePixels": 8770
     },
     {
       "edgePixels": 0,
-      "hash": "e6fb6f06649f2e55119c9b513f7dd9c4cfafe641e7158ad678cac4ff2f51104c",
+      "hash": "8d1c5ea8106a21ad092635acc16ac7fa712590b7462751424029d9d2b8df2d57",
       "opaquePixels": 7142
     },
     {
       "edgePixels": 0,
-      "hash": "a53a556cd44329d2ee9b3b3b662e1af9a83f53ace9ec623f1ee17682ea450ef6",
+      "hash": "95a4d8b3fea3facc6c51e7fc763864fb7b6d8dc808c4aa7b1b03606294bda16a",
       "opaquePixels": 8833
+    },
+    {
+      "edgePixels": 0,
+      "hash": "440802e58e32af47fc0eff165e63605bb01ddd738a83c4a915f6dd2104a1816b",
+      "opaquePixels": 10483
+    },
+    {
+      "edgePixels": 0,
+      "hash": "cea34f85b6e332ca89e71c845b6bf63de34fd56e729df92d2da5db0bceb29434",
+      "opaquePixels": 9045
+    },
+    {
+      "edgePixels": 0,
+      "hash": "7213824c7e4e57366c0e3edce0f1cd53fbd168b35f919a6f7202f0ad14282504",
+      "opaquePixels": 6730
+    },
+    {
+      "edgePixels": 0,
+      "hash": "c2eccf0efd952884c377a6e30432bddfa44a7b9347c88773bd259443705ec6d6",
+      "opaquePixels": 8687
+    },
+    {
+      "edgePixels": 0,
+      "hash": "f3653e0eb201955b007c574f16327f09b67aec25fae0ade6d30a37e1bebfdea6",
+      "opaquePixels": 10444
+    },
+    {
+      "edgePixels": 0,
+      "hash": "e27952ac8ca8750486a6ad818a46d349235c94ec2189f80073d7c38030d0efdf",
+      "opaquePixels": 9035
+    },
+    {
+      "edgePixels": 0,
+      "hash": "b815034b5f942ac058dca3b7c166866de63629251f98624a5f54d5b4cecf41a5",
+      "opaquePixels": 7338
+    },
+    {
+      "edgePixels": 0,
+      "hash": "af75e82f6def21cc928c452f383f215a80d235f52be7e568550237ad7e4a9e80",
+      "opaquePixels": 9095
+    },
+    {
+      "edgePixels": 0,
+      "hash": "753272aca24b013be570217240b25f2c08fefd5ca63eeb0d51ef883d5e6b876b",
+      "opaquePixels": 10778
+    },
+    {
+      "edgePixels": 0,
+      "hash": "915ccbdfd41f167c1e189d1a7c6f197609d4714f5b473c67f1a1d26f489977b5",
+      "opaquePixels": 9216
+    },
+    {
+      "edgePixels": 0,
+      "hash": "5e5b7ab419fe878b37915843356f02b1044c93968c1d7c9ab05a1111944e1014",
+      "opaquePixels": 6810
+    },
+    {
+      "edgePixels": 0,
+      "hash": "884d08f170d9a4713c82dacb76dea91a36eff03ad6c2355180ec108fff2c8626",
+      "opaquePixels": 8858
+    },
+    {
+      "edgePixels": 0,
+      "hash": "311fec29bbab0e87a5cee0b10176acf7a0fcb4c3708a742c2a0cbf6a1b046c06",
+      "opaquePixels": 10666
+    },
+    {
+      "edgePixels": 0,
+      "hash": "e840b365edbcaa46bf716e63ccd63efb92974a56f2dff6b3270754f2875752a8",
+      "opaquePixels": 9272
+    },
+    {
+      "edgePixels": 0,
+      "hash": "699457564aae92ef6b67d87d1bc9284e69fbb2f98a9f0e6c033a51c6927846b6",
+      "opaquePixels": 7595
+    },
+    {
+      "edgePixels": 0,
+      "hash": "0e16139b5247efff063fd8f503d012b2bac7937e8f04cdf6898d25302d0867b5",
+      "opaquePixels": 9360
+    },
+    {
+      "edgePixels": 0,
+      "hash": "18210eceaea5256d47a8fe82352e0c1f7750c69147132b7db951a8c503163d2f",
+      "opaquePixels": 10462
+    },
+    {
+      "edgePixels": 0,
+      "hash": "1926351024c56b92a744d678f8cd7f9150a05904b4a9c7cd5f241a691926e084",
+      "opaquePixels": 9014
+    },
+    {
+      "edgePixels": 0,
+      "hash": "ff00e4d56e4cb516dcc11d184cb1e8387ba0182233724207cd6b7af840e66b19",
+      "opaquePixels": 6726
+    },
+    {
+      "edgePixels": 0,
+      "hash": "be25a34af6448e0df36a4c16352d3438aff879c4c2709a7d029e2f3c690d6465",
+      "opaquePixels": 8646
+    },
+    {
+      "edgePixels": 0,
+      "hash": "a2fce1cf1a655b5f009d9d62e93bb4c1f2726d7029950eb2ee3fa94229eff072",
+      "opaquePixels": 10360
+    },
+    {
+      "edgePixels": 0,
+      "hash": "1df476943a92c7a48d7e33ecca2cb27bfaaa85da28a5f3c63b219ee18a206f40",
+      "opaquePixels": 8950
+    },
+    {
+      "edgePixels": 0,
+      "hash": "d036ec6dbed8aa520cacf0d40176e40d691ec43b371e99e3041b9df20993a571",
+      "opaquePixels": 7292
+    },
+    {
+      "edgePixels": 0,
+      "hash": "c7f4fd56ccd83121954757b6d4c45a22589d87ef1bcd622fdb5a7b5240c5fe6c",
+      "opaquePixels": 9025
     }
   ]
 }

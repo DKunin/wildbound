@@ -14,3 +14,7 @@ coverage/
 art-source/animal-animation-audit-v1/index.html
 art-source/animal-animation-audit-v1/report.json
 art-source/animal-animation-audit-v1/registration-preview.json
+
+# Local Sprite Forge capability probes and superseded QC runs.
+art-source/prey-actions-v2/tool-check/
+art-source/prey-actions-v2/qc-final/

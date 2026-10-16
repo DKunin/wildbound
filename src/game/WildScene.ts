@@ -17,7 +17,13 @@ import {
   type PlayerAnimationState,
 } from './systems/PlayerAnimationSystem';
 import { PopulationSystem } from './systems/PopulationSystem';
-import { getPreyAnimationFrames, getPreyAnimationKey, getPreyAnimationTextureKey, type PreyAnimationState } from './systems/PreyAnimationSystem';
+import {
+  ensurePreyAnimationReady,
+  hasPreyRetaliationAnimation,
+  type PreyAnimationDefinition,
+  type PreyAnimationEnsurer,
+  type PreyAnimationReadinessAdapter,
+} from './systems/PreyAnimationSystem';
 import { WORLD_HEIGHT, WORLD_SEED, WORLD_WIDTH } from './systems/ProceduralWorld';
 import { RunControlSystem } from './systems/RunControlSystem';
 import { SaveSystem, type SaveData } from './systems/SaveSystem';
@@ -57,7 +63,6 @@ import {
   PREY_WOUND_TEXTURE_BASE_KEYS,
   getPlayerWoundTextureSelection,
   getWoundManifestSheet,
-  getWoundTierTextureKey,
   parseWoundManifest,
   PLAYER_WOUND_RUNTIME_TEXTURE_KEY,
   renderWoundTexture,
@@ -67,7 +72,6 @@ import {
   WOUND_DECAL_TEXTURE_KEY,
   WOUND_MANIFEST_ASSET_PATH,
   WOUND_MANIFEST_CACHE_KEY,
-  type WoundedLevel,
   type WoundManifest,
 } from './systems/WoundTextureSystem';
 
@@ -100,6 +104,7 @@ const PREY_WOUND_SOURCES: ReadonlyArray<{ baseTextureKey: typeof PREY_WOUND_TEXT
   { baseTextureKey: 'elk-actions', source: 'elk-actions.png' },
   { baseTextureKey: 'boar', source: 'boar-atlas.png' },
   { baseTextureKey: 'boar-actions', source: 'boar-actions.png' },
+  { baseTextureKey: 'boar-charge', source: 'boar-charge.png' },
 ];
 
 const getPlayerRestMicroAnimationKey = (
@@ -163,6 +168,31 @@ export class WildScene extends Phaser.Scene {
   private nextRestMicroAt = 0;
   private playerNominalSpeed = 0;
   private woundManifest!: WoundManifest;
+  private readonly preyAnimationReadiness: PreyAnimationReadinessAdapter = {
+    textureExists: (textureKey) => this.textures.exists(textureKey),
+    materializeWoundTexture: ({ baseTextureKey, targetTextureKey, level }) => {
+      const source = PREY_WOUND_SOURCES.find((candidate) => candidate.baseTextureKey === baseTextureKey);
+      if (!source) throw new Error(`No wound manifest source is registered for ${baseTextureKey}`);
+      renderWoundTexture(this.textures, {
+        targetTextureKey,
+        baseTextureKey,
+        sheet: getWoundManifestSheet(this.woundManifest, source.source),
+        level,
+      });
+    },
+    animationExists: (animationKey) => this.anims.exists(animationKey),
+    registerAnimation: (definition: PreyAnimationDefinition) => {
+      this.anims.create({
+        key: definition.key,
+        frames: [...definition.frames],
+        frameRate: definition.frameRate,
+        repeat: definition.repeat,
+      });
+    },
+  };
+  private readonly ensurePreyAnimation: PreyAnimationEnsurer = (species, direction, state, woundLevel) => {
+    ensurePreyAnimationReady(this.preyAnimationReadiness, species, direction, state, woundLevel);
+  };
   private readonly preyStates = new WeakMap<Prey, PreyState>();
   private random = new Phaser.Math.RandomDataGenerator([WORLD_SEED]);
 
@@ -222,6 +252,7 @@ export class WildScene extends Phaser.Scene {
     this.load.spritesheet('elk-actions', 'assets/prey-v3/elk-actions.png', { frameWidth: 181, frameHeight: 181 });
     this.load.spritesheet('boar', 'assets/prey-v4/boar-atlas.png', { frameWidth: 181, frameHeight: 181 });
     this.load.spritesheet('boar-actions', 'assets/prey-v4/boar-actions.png', { frameWidth: 181, frameHeight: 181 });
+    this.load.spritesheet('boar-charge', 'assets/prey-v4/boar-charge.png', { frameWidth: 181, frameHeight: 181 });
     this.load.spritesheet('deer-kick', 'assets/balance-v1/deer-kick.png', { frameWidth: 181, frameHeight: 181 });
     this.load.spritesheet(WOUND_DECAL_TEXTURE_KEY, WOUND_DECAL_ASSET_PATH, {
       frameWidth: WOUND_DECAL_FRAME_SIZE,
@@ -364,17 +395,6 @@ export class WildScene extends Phaser.Scene {
 
   private bakeWoundTextures(): void {
     this.woundManifest = parseWoundManifest(this.cache.json.get(WOUND_MANIFEST_CACHE_KEY));
-    for (const source of PREY_WOUND_SOURCES) {
-      const sheet = getWoundManifestSheet(this.woundManifest, source.source);
-      for (const level of WOUND_LEVELS.slice(1) as WoundedLevel[]) {
-        renderWoundTexture(this.textures, {
-          targetTextureKey: getWoundTierTextureKey(source.baseTextureKey, level),
-          baseTextureKey: source.baseTextureKey,
-          sheet,
-          level,
-        });
-      }
-    }
     renderWoundTexture(this.textures, {
       targetTextureKey: PLAYER_WOUND_RUNTIME_TEXTURE_KEY,
       baseTextureKey: 'wolf-south-motion',
@@ -405,36 +425,11 @@ export class WildScene extends Phaser.Scene {
         });
       }
     }
-    const preyAnimationSettings: Record<PreyAnimationState, { frameRate: number; repeat: number }> = {
-      idle: { frameRate: 0.8, repeat: -1 },
-      walk: { frameRate: 6, repeat: -1 },
-      flee: { frameRate: 11, repeat: -1 },
-      foraging: { frameRate: 1.6, repeat: -1 },
-      drinking: { frameRate: 1.25, repeat: -1 },
-      resting: { frameRate: 0.7, repeat: -1 },
-      dead: { frameRate: 1, repeat: 0 },
-      retaliating: { frameRate: 5, repeat: 0 },
-    };
     for (const species of ['rabbit', 'deer', 'elk', 'boar'] as const) {
-      const woundLevels: readonly WoundLevel[] = species === 'rabbit' ? [0] : WOUND_LEVELS;
-      for (const woundLevel of woundLevels) {
-        for (const direction of PLAYER_DIRECTIONS) {
-          for (const state of ['idle', 'walk', 'flee', 'foraging', 'drinking', 'resting', 'dead', 'retaliating'] as const) {
-            if (species !== 'deer' && species !== 'boar' && state === 'retaliating') continue;
-            const key = getPreyAnimationKey(species, direction, state, woundLevel);
-            if (!this.anims.exists(key)) {
-              const settings = preyAnimationSettings[state];
-              this.anims.create({
-                key,
-                frames: getPreyAnimationFrames(direction, state, species).map((frame) => ({
-                  key: getPreyAnimationTextureKey(species, state, woundLevel),
-                  frame,
-                })),
-                frameRate: settings.frameRate,
-                repeat: settings.repeat,
-              });
-            }
-          }
+      for (const direction of PLAYER_DIRECTIONS) {
+        for (const state of ['idle', 'walk', 'flee', 'foraging', 'drinking', 'resting', 'dead', 'retaliating'] as const) {
+          if (state === 'retaliating' && !hasPreyRetaliationAnimation(species)) continue;
+          this.ensurePreyAnimation(species, direction, state, 0);
         }
       }
     }
@@ -522,7 +517,15 @@ export class WildScene extends Phaser.Scene {
     const position = requestedCell && !requestedCell.blocked && !requestedCell.water
       ? new Phaser.Math.Vector2(requested.x, requested.y)
       : this.world.findOpenPositionNear(requested);
-    const animal = new Prey(this, species, position.x, position.y, this.random, this.balance);
+    const animal = new Prey(
+      this,
+      species,
+      position.x,
+      position.y,
+      this.random,
+      this.balance,
+      this.ensurePreyAnimation,
+    );
     this.prey.push(animal);
     this.world.addCollider(animal, () => animal.handleTerrainCollision());
     return animal;

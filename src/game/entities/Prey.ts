@@ -8,6 +8,7 @@ import {
   PREY_RETALIATION_DURATION_MS,
   getPreyDeathWoundLevel,
   shouldPreservePreyGaitProgress,
+  type PreyAnimationEnsurer,
   type PreyAnimationState,
 } from '../systems/PreyAnimationSystem';
 import { LivingShadow } from '../systems/LivingShadow';
@@ -85,6 +86,10 @@ const getCircadianOffsetMinutes = (species: PreySpecies, x: number, y: number): 
   return positionSeed % 61 - 30;
 };
 
+const missingWoundedAnimationEnsurer: PreyAnimationEnsurer = () => {
+  throw new Error('Wounded prey animation readiness is not configured');
+};
+
 export class Prey extends Phaser.Physics.Arcade.Sprite {
   readonly species: PreySpecies;
   private aiState: PreyState = 'roam';
@@ -128,6 +133,7 @@ export class Prey extends Phaser.Physics.Arcade.Sprite {
     y: number,
     private readonly random: Phaser.Math.RandomDataGenerator,
     private readonly balance: BalanceProfile = BALANCE_PROFILES.explorer,
+    private readonly ensureAnimationReady: PreyAnimationEnsurer = missingWoundedAnimationEnsurer,
   ) {
     super(scene, x, y, species, getPreyAnimationFrames('south', 'idle')[0]);
     this.species = species;
@@ -495,6 +501,7 @@ export class Prey extends Phaser.Physics.Arcade.Sprite {
     this.anims.stop();
     this.setScale(this.baseScale);
     const woundLevel = getPreyDeathWoundLevel(this.species);
+    if (woundLevel !== 0) this.ensureAnimationReady(this.species, this.animationDirection, 'dead', woundLevel);
     this.setTexture(
       getPreyAnimationTextureKey(this.species, 'dead', woundLevel),
       getPreyAnimationFrames(this.animationDirection, 'dead')[0],
@@ -693,6 +700,7 @@ export class Prey extends Phaser.Physics.Arcade.Sprite {
       if (state !== 'retaliating' || this.anims.isPlaying) this.anims.play(key, true);
       return;
     }
+    if (woundLevel !== 0) this.ensureAnimationReady(this.species, this.animationDirection, state, woundLevel);
     const preserveProgress = this.anims.isPlaying
       && (stripWoundTextureSuffix(currentKey) === stripWoundTextureSuffix(key)
         || shouldPreservePreyGaitProgress(this.animationState, state));

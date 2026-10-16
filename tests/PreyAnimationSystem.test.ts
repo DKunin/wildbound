@@ -2,14 +2,19 @@ import { describe, expect, it } from 'vitest';
 import { PLAYER_DIRECTIONS } from '../src/game/systems/DirectionalSpriteSystem';
 import { WOUND_LEVELS } from '../src/game/systems/HuntBalanceSystem';
 import {
+  ensurePreyAnimationReady,
   getPreyAnimationFrames,
   getPreyAnimationKey,
   getPreyAnimationSpeedScale,
   getPreyAnimationTextureKey,
   getPreyDeathWoundLevel,
+  hasPreyRetaliationAnimation,
+  PREY_ANIMATION_SETTINGS,
   PREY_RETALIATION_DURATION_MS,
   shouldPreservePreyGaitProgress,
+  type PreyAnimationReadinessAdapter,
 } from '../src/game/systems/PreyAnimationSystem';
+import preyAnimationContract from '../src/game/data/prey-animation-contract.json';
 
 const DIRECTION_COLUMNS = {
   east: 0,
@@ -29,9 +34,12 @@ describe('prey animation atlas mapping', () => {
       expect(getPreyAnimationFrames(direction, 'idle')).toHaveLength(2);
       expect(getPreyAnimationFrames(direction, 'walk')).toHaveLength(2);
       expect(getPreyAnimationFrames(direction, 'flee')).toHaveLength(4);
-      expect(getPreyAnimationFrames(direction, 'foraging')).toEqual([8 + DIRECTION_COLUMNS[direction]]);
-      expect(getPreyAnimationFrames(direction, 'drinking')).toEqual([16 + DIRECTION_COLUMNS[direction]]);
-      expect(getPreyAnimationFrames(direction, 'resting')).toHaveLength(1);
+      expect(getPreyAnimationFrames(direction, 'resting')).toEqual([0, 1, 2, 3]
+        .map((row) => row * 8 + DIRECTION_COLUMNS[direction]));
+      expect(getPreyAnimationFrames(direction, 'foraging')).toEqual([4, 5, 6, 7]
+        .map((row) => row * 8 + DIRECTION_COLUMNS[direction]));
+      expect(getPreyAnimationFrames(direction, 'drinking')).toEqual([8, 9, 10, 11]
+        .map((row) => row * 8 + DIRECTION_COLUMNS[direction]));
       expect(getPreyAnimationFrames(direction, 'retaliating')).toHaveLength(4);
       expect(getPreyAnimationFrames(direction, 'dead')).toHaveLength(1);
       for (const state of ['idle', 'walk', 'flee', 'dead'] as const) {
@@ -61,8 +69,21 @@ describe('prey animation atlas mapping', () => {
       expect(getPreyAnimationTextureKey(species, 'resting')).toBe(`${species}-actions`);
     }
     expect(getPreyAnimationTextureKey('deer', 'retaliating')).toBe('deer-kick');
+    expect(getPreyAnimationTextureKey('boar', 'retaliating')).toBe('boar-charge');
     expect(getPreyAnimationTextureKey('elk', 'foraging')).toBe('elk-actions');
-    expect(getPreyAnimationTextureKey('boar', 'retaliating')).toBe('boar');
+  });
+
+  it('uses contract timing and availability for every prey state', () => {
+    for (const [state, settings] of Object.entries(preyAnimationContract.states)) {
+      expect(PREY_ANIMATION_SETTINGS[state as keyof typeof PREY_ANIMATION_SETTINGS]).toEqual({
+        frameRate: settings.frameRate,
+        repeat: settings.repeat,
+      });
+    }
+    expect(hasPreyRetaliationAnimation('rabbit')).toBe(false);
+    expect(hasPreyRetaliationAnimation('deer')).toBe(true);
+    expect(hasPreyRetaliationAnimation('elk')).toBe(false);
+    expect(hasPreyRetaliationAnimation('boar')).toBe(true);
   });
 
   it('maps every deer direction and state to all wound-tier animation and texture keys', () => {
@@ -107,7 +128,7 @@ describe('prey animation atlas mapping', () => {
         for (const state of states) {
           const texture = state === 'foraging' || state === 'drinking' || state === 'resting'
             ? `${species}-actions`
-            : species;
+            : state === 'retaliating' ? 'boar-charge' : species;
           for (const woundLevel of WOUND_LEVELS) {
             const woundSuffix = woundLevel === 0 ? '' : `-wound-${woundLevel}`;
             expect(getPreyAnimationKey(species, direction, state, woundLevel))
@@ -126,16 +147,80 @@ describe('prey animation atlas mapping', () => {
     expect(getPreyDeathWoundLevel('boar')).toBe(3);
   });
 
+  it('materializes wounded prey textures lazily before registering animations and reuses them', () => {
+    const textures = new Set([
+      'rabbit', 'rabbit-actions',
+      'deer', 'deer-actions', 'deer-kick',
+      'elk', 'elk-actions',
+      'boar', 'boar-actions', 'boar-charge',
+    ]);
+    const animations = new Set<string>();
+    const events: string[] = [];
+    const adapter: PreyAnimationReadinessAdapter = {
+      textureExists: (textureKey) => textures.has(textureKey),
+      materializeWoundTexture: ({ baseTextureKey, targetTextureKey, level }) => {
+        expect(textures.has(baseTextureKey)).toBe(true);
+        events.push(`texture:${targetTextureKey}:${level}`);
+        textures.add(targetTextureKey);
+      },
+      animationExists: (animationKey) => animations.has(animationKey),
+      registerAnimation: ({ key, textureKey }) => {
+        expect(textures.has(textureKey)).toBe(true);
+        events.push(`animation:${key}`);
+        animations.add(key);
+      },
+    };
+
+    expect(ensurePreyAnimationReady(adapter, 'deer', 'north', 'idle', 0)).toBe(true);
+    expect(events).toEqual(['animation:deer-north-idle']);
+    expect([...textures].some((textureKey) => textureKey.includes('-wound-'))).toBe(false);
+    events.length = 0;
+
+    expect(ensurePreyAnimationReady(adapter, 'deer', 'north', 'foraging', 2)).toBe(true);
+    expect(events).toEqual([
+      'texture:deer-actions-wound-2:2',
+      'animation:deer-north-foraging-wound-2',
+    ]);
+
+    expect(ensurePreyAnimationReady(adapter, 'deer', 'north', 'foraging', 2)).toBe(false);
+    expect(events).toHaveLength(2);
+
+    expect(ensurePreyAnimationReady(adapter, 'deer', 'north', 'drinking', 2)).toBe(true);
+    expect(events.slice(2)).toEqual(['animation:deer-north-drinking-wound-2']);
+    expect(textures.has('deer-wound-2')).toBe(false);
+    expect(textures.has('deer-kick-wound-2')).toBe(false);
+
+    expect(ensurePreyAnimationReady(adapter, 'boar', 'east', 'retaliating', 3)).toBe(true);
+    expect(events.slice(-2)).toEqual([
+      'texture:boar-charge-wound-3:3',
+      'animation:boar-east-retaliating-wound-3',
+    ]);
+  });
+
+  it('requires synchronous wound materialization before animation registration', () => {
+    const events: string[] = [];
+    const adapter: PreyAnimationReadinessAdapter = {
+      textureExists: (textureKey) => textureKey === 'deer',
+      materializeWoundTexture: ({ targetTextureKey }) => events.push(`texture:${targetTextureKey}`),
+      animationExists: () => false,
+      registerAnimation: ({ key }) => events.push(`animation:${key}`),
+    };
+
+    expect(() => ensurePreyAnimationReady(adapter, 'deer', 'south', 'dead', 3))
+      .toThrow('Prey animation texture deer-wound-3 is not ready');
+    expect(events).toEqual(['texture:deer-wound-3']);
+  });
+
   it('maps deer retaliation to four unique frames for every direction', () => {
     const frames = PLAYER_DIRECTIONS.flatMap((direction) => getPreyAnimationFrames(direction, 'retaliating'));
     expect([...frames].sort((left, right) => left - right)).toEqual(Array.from({ length: 32 }, (_value, index) => index));
   });
 
-  it('maps a boar counter-charge onto its directional locomotion frames', () => {
+  it('maps the dedicated boar counter-charge to four exact directional poses', () => {
     for (const direction of PLAYER_DIRECTIONS) {
       const frames = getPreyAnimationFrames(direction, 'retaliating', 'boar');
-      expect(frames).toHaveLength(4);
-      expect(frames.every((frame) => frame >= 16 && frame < 40)).toBe(true);
+      expect(frames).toEqual([0, 1, 2, 3]
+        .map((phase) => DIRECTION_COLUMNS[direction] * 4 + phase));
     }
   });
 

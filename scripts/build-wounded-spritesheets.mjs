@@ -293,7 +293,7 @@ buildLayer({
   frameWidth: 181,
   frameHeight: 181,
   columns: 8,
-  rows: 3,
+  rows: 12,
   directionAt: (column) => directions[column],
   species: 'deer',
 });
@@ -326,12 +326,24 @@ for (const [species, sourceRoot] of [['elk', elkRoot], ['boar', boarRoot]]) {
     frameWidth: 181,
     frameHeight: 181,
     columns: 8,
-    rows: 3,
+    rows: 12,
     directionAt: (column) => directions[column],
     species,
   });
   built += 2;
 }
+
+buildLayer({
+  sourcePath: resolve(boarRoot, 'boar-charge.png'),
+  anchorFrameAt: (column, row) => row * 4 + column,
+  frameWidth: 181,
+  frameHeight: 181,
+  columns: 4,
+  rows: 8,
+  directionAt: (_column, row) => directions[row],
+  species: 'boar',
+});
+built += 1;
 
 manifest.spritesheets.sort((left, right) => left.file.localeCompare(right.file));
 writeFileSync(resolve(outputRoot, 'manifest.json'), `${JSON.stringify(manifest, null, 2)}\n`);

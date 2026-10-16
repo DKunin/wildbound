@@ -20,7 +20,7 @@ export const PLAYER_WOUND_RUNTIME_TEXTURE_KEY = 'wolf-wound-runtime';
 export const PREY_WOUND_TEXTURE_BASE_KEYS = [
   'deer', 'deer-actions', 'deer-kick',
   'elk', 'elk-actions',
-  'boar', 'boar-actions',
+  'boar', 'boar-actions', 'boar-charge',
 ] as const;
 
 export interface WoundPlacement {

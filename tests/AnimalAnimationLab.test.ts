@@ -2,10 +2,13 @@ import { pathToFileURL } from 'node:url';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { beforeAll, describe, expect, it } from 'vitest';
+import preyAnimationContract from '../src/game/data/prey-animation-contract.json';
 
 interface AnimationFrameRef {
   asset: string;
+  frame: number;
   woundAsset?: string;
+  woundLevel?: number;
 }
 
 interface InventoryAnimation {
@@ -43,7 +46,14 @@ interface AuditIssue {
 
 interface AuditAnimation {
   id: string;
+  family: string;
+  subject: string;
+  state: string;
   status: 'pass' | 'warn' | 'fail';
+  metrics: {
+    idleTransitionGroundDeltaPx?: number;
+    idleTransitionComparisons?: number;
+  };
   issues: Array<Omit<AuditIssue, 'animationId'>>;
 }
 
@@ -71,6 +81,12 @@ interface AnimationLabModule {
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const LAB_URL = pathToFileURL(resolve(ROOT, 'scripts/audit-animal-animations.mjs')).href;
 let lab: AnimationLabModule;
+let completeAudit: AnimationAudit | undefined;
+
+const getCompleteAudit = (): AnimationAudit => {
+  completeAudit ??= lab.runAudit({ root: ROOT });
+  return completeAudit;
+};
 
 beforeAll(async () => {
   lab = await import(/* @vite-ignore */ LAB_URL) as AnimationLabModule;
@@ -97,9 +113,9 @@ describe('animal animation visual lab', () => {
     });
     expect(inventory.coverage.directions).toEqual(lab.DIRECTIONS);
     expect(inventory.coverage.woundLevels).toEqual([0, 1, 2, 3]);
-    expect(inventory.coverage.baseAssets).toHaveLength(91);
-    expect(inventory.coverage.woundAssets).toHaveLength(87);
-    expect(inventory.coverage.woundManifestSources).toHaveLength(87);
+    expect(inventory.coverage.baseAssets).toHaveLength(92);
+    expect(inventory.coverage.woundAssets).toHaveLength(88);
+    expect(inventory.coverage.woundManifestSources).toHaveLength(88);
     expect(new Set(inventory.animations.map(({ id }) => id)).size).toBe(inventory.animations.length);
 
     const playerStates = new Set(inventory.animations
@@ -138,6 +154,69 @@ describe('animal animation visual lab', () => {
     expect(inventory.animations.every(({ frames }) => frames.length > 0)).toBe(true);
   });
 
+  it('uses every authored action phase in exact direction and wound order', () => {
+    const inventory = lab.buildInventory(ROOT);
+    const directionColumns = new Map(lab.DIRECTIONS.map((direction, index) => [direction, index]));
+    const actionRows = {
+      resting: [0, 1, 2, 3],
+      foraging: [4, 5, 6, 7],
+      drinking: [8, 9, 10, 11],
+    } as const;
+
+    for (const species of ['rabbit', 'deer', 'elk', 'boar']) {
+      const woundLevels = species === 'rabbit' ? [0] : [0, 1, 2, 3];
+      for (const direction of lab.DIRECTIONS) {
+        const directionColumn = directionColumns.get(direction);
+        expect(directionColumn, direction).toBeDefined();
+        for (const [state, rows] of Object.entries(actionRows)) {
+          const expectedFrames = rows.map((row) => row * 8 + directionColumn!);
+          for (const woundLevel of woundLevels) {
+            const animation = inventory.animations.find((candidate) => (
+              candidate.subject === species
+              && candidate.state === state
+              && candidate.direction === direction
+              && candidate.woundLevel === woundLevel
+            ));
+            expect(animation, `${species}/${state}/${direction}/wound-${woundLevel}`).toBeDefined();
+            expect(animation?.frames.map(({ frame }) => frame)).toEqual(expectedFrames);
+            expect(animation?.frames.every(({ woundAsset }) => woundLevel === 0 ? !woundAsset : Boolean(woundAsset))).toBe(true);
+            expect(animation?.frames.every((frame) => woundLevel === 0
+              ? frame.woundLevel === undefined
+              : frame.woundLevel === woundLevel
+                && frame.woundAsset?.endsWith(`/${species}-actions-wounds.png`))).toBe(true);
+          }
+        }
+      }
+    }
+  });
+
+  it('audits dedicated directional retaliation poses and every wound tier in frame order', () => {
+    const inventory = lab.buildInventory(ROOT);
+    for (const species of ['deer', 'boar']) {
+      for (const [directionIndex, direction] of lab.DIRECTIONS.entries()) {
+        const expectedFrames = [0, 1, 2, 3].map((phase) => directionIndex * 4 + phase);
+        for (const woundLevel of [0, 1, 2, 3]) {
+          const animation = inventory.animations.find((candidate) => (
+            candidate.subject === species
+            && candidate.state === 'retaliating'
+            && candidate.direction === direction
+            && candidate.woundLevel === woundLevel
+          ));
+          expect(animation, `${species}/retaliating/${direction}/wound-${woundLevel}`).toBeDefined();
+          expect(animation?.frames.map(({ frame }) => frame)).toEqual(expectedFrames);
+          expect(animation?.frames.every(({ asset }) => asset.endsWith(
+            species === 'boar' ? '/boar-charge.png' : '/deer-kick.png',
+          ))).toBe(true);
+          expect(animation?.frames.every(({ woundAsset }) => woundLevel === 0 ? !woundAsset : Boolean(woundAsset))).toBe(true);
+          const woundFile = species === 'boar' ? 'boar-charge-wounds.png' : 'deer-kick-wounds.png';
+          expect(animation?.frames.every((frame) => woundLevel === 0
+            ? frame.woundLevel === undefined
+            : frame.woundLevel === woundLevel && frame.woundAsset?.endsWith(`/${woundFile}`))).toBe(true);
+        }
+      }
+    }
+  });
+
   it('emits stable machine-readable failures for the same sprites and thresholds', () => {
     const first = lab.runAudit({ root: ROOT, families: ['boar'] });
     const second = lab.runAudit({ root: ROOT, families: ['boar'] });
@@ -166,4 +245,42 @@ describe('animal animation visual lab', () => {
       });
     }
   });
+
+  it('has no hard visual failures in the complete runtime inventory', () => {
+    const audit = getCompleteAudit();
+
+    expect(audit.hardFailures).toEqual([]);
+    expect(audit.summary.hardFailureMetrics).toBe(0);
+    expect(audit.summary.failing).toBe(0);
+  }, 60_000);
+
+  it('keeps every authored prey action visually readable between phases', () => {
+    const authoredStates = new Set(['resting', 'foraging', 'drinking', 'retaliating']);
+    const weakMotion = getCompleteAudit().animations.flatMap((animation) => (
+      animation.family === 'prey' && authoredStates.has(animation.state)
+        ? animation.issues
+          .filter(({ metric }) => metric === 'semanticMotionScore')
+          .map((entry) => `${animation.id}: ${entry.value} < ${entry.threshold}`)
+        : []
+    ));
+
+    expect(weakMotion).toEqual([]);
+  }, 60_000);
+
+  it('keeps every prey action transition on the same-direction idle ground line', () => {
+    const transitionLimit = preyAnimationContract.transitionLimits.groundContactY;
+    const actionStates = new Set(['resting', 'foraging', 'drinking', 'retaliating']);
+    const animations = getCompleteAudit().animations.filter((animation) => (
+      animation.family === 'prey' && actionStates.has(animation.state)
+    ));
+
+    expect(animations).toHaveLength(376);
+    for (const animation of animations) {
+      expect(animation.metrics.idleTransitionGroundDeltaPx, animation.id).toBeDefined();
+      expect(animation.metrics.idleTransitionGroundDeltaPx, animation.id).toBeLessThanOrEqual(transitionLimit);
+      expect(animation.metrics.idleTransitionComparisons, animation.id)
+        .toBe(animation.state === 'retaliating' ? 4 : 8);
+      expect(animation.issues.some(({ metric }) => metric === 'idleTransitionGroundDeltaPx'), animation.id).toBe(false);
+    }
+  }, 60_000);
 });
