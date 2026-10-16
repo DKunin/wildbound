@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import type { ScentClue } from './systems/ScentSystem';
+import type { DifficultyMode } from './systems/BalanceConfig';
 
 export interface HudState {
   health: number;
@@ -31,11 +32,20 @@ export interface HudState {
   ambientColor: string;
   ambientOpacity: number;
   saveStatus: string;
+  difficulty: DifficultyMode;
+  leanDay: boolean;
+  cacheCount: number;
+  protectedCacheCount: number;
 }
 
 export interface HuntLogEntry {
   time: string;
   message: string;
+}
+
+export interface SleepTransition {
+  sleeping: boolean;
+  durationMs: number;
 }
 
 export const gameEvents = new Phaser.Events.EventEmitter();

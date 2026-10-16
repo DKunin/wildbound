@@ -1,27 +1,36 @@
 import type { PlayerDirection } from './DirectionalSpriteSystem';
+import { getWoundTextureSuffix, type WoundLevel } from './HuntBalanceSystem';
+import { SNEAK_ANIMATION_TIME_SCALE } from './WolfStealthSystem';
 
 export const PLAYER_REST_DELAY_MS = 20_000;
 
-export type PlayerActionState = 'attacking' | 'eating' | 'drinking';
+export type PlayerActionState = 'attacking' | 'eating' | 'drinking' | 'burying';
 export type PlayerAnimationState = 'idle' | 'walking' | 'crouching' | 'sneaking' | 'running' | 'laying-down' | 'resting' | 'getting-up' | PlayerActionState;
 
-export const getPlayerAnimationKey = (state: PlayerAnimationState, direction: PlayerDirection, carrying = false): string => {
+export const getPlayerAnimationKey = (
+  state: PlayerAnimationState,
+  direction: PlayerDirection,
+  carrying = false,
+  woundLevel: WoundLevel = 0,
+): string => {
+  const woundSuffix = getWoundTextureSuffix(woundLevel);
   const prefix = `player-${direction}-${carrying ? 'carry-' : ''}`;
-  if (state === 'walking') return `${prefix}walk`;
-  if (state === 'crouching') return `${prefix}crouch-idle`;
-  if (state === 'sneaking') return `${prefix}crawl`;
-  if (state === 'running') return `${prefix}run`;
-  if (state === 'laying-down') return `${prefix}lay`;
-  if (state === 'resting') return `${prefix}rest-breathe`;
-  if (state === 'getting-up') return `${prefix}get-up`;
-  if (state === 'attacking') return `player-${direction}-attack`;
-  if (state === 'eating') return `player-${direction}-eat`;
-  if (state === 'drinking') return `player-${direction}-drink`;
-  return `${prefix}idle`;
+  if (state === 'walking') return `${prefix}walk${woundSuffix}`;
+  if (state === 'crouching') return `${prefix}crouch-idle${woundSuffix}`;
+  if (state === 'sneaking') return `${prefix}crawl${woundSuffix}`;
+  if (state === 'running') return `${prefix}run${woundSuffix}`;
+  if (state === 'laying-down') return `${prefix}lay${woundSuffix}`;
+  if (state === 'resting') return `${prefix}rest-breathe${woundSuffix}`;
+  if (state === 'getting-up') return `${prefix}get-up${woundSuffix}`;
+  if (state === 'attacking') return `player-${direction}-attack${woundSuffix}`;
+  if (state === 'eating') return `player-${direction}-eat${woundSuffix}`;
+  if (state === 'drinking') return `player-${direction}-drink${woundSuffix}`;
+  if (state === 'burying') return `player-${direction}-bury${woundSuffix}`;
+  return `${prefix}idle${woundSuffix}`;
 };
 
 const isActionState = (state: PlayerAnimationState): state is PlayerActionState => (
-  state === 'attacking' || state === 'eating' || state === 'drinking'
+  state === 'attacking' || state === 'eating' || state === 'drinking' || state === 'burying'
 );
 
 export interface PlayerAnimationInput {
@@ -38,6 +47,20 @@ export interface PlayerAnimationDecision {
   running: boolean;
   sneaking: boolean;
 }
+
+export const getPlayerAnimationSpeedScale = (
+  state: PlayerAnimationState,
+  actualSpeed: number,
+  expectedSpeed: number,
+): number => {
+  if (state !== 'walking' && state !== 'running' && state !== 'sneaking') return 1;
+  const injuryScale = Math.max(0.52, Math.min(1, expectedSpeed > 0 ? actualSpeed / expectedSpeed : 1));
+  return (state === 'sneaking' ? SNEAK_ANIMATION_TIME_SCALE : 1) * injuryScale;
+};
+
+export const isPlayerGaitAnimationKey = (key: string): boolean => (
+  /^player-(?:east|northeast|north|northwest|west|southwest|south|southeast)-(?:carry-)?(?:walk|crawl|run)(?:-wound-[123])?$/.test(key)
+);
 
 interface PendingMovement {
   direction: PlayerDirection;

@@ -1,11 +1,14 @@
 import type { NeedsSnapshot } from './NeedsSystem';
 import type { PreySpecies } from '../entities/Prey';
 import type { TerritoryMark } from './TerritoryMarkSystem';
+import type { DifficultyMode } from './BalanceConfig';
+import type { HuntLocation } from './SurvivalPressureSystem';
 
 export interface SavedAnimal {
   species: PreySpecies;
   x: number;
   y: number;
+  health?: number;
   carcass?: {
     meat: number;
     state: 'exposed' | 'buried' | 'carried';
@@ -32,7 +35,11 @@ export interface SaveData {
   pack: SavedPackWolf[];
   scentActive: boolean;
   territoryMarks?: TerritoryMark[];
+  difficulty?: DifficultyMode;
+  huntPressure?: HuntLocation[];
 }
+
+export type LoadedSaveData = SaveData & { difficulty: DifficultyMode };
 
 const isFiniteNumber = (value: unknown): value is number => typeof value === 'number' && Number.isFinite(value);
 const isPosition = (value: unknown): value is { x: number; y: number } => {
@@ -43,7 +50,9 @@ const isPosition = (value: unknown): value is { x: number; y: number } => {
 const isSavedAnimal = (value: unknown): value is SavedAnimal => {
   if (!value || typeof value !== 'object') return false;
   const animal = value as Partial<SavedAnimal>;
-  if ((animal.species !== 'rabbit' && animal.species !== 'deer') || !isPosition(animal)) return false;
+  const health = animal.health;
+  if ((animal.species !== 'rabbit' && animal.species !== 'deer' && animal.species !== 'elk' && animal.species !== 'boar') || !isPosition(animal)) return false;
+  if (health !== undefined && (!isFiniteNumber(health) || health <= 0)) return false;
   const carcass = (value as Partial<SavedAnimal>).carcass;
   if (carcass === undefined) return true;
   return typeof carcass === 'object'
@@ -71,6 +80,11 @@ export const isSaveData = (value: unknown): value is SaveData => {
       && (wolf.stamina === undefined || isFiniteNumber(wolf.stamina))
       && (wolf.recoveryDebt === undefined || isFiniteNumber(wolf.recoveryDebt)))
     && typeof data.scentActive === 'boolean'
+    && (data.difficulty === undefined || data.difficulty === 'explorer' || data.difficulty === 'survival')
+    && (data.huntPressure === undefined || (Array.isArray(data.huntPressure)
+      && data.huntPressure.every((kill) => isPosition(kill)
+        && isFiniteNumber(kill.simulationMinutes)
+        && (kill.species === 'rabbit' || kill.species === 'deer' || kill.species === 'elk' || kill.species === 'boar'))))
     && (data.territoryMarks === undefined || (Array.isArray(data.territoryMarks)
       && data.territoryMarks.every((mark) => isPosition(mark)
         && isFiniteNumber(mark.createdAt)
@@ -82,6 +96,16 @@ export const isSaveData = (value: unknown): value is SaveData => {
     && isFiniteNumber(data.needs.stamina)
     && (data.needs.recoveryDebt === undefined || isFiniteNumber(data.needs.recoveryDebt))
     && typeof data.needs.alive === 'boolean';
+};
+
+export const normalizeSaveData = (value: unknown): LoadedSaveData | undefined => {
+  if (!isSaveData(value)) return undefined;
+  return {
+    ...value,
+    // Version 4 predates selectable difficulty. Those saves used the original,
+    // plentiful balance profile and must not silently lose meat on restore.
+    difficulty: value.difficulty ?? 'explorer',
+  };
 };
 
 export class SaveSystem {
@@ -104,12 +128,12 @@ export class SaveSystem {
     database.close();
   }
 
-  async load(): Promise<SaveData | undefined> {
+  async load(): Promise<LoadedSaveData | undefined> {
     if (typeof indexedDB === 'undefined') {
       const raw = localStorage.getItem(this.key);
       if (!raw) return undefined;
       const parsed: unknown = JSON.parse(raw);
-      return isSaveData(parsed) ? parsed : undefined;
+      return normalizeSaveData(parsed);
     }
     const database = await this.openDatabase();
     const value = await new Promise<unknown>((resolve, reject) => {
@@ -118,22 +142,32 @@ export class SaveSystem {
       request.onerror = () => reject(request.error ?? new Error('Unable to load the game.'));
     });
     database.close();
-    return isSaveData(value) ? value : undefined;
+    return normalizeSaveData(value);
   }
 
   async clear(): Promise<void> {
-    if (typeof indexedDB === 'undefined') {
-      localStorage.removeItem(this.key);
-      return;
+    let localStorageError: unknown;
+    if (typeof localStorage !== 'undefined') {
+      try {
+        localStorage.removeItem(this.key);
+      } catch (error) {
+        localStorageError = error;
+      }
     }
-    const database = await this.openDatabase();
-    await new Promise<void>((resolve, reject) => {
-      const transaction = database.transaction(this.storeName, 'readwrite');
-      transaction.objectStore(this.storeName).delete(this.key);
-      transaction.oncomplete = () => resolve();
-      transaction.onerror = () => reject(transaction.error ?? new Error('Unable to clear the save.'));
-    });
-    database.close();
+    if (typeof indexedDB !== 'undefined') {
+      const database = await this.openDatabase();
+      try {
+        await new Promise<void>((resolve, reject) => {
+          const transaction = database.transaction(this.storeName, 'readwrite');
+          transaction.objectStore(this.storeName).delete(this.key);
+          transaction.oncomplete = () => resolve();
+          transaction.onerror = () => reject(transaction.error ?? new Error('Unable to clear the save.'));
+        });
+      } finally {
+        database.close();
+      }
+    }
+    if (localStorageError) throw localStorageError;
   }
 
   private openDatabase(): Promise<IDBDatabase> {

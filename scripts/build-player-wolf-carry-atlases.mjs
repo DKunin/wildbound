@@ -169,12 +169,20 @@ const renderMeatBehindWolf = (output, original, frame, direction) => {
   }
 };
 
+const removeFaintPixels = (image) => {
+  for (let offset = 0; offset < image.data.length; offset += 4) {
+    if (image.data[offset + 3] > 16) continue;
+    image.data.fill(0, offset, offset + 4);
+  }
+};
+
 for (const direction of Object.keys(directions)) {
   for (const kind of atlasKinds) {
     const sourcePath = resolve(assetRoot, `wolf-${direction}-${kind}.png`);
     const original = PNG.sync.read(readFileSync(sourcePath));
     const output = new PNG({ width: original.width, height: original.height });
     for (let frame = 0; frame < 16; frame += 1) renderMeatBehindWolf(output, original, frame, direction);
+    removeFaintPixels(output);
     writeFileSync(resolve(assetRoot, `wolf-${direction}-${kind}-carry.png`), PNG.sync.write(output));
   }
 }

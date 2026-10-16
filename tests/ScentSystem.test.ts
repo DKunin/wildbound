@@ -10,7 +10,9 @@ describe('animal scent classification', () => {
 
   it('preserves species scent for living prey', () => {
     expect(getAnimalScentSpecies('deer', false, false)).toBe('deer');
+    expect(getAnimalScentSpecies('elk', false, false)).toBe('elk');
     expect(getAnimalScentSpecies('rabbit', false, false)).toBe('rabbit');
+    expect(getAnimalScentSpecies('boar', false, false)).toBe('boar');
   });
 });
 

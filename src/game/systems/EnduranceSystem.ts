@@ -60,6 +60,21 @@ export class EnduranceSystem {
     return this.snapshot();
   }
 
+  canSpend(amount: number): boolean {
+    return this.stamina >= Math.max(0, amount);
+  }
+
+  spend(amount: number): EnduranceSnapshot {
+    this.stamina = clamp(this.stamina - Math.max(0, amount));
+    this.recoveryDebt = clamp(this.recoveryDebt + Math.max(0, amount) * 0.45);
+    return this.snapshot();
+  }
+
+  limitStamina(maximum: number): EnduranceSnapshot {
+    this.stamina = Math.min(this.stamina, clamp(maximum));
+    return this.snapshot();
+  }
+
   canSprint(): boolean {
     return this.stamina > 5;
   }

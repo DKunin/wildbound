@@ -5,12 +5,17 @@ import {
   WORLD_TILE_SIZE,
   WORLD_WIDTH,
   type ObstacleKind,
+  type PathConnections,
   type ProceduralDecoration,
+  type ProceduralTerrainFeature,
   type WaterArea,
+  type WaterFlow,
   type WorldPoint,
 } from './ProceduralWorld';
 import { distanceToAreas } from './geometry';
 import { getObstacleCollisionGeometry } from './ObstacleCollision';
+import { getPathRenderPieces } from './PathRendering';
+import { getDecorationDepth, getObstacleDepth, getTerrainFeatureDepth } from './WorldDepth';
 
 export class WorldSystem {
   readonly layout: ProceduralWorld;
@@ -29,20 +34,48 @@ export class WorldSystem {
     for (const cell of this.layout.cells) {
       const x = (cell.column + 0.5) * WORLD_TILE_SIZE;
       const y = (cell.row + 0.5) * WORLD_TILE_SIZE;
-      if (cell.groundFrame >= 0) {
+      if (cell.pathConnections) {
+        this.createPath(x, y, cell.pathConnections);
+      } else if (cell.groundFrame >= 0) {
         this.scene.add.image(x, y, 'terrain-overlays', cell.groundFrame)
           .setDisplaySize(WORLD_TILE_SIZE + 10, WORLD_TILE_SIZE + 10)
           .setDepth(-94);
       }
       if (cell.water) {
         this.scene.add.image(x, y, 'terrain-overlays', cell.waterFrame)
-          .setDisplaySize(WORLD_TILE_SIZE + 10, WORLD_TILE_SIZE + 10)
+          .setDisplaySize(cell.waterDisplayWidth, cell.waterDisplayHeight)
+          .setAngle(cell.waterAngle)
+          .setFlipX(cell.waterFlipX)
           .setDepth(-90);
+        if (cell.waterFlow) this.createWaterFlow(x, y, cell.waterFlow, cell.column, cell.row);
       }
+      if (cell.feature) this.createTerrainFeature(x, y, cell.feature);
       for (const decoration of cell.decorations) this.createDecoration(x, y, decoration);
-      if (cell.obstacle) this.createObstacle(x, y, cell.obstacle.kind, cell.obstacle.frame, cell.obstacle.scale);
+      if (cell.obstacle) this.createObstacle(x, y, cell.obstacle.kind, cell.obstacle.frame, cell.obstacle.scale, cell.obstacle.flipX);
     }
     for (const [index, puddle] of this.layout.getPuddleAreas().entries()) this.createPuddle(puddle, index);
+  }
+
+  private createTerrainFeature(x: number, y: number, feature: ProceduralTerrainFeature): void {
+    if (!feature.blocked) {
+      this.scene.add.image(x, y, 'terrain-features', feature.frame)
+        .setScale(feature.scale)
+        .setFlipX(feature.flipX)
+        .setDepth(feature.kind === 'wetland' ? -91 : getTerrainFeatureDepth(feature, y));
+      return;
+    }
+    const sprite = this.scene.physics.add.staticImage(x, y, 'terrain-features', feature.frame)
+      .setScale(feature.scale)
+      .setFlipX(feature.flipX)
+      .setDepth(getTerrainFeatureDepth(feature, y));
+    this.obstacles.add(sprite);
+    sprite.refreshBody();
+    const body = sprite.body as Phaser.Physics.Arcade.StaticBody;
+    const width = (feature.kind === 'windfall' ? 224 : 188) * feature.scale;
+    const height = (feature.kind === 'windfall' ? 78 : 104) * feature.scale;
+    const displaySize = 313 * feature.scale;
+    body.setSize(width, height, false);
+    body.setOffset((displaySize - width) / 2, (displaySize - height) / 2 + 34 * feature.scale);
   }
 
   addCollider(creature: Phaser.Types.Physics.Arcade.ArcadeColliderType, onCollision?: () => void): Phaser.Physics.Arcade.Collider {
@@ -86,16 +119,27 @@ export class WorldSystem {
   getWidth(): number { return WORLD_WIDTH; }
   getHeight(): number { return WORLD_HEIGHT; }
 
-  private createObstacle(x: number, y: number, kind: ObstacleKind, frame: number, scale: number): void {
+  private createObstacle(x: number, y: number, kind: ObstacleKind, frame: number, scale: number, flipX: boolean): void {
     const sprite = this.scene.physics.add.staticImage(x, y, 'obstacle-atlas', frame)
       .setScale(scale)
-      .setDepth(y + 80);
+      .setFlipX(flipX)
+      .setDepth(getObstacleDepth(kind, y));
     this.obstacles.add(sprite);
     sprite.refreshBody();
     const body = sprite.body as Phaser.Physics.Arcade.StaticBody;
     const geometry = getObstacleCollisionGeometry(kind, scale);
     body.setSize(geometry.width, geometry.height, false);
     body.setOffset(geometry.offsetX, geometry.offsetY);
+  }
+
+  private createPath(x: number, y: number, connections: PathConnections): void {
+    const displaySize = WORLD_TILE_SIZE + 10;
+    for (const piece of getPathRenderPieces(connections)) {
+      this.scene.add.image(x, y, 'terrain-overlays', piece.frame)
+        .setDisplaySize(displaySize, displaySize)
+        .setCrop(piece.cropX, piece.cropY, piece.cropWidth, piece.cropHeight)
+        .setDepth(-94);
+    }
   }
 
   private createDecoration(x: number, y: number, decoration: ProceduralDecoration): void {
@@ -105,7 +149,38 @@ export class WorldSystem {
       .setScale(decoration.scale)
       .setFlipX(decoration.flipX)
       .setAlpha(decoration.alpha)
-      .setDepth(decoration.atlas === 'terrain' ? -89 : decorationY + 12);
+      .setDepth(getDecorationDepth(decoration, decorationY));
+  }
+
+  private createWaterFlow(x: number, y: number, flow: WaterFlow, column: number, row: number): void {
+    const length = Math.hypot(flow.x, flow.y) || 1;
+    const directionX = flow.x / length;
+    const directionY = flow.y / length;
+    const normalX = -directionY;
+    const normalY = directionX;
+    const glints = this.scene.add.graphics({ x, y })
+      .setBlendMode(Phaser.BlendModes.ADD)
+      .setDepth(-89.5)
+      .setAlpha(0.18);
+    glints.lineStyle(1.4, 0xdaf6ff, 0.34);
+    for (const offset of [-22, 1, 24]) {
+      const start = -18 - ((column * 11 + row * 7 + offset) % 9);
+      const end = start + 18 + ((column * 5 + row * 3 + offset) % 7);
+      glints.beginPath();
+      glints.moveTo(directionX * start + normalX * offset, directionY * start + normalY * offset);
+      glints.lineTo(directionX * end + normalX * offset, directionY * end + normalY * offset);
+      glints.strokePath();
+    }
+    this.scene.tweens.add({
+      targets: glints,
+      x: x + directionX * 18,
+      y: y + directionY * 18,
+      alpha: 0.78,
+      duration: 1_800 + ((column * 97 + row * 53) % 500),
+      delay: (column * 83 + row * 47) % 650,
+      repeat: -1,
+      ease: 'Linear',
+    });
   }
 
   private createPuddle(area: WaterArea, index: number): void {

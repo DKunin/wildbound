@@ -1,4 +1,6 @@
 import { EnduranceSystem } from './EnduranceSystem';
+import { BALANCE_PROFILES, type BalanceProfile } from './BalanceConfig';
+import { getInjuryMobilityFactor, getInjuryStaminaCapacity } from './HuntBalanceSystem';
 
 export interface NeedActivity {
   moving: boolean;
@@ -35,6 +37,8 @@ export class NeedsSystem {
   private readonly endurance = new EnduranceSystem();
   private deathCause?: DeathCause;
 
+  constructor(private readonly profile: BalanceProfile['player'] = BALANCE_PROFILES.explorer.player) {}
+
   update(deltaSeconds: number, activity: NeedActivity): NeedsSnapshot {
     if (!this.isAlive()) return this.snapshot();
 
@@ -45,13 +49,14 @@ export class NeedsSystem {
         : activity.moving
           ? 'moving'
           : 'idle');
+    if (this.profile.injuryPenalties) this.endurance.limitStamina(getInjuryStaminaCapacity(this.health));
     const exhaustion = this.endurance.getExhaustionLoad();
     const exertion = activity.running ? 1.85 : activity.moving ? 1.2 : 1;
     this.hunger = clamp(this.hunger + deltaSeconds * 0.1 * exertion * (1 + exhaustion * 0.8));
     this.thirst = clamp(this.thirst + deltaSeconds * 0.16 * exertion * (1 + exhaustion * 1.25));
 
-    if (activity.resting && this.hunger < 82 && this.thirst < 82) {
-      this.health = clamp(this.health + deltaSeconds * 0.65);
+    if (activity.resting && this.hunger < this.profile.healingNeedLimit && this.thirst < this.profile.healingNeedLimit) {
+      this.health = clamp(this.health + deltaSeconds * this.profile.healingPerSecond);
     }
 
     if (this.hunger > 88) this.health = clamp(this.health - deltaSeconds * (this.hunger - 86) * 0.055);
@@ -97,6 +102,20 @@ export class NeedsSystem {
     return this.snapshot();
   }
 
+  canSpendStamina(amount: number): boolean {
+    return this.endurance.canSpend(amount) && this.isAlive();
+  }
+
+  spendStamina(amount: number): NeedsSnapshot {
+    this.endurance.spend(amount);
+    if (this.profile.injuryPenalties) this.endurance.limitStamina(getInjuryStaminaCapacity(this.health));
+    return this.snapshot();
+  }
+
+  getMobilityFactor(): number {
+    return this.profile.injuryPenalties ? getInjuryMobilityFactor(this.health) : 1;
+  }
+
   restore(snapshot: NeedsSnapshot): NeedsSnapshot {
     this.health = clamp(snapshot.health);
     this.hunger = clamp(snapshot.hunger);
@@ -111,7 +130,8 @@ export class NeedsSystem {
   }
 
   canRecoverWhileResting(): boolean {
-    return this.isAlive() && this.health < 100 && this.hunger < 82 && this.thirst < 82;
+    return this.isAlive() && this.health < 100
+      && this.hunger < this.profile.healingNeedLimit && this.thirst < this.profile.healingNeedLimit;
   }
 
   restUntilHealed(maxSeconds = 600): RestRecoveryResult {

@@ -6,178 +6,178 @@
     "niva": [
       {
         "bbox": [
-          50,
+          49,
           59,
           247,
           219
         ],
         "edgePixels": 0,
-        "hash": "752cce66e56cae834a95a714d80c489ef2dd971183421cc5eeb91988cabd73b9",
+        "hash": "5d77251168b5991a2fbd7899c31e6ecd9ff719f40b6cd3103be6bf83a4c99060",
         "opaquePixels": 26769
       },
       {
         "bbox": [
-          50,
+          47,
           58,
           251,
           211
         ],
         "edgePixels": 0,
-        "hash": "bba15713abe72bc0f1507a3eb6cd94f329f3f7bd1f91d0a87c1a0b0bea9231b3",
+        "hash": "2ea52b780f2ecf2136f23af1ce7c73a84410954ed87aab72457228d6845ac847",
         "opaquePixels": 26969
       },
       {
         "bbox": [
-          37,
-          59,
+          46,
+          60,
           251,
           219
         ],
         "edgePixels": 0,
-        "hash": "515bdc74a852f1f6d8b1425d6ca19710a95a84b5e43805d641f2a211cb22ee3c",
+        "hash": "d055f6e7e316beffa3dcb2448cceade535456562df883154d231cf383ee2918e",
         "opaquePixels": 27420
       },
       {
         "bbox": [
-          43,
-          64,
+          44,
+          59,
           251,
           214
         ],
         "edgePixels": 0,
-        "hash": "1295c0c55f407d4278fc7615808096eabceec61722a8635d6365bc42bc26d58e",
+        "hash": "1dc211a0c63d83da8faef945c0c2716efbb39bd8d635e1d094ab0df5d6c2f59d",
         "opaquePixels": 28317
       },
       {
         "bbox": [
-          51,
-          50,
+          49,
+          49,
           262,
           223
         ],
         "edgePixels": 0,
-        "hash": "e0ae241ed31e53d8f63183aba48f6ac90af35c7908046c914a595a4cb5b7eadd",
+        "hash": "d17564032a34ede00b4b564760bed448feb625e295d86d84680ea9a1bfa9b095",
         "opaquePixels": 28533
       },
       {
         "bbox": [
-          52,
-          46,
+          49,
+          50,
           257,
           217
         ],
         "edgePixels": 0,
-        "hash": "54fca336303533f8c1bcfdc08b0354949693399a5d1de7ec1dc22cafedb13620",
+        "hash": "43b33165be40c98b4bf40964821fa15f6904b53696ae7c658f25dd46effc8815",
         "opaquePixels": 28546
       },
       {
         "bbox": [
-          40,
-          5,
+          48,
+          49,
           258,
-          266
+          224
         ],
         "edgePixels": 0,
-        "hash": "41a7987444dc6913b105d6f7bfdac1f838fec80904e12bf3e3c43d7eb7ddb0cb",
-        "opaquePixels": 28747
+        "hash": "1105c02e9b7236c99f09de9c74f9b7362a3c1d78d3e1da0f8e65fd02486a5d3f",
+        "opaquePixels": 28701
       },
       {
         "bbox": [
-          44,
-          5,
+          47,
+          45,
           266,
-          266
+          224
         ],
         "edgePixels": 0,
-        "hash": "438c92dde878782ea2a0b5cf742c174ebbc33382e875eeb2a0c18b57087c1aa7",
-        "opaquePixels": 29874
+        "hash": "bb73957662d8c15caad8dc6773c74ad99305768a41f0d74cbb8909710676250b",
+        "opaquePixels": 29824
       },
       {
         "bbox": [
-          66,
-          23,
+          69,
+          25,
           217,
           237
         ],
         "edgePixels": 0,
-        "hash": "e4438b6a79decf95b12b48268bda57642071ad0c17b989b415192d9869c2dbef",
+        "hash": "88ec597e5a5ea86d7255618f289a421b45e2259994caa0a437368622a927c4ba",
         "opaquePixels": 24360
       },
       {
         "bbox": [
-          58,
-          25,
+          55,
+          24,
           239,
           234
         ],
         "edgePixels": 0,
-        "hash": "64b3530c787530a07fe60445a936360df39da7ce20d59a63ebce1518a62f4f7d",
+        "hash": "54a56cbddd03ed995cd57cb0b1c01da6f27f04d4183ca761d7bf6a8382e76e15",
         "opaquePixels": 26459
       },
       {
         "bbox": [
-          51,
-          25,
+          46,
+          23,
           252,
           239
         ],
         "edgePixels": 0,
-        "hash": "fd8dd267c9c3663e23891e83dd6d175c75e4d537e30b8a3b7cf58ba1ef165ffb",
+        "hash": "c38d5bd570c8bb843f93b9b63f44ac2ca8c8a2f5cf132ee0db8d4c5307e4be38",
         "opaquePixels": 25751
       },
       {
         "bbox": [
-          62,
-          25,
+          66,
+          26,
           224,
           234
         ],
         "edgePixels": 0,
-        "hash": "2e06ba98d3259271b8f6b4ac8585cfc0ebd044dcc966368aa893a2b9245d043f",
+        "hash": "377d403571a668e3ca62a593bc3dab473afd561b84d951abe19ea9f98ea70e27",
         "opaquePixels": 24572
       },
       {
         "bbox": [
-          77,
+          67,
           9,
           231,
           223
         ],
         "edgePixels": 0,
-        "hash": "da4ec8214dd2b54483877299ab27e92402224e9ce82746d6aa1b9379d7ed54e8",
+        "hash": "fbb2bdffad00ad80a94e496e1b7294300b11a6744f05a8a9eff7457cd727a669",
         "opaquePixels": 23896
-      },
-      {
-        "bbox": [
-          62,
-          6,
-          245,
-          232
-        ],
-        "edgePixels": 0,
-        "hash": "d03b3d344ea8ae3e36cdf0bbe2e643756fd7c75eacbf98cef805b477a5d8b34d",
-        "opaquePixels": 25590
-      },
-      {
-        "bbox": [
-          52,
-          6,
-          259,
-          232
-        ],
-        "edgePixels": 0,
-        "hash": "757e397e8c1746a2d5ba8a433dcfefbec13277773aae8b6ab129bd17a42db920",
-        "opaquePixels": 26110
       },
       {
         "bbox": [
           59,
           8,
+          245,
+          232
+        ],
+        "edgePixels": 0,
+        "hash": "0faf7901bb65df0c8790d536f71f6a00ddc0f080d25e5b5477562dd55949aacd",
+        "opaquePixels": 25590
+      },
+      {
+        "bbox": [
+          55,
+          6,
+          259,
+          232
+        ],
+        "edgePixels": 0,
+        "hash": "9d91ab3329b30aa32a3635e03e5229d2bc6ef56e1243462f6e4196abf5fa22c3",
+        "opaquePixels": 26110
+      },
+      {
+        "bbox": [
+          64,
+          7,
           229,
           229
         ],
         "edgePixels": 0,
-        "hash": "7cbfecf728853b9d19b46b3cc0bae0ad9be812437b39d8cddb35e67b89f276fd",
+        "hash": "83c104549bbb0e40542a4f1756cd1f801f65b4e995e00ffe196090324fd1a198",
         "opaquePixels": 24003
       }
     ],
@@ -190,172 +190,172 @@
           218
         ],
         "edgePixels": 0,
-        "hash": "cf930ddb8396019ee68b022131c42b28e5a24a9c54f2388ae82b9d8466b3471b",
+        "hash": "ac678e4f747867cd4bfcde0d7bc9a507b01a0413e70dfec9a9f1dbc888a34aee",
         "opaquePixels": 27293
       },
       {
         "bbox": [
-          51,
-          53,
+          47,
+          55,
           254,
           217
         ],
         "edgePixels": 0,
-        "hash": "9ac52bca1387c96ebe60a96d14b0e4a6317a7bb96da6c45db1c793fa3b4d930d",
+        "hash": "a0cce747df8f35ea7d7596d837779ec1a90945a2208b184c7132cdbbad0b1747",
         "opaquePixels": 27866
       },
       {
         "bbox": [
-          38,
-          59,
+          44,
+          60,
           257,
           219
         ],
         "edgePixels": 0,
-        "hash": "bead156a367d5e3e9d1c2582d1c291353439e4f0b0a7e9aa5c09db4fca077207",
+        "hash": "b03f432d7564ecb7a939e142c61f98c10c49aa7457f62e466cc809d649c931d2",
         "opaquePixels": 27960
       },
       {
         "bbox": [
           45,
-          64,
+          57,
           254,
           214
         ],
         "edgePixels": 0,
-        "hash": "a84ce147f4fb8f518adb12e8c507bfdf9ec3a72f71f2b43b31fd588eaaf3f84d",
+        "hash": "49012b7e10e80e60125d63c7948e4a4d9d33848add46aa303587cc40611cdee9",
         "opaquePixels": 29317
       },
       {
         "bbox": [
           49,
-          50,
+          48,
           264,
           224
         ],
         "edgePixels": 0,
-        "hash": "f5546cabe7fef78ebd20736e986424dd77e373dd7cd75debd0b00e0aed26b434",
+        "hash": "a364e04ea868a71760e314d0eecb6efe5af9b2dbe42b106e415cdda725f466db",
         "opaquePixels": 29115
       },
       {
         "bbox": [
-          55,
-          46,
+          51,
+          47,
           255,
           216
         ],
         "edgePixels": 0,
-        "hash": "8368b9f2b1ce25877d123e126aaa499944c77994bd06aa4842d8f520404aad11",
+        "hash": "c51709d0d0674b812ddaa64225fb632e54491e0112a2b312a54965324e4d3c10",
         "opaquePixels": 28967
       },
       {
         "bbox": [
-          45,
-          5,
+          50,
+          48,
           257,
-          265
+          224
         ],
         "edgePixels": 0,
-        "hash": "f78b0558a2218a0a20cb541a59f33ec91b943cb2efdbc700f3b5cb7ca7c3e2e0",
-        "opaquePixels": 29196
+        "hash": "491033be3cb25a1acbc1a3f008c267392eca1919c5e6fe4edf087a498a52b9d8",
+        "opaquePixels": 29149
       },
       {
         "bbox": [
           49,
-          5,
+          45,
           265,
-          265
+          223
         ],
         "edgePixels": 0,
-        "hash": "dc677bcf54a421aca77c6356a6125eeb6cd8c862f12ac06c1fa45b95e190828c",
-        "opaquePixels": 30010
+        "hash": "60ad203470d7f752dd7643aeb5c6afe7a16622517dba497bf1e815b02c4614ed",
+        "opaquePixels": 29977
       },
       {
         "bbox": [
-          66,
-          22,
+          71,
+          24,
           219,
           240
         ],
         "edgePixels": 0,
-        "hash": "55deba74da3fb1515952ee7e3f5b17776459318560acd1c525ba5b6d7f146eac",
+        "hash": "c8028d50afb8e229329581f1f7b333086f8e578f2f6026a582e97730968c84da",
         "opaquePixels": 25203
       },
       {
         "bbox": [
-          58,
-          22,
+          56,
+          21,
           242,
           238
         ],
         "edgePixels": 0,
-        "hash": "74627cb414fa0404700f1aa6b35d09fc60ddc9a413a3444c84a67494cebb8a1f",
+        "hash": "88f5a3f41bc83540317a522de56e8d619cc4aa5231ceb7c5b69642697a1695f5",
         "opaquePixels": 27235
       },
       {
         "bbox": [
-          53,
-          25,
+          48,
+          22,
           254,
           241
         ],
         "edgePixels": 0,
-        "hash": "b6f89235a883803b4a94a7372646489fdaf67d637ccdba0504b48310d2669ad6",
+        "hash": "b460bdd557152fcf44d95b7b58bf95f60517c2b4fdd56384b1063faed41b172d",
         "opaquePixels": 26302
       },
       {
         "bbox": [
-          68,
-          26,
+          71,
+          27,
           223,
           234
         ],
         "edgePixels": 0,
-        "hash": "919bd98ec1f0dc56d8237712961f23feefbbc5548c085e84be39028a13a445bc",
+        "hash": "4a735b0a400c4536b072f44a1a3b4fa5dfd99ee7c4dce8b062b85a6bddc8479a",
         "opaquePixels": 25075
       },
       {
         "bbox": [
-          77,
-          9,
+          69,
+          8,
           233,
           229
         ],
         "edgePixels": 0,
-        "hash": "b65ac55a49eeb2163ea6f122dc1228e54f5c790aa071c7819dd4608e6d25ad6f",
+        "hash": "bb62770a517f0cbca3f2fcfc008e7e21e7d99dc0cfc4f9e32eed75a0eeeea78b",
         "opaquePixels": 25075
       },
       {
         "bbox": [
-          64,
-          7,
+          61,
+          9,
           243,
           235
         ],
         "edgePixels": 0,
-        "hash": "a05fa92a30c67161219477f7eccd2df0add5b418b99e186cf2a41cba3b06b855",
+        "hash": "8738b1773d38326600b488d0bffa6a1d86c4510f40bae1f39fd1adf23cd32a8f",
         "opaquePixels": 26399
       },
       {
         "bbox": [
-          54,
+          57,
           8,
           259,
           236
         ],
         "edgePixels": 0,
-        "hash": "6914152bb3280f0d667bd068ce7f9a719160b7a0d31c2425a2e1437938d0aa44",
+        "hash": "b570e4338e2807c10e3f7708e5c2b8cdf842d536520fb9969bcb95e04dccbcdb",
         "opaquePixels": 27214
       },
       {
         "bbox": [
-          65,
+          68,
           9,
           223,
           232
         ],
         "edgePixels": 0,
-        "hash": "b8bd4185edfdb4ff858c9153340c8fd80785d336328b187777b27df5a02d2d6c",
+        "hash": "a5225ae24dda030933417727ca5f1fc0bad069a217a0dc205e66b98a6540dbf4",
         "opaquePixels": 24493
       }
     ]

@@ -1,5 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
+  AnimalTargetTracker,
+  ANIMAL_TARGET_LOST_TIMEOUT_MS,
   findClickedAnimal,
   isAnimalTargetAlive,
   type AnimalTargetCandidate,
@@ -33,5 +35,22 @@ describe('animal click targeting', () => {
 
     dead = true;
     expect(isAnimalTargetAlive(target)).toBe(false);
+  });
+
+  it('drops a mark only after the animal and its trail stay unavailable', () => {
+    const tracker = new AnimalTargetTracker();
+
+    expect(tracker.update(1_000, false)).toBe('searching');
+    expect(tracker.update(1_000 + ANIMAL_TARGET_LOST_TIMEOUT_MS - 1, false)).toBe('searching');
+    expect(tracker.update(1_000 + ANIMAL_TARGET_LOST_TIMEOUT_MS, false)).toBe('lost');
+  });
+
+  it('resets the loss timer when the wolf picks up the animal or trail again', () => {
+    const tracker = new AnimalTargetTracker();
+
+    expect(tracker.update(1_000, false)).toBe('searching');
+    expect(tracker.update(5_000, true)).toBe('tracking');
+    expect(tracker.update(12_000, false)).toBe('searching');
+    expect(tracker.update(12_000 + ANIMAL_TARGET_LOST_TIMEOUT_MS - 1, false)).toBe('searching');
   });
 });

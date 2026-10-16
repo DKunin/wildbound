@@ -24,6 +24,62 @@ describe('animal needs and goal selection', () => {
     expect(lowNeeds.chooseGoal(18 * 60, 0.05)).toBe('explore');
   });
 
+  it.each([
+    ['rabbit', 12 * 60, 18 * 60],
+    ['deer', 12 * 60, 18 * 60],
+    ['elk', 12 * 60, 18 * 60],
+    ['boar', 12 * 60, 18 * 60],
+  ] as const)('gives %s a scheduled bedding period outside its active dusk window', (species, restTime, activeTime) => {
+    const needs = new AnimalNeedsSystem(species, { hunger: 12, thirst: 12, fatigue: 8 });
+
+    expect(needs.shouldRest(restTime)).toBe(true);
+    expect(needs.chooseGoal(restTime, 0.5)).toBe('shelter');
+    expect(needs.shouldRest(activeTime)).toBe(false);
+  });
+
+  it('beds boar by day and sends them to forage after dusk', () => {
+    const boar = new AnimalNeedsSystem('boar', { hunger: 30, thirst: 15, fatigue: 12 });
+    expect(boar.shouldRest(12 * 60)).toBe(true);
+    expect(boar.shouldRest(20 * 60)).toBe(false);
+    expect(boar.chooseGoal(20 * 60, 0.5)).toBe('food');
+  });
+
+  it('staggers individual rest windows instead of synchronizing every animal', () => {
+    const earlyRabbit = new AnimalNeedsSystem('rabbit', { hunger: 12, thirst: 12, fatigue: 8 }, -30);
+    const lateRabbit = new AnimalNeedsSystem('rabbit', { hunger: 12, thirst: 12, fatigue: 8 }, 30);
+
+    expect(earlyRabbit.shouldRest(8 * 60 + 15)).toBe(true);
+    expect(lateRabbit.shouldRest(8 * 60 + 15)).toBe(false);
+  });
+
+  it('lets urgent hunger or thirst wake an animal during its rest window', () => {
+    const hungryRabbit = new AnimalNeedsSystem('rabbit', { hunger: 62, thirst: 12, fatigue: 80 });
+    const thirstyDeer = new AnimalNeedsSystem('deer', { hunger: 12, thirst: 60, fatigue: 80 });
+
+    expect(hungryRabbit.shouldRest(12 * 60)).toBe(false);
+    expect(hungryRabbit.chooseGoal(12 * 60, 0.5)).toBe('food');
+    expect(hungryRabbit.isSatisfied('shelter', 12 * 60)).toBe(true);
+    expect(thirstyDeer.shouldRest(12 * 60)).toBe(false);
+    expect(thirstyDeer.chooseGoal(12 * 60, 0.5)).toBe('water');
+    expect(thirstyDeer.isSatisfied('shelter', 12 * 60)).toBe(true);
+  });
+
+  it('continues scheduled rest after fatigue recovers, then wakes outside the window', () => {
+    const deer = new AnimalNeedsSystem('deer', { hunger: 12, thirst: 12, fatigue: 18, stamina: 100 });
+    deer.advanceTime(2, 'resting');
+
+    expect(deer.isSatisfied('shelter', 12 * 60)).toBe(false);
+    expect(deer.isSatisfied('shelter', 18 * 60)).toBe(true);
+  });
+
+  it('applies scheduled rest while the wolf skips time', () => {
+    const rabbit = new AnimalNeedsSystem('rabbit', { hunger: 12, thirst: 12, fatigue: 78, stamina: 50 });
+    const result = rabbit.advanceTimeFollowingSchedule(120, 12 * 60, 'moving');
+
+    expect(result.fatigue).toBeLessThan(20);
+    expect(result.stamina).toBeGreaterThan(90);
+  });
+
   it('lets rabbits obtain part of their water while foraging', () => {
     const rabbit = new AnimalNeedsSystem('rabbit', { hunger: 70, thirst: 55, fatigue: 20 });
     const afterForaging = rabbit.update(0.25, 'foraging');
@@ -74,6 +130,17 @@ describe('animal needs and goal selection', () => {
 
     expect(deer.snapshot().stamina).toBeGreaterThan(60);
     expect(rabbit.snapshot().stamina).toBeGreaterThan(40);
+  });
+
+  it('slows an elk after a sustained pursuit instead of granting unlimited sprint speed', () => {
+    const elk = new AnimalNeedsSystem('elk', { hunger: 20, thirst: 20, fatigue: 10 });
+    const freshSpeed = 190 * elk.getSprintSpeedFactor();
+    for (let index = 0; index < 180 * 4; index += 1) elk.update(0.25, 'fleeing');
+
+    const exhausted = elk.snapshot();
+    expect(exhausted.stamina).toBe(0);
+    expect(exhausted.recoveryDebt).toBeGreaterThan(85);
+    expect(190 * elk.getSprintSpeedFactor()).toBeLessThan(freshSpeed * 0.6);
   });
 
   it('gives deer a longer escape reserve than rabbits', () => {

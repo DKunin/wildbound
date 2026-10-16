@@ -2,8 +2,8 @@ import { findEscapePath as buildEscapePath } from './PreyEscapeSystem';
 
 export const WORLD_SEED = 'pine-ridge-expanded-2026';
 export const WORLD_TILE_SIZE = 256;
-export const WORLD_COLUMNS = 32;
-export const WORLD_ROWS = 32;
+export const WORLD_COLUMNS = 40;
+export const WORLD_ROWS = 40;
 export const WORLD_WIDTH = WORLD_COLUMNS * WORLD_TILE_SIZE;
 export const WORLD_HEIGHT = WORLD_ROWS * WORLD_TILE_SIZE;
 
@@ -18,6 +18,11 @@ export interface WaterArea extends WorldPoint {
   kind: 'flowing' | 'still';
 }
 
+export interface WaterFlow {
+  x: number;
+  y: number;
+}
+
 export interface HabitatResources {
   food: readonly WorldPoint[];
   water: readonly WorldPoint[];
@@ -28,11 +33,13 @@ export interface HabitatResources {
 export type GroundKind = 'meadow' | 'forest' | 'path' | 'flowers' | 'bank';
 export type ObstacleKind = 'pine' | 'birch' | 'boulder' | 'rockFormation' | 'fallenLog' | 'cliff';
 export type DecorationKind = 'sapling' | 'brush' | 'stones' | 'wildflowers' | 'fallenBranch';
+export type TerrainFeatureKind = 'graniteScree' | 'wetland' | 'berryThicket' | 'windfall';
 
 export interface ProceduralObstacle {
   kind: ObstacleKind;
   frame: number;
   scale: number;
+  flipX: boolean;
 }
 
 export interface ProceduralDecoration {
@@ -46,6 +53,25 @@ export interface ProceduralDecoration {
   alpha: number;
 }
 
+export interface ProceduralTerrainFeature {
+  kind: TerrainFeatureKind;
+  frame: number;
+  scale: number;
+  blocked: boolean;
+  flipX: boolean;
+}
+
+export interface PathConnections {
+  north: boolean;
+  northEast: boolean;
+  east: boolean;
+  southEast: boolean;
+  south: boolean;
+  southWest: boolean;
+  west: boolean;
+  northWest: boolean;
+}
+
 export interface WorldCell {
   column: number;
   row: number;
@@ -53,8 +79,15 @@ export interface WorldCell {
   groundFrame: number;
   water: boolean;
   waterFrame: number;
+  waterAngle: number;
+  waterFlipX: boolean;
+  waterDisplayWidth: number;
+  waterDisplayHeight: number;
+  waterFlow?: WaterFlow;
   blocked: boolean;
+  pathConnections?: PathConnections;
   obstacle?: ProceduralObstacle;
+  feature?: ProceduralTerrainFeature;
   decorations: ProceduralDecoration[];
 }
 
@@ -75,42 +108,80 @@ const randomAt = (seed: number, column: number, row: number, salt = 0): number =
 
 const cellKey = (column: number, row: number): string => `${column},${row}`;
 
+interface WaterPathCell {
+  column: number;
+  row: number;
+}
+
+type PathDirection = keyof PathConnections;
+
+const PATH_OFFSETS: Record<PathDirection, readonly [number, number]> = {
+  north: [0, -1],
+  northEast: [1, -1],
+  east: [1, 0],
+  southEast: [1, 1],
+  south: [0, 1],
+  southWest: [-1, 1],
+  west: [-1, 0],
+  northWest: [-1, -1],
+};
+
+const OPPOSITE_PATH_DIRECTION: Record<PathDirection, PathDirection> = {
+  north: 'south',
+  northEast: 'southWest',
+  east: 'west',
+  southEast: 'northWest',
+  south: 'north',
+  southWest: 'northEast',
+  west: 'east',
+  northWest: 'southEast',
+};
+
+const emptyPathConnections = (): PathConnections => ({
+  north: false,
+  northEast: false,
+  east: false,
+  southEast: false,
+  south: false,
+  southWest: false,
+  west: false,
+  northWest: false,
+});
+
 export class ProceduralWorld {
   readonly cells: WorldCell[];
   readonly spawnCell = { column: 12, row: 20 };
   private readonly seedNumber: number;
-  private readonly waterRuns: ReadonlyArray<{ column: number; startRow: number; endRow: number }>;
+  private readonly pathCells: ReadonlySet<string>;
+  private readonly pathConnectionsByCell: ReadonlyMap<string, PathConnections>;
+  private readonly waterPaths: ReadonlyArray<ReadonlyArray<WaterPathCell>>;
+  private readonly waterFlowByCell: ReadonlyMap<string, WaterFlow>;
   private readonly flowingWaterAreas: ReadonlyArray<WaterArea>;
   private readonly puddleAreas: ReadonlyArray<WaterArea>;
+  private readonly wetlandAreas: ReadonlyArray<WaterArea>;
   private readonly waterAreas: ReadonlyArray<WaterArea>;
 
   constructor(readonly seed = WORLD_SEED) {
     this.seedNumber = hashSeed(seed);
-    this.waterRuns = [
-      { column: Math.round(WORLD_COLUMNS * 0.73), startRow: 0, endRow: WORLD_ROWS - 1 },
-      {
-        column: Math.round(WORLD_COLUMNS * 0.2) + Math.floor(randomAt(this.seedNumber, 0, 0, 20) * 3) - 1,
-        startRow: 1,
-        endRow: Math.round(WORLD_ROWS * 0.37) + Math.floor(randomAt(this.seedNumber, 0, 0, 21) * 3),
-      },
-      {
-        column: Math.round(WORLD_COLUMNS * 0.44) + Math.floor(randomAt(this.seedNumber, 0, 0, 22) * 3) - 1,
-        startRow: Math.round(WORLD_ROWS * 0.73) + Math.floor(randomAt(this.seedNumber, 0, 0, 23) * 2),
-        endRow: WORLD_ROWS - 1,
-      },
-    ];
+    this.waterPaths = this.buildWaterPaths();
+    this.waterFlowByCell = this.buildWaterFlowMap();
+    this.pathConnectionsByCell = this.buildPathConnections();
+    this.pathCells = new Set(this.pathConnectionsByCell.keys());
     this.cells = this.generate();
     this.flowingWaterAreas = this.cells
       .filter((cell) => cell.water)
-      .map((cell) => ({
-        x: (cell.column + 0.5) * WORLD_TILE_SIZE,
-        y: cell.row * WORLD_TILE_SIZE,
-        width: 0,
-        height: WORLD_TILE_SIZE,
-        kind: 'flowing',
-      }));
+      .map((cell) => this.flowingWaterArea(cell));
     this.puddleAreas = this.generatePuddles();
-    this.waterAreas = [...this.flowingWaterAreas, ...this.puddleAreas];
+    this.wetlandAreas = this.cells
+      .filter((cell) => cell.feature?.kind === 'wetland')
+      .map((cell) => ({
+        x: (cell.column + 0.5) * WORLD_TILE_SIZE - 72,
+        y: (cell.row + 0.5) * WORLD_TILE_SIZE - 48,
+        width: 144,
+        height: 96,
+        kind: 'still' as const,
+      }));
+    this.waterAreas = [...this.flowingWaterAreas, ...this.puddleAreas, ...this.wetlandAreas];
   }
 
   getCell(column: number, row: number): WorldCell | undefined {
@@ -131,10 +202,7 @@ export class ProceduralWorld {
   }
 
   getWaterPaths(): WorldPoint[][] {
-    return this.waterRuns.map((run) => Array.from(
-      { length: run.endRow - run.startRow + 1 },
-      (_, index) => this.getCellCenter(run.column, run.startRow + index),
-    ));
+    return this.waterPaths.map((path) => path.map((cell) => this.getCellCenter(cell.column, cell.row)));
   }
 
   getWaterAreas(): readonly WaterArea[] {
@@ -149,18 +217,29 @@ export class ProceduralWorld {
     return this.puddleAreas;
   }
 
-  getHabitatResources(species: 'rabbit' | 'deer'): HabitatResources {
+  getWetlandAreas(): readonly WaterArea[] {
+    return this.wetlandAreas;
+  }
+
+  getHabitatResources(species: 'rabbit' | 'deer' | 'elk' | 'boar'): HabitatResources {
     const open = this.cells.filter((cell) => !cell.blocked && !cell.water);
     const points = (cells: readonly WorldCell[]): WorldPoint[] => cells.map((cell) => this.getCellCenter(cell.column, cell.row));
     const food = open.filter((cell) => species === 'rabbit'
       ? cell.ground === 'flowers' || cell.ground === 'meadow'
-      : cell.ground === 'flowers' || cell.ground === 'meadow' || cell.ground === 'forest');
+      : species === 'elk'
+        ? cell.ground === 'flowers' || cell.ground === 'meadow' || cell.feature?.kind === 'berryThicket'
+        : species === 'boar'
+          ? cell.ground === 'forest' || cell.ground === 'bank' || cell.feature?.kind === 'berryThicket'
+        : cell.ground === 'flowers' || cell.ground === 'meadow' || cell.ground === 'forest');
     const shelter = open.filter((cell) => species === 'rabbit'
       ? cell.ground === 'forest' || cell.ground === 'bank'
-      : cell.ground === 'forest');
+      : species === 'boar'
+        ? cell.ground === 'forest' || cell.ground === 'bank'
+        : cell.ground === 'forest');
     const water = [
       ...points(open.filter((cell) => cell.ground === 'bank')),
       ...this.puddleAreas.map((area) => ({ x: area.x + area.width / 2, y: area.y + area.height / 2 })),
+      ...this.wetlandAreas.map((area) => ({ x: area.x + area.width / 2, y: area.y + area.height / 2 })),
     ];
     return {
       food: points(food),
@@ -174,6 +253,9 @@ export class ProceduralWorld {
     const cell = this.getCellAt(point);
     if (!cell) return 'WILDERNESS EDGE';
     if (Math.hypot(cell.column - this.spawnCell.column, cell.row - this.spawnCell.row) < 4.5) return 'PINE RIDGE';
+    if (cell.feature?.kind === 'graniteScree') return 'RAVEN RIDGE';
+    if (cell.feature?.kind === 'wetland') return 'REEDMERE';
+    if (cell.feature?.kind === 'berryThicket') return 'BERRY HOLLOW';
     if (this.puddleAreas.some((area) => point.x >= area.x && point.x <= area.x + area.width && point.y >= area.y && point.y <= area.y + area.height)) return 'MIRROR POOLS';
     if (cell.water || cell.ground === 'bank') return 'STONE RUN';
     if (cell.row < WORLD_ROWS * 0.25) return 'PINE RIDGE';
@@ -260,33 +342,71 @@ export class ProceduralWorld {
       for (let column = 0; column < WORLD_COLUMNS; column += 1) {
         const border = column === 0 || row === 0 || column === WORLD_COLUMNS - 1 || row === WORLD_ROWS - 1;
         const water = this.isWaterCell(column, row);
-        const onPath = row === this.pathRow(column) || column === this.pathColumn(row);
+        const waterFlow = this.waterFlowByCell.get(cellKey(column, row));
+        const waterStyle = this.waterStyle(waterFlow);
+        const onPath = this.pathCells.has(cellKey(column, row));
+        const pathConnections = onPath ? this.pathConnections(column, row) : undefined;
+        const visiblePath = pathConnections && Object.values(pathConnections).some(Boolean);
         const noise = randomAt(this.seedNumber, column, row);
         let ground: GroundKind = noise < 0.43 ? 'forest' : noise < 0.76 ? 'meadow' : 'flowers';
-        if (onPath) ground = 'path';
+        if (visiblePath) ground = 'path';
         if (water || this.isShoreCell(column, row)) ground = 'bank';
         const groundFrame = this.overlayFrame(ground, column, row);
         const safeFromSpawn = Math.hypot(column - this.spawnCell.column, row - this.spawnCell.row) > 1.4;
+        const featureCandidate = !border && !water && !onPath && safeFromSpawn
+          ? this.createTerrainFeature(ground, column, row)
+          : undefined;
+        const feature = this.avoidNearbyFeatureRepeat(featureCandidate, cells, column, row);
         const obstacle = border
-          ? { kind: 'cliff' as const, frame: 13 + Math.floor(randomAt(this.seedNumber, column, row, 2) * 3), scale: 1.03 }
-          : !water && !onPath && safeFromSpawn
-            ? this.createObstacle(ground, column, row)
+          ? {
+              kind: 'cliff' as const,
+              frame: 13 + Math.floor(randomAt(this.seedNumber, column, row, 2) * 3),
+              scale: 1.03,
+              flipX: randomAt(this.seedNumber, column, row, 7) > 0.5,
+            }
+          : !feature && !water && !onPath && safeFromSpawn
+            ? this.avoidNearbyObstacleRepeat(this.createObstacle(ground, column, row), cells, column, row)
             : undefined;
-        const decorations = this.createDecorations(ground, column, row, Boolean(obstacle), water, onPath);
+        const blocked = Boolean(obstacle || feature?.blocked);
+        const decorations = this.createDecorations(ground, column, row, blocked || Boolean(feature), water, onPath);
         cells.push({
           column,
           row,
           ground,
           groundFrame,
           water,
-          waterFrame: this.waterFrame(row),
-          blocked: Boolean(obstacle),
+          waterFrame: waterStyle.frame,
+          waterAngle: waterStyle.angle,
+          waterFlipX: waterStyle.flipX,
+          waterDisplayWidth: waterStyle.displayWidth,
+          waterDisplayHeight: waterStyle.displayHeight,
+          waterFlow,
+          blocked,
+          pathConnections: ground === 'path' ? pathConnections : undefined,
           obstacle,
+          feature,
           decorations,
         });
       }
     }
     return cells;
+  }
+
+  private createTerrainFeature(ground: GroundKind, column: number, row: number): ProceduralTerrainFeature | undefined {
+    const expandedTerritory = column >= 32 || row >= 32;
+    const roll = randomAt(this.seedNumber, column, row, 50);
+    if (roll > (expandedTerritory ? 0.28 : 0.065)) return undefined;
+    const variation = Math.floor(randomAt(this.seedNumber, column, row, 51) * 4);
+    if (this.isShoreCell(column, row) || (row >= 32 && ground !== 'forest')) {
+      return { kind: 'wetland', frame: 4 + variation, scale: 0.78 + variation * 0.025, blocked: false, flipX: randomAt(this.seedNumber, column, row, 52) > 0.5 };
+    }
+    if (row < WORLD_ROWS * 0.28 || (column >= 32 && row < WORLD_ROWS * 0.62)) {
+      return { kind: 'graniteScree', frame: variation, scale: 0.8 + variation * 0.03, blocked: true, flipX: randomAt(this.seedNumber, column, row, 52) > 0.5 };
+    }
+    if (ground === 'forest') {
+      return { kind: 'windfall', frame: 12 + variation, scale: 0.78 + variation * 0.03, blocked: true, flipX: randomAt(this.seedNumber, column, row, 52) > 0.5 };
+    }
+    return { kind: 'berryThicket', frame: 8 + variation, scale: 0.76 + variation * 0.035, blocked: false, flipX: randomAt(this.seedNumber, column, row, 52) > 0.5 };
   }
 
   private createObstacle(ground: GroundKind, column: number, row: number): ProceduralObstacle | undefined {
@@ -295,12 +415,64 @@ export class ProceduralWorld {
     if (roll >= chance) return undefined;
     const kindRoll = randomAt(this.seedNumber, column, row, 4);
     const variation = randomAt(this.seedNumber, column, row, 5);
-    if (kindRoll < 0.38) return { kind: 'pine', frame: Math.floor(variation * 5), scale: 0.92 + variation * 0.3 };
-    if (kindRoll < 0.55) return { kind: 'birch', frame: 5 + Math.floor(variation * 2), scale: 0.92 + variation * 0.25 };
-    if (kindRoll < 0.69) return { kind: 'boulder', frame: 7, scale: 0.82 + variation * 0.24 };
-    if (kindRoll < 0.84) return { kind: 'rockFormation', frame: 8 + Math.floor(variation * 3), scale: 0.82 + variation * 0.22 };
-    if (kindRoll < 0.94) return { kind: 'fallenLog', frame: 11 + Math.floor(variation * 2), scale: 0.86 + variation * 0.2 };
-    return { kind: 'cliff', frame: 13 + Math.floor(variation * 3), scale: 0.94 + variation * 0.2 };
+    const flipX = randomAt(this.seedNumber, column, row, 7) > 0.5;
+    if (kindRoll < 0.38) return { kind: 'pine', frame: Math.floor(variation * 5), scale: 0.92 + variation * 0.3, flipX };
+    if (kindRoll < 0.55) return { kind: 'birch', frame: 5 + Math.floor(variation * 2), scale: 0.92 + variation * 0.25, flipX };
+    if (kindRoll < 0.69) return { kind: 'boulder', frame: 7, scale: 0.82 + variation * 0.24, flipX };
+    if (kindRoll < 0.84) return { kind: 'rockFormation', frame: 8 + Math.floor(variation * 3), scale: 0.82 + variation * 0.22, flipX };
+    if (kindRoll < 0.94) return { kind: 'fallenLog', frame: 11 + Math.floor(variation * 2), scale: 0.86 + variation * 0.2, flipX };
+    return { kind: 'cliff', frame: 13 + Math.floor(variation * 3), scale: 0.94 + variation * 0.2, flipX };
+  }
+
+  private avoidNearbyObstacleRepeat(
+    candidate: ProceduralObstacle | undefined,
+    cells: readonly WorldCell[],
+    column: number,
+    row: number,
+  ): ProceduralObstacle | undefined {
+    if (!candidate) return undefined;
+    const ranges: Record<ObstacleKind, readonly [number, number]> = {
+      pine: [0, 5],
+      birch: [5, 2],
+      boulder: [7, 1],
+      rockFormation: [8, 3],
+      fallenLog: [11, 2],
+      cliff: [13, 3],
+    };
+    const [firstFrame, frameCount] = ranges[candidate.kind];
+    return this.findUnusedNearbyVariant(candidate, cells, column, row, firstFrame, frameCount, (cell) => cell.obstacle);
+  }
+
+  private avoidNearbyFeatureRepeat(
+    candidate: ProceduralTerrainFeature | undefined,
+    cells: readonly WorldCell[],
+    column: number,
+    row: number,
+  ): ProceduralTerrainFeature | undefined {
+    if (!candidate) return undefined;
+    const firstFrame = candidate.frame - (candidate.frame % 4);
+    return this.findUnusedNearbyVariant(candidate, cells, column, row, firstFrame, 4, (cell) => cell.feature);
+  }
+
+  private findUnusedNearbyVariant<T extends { kind: string; frame: number; flipX: boolean }>(
+    candidate: T,
+    cells: readonly WorldCell[],
+    column: number,
+    row: number,
+    firstFrame: number,
+    frameCount: number,
+    pick: (cell: WorldCell) => T | undefined,
+  ): T | undefined {
+    const nearby = cells
+      .filter((cell) => Math.abs(cell.column - column) <= 2 && Math.abs(cell.row - row) <= 2)
+      .map(pick)
+      .filter((item): item is T => item?.kind === candidate.kind);
+    for (let offset = 0; offset < frameCount * 2; offset += 1) {
+      const frame = firstFrame + ((candidate.frame - firstFrame + Math.floor(offset / 2)) % frameCount);
+      const flipX = offset % 2 === 0 ? candidate.flipX : !candidate.flipX;
+      if (!nearby.some((item) => item.frame === frame && item.flipX === flipX)) return { ...candidate, frame, flipX };
+    }
+    return undefined;
   }
 
   private createDecorations(ground: GroundKind, column: number, row: number, blocked: boolean, water: boolean, onPath: boolean): ProceduralDecoration[] {
@@ -356,21 +528,103 @@ export class ProceduralWorld {
     const variation = Math.floor(randomAt(this.seedNumber, column, row, 6) * 4);
     if (kind === 'forest') return variation;
     if (kind === 'flowers') return 4 + variation;
-    if (kind === 'path') {
-      if (row === this.pathRow(column)) {
-        const previous = this.pathRow(Math.max(0, column - 1));
-        const next = this.pathRow(Math.min(WORLD_COLUMNS - 1, column + 1));
-        if (next > previous) return 11;
-        if (next < previous) return 10;
-        return 8;
-      }
-      return 9;
-    }
+    if (kind === 'path') return -1;
     return -1;
   }
 
+  private buildPathConnections(): ReadonlyMap<string, PathConnections> {
+    const graph = new Map<string, PathConnections>();
+    const routes = [
+      this.rasterizePath([
+        { column: 0, row: 24 },
+        { column: 6, row: 24 },
+        { column: 10, row: 22 },
+        { column: 17, row: 22 },
+        { column: 20, row: 23 },
+        { column: 22, row: 23 },
+      ]),
+      this.rasterizePath([
+        { column: 17, row: 22 },
+        { column: 17, row: 17 },
+        { column: 20, row: 14 },
+        { column: 20, row: 7 },
+        { column: 23, row: 4 },
+        { column: 23, row: 0 },
+      ]),
+      this.rasterizePath([
+        { column: 6, row: 24 },
+        { column: 3, row: 21 },
+        { column: 3, row: 16 },
+        { column: 8, row: 16 },
+        { column: 12, row: 20 },
+        { column: 10, row: 22 },
+      ]),
+      this.rasterizePath([
+        { column: 20, row: 23 },
+        { column: 22, row: 21 },
+        { column: 22, row: 14 },
+        { column: 20, row: 14 },
+      ]),
+      this.rasterizePath([
+        { column: 17, row: 22 },
+        { column: 17, row: 26 },
+        { column: 20, row: 26 },
+      ]),
+    ];
+
+    for (const route of routes) {
+      for (const cell of route) {
+        if (!graph.has(cellKey(cell.column, cell.row))) graph.set(cellKey(cell.column, cell.row), emptyPathConnections());
+      }
+      for (let index = 1; index < route.length; index += 1) {
+        const previous = route[index - 1];
+        const current = route[index];
+        const direction = this.pathDirection(current.column - previous.column, current.row - previous.row);
+        graph.get(cellKey(previous.column, previous.row))![direction] = true;
+        graph.get(cellKey(current.column, current.row))![OPPOSITE_PATH_DIRECTION[direction]] = true;
+      }
+    }
+    return graph;
+  }
+
+  private rasterizePath(waypoints: readonly WaterPathCell[]): WaterPathCell[] {
+    const path: WaterPathCell[] = [];
+    for (let index = 1; index < waypoints.length; index += 1) {
+      const start = waypoints[index - 1];
+      const end = waypoints[index];
+      const steps = Math.max(Math.abs(end.column - start.column), Math.abs(end.row - start.row));
+      for (let step = 0; step <= steps; step += 1) {
+        const cell = {
+          column: Math.round(start.column + ((end.column - start.column) * step) / steps),
+          row: Math.round(start.row + ((end.row - start.row) * step) / steps),
+        };
+        const previous = path.at(-1);
+        if (!previous || previous.column !== cell.column || previous.row !== cell.row) path.push(cell);
+      }
+    }
+    return path;
+  }
+
+  private pathDirection(columnOffset: number, rowOffset: number): PathDirection {
+    const direction = (Object.entries(PATH_OFFSETS) as Array<[PathDirection, readonly [number, number]]>)
+      .find(([, offset]) => offset[0] === columnOffset && offset[1] === rowOffset)?.[0];
+    if (!direction) throw new Error(`Unsupported path step: ${columnOffset},${rowOffset}`);
+    return direction;
+  }
+
+  private pathConnections(column: number, row: number): PathConnections {
+    const stored = this.pathConnectionsByCell.get(cellKey(column, row)) ?? emptyPathConnections();
+    const visible = emptyPathConnections();
+    for (const [direction, [columnOffset, rowOffset]] of Object.entries(PATH_OFFSETS) as Array<[PathDirection, readonly [number, number]]>) {
+      visible[direction] = stored[direction]
+        && !this.isWaterCell(column + columnOffset, row + rowOffset)
+        && !this.isShoreCell(column + columnOffset, row + rowOffset);
+    }
+    return visible;
+  }
+
   private isWaterCell(column: number, row: number): boolean {
-    return this.waterRuns.some((run) => column === run.column && row >= run.startRow && row <= run.endRow);
+    return this.waterFlowByCell.has(cellKey(column, row));
   }
 
   private isShoreCell(column: number, row: number): boolean {
@@ -382,16 +636,105 @@ export class ProceduralWorld {
     return false;
   }
 
-  private pathRow(column: number): number {
-    return Math.round(WORLD_ROWS * 0.62 + Math.sin(column * 0.44) * 1.8);
+  private buildWaterPaths(): ReadonlyArray<ReadonlyArray<WaterPathCell>> {
+    const mainColumn = Math.round(WORLD_COLUMNS * 0.73);
+    const northernRow = 5 + Math.floor(randomAt(this.seedNumber, 0, 0, 20) * 3);
+    const southernColumn = Math.round(WORLD_COLUMNS * 0.44)
+      + Math.floor(randomAt(this.seedNumber, 0, 0, 22) * 3) - 1;
+    return [
+      this.rasterizeWaterPath([
+        { column: mainColumn, row: 0 },
+        { column: mainColumn, row: 8 },
+        { column: mainColumn + 5, row: 13 },
+        { column: mainColumn + 5, row: 20 },
+        { column: mainColumn - 1, row: 20 },
+        { column: mainColumn - 5, row: 24 },
+        { column: mainColumn - 5, row: WORLD_ROWS - 1 },
+      ]),
+      this.rasterizeWaterPath([
+        { column: 0, row: northernRow },
+        { column: 8, row: northernRow },
+        { column: 14, row: northernRow + 6 },
+        { column: 14, row: northernRow + 10 },
+      ]),
+      this.rasterizeWaterPath([
+        { column: southernColumn, row: WORLD_ROWS - 1 },
+        { column: southernColumn, row: 33 },
+        { column: southernColumn - 5, row: 28 },
+        { column: 6, row: 28 },
+      ]),
+    ];
   }
 
-  private pathColumn(row: number): number {
-    return Math.round(WORLD_COLUMNS * 0.38 + Math.sin(row * 0.37 + 1.4) * 1.35);
+  private rasterizeWaterPath(waypoints: readonly WaterPathCell[]): WaterPathCell[] {
+    const path: WaterPathCell[] = [];
+    for (let index = 1; index < waypoints.length; index += 1) {
+      const start = waypoints[index - 1];
+      const end = waypoints[index];
+      const steps = Math.max(Math.abs(end.column - start.column), Math.abs(end.row - start.row));
+      for (let step = 0; step <= steps; step += 1) {
+        const cell = {
+          column: Math.round(start.column + ((end.column - start.column) * step) / steps),
+          row: Math.round(start.row + ((end.row - start.row) * step) / steps),
+        };
+        const previous = path.at(-1);
+        if (!previous || previous.column !== cell.column || previous.row !== cell.row) path.push(cell);
+      }
+    }
+    return path;
   }
 
-  private waterFrame(_row: number): number {
-    return 12;
+  private buildWaterFlowMap(): ReadonlyMap<string, WaterFlow> {
+    const flows = new Map<string, WaterFlow>();
+    for (const path of this.waterPaths) {
+      for (let index = 0; index < path.length; index += 1) {
+        const previous = path[Math.max(0, index - 1)];
+        const next = path[Math.min(path.length - 1, index + 1)];
+        flows.set(cellKey(path[index].column, path[index].row), {
+          x: Math.sign(next.column - previous.column),
+          y: Math.sign(next.row - previous.row),
+        });
+      }
+    }
+    return flows;
+  }
+
+  private waterStyle(flow: WaterFlow | undefined): {
+    frame: number;
+    angle: number;
+    flipX: boolean;
+    displayWidth: number;
+    displayHeight: number;
+  } {
+    const displayWidth = WORLD_TILE_SIZE + 10;
+    if (!flow) return { frame: 12, angle: 0, flipX: false, displayWidth, displayHeight: displayWidth };
+    if (flow.x !== 0 && flow.y !== 0) {
+      return {
+        frame: 12,
+        angle: flow.x * flow.y > 0 ? -45 : 45,
+        flipX: false,
+        displayWidth,
+        displayHeight: WORLD_TILE_SIZE * Math.SQRT2 + 10,
+      };
+    }
+    return {
+      frame: 12,
+      angle: flow.x !== 0 ? 90 : 0,
+      flipX: false,
+      displayWidth,
+      displayHeight: displayWidth,
+    };
+  }
+
+  private flowingWaterArea(cell: WorldCell): WaterArea {
+    const center = this.getCellCenter(cell.column, cell.row);
+    if (cell.waterFlow?.x && !cell.waterFlow.y) {
+      return { x: cell.column * WORLD_TILE_SIZE, y: center.y, width: WORLD_TILE_SIZE, height: 0, kind: 'flowing' };
+    }
+    if (cell.waterFlow?.y && !cell.waterFlow.x) {
+      return { x: center.x, y: cell.row * WORLD_TILE_SIZE, width: 0, height: WORLD_TILE_SIZE, kind: 'flowing' };
+    }
+    return { x: center.x, y: center.y, width: 0, height: 0, kind: 'flowing' };
   }
 
   private resolveOpenCell(point: WorldPoint): WorldCell | undefined {

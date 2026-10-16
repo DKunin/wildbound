@@ -69,4 +69,12 @@ describe('EnduranceSystem', () => {
     expect(fresh.getExhaustionLoad()).toBe(0);
     expect(strained.getExhaustionLoad()).toBeGreaterThan(0.75);
   });
+
+  it('charges discrete exertion and can cap injured stamina', () => {
+    const endurance = new EnduranceSystem();
+    expect(endurance.canSpend(20)).toBe(true);
+    expect(endurance.spend(20)).toMatchObject({ stamina: 80, recoveryDebt: 9 });
+    expect(endurance.limitStamina(68).stamina).toBe(68);
+    expect(endurance.canSpend(70)).toBe(false);
+  });
 });

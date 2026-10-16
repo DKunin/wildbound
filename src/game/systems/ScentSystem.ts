@@ -7,17 +7,25 @@ import {
   getCachedMeatScentStrength,
   getScentDirection,
   getScentTrailStrength,
+  isScentTrailTrackable,
   SCENT_RENDER_RADIUS,
   SCENT_TRAIL_LIFETIME_MS,
   type ScentDirection,
 } from './ScentDirectionSystem';
 import { getAnimalScentSpecies, type ScentSpecies } from './ScentSpeciesSystem';
+import {
+  getScentParticleAppearance,
+  getScentParticlePosition,
+  getStablePulse,
+  getStableScentPhase,
+} from './ScentMotionSystem';
 import { getTerritoryMarkColor, getTerritoryMarkStrength, type TerritoryMark } from './TerritoryMarkSystem';
 
 interface ScentMark extends PointLike {
   createdAt: number;
   species: ScentSpecies;
   source?: Prey;
+  readonly phase: number;
 }
 
 export interface ScentClue {
@@ -80,13 +88,37 @@ export class ScentSystem {
     for (const animal of prey) {
       if (animal.isBuried() || animal.isCarried()) continue;
       const species = getAnimalScentSpecies(animal.species, animal.isDead(), animal.hasEdibleMeat());
-      if (species) this.marks.push({ x: animal.x, y: animal.y, createdAt: time, species, source: animal });
+      if (species) this.marks.push({
+        x: animal.x,
+        y: animal.y,
+        createdAt: time,
+        species,
+        source: animal,
+        phase: getStableScentPhase(animal.x, animal.y, time, species.length),
+      });
     }
     for (const wolf of pack) {
-      this.marks.push({ x: wolf.x, y: wolf.y, createdAt: time, species: 'pack' });
+      this.marks.push({
+        x: wolf.x,
+        y: wolf.y,
+        createdAt: time,
+        species: 'pack',
+        phase: getStableScentPhase(wolf.x, wolf.y, time, wolf.wolfName === 'Niva' ? 1 : 2),
+      });
     }
     const cutoff = time - SCENT_TRAIL_LIFETIME_MS;
     while (this.marks[0]?.createdAt < cutoff) this.marks.shift();
+  }
+
+  hasTrackableTrail(
+    time: number,
+    player: Phaser.GameObjects.Components.Transform,
+    target: Prey,
+  ): boolean {
+    return this.marks.some((mark) => mark.source === target && isScentTrailTrackable(
+      Math.max(0, time - mark.createdAt),
+      Phaser.Math.Distance.Between(player.x, player.y, mark.x, mark.y),
+    ));
   }
 
   render(
@@ -102,18 +134,23 @@ export class ScentSystem {
     const strongestBySpecies = new Map<ScentMark['species'], { strength: number; x: number; y: number }>();
     let strongest: { strength: number; x: number; y: number } | undefined;
     let strongestTarget: { strength: number; x: number; y: number } | undefined;
-    for (const [index, mark] of this.marks.entries()) {
+    for (const mark of this.marks) {
       const distance = Phaser.Math.Distance.Between(player.x, player.y, mark.x, mark.y);
       if (distance > SCENT_RENDER_RADIUS) continue;
       const ageMs = Math.max(0, time - mark.createdAt);
+      if (!isScentTrailTrackable(ageMs, distance)) continue;
       const age = ageMs / SCENT_TRAIL_LIFETIME_MS;
       const strength = getScentTrailStrength(ageMs, distance);
-      if (strength <= 0.05) continue;
 
-      const drift = age * 52;
-      const wobble = Math.sin(index * 2.23 + time / 700) * 9;
-      const x = mark.x + this.wind.x * drift - this.wind.y * wobble;
-      const y = mark.y + this.wind.y * drift + this.wind.x * wobble;
+      const { x, y } = getScentParticlePosition({
+        x: mark.x,
+        y: mark.y,
+        windX: this.wind.x,
+        windY: this.wind.y,
+        ageProgress: age,
+        timeMs: time,
+        phase: mark.phase,
+      });
       const targeted = mark.source === targetedPrey;
       const speciesReading = strongestBySpecies.get(mark.species);
       if (!targeted && (!speciesReading || strength > speciesReading.strength)) {
@@ -125,15 +162,16 @@ export class ScentSystem {
         ? 0xe85a54
         : mark.species === 'rabbit'
         ? 0x65d6c8
-        : mark.species === 'deer' ? 0xd2bd64 : mark.species === 'carcass' ? 0xd78366 : 0xa9c9a4;
-      this.graphics.fillStyle(color, Phaser.Math.Clamp(strength * 0.82, 0.11, 0.58));
-      this.graphics.fillCircle(x, y, 3.5 + strength * 5);
-      this.graphics.lineStyle(1.5, color, strength * 0.28);
-      this.graphics.strokeCircle(x, y, 9 + strength * 10);
+        : mark.species === 'deer' ? 0xd2bd64 : mark.species === 'elk' ? 0xb99b72 : mark.species === 'boar' ? 0x9b7357 : mark.species === 'carcass' ? 0xd78366 : 0xa9c9a4;
+      const appearance = getScentParticleAppearance(strength, targeted);
+      this.graphics.fillStyle(color, appearance.fillAlpha);
+      this.graphics.fillCircle(x, y, appearance.radius);
+      this.graphics.lineStyle(appearance.ringWidth, color, appearance.ringAlpha);
+      this.graphics.strokeCircle(x, y, appearance.ringRadius);
     }
 
     let strongestTerritory: { strength: number; x: number; y: number } | undefined;
-    for (const [index, mark] of territoryMarks.entries()) {
+    for (const mark of territoryMarks) {
       const distance = Phaser.Math.Distance.Between(player.x, player.y, mark.x, mark.y);
       const strength = getTerritoryMarkStrength(simulationMinutes - mark.createdAt, distance);
       if (strength <= 0.025) continue;
@@ -142,7 +180,13 @@ export class ScentSystem {
       }
       if (!strongest || strength > strongest.strength) strongest = { strength, x: mark.x, y: mark.y };
       const color = getTerritoryMarkColor(mark);
-      const pulse = 1 + Math.sin(time / 520 + index) * 0.06;
+      const pulse = getStablePulse(
+        time,
+        getStableScentPhase(mark.x, mark.y, mark.createdAt, 11),
+        520,
+        1,
+        0.06,
+      );
       const size = (16 + strength * 7) * pulse;
       const alpha = Phaser.Math.Clamp(strength * 0.58, 0.1, 0.58);
       this.graphics.fillStyle(color, alpha * 0.78);
@@ -155,7 +199,7 @@ export class ScentSystem {
     }
 
     let strongestCache: { strength: number; x: number; y: number } | undefined;
-    for (const [index, cache] of this.cachedFood.entries()) {
+    for (const cache of this.cachedFood) {
       if (!cache.active || !cache.isBuried() || !cache.hasEdibleMeat()) continue;
       const distance = Phaser.Math.Distance.Between(player.x, player.y, cache.x, cache.y);
       if (distance > CACHED_MEAT_SCENT_RADIUS) continue;
@@ -163,7 +207,13 @@ export class ScentSystem {
       if (!strongestCache || strength > strongestCache.strength) strongestCache = { strength, x: cache.x, y: cache.y };
       if (!strongest || strength > strongest.strength) strongest = { strength, x: cache.x, y: cache.y };
       if (distance <= SCENT_RENDER_RADIUS) {
-        const pulse = 4 + Math.sin(time / 420 + index) * 1.4;
+        const pulse = getStablePulse(
+          time,
+          getStableScentPhase(cache.x, cache.y, 0, 23),
+          420,
+          4,
+          1.4,
+        );
         this.graphics.fillStyle(0xdf9a68, Phaser.Math.Clamp(strength * 0.42, 0.08, 0.38));
         this.graphics.fillCircle(cache.x, cache.y, pulse + strength * 5);
         this.graphics.lineStyle(2, 0xdf9a68, strength * 0.34);
@@ -204,6 +254,7 @@ export class ScentSystem {
     };
     addClue('rabbit', 'fresh rabbit spoor');
     addClue('deer', 'faint deer musk');
+    addClue('elk', 'heavy elk musk');
     addClue('carcass', 'carrion nearby');
     addClue('pack', 'pack nearby');
     if (strongestCache) {

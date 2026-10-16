@@ -28,20 +28,20 @@ export class FootprintSystem {
     this.lastStamp = new WeakMap<TrackedCreature, number>();
   }
 
-  private stamp(time: number, creature: TrackedCreature, kind: 'wolf' | 'rabbit' | 'deer'): void {
+  private stamp(time: number, creature: TrackedCreature, kind: 'wolf' | 'rabbit' | 'deer' | 'elk' | 'boar'): void {
     if (!creature.active) return;
     const body = creature.body as Phaser.Physics.Arcade.Body | null;
     if (!body || body.velocity.lengthSq() < 500) return;
     const previous = this.lastStamp.get(creature) ?? -Infinity;
-    const interval = kind === 'rabbit' ? 680 : 920;
+    const interval = kind === 'rabbit' ? 680 : kind === 'elk' ? 980 : kind === 'boar' ? 860 : 920;
     if (time - previous < interval) return;
     this.lastStamp.set(creature, time);
 
     const angle = Math.atan2(body.velocity.y, body.velocity.x);
     const direction = ((Math.round(angle / (Math.PI / 2)) % 4) + 4) % 4;
-    const row = kind === 'wolf' ? 0 : kind === 'deer' ? 1 : 2;
+    const row = kind === 'wolf' ? 0 : kind === 'rabbit' ? 2 : 1;
     const track = this.scene.add.image(creature.x, creature.y + 18, 'tracks', row * 4 + direction)
-      .setScale(kind === 'rabbit' ? 0.075 : 0.09)
+      .setScale(kind === 'rabbit' ? 0.075 : kind === 'elk' ? 0.11 : kind === 'boar' ? 0.1 : 0.09)
       .setAlpha(0.44)
       .setDepth(creature.y - 4)
       .setAngle(Phaser.Math.RadToDeg(angle));

@@ -25,4 +25,11 @@ describe('carrion decay', () => {
     expect(buried).toBeGreaterThan(exposed);
     expect(buried).toBeGreaterThan(115);
   });
+
+  it('supports the shorter survival shelf lives', () => {
+    const lifetimes = { exposed: 200, buried: 1_600 };
+    expect(decayCarrionMeat(65, 65, 200, 'exposed', lifetimes)).toBe(0);
+    expect(decayCarrionMeat(65, 65, 200, 'buried', lifetimes)).toBeCloseTo(56.875);
+    expect(decayCarrionMeat(65, 65, 1_600, 'buried', lifetimes)).toBe(0);
+  });
 });

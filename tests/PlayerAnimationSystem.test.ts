@@ -1,5 +1,13 @@
 import { describe, expect, it } from 'vitest';
-import { getPlayerAnimationKey, PLAYER_REST_DELAY_MS, PlayerAnimationSystem } from '../src/game/systems/PlayerAnimationSystem';
+import { PLAYER_DIRECTIONS } from '../src/game/systems/DirectionalSpriteSystem';
+import { WOUND_LEVELS } from '../src/game/systems/HuntBalanceSystem';
+import {
+  getPlayerAnimationKey,
+  getPlayerAnimationSpeedScale,
+  isPlayerGaitAnimationKey,
+  PLAYER_REST_DELAY_MS,
+  PlayerAnimationSystem,
+} from '../src/game/systems/PlayerAnimationSystem';
 
 const still = { running: false, sneaking: false, restRequested: false } as const;
 
@@ -35,6 +43,23 @@ describe('player animation state machine', () => {
     expect(getPlayerAnimationKey(sneaking.state, sneaking.direction)).toBe('player-west-crawl');
   });
 
+  it('matches locomotion cadence to actual speed while preserving a readable gait', () => {
+    expect(getPlayerAnimationSpeedScale('walking', 175, 175)).toBe(1);
+    expect(getPlayerAnimationSpeedScale('walking', 147, 175)).toBeCloseTo(0.84);
+    expect(getPlayerAnimationSpeedScale('running', 70, 280)).toBe(0.52);
+    expect(getPlayerAnimationSpeedScale('sneaking', 65, 65)).toBe(0.58);
+    expect(getPlayerAnimationSpeedScale('sneaking', 20, 65)).toBeCloseTo(0.58 * 0.52);
+    expect(getPlayerAnimationSpeedScale('idle', 0, 175)).toBe(1);
+  });
+
+  it('recognizes gait keys across turns, carry states, and wound tiers', () => {
+    expect(isPlayerGaitAnimationKey('player-east-walk')).toBe(true);
+    expect(isPlayerGaitAnimationKey('player-north-carry-run-wound-3')).toBe(true);
+    expect(isPlayerGaitAnimationKey('player-southwest-crawl-wound-1')).toBe(true);
+    expect(isPlayerGaitAnimationKey('player-east-idle')).toBe(false);
+    expect(isPlayerGaitAnimationKey('player-north-attack-wound-2')).toBe(false);
+  });
+
   it('keeps a visible crouch while stealth is active but the wolf is still', () => {
     const animation = new PlayerAnimationSystem();
 
@@ -62,6 +87,38 @@ describe('player animation state machine', () => {
     expect(getPlayerAnimationKey('attacking', 'northwest', true)).toBe('player-northwest-attack');
     expect(getPlayerAnimationKey('eating', 'northwest', true)).toBe('player-northwest-eat');
     expect(getPlayerAnimationKey('drinking', 'northwest', true)).toBe('player-northwest-drink');
+    expect(getPlayerAnimationKey('burying', 'northwest', true)).toBe('player-northwest-bury');
+  });
+
+  it('maps every direction, state, carry mode, and wound tier to a stable animation key', () => {
+    const suffixes = {
+      idle: 'idle',
+      walking: 'walk',
+      crouching: 'crouch-idle',
+      sneaking: 'crawl',
+      running: 'run',
+      'laying-down': 'lay',
+      resting: 'rest-breathe',
+      'getting-up': 'get-up',
+      attacking: 'attack',
+      eating: 'eat',
+      drinking: 'drink',
+      burying: 'bury',
+    } as const;
+    const actionStates = new Set(['attacking', 'eating', 'drinking', 'burying']);
+
+    for (const direction of PLAYER_DIRECTIONS) {
+      for (const [state, stateSuffix] of Object.entries(suffixes)) {
+        for (const carrying of [false, true]) {
+          for (const woundLevel of WOUND_LEVELS) {
+            const carryPrefix = carrying && !actionStates.has(state) ? 'carry-' : '';
+            const woundSuffix = woundLevel === 0 ? '' : `-wound-${woundLevel}`;
+            expect(getPlayerAnimationKey(state as keyof typeof suffixes, direction, carrying, woundLevel))
+              .toBe(`player-${direction}-${carryPrefix}${stateSuffix}${woundSuffix}`);
+          }
+        }
+      }
+    }
   });
 
   it('switches directly from a crawl to running when stealth is released for a lunge', () => {
@@ -124,5 +181,13 @@ describe('player animation state machine', () => {
       expect(getPlayerAnimationKey(state, 'northeast')).toBe(`player-northeast-${state === 'attacking' ? 'attack' : state === 'eating' ? 'eat' : 'drink'}`);
       expect(animation.completeTransition()).toMatchObject({ state: 'walking', direction: 'east' });
     }
+  });
+
+  it('keeps the wolf locked during a timed burial action', () => {
+    const animation = new PlayerAnimationSystem();
+    expect(animation.startAction('burying', 'west')).toBe(true);
+    expect(animation.update(1_000, { direction: 'east', running: false, sneaking: false, restRequested: false }))
+      .toMatchObject({ state: 'burying', direction: 'west', movementAllowed: false });
+    expect(animation.completeTransition()).toMatchObject({ state: 'walking', direction: 'east' });
   });
 });

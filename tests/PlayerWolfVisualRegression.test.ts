@@ -8,15 +8,27 @@ import { describe, expect, it } from 'vitest';
 const FRAME_WIDTH = 346;
 const FRAME_HEIGHT = 284;
 const ALPHA_THRESHOLD = 38;
+const CORE_ALPHA_THRESHOLD = 96;
 const MIN_COMPONENT_AREA = 100;
 const MAX_DETACHED_SHARE = 0.02;
 const MAX_EDGE_SHARE = 0;
 const MAX_ANCHOR_STEP_PX = 12;
+const MAX_ROOT_STEP_PX = 8;
 const MIN_AREA_RATIO = 0.65;
 const MAX_AREA_RATIO = 1.35;
 const MIN_ACTION_AREA_RATIO = 0.85;
 const MAX_ACTION_AREA_RATIO = 1.15;
 const MAX_ACTION_SCALE_STEP = 1.12;
+const CORE_EROSION_ITERATIONS = 7;
+
+const ROOT_STABLE_ANIMATION_NAMES = new Set([
+  'walk',
+  'idle',
+  'crawl',
+  'crouch-idle',
+  'run',
+  'rest-breathe',
+]);
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const ASSET_ROOT = resolve(ROOT, 'public/assets/player-wolf-v2');
@@ -38,6 +50,7 @@ interface AnimationSpec {
 
 interface FrameMetrics {
   anchor: [number, number];
+  root: [number, number];
   bbox: [number, number, number, number];
   components: number[];
   detachedShare: number;
@@ -93,6 +106,90 @@ const framePixels = (image: PNG, frame: number): Buffer => {
   return result;
 };
 
+const erodeMask = (
+  source: Uint8Array,
+  width: number,
+  height: number,
+  iterations: number,
+): Uint8Array => {
+  let current = source;
+  for (let iteration = 0; iteration < iterations; iteration += 1) {
+    const next = new Uint8Array(current.length);
+    for (let y = 1; y < height - 1; y += 1) {
+      for (let x = 1; x < width - 1; x += 1) {
+        const index = y * width + x;
+        if (!current[index]) continue;
+        let solid = true;
+        for (let offsetY = -1; offsetY <= 1 && solid; offsetY += 1) {
+          for (let offsetX = -1; offsetX <= 1; offsetX += 1) {
+            if (!current[(y + offsetY) * width + x + offsetX]) {
+              solid = false;
+              break;
+            }
+          }
+        }
+        if (solid) next[index] = 1;
+      }
+    }
+    current = next;
+  }
+  return current;
+};
+
+const largestComponentCentroid = (
+  mask: Uint8Array,
+  width: number,
+  height: number,
+): [number, number] | undefined => {
+  const visited = new Uint8Array(mask.length);
+  const queue = new Int32Array(mask.length);
+  let largestSize = 0;
+  let largestSumX = 0;
+  let largestSumY = 0;
+
+  for (let start = 0; start < mask.length; start += 1) {
+    if (!mask[start] || visited[start]) continue;
+    let head = 0;
+    let tail = 0;
+    let size = 0;
+    let sumX = 0;
+    let sumY = 0;
+    queue[tail++] = start;
+    visited[start] = 1;
+
+    while (head < tail) {
+      const pixel = queue[head++];
+      const x = pixel % width;
+      const y = Math.floor(pixel / width);
+      size += 1;
+      sumX += x;
+      sumY += y;
+      for (let offsetY = -1; offsetY <= 1; offsetY += 1) {
+        for (let offsetX = -1; offsetX <= 1; offsetX += 1) {
+          if (offsetX === 0 && offsetY === 0) continue;
+          const nextX = x + offsetX;
+          const nextY = y + offsetY;
+          if (nextX < 0 || nextX >= width || nextY < 0 || nextY >= height) continue;
+          const next = nextY * width + nextX;
+          if (!mask[next] || visited[next]) continue;
+          visited[next] = 1;
+          queue[tail++] = next;
+        }
+      }
+    }
+
+    if (size > largestSize) {
+      largestSize = size;
+      largestSumX = sumX;
+      largestSumY = sumY;
+    }
+  }
+
+  return largestSize > 0
+    ? [largestSumX / largestSize, largestSumY / largestSize]
+    : undefined;
+};
+
 const analyzeFrame = (direction: Direction, atlas: AtlasKind, frame: number): FrameMetrics => {
   const cacheKey = `${direction}-${atlas}-${frame}`;
   const cached = metricsCache.get(cacheKey);
@@ -100,19 +197,28 @@ const analyzeFrame = (direction: Direction, atlas: AtlasKind, frame: number): Fr
 
   const pixels = framePixels(readAtlas(atlasPath(direction, atlas)), frame);
   const occupied = new Uint8Array(FRAME_WIDTH * FRAME_HEIGHT);
+  const rootMask = new Uint8Array(FRAME_WIDTH * FRAME_HEIGHT);
   let minX = FRAME_WIDTH;
   let minY = FRAME_HEIGHT;
   let maxX = -1;
   let maxY = -1;
   let opaquePixels = 0;
   let edgePixels = 0;
+  let alphaWeight = 0;
+  let weightedX = 0;
+  let weightedY = 0;
 
   for (let y = 0; y < FRAME_HEIGHT; y += 1) {
     for (let x = 0; x < FRAME_WIDTH; x += 1) {
       const pixel = y * FRAME_WIDTH + x;
-      if (pixels[pixel * 4 + 3] < ALPHA_THRESHOLD) continue;
+      const alpha = pixels[pixel * 4 + 3];
+      if (alpha >= CORE_ALPHA_THRESHOLD) rootMask[pixel] = 1;
+      if (alpha < ALPHA_THRESHOLD) continue;
       occupied[pixel] = 1;
       opaquePixels += 1;
+      alphaWeight += alpha;
+      weightedX += x * alpha;
+      weightedY += y * alpha;
       minX = Math.min(minX, x);
       minY = Math.min(minY, y);
       maxX = Math.max(maxX, x);
@@ -158,9 +264,15 @@ const analyzeFrame = (direction: Direction, atlas: AtlasKind, frame: number): Fr
   const detachedShare = significantArea > 0 ? (significantArea - (components[0] ?? 0)) / significantArea : 0;
   const centerX = (minX + maxX) / 2;
   const anchorY = direction === 'north' ? minY : maxY;
+  const coreRoot = largestComponentCentroid(
+    erodeMask(rootMask, FRAME_WIDTH, FRAME_HEIGHT, CORE_EROSION_ITERATIONS),
+    FRAME_WIDTH,
+    FRAME_HEIGHT,
+  );
 
   const metrics: FrameMetrics = {
     anchor: [centerX, anchorY],
+    root: coreRoot ?? [weightedX / alphaWeight, weightedY / alphaWeight],
     bbox: [minX, minY, maxX - minX + 1, maxY - minY + 1],
     components,
     detachedShare: Number(detachedShare.toFixed(5)),
@@ -249,6 +361,8 @@ describe('player wolf animation visual regressions', () => {
   it('prevents frame-to-frame anchor jumps and silhouette collapse', () => {
     const failures: string[] = [];
     for (const [animation, frames] of Object.entries(actual.animations)) {
+      const animationName = animation.slice(animation.indexOf('-') + 1);
+      const rootMustRemainStable = ROOT_STABLE_ANIMATION_NAMES.has(animationName);
       const medianArea = [...frames].sort((left, right) => left.opaquePixels - right.opaquePixels)[Math.floor(frames.length / 2)].opaquePixels;
       frames.forEach((frame, index) => {
         const areaRatio = frame.opaquePixels / medianArea;
@@ -257,9 +371,9 @@ describe('player wolf animation visual regressions', () => {
         }
         if (index === 0) return;
         const previous = frames[index - 1];
-        const anchorStep = Math.hypot(frame.anchor[0] - previous.anchor[0], frame.anchor[1] - previous.anchor[1]);
-        if (anchorStep > MAX_ANCHOR_STEP_PX) {
-          failures.push(`${animation}[${index - 1}->${index}] anchor step ${anchorStep.toFixed(1)}px`);
+        const rootStep = Math.hypot(frame.root[0] - previous.root[0], frame.root[1] - previous.root[1]);
+        if (rootMustRemainStable && rootStep > MAX_ROOT_STEP_PX) {
+          failures.push(`${animation}[${index - 1}->${index}] anatomical root step ${rootStep.toFixed(1)}px`);
         }
       });
     }

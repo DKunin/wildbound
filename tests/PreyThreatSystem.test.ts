@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { PREY_ALERT_MEMORY_MS, PreyThreatSystem } from '../src/game/systems/PreyThreatSystem';
+import { PREY_ALERT_MEMORY_MS, PREY_FLEE_MEMORY_MS, PreyThreatSystem } from '../src/game/systems/PreyThreatSystem';
 
 describe('prey threat response', () => {
   it('keeps fleeing when a nearby pursuing wolf stops moving', () => {
@@ -15,9 +15,8 @@ describe('prey threat response', () => {
 
     expect(response.update(0, 0.75)).toBe('flee');
     expect(response.update(500, 0.25)).toBe('flee');
-    expect(response.update(2_999, 0)).toBe('flee');
-    expect(response.update(3_001, 0)).toBe('alert');
-    expect(response.update(5_501, 0)).toBe('roam');
+    expect(response.update(500 + PREY_FLEE_MEMORY_MS - 1, 0)).toBe('flee');
+    expect(response.update(500 + PREY_FLEE_MEMORY_MS + 1, 0)).toBe('roam');
   });
 
   it('remembers a non-dangerous sensory alert for several seconds', () => {
@@ -32,5 +31,21 @@ describe('prey threat response', () => {
     expect(response.update(100, 0.04, true)).toBe('alert');
     expect(response.update(4_500, 0)).toBe('alert');
     expect(response.update(5_101, 0)).toBe('roam');
+  });
+
+  it('does not stop to look back while an ungulate can still see the pursuing wolf', () => {
+    const response = new PreyThreatSystem();
+    expect(response.update(0, 0.75, true)).toBe('flee');
+    expect(response.update(12_000, 0.01, true)).toBe('flee');
+    expect(response.update(12_000 + PREY_FLEE_MEMORY_MS - 1, 0, false)).toBe('flee');
+    expect(response.update(12_000 + PREY_FLEE_MEMORY_MS + 1, 0, false)).toBe('roam');
+  });
+
+  it('keeps opening distance even after the pursuer drops below sensory thresholds', () => {
+    const response = new PreyThreatSystem();
+    expect(response.update(0, 0.75, true, 180, 1_600)).toBe('flee');
+    expect(response.update(20_000, 0, false, 1_200, 1_600)).toBe('flee');
+    expect(response.update(20_001, 0, false, 1_800, 1_600)).toBe('flee');
+    expect(response.update(20_000 + PREY_FLEE_MEMORY_MS + 1, 0, false, 1_800, 1_600)).toBe('roam');
   });
 });

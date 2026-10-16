@@ -194,7 +194,7 @@ export class PackWolf extends Phaser.Physics.Arcade.Sprite {
       const playerDistance = Phaser.Math.Distance.Between(player.x, player.y, animal.x, animal.y);
       const allowed = rallied ? packDistance < 720 : this.hunger > 48 ? packDistance < 390 : playerDistance < 300;
       if (!allowed) continue;
-      const speciesBias = animal.species === 'deer' ? -60 : 0;
+      const speciesBias = animal.species === 'elk' ? -80 : animal.species === 'deer' ? -60 : animal.species === 'boar' ? 35 : 0;
       const score = packDistance + speciesBias;
       if (!nearest || score < nearest.score) nearest = { animal, score };
     }
@@ -229,9 +229,10 @@ export class PackWolf extends Phaser.Physics.Arcade.Sprite {
     this.setDepth(this.y + 24);
   }
 
-  private updateAnimation(rate: number): void {
+  private updateAnimation(_rate: number): void {
     const body = this.body as Phaser.Physics.Arcade.Body;
     if (body.velocity.lengthSq() < 4) {
+      this.anims.timeScale = 1;
       if (this.packState === 'feeding') this.anims.play(`${this.wolfName.toLowerCase()}-${this.animationDirection}-feed`, true);
       else if (this.packState === 'resting') this.anims.play(`${this.wolfName.toLowerCase()}-${this.animationDirection}-rest`, true);
       else this.stop();
@@ -243,7 +244,15 @@ export class PackWolf extends Phaser.Physics.Arcade.Sprite {
     this.animationDirection = facing.animationDirection;
     this.animationRotation = facing.rotation;
     this.setRotation(facing.rotation);
-    this.anims.play(`${this.wolfName.toLowerCase()}-${facing.animationDirection}-${rate}`, true);
+    const key = `${this.wolfName.toLowerCase()}-${facing.animationDirection}-gait`;
+    const currentKey = this.anims.currentAnim?.key ?? '';
+    const preserveProgress = this.anims.isPlaying && currentKey.endsWith('-gait');
+    const progress = preserveProgress ? this.anims.getProgress() : 0;
+    this.anims.play(key, currentKey === key);
+    if (preserveProgress && currentKey !== key) this.anims.setProgress(progress);
+    const actualSpeed = body.velocity.length();
+    const cadence = Phaser.Math.Clamp(actualSpeed / 18.4, 6, 11);
+    this.anims.timeScale = cadence / 8;
     this.shadow.sync(this);
   }
 }

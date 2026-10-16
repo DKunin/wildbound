@@ -1,7 +1,10 @@
 import Phaser from 'phaser';
 import './styles.css';
 import { WildScene } from './game/WildScene';
-import { gameEvents, type HudState, type HuntLogEntry } from './game/events';
+import { gameEvents, type HudState, type HuntLogEntry, type SleepTransition } from './game/events';
+import { DEFAULT_DIFFICULTY, type DifficultyMode } from './game/systems/BalanceConfig';
+import { runFullReset } from './game/systems/FullResetSystem';
+import { SaveSystem } from './game/systems/SaveSystem';
 
 const clampPercent = (value: number) => `${Math.max(0, Math.min(100, value))}%`;
 
@@ -23,6 +26,7 @@ const scentReadout = document.querySelector<HTMLElement>('#scent-readout');
 const scentSummary = document.querySelector<HTMLElement>('#scent-summary');
 const soundReadout = document.querySelector<HTMLElement>('#sound-readout');
 const daylight = document.querySelector<HTMLElement>('#daylight');
+const sleepCurtain = document.querySelector<HTMLElement>('#sleep-curtain');
 const vignette = document.querySelector<HTMLElement>('#vignette');
 const packStatus = document.querySelector<HTMLElement>('#pack-status');
 const sneakControl = document.querySelector<HTMLElement>('#sneak-control');
@@ -35,8 +39,23 @@ const logModeToggles = document.querySelectorAll<HTMLButtonElement>('[data-log-m
 const logModeStates = document.querySelectorAll<HTMLElement>('[data-log-mode-state]');
 const huntLog = document.querySelector<HTMLElement>('#hunt-log');
 const huntLogList = document.querySelector<HTMLOListElement>('#hunt-log-list');
+const difficultyButtons = document.querySelectorAll<HTMLButtonElement>('[data-difficulty]');
+const startButton = document.querySelector<HTMLButtonElement>('#start-button');
+const fullResetButton = document.querySelector<HTMLButtonElement>('#full-reset-button');
+const mainMenuStatus = document.querySelector<HTMLElement>('#main-menu-status');
+const menuSaves = new SaveSystem();
 let logModeEnabled = false;
+let selectedDifficulty: DifficultyMode = DEFAULT_DIFFICULTY;
 let game: Phaser.Game | undefined;
+let menuBusy = false;
+
+const setDifficulty = (difficulty: DifficultyMode) => {
+  if (game) return;
+  selectedDifficulty = difficulty;
+  for (const button of difficultyButtons) {
+    button.setAttribute('aria-pressed', String(button.dataset.difficulty === selectedDifficulty));
+  }
+};
 
 const renderLogMode = () => {
   for (const toggle of logModeToggles) toggle.setAttribute('aria-checked', String(logModeEnabled));
@@ -116,15 +135,51 @@ const startGame = () => {
       },
     },
     callbacks: {
-      preBoot: (createdGame) => createdGame.registry.set('logMode', logModeEnabled),
+      preBoot: (createdGame) => {
+        createdGame.registry.set('logMode', logModeEnabled);
+        createdGame.registry.set('difficulty', selectedDifficulty);
+      },
     },
     scene: [WildScene],
   });
 };
 
+const setMenuBusy = (busy: boolean) => {
+  menuBusy = busy;
+  for (const button of mainMenu?.querySelectorAll<HTMLButtonElement>('button') ?? []) button.disabled = busy;
+};
+
+const fullResetAndStart = async () => {
+  if (game || menuBusy) return;
+  setMenuBusy(true);
+  if (mainMenuStatus) mainMenuStatus.textContent = 'CLEARING THE REMEMBERED LIFE…';
+  const started = await runFullReset({
+    clearSave: () => menuSaves.clear(),
+    startFresh: () => {
+      clearHuntLog();
+      if (mainMenuStatus) mainMenuStatus.textContent = '';
+      startGame();
+    },
+    reportFailure: () => {
+      if (mainMenuStatus) mainMenuStatus.textContent = 'FULL RESET FAILED. THE SAVED LIFE WAS NOT CLEARED.';
+    },
+  });
+  if (!started) setMenuBusy(false);
+};
+
 for (const toggle of logModeToggles) toggle.addEventListener('click', () => setLogMode(!logModeEnabled));
-document.querySelector('#start-button')?.addEventListener('click', startGame);
+for (const button of difficultyButtons) button.addEventListener('click', () => {
+  const difficulty = button.dataset.difficulty;
+  if (difficulty === 'survival' || difficulty === 'explorer') setDifficulty(difficulty);
+});
+startButton?.addEventListener('click', startGame);
+fullResetButton?.addEventListener('click', () => { void fullResetAndStart(); });
 gameEvents.on('hunt-log', appendHuntLog);
+gameEvents.on('sleep-transition', ({ sleeping, durationMs }: SleepTransition) => {
+  if (!sleepCurtain) return;
+  sleepCurtain.style.setProperty('--sleep-fade-duration', `${durationMs}ms`);
+  sleepCurtain.classList.toggle('sleeping', sleeping);
+});
 renderLogMode();
 
 gameEvents.on('hud', (state: HudState) => {
@@ -138,6 +193,7 @@ gameEvents.on('hud', (state: HudState) => {
   setText('#wind-arrow', state.windArrow);
   setText('#wind-label', state.windLabel);
   setText('#territory', state.territoryLabel);
+  setText('#difficulty-status', `${state.difficulty.toUpperCase()}${state.leanDay ? ' · LEAN DAY' : ''}`);
   setText('#context-action', state.contextAction);
   setText('#hunger-mode', state.willEatMeat ? 'HUNGRY · WILL EAT' : 'SATIATED · WILL CACHE');
   hungerMode?.classList.toggle('hungry', state.willEatMeat);
@@ -151,7 +207,9 @@ gameEvents.on('hud', (state: HudState) => {
   const hasPack = state.pack.length > 0;
   if (packStatus) packStatus.hidden = !hasPack;
   for (const control of packControls) control.hidden = !hasPack;
-  setText('#objective-title', hasPack ? 'SURVIVE TOGETHER' : 'SURVIVE THE WILD');
+  setText('#objective-title', state.difficulty === 'survival'
+    ? `${state.leanDay ? 'LEAN DAY' : 'SURVIVAL'} · ${state.protectedCacheCount}/${state.cacheCount} CACHES GUARDED`
+    : hasPack ? 'EXPLORE TOGETHER' : 'EXPLORE THE WILD');
   setText('#save-status', state.saveStatus);
   if (scentReadout) {
     scentReadout.hidden = !state.scentActive;

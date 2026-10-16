@@ -7,18 +7,28 @@
       name="description"
       content="Wildbound — an original browser wildlife survival simulation."
     />
+    <link rel="icon" type="image/png" href="/favicon.png" />
     <title>Wildbound</title>
   </head>
   <body>
     <main id="game-shell" aria-label="Wildbound wildlife survival game">
       <div id="game" aria-hidden="true"></div>
       <div id="daylight" aria-hidden="true"></div>
+      <div id="sleep-curtain" aria-hidden="true"></div>
 
       <section id="main-menu" class="main-menu" role="dialog" aria-modal="true" aria-labelledby="main-menu-title">
         <div class="modal-panel main-menu-panel">
           <p class="modal-kicker">ENTER THE LIVING WILDERNESS</p>
           <h1 id="main-menu-title">Wildbound</h1>
-          <p>Survive as a lone wolf by reading the land, the wind, and the animals around you.</p>
+          <p class="main-menu-intro">Survive as a lone wolf by reading the land, the wind, and the animals around you.</p>
+          <div class="difficulty-selector" role="group" aria-label="Difficulty">
+            <button type="button" data-difficulty="survival" aria-pressed="true">
+              <strong>SURVIVAL</strong><small>Scarce prey, costly hunts, wounds, lean days, and vulnerable caches.</small>
+            </button>
+            <button type="button" data-difficulty="explorer" aria-pressed="false">
+              <strong>EXPLORER</strong><small>The original plentiful population, meat yield, healing, and cache rules.</small>
+            </button>
+          </div>
           <button id="log-mode-toggle" class="log-mode-toggle" type="button" role="switch" aria-checked="false" data-log-mode-toggle>
             <span class="toggle-track" aria-hidden="true"><span class="toggle-knob"></span></span>
             <span class="toggle-copy"><strong>LOG MODE</strong><small>Show animal perception and hunting-state events.</small></span>
@@ -26,7 +36,12 @@
           </button>
           <div class="modal-actions main-menu-actions">
             <button id="start-button" type="button">ENTER THE WILD</button>
+            <div class="reset-action">
+              <button id="full-reset-button" class="secondary-button reset-button" type="button" aria-describedby="full-reset-note">FULL RESET</button>
+              <p id="full-reset-note" class="reset-note">Full reset deletes the current save and starts a new life.</p>
+            </div>
           </div>
+          <p id="main-menu-status" class="main-menu-status" role="status" aria-live="polite"></p>
         </div>
       </section>
 
@@ -39,6 +54,7 @@
           <span id="wind" class="wind-readout"><span id="wind-arrow" class="wind-arrow" aria-hidden="true">↗</span><span id="wind-label">STEADY WIND</span></span>
         </div>
         <div id="territory" class="territory">PINE RIDGE</div>
+        <div id="difficulty-status" class="difficulty-status">SURVIVAL</div>
         <div id="save-status" class="save-status" aria-live="polite"></div>
       </section>
 

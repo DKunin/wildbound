@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import {
   getScentDirection,
   getScentTrailStrength,
+  isScentTrailTrackable,
   SCENT_TRAIL_LIFETIME_MS,
   SCENT_RENDER_RADIUS,
 } from '../src/game/systems/ScentDirectionSystem';
@@ -21,5 +22,11 @@ describe('scent direction indicator', () => {
     expect(SCENT_RENDER_RADIUS).toBe(720);
     expect(getScentTrailStrength(18_000, 80)).toBeGreaterThan(0.05);
     expect(getScentTrailStrength(SCENT_TRAIL_LIFETIME_MS, 80)).toBe(0);
+  });
+
+  it('distinguishes a readable nearby trail from scent that has faded or left range', () => {
+    expect(isScentTrailTrackable(4_000, 300)).toBe(true);
+    expect(isScentTrailTrackable(SCENT_TRAIL_LIFETIME_MS, 80)).toBe(false);
+    expect(isScentTrailTrackable(1_000, SCENT_RENDER_RADIUS + 1)).toBe(false);
   });
 });

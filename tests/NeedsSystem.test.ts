@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { NeedsSystem } from '../src/game/systems/NeedsSystem';
+import { BALANCE_PROFILES } from '../src/game/systems/BalanceConfig';
 
 describe('NeedsSystem', () => {
   it('drains stamina while running and carries exertion into recovery', () => {
@@ -116,5 +117,23 @@ describe('NeedsSystem', () => {
 
     expect(result.alive).toBe(false);
     expect(result.deathCause).toBe('Exhaustion took you.');
+  });
+
+  it('makes survival wounds slow to heal and limits injured mobility and stamina', () => {
+    const needs = new NeedsSystem(BALANCE_PROFILES.survival.player);
+    needs.restore({ health: 50, hunger: 20, thirst: 20, stamina: 100, alive: true });
+
+    const afterRest = needs.update(10, { moving: false, running: false, resting: true });
+    expect(afterRest.health).toBeCloseTo(51.5);
+    expect(afterRest.stamina).toBeLessThanOrEqual(82);
+    expect(needs.getMobilityFactor()).toBe(0.84);
+    expect(needs.spendStamina(20).stamina).toBeLessThanOrEqual(62);
+  });
+
+  it('requires both survival hunger and thirst below sixty to heal', () => {
+    const needs = new NeedsSystem(BALANCE_PROFILES.survival.player);
+    needs.restore({ health: 50, hunger: 60, thirst: 20, stamina: 50, alive: true });
+    expect(needs.canRecoverWhileResting()).toBe(false);
+    expect(needs.update(10, { moving: false, running: false, resting: true }).health).toBe(50);
   });
 });

@@ -1,0 +1,367 @@
+{
+  "version": 1,
+  "movement": [
+    {
+      "edgePixels": 0,
+      "hash": "4f48155d4e24a53306f6187cb0438046a1ebfb5abfad8847aec744d17a27ba59",
+      "visiblePixels": 8398
+    },
+    {
+      "edgePixels": 0,
+      "hash": "1493ff3870c884af322b3ea922568aeece0a764d104e90d9fc3b3df2f0c6dbb4",
+      "visiblePixels": 7034
+    },
+    {
+      "edgePixels": 0,
+      "hash": "ba7cb77d787e2095b3bee9b56866f29bc28bb8ae7825620cffe6f3d01966799b",
+      "visiblePixels": 6374
+    },
+    {
+      "edgePixels": 0,
+      "hash": "43bee360575433071ba7dd602a69376c4ca5839874ec54761a594fb8df6b6484",
+      "visiblePixels": 7724
+    },
+    {
+      "edgePixels": 0,
+      "hash": "57e93fbf057cf57a11c4b17308c7b2ddb976800b19fbc2d6ad5de0b23fcb9909",
+      "visiblePixels": 8702
+    },
+    {
+      "edgePixels": 0,
+      "hash": "d902c457e0c023d848c6884c0db9dd58c74d0c193e66ad8678761df35bbb841d",
+      "visiblePixels": 7287
+    },
+    {
+      "edgePixels": 0,
+      "hash": "17b6e32c3d7abeadd2ce5ed44791200252788807c33684d0a43f007f2e506ddf",
+      "visiblePixels": 6350
+    },
+    {
+      "edgePixels": 0,
+      "hash": "489e148e2cce84d15e9d6a3e2e95c056c837f2985d04c2d0a78645b9531df5df",
+      "visiblePixels": 7330
+    },
+    {
+      "edgePixels": 0,
+      "hash": "fb652a85b6ebc488cf4928e58704a26d209340dd6771354f0f16171565035abf",
+      "visiblePixels": 8668
+    },
+    {
+      "edgePixels": 0,
+      "hash": "c08e1bd80facfaeba2282117fe25edc0aadec714e552ad409710fdeb51b76d36",
+      "visiblePixels": 7548
+    },
+    {
+      "edgePixels": 0,
+      "hash": "c9353ca7aa2016a0e2a327dff148b354f9d76bfebf9941b6e8a2fc932c87dfab",
+      "visiblePixels": 6412
+    },
+    {
+      "edgePixels": 0,
+      "hash": "e127d82c451f5c9bc5318464908f1c80637f05cd7b42e7b88133c6e3d92bfa40",
+      "visiblePixels": 8188
+    },
+    {
+      "edgePixels": 0,
+      "hash": "55de5a332f6de5bdcb656c6f4d529ef82117fdbf26e88ba92248850c7f3edcdd",
+      "visiblePixels": 9099
+    },
+    {
+      "edgePixels": 0,
+      "hash": "bd38d7ceaf89995c188126a9f08e8d62488ce4e799c414c7c718d847e2307c36",
+      "visiblePixels": 7300
+    },
+    {
+      "edgePixels": 0,
+      "hash": "f25383108306905681b5022e21f212a633b9e364fa271363cfcc83e5effa08d0",
+      "visiblePixels": 6364
+    },
+    {
+      "edgePixels": 0,
+      "hash": "5fe66527f8b17aa75c4777920a92dc88afb822cdd2284414594152c961194cb2",
+      "visiblePixels": 7674
+    },
+    {
+      "edgePixels": 0,
+      "hash": "fa81468d7c5af9e46c2409315bd1ebcdc40e066c3eed5165b77b598a4ba5c2e2",
+      "visiblePixels": 8539
+    },
+    {
+      "edgePixels": 0,
+      "hash": "088314255d5d735eed8671df496acb3c1e126fc568a0fb44c2c106cd4b821df6",
+      "visiblePixels": 7376
+    },
+    {
+      "edgePixels": 0,
+      "hash": "24a41e85dda2e8681790142547e08ba23296f9ede799641d583a6a95d9a5e76d",
+      "visiblePixels": 6209
+    },
+    {
+      "edgePixels": 0,
+      "hash": "dd5c456d82a5363c0fe583512661ac10d6776c16ba85878ed71456e30b3c0cd9",
+      "visiblePixels": 7714
+    },
+    {
+      "edgePixels": 0,
+      "hash": "0458b1c2549529e2daabc0fc177ad5f2aa135f723cf941dec3b1f7904399aece",
+      "visiblePixels": 8636
+    },
+    {
+      "edgePixels": 0,
+      "hash": "869cb78bdaf507814ce1983965add824defbb345252831aa52f3972272725720",
+      "visiblePixels": 7046
+    },
+    {
+      "edgePixels": 0,
+      "hash": "ea022ba66322db43e10a3efb7cbb17db2d831a31644d81c779577f80704ff421",
+      "visiblePixels": 6002
+    },
+    {
+      "edgePixels": 0,
+      "hash": "5ca7e2b5c2b017ac06d0a992f35e54351a01b1bd97c8ca6957da8f70801dda4a",
+      "visiblePixels": 7333
+    },
+    {
+      "edgePixels": 0,
+      "hash": "896c60d3a0cd688976e4b1605eec114bbd899b72c9b955754688116f942f2f57",
+      "visiblePixels": 7765
+    },
+    {
+      "edgePixels": 0,
+      "hash": "e191891f960c1d91fff1c3d57f481dee4f14200413595f6074de40deadc819e4",
+      "visiblePixels": 6933
+    },
+    {
+      "edgePixels": 0,
+      "hash": "4ae0c065d07e8cd8b54c2a37bcd83041c837610c75b37919e3e7b36d0f53e557",
+      "visiblePixels": 6151
+    },
+    {
+      "edgePixels": 0,
+      "hash": "43eb5df193e268a0e60bf112a79f0d5019d93cc5914cef08c04c71123608ce1b",
+      "visiblePixels": 7666
+    },
+    {
+      "edgePixels": 0,
+      "hash": "102d27396c2c045d398ef4355701106387b32b8f2dba48dfc73f82a66cf7c731",
+      "visiblePixels": 8219
+    },
+    {
+      "edgePixels": 0,
+      "hash": "17150e6556466e075b56977d4cecc8f326310cb64a29dc2525074c42d264e9a6",
+      "visiblePixels": 6734
+    },
+    {
+      "edgePixels": 0,
+      "hash": "a2fb281148263dd3a0e02868e7acd7b00f9e2b08bac6dbaef9c98591e328f6fe",
+      "visiblePixels": 6140
+    },
+    {
+      "edgePixels": 0,
+      "hash": "d38a49b742b11c634a7caa157723acfc4addbfb473aff73657638a227190c82b",
+      "visiblePixels": 7136
+    },
+    {
+      "edgePixels": 0,
+      "hash": "a2f072135d31763dd8d6ad0032a3ca584756a972973d053e139782e49ba2763d",
+      "visiblePixels": 7566
+    },
+    {
+      "edgePixels": 0,
+      "hash": "96a1be8326999b50633180527440327565de64651c0fa0b22f74eb551cd573ae",
+      "visiblePixels": 7124
+    },
+    {
+      "edgePixels": 0,
+      "hash": "5317f717e3c5d4838c8a5a74e49041375f0922874eaef9f8c6f1ea6c7ce15b92",
+      "visiblePixels": 5630
+    },
+    {
+      "edgePixels": 0,
+      "hash": "204523ac41c0e4a447fe3ffd38ef124deb09feeac8a485d6eb82a7bae6acdf08",
+      "visiblePixels": 7876
+    },
+    {
+      "edgePixels": 0,
+      "hash": "7b6e765132cd54967d53a64c9c8541db812643826c2c0f568f110ea9e4916568",
+      "visiblePixels": 7822
+    },
+    {
+      "edgePixels": 0,
+      "hash": "453e5fd8be885283a404c1e7a644d7b4fab7a20524a36b6a733edb6b99e03cb7",
+      "visiblePixels": 6353
+    },
+    {
+      "edgePixels": 0,
+      "hash": "348c8bac3060ea1b7992f368a5d61b03ad8c45de4a7051361ca7d1cf68f26a6e",
+      "visiblePixels": 5348
+    },
+    {
+      "edgePixels": 0,
+      "hash": "cf59bdd5d0f2a6a156b80c1b3594a6d519890346f4817734b308f2b8a4bede72",
+      "visiblePixels": 6723
+    },
+    {
+      "edgePixels": 0,
+      "hash": "05c04f8bb7317892bfbb89f18dc2d1a98f16ba24453e70ba03d2c1e5cb0781dc",
+      "visiblePixels": 8384
+    },
+    {
+      "edgePixels": 0,
+      "hash": "d2ebc9e2a6655d9652a667cbdfdcc0c37e4aee9b0699d488f1d3df2bb3d2a5e5",
+      "visiblePixels": 7253
+    },
+    {
+      "edgePixels": 0,
+      "hash": "67ca614625d29932d4e961368d35a8c3c010ec868fc62d5222f34883fb513829",
+      "visiblePixels": 5416
+    },
+    {
+      "edgePixels": 0,
+      "hash": "449d765d6f3b6fc9a33cd815aa7cabcfe2d31d82c58f518f1440b319651b1e56",
+      "visiblePixels": 7905
+    },
+    {
+      "edgePixels": 0,
+      "hash": "6faaf6b5499b4b9adabda18b2ab1e51a230d5ccaa0703eb008913b23d85b8574",
+      "visiblePixels": 7479
+    },
+    {
+      "edgePixels": 0,
+      "hash": "2894ab49ca4615348a04fa38166f16f8a4d1ec6238f478b7440fc6a5ae3a5570",
+      "visiblePixels": 7592
+    },
+    {
+      "edgePixels": 0,
+      "hash": "0a4e1e403cda0d43e0fef6c7a374f3db998388bca6de335d7789d41207759fda",
+      "visiblePixels": 4752
+    },
+    {
+      "edgePixels": 0,
+      "hash": "a3644389ce81724946c29fdf07ecbc2fb76cd4be22626356afd7a9f4d46cfd68",
+      "visiblePixels": 8334
+    }
+  ],
+  "actions": [
+    {
+      "edgePixels": 0,
+      "hash": "11496b1c3277c5859c02dc6e10176d39dcc81676d4caaf7e57df46c3b1305d2f",
+      "visiblePixels": 8712
+    },
+    {
+      "edgePixels": 0,
+      "hash": "fd497757cf08701bfe3a9961993b0a61f1cd54a643a45e27c9fb57bd66a5ac97",
+      "visiblePixels": 8164
+    },
+    {
+      "edgePixels": 0,
+      "hash": "89b8b856a9ca1823d6a04b73bea387fd714ac9bad89a8513369bd2dccdc8ec70",
+      "visiblePixels": 6780
+    },
+    {
+      "edgePixels": 0,
+      "hash": "a9b1a6f78fa6f143919e9dcdf7a3b457faea1aa3a0109e0c21cc75edf20d20f6",
+      "visiblePixels": 8263
+    },
+    {
+      "edgePixels": 0,
+      "hash": "4faf6df8e057d9266fbdad8bd35a483a373c312aa7adf10614ba7fd733cea182",
+      "visiblePixels": 9200
+    },
+    {
+      "edgePixels": 0,
+      "hash": "98558191196492b27f74396d9221086ed2bd99b9498631fdd54724e645ef95a0",
+      "visiblePixels": 8177
+    },
+    {
+      "edgePixels": 0,
+      "hash": "c302d32acca3a6f7e61e00f8074fcbbcb2a10528b87ef963e05913931a32dcdd",
+      "visiblePixels": 6902
+    },
+    {
+      "edgePixels": 0,
+      "hash": "573d3ca51e76914415c03e8eb5801d0b5aa8b99870abe0bb44053bd0d56963c2",
+      "visiblePixels": 8514
+    },
+    {
+      "edgePixels": 0,
+      "hash": "98ba6dfa9214da47aa43bdfafbb059eb786c59992985c5c66ee463a87fb6e488",
+      "visiblePixels": 9535
+    },
+    {
+      "edgePixels": 0,
+      "hash": "a1cd5863101a44f1d1dba20224cfb472ce0654e8fa784a980ba3c393c52330dc",
+      "visiblePixels": 8589
+    },
+    {
+      "edgePixels": 0,
+      "hash": "f68206712f147ccc76fb3f734dd99f64afdfbcd0d21739bd53f81bb4845fbc9b",
+      "visiblePixels": 7373
+    },
+    {
+      "edgePixels": 0,
+      "hash": "28ad8f74e375752625be99ff70ab022550198e51665f85b82a1210557303555e",
+      "visiblePixels": 8747
+    },
+    {
+      "edgePixels": 0,
+      "hash": "9cb977bbdd091ef4cee44f9396f9769d019fae56d7bffe0e67e2c95895df45c9",
+      "visiblePixels": 9815
+    },
+    {
+      "edgePixels": 0,
+      "hash": "d086dce708aad266451ec677ec1649d3a04dde0d5288c40cda885aaad42711b4",
+      "visiblePixels": 8981
+    },
+    {
+      "edgePixels": 0,
+      "hash": "ae6bcebe45f17e518993bc2f4d23db392adebf801173d368702d8eeae7661349",
+      "visiblePixels": 7259
+    },
+    {
+      "edgePixels": 0,
+      "hash": "bfe0549e22916e1437a70ef057681dc642be7c6f3b95c6061ed18989f4c9e44b",
+      "visiblePixels": 8614
+    },
+    {
+      "edgePixels": 0,
+      "hash": "29906fb9d04d73440846585aae4f5421188190e636f6e56c4f8657ac59f595ca",
+      "visiblePixels": 9582
+    },
+    {
+      "edgePixels": 0,
+      "hash": "bdec796e3d6dc27f717477a94b2bf2becde44278de576efc5839bea58d3163cd",
+      "visiblePixels": 8311
+    },
+    {
+      "edgePixels": 0,
+      "hash": "42a3c6d151cac9fc9aa6b8f4f8e824150b3ee02116a9cb282d56f749a4113b65",
+      "visiblePixels": 7066
+    },
+    {
+      "edgePixels": 0,
+      "hash": "b69ed64529a4ca6736409452b64dcde0d439c26cff47a5655d84768287d18d95",
+      "visiblePixels": 8648
+    },
+    {
+      "edgePixels": 0,
+      "hash": "45a9d56c46d5621ef7b1b2639705fa52bd33726ea644a4c107b42cc984474aba",
+      "visiblePixels": 9814
+    },
+    {
+      "edgePixels": 0,
+      "hash": "9577c58d2f2b32e5b8f387775b2bee16fa3a19dead7478be5d7b288ad0f74cbd",
+      "visiblePixels": 8464
+    },
+    {
+      "edgePixels": 0,
+      "hash": "dc63958cf2c292da44596ba96d0d25b93101b5289c733bbc410a9ca6c90e56ef",
+      "visiblePixels": 7022
+    },
+    {
+      "edgePixels": 0,
+      "hash": "f3eefc45f58009b03c024efd4f39750a2548d9b0aed917c219444a9b8ee3bd32",
+      "visiblePixels": 8671
+    }
+  ]
+}

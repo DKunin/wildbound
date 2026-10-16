@@ -1,0 +1,563 @@
+{
+  "version": 1,
+  "alphaFloor": 16,
+  "files": [
+    {
+      "file": "public/assets/balance-v1/deer-kick.png",
+      "despilledPixels": 0,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 0
+    },
+    {
+      "file": "public/assets/niva-sheet.png",
+      "despilledPixels": 0,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 0
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-east-action.png",
+      "despilledPixels": 6,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 76898
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-east-bury.png",
+      "despilledPixels": 0,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 60310
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-east-crouch-carry.png",
+      "despilledPixels": 0,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 56130
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-east-crouch.png",
+      "despilledPixels": 0,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 58949
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-east-motion-carry.png",
+      "despilledPixels": 15,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 78624
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-east-motion.png",
+      "despilledPixels": 16,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 81131
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-east-rest-carry.png",
+      "despilledPixels": 15,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 60048
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-east-rest.png",
+      "despilledPixels": 15,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 62903
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-east-run-carry.png",
+      "despilledPixels": 11,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 79724
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-east-run.png",
+      "despilledPixels": 13,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 83884
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-model-v2.png",
+      "despilledPixels": 0,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 86213
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-north-action.png",
+      "despilledPixels": 12,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 36106
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-north-bury.png",
+      "despilledPixels": 0,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 28072
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-north-crouch-carry.png",
+      "despilledPixels": 0,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 28108
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-north-crouch.png",
+      "despilledPixels": 0,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 31732
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-north-motion-carry.png",
+      "despilledPixels": 7,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 27754
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-north-motion.png",
+      "despilledPixels": 9,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 30701
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-north-rest-carry.png",
+      "despilledPixels": 9,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 30555
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-north-rest.png",
+      "despilledPixels": 10,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 34096
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-north-run-carry.png",
+      "despilledPixels": 14,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 30622
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-north-run.png",
+      "despilledPixels": 14,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 34472
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-northeast-action.png",
+      "despilledPixels": 0,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 74436
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-northeast-bury.png",
+      "despilledPixels": 0,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 65930
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-northeast-crouch-carry.png",
+      "despilledPixels": 0,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 68014
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-northeast-crouch.png",
+      "despilledPixels": 0,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 69774
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-northeast-motion-carry.png",
+      "despilledPixels": 0,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 72012
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-northeast-motion.png",
+      "despilledPixels": 0,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 73900
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-northeast-rest-carry.png",
+      "despilledPixels": 0,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 69196
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-northeast-rest.png",
+      "despilledPixels": 0,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 72707
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-northeast-run-carry.png",
+      "despilledPixels": 0,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 68549
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-northeast-run.png",
+      "despilledPixels": 0,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 70885
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-northwest-action.png",
+      "despilledPixels": 0,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 73434
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-northwest-bury.png",
+      "despilledPixels": 0,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 67938
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-northwest-crouch-carry.png",
+      "despilledPixels": 0,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 68113
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-northwest-crouch.png",
+      "despilledPixels": 0,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 69774
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-northwest-motion-carry.png",
+      "despilledPixels": 0,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 65283
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-northwest-motion.png",
+      "despilledPixels": 0,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 71325
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-northwest-rest-carry.png",
+      "despilledPixels": 0,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 61405
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-northwest-rest.png",
+      "despilledPixels": 0,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 64686
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-northwest-run-carry.png",
+      "despilledPixels": 0,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 66600
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-northwest-run.png",
+      "despilledPixels": 0,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 72244
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-south-action.png",
+      "despilledPixels": 0,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 31683
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-south-bury.png",
+      "despilledPixels": 0,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 27260
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-south-crouch-carry.png",
+      "despilledPixels": 0,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 25398
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-south-crouch.png",
+      "despilledPixels": 0,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 28373
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-south-motion-carry.png",
+      "despilledPixels": 13,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 21403
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-south-motion.png",
+      "despilledPixels": 15,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 23551
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-south-rest-carry.png",
+      "despilledPixels": 12,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 23466
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-south-rest.png",
+      "despilledPixels": 13,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 25451
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-south-run-carry.png",
+      "despilledPixels": 17,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 28600
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-south-run.png",
+      "despilledPixels": 19,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 32165
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-southeast-action.png",
+      "despilledPixels": 0,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 55749
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-southeast-bury.png",
+      "despilledPixels": 0,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 53440
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-southeast-crouch-carry.png",
+      "despilledPixels": 0,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 60661
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-southeast-crouch.png",
+      "despilledPixels": 0,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 63088
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-southeast-motion-carry.png",
+      "despilledPixels": 14,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 65858
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-southeast-motion.png",
+      "despilledPixels": 15,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 67348
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-southeast-rest-carry.png",
+      "despilledPixels": 16,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 57909
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-southeast-rest.png",
+      "despilledPixels": 17,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 60511
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-southeast-run-carry.png",
+      "despilledPixels": 12,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 70857
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-southeast-run.png",
+      "despilledPixels": 14,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 73827
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-southwest-action.png",
+      "despilledPixels": 11,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 67349
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-southwest-bury.png",
+      "despilledPixels": 16,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 66606
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-southwest-crouch-carry.png",
+      "despilledPixels": 0,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 60358
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-southwest-crouch.png",
+      "despilledPixels": 0,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 63088
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-southwest-motion-carry.png",
+      "despilledPixels": 18,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 74871
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-southwest-motion.png",
+      "despilledPixels": 20,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 80064
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-southwest-rest-carry.png",
+      "despilledPixels": 17,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 51713
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-southwest-rest.png",
+      "despilledPixels": 19,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 55267
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-southwest-run-carry.png",
+      "despilledPixels": 12,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 66582
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-southwest-run.png",
+      "despilledPixels": 12,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 70322
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-west-action.png",
+      "despilledPixels": 0,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 80997
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-west-bury.png",
+      "despilledPixels": 0,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 68146
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-west-crouch-carry.png",
+      "despilledPixels": 0,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 55631
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-west-crouch.png",
+      "despilledPixels": 0,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 58949
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-west-motion-carry.png",
+      "despilledPixels": 0,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 80703
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-west-motion.png",
+      "despilledPixels": 0,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 83194
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-west-rest-carry.png",
+      "despilledPixels": 0,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 63177
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-west-rest.png",
+      "despilledPixels": 0,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 67447
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-west-run-carry.png",
+      "despilledPixels": 0,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 99478
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-west-run.png",
+      "despilledPixels": 0,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 104851
+    },
+    {
+      "file": "public/assets/prey-v2/deer-actions.png",
+      "despilledPixels": 0,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 0
+    },
+    {
+      "file": "public/assets/prey-v2/deer-atlas.png",
+      "despilledPixels": 0,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 0
+    },
+    {
+      "file": "public/assets/prey-v2/rabbit-actions.png",
+      "despilledPixels": 0,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 0
+    },
+    {
+      "file": "public/assets/prey-v2/rabbit-atlas.png",
+      "despilledPixels": 0,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 0
+    },
+    {
+      "file": "public/assets/prey-v3/elk-actions.png",
+      "despilledPixels": 0,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 0
+    },
+    {
+      "file": "public/assets/prey-v3/elk-atlas.png",
+      "despilledPixels": 0,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 0
+    },
+    {
+      "file": "public/assets/prey-v4/boar-actions.png",
+      "despilledPixels": 0,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 0
+    },
+    {
+      "file": "public/assets/prey-v4/boar-atlas.png",
+      "despilledPixels": 0,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 0
+    },
+    {
+      "file": "public/assets/torr-sheet.png",
+      "despilledPixels": 0,
+      "removedComponentPixels": 0,
+      "removedFloorPixels": 0
+    }
+  ],
+  "totals": {
+    "despilledPixels": 468,
+    "removedComponentPixels": 0,
+    "removedFloorPixels": 4798628
+  }
+}

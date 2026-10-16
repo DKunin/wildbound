@@ -1,0 +1,6729 @@
+{
+  "summary": {
+    "version": 1,
+    "method": "largest-eroded-alpha-core, whole-pixel translation only",
+    "dryRun": false,
+    "files": 38,
+    "changedFrames": 396,
+    "cappedFrames": 6,
+    "maximumShift": 20
+  },
+  "files": [
+    {
+      "file": "public/assets/player-wolf-v2/wolf-east-motion.png",
+      "beforeSha256": "75c84867e8c1e7d08aee626d5cdb2f77dfb8dc6af240cf66085d5a2ca40fc784",
+      "afterSha256": "53f99262b9d19b34807b2f4b9101bb6dda8583ebc5963f34171afcec6c6787da",
+      "changedFrames": 8,
+      "cappedFrames": 0,
+      "maximumShift": 2,
+      "shifts": [
+        {
+          "frame": 0,
+          "x": 0,
+          "y": -1,
+          "requestedX": 0,
+          "requestedY": -1,
+          "capped": false,
+          "corePixels": 21147
+        },
+        {
+          "frame": 1,
+          "x": 0,
+          "y": -1,
+          "requestedX": 0,
+          "requestedY": -1,
+          "capped": false,
+          "corePixels": 21225
+        },
+        {
+          "frame": 2,
+          "x": 0,
+          "y": -1,
+          "requestedX": 0,
+          "requestedY": -1,
+          "capped": false,
+          "corePixels": 20952
+        },
+        {
+          "frame": 3,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 21177
+        },
+        {
+          "frame": 4,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 20863
+        },
+        {
+          "frame": 5,
+          "x": 0,
+          "y": -1,
+          "requestedX": 0,
+          "requestedY": -1,
+          "capped": false,
+          "corePixels": 20618
+        },
+        {
+          "frame": 6,
+          "x": 0,
+          "y": -2,
+          "requestedX": 0,
+          "requestedY": -2,
+          "capped": false,
+          "corePixels": 20949
+        },
+        {
+          "frame": 7,
+          "x": 0,
+          "y": -1,
+          "requestedX": 0,
+          "requestedY": -1,
+          "capped": false,
+          "corePixels": 20551
+        },
+        {
+          "frame": 8,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 23558
+        },
+        {
+          "frame": 9,
+          "x": 0,
+          "y": 1,
+          "requestedX": 0,
+          "requestedY": 1,
+          "capped": false,
+          "corePixels": 24786
+        },
+        {
+          "frame": 10,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 24246
+        },
+        {
+          "frame": 11,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 24218
+        },
+        {
+          "frame": 12,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 23955
+        },
+        {
+          "frame": 13,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 24397
+        },
+        {
+          "frame": 14,
+          "x": 0,
+          "y": 1,
+          "requestedX": 0,
+          "requestedY": 1,
+          "capped": false,
+          "corePixels": 24436
+        },
+        {
+          "frame": 15,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 24471
+        }
+      ]
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-east-run.png",
+      "beforeSha256": "6dfa9f61242ee1900c1e256c591d1b281b58b1327dd443044b9d98d5ab45ffe5",
+      "afterSha256": "6d1be0ce66638be1c9f9b1ce983dfc1a8a1432fd30151fb3754564246dd42ea1",
+      "changedFrames": 16,
+      "cappedFrames": 0,
+      "maximumShift": 10.04987562112089,
+      "shifts": [
+        {
+          "frame": 0,
+          "x": 0,
+          "y": -9,
+          "requestedX": 0,
+          "requestedY": -9,
+          "capped": false,
+          "corePixels": 19943
+        },
+        {
+          "frame": 1,
+          "x": 0,
+          "y": -10,
+          "requestedX": 0,
+          "requestedY": -10,
+          "capped": false,
+          "corePixels": 19998
+        },
+        {
+          "frame": 2,
+          "x": -1,
+          "y": -9,
+          "requestedX": -1,
+          "requestedY": -9,
+          "capped": false,
+          "corePixels": 19285
+        },
+        {
+          "frame": 3,
+          "x": 0,
+          "y": -9,
+          "requestedX": 0,
+          "requestedY": -9,
+          "capped": false,
+          "corePixels": 20082
+        },
+        {
+          "frame": 4,
+          "x": 0,
+          "y": -9,
+          "requestedX": 0,
+          "requestedY": -9,
+          "capped": false,
+          "corePixels": 19950
+        },
+        {
+          "frame": 5,
+          "x": -1,
+          "y": -9,
+          "requestedX": -1,
+          "requestedY": -9,
+          "capped": false,
+          "corePixels": 19440
+        },
+        {
+          "frame": 6,
+          "x": 0,
+          "y": -10,
+          "requestedX": 0,
+          "requestedY": -10,
+          "capped": false,
+          "corePixels": 20102
+        },
+        {
+          "frame": 7,
+          "x": 0,
+          "y": -8,
+          "requestedX": 0,
+          "requestedY": -8,
+          "capped": false,
+          "corePixels": 20435
+        },
+        {
+          "frame": 8,
+          "x": 0,
+          "y": -9,
+          "requestedX": 0,
+          "requestedY": -9,
+          "capped": false,
+          "corePixels": 20574
+        },
+        {
+          "frame": 9,
+          "x": -1,
+          "y": -5,
+          "requestedX": -1,
+          "requestedY": -5,
+          "capped": false,
+          "corePixels": 21222
+        },
+        {
+          "frame": 10,
+          "x": -1,
+          "y": -9,
+          "requestedX": -1,
+          "requestedY": -9,
+          "capped": false,
+          "corePixels": 21601
+        },
+        {
+          "frame": 11,
+          "x": 0,
+          "y": -10,
+          "requestedX": 0,
+          "requestedY": -10,
+          "capped": false,
+          "corePixels": 21810
+        },
+        {
+          "frame": 12,
+          "x": -1,
+          "y": 0,
+          "requestedX": -1,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 21832
+        },
+        {
+          "frame": 13,
+          "x": 0,
+          "y": -9,
+          "requestedX": 0,
+          "requestedY": -9,
+          "capped": false,
+          "corePixels": 21578
+        },
+        {
+          "frame": 14,
+          "x": -1,
+          "y": -4,
+          "requestedX": -1,
+          "requestedY": -4,
+          "capped": false,
+          "corePixels": 21053
+        },
+        {
+          "frame": 15,
+          "x": -1,
+          "y": -10,
+          "requestedX": -1,
+          "requestedY": -10,
+          "capped": false,
+          "corePixels": 20524
+        }
+      ]
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-east-crouch.png",
+      "beforeSha256": "2e34fa8257b3332984f1c30fd8d470273aef5738e52e389fe60bea946afec90c",
+      "afterSha256": "75a2d0e435f13316f72bcfbe321f10f3880fc2f595aed2b0ce286f58ee7bf9e1",
+      "changedFrames": 6,
+      "cappedFrames": 0,
+      "maximumShift": 4,
+      "shifts": [
+        {
+          "frame": 0,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 19517
+        },
+        {
+          "frame": 1,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 19430
+        },
+        {
+          "frame": 2,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 18149
+        },
+        {
+          "frame": 3,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 18494
+        },
+        {
+          "frame": 4,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 18649
+        },
+        {
+          "frame": 5,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 19221
+        },
+        {
+          "frame": 6,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 19038
+        },
+        {
+          "frame": 7,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 18494
+        },
+        {
+          "frame": 8,
+          "x": 0,
+          "y": -4,
+          "requestedX": 0,
+          "requestedY": -4,
+          "capped": false,
+          "corePixels": 18131
+        },
+        {
+          "frame": 9,
+          "x": 0,
+          "y": -3,
+          "requestedX": 0,
+          "requestedY": -3,
+          "capped": false,
+          "corePixels": 18299
+        },
+        {
+          "frame": 10,
+          "x": 1,
+          "y": -3,
+          "requestedX": 1,
+          "requestedY": -3,
+          "capped": false,
+          "corePixels": 18180
+        },
+        {
+          "frame": 11,
+          "x": 0,
+          "y": -3,
+          "requestedX": 0,
+          "requestedY": -3,
+          "capped": false,
+          "corePixels": 18626
+        },
+        {
+          "frame": 12,
+          "x": 0,
+          "y": -2,
+          "requestedX": 0,
+          "requestedY": -2,
+          "capped": false,
+          "corePixels": 19419
+        },
+        {
+          "frame": 13,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 19085
+        },
+        {
+          "frame": 14,
+          "x": 1,
+          "y": -1,
+          "requestedX": 1,
+          "requestedY": -1,
+          "capped": false,
+          "corePixels": 19233
+        },
+        {
+          "frame": 15,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 20154
+        }
+      ]
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-east-action.png",
+      "beforeSha256": "d07aeecb76892170d28589c0848aa1621fb3795003bf24a0696831d1b2580f4a",
+      "afterSha256": "6ae4fb70d6f5d8be5a818d2db671a55d15e9a076434d8ea63943d251438d04da",
+      "changedFrames": 14,
+      "cappedFrames": 0,
+      "maximumShift": 8.94427190999916,
+      "shifts": [
+        {
+          "frame": 0,
+          "x": 0,
+          "y": -6,
+          "requestedX": 0,
+          "requestedY": -6,
+          "capped": false,
+          "corePixels": 23586
+        },
+        {
+          "frame": 1,
+          "x": 0,
+          "y": -8,
+          "requestedX": 0,
+          "requestedY": -8,
+          "capped": false,
+          "corePixels": 22928
+        },
+        {
+          "frame": 2,
+          "x": 0,
+          "y": -8,
+          "requestedX": 0,
+          "requestedY": -8,
+          "capped": false,
+          "corePixels": 23654
+        },
+        {
+          "frame": 3,
+          "x": 0,
+          "y": -8,
+          "requestedX": 0,
+          "requestedY": -8,
+          "capped": false,
+          "corePixels": 23210
+        },
+        {
+          "frame": 4,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 23137
+        },
+        {
+          "frame": 5,
+          "x": -3,
+          "y": 0,
+          "requestedX": -3,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 23423
+        },
+        {
+          "frame": 6,
+          "x": -4,
+          "y": -7,
+          "requestedX": -4,
+          "requestedY": -7,
+          "capped": false,
+          "corePixels": 25922
+        },
+        {
+          "frame": 7,
+          "x": -4,
+          "y": -7,
+          "requestedX": -4,
+          "requestedY": -7,
+          "capped": false,
+          "corePixels": 24087
+        },
+        {
+          "frame": 8,
+          "x": -4,
+          "y": -8,
+          "requestedX": -4,
+          "requestedY": -8,
+          "capped": false,
+          "corePixels": 25641
+        },
+        {
+          "frame": 9,
+          "x": 0,
+          "y": -1,
+          "requestedX": 0,
+          "requestedY": -1,
+          "capped": false,
+          "corePixels": 25313
+        },
+        {
+          "frame": 10,
+          "x": 0,
+          "y": -7,
+          "requestedX": 0,
+          "requestedY": -7,
+          "capped": false,
+          "corePixels": 25258
+        },
+        {
+          "frame": 11,
+          "x": 0,
+          "y": -6,
+          "requestedX": 0,
+          "requestedY": -6,
+          "capped": false,
+          "corePixels": 25184
+        },
+        {
+          "frame": 12,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 25147
+        },
+        {
+          "frame": 13,
+          "x": 0,
+          "y": -6,
+          "requestedX": 0,
+          "requestedY": -6,
+          "capped": false,
+          "corePixels": 25807
+        },
+        {
+          "frame": 14,
+          "x": 0,
+          "y": -6,
+          "requestedX": 0,
+          "requestedY": -6,
+          "capped": false,
+          "corePixels": 25889
+        },
+        {
+          "frame": 15,
+          "x": 0,
+          "y": -1,
+          "requestedX": 0,
+          "requestedY": -1,
+          "capped": false,
+          "corePixels": 25147
+        }
+      ]
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-northeast-motion.png",
+      "beforeSha256": "5d51ae0ff7fc8bb63ae5602f243e65f800025bd48f53573ffb19bc5ad2a15811",
+      "afterSha256": "bd278575d7bf30343a75a4af08e16e3b17d859286debef4e65100b5e1a7d06b3",
+      "changedFrames": 11,
+      "cappedFrames": 0,
+      "maximumShift": 8,
+      "shifts": [
+        {
+          "frame": 0,
+          "x": 0,
+          "y": -8,
+          "requestedX": 0,
+          "requestedY": -8,
+          "capped": false,
+          "corePixels": 18587
+        },
+        {
+          "frame": 1,
+          "x": 0,
+          "y": -7,
+          "requestedX": 0,
+          "requestedY": -7,
+          "capped": false,
+          "corePixels": 20477
+        },
+        {
+          "frame": 2,
+          "x": 0,
+          "y": -8,
+          "requestedX": 0,
+          "requestedY": -8,
+          "capped": false,
+          "corePixels": 19089
+        },
+        {
+          "frame": 3,
+          "x": 0,
+          "y": -8,
+          "requestedX": 0,
+          "requestedY": -8,
+          "capped": false,
+          "corePixels": 19970
+        },
+        {
+          "frame": 4,
+          "x": 0,
+          "y": -3,
+          "requestedX": 0,
+          "requestedY": -3,
+          "capped": false,
+          "corePixels": 18862
+        },
+        {
+          "frame": 5,
+          "x": 0,
+          "y": -8,
+          "requestedX": 0,
+          "requestedY": -8,
+          "capped": false,
+          "corePixels": 20194
+        },
+        {
+          "frame": 6,
+          "x": 0,
+          "y": -7,
+          "requestedX": 0,
+          "requestedY": -7,
+          "capped": false,
+          "corePixels": 18942
+        },
+        {
+          "frame": 7,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 19149
+        },
+        {
+          "frame": 8,
+          "x": -1,
+          "y": -1,
+          "requestedX": -1,
+          "requestedY": -1,
+          "capped": false,
+          "corePixels": 19630
+        },
+        {
+          "frame": 9,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 20717
+        },
+        {
+          "frame": 10,
+          "x": 0,
+          "y": -1,
+          "requestedX": 0,
+          "requestedY": -1,
+          "capped": false,
+          "corePixels": 19761
+        },
+        {
+          "frame": 11,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 20316
+        },
+        {
+          "frame": 12,
+          "x": 0,
+          "y": -1,
+          "requestedX": 0,
+          "requestedY": -1,
+          "capped": false,
+          "corePixels": 20768
+        },
+        {
+          "frame": 13,
+          "x": 0,
+          "y": -1,
+          "requestedX": 0,
+          "requestedY": -1,
+          "capped": false,
+          "corePixels": 20492
+        },
+        {
+          "frame": 14,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 19918
+        },
+        {
+          "frame": 15,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 19900
+        }
+      ]
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-northeast-run.png",
+      "beforeSha256": "1d017bc9da32333529b1903006ca1ac5b5e6f0167273c516e0f1f940447856f1",
+      "afterSha256": "f18b8d0475969b5f43d03468794cec5056e828278eaa7412c1d45c16fc2458c2",
+      "changedFrames": 15,
+      "cappedFrames": 0,
+      "maximumShift": 12.041594578792294,
+      "shifts": [
+        {
+          "frame": 0,
+          "x": 0,
+          "y": -4,
+          "requestedX": 0,
+          "requestedY": -4,
+          "capped": false,
+          "corePixels": 18541
+        },
+        {
+          "frame": 1,
+          "x": 0,
+          "y": -6,
+          "requestedX": 0,
+          "requestedY": -6,
+          "capped": false,
+          "corePixels": 19644
+        },
+        {
+          "frame": 2,
+          "x": 0,
+          "y": -3,
+          "requestedX": 0,
+          "requestedY": -3,
+          "capped": false,
+          "corePixels": 19233
+        },
+        {
+          "frame": 3,
+          "x": 0,
+          "y": -12,
+          "requestedX": 0,
+          "requestedY": -12,
+          "capped": false,
+          "corePixels": 20162
+        },
+        {
+          "frame": 4,
+          "x": 0,
+          "y": -12,
+          "requestedX": 0,
+          "requestedY": -12,
+          "capped": false,
+          "corePixels": 19018
+        },
+        {
+          "frame": 5,
+          "x": 0,
+          "y": -12,
+          "requestedX": 0,
+          "requestedY": -12,
+          "capped": false,
+          "corePixels": 20206
+        },
+        {
+          "frame": 6,
+          "x": 1,
+          "y": -12,
+          "requestedX": 1,
+          "requestedY": -12,
+          "capped": false,
+          "corePixels": 19579
+        },
+        {
+          "frame": 7,
+          "x": 0,
+          "y": -12,
+          "requestedX": 0,
+          "requestedY": -12,
+          "capped": false,
+          "corePixels": 20320
+        },
+        {
+          "frame": 8,
+          "x": 1,
+          "y": -12,
+          "requestedX": 1,
+          "requestedY": -12,
+          "capped": false,
+          "corePixels": 20318
+        },
+        {
+          "frame": 9,
+          "x": 0,
+          "y": -10,
+          "requestedX": 0,
+          "requestedY": -10,
+          "capped": false,
+          "corePixels": 20460
+        },
+        {
+          "frame": 10,
+          "x": 0,
+          "y": -12,
+          "requestedX": 0,
+          "requestedY": -12,
+          "capped": false,
+          "corePixels": 20103
+        },
+        {
+          "frame": 11,
+          "x": 0,
+          "y": -12,
+          "requestedX": 0,
+          "requestedY": -12,
+          "capped": false,
+          "corePixels": 20023
+        },
+        {
+          "frame": 12,
+          "x": 0,
+          "y": -12,
+          "requestedX": 0,
+          "requestedY": -12,
+          "capped": false,
+          "corePixels": 20526
+        },
+        {
+          "frame": 13,
+          "x": 0,
+          "y": -12,
+          "requestedX": 0,
+          "requestedY": -12,
+          "capped": false,
+          "corePixels": 19884
+        },
+        {
+          "frame": 14,
+          "x": 0,
+          "y": -8,
+          "requestedX": 0,
+          "requestedY": -8,
+          "capped": false,
+          "corePixels": 20740
+        },
+        {
+          "frame": 15,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 19527
+        }
+      ]
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-northeast-crouch.png",
+      "beforeSha256": "f3187629062fabea05d55995b012dbb63e3e200654cb54649ee99ab9854c31df",
+      "afterSha256": "6b80cc79368cfa73c46a206d41000588929cd6e076be0090532d510b437fbca9",
+      "changedFrames": 7,
+      "cappedFrames": 0,
+      "maximumShift": 6,
+      "shifts": [
+        {
+          "frame": 0,
+          "x": 0,
+          "y": -5,
+          "requestedX": 0,
+          "requestedY": -5,
+          "capped": false,
+          "corePixels": 19812
+        },
+        {
+          "frame": 1,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 20394
+        },
+        {
+          "frame": 2,
+          "x": 0,
+          "y": -4,
+          "requestedX": 0,
+          "requestedY": -4,
+          "capped": false,
+          "corePixels": 18894
+        },
+        {
+          "frame": 3,
+          "x": -1,
+          "y": -5,
+          "requestedX": -1,
+          "requestedY": -5,
+          "capped": false,
+          "corePixels": 22438
+        },
+        {
+          "frame": 4,
+          "x": 0,
+          "y": -5,
+          "requestedX": 0,
+          "requestedY": -5,
+          "capped": false,
+          "corePixels": 19956
+        },
+        {
+          "frame": 5,
+          "x": 0,
+          "y": -5,
+          "requestedX": 0,
+          "requestedY": -5,
+          "capped": false,
+          "corePixels": 20113
+        },
+        {
+          "frame": 6,
+          "x": 0,
+          "y": -6,
+          "requestedX": 0,
+          "requestedY": -6,
+          "capped": false,
+          "corePixels": 18019
+        },
+        {
+          "frame": 7,
+          "x": 0,
+          "y": -3,
+          "requestedX": 0,
+          "requestedY": -3,
+          "capped": false,
+          "corePixels": 20299
+        },
+        {
+          "frame": 8,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 18795
+        },
+        {
+          "frame": 9,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 19553
+        },
+        {
+          "frame": 10,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 19330
+        },
+        {
+          "frame": 11,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 19377
+        },
+        {
+          "frame": 12,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 20106
+        },
+        {
+          "frame": 13,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 22155
+        },
+        {
+          "frame": 14,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 21725
+        },
+        {
+          "frame": 15,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 19591
+        }
+      ]
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-northeast-action.png",
+      "beforeSha256": "f0e6637af31b49274799d4473ab5f3f112d77358afbc6b6c0ca6089752566e11",
+      "afterSha256": "fc3599844dc753015678f989b9ad0a3729d965930a8e9799f65842d1b58ceab8",
+      "changedFrames": 12,
+      "cappedFrames": 0,
+      "maximumShift": 13,
+      "shifts": [
+        {
+          "frame": 0,
+          "x": 0,
+          "y": -1,
+          "requestedX": 0,
+          "requestedY": -1,
+          "capped": false,
+          "corePixels": 23304
+        },
+        {
+          "frame": 1,
+          "x": 1,
+          "y": -1,
+          "requestedX": 1,
+          "requestedY": -1,
+          "capped": false,
+          "corePixels": 23231
+        },
+        {
+          "frame": 2,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 23882
+        },
+        {
+          "frame": 3,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 23271
+        },
+        {
+          "frame": 4,
+          "x": 0,
+          "y": -1,
+          "requestedX": 0,
+          "requestedY": -1,
+          "capped": false,
+          "corePixels": 25191
+        },
+        {
+          "frame": 5,
+          "x": 0,
+          "y": -2,
+          "requestedX": 0,
+          "requestedY": -2,
+          "capped": false,
+          "corePixels": 25287
+        },
+        {
+          "frame": 6,
+          "x": 0,
+          "y": -2,
+          "requestedX": 0,
+          "requestedY": -2,
+          "capped": false,
+          "corePixels": 25259
+        },
+        {
+          "frame": 7,
+          "x": 0,
+          "y": -2,
+          "requestedX": 0,
+          "requestedY": -2,
+          "capped": false,
+          "corePixels": 24072
+        },
+        {
+          "frame": 8,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 23150
+        },
+        {
+          "frame": 9,
+          "x": 0,
+          "y": -3,
+          "requestedX": 0,
+          "requestedY": -3,
+          "capped": false,
+          "corePixels": 24703
+        },
+        {
+          "frame": 10,
+          "x": 0,
+          "y": -13,
+          "requestedX": 0,
+          "requestedY": -13,
+          "capped": false,
+          "corePixels": 24740
+        },
+        {
+          "frame": 11,
+          "x": 0,
+          "y": -12,
+          "requestedX": 0,
+          "requestedY": -12,
+          "capped": false,
+          "corePixels": 24811
+        },
+        {
+          "frame": 12,
+          "x": 0,
+          "y": -12,
+          "requestedX": 0,
+          "requestedY": -12,
+          "capped": false,
+          "corePixels": 23533
+        },
+        {
+          "frame": 13,
+          "x": 0,
+          "y": -12,
+          "requestedX": 0,
+          "requestedY": -12,
+          "capped": false,
+          "corePixels": 24127
+        },
+        {
+          "frame": 14,
+          "x": 0,
+          "y": -7,
+          "requestedX": 0,
+          "requestedY": -7,
+          "capped": false,
+          "corePixels": 22259
+        },
+        {
+          "frame": 15,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 23036
+        }
+      ]
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-north-motion.png",
+      "beforeSha256": "e717a782f88c6996e596e9fd02fb5a14248796d7f64ff60d911eb88eb4b9000f",
+      "afterSha256": "fa9b769e21c72759d4a7a48859401e6b988788e8b0549589b2297abc0b04b3ba",
+      "changedFrames": 9,
+      "cappedFrames": 0,
+      "maximumShift": 4,
+      "shifts": [
+        {
+          "frame": 0,
+          "x": 0,
+          "y": 1,
+          "requestedX": 0,
+          "requestedY": 1,
+          "capped": false,
+          "corePixels": 11729
+        },
+        {
+          "frame": 1,
+          "x": 0,
+          "y": 1,
+          "requestedX": 0,
+          "requestedY": 1,
+          "capped": false,
+          "corePixels": 11663
+        },
+        {
+          "frame": 2,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 11982
+        },
+        {
+          "frame": 3,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 11640
+        },
+        {
+          "frame": 4,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 11830
+        },
+        {
+          "frame": 5,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 11773
+        },
+        {
+          "frame": 6,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 12087
+        },
+        {
+          "frame": 7,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 12180
+        },
+        {
+          "frame": 8,
+          "x": 0,
+          "y": 3,
+          "requestedX": 0,
+          "requestedY": 3,
+          "capped": false,
+          "corePixels": 9345
+        },
+        {
+          "frame": 9,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 9943
+        },
+        {
+          "frame": 10,
+          "x": -1,
+          "y": 2,
+          "requestedX": -1,
+          "requestedY": 2,
+          "capped": false,
+          "corePixels": 9555
+        },
+        {
+          "frame": 11,
+          "x": 0,
+          "y": 2,
+          "requestedX": 0,
+          "requestedY": 2,
+          "capped": false,
+          "corePixels": 9562
+        },
+        {
+          "frame": 12,
+          "x": 0,
+          "y": 3,
+          "requestedX": 0,
+          "requestedY": 3,
+          "capped": false,
+          "corePixels": 9123
+        },
+        {
+          "frame": 13,
+          "x": 0,
+          "y": 4,
+          "requestedX": 0,
+          "requestedY": 4,
+          "capped": false,
+          "corePixels": 8911
+        },
+        {
+          "frame": 14,
+          "x": 0,
+          "y": 4,
+          "requestedX": 0,
+          "requestedY": 4,
+          "capped": false,
+          "corePixels": 9130
+        },
+        {
+          "frame": 15,
+          "x": 0,
+          "y": 4,
+          "requestedX": 0,
+          "requestedY": 4,
+          "capped": false,
+          "corePixels": 9360
+        }
+      ]
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-north-run.png",
+      "beforeSha256": "77c8ac419ea825cd1b4f7d0b6ac77c688dd49039a0e4a4594c3995e4e7c9f76d",
+      "afterSha256": "20ea1daaf4b1ab7e183556a78a3c3403831759c820dcd273bf83667b1ab343e4",
+      "changedFrames": 15,
+      "cappedFrames": 0,
+      "maximumShift": 7,
+      "shifts": [
+        {
+          "frame": 0,
+          "x": 0,
+          "y": 2,
+          "requestedX": 0,
+          "requestedY": 2,
+          "capped": false,
+          "corePixels": 10693
+        },
+        {
+          "frame": 1,
+          "x": 0,
+          "y": 5,
+          "requestedX": 0,
+          "requestedY": 5,
+          "capped": false,
+          "corePixels": 10072
+        },
+        {
+          "frame": 2,
+          "x": 0,
+          "y": 4,
+          "requestedX": 0,
+          "requestedY": 4,
+          "capped": false,
+          "corePixels": 10409
+        },
+        {
+          "frame": 3,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 10682
+        },
+        {
+          "frame": 4,
+          "x": 0,
+          "y": 6,
+          "requestedX": 0,
+          "requestedY": 6,
+          "capped": false,
+          "corePixels": 10503
+        },
+        {
+          "frame": 5,
+          "x": 0,
+          "y": 6,
+          "requestedX": 0,
+          "requestedY": 6,
+          "capped": false,
+          "corePixels": 10762
+        },
+        {
+          "frame": 6,
+          "x": 0,
+          "y": 6,
+          "requestedX": 0,
+          "requestedY": 6,
+          "capped": false,
+          "corePixels": 10761
+        },
+        {
+          "frame": 7,
+          "x": 0,
+          "y": 6,
+          "requestedX": 0,
+          "requestedY": 6,
+          "capped": false,
+          "corePixels": 10468
+        },
+        {
+          "frame": 8,
+          "x": 0,
+          "y": 7,
+          "requestedX": 0,
+          "requestedY": 7,
+          "capped": false,
+          "corePixels": 9314
+        },
+        {
+          "frame": 9,
+          "x": 0,
+          "y": 6,
+          "requestedX": 0,
+          "requestedY": 6,
+          "capped": false,
+          "corePixels": 9782
+        },
+        {
+          "frame": 10,
+          "x": 0,
+          "y": 6,
+          "requestedX": 0,
+          "requestedY": 6,
+          "capped": false,
+          "corePixels": 10348
+        },
+        {
+          "frame": 11,
+          "x": -1,
+          "y": 6,
+          "requestedX": -1,
+          "requestedY": 6,
+          "capped": false,
+          "corePixels": 9655
+        },
+        {
+          "frame": 12,
+          "x": 0,
+          "y": 6,
+          "requestedX": 0,
+          "requestedY": 6,
+          "capped": false,
+          "corePixels": 9459
+        },
+        {
+          "frame": 13,
+          "x": 0,
+          "y": 6,
+          "requestedX": 0,
+          "requestedY": 6,
+          "capped": false,
+          "corePixels": 9277
+        },
+        {
+          "frame": 14,
+          "x": 0,
+          "y": 6,
+          "requestedX": 0,
+          "requestedY": 6,
+          "capped": false,
+          "corePixels": 9171
+        },
+        {
+          "frame": 15,
+          "x": 0,
+          "y": 6,
+          "requestedX": 0,
+          "requestedY": 6,
+          "capped": false,
+          "corePixels": 9160
+        }
+      ]
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-north-crouch.png",
+      "beforeSha256": "b45732de198c57cd505c343b1bb8082a472e4d6f1794c104313d04cec6584d97",
+      "afterSha256": "268a03ca60b0a518f58bb17de0405b2b4aafe4054aacbf0bcffad86424a36bd3",
+      "changedFrames": 8,
+      "cappedFrames": 0,
+      "maximumShift": 5,
+      "shifts": [
+        {
+          "frame": 0,
+          "x": 0,
+          "y": 2,
+          "requestedX": 0,
+          "requestedY": 2,
+          "capped": false,
+          "corePixels": 13022
+        },
+        {
+          "frame": 1,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 12872
+        },
+        {
+          "frame": 2,
+          "x": 0,
+          "y": 5,
+          "requestedX": 0,
+          "requestedY": 5,
+          "capped": false,
+          "corePixels": 11767
+        },
+        {
+          "frame": 3,
+          "x": 0,
+          "y": 5,
+          "requestedX": 0,
+          "requestedY": 5,
+          "capped": false,
+          "corePixels": 11942
+        },
+        {
+          "frame": 4,
+          "x": 0,
+          "y": 4,
+          "requestedX": 0,
+          "requestedY": 4,
+          "capped": false,
+          "corePixels": 11227
+        },
+        {
+          "frame": 5,
+          "x": 0,
+          "y": 4,
+          "requestedX": 0,
+          "requestedY": 4,
+          "capped": false,
+          "corePixels": 11099
+        },
+        {
+          "frame": 6,
+          "x": 0,
+          "y": 5,
+          "requestedX": 0,
+          "requestedY": 5,
+          "capped": false,
+          "corePixels": 11741
+        },
+        {
+          "frame": 7,
+          "x": 0,
+          "y": 5,
+          "requestedX": 0,
+          "requestedY": 5,
+          "capped": false,
+          "corePixels": 11714
+        },
+        {
+          "frame": 8,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 10264
+        },
+        {
+          "frame": 9,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 10520
+        },
+        {
+          "frame": 10,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 10529
+        },
+        {
+          "frame": 11,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 10144
+        },
+        {
+          "frame": 12,
+          "x": 0,
+          "y": 1,
+          "requestedX": 0,
+          "requestedY": 1,
+          "capped": false,
+          "corePixels": 10028
+        },
+        {
+          "frame": 13,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 9921
+        },
+        {
+          "frame": 14,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 9917
+        },
+        {
+          "frame": 15,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 11903
+        }
+      ]
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-north-action.png",
+      "beforeSha256": "2eae543258c24a94dc37d66cc3ebcbf96a49ccc40ce8d259104b4f1b58535758",
+      "afterSha256": "2d0930f97c02ff485ca86b9d74fdfa7ffd19fe7e89843856c94b2b9efdd3890f",
+      "changedFrames": 12,
+      "cappedFrames": 0,
+      "maximumShift": 8,
+      "shifts": [
+        {
+          "frame": 0,
+          "x": 0,
+          "y": 1,
+          "requestedX": 0,
+          "requestedY": 1,
+          "capped": false,
+          "corePixels": 11843
+        },
+        {
+          "frame": 1,
+          "x": 0,
+          "y": 1,
+          "requestedX": 0,
+          "requestedY": 1,
+          "capped": false,
+          "corePixels": 13035
+        },
+        {
+          "frame": 2,
+          "x": 0,
+          "y": 2,
+          "requestedX": 0,
+          "requestedY": 2,
+          "capped": false,
+          "corePixels": 14414
+        },
+        {
+          "frame": 3,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 12652
+        },
+        {
+          "frame": 4,
+          "x": 0,
+          "y": 1,
+          "requestedX": 0,
+          "requestedY": 1,
+          "capped": false,
+          "corePixels": 11072
+        },
+        {
+          "frame": 5,
+          "x": 0,
+          "y": 8,
+          "requestedX": 0,
+          "requestedY": 8,
+          "capped": false,
+          "corePixels": 11458
+        },
+        {
+          "frame": 6,
+          "x": 0,
+          "y": 8,
+          "requestedX": 0,
+          "requestedY": 8,
+          "capped": false,
+          "corePixels": 11668
+        },
+        {
+          "frame": 7,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 11218
+        },
+        {
+          "frame": 8,
+          "x": 0,
+          "y": 6,
+          "requestedX": 0,
+          "requestedY": 6,
+          "capped": false,
+          "corePixels": 9975
+        },
+        {
+          "frame": 9,
+          "x": 0,
+          "y": 8,
+          "requestedX": 0,
+          "requestedY": 8,
+          "capped": false,
+          "corePixels": 10430
+        },
+        {
+          "frame": 10,
+          "x": 0,
+          "y": 8,
+          "requestedX": 0,
+          "requestedY": 8,
+          "capped": false,
+          "corePixels": 10562
+        },
+        {
+          "frame": 11,
+          "x": 0,
+          "y": 8,
+          "requestedX": 0,
+          "requestedY": 8,
+          "capped": false,
+          "corePixels": 9821
+        },
+        {
+          "frame": 12,
+          "x": 0,
+          "y": 8,
+          "requestedX": 0,
+          "requestedY": 8,
+          "capped": false,
+          "corePixels": 9724
+        },
+        {
+          "frame": 13,
+          "x": 0,
+          "y": 8,
+          "requestedX": 0,
+          "requestedY": 8,
+          "capped": false,
+          "corePixels": 11056
+        },
+        {
+          "frame": 14,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 10955
+        },
+        {
+          "frame": 15,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 11010
+        }
+      ]
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-northwest-motion.png",
+      "beforeSha256": "191991095006331460180bb5632387ca0e919ae012921c0ee4d601eec2452edb",
+      "afterSha256": "71554a0b818aaa44ef976439f6775f2899f8b042e0ced417e20cc765cc2d1f7f",
+      "changedFrames": 14,
+      "cappedFrames": 0,
+      "maximumShift": 10.04987562112089,
+      "shifts": [
+        {
+          "frame": 0,
+          "x": 0,
+          "y": -4,
+          "requestedX": 0,
+          "requestedY": -4,
+          "capped": false,
+          "corePixels": 21163
+        },
+        {
+          "frame": 1,
+          "x": 0,
+          "y": -10,
+          "requestedX": 0,
+          "requestedY": -10,
+          "capped": false,
+          "corePixels": 20558
+        },
+        {
+          "frame": 2,
+          "x": 0,
+          "y": -10,
+          "requestedX": 0,
+          "requestedY": -10,
+          "capped": false,
+          "corePixels": 21592
+        },
+        {
+          "frame": 3,
+          "x": 0,
+          "y": -9,
+          "requestedX": 0,
+          "requestedY": -9,
+          "capped": false,
+          "corePixels": 19018
+        },
+        {
+          "frame": 4,
+          "x": 0,
+          "y": -10,
+          "requestedX": 0,
+          "requestedY": -10,
+          "capped": false,
+          "corePixels": 20685
+        },
+        {
+          "frame": 5,
+          "x": 1,
+          "y": -10,
+          "requestedX": 1,
+          "requestedY": -10,
+          "capped": false,
+          "corePixels": 20434
+        },
+        {
+          "frame": 6,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 20114
+        },
+        {
+          "frame": 7,
+          "x": 0,
+          "y": -9,
+          "requestedX": 0,
+          "requestedY": -9,
+          "capped": false,
+          "corePixels": 19516
+        },
+        {
+          "frame": 8,
+          "x": 0,
+          "y": -2,
+          "requestedX": 0,
+          "requestedY": -2,
+          "capped": false,
+          "corePixels": 21001
+        },
+        {
+          "frame": 9,
+          "x": 0,
+          "y": -2,
+          "requestedX": 0,
+          "requestedY": -2,
+          "capped": false,
+          "corePixels": 21358
+        },
+        {
+          "frame": 10,
+          "x": 0,
+          "y": -2,
+          "requestedX": 0,
+          "requestedY": -2,
+          "capped": false,
+          "corePixels": 21150
+        },
+        {
+          "frame": 11,
+          "x": 0,
+          "y": -3,
+          "requestedX": 0,
+          "requestedY": -3,
+          "capped": false,
+          "corePixels": 21323
+        },
+        {
+          "frame": 12,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 22224
+        },
+        {
+          "frame": 13,
+          "x": 0,
+          "y": -2,
+          "requestedX": 0,
+          "requestedY": -2,
+          "capped": false,
+          "corePixels": 22314
+        },
+        {
+          "frame": 14,
+          "x": 0,
+          "y": -3,
+          "requestedX": 0,
+          "requestedY": -3,
+          "capped": false,
+          "corePixels": 22341
+        },
+        {
+          "frame": 15,
+          "x": 0,
+          "y": -2,
+          "requestedX": 0,
+          "requestedY": -2,
+          "capped": false,
+          "corePixels": 21650
+        }
+      ]
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-northwest-run.png",
+      "beforeSha256": "8fcf7613033712d88803ca377801a06859a5627b142610cc1c6ee61dd769cf7a",
+      "afterSha256": "aeb94bc57fa1db6cb5d879c46d544a192ace325b6842a1138cedf2781a733642",
+      "changedFrames": 15,
+      "cappedFrames": 0,
+      "maximumShift": 8,
+      "shifts": [
+        {
+          "frame": 0,
+          "x": 0,
+          "y": -4,
+          "requestedX": 0,
+          "requestedY": -4,
+          "capped": false,
+          "corePixels": 18902
+        },
+        {
+          "frame": 1,
+          "x": 0,
+          "y": -7,
+          "requestedX": 0,
+          "requestedY": -7,
+          "capped": false,
+          "corePixels": 19359
+        },
+        {
+          "frame": 2,
+          "x": 0,
+          "y": -7,
+          "requestedX": 0,
+          "requestedY": -7,
+          "capped": false,
+          "corePixels": 19330
+        },
+        {
+          "frame": 3,
+          "x": 0,
+          "y": -7,
+          "requestedX": 0,
+          "requestedY": -7,
+          "capped": false,
+          "corePixels": 19221
+        },
+        {
+          "frame": 4,
+          "x": 0,
+          "y": -7,
+          "requestedX": 0,
+          "requestedY": -7,
+          "capped": false,
+          "corePixels": 19921
+        },
+        {
+          "frame": 5,
+          "x": 0,
+          "y": -7,
+          "requestedX": 0,
+          "requestedY": -7,
+          "capped": false,
+          "corePixels": 19523
+        },
+        {
+          "frame": 6,
+          "x": 0,
+          "y": -7,
+          "requestedX": 0,
+          "requestedY": -7,
+          "capped": false,
+          "corePixels": 19772
+        },
+        {
+          "frame": 7,
+          "x": -1,
+          "y": -7,
+          "requestedX": -1,
+          "requestedY": -7,
+          "capped": false,
+          "corePixels": 20089
+        },
+        {
+          "frame": 8,
+          "x": 0,
+          "y": -7,
+          "requestedX": 0,
+          "requestedY": -7,
+          "capped": false,
+          "corePixels": 19223
+        },
+        {
+          "frame": 9,
+          "x": 0,
+          "y": -7,
+          "requestedX": 0,
+          "requestedY": -7,
+          "capped": false,
+          "corePixels": 18405
+        },
+        {
+          "frame": 10,
+          "x": 0,
+          "y": -6,
+          "requestedX": 0,
+          "requestedY": -6,
+          "capped": false,
+          "corePixels": 18645
+        },
+        {
+          "frame": 11,
+          "x": 0,
+          "y": -8,
+          "requestedX": 0,
+          "requestedY": -8,
+          "capped": false,
+          "corePixels": 18549
+        },
+        {
+          "frame": 12,
+          "x": 0,
+          "y": -3,
+          "requestedX": 0,
+          "requestedY": -3,
+          "capped": false,
+          "corePixels": 18979
+        },
+        {
+          "frame": 13,
+          "x": 0,
+          "y": -6,
+          "requestedX": 0,
+          "requestedY": -6,
+          "capped": false,
+          "corePixels": 20157
+        },
+        {
+          "frame": 14,
+          "x": 0,
+          "y": -8,
+          "requestedX": 0,
+          "requestedY": -8,
+          "capped": false,
+          "corePixels": 20161
+        },
+        {
+          "frame": 15,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 18839
+        }
+      ]
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-northwest-crouch.png",
+      "beforeSha256": "48539a25cca0d91bb08fcca7bc195d1586299c3c133d80714d1acb672dca3a7b",
+      "afterSha256": "56525c6a10a9fe5af7d91cb84458ff213e4c351f3ba3d2ca165bc97fb1726501",
+      "changedFrames": 7,
+      "cappedFrames": 0,
+      "maximumShift": 6,
+      "shifts": [
+        {
+          "frame": 0,
+          "x": 0,
+          "y": -5,
+          "requestedX": 0,
+          "requestedY": -5,
+          "capped": false,
+          "corePixels": 19812
+        },
+        {
+          "frame": 1,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 20394
+        },
+        {
+          "frame": 2,
+          "x": 0,
+          "y": -4,
+          "requestedX": 0,
+          "requestedY": -4,
+          "capped": false,
+          "corePixels": 18894
+        },
+        {
+          "frame": 3,
+          "x": 1,
+          "y": -5,
+          "requestedX": 1,
+          "requestedY": -5,
+          "capped": false,
+          "corePixels": 22438
+        },
+        {
+          "frame": 4,
+          "x": 0,
+          "y": -5,
+          "requestedX": 0,
+          "requestedY": -5,
+          "capped": false,
+          "corePixels": 19956
+        },
+        {
+          "frame": 5,
+          "x": 0,
+          "y": -5,
+          "requestedX": 0,
+          "requestedY": -5,
+          "capped": false,
+          "corePixels": 20113
+        },
+        {
+          "frame": 6,
+          "x": 0,
+          "y": -6,
+          "requestedX": 0,
+          "requestedY": -6,
+          "capped": false,
+          "corePixels": 18019
+        },
+        {
+          "frame": 7,
+          "x": 0,
+          "y": -3,
+          "requestedX": 0,
+          "requestedY": -3,
+          "capped": false,
+          "corePixels": 20299
+        },
+        {
+          "frame": 8,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 18795
+        },
+        {
+          "frame": 9,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 19553
+        },
+        {
+          "frame": 10,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 19330
+        },
+        {
+          "frame": 11,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 19377
+        },
+        {
+          "frame": 12,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 20106
+        },
+        {
+          "frame": 13,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 22155
+        },
+        {
+          "frame": 14,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 21725
+        },
+        {
+          "frame": 15,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 19591
+        }
+      ]
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-northwest-action.png",
+      "beforeSha256": "d22fab0516ddb9bb284fc24de004b31da40e7c312573737d0ecbfe3b6d8e86cf",
+      "afterSha256": "c306fbc6dc99c00b3d3c7ff48137fde6909f6d44adc814ab70278e148b1c2cbb",
+      "changedFrames": 14,
+      "cappedFrames": 0,
+      "maximumShift": 20,
+      "shifts": [
+        {
+          "frame": 0,
+          "x": -1,
+          "y": 0,
+          "requestedX": -1,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 21716
+        },
+        {
+          "frame": 1,
+          "x": -1,
+          "y": -2,
+          "requestedX": -1,
+          "requestedY": -2,
+          "capped": false,
+          "corePixels": 22792
+        },
+        {
+          "frame": 2,
+          "x": 0,
+          "y": -1,
+          "requestedX": 0,
+          "requestedY": -1,
+          "capped": false,
+          "corePixels": 22851
+        },
+        {
+          "frame": 3,
+          "x": -1,
+          "y": -2,
+          "requestedX": -1,
+          "requestedY": -2,
+          "capped": false,
+          "corePixels": 22236
+        },
+        {
+          "frame": 4,
+          "x": -2,
+          "y": -2,
+          "requestedX": -2,
+          "requestedY": -2,
+          "capped": false,
+          "corePixels": 22556
+        },
+        {
+          "frame": 5,
+          "x": 0,
+          "y": -19,
+          "requestedX": 0,
+          "requestedY": -19,
+          "capped": false,
+          "corePixels": 25362
+        },
+        {
+          "frame": 6,
+          "x": 0,
+          "y": -20,
+          "requestedX": 0,
+          "requestedY": -20,
+          "capped": false,
+          "corePixels": 26382
+        },
+        {
+          "frame": 7,
+          "x": 0,
+          "y": -19,
+          "requestedX": 0,
+          "requestedY": -19,
+          "capped": false,
+          "corePixels": 25997
+        },
+        {
+          "frame": 8,
+          "x": 0,
+          "y": -16,
+          "requestedX": 0,
+          "requestedY": -16,
+          "capped": false,
+          "corePixels": 26398
+        },
+        {
+          "frame": 9,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 22357
+        },
+        {
+          "frame": 10,
+          "x": 0,
+          "y": -2,
+          "requestedX": 0,
+          "requestedY": -2,
+          "capped": false,
+          "corePixels": 22387
+        },
+        {
+          "frame": 11,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 22399
+        },
+        {
+          "frame": 12,
+          "x": 0,
+          "y": -9,
+          "requestedX": 0,
+          "requestedY": -9,
+          "capped": false,
+          "corePixels": 26361
+        },
+        {
+          "frame": 13,
+          "x": 0,
+          "y": -9,
+          "requestedX": 0,
+          "requestedY": -9,
+          "capped": false,
+          "corePixels": 26964
+        },
+        {
+          "frame": 14,
+          "x": 0,
+          "y": -9,
+          "requestedX": 0,
+          "requestedY": -9,
+          "capped": false,
+          "corePixels": 27629
+        },
+        {
+          "frame": 15,
+          "x": 0,
+          "y": -5,
+          "requestedX": 0,
+          "requestedY": -5,
+          "capped": false,
+          "corePixels": 22538
+        }
+      ]
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-west-motion.png",
+      "beforeSha256": "f3666f7be42b310d2036207a2dff8fb461632ff0ae12493082f9fb93d20ba281",
+      "afterSha256": "b895fd73a39d232699653982a68b306826a5658ce10050429b57c76c75300f44",
+      "changedFrames": 9,
+      "cappedFrames": 0,
+      "maximumShift": 7,
+      "shifts": [
+        {
+          "frame": 0,
+          "x": 0,
+          "y": -7,
+          "requestedX": 0,
+          "requestedY": -7,
+          "capped": false,
+          "corePixels": 18601
+        },
+        {
+          "frame": 1,
+          "x": 0,
+          "y": -7,
+          "requestedX": 0,
+          "requestedY": -7,
+          "capped": false,
+          "corePixels": 19155
+        },
+        {
+          "frame": 2,
+          "x": 0,
+          "y": -7,
+          "requestedX": 0,
+          "requestedY": -7,
+          "capped": false,
+          "corePixels": 18691
+        },
+        {
+          "frame": 3,
+          "x": 0,
+          "y": -6,
+          "requestedX": 0,
+          "requestedY": -6,
+          "capped": false,
+          "corePixels": 19330
+        },
+        {
+          "frame": 4,
+          "x": 0,
+          "y": -6,
+          "requestedX": 0,
+          "requestedY": -6,
+          "capped": false,
+          "corePixels": 20215
+        },
+        {
+          "frame": 5,
+          "x": 0,
+          "y": -5,
+          "requestedX": 0,
+          "requestedY": -5,
+          "capped": false,
+          "corePixels": 18939
+        },
+        {
+          "frame": 6,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 19738
+        },
+        {
+          "frame": 7,
+          "x": 0,
+          "y": -7,
+          "requestedX": 0,
+          "requestedY": -7,
+          "capped": false,
+          "corePixels": 20466
+        },
+        {
+          "frame": 8,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 20583
+        },
+        {
+          "frame": 9,
+          "x": -1,
+          "y": 0,
+          "requestedX": -1,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 20865
+        },
+        {
+          "frame": 10,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 20606
+        },
+        {
+          "frame": 11,
+          "x": -1,
+          "y": 0,
+          "requestedX": -1,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 20833
+        },
+        {
+          "frame": 12,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 20525
+        },
+        {
+          "frame": 13,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 20449
+        },
+        {
+          "frame": 14,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 20418
+        },
+        {
+          "frame": 15,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 20629
+        }
+      ]
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-west-run.png",
+      "beforeSha256": "0cbd6227b2f78d65ce2d36cf6e93d6bbbe23bf9bc2978e16f1422391d1535a9a",
+      "afterSha256": "0af039260b58d46166a2944da1544f9f447af41af3b009fb7061e820d332296f",
+      "changedFrames": 16,
+      "cappedFrames": 0,
+      "maximumShift": 5.099019513592785,
+      "shifts": [
+        {
+          "frame": 0,
+          "x": -1,
+          "y": -4,
+          "requestedX": -1,
+          "requestedY": -4,
+          "capped": false,
+          "corePixels": 19166
+        },
+        {
+          "frame": 1,
+          "x": -1,
+          "y": -4,
+          "requestedX": -1,
+          "requestedY": -4,
+          "capped": false,
+          "corePixels": 18866
+        },
+        {
+          "frame": 2,
+          "x": -1,
+          "y": -4,
+          "requestedX": -1,
+          "requestedY": -4,
+          "capped": false,
+          "corePixels": 18874
+        },
+        {
+          "frame": 3,
+          "x": -1,
+          "y": -4,
+          "requestedX": -1,
+          "requestedY": -4,
+          "capped": false,
+          "corePixels": 18711
+        },
+        {
+          "frame": 4,
+          "x": -1,
+          "y": 0,
+          "requestedX": -1,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 20155
+        },
+        {
+          "frame": 5,
+          "x": -1,
+          "y": -5,
+          "requestedX": -1,
+          "requestedY": -5,
+          "capped": false,
+          "corePixels": 20238
+        },
+        {
+          "frame": 6,
+          "x": -1,
+          "y": -2,
+          "requestedX": -1,
+          "requestedY": -2,
+          "capped": false,
+          "corePixels": 19680
+        },
+        {
+          "frame": 7,
+          "x": 0,
+          "y": -4,
+          "requestedX": 0,
+          "requestedY": -4,
+          "capped": false,
+          "corePixels": 20164
+        },
+        {
+          "frame": 8,
+          "x": -1,
+          "y": -4,
+          "requestedX": -1,
+          "requestedY": -4,
+          "capped": false,
+          "corePixels": 20672
+        },
+        {
+          "frame": 9,
+          "x": -1,
+          "y": -4,
+          "requestedX": -1,
+          "requestedY": -4,
+          "capped": false,
+          "corePixels": 19630
+        },
+        {
+          "frame": 10,
+          "x": -1,
+          "y": -4,
+          "requestedX": -1,
+          "requestedY": -4,
+          "capped": false,
+          "corePixels": 21325
+        },
+        {
+          "frame": 11,
+          "x": -1,
+          "y": -3,
+          "requestedX": -1,
+          "requestedY": -3,
+          "capped": false,
+          "corePixels": 21664
+        },
+        {
+          "frame": 12,
+          "x": -1,
+          "y": -4,
+          "requestedX": -1,
+          "requestedY": -4,
+          "capped": false,
+          "corePixels": 21955
+        },
+        {
+          "frame": 13,
+          "x": -1,
+          "y": -1,
+          "requestedX": -1,
+          "requestedY": -1,
+          "capped": false,
+          "corePixels": 21254
+        },
+        {
+          "frame": 14,
+          "x": -1,
+          "y": -4,
+          "requestedX": -1,
+          "requestedY": -4,
+          "capped": false,
+          "corePixels": 20636
+        },
+        {
+          "frame": 15,
+          "x": -1,
+          "y": -4,
+          "requestedX": -1,
+          "requestedY": -4,
+          "capped": false,
+          "corePixels": 20702
+        }
+      ]
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-west-crouch.png",
+      "beforeSha256": "16cd6b044a8a3ab5489d3b0f19213978729bec7656a266ba2e3dceb9f5b9dac7",
+      "afterSha256": "7cc397d4a41db320b41146cc76e54ce9ed6acdde54576d8b74cf41e109d36195",
+      "changedFrames": 6,
+      "cappedFrames": 0,
+      "maximumShift": 4,
+      "shifts": [
+        {
+          "frame": 0,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 19517
+        },
+        {
+          "frame": 1,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 19430
+        },
+        {
+          "frame": 2,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 18149
+        },
+        {
+          "frame": 3,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 18494
+        },
+        {
+          "frame": 4,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 18649
+        },
+        {
+          "frame": 5,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 19221
+        },
+        {
+          "frame": 6,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 19038
+        },
+        {
+          "frame": 7,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 18494
+        },
+        {
+          "frame": 8,
+          "x": 0,
+          "y": -4,
+          "requestedX": 0,
+          "requestedY": -4,
+          "capped": false,
+          "corePixels": 18131
+        },
+        {
+          "frame": 9,
+          "x": 0,
+          "y": -3,
+          "requestedX": 0,
+          "requestedY": -3,
+          "capped": false,
+          "corePixels": 18299
+        },
+        {
+          "frame": 10,
+          "x": -1,
+          "y": -3,
+          "requestedX": -1,
+          "requestedY": -3,
+          "capped": false,
+          "corePixels": 18180
+        },
+        {
+          "frame": 11,
+          "x": 0,
+          "y": -3,
+          "requestedX": 0,
+          "requestedY": -3,
+          "capped": false,
+          "corePixels": 18626
+        },
+        {
+          "frame": 12,
+          "x": 0,
+          "y": -2,
+          "requestedX": 0,
+          "requestedY": -2,
+          "capped": false,
+          "corePixels": 19419
+        },
+        {
+          "frame": 13,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 19085
+        },
+        {
+          "frame": 14,
+          "x": -1,
+          "y": -1,
+          "requestedX": -1,
+          "requestedY": -1,
+          "capped": false,
+          "corePixels": 19233
+        },
+        {
+          "frame": 15,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 20154
+        }
+      ]
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-west-action.png",
+      "beforeSha256": "b59efc211a45b8469303e3ce75c8ac674625edd672de5d7dca4c45c4cb22af40",
+      "afterSha256": "eb1cf73f72bf94393a38fa4027ca5b776dbcc2ce3e766839bbcc4ceb8c3836bd",
+      "changedFrames": 10,
+      "cappedFrames": 0,
+      "maximumShift": 11.180339887498949,
+      "shifts": [
+        {
+          "frame": 0,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 22628
+        },
+        {
+          "frame": 1,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 21876
+        },
+        {
+          "frame": 2,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 22769
+        },
+        {
+          "frame": 3,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 22250
+        },
+        {
+          "frame": 4,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 23595
+        },
+        {
+          "frame": 5,
+          "x": 4,
+          "y": -10,
+          "requestedX": 4,
+          "requestedY": -10,
+          "capped": false,
+          "corePixels": 24872
+        },
+        {
+          "frame": 6,
+          "x": 5,
+          "y": -9,
+          "requestedX": 5,
+          "requestedY": -9,
+          "capped": false,
+          "corePixels": 24260
+        },
+        {
+          "frame": 7,
+          "x": 5,
+          "y": -10,
+          "requestedX": 5,
+          "requestedY": -10,
+          "capped": false,
+          "corePixels": 23734
+        },
+        {
+          "frame": 8,
+          "x": 5,
+          "y": -9,
+          "requestedX": 5,
+          "requestedY": -9,
+          "capped": false,
+          "corePixels": 26135
+        },
+        {
+          "frame": 9,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 23397
+        },
+        {
+          "frame": 10,
+          "x": 2,
+          "y": -9,
+          "requestedX": 2,
+          "requestedY": -9,
+          "capped": false,
+          "corePixels": 23894
+        },
+        {
+          "frame": 11,
+          "x": 3,
+          "y": -9,
+          "requestedX": 3,
+          "requestedY": -9,
+          "capped": false,
+          "corePixels": 24403
+        },
+        {
+          "frame": 12,
+          "x": 2,
+          "y": -9,
+          "requestedX": 2,
+          "requestedY": -9,
+          "capped": false,
+          "corePixels": 24915
+        },
+        {
+          "frame": 13,
+          "x": 3,
+          "y": -8,
+          "requestedX": 3,
+          "requestedY": -8,
+          "capped": false,
+          "corePixels": 25058
+        },
+        {
+          "frame": 14,
+          "x": 3,
+          "y": 0,
+          "requestedX": 3,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 23924
+        },
+        {
+          "frame": 15,
+          "x": 0,
+          "y": -1,
+          "requestedX": 0,
+          "requestedY": -1,
+          "capped": false,
+          "corePixels": 23502
+        }
+      ]
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-southwest-motion.png",
+      "beforeSha256": "7f58c773c5ae931274fe01a91fb12d3f2ca4468244fe338b2725733aad1b68d7",
+      "afterSha256": "ea0b1d692a3e77401f00b31276d7733dedae7cc5032f7569ebc1aa2f606fcb9d",
+      "changedFrames": 5,
+      "cappedFrames": 0,
+      "maximumShift": 2.23606797749979,
+      "shifts": [
+        {
+          "frame": 0,
+          "x": 1,
+          "y": -2,
+          "requestedX": 1,
+          "requestedY": -2,
+          "capped": false,
+          "corePixels": 22846
+        },
+        {
+          "frame": 1,
+          "x": 0,
+          "y": -1,
+          "requestedX": 0,
+          "requestedY": -1,
+          "capped": false,
+          "corePixels": 22367
+        },
+        {
+          "frame": 2,
+          "x": 0,
+          "y": -1,
+          "requestedX": 0,
+          "requestedY": -1,
+          "capped": false,
+          "corePixels": 22342
+        },
+        {
+          "frame": 3,
+          "x": 0,
+          "y": -1,
+          "requestedX": 0,
+          "requestedY": -1,
+          "capped": false,
+          "corePixels": 22388
+        },
+        {
+          "frame": 4,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 23039
+        },
+        {
+          "frame": 5,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 23376
+        },
+        {
+          "frame": 6,
+          "x": 0,
+          "y": -1,
+          "requestedX": 0,
+          "requestedY": -1,
+          "capped": false,
+          "corePixels": 22406
+        },
+        {
+          "frame": 7,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 23792
+        },
+        {
+          "frame": 8,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 23363
+        },
+        {
+          "frame": 9,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 23778
+        },
+        {
+          "frame": 10,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 23220
+        },
+        {
+          "frame": 11,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 23179
+        },
+        {
+          "frame": 12,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 23662
+        },
+        {
+          "frame": 13,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 23124
+        },
+        {
+          "frame": 14,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 23413
+        },
+        {
+          "frame": 15,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 23171
+        }
+      ]
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-southwest-run.png",
+      "beforeSha256": "5e1178bed167dc76193e5ff9013b781ff92d43c1eac7bb8ab9d359c7622c0587",
+      "afterSha256": "e69917a6d579028cd5d7aa066b74d006921dee91a7614089736fff36030f4406",
+      "changedFrames": 15,
+      "cappedFrames": 2,
+      "maximumShift": 14,
+      "shifts": [
+        {
+          "frame": 0,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 2,
+          "capped": true,
+          "corePixels": 24105
+        },
+        {
+          "frame": 1,
+          "x": 1,
+          "y": -13,
+          "requestedX": 1,
+          "requestedY": -13,
+          "capped": false,
+          "corePixels": 24104
+        },
+        {
+          "frame": 2,
+          "x": 0,
+          "y": -13,
+          "requestedX": 0,
+          "requestedY": -13,
+          "capped": false,
+          "corePixels": 22228
+        },
+        {
+          "frame": 3,
+          "x": 0,
+          "y": -5,
+          "requestedX": 0,
+          "requestedY": -5,
+          "capped": false,
+          "corePixels": 22899
+        },
+        {
+          "frame": 4,
+          "x": 0,
+          "y": -4,
+          "requestedX": 0,
+          "requestedY": -4,
+          "capped": false,
+          "corePixels": 23971
+        },
+        {
+          "frame": 5,
+          "x": 0,
+          "y": -13,
+          "requestedX": 0,
+          "requestedY": -13,
+          "capped": false,
+          "corePixels": 24787
+        },
+        {
+          "frame": 6,
+          "x": 0,
+          "y": -14,
+          "requestedX": 0,
+          "requestedY": -14,
+          "capped": false,
+          "corePixels": 23894
+        },
+        {
+          "frame": 7,
+          "x": 0,
+          "y": -4,
+          "requestedX": 0,
+          "requestedY": -6,
+          "capped": true,
+          "corePixels": 23731
+        },
+        {
+          "frame": 8,
+          "x": 1,
+          "y": -10,
+          "requestedX": 1,
+          "requestedY": -10,
+          "capped": false,
+          "corePixels": 24204
+        },
+        {
+          "frame": 9,
+          "x": 0,
+          "y": -13,
+          "requestedX": 0,
+          "requestedY": -13,
+          "capped": false,
+          "corePixels": 23268
+        },
+        {
+          "frame": 10,
+          "x": 0,
+          "y": -13,
+          "requestedX": 0,
+          "requestedY": -13,
+          "capped": false,
+          "corePixels": 22988
+        },
+        {
+          "frame": 11,
+          "x": 0,
+          "y": -12,
+          "requestedX": 0,
+          "requestedY": -12,
+          "capped": false,
+          "corePixels": 22779
+        },
+        {
+          "frame": 12,
+          "x": 0,
+          "y": -13,
+          "requestedX": 0,
+          "requestedY": -13,
+          "capped": false,
+          "corePixels": 24002
+        },
+        {
+          "frame": 13,
+          "x": 0,
+          "y": -14,
+          "requestedX": 0,
+          "requestedY": -14,
+          "capped": false,
+          "corePixels": 24517
+        },
+        {
+          "frame": 14,
+          "x": 0,
+          "y": -14,
+          "requestedX": 0,
+          "requestedY": -14,
+          "capped": false,
+          "corePixels": 22530
+        },
+        {
+          "frame": 15,
+          "x": 0,
+          "y": -14,
+          "requestedX": 0,
+          "requestedY": -14,
+          "capped": false,
+          "corePixels": 22436
+        }
+      ]
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-southwest-crouch.png",
+      "beforeSha256": "a737a29ce1c24844ed3f49d0d4f247e5f8fa2b79cdb8a66b2404211b7c67c8c6",
+      "afterSha256": "e7981723dbda95d547ba75f3d3579200332cf0f3cc9cefb5d7164d0cb44f5561",
+      "changedFrames": 14,
+      "cappedFrames": 0,
+      "maximumShift": 7,
+      "shifts": [
+        {
+          "frame": 0,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 22686
+        },
+        {
+          "frame": 1,
+          "x": 0,
+          "y": -7,
+          "requestedX": 0,
+          "requestedY": -7,
+          "capped": false,
+          "corePixels": 23525
+        },
+        {
+          "frame": 2,
+          "x": 0,
+          "y": -1,
+          "requestedX": 0,
+          "requestedY": -1,
+          "capped": false,
+          "corePixels": 23459
+        },
+        {
+          "frame": 3,
+          "x": 0,
+          "y": -3,
+          "requestedX": 0,
+          "requestedY": -3,
+          "capped": false,
+          "corePixels": 23867
+        },
+        {
+          "frame": 4,
+          "x": 0,
+          "y": -7,
+          "requestedX": 0,
+          "requestedY": -7,
+          "capped": false,
+          "corePixels": 21639
+        },
+        {
+          "frame": 5,
+          "x": 0,
+          "y": -7,
+          "requestedX": 0,
+          "requestedY": -7,
+          "capped": false,
+          "corePixels": 21195
+        },
+        {
+          "frame": 6,
+          "x": 0,
+          "y": -6,
+          "requestedX": 0,
+          "requestedY": -6,
+          "capped": false,
+          "corePixels": 20872
+        },
+        {
+          "frame": 7,
+          "x": 0,
+          "y": -6,
+          "requestedX": 0,
+          "requestedY": -6,
+          "capped": false,
+          "corePixels": 19825
+        },
+        {
+          "frame": 8,
+          "x": 0,
+          "y": -6,
+          "requestedX": 0,
+          "requestedY": -6,
+          "capped": false,
+          "corePixels": 21201
+        },
+        {
+          "frame": 9,
+          "x": 0,
+          "y": -5,
+          "requestedX": 0,
+          "requestedY": -5,
+          "capped": false,
+          "corePixels": 20059
+        },
+        {
+          "frame": 10,
+          "x": 0,
+          "y": -5,
+          "requestedX": 0,
+          "requestedY": -5,
+          "capped": false,
+          "corePixels": 21419
+        },
+        {
+          "frame": 11,
+          "x": 0,
+          "y": -5,
+          "requestedX": 0,
+          "requestedY": -5,
+          "capped": false,
+          "corePixels": 20213
+        },
+        {
+          "frame": 12,
+          "x": 0,
+          "y": -6,
+          "requestedX": 0,
+          "requestedY": -6,
+          "capped": false,
+          "corePixels": 20475
+        },
+        {
+          "frame": 13,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 22799
+        },
+        {
+          "frame": 14,
+          "x": 0,
+          "y": -2,
+          "requestedX": 0,
+          "requestedY": -2,
+          "capped": false,
+          "corePixels": 22593
+        },
+        {
+          "frame": 15,
+          "x": 1,
+          "y": -6,
+          "requestedX": 1,
+          "requestedY": -6,
+          "capped": false,
+          "corePixels": 24499
+        }
+      ]
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-southwest-action.png",
+      "beforeSha256": "cb0f8662af05b3e117d16d0fe772a37899b3aae79fec9b2dcdf308288307373d",
+      "afterSha256": "ee75590790055caf3f77e22a335ff7cc9f1e6bfe100045af5b379162690e2535",
+      "changedFrames": 13,
+      "cappedFrames": 0,
+      "maximumShift": 6,
+      "shifts": [
+        {
+          "frame": 0,
+          "x": 0,
+          "y": -6,
+          "requestedX": 0,
+          "requestedY": -6,
+          "capped": false,
+          "corePixels": 26159
+        },
+        {
+          "frame": 1,
+          "x": 0,
+          "y": -6,
+          "requestedX": 0,
+          "requestedY": -6,
+          "capped": false,
+          "corePixels": 24853
+        },
+        {
+          "frame": 2,
+          "x": 0,
+          "y": -6,
+          "requestedX": 0,
+          "requestedY": -6,
+          "capped": false,
+          "corePixels": 27169
+        },
+        {
+          "frame": 3,
+          "x": 0,
+          "y": -6,
+          "requestedX": 0,
+          "requestedY": -6,
+          "capped": false,
+          "corePixels": 24856
+        },
+        {
+          "frame": 4,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 27276
+        },
+        {
+          "frame": 5,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 27751
+        },
+        {
+          "frame": 6,
+          "x": 0,
+          "y": -4,
+          "requestedX": 0,
+          "requestedY": -4,
+          "capped": false,
+          "corePixels": 27058
+        },
+        {
+          "frame": 7,
+          "x": 0,
+          "y": -4,
+          "requestedX": 0,
+          "requestedY": -4,
+          "capped": false,
+          "corePixels": 26979
+        },
+        {
+          "frame": 8,
+          "x": 0,
+          "y": -3,
+          "requestedX": 0,
+          "requestedY": -3,
+          "capped": false,
+          "corePixels": 26685
+        },
+        {
+          "frame": 9,
+          "x": 0,
+          "y": -5,
+          "requestedX": 0,
+          "requestedY": -5,
+          "capped": false,
+          "corePixels": 28163
+        },
+        {
+          "frame": 10,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 27671
+        },
+        {
+          "frame": 11,
+          "x": -1,
+          "y": 0,
+          "requestedX": -1,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 27177
+        },
+        {
+          "frame": 12,
+          "x": 0,
+          "y": -3,
+          "requestedX": 0,
+          "requestedY": -3,
+          "capped": false,
+          "corePixels": 26291
+        },
+        {
+          "frame": 13,
+          "x": 0,
+          "y": -3,
+          "requestedX": 0,
+          "requestedY": -3,
+          "capped": false,
+          "corePixels": 26269
+        },
+        {
+          "frame": 14,
+          "x": 0,
+          "y": -3,
+          "requestedX": 0,
+          "requestedY": -3,
+          "capped": false,
+          "corePixels": 26270
+        },
+        {
+          "frame": 15,
+          "x": 0,
+          "y": -3,
+          "requestedX": 0,
+          "requestedY": -3,
+          "capped": false,
+          "corePixels": 26192
+        }
+      ]
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-south-motion.png",
+      "beforeSha256": "506d519404ec07ef178b637ef9dad2639219a78ac767d99b70656d5b588a8a46",
+      "afterSha256": "5e8488ebe79e8a4cce0ec293274426814bcb2748c39ad347497ae03c13e6ffb0",
+      "changedFrames": 13,
+      "cappedFrames": 0,
+      "maximumShift": 3.1622776601683795,
+      "shifts": [
+        {
+          "frame": 0,
+          "x": 0,
+          "y": -1,
+          "requestedX": 0,
+          "requestedY": -1,
+          "capped": false,
+          "corePixels": 11813
+        },
+        {
+          "frame": 1,
+          "x": 0,
+          "y": -1,
+          "requestedX": 0,
+          "requestedY": -1,
+          "capped": false,
+          "corePixels": 11400
+        },
+        {
+          "frame": 2,
+          "x": 0,
+          "y": -2,
+          "requestedX": 0,
+          "requestedY": -2,
+          "capped": false,
+          "corePixels": 11462
+        },
+        {
+          "frame": 3,
+          "x": -1,
+          "y": -2,
+          "requestedX": -1,
+          "requestedY": -2,
+          "capped": false,
+          "corePixels": 11894
+        },
+        {
+          "frame": 4,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 11875
+        },
+        {
+          "frame": 5,
+          "x": 0,
+          "y": -2,
+          "requestedX": 0,
+          "requestedY": -2,
+          "capped": false,
+          "corePixels": 12177
+        },
+        {
+          "frame": 6,
+          "x": 0,
+          "y": -2,
+          "requestedX": 0,
+          "requestedY": -2,
+          "capped": false,
+          "corePixels": 12124
+        },
+        {
+          "frame": 7,
+          "x": 0,
+          "y": -2,
+          "requestedX": 0,
+          "requestedY": -2,
+          "capped": false,
+          "corePixels": 12528
+        },
+        {
+          "frame": 8,
+          "x": 0,
+          "y": -3,
+          "requestedX": 0,
+          "requestedY": -3,
+          "capped": false,
+          "corePixels": 11351
+        },
+        {
+          "frame": 9,
+          "x": 0,
+          "y": -3,
+          "requestedX": 0,
+          "requestedY": -3,
+          "capped": false,
+          "corePixels": 11257
+        },
+        {
+          "frame": 10,
+          "x": 0,
+          "y": -3,
+          "requestedX": 0,
+          "requestedY": -3,
+          "capped": false,
+          "corePixels": 11539
+        },
+        {
+          "frame": 11,
+          "x": 1,
+          "y": -3,
+          "requestedX": 1,
+          "requestedY": -3,
+          "capped": false,
+          "corePixels": 11437
+        },
+        {
+          "frame": 12,
+          "x": 0,
+          "y": -3,
+          "requestedX": 0,
+          "requestedY": -3,
+          "capped": false,
+          "corePixels": 12129
+        },
+        {
+          "frame": 13,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 12015
+        },
+        {
+          "frame": 14,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 12362
+        },
+        {
+          "frame": 15,
+          "x": 1,
+          "y": 0,
+          "requestedX": 1,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 11934
+        }
+      ]
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-south-run.png",
+      "beforeSha256": "d186bfce4778368423f683a69358000b2c7c907b51850f82a7ff8c0a643804cb",
+      "afterSha256": "e2e04f49d6bb76be4018a85e1ce98e630650fb521930691a0e8225a81bd7b3e4",
+      "changedFrames": 16,
+      "cappedFrames": 0,
+      "maximumShift": 11,
+      "shifts": [
+        {
+          "frame": 0,
+          "x": -1,
+          "y": 0,
+          "requestedX": -1,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 12293
+        },
+        {
+          "frame": 1,
+          "x": 0,
+          "y": -5,
+          "requestedX": 0,
+          "requestedY": -5,
+          "capped": false,
+          "corePixels": 11550
+        },
+        {
+          "frame": 2,
+          "x": 0,
+          "y": -11,
+          "requestedX": 0,
+          "requestedY": -11,
+          "capped": false,
+          "corePixels": 11261
+        },
+        {
+          "frame": 3,
+          "x": 0,
+          "y": -5,
+          "requestedX": 0,
+          "requestedY": -5,
+          "capped": false,
+          "corePixels": 11850
+        },
+        {
+          "frame": 4,
+          "x": -1,
+          "y": -3,
+          "requestedX": -1,
+          "requestedY": -3,
+          "capped": false,
+          "corePixels": 12037
+        },
+        {
+          "frame": 5,
+          "x": 0,
+          "y": -11,
+          "requestedX": 0,
+          "requestedY": -11,
+          "capped": false,
+          "corePixels": 12490
+        },
+        {
+          "frame": 6,
+          "x": 0,
+          "y": -7,
+          "requestedX": 0,
+          "requestedY": -7,
+          "capped": false,
+          "corePixels": 12754
+        },
+        {
+          "frame": 7,
+          "x": 0,
+          "y": -7,
+          "requestedX": 0,
+          "requestedY": -7,
+          "capped": false,
+          "corePixels": 12473
+        },
+        {
+          "frame": 8,
+          "x": 0,
+          "y": -11,
+          "requestedX": 0,
+          "requestedY": -11,
+          "capped": false,
+          "corePixels": 10769
+        },
+        {
+          "frame": 9,
+          "x": 0,
+          "y": -11,
+          "requestedX": 0,
+          "requestedY": -11,
+          "capped": false,
+          "corePixels": 11132
+        },
+        {
+          "frame": 10,
+          "x": 0,
+          "y": -11,
+          "requestedX": 0,
+          "requestedY": -11,
+          "capped": false,
+          "corePixels": 11658
+        },
+        {
+          "frame": 11,
+          "x": 0,
+          "y": -11,
+          "requestedX": 0,
+          "requestedY": -11,
+          "capped": false,
+          "corePixels": 11564
+        },
+        {
+          "frame": 12,
+          "x": 0,
+          "y": -11,
+          "requestedX": 0,
+          "requestedY": -11,
+          "capped": false,
+          "corePixels": 11700
+        },
+        {
+          "frame": 13,
+          "x": 0,
+          "y": -11,
+          "requestedX": 0,
+          "requestedY": -11,
+          "capped": false,
+          "corePixels": 11893
+        },
+        {
+          "frame": 14,
+          "x": 0,
+          "y": -11,
+          "requestedX": 0,
+          "requestedY": -11,
+          "capped": false,
+          "corePixels": 11739
+        },
+        {
+          "frame": 15,
+          "x": 0,
+          "y": -9,
+          "requestedX": 0,
+          "requestedY": -9,
+          "capped": false,
+          "corePixels": 11584
+        }
+      ]
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-south-crouch.png",
+      "beforeSha256": "da1daff275bd94d12917bdb5257b3299152622929a99306cebf228a612b10b41",
+      "afterSha256": "c8c7fc662b3abc84ea994129eca2c98d114e1ef45635a370897026696a10f6ff",
+      "changedFrames": 14,
+      "cappedFrames": 0,
+      "maximumShift": 11,
+      "shifts": [
+        {
+          "frame": 0,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 12563
+        },
+        {
+          "frame": 1,
+          "x": 0,
+          "y": -10,
+          "requestedX": 0,
+          "requestedY": -10,
+          "capped": false,
+          "corePixels": 12583
+        },
+        {
+          "frame": 2,
+          "x": 0,
+          "y": -6,
+          "requestedX": 0,
+          "requestedY": -6,
+          "capped": false,
+          "corePixels": 12421
+        },
+        {
+          "frame": 3,
+          "x": 0,
+          "y": -8,
+          "requestedX": 0,
+          "requestedY": -8,
+          "capped": false,
+          "corePixels": 12726
+        },
+        {
+          "frame": 4,
+          "x": 0,
+          "y": -11,
+          "requestedX": 0,
+          "requestedY": -11,
+          "capped": false,
+          "corePixels": 11592
+        },
+        {
+          "frame": 5,
+          "x": 0,
+          "y": -10,
+          "requestedX": 0,
+          "requestedY": -10,
+          "capped": false,
+          "corePixels": 11634
+        },
+        {
+          "frame": 6,
+          "x": 0,
+          "y": -10,
+          "requestedX": 0,
+          "requestedY": -10,
+          "capped": false,
+          "corePixels": 11104
+        },
+        {
+          "frame": 7,
+          "x": 0,
+          "y": -11,
+          "requestedX": 0,
+          "requestedY": -11,
+          "capped": false,
+          "corePixels": 11160
+        },
+        {
+          "frame": 8,
+          "x": 0,
+          "y": -4,
+          "requestedX": 0,
+          "requestedY": -4,
+          "capped": false,
+          "corePixels": 11537
+        },
+        {
+          "frame": 9,
+          "x": 0,
+          "y": -4,
+          "requestedX": 0,
+          "requestedY": -4,
+          "capped": false,
+          "corePixels": 10681
+        },
+        {
+          "frame": 10,
+          "x": -1,
+          "y": -4,
+          "requestedX": -1,
+          "requestedY": -4,
+          "capped": false,
+          "corePixels": 10858
+        },
+        {
+          "frame": 11,
+          "x": 0,
+          "y": -2,
+          "requestedX": 0,
+          "requestedY": -2,
+          "capped": false,
+          "corePixels": 13335
+        },
+        {
+          "frame": 12,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 13278
+        },
+        {
+          "frame": 13,
+          "x": 0,
+          "y": -4,
+          "requestedX": 0,
+          "requestedY": -4,
+          "capped": false,
+          "corePixels": 11904
+        },
+        {
+          "frame": 14,
+          "x": 0,
+          "y": -2,
+          "requestedX": 0,
+          "requestedY": -2,
+          "capped": false,
+          "corePixels": 11923
+        },
+        {
+          "frame": 15,
+          "x": 0,
+          "y": -4,
+          "requestedX": 0,
+          "requestedY": -4,
+          "capped": false,
+          "corePixels": 11313
+        }
+      ]
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-south-action.png",
+      "beforeSha256": "7df2d0cf159cd263061dc85ac8dc8a582afb4c7197a0f8d5ab1c54f4532b91c1",
+      "afterSha256": "ea89438f14a2241739857ec0cd5db47c0b5930f9e5927c4563052cbeb3d6f207",
+      "changedFrames": 8,
+      "cappedFrames": 0,
+      "maximumShift": 1,
+      "shifts": [
+        {
+          "frame": 0,
+          "x": 0,
+          "y": -1,
+          "requestedX": 0,
+          "requestedY": -1,
+          "capped": false,
+          "corePixels": 15172
+        },
+        {
+          "frame": 1,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 15124
+        },
+        {
+          "frame": 2,
+          "x": 0,
+          "y": -1,
+          "requestedX": 0,
+          "requestedY": -1,
+          "capped": false,
+          "corePixels": 15642
+        },
+        {
+          "frame": 3,
+          "x": 0,
+          "y": -1,
+          "requestedX": 0,
+          "requestedY": -1,
+          "capped": false,
+          "corePixels": 15540
+        },
+        {
+          "frame": 4,
+          "x": 0,
+          "y": -1,
+          "requestedX": 0,
+          "requestedY": -1,
+          "capped": false,
+          "corePixels": 16636
+        },
+        {
+          "frame": 5,
+          "x": 0,
+          "y": -1,
+          "requestedX": 0,
+          "requestedY": -1,
+          "capped": false,
+          "corePixels": 16180
+        },
+        {
+          "frame": 6,
+          "x": 0,
+          "y": -1,
+          "requestedX": 0,
+          "requestedY": -1,
+          "capped": false,
+          "corePixels": 16180
+        },
+        {
+          "frame": 7,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 16286
+        },
+        {
+          "frame": 8,
+          "x": 0,
+          "y": -1,
+          "requestedX": 0,
+          "requestedY": -1,
+          "capped": false,
+          "corePixels": 15440
+        },
+        {
+          "frame": 9,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 15689
+        },
+        {
+          "frame": 10,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 15313
+        },
+        {
+          "frame": 11,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 15406
+        },
+        {
+          "frame": 12,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 15885
+        },
+        {
+          "frame": 13,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 16058
+        },
+        {
+          "frame": 14,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 16394
+        },
+        {
+          "frame": 15,
+          "x": 0,
+          "y": 1,
+          "requestedX": 0,
+          "requestedY": 1,
+          "capped": false,
+          "corePixels": 16367
+        }
+      ]
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-southeast-motion.png",
+      "beforeSha256": "f7f45bf6022cdeb2bc537b34f3c1096ea54f230d12844da73c651864be6946e9",
+      "afterSha256": "7d41050655cb1fc07f377eed25ae36921d8b953eae6ef03e382ea7d26620b1f9",
+      "changedFrames": 5,
+      "cappedFrames": 0,
+      "maximumShift": 1,
+      "shifts": [
+        {
+          "frame": 0,
+          "x": 0,
+          "y": -1,
+          "requestedX": 0,
+          "requestedY": -1,
+          "capped": false,
+          "corePixels": 20724
+        },
+        {
+          "frame": 1,
+          "x": 0,
+          "y": -1,
+          "requestedX": 0,
+          "requestedY": -1,
+          "capped": false,
+          "corePixels": 21817
+        },
+        {
+          "frame": 2,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 22288
+        },
+        {
+          "frame": 3,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 21896
+        },
+        {
+          "frame": 4,
+          "x": -1,
+          "y": 0,
+          "requestedX": -1,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 22403
+        },
+        {
+          "frame": 5,
+          "x": 0,
+          "y": -1,
+          "requestedX": 0,
+          "requestedY": -1,
+          "capped": false,
+          "corePixels": 22979
+        },
+        {
+          "frame": 6,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 23002
+        },
+        {
+          "frame": 7,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 22137
+        },
+        {
+          "frame": 8,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 22655
+        },
+        {
+          "frame": 9,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 22725
+        },
+        {
+          "frame": 10,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 22797
+        },
+        {
+          "frame": 11,
+          "x": 1,
+          "y": 0,
+          "requestedX": 1,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 23324
+        },
+        {
+          "frame": 12,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 22895
+        },
+        {
+          "frame": 13,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 22855
+        },
+        {
+          "frame": 14,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 22613
+        },
+        {
+          "frame": 15,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 23190
+        }
+      ]
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-southeast-run.png",
+      "beforeSha256": "04ddb4bc5c600d29a215647292c05332061e064a49ceb84e4900fba42c615aad",
+      "afterSha256": "41e2da0bfea047ca7a1849001fb5d98d49a47dcec5d724865c7b5bc09f3ca2e1",
+      "changedFrames": 15,
+      "cappedFrames": 0,
+      "maximumShift": 13,
+      "shifts": [
+        {
+          "frame": 0,
+          "x": 0,
+          "y": -4,
+          "requestedX": 0,
+          "requestedY": -4,
+          "capped": false,
+          "corePixels": 19689
+        },
+        {
+          "frame": 1,
+          "x": 0,
+          "y": -13,
+          "requestedX": 0,
+          "requestedY": -13,
+          "capped": false,
+          "corePixels": 19871
+        },
+        {
+          "frame": 2,
+          "x": 0,
+          "y": -9,
+          "requestedX": 0,
+          "requestedY": -9,
+          "capped": false,
+          "corePixels": 20587
+        },
+        {
+          "frame": 3,
+          "x": 0,
+          "y": -12,
+          "requestedX": 0,
+          "requestedY": -12,
+          "capped": false,
+          "corePixels": 20973
+        },
+        {
+          "frame": 4,
+          "x": 0,
+          "y": -8,
+          "requestedX": 0,
+          "requestedY": -8,
+          "capped": false,
+          "corePixels": 21168
+        },
+        {
+          "frame": 5,
+          "x": 0,
+          "y": -5,
+          "requestedX": 0,
+          "requestedY": -5,
+          "capped": false,
+          "corePixels": 20809
+        },
+        {
+          "frame": 6,
+          "x": 0,
+          "y": -13,
+          "requestedX": 0,
+          "requestedY": -13,
+          "capped": false,
+          "corePixels": 21677
+        },
+        {
+          "frame": 7,
+          "x": 0,
+          "y": -13,
+          "requestedX": 0,
+          "requestedY": -13,
+          "capped": false,
+          "corePixels": 19941
+        },
+        {
+          "frame": 8,
+          "x": 0,
+          "y": -12,
+          "requestedX": 0,
+          "requestedY": -12,
+          "capped": false,
+          "corePixels": 22422
+        },
+        {
+          "frame": 9,
+          "x": 0,
+          "y": -8,
+          "requestedX": 0,
+          "requestedY": -8,
+          "capped": false,
+          "corePixels": 21689
+        },
+        {
+          "frame": 10,
+          "x": 0,
+          "y": -13,
+          "requestedX": 0,
+          "requestedY": -13,
+          "capped": false,
+          "corePixels": 20547
+        },
+        {
+          "frame": 11,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 20083
+        },
+        {
+          "frame": 12,
+          "x": 0,
+          "y": -13,
+          "requestedX": 0,
+          "requestedY": -13,
+          "capped": false,
+          "corePixels": 20818
+        },
+        {
+          "frame": 13,
+          "x": 0,
+          "y": -12,
+          "requestedX": 0,
+          "requestedY": -12,
+          "capped": false,
+          "corePixels": 20517
+        },
+        {
+          "frame": 14,
+          "x": 0,
+          "y": -7,
+          "requestedX": 0,
+          "requestedY": -7,
+          "capped": false,
+          "corePixels": 20275
+        },
+        {
+          "frame": 15,
+          "x": 0,
+          "y": -13,
+          "requestedX": 0,
+          "requestedY": -13,
+          "capped": false,
+          "corePixels": 20119
+        }
+      ]
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-southeast-crouch.png",
+      "beforeSha256": "9ab159b29a623bdb2dd2e1d3f7569824a5d508ac298b287637c0f069030c28de",
+      "afterSha256": "4b2a504158beb754426cb934da1f615e70ce5f263364f53f0200a7a7abae6c2c",
+      "changedFrames": 14,
+      "cappedFrames": 0,
+      "maximumShift": 7,
+      "shifts": [
+        {
+          "frame": 0,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 22686
+        },
+        {
+          "frame": 1,
+          "x": 0,
+          "y": -7,
+          "requestedX": 0,
+          "requestedY": -7,
+          "capped": false,
+          "corePixels": 23525
+        },
+        {
+          "frame": 2,
+          "x": 0,
+          "y": -1,
+          "requestedX": 0,
+          "requestedY": -1,
+          "capped": false,
+          "corePixels": 23459
+        },
+        {
+          "frame": 3,
+          "x": 0,
+          "y": -3,
+          "requestedX": 0,
+          "requestedY": -3,
+          "capped": false,
+          "corePixels": 23867
+        },
+        {
+          "frame": 4,
+          "x": 0,
+          "y": -7,
+          "requestedX": 0,
+          "requestedY": -7,
+          "capped": false,
+          "corePixels": 21639
+        },
+        {
+          "frame": 5,
+          "x": 0,
+          "y": -7,
+          "requestedX": 0,
+          "requestedY": -7,
+          "capped": false,
+          "corePixels": 21195
+        },
+        {
+          "frame": 6,
+          "x": 0,
+          "y": -6,
+          "requestedX": 0,
+          "requestedY": -6,
+          "capped": false,
+          "corePixels": 20872
+        },
+        {
+          "frame": 7,
+          "x": 0,
+          "y": -6,
+          "requestedX": 0,
+          "requestedY": -6,
+          "capped": false,
+          "corePixels": 19825
+        },
+        {
+          "frame": 8,
+          "x": 0,
+          "y": -6,
+          "requestedX": 0,
+          "requestedY": -6,
+          "capped": false,
+          "corePixels": 21201
+        },
+        {
+          "frame": 9,
+          "x": 0,
+          "y": -5,
+          "requestedX": 0,
+          "requestedY": -5,
+          "capped": false,
+          "corePixels": 20059
+        },
+        {
+          "frame": 10,
+          "x": 0,
+          "y": -5,
+          "requestedX": 0,
+          "requestedY": -5,
+          "capped": false,
+          "corePixels": 21419
+        },
+        {
+          "frame": 11,
+          "x": 0,
+          "y": -5,
+          "requestedX": 0,
+          "requestedY": -5,
+          "capped": false,
+          "corePixels": 20213
+        },
+        {
+          "frame": 12,
+          "x": 0,
+          "y": -6,
+          "requestedX": 0,
+          "requestedY": -6,
+          "capped": false,
+          "corePixels": 20475
+        },
+        {
+          "frame": 13,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 22799
+        },
+        {
+          "frame": 14,
+          "x": 0,
+          "y": -2,
+          "requestedX": 0,
+          "requestedY": -2,
+          "capped": false,
+          "corePixels": 22593
+        },
+        {
+          "frame": 15,
+          "x": -1,
+          "y": -6,
+          "requestedX": -1,
+          "requestedY": -6,
+          "capped": false,
+          "corePixels": 24499
+        }
+      ]
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-southeast-action.png",
+      "beforeSha256": "0d7eb924f350d13f67aee9189bd550a440e1a3731dc02a2ca0424ae7acfbe5c5",
+      "afterSha256": "0a9c66df00a1877dca77375a697f9a18257ab5f8557d39fbe245e8bfcd0740a8",
+      "changedFrames": 13,
+      "cappedFrames": 0,
+      "maximumShift": 7,
+      "shifts": [
+        {
+          "frame": 0,
+          "x": 0,
+          "y": -1,
+          "requestedX": 0,
+          "requestedY": -1,
+          "capped": false,
+          "corePixels": 23550
+        },
+        {
+          "frame": 1,
+          "x": 0,
+          "y": -7,
+          "requestedX": 0,
+          "requestedY": -7,
+          "capped": false,
+          "corePixels": 25103
+        },
+        {
+          "frame": 2,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 25078
+        },
+        {
+          "frame": 3,
+          "x": 0,
+          "y": -6,
+          "requestedX": 0,
+          "requestedY": -6,
+          "capped": false,
+          "corePixels": 24866
+        },
+        {
+          "frame": 4,
+          "x": 0,
+          "y": -6,
+          "requestedX": 0,
+          "requestedY": -6,
+          "capped": false,
+          "corePixels": 24763
+        },
+        {
+          "frame": 5,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 26393
+        },
+        {
+          "frame": 6,
+          "x": 0,
+          "y": -1,
+          "requestedX": 0,
+          "requestedY": -1,
+          "capped": false,
+          "corePixels": 26144
+        },
+        {
+          "frame": 7,
+          "x": 1,
+          "y": -1,
+          "requestedX": 1,
+          "requestedY": -1,
+          "capped": false,
+          "corePixels": 24419
+        },
+        {
+          "frame": 8,
+          "x": 0,
+          "y": -1,
+          "requestedX": 0,
+          "requestedY": -1,
+          "capped": false,
+          "corePixels": 25072
+        },
+        {
+          "frame": 9,
+          "x": 0,
+          "y": -1,
+          "requestedX": 0,
+          "requestedY": -1,
+          "capped": false,
+          "corePixels": 25799
+        },
+        {
+          "frame": 10,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 25914
+        },
+        {
+          "frame": 11,
+          "x": 0,
+          "y": -5,
+          "requestedX": 0,
+          "requestedY": -5,
+          "capped": false,
+          "corePixels": 25284
+        },
+        {
+          "frame": 12,
+          "x": 0,
+          "y": -5,
+          "requestedX": 0,
+          "requestedY": -5,
+          "capped": false,
+          "corePixels": 24630
+        },
+        {
+          "frame": 13,
+          "x": 0,
+          "y": -5,
+          "requestedX": 0,
+          "requestedY": -5,
+          "capped": false,
+          "corePixels": 24346
+        },
+        {
+          "frame": 14,
+          "x": 0,
+          "y": -5,
+          "requestedX": 0,
+          "requestedY": -5,
+          "capped": false,
+          "corePixels": 24893
+        },
+        {
+          "frame": 15,
+          "x": 0,
+          "y": -5,
+          "requestedX": 0,
+          "requestedY": -5,
+          "capped": false,
+          "corePixels": 24056
+        }
+      ]
+    },
+    {
+      "file": "public/assets/niva-sheet.png",
+      "beforeSha256": "a2ffb7d0eb86588c369fac71df3771af5074ccfb53df2f493350ea7a90188203",
+      "afterSha256": "d0189737256caef2a43790db68a0cd646f6e42a3e6f662e6d3ce2dda9dbad17b",
+      "changedFrames": 2,
+      "cappedFrames": 0,
+      "maximumShift": 1,
+      "shifts": [
+        {
+          "frame": 0,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 17634
+        },
+        {
+          "frame": 1,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 18180
+        },
+        {
+          "frame": 2,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 17819
+        },
+        {
+          "frame": 3,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 18156
+        },
+        {
+          "frame": 4,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 19212
+        },
+        {
+          "frame": 5,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 18931
+        },
+        {
+          "frame": 6,
+          "x": 0,
+          "y": 1,
+          "requestedX": 0,
+          "requestedY": 1,
+          "capped": false,
+          "corePixels": 18962
+        },
+        {
+          "frame": 7,
+          "x": 1,
+          "y": 0,
+          "requestedX": 1,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 19662
+        },
+        {
+          "frame": 8,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 15585
+        },
+        {
+          "frame": 9,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 16575
+        },
+        {
+          "frame": 10,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 16866
+        },
+        {
+          "frame": 11,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 15510
+        },
+        {
+          "frame": 12,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 15268
+        },
+        {
+          "frame": 13,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 16607
+        },
+        {
+          "frame": 14,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 16698
+        },
+        {
+          "frame": 15,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 15259
+        }
+      ]
+    },
+    {
+      "file": "public/assets/torr-sheet.png",
+      "beforeSha256": "3b93562b9567cbbc81ee8847b1c512bd188c04247adf75557bb09fc43cfee6db",
+      "afterSha256": "f1494ec3dfc74a663bd5a784312a9df19412cbceb6fcbdf4403ff02693dec584",
+      "changedFrames": 3,
+      "cappedFrames": 0,
+      "maximumShift": 1,
+      "shifts": [
+        {
+          "frame": 0,
+          "x": 0,
+          "y": 1,
+          "requestedX": 0,
+          "requestedY": 1,
+          "capped": false,
+          "corePixels": 18297
+        },
+        {
+          "frame": 1,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 18896
+        },
+        {
+          "frame": 2,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 18414
+        },
+        {
+          "frame": 3,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 19594
+        },
+        {
+          "frame": 4,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 19897
+        },
+        {
+          "frame": 5,
+          "x": 0,
+          "y": -1,
+          "requestedX": 0,
+          "requestedY": -1,
+          "capped": false,
+          "corePixels": 19707
+        },
+        {
+          "frame": 6,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 19415
+        },
+        {
+          "frame": 7,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 19983
+        },
+        {
+          "frame": 8,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 16281
+        },
+        {
+          "frame": 9,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 17326
+        },
+        {
+          "frame": 10,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 17265
+        },
+        {
+          "frame": 11,
+          "x": 1,
+          "y": 0,
+          "requestedX": 1,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 16009
+        },
+        {
+          "frame": 12,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 16305
+        },
+        {
+          "frame": 13,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 17361
+        },
+        {
+          "frame": 14,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 17662
+        },
+        {
+          "frame": 15,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 15775
+        }
+      ]
+    },
+    {
+      "file": "public/assets/prey-v2/rabbit-atlas.png",
+      "beforeSha256": "f0817f00cf593e9f1f8af40659514155aa805c4bed912b4343a02838c19b9e3e",
+      "afterSha256": "2a260730ac1290899e8d6f7d111e739d3f02392c834db4f728fd36daac6d1ee7",
+      "changedFrames": 2,
+      "cappedFrames": 0,
+      "maximumShift": 2,
+      "shifts": [
+        {
+          "frame": 0,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 6305
+        },
+        {
+          "frame": 1,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 4749
+        },
+        {
+          "frame": 2,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 3474
+        },
+        {
+          "frame": 3,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 4623
+        },
+        {
+          "frame": 4,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 4939
+        },
+        {
+          "frame": 5,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 4425
+        },
+        {
+          "frame": 6,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 3419
+        },
+        {
+          "frame": 7,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 4546
+        },
+        {
+          "frame": 8,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 6206
+        },
+        {
+          "frame": 9,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 4700
+        },
+        {
+          "frame": 10,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 3433
+        },
+        {
+          "frame": 11,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 4626
+        },
+        {
+          "frame": 12,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 4853
+        },
+        {
+          "frame": 13,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 4418
+        },
+        {
+          "frame": 14,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 3389
+        },
+        {
+          "frame": 15,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 4506
+        },
+        {
+          "frame": 16,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 5053
+        },
+        {
+          "frame": 17,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 3300
+        },
+        {
+          "frame": 18,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 2896
+        },
+        {
+          "frame": 19,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 3308
+        },
+        {
+          "frame": 20,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 4789
+        },
+        {
+          "frame": 21,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 3790
+        },
+        {
+          "frame": 22,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 3335
+        },
+        {
+          "frame": 23,
+          "x": 0,
+          "y": -2,
+          "requestedX": 0,
+          "requestedY": -2,
+          "capped": false,
+          "corePixels": 3775
+        },
+        {
+          "frame": 24,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 5153
+        },
+        {
+          "frame": 25,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 2614
+        },
+        {
+          "frame": 26,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 2619
+        },
+        {
+          "frame": 27,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 3193
+        },
+        {
+          "frame": 28,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 4847
+        },
+        {
+          "frame": 29,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 4088
+        },
+        {
+          "frame": 30,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 3615
+        },
+        {
+          "frame": 31,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 4012
+        },
+        {
+          "frame": 32,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 5626
+        },
+        {
+          "frame": 33,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 2448
+        },
+        {
+          "frame": 34,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 3164
+        },
+        {
+          "frame": 35,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 2476
+        },
+        {
+          "frame": 36,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 5251
+        },
+        {
+          "frame": 37,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 3910
+        },
+        {
+          "frame": 38,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 3182
+        },
+        {
+          "frame": 39,
+          "x": 0,
+          "y": -2,
+          "requestedX": 0,
+          "requestedY": -2,
+          "capped": false,
+          "corePixels": 3923
+        }
+      ]
+    },
+    {
+      "file": "public/assets/prey-v2/deer-atlas.png",
+      "beforeSha256": "93a31a398fa834bd559194957cc6b09be578d762a5a3b4165d3d9b50b7c87980",
+      "afterSha256": "93a31a398fa834bd559194957cc6b09be578d762a5a3b4165d3d9b50b7c87980",
+      "changedFrames": 0,
+      "cappedFrames": 0,
+      "maximumShift": 0,
+      "shifts": [
+        {
+          "frame": 0,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 2511
+        },
+        {
+          "frame": 1,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 1932
+        },
+        {
+          "frame": 2,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 1546
+        },
+        {
+          "frame": 3,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 1932
+        },
+        {
+          "frame": 4,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 2512
+        },
+        {
+          "frame": 5,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 1676
+        },
+        {
+          "frame": 6,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 1480
+        },
+        {
+          "frame": 7,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 1826
+        },
+        {
+          "frame": 8,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 2508
+        },
+        {
+          "frame": 9,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 1977
+        },
+        {
+          "frame": 10,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 1470
+        },
+        {
+          "frame": 11,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 1977
+        },
+        {
+          "frame": 12,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 2461
+        },
+        {
+          "frame": 13,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 1695
+        },
+        {
+          "frame": 14,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 1502
+        },
+        {
+          "frame": 15,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 1819
+        },
+        {
+          "frame": 16,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 2271
+        },
+        {
+          "frame": 17,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 2515
+        },
+        {
+          "frame": 18,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 1432
+        },
+        {
+          "frame": 19,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 2515
+        },
+        {
+          "frame": 20,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 2203
+        },
+        {
+          "frame": 21,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 2314
+        },
+        {
+          "frame": 22,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 2634
+        },
+        {
+          "frame": 23,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 2620
+        },
+        {
+          "frame": 24,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 2461
+        },
+        {
+          "frame": 25,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 2880
+        },
+        {
+          "frame": 26,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 1403
+        },
+        {
+          "frame": 27,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 2880
+        },
+        {
+          "frame": 28,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 2449
+        },
+        {
+          "frame": 29,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 2445
+        },
+        {
+          "frame": 30,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 2277
+        },
+        {
+          "frame": 31,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 3356
+        },
+        {
+          "frame": 32,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 2151
+        },
+        {
+          "frame": 33,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 2492
+        },
+        {
+          "frame": 34,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 1433
+        },
+        {
+          "frame": 35,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 2492
+        },
+        {
+          "frame": 36,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 2133
+        },
+        {
+          "frame": 37,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 2217
+        },
+        {
+          "frame": 38,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 2387
+        },
+        {
+          "frame": 39,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 2209
+        }
+      ]
+    },
+    {
+      "file": "public/assets/prey-v3/elk-atlas.png",
+      "beforeSha256": "a907f235ba8d27125809e5dffc5dea6503634ef30d140c81446ad30fb232d565",
+      "afterSha256": "042a0f6352d7e9680e9589efb59999ebb3face416c9c069e6994b19d17c30818",
+      "changedFrames": 16,
+      "cappedFrames": 4,
+      "maximumShift": 3.1622776601683795,
+      "shifts": [
+        {
+          "frame": 0,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 4863
+        },
+        {
+          "frame": 1,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 4369
+        },
+        {
+          "frame": 2,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 3529
+        },
+        {
+          "frame": 3,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 4428
+        },
+        {
+          "frame": 4,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 4708
+        },
+        {
+          "frame": 5,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 3962
+        },
+        {
+          "frame": 6,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 4195
+        },
+        {
+          "frame": 7,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 4128
+        },
+        {
+          "frame": 8,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 5057
+        },
+        {
+          "frame": 9,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 4534
+        },
+        {
+          "frame": 10,
+          "x": 0,
+          "y": -1,
+          "requestedX": 0,
+          "requestedY": -1,
+          "capped": false,
+          "corePixels": 3581
+        },
+        {
+          "frame": 11,
+          "x": 0,
+          "y": -1,
+          "requestedX": 0,
+          "requestedY": -1,
+          "capped": false,
+          "corePixels": 4502
+        },
+        {
+          "frame": 12,
+          "x": 0,
+          "y": -1,
+          "requestedX": 0,
+          "requestedY": -1,
+          "capped": false,
+          "corePixels": 4955
+        },
+        {
+          "frame": 13,
+          "x": 0,
+          "y": -2,
+          "requestedX": 0,
+          "requestedY": -2,
+          "capped": false,
+          "corePixels": 4105
+        },
+        {
+          "frame": 14,
+          "x": 0,
+          "y": -3,
+          "requestedX": 0,
+          "requestedY": -3,
+          "capped": false,
+          "corePixels": 4082
+        },
+        {
+          "frame": 15,
+          "x": 0,
+          "y": -1,
+          "requestedX": 0,
+          "requestedY": -1,
+          "capped": false,
+          "corePixels": 4191
+        },
+        {
+          "frame": 16,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 4628
+        },
+        {
+          "frame": 17,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 3937
+        },
+        {
+          "frame": 18,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 2,
+          "capped": true,
+          "corePixels": 3386
+        },
+        {
+          "frame": 19,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 3734
+        },
+        {
+          "frame": 20,
+          "x": -3,
+          "y": -1,
+          "requestedX": -3,
+          "requestedY": -1,
+          "capped": false,
+          "corePixels": 4441
+        },
+        {
+          "frame": 21,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 4016
+        },
+        {
+          "frame": 22,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 1,
+          "capped": true,
+          "corePixels": 4000
+        },
+        {
+          "frame": 23,
+          "x": 0,
+          "y": -1,
+          "requestedX": 0,
+          "requestedY": -1,
+          "capped": false,
+          "corePixels": 4049
+        },
+        {
+          "frame": 24,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 4229
+        },
+        {
+          "frame": 25,
+          "x": 0,
+          "y": -3,
+          "requestedX": 0,
+          "requestedY": -3,
+          "capped": false,
+          "corePixels": 3634
+        },
+        {
+          "frame": 26,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": -2,
+          "capped": true,
+          "corePixels": 3106
+        },
+        {
+          "frame": 27,
+          "x": 0,
+          "y": -3,
+          "requestedX": 0,
+          "requestedY": -3,
+          "capped": false,
+          "corePixels": 3496
+        },
+        {
+          "frame": 28,
+          "x": -3,
+          "y": -1,
+          "requestedX": -3,
+          "requestedY": -1,
+          "capped": false,
+          "corePixels": 4144
+        },
+        {
+          "frame": 29,
+          "x": 0,
+          "y": -1,
+          "requestedX": 0,
+          "requestedY": -1,
+          "capped": false,
+          "corePixels": 3514
+        },
+        {
+          "frame": 30,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": -1,
+          "capped": true,
+          "corePixels": 3763
+        },
+        {
+          "frame": 31,
+          "x": 0,
+          "y": -2,
+          "requestedX": 0,
+          "requestedY": -2,
+          "capped": false,
+          "corePixels": 3722
+        },
+        {
+          "frame": 32,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 4155
+        },
+        {
+          "frame": 33,
+          "x": 0,
+          "y": -3,
+          "requestedX": 0,
+          "requestedY": -3,
+          "capped": false,
+          "corePixels": 3743
+        },
+        {
+          "frame": 34,
+          "x": 0,
+          "y": -2,
+          "requestedX": 0,
+          "requestedY": -2,
+          "capped": false,
+          "corePixels": 3145
+        },
+        {
+          "frame": 35,
+          "x": 0,
+          "y": -3,
+          "requestedX": 0,
+          "requestedY": -3,
+          "capped": false,
+          "corePixels": 3791
+        },
+        {
+          "frame": 36,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 4097
+        },
+        {
+          "frame": 37,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 3750
+        },
+        {
+          "frame": 38,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 3645
+        },
+        {
+          "frame": 39,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 3859
+        }
+      ]
+    },
+    {
+      "file": "public/assets/prey-v4/boar-atlas.png",
+      "beforeSha256": "6ef578f0c5f55a05e67608d130093cab5b05834051d2b9a8d402fa8243b46ba3",
+      "afterSha256": "b745237109ac4483ac68161b7763f3fa7d27f39dbe9a71d94c76d830d7a3c518",
+      "changedFrames": 4,
+      "cappedFrames": 0,
+      "maximumShift": 5,
+      "shifts": [
+        {
+          "frame": 0,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 5744
+        },
+        {
+          "frame": 1,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 4504
+        },
+        {
+          "frame": 2,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 4264
+        },
+        {
+          "frame": 3,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 5074
+        },
+        {
+          "frame": 4,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 5747
+        },
+        {
+          "frame": 5,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 4797
+        },
+        {
+          "frame": 6,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 4589
+        },
+        {
+          "frame": 7,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 4830
+        },
+        {
+          "frame": 8,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 5843
+        },
+        {
+          "frame": 9,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 4947
+        },
+        {
+          "frame": 10,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 4417
+        },
+        {
+          "frame": 11,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 5535
+        },
+        {
+          "frame": 12,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 6149
+        },
+        {
+          "frame": 13,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 4812
+        },
+        {
+          "frame": 14,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 4622
+        },
+        {
+          "frame": 15,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 5064
+        },
+        {
+          "frame": 16,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 5501
+        },
+        {
+          "frame": 17,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 4760
+        },
+        {
+          "frame": 18,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 4274
+        },
+        {
+          "frame": 19,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 5086
+        },
+        {
+          "frame": 20,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 5698
+        },
+        {
+          "frame": 21,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 4645
+        },
+        {
+          "frame": 22,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 4307
+        },
+        {
+          "frame": 23,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 4893
+        },
+        {
+          "frame": 24,
+          "x": 0,
+          "y": -4,
+          "requestedX": 0,
+          "requestedY": -4,
+          "capped": false,
+          "corePixels": 5194
+        },
+        {
+          "frame": 25,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 4476
+        },
+        {
+          "frame": 26,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 4320
+        },
+        {
+          "frame": 27,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 5108
+        },
+        {
+          "frame": 28,
+          "x": 0,
+          "y": -5,
+          "requestedX": 0,
+          "requestedY": -5,
+          "capped": false,
+          "corePixels": 5538
+        },
+        {
+          "frame": 29,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 4464
+        },
+        {
+          "frame": 30,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 4472
+        },
+        {
+          "frame": 31,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 4877
+        },
+        {
+          "frame": 32,
+          "x": 0,
+          "y": -4,
+          "requestedX": 0,
+          "requestedY": -4,
+          "capped": false,
+          "corePixels": 5122
+        },
+        {
+          "frame": 33,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 4553
+        },
+        {
+          "frame": 34,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 3892
+        },
+        {
+          "frame": 35,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 5050
+        },
+        {
+          "frame": 36,
+          "x": 0,
+          "y": -5,
+          "requestedX": 0,
+          "requestedY": -5,
+          "capped": false,
+          "corePixels": 5315
+        },
+        {
+          "frame": 37,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 4162
+        },
+        {
+          "frame": 38,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 3857
+        },
+        {
+          "frame": 39,
+          "x": 0,
+          "y": 0,
+          "requestedX": 0,
+          "requestedY": 0,
+          "capped": false,
+          "corePixels": 4442
+        }
+      ]
+    }
+  ]
+}

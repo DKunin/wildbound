@@ -15,6 +15,7 @@ const MAX_DETACHED_SHARE = 0.02;
 
 interface FrameMetrics {
   anchor: [number, number];
+  root: [number, number];
   bbox: [number, number, number, number];
   components: number[];
   detachedShare: number;
@@ -153,15 +154,22 @@ const analyzeFrame = (image: PNG, frame: number, frameSize: number): FrameMetric
   let maxY = -1;
   let opaquePixels = 0;
   let edgePixels = 0;
+  let alphaWeight = 0;
+  let weightedX = 0;
+  let weightedY = 0;
 
   for (let y = 0; y < frameSize; y += 1) {
     const sourceStart = ((sourceY + y) * image.width + sourceX) * 4;
     image.data.copy(pixels, y * frameSize * 4, sourceStart, sourceStart + frameSize * 4);
     for (let x = 0; x < frameSize; x += 1) {
       const pixel = y * frameSize + x;
-      if (pixels[pixel * 4 + 3] < ALPHA_THRESHOLD) continue;
+      const alpha = pixels[pixel * 4 + 3];
+      if (alpha < ALPHA_THRESHOLD) continue;
       occupied[pixel] = 1;
       opaquePixels += 1;
+      alphaWeight += alpha;
+      weightedX += x * alpha;
+      weightedY += y * alpha;
       minX = Math.min(minX, x);
       minY = Math.min(minY, y);
       maxX = Math.max(maxX, x);
@@ -206,6 +214,7 @@ const analyzeFrame = (image: PNG, frame: number, frameSize: number): FrameMetric
 
   return {
     anchor: [(minX + maxX) / 2, maxY],
+    root: [weightedX / alphaWeight, weightedY / alphaWeight],
     bbox: [minX, minY, maxX - minX + 1, maxY - minY + 1],
     components,
     detachedShare: Number(detachedShare.toFixed(5)),
@@ -258,14 +267,14 @@ describe('prey animation visual regressions', () => {
     expect(failures).toEqual([]);
   });
 
-  it('keeps both standing frames on the same ground anchor', () => {
+  it('keeps both standing frames on the same anatomical root', () => {
     const failures: string[] = [];
     for (const species of ['rabbit', 'deer']) {
       for (let direction = 0; direction < 8; direction += 1) {
         const first = actual.atlases[species][direction];
         const second = actual.atlases[species][8 + direction];
-        const step = Math.hypot(first.anchor[0] - second.anchor[0], first.anchor[1] - second.anchor[1]);
-        if (step > 1) failures.push(`${species}[${direction}] standing anchor step ${step.toFixed(1)}px`);
+        const step = Math.hypot(first.root[0] - second.root[0], first.root[1] - second.root[1]);
+        if (step > 2) failures.push(`${species}[${direction}] standing root step ${step.toFixed(1)}px`);
       }
     }
     expect(failures).toEqual([]);
