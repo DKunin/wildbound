@@ -1,5 +1,6 @@
 import type { NeedsSnapshot } from './NeedsSystem';
 import type { PreySpecies } from '../entities/Prey';
+import type { TerritoryMark } from './TerritoryMarkSystem';
 
 export interface SavedAnimal {
   species: PreySpecies;
@@ -30,6 +31,7 @@ export interface SaveData {
   prey: SavedAnimal[];
   pack: SavedPackWolf[];
   scentActive: boolean;
+  territoryMarks?: TerritoryMark[];
 }
 
 const isFiniteNumber = (value: unknown): value is number => typeof value === 'number' && Number.isFinite(value);
@@ -69,6 +71,11 @@ export const isSaveData = (value: unknown): value is SaveData => {
       && (wolf.stamina === undefined || isFiniteNumber(wolf.stamina))
       && (wolf.recoveryDebt === undefined || isFiniteNumber(wolf.recoveryDebt)))
     && typeof data.scentActive === 'boolean'
+    && (data.territoryMarks === undefined || (Array.isArray(data.territoryMarks)
+      && data.territoryMarks.every((mark) => isPosition(mark)
+        && isFiniteNumber(mark.createdAt)
+        && (mark.ownerId === undefined || typeof mark.ownerId === 'string')
+        && (mark.color === undefined || (Number.isInteger(mark.color) && mark.color >= 0 && mark.color <= 0xffffff)))))
     && isFiniteNumber(data.needs?.health)
     && isFiniteNumber(data.needs.hunger)
     && isFiniteNumber(data.needs.thirst)

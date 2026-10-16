@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { findEscapePath, type EscapeGrid } from '../src/game/systems/PreyEscapeSystem';
+import { constrainEscapeHeading, findEscapePath, type EscapeGrid } from '../src/game/systems/PreyEscapeSystem';
 
 const grid = (columns: number, rows: number, blocked: readonly string[] = []): EscapeGrid => {
   const blockedCells = new Set(blocked);
@@ -41,5 +41,34 @@ describe('prey escape routing', () => {
 
     expect(route[0]).not.toEqual(cell(2, 2));
     expect(route.every((point) => !blocked.includes(`${Math.floor(point.x)},${Math.floor(point.y)}`))).toBe(true);
+  });
+
+  it('uses individual lateral preferences to fan escape routes out', () => {
+    const start = cell(5, 5);
+    const threat = cell(2, 5);
+    const clockwise = findEscapePath(start, threat, grid(14, 14), 6, { lateralBias: 1 });
+    const counterClockwise = findEscapePath(start, threat, grid(14, 14), 6, { lateralBias: -1 });
+
+    expect(clockwise.at(-1)!.y).toBeGreaterThan(start.y);
+    expect(counterClockwise.at(-1)!.y).toBeLessThan(start.y);
+    expect(clockwise.at(-1)!.x).toBeGreaterThan(start.x);
+    expect(counterClockwise.at(-1)!.x).toBeGreaterThan(start.x);
+  });
+
+  it('constrains a route waypoint to the half-plane away from the predator', () => {
+    const start = { x: 10, y: 10 };
+    const threat = { x: 5, y: 10 };
+    const away = { x: 1, y: 0 };
+
+    for (const preferred of [
+      { x: -1, y: 0 },
+      { x: -1, y: 0.4 },
+      { x: 0, y: -1 },
+      { x: 0, y: 0 },
+    ]) {
+      const heading = constrainEscapeHeading(start, threat, preferred);
+      expect(Math.hypot(heading.x, heading.y)).toBeCloseTo(1);
+      expect(heading.x * away.x + heading.y * away.y).toBeGreaterThanOrEqual(0.2 - Number.EPSILON);
+    }
   });
 });

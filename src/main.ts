@@ -20,12 +20,15 @@ const setText = (selector: string, value: string) => {
 const pausePanel = document.querySelector<HTMLElement>('#pause-panel');
 const deathPanel = document.querySelector<HTMLElement>('#death-panel');
 const scentReadout = document.querySelector<HTMLElement>('#scent-readout');
+const scentSummary = document.querySelector<HTMLElement>('#scent-summary');
 const soundReadout = document.querySelector<HTMLElement>('#sound-readout');
 const daylight = document.querySelector<HTMLElement>('#daylight');
 const vignette = document.querySelector<HTMLElement>('#vignette');
 const packStatus = document.querySelector<HTMLElement>('#pack-status');
 const sneakControl = document.querySelector<HTMLElement>('#sneak-control');
 const hungerMode = document.querySelector<HTMLElement>('#hunger-mode');
+const restSkipControl = document.querySelector<HTMLButtonElement>('#rest-skip-control');
+const territoryMarkControl = document.querySelector<HTMLButtonElement>('#territory-mark-control');
 const packControls = document.querySelectorAll<HTMLElement>('[data-pack-control]');
 const mainMenu = document.querySelector<HTMLElement>('#main-menu');
 const logModeToggles = document.querySelectorAll<HTMLButtonElement>('[data-log-mode-toggle]');
@@ -71,6 +74,20 @@ const appendHuntLog = ({ time, message }: HuntLogEntry) => {
   item.append(timestamp, copy);
   huntLogList.prepend(item);
   while (huntLogList.children.length > 8) huntLogList.lastElementChild?.remove();
+};
+
+const renderScentClues = (state: HudState) => {
+  if (!scentSummary) return;
+  scentSummary.replaceChildren();
+  const clues = state.scentClues.length > 0
+    ? state.scentClues
+    : [{ text: state.scentSummary || 'The wind carries no clear trail.', targeted: false }];
+  for (const clue of clues) {
+    const line = document.createElement('span');
+    line.className = `scent-clue${clue.targeted ? ' targeted' : ''}`;
+    line.textContent = clue.text;
+    scentSummary.append(line);
+  }
 };
 
 const startGame = () => {
@@ -125,7 +142,7 @@ gameEvents.on('hud', (state: HudState) => {
   setText('#hunger-mode', state.willEatMeat ? 'HUNGRY · WILL EAT' : 'SATIATED · WILL CACHE');
   hungerMode?.classList.toggle('hungry', state.willEatMeat);
   setText('#event-line', state.eventLine);
-  setText('#scent-summary', state.scentSummary);
+  renderScentClues(state);
   setText('#scent-direction-arrow', state.scentDirectionArrow);
   setText('#scent-direction-label', state.scentDirectionLabel);
   setText('#sound-summary', state.soundSummary);
@@ -136,13 +153,23 @@ gameEvents.on('hud', (state: HudState) => {
   for (const control of packControls) control.hidden = !hasPack;
   setText('#objective-title', hasPack ? 'SURVIVE TOGETHER' : 'SURVIVE THE WILD');
   setText('#save-status', state.saveStatus);
-  if (scentReadout) scentReadout.hidden = !state.scentActive;
+  if (scentReadout) {
+    scentReadout.hidden = !state.scentActive;
+    scentReadout.classList.toggle('tracking-target', state.trackingTarget);
+  }
   if (soundReadout) soundReadout.hidden = !state.soundSummary;
   if (sneakControl) {
     sneakControl.classList.toggle('active', state.sneaking);
     sneakControl.setAttribute('aria-label', state.sneaking ? 'Sneaking enabled' : 'Sneaking disabled');
   }
   setText('#sneak-label', state.sneaking ? 'CROUCHING' : 'SNEAK');
+  if (restSkipControl) restSkipControl.hidden = !state.canSkipRest;
+  if (territoryMarkControl) {
+    territoryMarkControl.disabled = !state.canMarkTerritory;
+    territoryMarkControl.title = state.canMarkTerritory
+      ? 'Leave a scent mark at your current position'
+      : 'This scent mark is still too fresh';
+  }
   if (daylight) {
     daylight.style.backgroundColor = state.ambientColor;
     daylight.style.opacity = String(state.ambientOpacity);
@@ -164,6 +191,8 @@ gameEvents.on('death', (cause: string) => {
 
 document.querySelector('#resume-button')?.addEventListener('click', () => gameEvents.emit('resume-request'));
 document.querySelector('#load-button')?.addEventListener('click', () => gameEvents.emit('load-request'));
+restSkipControl?.addEventListener('click', () => gameEvents.emit('skip-rest-request'));
+territoryMarkControl?.addEventListener('click', () => gameEvents.emit('mark-territory-request'));
 document.querySelector('#restart-button')?.addEventListener('click', () => {
   if (deathPanel) deathPanel.hidden = true;
   clearHuntLog();

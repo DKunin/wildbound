@@ -61,16 +61,7 @@ export class PackWolf extends Phaser.Physics.Arcade.Sprite {
     rallied: boolean,
     flankSide: -1 | 1,
   ): PackWolfState {
-    this.hunger = Phaser.Math.Clamp(this.hunger + deltaSeconds * 0.035, 0, 100);
-    const previousBody = this.body as Phaser.Physics.Arcade.Body;
-    const previousSpeed = previousBody.velocity.length();
-    this.endurance.update(deltaSeconds, this.packState === 'resting'
-      ? 'resting'
-      : previousSpeed > 175
-        ? 'sprinting'
-        : previousSpeed > 4
-          ? 'moving'
-          : 'idle');
+    this.advanceTime(deltaSeconds);
     if (time < this.avoidanceUntil) {
       this.setVelocity(this.avoidanceDirection.x * 138, this.avoidanceDirection.y * 138);
       this.updateAnimation(8);
@@ -125,6 +116,26 @@ export class PackWolf extends Phaser.Physics.Arcade.Sprite {
     }
     this.setDepth(this.y + 24);
     return this.packState;
+  }
+
+  advanceTime(elapsedSeconds: number): void {
+    const previousBody = this.body as Phaser.Physics.Arcade.Body;
+    const previousSpeed = previousBody.velocity.length();
+    let remaining = Math.max(0, elapsedSeconds);
+    let advanced = 0;
+    while (remaining > 0) {
+      const step = Math.min(remaining, 0.25);
+      this.hunger = Phaser.Math.Clamp(this.hunger + step * 0.035, 0, 100);
+      this.endurance.update(step, advanced >= 5 || this.packState === 'resting'
+        ? 'resting'
+        : previousSpeed > 175
+          ? 'sprinting'
+          : previousSpeed > 4
+            ? 'moving'
+            : 'idle');
+      remaining -= step;
+      advanced += step;
+    }
   }
 
   getPackState(): PackWolfState {

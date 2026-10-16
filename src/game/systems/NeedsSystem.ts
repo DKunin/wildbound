@@ -18,6 +18,12 @@ export interface NeedsSnapshot {
   deathCause?: DeathCause;
 }
 
+export interface RestRecoveryResult {
+  snapshot: NeedsSnapshot;
+  elapsedSeconds: number;
+  fullyRecovered: boolean;
+}
+
 const clamp = (value: number, minimum = 0, maximum = 100) => Math.max(minimum, Math.min(maximum, value));
 export const SATIATED_HUNGER = 18;
 export const HUNGER_EATING_THRESHOLD = 26;
@@ -102,6 +108,25 @@ export class NeedsSystem {
 
   canRun(): boolean {
     return this.endurance.canSprint() && this.isAlive();
+  }
+
+  canRecoverWhileResting(): boolean {
+    return this.isAlive() && this.health < 100 && this.hunger < 82 && this.thirst < 82;
+  }
+
+  restUntilHealed(maxSeconds = 600): RestRecoveryResult {
+    let elapsedSeconds = 0;
+    while (this.canRecoverWhileResting() && elapsedSeconds < maxSeconds) {
+      const stepSeconds = Math.min(0.25, maxSeconds - elapsedSeconds);
+      this.update(stepSeconds, { moving: false, running: false, resting: true });
+      elapsedSeconds += stepSeconds;
+    }
+    const snapshot = this.snapshot();
+    return {
+      snapshot,
+      elapsedSeconds,
+      fullyRecovered: snapshot.health >= 100,
+    };
   }
 
   isAlive(): boolean {

@@ -21,6 +21,30 @@ describe('NeedsSystem', () => {
     expect(needs.drink(18).thirst).toBeLessThan(10);
   });
 
+  it('skips a bounded rest through the normal recovery rules until health is full', () => {
+    const needs = new NeedsSystem();
+    needs.restore({ health: 50, hunger: 20, thirst: 20, stamina: 20, recoveryDebt: 60, alive: true });
+
+    const result = needs.restUntilHealed();
+
+    expect(result.fullyRecovered).toBe(true);
+    expect(result.snapshot.health).toBe(100);
+    expect(result.snapshot.hunger).toBeGreaterThan(20);
+    expect(result.snapshot.thirst).toBeGreaterThan(20);
+    expect(result.snapshot.stamina).toBe(100);
+    expect(result.snapshot.recoveryDebt).toBe(0);
+    expect(result.elapsedSeconds).toBeGreaterThan(76);
+    expect(result.elapsedSeconds).toBeLessThan(78);
+  });
+
+  it('does not skip recovery when hunger already prevents healing', () => {
+    const needs = new NeedsSystem();
+    needs.restore({ health: 50, hunger: 82, thirst: 20, stamina: 50, alive: true });
+
+    expect(needs.canRecoverWhileResting()).toBe(false);
+    expect(needs.restUntilHealed()).toMatchObject({ elapsedSeconds: 0, fullyRecovered: false });
+  });
+
   it('stops eating when the wolf is satiated', () => {
     const needs = new NeedsSystem();
     expect(needs.canEat()).toBe(true);

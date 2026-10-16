@@ -2,6 +2,15 @@ import { describe, expect, it } from 'vitest';
 import { AnimalNeedsSystem } from '../src/game/systems/AnimalNeedsSystem';
 
 describe('animal needs and goal selection', () => {
+  it('advances needs across a long skipped interval instead of capping at one frame', () => {
+    const deer = new AnimalNeedsSystem('deer', { hunger: 20, thirst: 20, fatigue: 20 });
+    const result = deer.advanceTime(60, 'moving');
+
+    expect(result.hunger).toBeGreaterThan(30);
+    expect(result.thirst).toBeGreaterThan(30);
+    expect(result.fatigue).toBeGreaterThan(50);
+  });
+
   it('prioritizes urgent water, food, and rest instead of wandering', () => {
     expect(new AnimalNeedsSystem('deer', { hunger: 20, thirst: 84, fatigue: 20 }).chooseGoal(12 * 60, 0.5)).toBe('water');
     expect(new AnimalNeedsSystem('deer', { hunger: 84, thirst: 20, fatigue: 20 }).chooseGoal(12 * 60, 0.5)).toBe('food');

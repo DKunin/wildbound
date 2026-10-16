@@ -130,6 +130,14 @@ export class PlayerAnimationSystem {
     return true;
   }
 
+  wakeUp(): boolean {
+    if (this.state !== 'resting') return false;
+    this.state = 'getting-up';
+    this.idleDurationMs = 0;
+    this.pendingMovement = undefined;
+    return true;
+  }
+
   snapshot(): PlayerAnimationDecision {
     return this.decision(this.state === 'walking' || this.state === 'sneaking' || this.state === 'running');
   }

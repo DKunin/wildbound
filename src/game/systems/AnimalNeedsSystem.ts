@@ -104,6 +104,16 @@ export class AnimalNeedsSystem {
     return this.snapshot();
   }
 
+  advanceTime(deltaSeconds: number, activity: AnimalActivity): AnimalNeedsSnapshot {
+    let remaining = Math.max(0, deltaSeconds);
+    while (remaining > 0 && this.isAlive()) {
+      const step = Math.min(remaining, 0.25);
+      this.update(step, activity);
+      remaining -= step;
+    }
+    return this.snapshot();
+  }
+
   chooseGoal(simulationMinutes: number, explorationRoll: number): AnimalGoal {
     if (this.thirst >= (this.species === 'rabbit' ? 74 : 58)) return 'water';
     if (this.hunger >= 60) return 'food';

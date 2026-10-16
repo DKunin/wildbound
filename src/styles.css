@@ -470,6 +470,42 @@ body {
   background: rgb(9 42 35 / 78%);
 }
 
+.rest-skip-control,
+.territory-mark-control {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 4px 8px;
+  border: 1px solid rgb(126 218 203 / 62%);
+  background: rgb(8 34 29 / 78%);
+  color: #9be9dd;
+  font: inherit;
+  letter-spacing: inherit;
+  pointer-events: auto;
+  text-shadow: inherit;
+  cursor: pointer;
+}
+
+.rest-skip-control[hidden] {
+  display: none;
+}
+
+.rest-skip-control:hover,
+.rest-skip-control:focus-visible,
+.territory-mark-control:hover:not(:disabled),
+.territory-mark-control:focus-visible:not(:disabled) {
+  border-color: #a9f0e4;
+  background: rgb(11 51 43 / 90%);
+  outline: none;
+}
+
+.territory-mark-control:disabled {
+  border-color: rgb(214 221 202 / 24%);
+  color: rgb(214 221 202 / 48%);
+  background: rgb(5 14 10 / 48%);
+  cursor: not-allowed;
+}
+
 kbd {
   display: inline-flex;
   min-width: 29px;
@@ -551,7 +587,38 @@ kbd {
 
 .scent-copy {
   display: grid;
+  min-width: 0;
   gap: 3px;
+}
+
+.scent-clue-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  align-items: flex-start;
+}
+
+.scent-clue {
+  display: block;
+  line-height: 1.35;
+}
+
+.scent-clue.targeted {
+  color: #ff746d;
+  font-weight: 700;
+  text-shadow: 0 0 8px rgb(232 90 84 / 58%);
+}
+
+.scent-readout.tracking-target {
+  border-left-color: #e85a54;
+}
+
+.scent-readout.tracking-target .scent-direction {
+  color: #ff746d;
+}
+
+.scent-readout.tracking-target .scent-direction strong {
+  text-shadow: 0 0 9px rgb(232 90 84 / 62%);
 }
 
 .scent-title {

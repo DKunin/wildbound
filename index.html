@@ -98,13 +98,15 @@
 
       <section id="scent-readout" class="scent-readout" aria-live="polite" hidden>
         <span class="scent-direction" aria-hidden="true"><strong id="scent-direction-arrow">•</strong><small id="scent-direction-label">HERE</small></span>
-        <span class="scent-copy"><span class="scent-title">SCENT</span><span id="scent-summary">The wind carries faint traces.</span></span>
+        <span class="scent-copy"><span class="scent-title">SCENT</span><span id="scent-summary" class="scent-clue-list"><span class="scent-clue">The wind carries faint traces.</span></span></span>
       </section>
 
       <section class="controls" aria-label="Controls">
         <span><kbd>E</kbd> <span id="context-action">INTERACT</span></span>
         <span><kbd>Q</kbd> SCENT</span>
         <span id="sneak-control" class="sneak-control" aria-label="Sneaking disabled"><kbd>C</kbd> <span id="sneak-label">SNEAK</span></span>
+        <button id="territory-mark-control" class="territory-mark-control" type="button"><kbd>M</kbd> MARK TERRITORY</button>
+        <button id="rest-skip-control" class="rest-skip-control" type="button" hidden><kbd>T</kbd> REST UNTIL HEALED</button>
         <span data-pack-control hidden><kbd>H</kbd> HOWL</span>
         <span class="save-control"><kbd>F5</kbd> SAVE</span>
       </section>
@@ -121,10 +123,11 @@
         <p id="modal-copy">Press Escape or Space to return to the forest.</p>
         <div class="modal-controls">
           <span><kbd>WASD</kbd> move</span>
-          <span><kbd>CLICK</kbd> travel</span>
+          <span><kbd>CLICK ANIMAL</kbd> mark scent</span>
           <span><kbd>E</kbd> act / attack</span>
           <span><kbd>Q</kbd> scent</span>
           <span><kbd>C</kbd> crouch / sneak</span>
+          <span><kbd>M</kbd> mark territory</span>
           <span data-pack-control hidden><kbd>H</kbd> howl</span>
           <span><kbd>R</kbd> rest</span>
           <span><kbd>F5</kbd> save</span>

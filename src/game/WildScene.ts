@@ -21,6 +21,9 @@ import { WorldSystem } from './systems/WorldSystem';
 import { getWolfMovementProfile, SNEAK_ANIMATION_TIME_SCALE } from './systems/WolfStealthSystem';
 import { HuntLogSystem } from './systems/HuntLogSystem';
 import { getCacheBurialPosition } from './systems/CachePlacementSystem';
+import { getTerritoryMarkStrength, TerritoryMarkSystem } from './systems/TerritoryMarkSystem';
+import { advanceSimulationTime, simulationTimeToWorldMilliseconds } from './systems/WorldTimeSystem';
+import { findClickedAnimal, isAnimalTargetAlive } from './systems/AnimalTargetingSystem';
 
 interface ControlKeys {
   up: Phaser.Input.Keyboard.Key;
@@ -62,8 +65,10 @@ export class WildScene extends Phaser.Scene {
   private readonly wind = new WindSystem();
   private readonly saves = new SaveSystem();
   private readonly huntLog = new HuntLogSystem();
+  private readonly territoryMarks = new TerritoryMarkSystem();
   private keys!: ControlKeys;
-  private route: Phaser.Math.Vector2[] = [];
+  private targetedPrey?: Prey;
+  private targetMarker?: Phaser.GameObjects.Image;
   private snapshot: NeedsSnapshot = this.needs.snapshot();
   private simulationTime = 18 * 60 + 42;
   private dayState: DayNightState = this.dayNight.getState(this.simulationTime);
@@ -101,6 +106,10 @@ export class WildScene extends Phaser.Scene {
     } else if (event.code === 'KeyQ' && !event.repeat && !this.paused && !this.dead && !this.loadingSave) {
       const active = this.scent.toggle();
       this.setEvent(active ? 'You lift your muzzle into the wind.' : 'The forest returns to ordinary sight.');
+    } else if (event.code === 'KeyT' && !event.repeat && !this.paused && !this.dead && !this.loadingSave) {
+      this.skipRestUntilHealed();
+    } else if (event.code === 'KeyM' && !event.repeat && !this.paused && !this.dead && !this.loadingSave) {
+      this.markTerritory();
     } else if (event.code === 'KeyC' && !event.repeat && !this.paused && !this.dead && !this.loadingSave) {
       this.sneaking = !this.sneaking;
       this.runControl.reset();
@@ -114,6 +123,7 @@ export class WildScene extends Phaser.Scene {
 
   preload(): void {
     this.load.image('ground-base', 'assets/ground-base-v2.png');
+    this.load.svg('predator-target', 'assets/predator-target.svg', { width: 64, height: 64 });
     this.load.spritesheet('terrain-overlays', 'assets/terrain-overlays-v2.png', { frameWidth: 313, frameHeight: 313 });
     this.load.spritesheet('obstacle-atlas', 'assets/obstacle-atlas-v2.png', { frameWidth: 313, frameHeight: 313 });
     this.load.spritesheet('water-tiles', 'assets/water-tiles-v2.png', { frameWidth: 313, frameHeight: 313 });
@@ -145,10 +155,12 @@ export class WildScene extends Phaser.Scene {
     this.prey = [];
     this.carriedCarcass = undefined;
     this.pack = [];
-    this.route = [];
+    this.targetedPrey = undefined;
+    this.targetMarker = undefined;
     this.playerAnimation.reset();
     this.runControl.reset();
     this.simulationTime = 18 * 60 + 42;
+    this.territoryMarks.restore([], this.simulationTime);
     this.paused = false;
     this.dead = false;
     this.loadingSave = false;
@@ -180,7 +192,7 @@ export class WildScene extends Phaser.Scene {
     this.player.setBodySize(150, 82).setOffset(98, 160);
     this.player.on(Phaser.Animations.Events.ANIMATION_COMPLETE, this.handlePlayerAnimationComplete, this);
     this.syncPlayerAnimation(this.time.now);
-    this.world.addCollider(this.player, () => { this.route = []; });
+    this.world.addCollider(this.player);
 
     this.spawnInitialPopulation();
     if (FEATURE_FLAGS.pack) this.spawnPack();
@@ -190,7 +202,7 @@ export class WildScene extends Phaser.Scene {
     this.footprints = new FootprintSystem(this);
     this.keys = this.createKeys();
     this.configureCamera();
-    this.configurePointerMovement();
+    this.configureAnimalTargeting();
     this.configureEventRequests();
     window.addEventListener('keydown', this.handleWindowKey, { capture: true });
     this.lastAutoSaveAt = this.time.now;
@@ -207,6 +219,8 @@ export class WildScene extends Phaser.Scene {
       gameEvents.off('restart-request', this.restartFromRequest, this);
       gameEvents.off('load-request', this.loadFromRequest, this);
       gameEvents.off('log-mode-request', this.logModeFromRequest, this);
+      gameEvents.off('skip-rest-request', this.skipRestFromRequest, this);
+      gameEvents.off('mark-territory-request', this.markTerritoryFromRequest, this);
     });
   }
 
@@ -222,16 +236,21 @@ export class WildScene extends Phaser.Scene {
     const activity = this.updatePlayerMovement(time, delta);
     this.updateCarriedCarcass();
     this.snapshot = this.needs.update(deltaSeconds, activity);
-    this.simulationTime += deltaSeconds * 1.8;
-    this.dayState = this.dayNight.getState(this.simulationTime);
-    this.windState = this.wind.getState(this.simulationTime);
-    this.scent.setWind(this.windState.x, this.windState.y, this.windState.strength);
+    this.simulationTime = advanceSimulationTime(this.simulationTime, deltaSeconds);
+    this.refreshWorldTimeState();
 
     this.updatePack(time, deltaSeconds);
     this.updatePrey(time, activity);
-    this.updatePopulation(time);
+    this.updatePopulation(simulationTimeToWorldMilliseconds(this.simulationTime));
+    this.syncTargetMarker(time);
     this.scent.record(time, this.prey, this.pack);
-    this.scentReading = this.scent.render(time, this.player);
+    this.scentReading = this.scent.render(
+      time,
+      this.player,
+      this.territoryMarks.getActiveMarks(this.simulationTime),
+      this.simulationTime,
+      this.targetedPrey,
+    );
     this.footprints.record(time, this.player, this.prey, this.pack);
     this.soundSummary = this.hearing.render(time, this.player, 0.82 + this.dayState.visibility * 0.28);
 
@@ -362,7 +381,7 @@ export class WildScene extends Phaser.Scene {
     return {
       ...resources,
       findPath: (start, destination) => this.world.layout.findPath(start, destination),
-      findEscapePath: (start, threat) => this.world.layout.findEscapePath(start, threat),
+      findEscapePath: (start, threat, lateralBias) => this.world.layout.findEscapePath(start, threat, lateralBias),
     };
   }
 
@@ -384,12 +403,25 @@ export class WildScene extends Phaser.Scene {
     this.input.on('wheel', (_pointer: Phaser.Input.Pointer, _objects: unknown[], _dx: number, dy: number) => camera.setZoom(Phaser.Math.Clamp(camera.zoom - dy * 0.00045, 0.62, 1.16)));
   }
 
-  private configurePointerMovement(): void {
+  private configureAnimalTargeting(): void {
     this.input.on('pointerdown', (pointer: Phaser.Input.Pointer) => {
       if (!this.paused && !this.dead && pointer.leftButtonDown()) {
-        this.route = this.world.findPath(this.player, { x: pointer.worldX, y: pointer.worldY });
-        if (this.route.length > 0) this.setEvent('You pick a route through the trees.');
-        else this.setEvent('No safe route opens through that terrain.');
+        const target = findClickedAnimal({ x: pointer.worldX, y: pointer.worldY }, this.prey);
+        if (!target) {
+          this.setEvent('Click directly on a living animal to mark its scent.');
+          return;
+        }
+        this.targetedPrey = target;
+        this.scentReading = this.scent.render(
+          this.time.now,
+          this.player,
+          this.territoryMarks.getActiveMarks(this.simulationTime),
+          this.simulationTime,
+          target,
+        );
+        this.setEvent(`You mark a ${target.species} trail to follow.`);
+        this.syncTargetMarker(this.time.now);
+        this.emitHud(true);
       }
     });
   }
@@ -399,33 +431,98 @@ export class WildScene extends Phaser.Scene {
     gameEvents.on('restart-request', this.restartFromRequest, this);
     gameEvents.on('load-request', this.loadFromRequest, this);
     gameEvents.on('log-mode-request', this.logModeFromRequest, this);
+    gameEvents.on('skip-rest-request', this.skipRestFromRequest, this);
+    gameEvents.on('mark-territory-request', this.markTerritoryFromRequest, this);
   }
 
   private resumeFromRequest(): void { this.setPaused(false); }
   private restartFromRequest(): void { void this.restartFresh(); }
   private loadFromRequest(): void { void this.restoreLatestSave(true); }
   private logModeFromRequest(enabled: boolean): void { this.logMode = enabled; }
+  private skipRestFromRequest(): void { this.skipRestUntilHealed(); }
+  private markTerritoryFromRequest(): void { this.markTerritory(); }
+
+  private skipRestUntilHealed(): void {
+    if (this.paused || this.dead || this.loadingSave
+      || this.playerAnimation.snapshot().state !== 'resting'
+      || !this.needs.canRecoverWhileResting()) return;
+
+    const recovery = this.needs.restUntilHealed();
+    this.snapshot = recovery.snapshot;
+    this.advanceWorldAfterRest(recovery.elapsedSeconds);
+    this.playerAnimation.wakeUp();
+    this.nextRestMicroAt = 0;
+    this.syncPlayerAnimation(this.time.now);
+    this.setEvent(recovery.fullyRecovered
+      ? 'You wake fully recovered after a deep rest.'
+      : 'Hunger or thirst wakes you before your wounds fully recover.');
+    this.emitHud(true);
+  }
+
+  private advanceWorldAfterRest(elapsedSeconds: number): void {
+    this.simulationTime = advanceSimulationTime(this.simulationTime, elapsedSeconds);
+    for (const animal of this.prey) animal.advanceTime(elapsedSeconds);
+    this.prey = this.prey.filter((animal) => animal.active);
+    if (this.carriedCarcass && !this.carriedCarcass.active) this.carriedCarcass = undefined;
+    for (const wolf of this.pack) wolf.advanceTime(elapsedSeconds);
+    this.updatePopulation(simulationTimeToWorldMilliseconds(this.simulationTime));
+    this.scent.clearTransientTrails();
+    this.footprints.clearTransientTracks();
+    this.hearing.clearTransientSounds();
+    this.soundSummary = '';
+    this.refreshWorldTimeState();
+    this.scentReading = this.scent.render(
+      this.time.now,
+      this.player,
+      this.territoryMarks.getActiveMarks(this.simulationTime),
+      this.simulationTime,
+      this.targetedPrey,
+    );
+  }
+
+  private refreshWorldTimeState(): void {
+    this.dayState = this.dayNight.getState(this.simulationTime);
+    this.windState = this.wind.getState(this.simulationTime);
+    this.scent.setWind(this.windState.x, this.windState.y, this.windState.strength);
+    this.territoryMarks.getActiveMarks(this.simulationTime);
+  }
+
+  private markTerritory(): void {
+    if (!this.canAttemptTerritoryMark()) return;
+    const result = this.territoryMarks.mark(this.player, this.simulationTime);
+    if (!result.marked) {
+      this.setEvent('Your scent here is still fresh. Range farther before marking again.');
+      return;
+    }
+    const territory = this.world.getTerritoryName(this.player);
+    this.setEvent(result.refreshed
+      ? `You renew your boundary mark in ${territory}.`
+      : `You leave a boundary mark in ${territory}.`);
+    this.scentReading = this.scent.render(
+      this.time.now,
+      this.player,
+      this.territoryMarks.getActiveMarks(this.simulationTime),
+      this.simulationTime,
+      this.targetedPrey,
+    );
+    this.emitHud(true);
+  }
+
+  private canAttemptTerritoryMark(): boolean {
+    const animation = this.playerAnimation.snapshot().state;
+    return !this.paused && !this.dead && !this.loadingSave
+      && animation !== 'laying-down' && animation !== 'resting' && animation !== 'getting-up'
+      && animation !== 'attacking' && animation !== 'eating' && animation !== 'drinking';
+  }
 
   private updatePlayerMovement(time: number, delta: number): PlayerActivity {
     const direction = new Phaser.Math.Vector2(Number(this.keys.right.isDown) - Number(this.keys.left.isDown), Number(this.keys.down.isDown) - Number(this.keys.up.isDown));
-    if (direction.lengthSq() > 0) {
-      direction.normalize();
-      this.route = [];
-    } else if (this.route.length > 0) {
-      direction.copy(this.route[0]).subtract(new Phaser.Math.Vector2(this.player.x, this.player.y));
-      if (direction.length() < 30) {
-        this.route.shift();
-        if (this.route.length > 0) direction.copy(this.route[0]).subtract(new Phaser.Math.Vector2(this.player.x, this.player.y));
-        else direction.set(0, 0);
-      }
-      if (direction.lengthSq() > 0) direction.normalize();
-    }
+    if (direction.lengthSq() > 0) direction.normalize();
     const directionalFacing = direction.lengthSq() > 0 ? resolvePlayerFacing(direction.x, direction.y) : undefined;
     const lungeRequested = this.sneaking && Phaser.Input.Keyboard.JustDown(this.keys.run);
     if (lungeRequested) {
       this.sneaking = false;
       this.lungeUntil = time + 360;
-      this.route = [];
       this.runControl.reset();
       this.setEvent(this.needs.canRun() ? 'You burst from cover into a lunge.' : 'You rise from cover, too exhausted to lunge.');
     }
@@ -526,7 +623,13 @@ export class WildScene extends Phaser.Scene {
         soundSignature: body.velocity.lengthSq() > 4 ? 0.55 : 0,
         scentSignature: 1,
       };
-    })];
+    }), ...this.territoryMarks.getActiveMarks(this.simulationTime).map((mark): ThreatStimulus => ({
+      x: mark.x,
+      y: mark.y,
+      visualSignature: 0,
+      soundSignature: 0,
+      scentSignature: getTerritoryMarkStrength(this.simulationTime - mark.createdAt),
+    }))];
     const awarenessEnvironment = {
       visibility: this.dayState.visibility,
       windX: this.windState.x,
@@ -650,6 +753,7 @@ export class WildScene extends Phaser.Scene {
       const result = nearest.animal.attack('player');
       this.snapshot = this.needs.injure(result.retaliation);
       if (result.killed) {
+        if (this.targetedPrey === nearest.animal) this.clearTargetedAnimal();
         this.setEvent(FEATURE_FLAGS.pack ? `The ${nearest.animal.species} falls. The pack closes in.` : `The ${nearest.animal.species} falls.`);
       } else if (result.retaliation > 0) {
         this.setEvent('The deer kicks as it breaks away.');
@@ -670,7 +774,6 @@ export class WildScene extends Phaser.Scene {
 
   private startPlayerAction(action: PlayerActionState, direction: ReturnType<typeof resolvePlayerFacing>['animationDirection']): boolean {
     if (!this.playerAnimation.startAction(action, direction)) return false;
-    this.route = [];
     this.player.setVelocity(0, 0);
     this.runControl.reset();
     this.syncPlayerAnimation(this.time.now);
@@ -690,6 +793,33 @@ export class WildScene extends Phaser.Scene {
     return this.carriedCarcass?.active === true
       && this.carriedCarcass.isCarried()
       && this.carriedCarcass.hasEdibleMeat();
+  }
+
+  private syncTargetMarker(time: number): void {
+    const target = this.targetedPrey;
+    if (!isAnimalTargetAlive(target)) {
+      this.clearTargetedAnimal();
+      return;
+    }
+    if (!this.targetMarker) {
+      this.targetMarker = this.add.image(0, 0, 'predator-target')
+        .setOrigin(0.5, 1)
+        .setTint(0xff6f68)
+        .setAlpha(0.94)
+        .setDepth(99_500);
+    }
+    const offset = target.species === 'deer' ? 72 : 45;
+    const pulse = 1 + Math.sin(time / 240) * 0.08;
+    this.targetMarker
+      .setPosition(target.x, target.y - offset)
+      .setDisplaySize(38 * pulse, 38 * pulse)
+      .setVisible(true);
+  }
+
+  private clearTargetedAnimal(): void {
+    this.targetedPrey = undefined;
+    this.targetMarker?.destroy();
+    this.targetMarker = undefined;
   }
 
   private getWaterDirection(): ReturnType<typeof resolvePlayerFacing>['animationDirection'] {
@@ -768,16 +898,24 @@ export class WildScene extends Phaser.Scene {
       phaseLabel: this.dayState.phase,
       windArrow: this.windState.arrow,
       windLabel: this.windState.label,
-      territoryLabel: this.world.getTerritoryName(this.player),
+      territoryLabel: (() => {
+        const markCount = this.territoryMarks.getActiveMarks(this.simulationTime).length;
+        return `${this.world.getTerritoryName(this.player)} · ${markCount} ${markCount === 1 ? 'MARK' : 'MARKS'}`;
+      })(),
       contextAction: this.getContextAction(),
       willEatMeat: this.needs.canEat(),
       eventLine: this.eventLine,
       scentActive: this.scent.isActive(),
       scentSummary: this.scentReading.summary,
+      scentClues: this.scentReading.clues,
+      trackingTarget: this.scentReading.trackingTarget,
       scentDirectionArrow: this.scentReading.arrow,
       scentDirectionLabel: this.scentReading.label,
       soundSummary: this.soundSummary,
       sneaking: this.sneaking,
+      canSkipRest: this.playerAnimation.snapshot().state === 'resting' && this.needs.canRecoverWhileResting(),
+      canMarkTerritory: this.canAttemptTerritoryMark() && this.territoryMarks.canMark(this.simulationTime),
+      territoryMarkCount: this.territoryMarks.getActiveMarks(this.simulationTime).length,
       pack: this.pack.map((wolf) => ({ name: wolf.wolfName, status: wolf.getHudStatus() })),
       ambientColor: this.dayState.overlay,
       ambientOpacity: this.dayState.overlayOpacity,
@@ -830,6 +968,7 @@ export class WildScene extends Phaser.Scene {
         })),
       pack: this.pack.map((wolf) => wolf.snapshot()),
       scentActive: this.scent.isActive(),
+      territoryMarks: this.territoryMarks.snapshot(this.simulationTime),
     };
     try {
       await this.saves.save(data);
@@ -858,6 +997,7 @@ export class WildScene extends Phaser.Scene {
       this.nextRestMicroAt = 0;
       this.syncPlayerAnimation(this.time.now);
       this.snapshot = this.needs.restore(data.needs);
+      this.clearTargetedAnimal();
       for (const animal of this.prey) animal.destroy();
       this.prey = [];
       this.carriedCarcass = undefined;
@@ -875,8 +1015,8 @@ export class WildScene extends Phaser.Scene {
         if (saved) wolf.restore(saved);
       }
       this.scent.setActive(data.scentActive);
-      this.dayState = this.dayNight.getState(this.simulationTime);
-      this.windState = this.wind.getState(this.simulationTime);
+      this.territoryMarks.restore(data.territoryMarks ?? [], this.simulationTime);
+      this.refreshWorldTimeState();
       this.dead = false;
       this.setPaused(false);
       this.saveStatus = 'LOADED';

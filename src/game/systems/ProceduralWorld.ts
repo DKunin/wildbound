@@ -228,7 +228,7 @@ export class ProceduralWorld {
     return [];
   }
 
-  findEscapePath(start: WorldPoint, threat: WorldPoint): WorldPoint[] {
+  findEscapePath(start: WorldPoint, threat: WorldPoint, lateralBias = 0): WorldPoint[] {
     return buildEscapePath(start, threat, {
       columns: WORLD_COLUMNS,
       rows: WORLD_ROWS,
@@ -237,7 +237,7 @@ export class ProceduralWorld {
         const cell = this.getCell(column, row);
         return cell !== undefined && !cell.blocked && !cell.water;
       },
-    });
+    }, 8, { lateralBias });
   }
 
   hasLineOfSight(start: WorldPoint, end: WorldPoint): boolean {

@@ -5,7 +5,7 @@ import type { PackWolf } from '../entities/PackWolf';
 type TrackedCreature = Phaser.Physics.Arcade.Sprite | Prey | PackWolf;
 
 export class FootprintSystem {
-  private readonly lastStamp = new WeakMap<TrackedCreature, number>();
+  private lastStamp = new WeakMap<TrackedCreature, number>();
   private readonly liveTracks = new Set<Phaser.GameObjects.Image>();
 
   constructor(private readonly scene: Phaser.Scene) {}
@@ -19,8 +19,13 @@ export class FootprintSystem {
   }
 
   destroy(): void {
+    this.clearTransientTracks();
+  }
+
+  clearTransientTracks(): void {
     for (const track of this.liveTracks) track.destroy();
     this.liveTracks.clear();
+    this.lastStamp = new WeakMap<TrackedCreature, number>();
   }
 
   private stamp(time: number, creature: TrackedCreature, kind: 'wolf' | 'rabbit' | 'deer'): void {

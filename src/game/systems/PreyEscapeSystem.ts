@@ -10,6 +10,10 @@ export interface EscapeGrid {
   isPassable(column: number, row: number): boolean;
 }
 
+export interface EscapeRoutePreference {
+  lateralBias?: number;
+}
+
 interface EscapeCell {
   column: number;
   row: number;
@@ -57,6 +61,7 @@ export const findEscapePath = (
   threat: EscapePoint,
   grid: EscapeGrid,
   maxSteps = 8,
+  preference: EscapeRoutePreference = {},
 ): EscapePoint[] => {
   const startCell = {
     column: clampCell(Math.floor(start.x / grid.tileSize), grid.columns),
@@ -74,6 +79,7 @@ export const findEscapePath = (
   const awayLength = Math.hypot(awayX, awayY) || 1;
   const normalizedAwayX = awayX / awayLength;
   const normalizedAwayY = awayY / awayLength;
+  const lateralBias = Math.max(-1, Math.min(1, preference.lateralBias ?? 0));
   const startThreatDistance = awayLength / grid.tileSize;
   let bestKey = startKey;
   let bestScore = -Infinity;
@@ -86,6 +92,7 @@ export const findEscapePath = (
     const neighbors = getNeighbors(grid, current);
     const threatDistance = Math.hypot(center.x - threat.x, center.y - threat.y) / grid.tileSize;
     const awayProgress = ((center.x - start.x) * normalizedAwayX + (center.y - start.y) * normalizedAwayY) / grid.tileSize;
+    const lateralProgress = ((center.x - start.x) * -normalizedAwayY + (center.y - start.y) * normalizedAwayX) / grid.tileSize;
     const exits = neighbors.length;
     const edgeClearance = Math.min(current.column, current.row, grid.columns - 1 - current.column, grid.rows - 1 - current.row);
     const edgePenalty = edgeClearance === 0 ? 18 : edgeClearance === 1 ? 6 : 0;
@@ -93,6 +100,7 @@ export const findEscapePath = (
     const lostGroundPenalty = threatDistance < startThreatDistance ? 24 : 0;
     const score = threatDistance * 4.2
       + awayProgress * 3.4
+      + lateralProgress * lateralBias * 2.4
       + exits * 0.9
       + Math.min(3, edgeClearance) * 1.8
       + steps * 0.45
@@ -116,4 +124,38 @@ export const findEscapePath = (
   }
 
   return bestKey === startKey ? [] : reconstruct(cameFrom, cells, bestKey, grid.tileSize);
+};
+
+export const constrainEscapeHeading = (
+  start: EscapePoint,
+  threat: EscapePoint,
+  preferred: EscapePoint,
+  minimumAwayDot = 0.2,
+): EscapePoint => {
+  const awayX = start.x - threat.x;
+  const awayY = start.y - threat.y;
+  const awayLength = Math.hypot(awayX, awayY);
+  const preferredLength = Math.hypot(preferred.x, preferred.y);
+  if (awayLength === 0) {
+    return preferredLength === 0 ? { x: 1, y: 0 } : { x: preferred.x / preferredLength, y: preferred.y / preferredLength };
+  }
+
+  const normalizedAway = { x: awayX / awayLength, y: awayY / awayLength };
+  if (preferredLength === 0) return normalizedAway;
+  const normalizedPreferred = { x: preferred.x / preferredLength, y: preferred.y / preferredLength };
+  const awayDot = normalizedPreferred.x * normalizedAway.x + normalizedPreferred.y * normalizedAway.y;
+  const clampedMinimum = Math.max(0, Math.min(1, minimumAwayDot));
+  if (awayDot >= clampedMinimum) return normalizedPreferred;
+
+  const lateral = {
+    x: normalizedPreferred.x - normalizedAway.x * awayDot,
+    y: normalizedPreferred.y - normalizedAway.y * awayDot,
+  };
+  const lateralLength = Math.hypot(lateral.x, lateral.y);
+  if (lateralLength < 0.0001) return normalizedAway;
+  const lateralWeight = Math.sqrt(1 - clampedMinimum * clampedMinimum);
+  return {
+    x: normalizedAway.x * clampedMinimum + (lateral.x / lateralLength) * lateralWeight,
+    y: normalizedAway.y * clampedMinimum + (lateral.y / lateralLength) * lateralWeight,
+  };
 };

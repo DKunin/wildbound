@@ -16,6 +16,7 @@ import {
   type AwarenessThreat,
 } from '../systems/AnimalAwarenessSystem';
 import { decayCarrionMeat } from '../systems/CarrionDecaySystem';
+import { constrainEscapeHeading } from '../systems/PreyEscapeSystem';
 
 export type PreySpecies = 'rabbit' | 'deer';
 export type PreyState = 'roam' | 'alert' | 'flee' | 'dead';
@@ -28,7 +29,7 @@ export interface PreyHabitat {
   shelter: readonly { x: number; y: number }[];
   explore: readonly { x: number; y: number }[];
   findPath(start: { x: number; y: number }, destination: { x: number; y: number }): readonly { x: number; y: number }[];
-  findEscapePath(start: { x: number; y: number }, threat: { x: number; y: number }): readonly { x: number; y: number }[];
+  findEscapePath(start: { x: number; y: number }, threat: { x: number; y: number }, lateralBias?: number): readonly { x: number; y: number }[];
 }
 
 const TRAITS: Record<PreySpecies, {
@@ -62,6 +63,8 @@ export class Prey extends Phaser.Physics.Arcade.Sprite {
   private fleeRoute: Phaser.Math.Vector2[] = [];
   private fleePlanAt = 0;
   private readonly lastFleeThreat = new Phaser.Math.Vector2(Number.NaN, Number.NaN);
+  private readonly escapeLateralBias: number;
+  private readonly escapePhase: number;
   private readonly threatResponse = new PreyThreatSystem();
   private readonly awareness = new AnimalAwarenessSystem();
   private awarenessReading?: AwarenessReading;
@@ -92,6 +95,9 @@ export class Prey extends Phaser.Physics.Arcade.Sprite {
     this.health = species === 'rabbit' ? 1 : 3;
     this.meat = species === 'rabbit' ? 46 : 120;
     this.baseScale = species === 'rabbit' ? 0.36 : 0.68;
+    const escapeSide = random.frac() < 0.5 ? -1 : 1;
+    this.escapeLateralBias = escapeSide * random.realInRange(0.35, 1);
+    this.escapePhase = random.realInRange(0, Math.PI * 2);
     this.needs = new AnimalNeedsSystem(species, {
       hunger: random.integerInRange(24, 67),
       thirst: random.integerInRange(18, species === 'rabbit' ? 58 : 72),
@@ -189,6 +195,17 @@ export class Prey extends Phaser.Physics.Arcade.Sprite {
     this.setDepth(this.y + 20);
     this.shadow.sync(this, true, this.activity === 'resting');
     return this.aiState;
+  }
+
+  advanceTime(elapsedSeconds: number): void {
+    if (this.aiState === 'dead') {
+      this.decayCarrion(elapsedSeconds);
+      return;
+    }
+    const currentActivitySeconds = Math.min(Math.max(0, elapsedSeconds), 5);
+    this.needs.advanceTime(currentActivitySeconds, this.activity);
+    this.needs.advanceTime(Math.max(0, elapsedSeconds - currentActivitySeconds), 'idle');
+    if (!this.needs.isAlive()) this.die(this.needs.getDeathCause());
   }
 
   attack(attacker: 'player' | 'pack' = 'player'): { killed: boolean; retaliation: number } {
@@ -399,23 +416,38 @@ export class Prey extends Phaser.Physics.Arcade.Sprite {
     const threatMoved = !Number.isFinite(this.lastFleeThreat.x)
       || Phaser.Math.Distance.Between(threat.x, threat.y, this.lastFleeThreat.x, this.lastFleeThreat.y) > 180;
     if (habitat && (this.fleeRoute.length === 0 || time >= this.fleePlanAt || threatMoved)) {
-      this.fleeRoute = habitat.findEscapePath(this, threat).map((point) => new Phaser.Math.Vector2(point.x, point.y));
+      this.fleeRoute = habitat.findEscapePath(this, threat, this.escapeLateralBias)
+        .map((point) => new Phaser.Math.Vector2(point.x, point.y));
       this.fleePlanAt = time + 900;
       this.lastFleeThreat.set(threat.x, threat.y);
     }
     while (this.fleeRoute.length > 0
       && Phaser.Math.Distance.Between(this.x, this.y, this.fleeRoute[0].x, this.fleeRoute[0].y) < 42) this.fleeRoute.shift();
-    if (this.fleeRoute.length > 0) {
-      return this.fleeRoute[0].clone().subtract(new Phaser.Math.Vector2(this.x, this.y)).normalize();
-    }
+    const position = new Phaser.Math.Vector2(this.x, this.y);
+    const away = position.clone().subtract(new Phaser.Math.Vector2(threat.x, threat.y)).normalize();
+    const direction = this.fleeRoute.length > 0
+      ? this.fleeRoute[0].clone().subtract(position).normalize()
+      : away.clone();
+    const lateral = new Phaser.Math.Vector2(-away.y, away.x);
+    direction.add(lateral.scale(
+      this.escapeLateralBias * 0.12 + Math.sin(time / 430 + this.escapePhase) * 0.08,
+    ));
+    if (this.species === 'deer') direction.add(this.herdSeparation(herdMates).scale(0.55));
 
-    const away = new Phaser.Math.Vector2(this.x - threat.x, this.y - threat.y).normalize();
-    away.add(new Phaser.Math.Vector2(-away.y, away.x).scale(Math.sin(time / 380) * 0.18));
-    if (this.species === 'deer' && herdMates.length > 1) {
-      const cohesion = this.herdCenter(herdMates).subtract(new Phaser.Math.Vector2(this.x, this.y)).normalize().scale(0.12);
-      away.add(cohesion);
+    const constrained = constrainEscapeHeading(this, threat, direction, 0.2);
+    return new Phaser.Math.Vector2(constrained.x, constrained.y);
+  }
+
+  private herdSeparation(herdMates: readonly Prey[]): Phaser.Math.Vector2 {
+    const separation = new Phaser.Math.Vector2();
+    for (const animal of herdMates) {
+      if (animal === this || !animal.active || animal.isDead()) continue;
+      const offset = new Phaser.Math.Vector2(this.x - animal.x, this.y - animal.y);
+      const distance = offset.length();
+      if (distance === 0 || distance >= 170) continue;
+      separation.add(offset.scale((170 - distance) / (170 * distance)));
     }
-    return away.normalize();
+    return separation.lengthSq() > 1 ? separation.normalize() : separation;
   }
 
   private chooseGoalTarget(goal: AnimalGoal, habitat: PreyHabitat, time: number): void {

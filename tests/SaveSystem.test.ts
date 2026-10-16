@@ -16,6 +16,7 @@ describe('procedural-world save validation', () => {
 
   it('accepts a current Phase 2 snapshot', () => {
     expect(isSaveData(valid)).toBe(true);
+    expect(isSaveData({ ...valid, territoryMarks: [{ x: 410, y: 720, createdAt: 1_100, ownerId: 'player', color: 0x78d98b }] })).toBe(true);
   });
 
   it('persists exposed carrion plus buried and carried meat caches', () => {
@@ -41,5 +42,7 @@ describe('procedural-world save validation', () => {
     expect(isSaveData({ ...valid, needs: { ...valid.needs, thirst: 'unknown' } })).toBe(false);
     expect(isSaveData({ ...valid, needs: { ...valid.needs, recoveryDebt: Number.NaN } })).toBe(false);
     expect(isSaveData({ ...valid, pack: [{ ...valid.pack[0], stamina: 'tired' }] })).toBe(false);
+    expect(isSaveData({ ...valid, territoryMarks: [{ x: 10, y: 20, createdAt: Number.NaN }] })).toBe(false);
+    expect(isSaveData({ ...valid, territoryMarks: [{ x: 10, y: 20, createdAt: 100, color: 0x1000000 }] })).toBe(false);
   });
 });

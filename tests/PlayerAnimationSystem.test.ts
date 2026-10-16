@@ -103,6 +103,17 @@ describe('player animation state machine', () => {
     });
   });
 
+  it('wakes from rest after recovery is skipped', () => {
+    const animation = new PlayerAnimationSystem();
+    animation.update(0, { ...still, restRequested: true });
+    animation.completeTransition();
+
+    expect(animation.wakeUp()).toBe(true);
+    expect(animation.snapshot().state).toBe('getting-up');
+    expect(animation.completeTransition().state).toBe('idle');
+    expect(animation.wakeUp()).toBe(false);
+  });
+
   it('locks movement for one-shot attack, eating, and drinking animations', () => {
     for (const state of ['attacking', 'eating', 'drinking'] as const) {
       const animation = new PlayerAnimationSystem();

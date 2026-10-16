@@ -58,6 +58,11 @@ export class SoundSystem {
     this.ambients.length = 0;
   }
 
+  clearTransientSounds(): void {
+    this.events.length = 0;
+    this.graphics.clear();
+  }
+
   private addEvent(time: number, source: SoundSource, label: string, reach: number, duplicateKey: string | SoundSource): void {
     const duplicate = this.events.some((event) => event.duplicateKey === duplicateKey && time - event.createdAt < 2200);
     if (!duplicate) this.events.push({ source, label, createdAt: time, reach, duplicateKey });
