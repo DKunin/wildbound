@@ -579,20 +579,28 @@
         }
       ],
       "output": "public/assets/prey-v2/rabbit-actions.png",
-      "outputSha256": "0ab981fd42f7420029ed612373f9acb7643fef988ba498cb8739e34a702e75e0",
+      "outputSha256": "2e40716001709edbde810f6be9af30909ea1a842d3a2b5eb1d22bb50ca2b8536",
       "width": 1448,
       "height": 2172,
       "frames": 96,
       "quality": {
         "faintAlphaPixels": 0,
         "edgePixels": 0,
-        "minVisiblePixels": 6984,
+        "minVisiblePixels": 5015,
         "minimumUniquePoses": 4
       },
       "alignment": [
         {
           "action": "resting",
           "direction": "east",
+          "scaleNormalization": {
+            "scale": 0.921085,
+            "referenceVisiblePixels": 8842,
+            "visiblePixelsBefore": 10422,
+            "visiblePixelsAfter": 8918,
+            "areaRatioBefore": 1.178693,
+            "areaRatioAfter": 1.008595
+          },
           "requested": {
             "x": -14,
             "y": 0
@@ -608,21 +616,29 @@
           },
           "idleGroundY": 172,
           "sourceRootBefore": {
-            "x": 98.862,
-            "y": 125.253
+            "x": 98.939,
+            "y": 128.961
           },
           "rootAfter": {
-            "x": 84.862,
-            "y": 125.253
+            "x": 84.939,
+            "y": 128.961
           },
           "groundYBefore": 172,
           "groundYAfter": 172,
-          "rootDeltaX": 0.007,
+          "rootDeltaX": 0.084,
           "groundDeltaY": 0
         },
         {
           "action": "resting",
           "direction": "northeast",
+          "scaleNormalization": {
+            "scale": 0.823338,
+            "referenceVisiblePixels": 6747,
+            "visiblePixelsBefore": 9953,
+            "visiblePixelsAfter": 6793,
+            "areaRatioBefore": 1.475174,
+            "areaRatioAfter": 1.006818
+          },
           "requested": {
             "x": -11,
             "y": 1
@@ -638,21 +654,29 @@
           },
           "idleGroundY": 173,
           "sourceRootBefore": {
-            "x": 105.295,
-            "y": 123.801
+            "x": 105.172,
+            "y": 132.528
           },
           "rootAfter": {
-            "x": 94.295,
-            "y": 124.801
+            "x": 94.172,
+            "y": 133.528
           },
           "groundYBefore": 172,
           "groundYAfter": 173,
-          "rootDeltaX": -0.02,
+          "rootDeltaX": -0.143,
           "groundDeltaY": 0
         },
         {
           "action": "resting",
           "direction": "north",
+          "scaleNormalization": {
+            "scale": 0.819741,
+            "referenceVisiblePixels": 5064,
+            "visiblePixelsBefore": 7536,
+            "visiblePixelsAfter": 5116,
+            "areaRatioBefore": 1.488152,
+            "areaRatioAfter": 1.010269
+          },
           "requested": {
             "x": -7,
             "y": -3
@@ -668,21 +692,29 @@
           },
           "idleGroundY": 174,
           "sourceRootBefore": {
-            "x": 95.298,
-            "y": 117.587
+            "x": 95.265,
+            "y": 128.38
           },
           "rootAfter": {
-            "x": 88.298,
-            "y": 114.587
+            "x": 88.265,
+            "y": 125.38
           },
           "groundYBefore": 177,
           "groundYAfter": 174,
-          "rootDeltaX": -0.406,
+          "rootDeltaX": -0.439,
           "groundDeltaY": 0
         },
         {
           "action": "resting",
           "direction": "northwest",
+          "scaleNormalization": {
+            "scale": 0.826304,
+            "referenceVisiblePixels": 6625,
+            "visiblePixelsBefore": 9703,
+            "visiblePixelsAfter": 6669,
+            "areaRatioBefore": 1.464604,
+            "areaRatioAfter": 1.006642
+          },
           "requested": {
             "x": 6,
             "y": 2
@@ -698,21 +730,29 @@
           },
           "idleGroundY": 174,
           "sourceRootBefore": {
-            "x": 81.996,
-            "y": 123.66
+            "x": 82.042,
+            "y": 132.3
           },
           "rootAfter": {
-            "x": 87.996,
-            "y": 125.66
+            "x": 88.042,
+            "y": 134.3
           },
           "groundYBefore": 172,
           "groundYAfter": 174,
-          "rootDeltaX": 0.31,
+          "rootDeltaX": 0.356,
           "groundDeltaY": 0
         },
         {
           "action": "resting",
           "direction": "west",
+          "scaleNormalization": {
+            "scale": 0.869623,
+            "referenceVisiblePixels": 7024,
+            "visiblePixelsBefore": 9288,
+            "visiblePixelsAfter": 7072,
+            "areaRatioBefore": 1.322323,
+            "areaRatioAfter": 1.006834
+          },
           "requested": {
             "x": 0,
             "y": 1
@@ -728,21 +768,29 @@
           },
           "idleGroundY": 174,
           "sourceRootBefore": {
-            "x": 89.116,
-            "y": 131.04
+            "x": 89.151,
+            "y": 136.61
           },
           "rootAfter": {
-            "x": 89.116,
-            "y": 132.04
+            "x": 89.151,
+            "y": 137.61
           },
           "groundYBefore": 173,
           "groundYAfter": 174,
-          "rootDeltaX": 0.32,
+          "rootDeltaX": 0.355,
           "groundDeltaY": 0
         },
         {
           "action": "resting",
           "direction": "southwest",
+          "scaleNormalization": {
+            "scale": 0.853164,
+            "referenceVisiblePixels": 6337,
+            "visiblePixelsBefore": 8706,
+            "visiblePixelsAfter": 6398,
+            "areaRatioBefore": 1.373836,
+            "areaRatioAfter": 1.009626
+          },
           "requested": {
             "x": -1,
             "y": 3
@@ -758,21 +806,29 @@
           },
           "idleGroundY": 174,
           "sourceRootBefore": {
-            "x": 94.799,
-            "y": 124.839
+            "x": 94.887,
+            "y": 131.734
           },
           "rootAfter": {
-            "x": 93.799,
-            "y": 127.839
+            "x": 93.887,
+            "y": 134.734
           },
           "groundYBefore": 171,
           "groundYAfter": 174,
-          "rootDeltaX": 0.263,
+          "rootDeltaX": 0.351,
           "groundDeltaY": 0
         },
         {
           "action": "resting",
           "direction": "south",
+          "scaleNormalization": {
+            "scale": 0.819935,
+            "referenceVisiblePixels": 4979,
+            "visiblePixelsBefore": 7406,
+            "visiblePixelsAfter": 5015,
+            "areaRatioBefore": 1.487447,
+            "areaRatioAfter": 1.00723
+          },
           "requested": {
             "x": 7,
             "y": -7
@@ -788,21 +844,29 @@
           },
           "idleGroundY": 170,
           "sourceRootBefore": {
-            "x": 84.122,
-            "y": 117.702
+            "x": 84.161,
+            "y": 128.538
           },
           "rootAfter": {
-            "x": 91.122,
-            "y": 110.702
+            "x": 91.161,
+            "y": 121.538
           },
           "groundYBefore": 177,
           "groundYAfter": 170,
-          "rootDeltaX": 0.033,
+          "rootDeltaX": 0.072,
           "groundDeltaY": 0
         },
         {
           "action": "resting",
           "direction": "southeast",
+          "scaleNormalization": {
+            "scale": 0.850564,
+            "referenceVisiblePixels": 6433,
+            "visiblePixelsBefore": 8892,
+            "visiblePixelsAfter": 6471,
+            "areaRatioBefore": 1.382248,
+            "areaRatioAfter": 1.005907
+          },
           "requested": {
             "x": 7,
             "y": 1
@@ -818,21 +882,29 @@
           },
           "idleGroundY": 173,
           "sourceRootBefore": {
-            "x": 82.395,
-            "y": 125.342
+            "x": 82.365,
+            "y": 132.324
           },
           "rootAfter": {
-            "x": 89.395,
-            "y": 126.342
+            "x": 89.365,
+            "y": 133.324
           },
           "groundYBefore": 172,
           "groundYAfter": 173,
-          "rootDeltaX": 0.122,
+          "rootDeltaX": 0.092,
           "groundDeltaY": 0
         },
         {
           "action": "foraging",
           "direction": "east",
+          "scaleNormalization": {
+            "scale": 0.950593,
+            "referenceVisiblePixels": 8842,
+            "visiblePixelsBefore": 9785,
+            "visiblePixelsAfter": 8915,
+            "areaRatioBefore": 1.10665,
+            "areaRatioAfter": 1.008256
+          },
           "requested": {
             "x": -16,
             "y": 11
@@ -848,21 +920,29 @@
           },
           "idleGroundY": 172,
           "sourceRootBefore": {
-            "x": 100.778,
-            "y": 113.402
+            "x": 100.787,
+            "y": 115.846
           },
           "rootAfter": {
-            "x": 84.778,
-            "y": 124.402
+            "x": 84.787,
+            "y": 126.846
           },
           "groundYBefore": 161,
           "groundYAfter": 172,
-          "rootDeltaX": -0.077,
+          "rootDeltaX": -0.068,
           "groundDeltaY": 0
         },
         {
           "action": "foraging",
           "direction": "northeast",
+          "scaleNormalization": {
+            "scale": 0.857583,
+            "referenceVisiblePixels": 6747,
+            "visiblePixelsBefore": 9174,
+            "visiblePixelsAfter": 6789,
+            "areaRatioBefore": 1.359715,
+            "areaRatioAfter": 1.006225
+          },
           "requested": {
             "x": -12,
             "y": 14
@@ -878,21 +958,29 @@
           },
           "idleGroundY": 173,
           "sourceRootBefore": {
-            "x": 106.358,
-            "y": 109.933
+            "x": 106.334,
+            "y": 116.969
           },
           "rootAfter": {
-            "x": 94.358,
-            "y": 123.933
+            "x": 94.334,
+            "y": 130.969
           },
           "groundYBefore": 159,
           "groundYAfter": 173,
-          "rootDeltaX": 0.043,
+          "rootDeltaX": 0.019,
           "groundDeltaY": 0
         },
         {
           "action": "foraging",
           "direction": "north",
+          "scaleNormalization": {
+            "scale": 0.822528,
+            "referenceVisiblePixels": 5064,
+            "visiblePixelsBefore": 7485,
+            "visiblePixelsAfter": 5105,
+            "areaRatioBefore": 1.478081,
+            "areaRatioAfter": 1.008096
+          },
           "requested": {
             "x": -7,
             "y": -2
@@ -908,21 +996,29 @@
           },
           "idleGroundY": 174,
           "sourceRootBefore": {
-            "x": 95.289,
-            "y": 105.458
+            "x": 95.228,
+            "y": 117.971
           },
           "rootAfter": {
-            "x": 88.289,
-            "y": 103.458
+            "x": 88.228,
+            "y": 115.971
           },
           "groundYBefore": 176,
           "groundYAfter": 174,
-          "rootDeltaX": -0.414,
+          "rootDeltaX": -0.475,
           "groundDeltaY": 0
         },
         {
           "action": "foraging",
           "direction": "northwest",
+          "scaleNormalization": {
+            "scale": 0.863212,
+            "referenceVisiblePixels": 6625,
+            "visiblePixelsBefore": 8891,
+            "visiblePixelsAfter": 6670,
+            "areaRatioBefore": 1.342038,
+            "areaRatioAfter": 1.006792
+          },
           "requested": {
             "x": 6,
             "y": 15
@@ -938,21 +1034,29 @@
           },
           "idleGroundY": 174,
           "sourceRootBefore": {
-            "x": 81.887,
-            "y": 109.911
+            "x": 81.924,
+            "y": 116.656
           },
           "rootAfter": {
-            "x": 87.887,
-            "y": 124.911
+            "x": 87.924,
+            "y": 131.656
           },
           "groundYBefore": 159,
           "groundYAfter": 174,
-          "rootDeltaX": 0.201,
+          "rootDeltaX": 0.238,
           "groundDeltaY": 0
         },
         {
           "action": "foraging",
           "direction": "west",
+          "scaleNormalization": {
+            "scale": 0.858466,
+            "referenceVisiblePixels": 7024,
+            "visiblePixelsBefore": 9531,
+            "visiblePixelsAfter": 7076,
+            "areaRatioBefore": 1.356919,
+            "areaRatioAfter": 1.007403
+          },
           "requested": {
             "x": 4,
             "y": 13
@@ -968,21 +1072,29 @@
           },
           "idleGroundY": 174,
           "sourceRootBefore": {
-            "x": 84.711,
-            "y": 115.039
+            "x": 84.636,
+            "y": 121.511
           },
           "rootAfter": {
-            "x": 88.711,
-            "y": 128.039
+            "x": 88.636,
+            "y": 134.511
           },
           "groundYBefore": 161,
           "groundYAfter": 174,
-          "rootDeltaX": -0.085,
+          "rootDeltaX": -0.16,
           "groundDeltaY": 0
         },
         {
           "action": "foraging",
           "direction": "southwest",
+          "scaleNormalization": {
+            "scale": 0.858805,
+            "referenceVisiblePixels": 6337,
+            "visiblePixelsBefore": 8592,
+            "visiblePixelsAfter": 6391,
+            "areaRatioBefore": 1.355847,
+            "areaRatioAfter": 1.008521
+          },
           "requested": {
             "x": -2,
             "y": 7
@@ -998,21 +1110,29 @@
           },
           "idleGroundY": 174,
           "sourceRootBefore": {
-            "x": 95.835,
-            "y": 109.93
+            "x": 96.009,
+            "y": 117.876
           },
           "rootAfter": {
-            "x": 93.835,
-            "y": 116.93
+            "x": 94.009,
+            "y": 124.876
           },
           "groundYBefore": 167,
           "groundYAfter": 174,
-          "rootDeltaX": 0.299,
+          "rootDeltaX": 0.473,
           "groundDeltaY": 0
         },
         {
           "action": "foraging",
           "direction": "south",
+          "scaleNormalization": {
+            "scale": 0.793182,
+            "referenceVisiblePixels": 4979,
+            "visiblePixelsBefore": 7914,
+            "visiblePixelsAfter": 5030,
+            "areaRatioBefore": 1.589476,
+            "areaRatioAfter": 1.010243
+          },
           "requested": {
             "x": 6,
             "y": -6
@@ -1028,27 +1148,35 @@
           },
           "idleGroundY": 170,
           "sourceRootBefore": {
-            "x": 84.864,
-            "y": 104.747
+            "x": 84.817,
+            "y": 119.393
           },
           "rootAfter": {
-            "x": 90.864,
-            "y": 98.747
+            "x": 90.817,
+            "y": 113.393
           },
           "groundYBefore": 176,
           "groundYAfter": 170,
-          "rootDeltaX": -0.225,
+          "rootDeltaX": -0.272,
           "groundDeltaY": 0
         },
         {
           "action": "foraging",
           "direction": "southeast",
+          "scaleNormalization": {
+            "scale": 0.858961,
+            "referenceVisiblePixels": 6433,
+            "visiblePixelsBefore": 8719,
+            "visiblePixelsAfter": 6483,
+            "areaRatioBefore": 1.355355,
+            "areaRatioAfter": 1.007772
+          },
           "requested": {
-            "x": 6,
+            "x": 7,
             "y": 6
           },
           "applied": {
-            "x": 6,
+            "x": 7,
             "y": 6
           },
           "capped": false,
@@ -1058,21 +1186,29 @@
           },
           "idleGroundY": 173,
           "sourceRootBefore": {
-            "x": 82.775,
-            "y": 109.305
+            "x": 82.65,
+            "y": 117.367
           },
           "rootAfter": {
-            "x": 88.775,
-            "y": 115.305
+            "x": 89.65,
+            "y": 123.367
           },
           "groundYBefore": 167,
           "groundYAfter": 173,
-          "rootDeltaX": -0.497,
+          "rootDeltaX": 0.377,
           "groundDeltaY": 0
         },
         {
           "action": "drinking",
           "direction": "east",
+          "scaleNormalization": {
+            "scale": 0.965103,
+            "referenceVisiblePixels": 8842,
+            "visiblePixelsBefore": 9493,
+            "visiblePixelsAfter": 8914,
+            "areaRatioBefore": 1.073626,
+            "areaRatioAfter": 1.008143
+          },
           "requested": {
             "x": -19,
             "y": 27
@@ -1088,21 +1224,29 @@
           },
           "idleGroundY": 172,
           "sourceRootBefore": {
-            "x": 104.085,
-            "y": 100.187
+            "x": 104.144,
+            "y": 101.715
           },
           "rootAfter": {
-            "x": 85.085,
-            "y": 127.187
+            "x": 85.144,
+            "y": 128.715
           },
           "groundYBefore": 145,
           "groundYAfter": 172,
-          "rootDeltaX": 0.23,
+          "rootDeltaX": 0.289,
           "groundDeltaY": 0
         },
         {
           "action": "drinking",
           "direction": "northeast",
+          "scaleNormalization": {
+            "scale": 0.883994,
+            "referenceVisiblePixels": 6747,
+            "visiblePixelsBefore": 8634,
+            "visiblePixelsAfter": 6817,
+            "areaRatioBefore": 1.27968,
+            "areaRatioAfter": 1.010375
+          },
           "requested": {
             "x": -16,
             "y": 28
@@ -1118,21 +1262,29 @@
           },
           "idleGroundY": 173,
           "sourceRootBefore": {
-            "x": 110.75,
-            "y": 99.66
+            "x": 110.652,
+            "y": 104.932
           },
           "rootAfter": {
-            "x": 94.75,
-            "y": 127.66
+            "x": 94.652,
+            "y": 132.932
           },
           "groundYBefore": 145,
           "groundYAfter": 173,
-          "rootDeltaX": 0.435,
+          "rootDeltaX": 0.337,
           "groundDeltaY": 0
         },
         {
           "action": "drinking",
           "direction": "north",
+          "scaleNormalization": {
+            "scale": 0.844714,
+            "referenceVisiblePixels": 5064,
+            "visiblePixelsBefore": 7097,
+            "visiblePixelsAfter": 5111,
+            "areaRatioBefore": 1.401461,
+            "areaRatioAfter": 1.009281
+          },
           "requested": {
             "x": -6,
             "y": 18
@@ -1148,21 +1300,29 @@
           },
           "idleGroundY": 174,
           "sourceRootBefore": {
-            "x": 95.192,
-            "y": 89.098
+            "x": 95.152,
+            "y": 99.432
           },
           "rootAfter": {
-            "x": 89.192,
-            "y": 107.098
+            "x": 89.152,
+            "y": 117.432
           },
           "groundYBefore": 156,
           "groundYAfter": 174,
-          "rootDeltaX": 0.489,
+          "rootDeltaX": 0.448,
           "groundDeltaY": 0
         },
         {
           "action": "drinking",
           "direction": "northwest",
+          "scaleNormalization": {
+            "scale": 0.883779,
+            "referenceVisiblePixels": 6625,
+            "visiblePixelsBefore": 8482,
+            "visiblePixelsAfter": 6685,
+            "areaRatioBefore": 1.280302,
+            "areaRatioAfter": 1.009057
+          },
           "requested": {
             "x": 10,
             "y": 29
@@ -1178,21 +1338,29 @@
           },
           "idleGroundY": 174,
           "sourceRootBefore": {
-            "x": 77.47,
-            "y": 99.844
+            "x": 77.611,
+            "y": 105.077
           },
           "rootAfter": {
-            "x": 87.47,
-            "y": 128.844
+            "x": 87.611,
+            "y": 134.077
           },
           "groundYBefore": 145,
           "groundYAfter": 174,
-          "rootDeltaX": -0.216,
+          "rootDeltaX": -0.075,
           "groundDeltaY": 0
         },
         {
           "action": "drinking",
           "direction": "west",
+          "scaleNormalization": {
+            "scale": 0.861454,
+            "referenceVisiblePixels": 7024,
+            "visiblePixelsBefore": 9465,
+            "visiblePixelsAfter": 7081,
+            "areaRatioBefore": 1.347523,
+            "areaRatioAfter": 1.008115
+          },
           "requested": {
             "x": 8,
             "y": 29
@@ -1208,21 +1376,29 @@
           },
           "idleGroundY": 174,
           "sourceRootBefore": {
-            "x": 80.404,
-            "y": 100.134
+            "x": 80.34,
+            "y": 106.264
           },
           "rootAfter": {
-            "x": 88.404,
-            "y": 129.134
+            "x": 88.34,
+            "y": 135.264
           },
           "groundYBefore": 145,
           "groundYAfter": 174,
-          "rootDeltaX": -0.392,
+          "rootDeltaX": -0.456,
           "groundDeltaY": 0
         },
         {
           "action": "drinking",
           "direction": "southwest",
+          "scaleNormalization": {
+            "scale": 0.879093,
+            "referenceVisiblePixels": 6337,
+            "visiblePixelsBefore": 8200,
+            "visiblePixelsAfter": 6377,
+            "areaRatioBefore": 1.293988,
+            "areaRatioAfter": 1.006312
+          },
           "requested": {
             "x": 3,
             "y": 28
@@ -1238,21 +1414,29 @@
           },
           "idleGroundY": 174,
           "sourceRootBefore": {
-            "x": 90.066,
-            "y": 87.802
+            "x": 90.129,
+            "y": 94.785
           },
           "rootAfter": {
-            "x": 93.066,
-            "y": 115.802
+            "x": 93.129,
+            "y": 122.785
           },
           "groundYBefore": 146,
           "groundYAfter": 174,
-          "rootDeltaX": -0.471,
+          "rootDeltaX": -0.408,
           "groundDeltaY": 0
         },
         {
           "action": "drinking",
           "direction": "south",
+          "scaleNormalization": {
+            "scale": 0.844343,
+            "referenceVisiblePixels": 4979,
+            "visiblePixelsBefore": 6984,
+            "visiblePixelsAfter": 5021,
+            "areaRatioBefore": 1.402691,
+            "areaRatioAfter": 1.008435
+          },
           "requested": {
             "x": 8,
             "y": 14
@@ -1268,21 +1452,29 @@
           },
           "idleGroundY": 170,
           "sourceRootBefore": {
-            "x": 83.532,
-            "y": 89.219
+            "x": 83.524,
+            "y": 99.614
           },
           "rootAfter": {
-            "x": 91.532,
-            "y": 103.219
+            "x": 91.524,
+            "y": 113.614
           },
           "groundYBefore": 156,
           "groundYAfter": 170,
-          "rootDeltaX": 0.443,
+          "rootDeltaX": 0.436,
           "groundDeltaY": 0
         },
         {
           "action": "drinking",
           "direction": "southeast",
+          "scaleNormalization": {
+            "scale": 0.883199,
+            "referenceVisiblePixels": 6433,
+            "visiblePixelsBefore": 8247,
+            "visiblePixelsAfter": 6481,
+            "areaRatioBefore": 1.281984,
+            "areaRatioAfter": 1.007462
+          },
           "requested": {
             "x": 2,
             "y": 27
@@ -1298,16 +1490,16 @@
           },
           "idleGroundY": 173,
           "sourceRootBefore": {
-            "x": 87.541,
-            "y": 87.533
+            "x": 87.509,
+            "y": 94.286
           },
           "rootAfter": {
-            "x": 89.541,
-            "y": 114.533
+            "x": 89.509,
+            "y": 121.286
           },
           "groundYBefore": 146,
           "groundYAfter": 173,
-          "rootDeltaX": 0.269,
+          "rootDeltaX": 0.237,
           "groundDeltaY": 0
         }
       ]
@@ -1854,20 +2046,28 @@
         }
       ],
       "output": "public/assets/prey-v2/deer-actions.png",
-      "outputSha256": "a03511413322bd6e905690694af846decaa81d616146221661ad152081a4a6ee",
+      "outputSha256": "5b399c934ce4418054c2af09273ca6a0e12125a86fa06bab6f0128fbfbbba350",
       "width": 1448,
       "height": 2172,
       "frames": 96,
       "quality": {
         "faintAlphaPixels": 0,
         "edgePixels": 0,
-        "minVisiblePixels": 4881,
+        "minVisiblePixels": 3066,
         "minimumUniquePoses": 4
       },
       "alignment": [
         {
           "action": "resting",
           "direction": "east",
+          "scaleNormalization": {
+            "scale": 0.848558,
+            "referenceVisiblePixels": 5049,
+            "visiblePixelsBefore": 7012,
+            "visiblePixelsAfter": 5108,
+            "areaRatioBefore": 1.38879,
+            "areaRatioAfter": 1.011685
+          },
           "requested": {
             "x": -6,
             "y": 21
@@ -1883,21 +2083,29 @@
           },
           "idleGroundY": 168,
           "sourceRootBefore": {
-            "x": 94.855,
-            "y": 111.221
+            "x": 94.632,
+            "y": 116.89
           },
           "rootAfter": {
-            "x": 88.855,
-            "y": 132.221
+            "x": 88.632,
+            "y": 137.89
           },
           "groundYBefore": 147,
           "groundYAfter": 168,
-          "rootDeltaX": -0.19,
+          "rootDeltaX": -0.413,
           "groundDeltaY": 0
         },
         {
           "action": "resting",
           "direction": "northeast",
+          "scaleNormalization": {
+            "scale": 0.788957,
+            "referenceVisiblePixels": 4186,
+            "visiblePixelsBefore": 6725,
+            "visiblePixelsAfter": 4230,
+            "areaRatioBefore": 1.606546,
+            "areaRatioAfter": 1.010511
+          },
           "requested": {
             "x": -12,
             "y": 12
@@ -1913,21 +2121,29 @@
           },
           "idleGroundY": 159,
           "sourceRootBefore": {
-            "x": 91.623,
-            "y": 110.783
+            "x": 91.291,
+            "y": 118.743
           },
           "rootAfter": {
-            "x": 79.623,
-            "y": 122.783
+            "x": 79.291,
+            "y": 130.743
           },
           "groundYBefore": 147,
           "groundYAfter": 159,
-          "rootDeltaX": 0.158,
+          "rootDeltaX": -0.174,
           "groundDeltaY": 0
         },
         {
           "action": "resting",
           "direction": "north",
+          "scaleNormalization": {
+            "scale": 0.794882,
+            "referenceVisiblePixels": 3084,
+            "visiblePixelsBefore": 4881,
+            "visiblePixelsAfter": 3122,
+            "areaRatioBefore": 1.582685,
+            "areaRatioAfter": 1.012322
+          },
           "requested": {
             "x": 0,
             "y": 16
@@ -1943,21 +2159,29 @@
           },
           "idleGroundY": 174,
           "sourceRootBefore": {
-            "x": 89.861,
-            "y": 108.16
+            "x": 89.89,
+            "y": 118.617
           },
           "rootAfter": {
-            "x": 89.861,
-            "y": 124.16
+            "x": 89.89,
+            "y": 134.617
           },
           "groundYBefore": 158,
           "groundYAfter": 174,
-          "rootDeltaX": -0.335,
+          "rootDeltaX": -0.307,
           "groundDeltaY": 0
         },
         {
           "action": "resting",
           "direction": "northwest",
+          "scaleNormalization": {
+            "scale": 0.788957,
+            "referenceVisiblePixels": 4186,
+            "visiblePixelsBefore": 6725,
+            "visiblePixelsAfter": 4230,
+            "areaRatioBefore": 1.606546,
+            "areaRatioAfter": 1.010511
+          },
           "requested": {
             "x": 12,
             "y": 12
@@ -1973,21 +2197,29 @@
           },
           "idleGroundY": 159,
           "sourceRootBefore": {
-            "x": 88.377,
-            "y": 110.783
+            "x": 88.709,
+            "y": 118.743
           },
           "rootAfter": {
-            "x": 100.377,
-            "y": 122.783
+            "x": 100.709,
+            "y": 130.743
           },
           "groundYBefore": 147,
           "groundYAfter": 159,
-          "rootDeltaX": -0.158,
+          "rootDeltaX": 0.174,
           "groundDeltaY": 0
         },
         {
           "action": "resting",
           "direction": "west",
+          "scaleNormalization": {
+            "scale": 0.819437,
+            "referenceVisiblePixels": 5026,
+            "visiblePixelsBefore": 7485,
+            "visiblePixelsAfter": 5077,
+            "areaRatioBefore": 1.489256,
+            "areaRatioAfter": 1.010147
+          },
           "requested": {
             "x": -2,
             "y": 9
@@ -2003,21 +2235,29 @@
           },
           "idleGroundY": 155,
           "sourceRootBefore": {
-            "x": 83.962,
-            "y": 109.126
+            "x": 84.307,
+            "y": 116.03
           },
           "rootAfter": {
-            "x": 81.962,
-            "y": 118.126
+            "x": 82.307,
+            "y": 125.03
           },
           "groundYBefore": 146,
           "groundYAfter": 155,
-          "rootDeltaX": 0.071,
+          "rootDeltaX": 0.416,
           "groundDeltaY": 0
         },
         {
           "action": "resting",
           "direction": "southwest",
+          "scaleNormalization": {
+            "scale": 0.7815,
+            "referenceVisiblePixels": 3866,
+            "visiblePixelsBefore": 6330,
+            "visiblePixelsAfter": 3912,
+            "areaRatioBefore": 1.637351,
+            "areaRatioAfter": 1.011899
+          },
           "requested": {
             "x": -2,
             "y": 13
@@ -2033,21 +2273,29 @@
           },
           "idleGroundY": 171,
           "sourceRootBefore": {
-            "x": 91.814,
-            "y": 118.649
+            "x": 92.106,
+            "y": 127.454
           },
           "rootAfter": {
-            "x": 89.814,
-            "y": 131.649
+            "x": 90.106,
+            "y": 140.454
           },
           "groundYBefore": 158,
           "groundYAfter": 171,
-          "rootDeltaX": -0.274,
+          "rootDeltaX": 0.018,
           "groundDeltaY": 0
         },
         {
           "action": "resting",
           "direction": "south",
+          "scaleNormalization": {
+            "scale": 0.765311,
+            "referenceVisiblePixels": 3031,
+            "visiblePixelsBefore": 5175,
+            "visiblePixelsAfter": 3075,
+            "areaRatioBefore": 1.707357,
+            "areaRatioAfter": 1.014517
+          },
           "requested": {
             "x": -10,
             "y": 2
@@ -2063,27 +2311,35 @@
           },
           "idleGroundY": 166,
           "sourceRootBefore": {
-            "x": 86.057,
-            "y": 104.366
+            "x": 86.078,
+            "y": 118.513
           },
           "rootAfter": {
-            "x": 76.057,
-            "y": 106.366
+            "x": 76.078,
+            "y": 120.513
           },
           "groundYBefore": 164,
           "groundYAfter": 166,
-          "rootDeltaX": 0.091,
+          "rootDeltaX": 0.112,
           "groundDeltaY": 0
         },
         {
           "action": "resting",
           "direction": "southeast",
+          "scaleNormalization": {
+            "scale": 0.792519,
+            "referenceVisiblePixels": 3994,
+            "visiblePixelsBefore": 6359,
+            "visiblePixelsAfter": 4037,
+            "areaRatioBefore": 1.592138,
+            "areaRatioAfter": 1.010766
+          },
           "requested": {
-            "x": 5,
+            "x": 6,
             "y": -2
           },
           "applied": {
-            "x": 5,
+            "x": 6,
             "y": -2
           },
           "capped": false,
@@ -2093,27 +2349,35 @@
           },
           "idleGroundY": 156,
           "sourceRootBefore": {
-            "x": 81.633,
-            "y": 116.933
+            "x": 81.3,
+            "y": 125.688
           },
           "rootAfter": {
-            "x": 86.633,
-            "y": 114.933
+            "x": 87.3,
+            "y": 123.688
           },
           "groundYBefore": 158,
           "groundYAfter": 156,
-          "rootDeltaX": -0.207,
+          "rootDeltaX": 0.46,
           "groundDeltaY": 0
         },
         {
           "action": "foraging",
           "direction": "east",
+          "scaleNormalization": {
+            "scale": 0.817442,
+            "referenceVisiblePixels": 5049,
+            "visiblePixelsBefore": 7556,
+            "visiblePixelsAfter": 5109,
+            "areaRatioBefore": 1.496534,
+            "areaRatioAfter": 1.011884
+          },
           "requested": {
-            "x": -3,
+            "x": -4,
             "y": 22
           },
           "applied": {
-            "x": -3,
+            "x": -4,
             "y": 22
           },
           "capped": false,
@@ -2123,21 +2387,29 @@
           },
           "idleGroundY": 168,
           "sourceRootBefore": {
-            "x": 92.499,
-            "y": 90.946
+            "x": 92.564,
+            "y": 100.215
           },
           "rootAfter": {
-            "x": 89.499,
-            "y": 112.946
+            "x": 88.564,
+            "y": 122.215
           },
           "groundYBefore": 146,
           "groundYAfter": 168,
-          "rootDeltaX": 0.454,
+          "rootDeltaX": -0.48,
           "groundDeltaY": 0
         },
         {
           "action": "foraging",
           "direction": "northeast",
+          "scaleNormalization": {
+            "scale": 0.779849,
+            "referenceVisiblePixels": 4186,
+            "visiblePixelsBefore": 6883,
+            "visiblePixelsAfter": 4244,
+            "areaRatioBefore": 1.64429,
+            "areaRatioAfter": 1.013856
+          },
           "requested": {
             "x": -18,
             "y": 11
@@ -2153,21 +2425,29 @@
           },
           "idleGroundY": 159,
           "sourceRootBefore": {
-            "x": 96.995,
-            "y": 85.17
+            "x": 97.241,
+            "y": 98.149
           },
           "rootAfter": {
-            "x": 78.995,
-            "y": 96.17
+            "x": 79.241,
+            "y": 109.149
           },
           "groundYBefore": 148,
           "groundYAfter": 159,
-          "rootDeltaX": -0.47,
+          "rootDeltaX": -0.224,
           "groundDeltaY": 0
         },
         {
           "action": "foraging",
           "direction": "north",
+          "scaleNormalization": {
+            "scale": 0.752866,
+            "referenceVisiblePixels": 3084,
+            "visiblePixelsBefore": 5441,
+            "visiblePixelsAfter": 3127,
+            "areaRatioBefore": 1.764267,
+            "areaRatioAfter": 1.013943
+          },
           "requested": {
             "x": 0,
             "y": 23
@@ -2183,21 +2463,29 @@
           },
           "idleGroundY": 174,
           "sourceRootBefore": {
-            "x": 90.037,
-            "y": 84.808
+            "x": 90.042,
+            "y": 101.085
           },
           "rootAfter": {
-            "x": 90.037,
-            "y": 107.808
+            "x": 90.042,
+            "y": 124.085
           },
           "groundYBefore": 151,
           "groundYAfter": 174,
-          "rootDeltaX": -0.16,
+          "rootDeltaX": -0.154,
           "groundDeltaY": 0
         },
         {
           "action": "foraging",
           "direction": "northwest",
+          "scaleNormalization": {
+            "scale": 0.779849,
+            "referenceVisiblePixels": 4186,
+            "visiblePixelsBefore": 6883,
+            "visiblePixelsAfter": 4244,
+            "areaRatioBefore": 1.64429,
+            "areaRatioAfter": 1.013856
+          },
           "requested": {
             "x": 18,
             "y": 11
@@ -2213,21 +2501,29 @@
           },
           "idleGroundY": 159,
           "sourceRootBefore": {
-            "x": 83.005,
-            "y": 85.17
+            "x": 82.759,
+            "y": 98.149
           },
           "rootAfter": {
-            "x": 101.005,
-            "y": 96.17
+            "x": 100.759,
+            "y": 109.149
           },
           "groundYBefore": 148,
           "groundYAfter": 159,
-          "rootDeltaX": 0.47,
+          "rootDeltaX": 0.224,
           "groundDeltaY": 0
         },
         {
           "action": "foraging",
           "direction": "west",
+          "scaleNormalization": {
+            "scale": 0.8114,
+            "referenceVisiblePixels": 5026,
+            "visiblePixelsBefore": 7634,
+            "visiblePixelsAfter": 5115,
+            "areaRatioBefore": 1.518902,
+            "areaRatioAfter": 1.017708
+          },
           "requested": {
             "x": -4,
             "y": 9
@@ -2243,21 +2539,29 @@
           },
           "idleGroundY": 155,
           "sourceRootBefore": {
-            "x": 85.565,
-            "y": 90.121
+            "x": 85.491,
+            "y": 99.792
           },
           "rootAfter": {
-            "x": 81.565,
-            "y": 99.121
+            "x": 81.491,
+            "y": 108.792
           },
           "groundYBefore": 146,
           "groundYAfter": 155,
-          "rootDeltaX": -0.325,
+          "rootDeltaX": -0.4,
           "groundDeltaY": 0
         },
         {
           "action": "foraging",
           "direction": "southwest",
+          "scaleNormalization": {
+            "scale": 0.772402,
+            "referenceVisiblePixels": 3866,
+            "visiblePixelsBefore": 6480,
+            "visiblePixelsAfter": 3911,
+            "areaRatioBefore": 1.676151,
+            "areaRatioAfter": 1.01164
+          },
           "requested": {
             "x": -4,
             "y": 21
@@ -2273,21 +2577,29 @@
           },
           "idleGroundY": 171,
           "sourceRootBefore": {
-            "x": 93.712,
-            "y": 88.201
+            "x": 93.667,
+            "y": 101.58
           },
           "rootAfter": {
-            "x": 89.712,
-            "y": 109.201
+            "x": 89.667,
+            "y": 122.58
           },
           "groundYBefore": 150,
           "groundYAfter": 171,
-          "rootDeltaX": -0.376,
+          "rootDeltaX": -0.42,
           "groundDeltaY": 0
         },
         {
           "action": "foraging",
           "direction": "south",
+          "scaleNormalization": {
+            "scale": 0.724464,
+            "referenceVisiblePixels": 3031,
+            "visiblePixelsBefore": 5775,
+            "visiblePixelsAfter": 3068,
+            "areaRatioBefore": 1.905312,
+            "areaRatioAfter": 1.012207
+          },
           "requested": {
             "x": -10,
             "y": 15
@@ -2303,21 +2615,29 @@
           },
           "idleGroundY": 166,
           "sourceRootBefore": {
-            "x": 85.881,
-            "y": 88.873
+            "x": 85.911,
+            "y": 106.117
           },
           "rootAfter": {
-            "x": 75.881,
-            "y": 103.873
+            "x": 75.911,
+            "y": 121.117
           },
           "groundYBefore": 151,
           "groundYAfter": 166,
-          "rootDeltaX": -0.085,
+          "rootDeltaX": -0.055,
           "groundDeltaY": 0
         },
         {
           "action": "foraging",
           "direction": "southeast",
+          "scaleNormalization": {
+            "scale": 0.786847,
+            "referenceVisiblePixels": 3994,
+            "visiblePixelsBefore": 6451,
+            "visiblePixelsAfter": 4052,
+            "areaRatioBefore": 1.615173,
+            "areaRatioAfter": 1.014522
+          },
           "requested": {
             "x": 5,
             "y": 6
@@ -2333,21 +2653,29 @@
           },
           "idleGroundY": 156,
           "sourceRootBefore": {
-            "x": 81.891,
-            "y": 87.922
+            "x": 82.129,
+            "y": 100.71
           },
           "rootAfter": {
-            "x": 86.891,
-            "y": 93.922
+            "x": 87.129,
+            "y": 106.71
           },
           "groundYBefore": 150,
           "groundYAfter": 156,
-          "rootDeltaX": 0.051,
+          "rootDeltaX": 0.29,
           "groundDeltaY": 0
         },
         {
           "action": "drinking",
           "direction": "east",
+          "scaleNormalization": {
+            "scale": 0.822905,
+            "referenceVisiblePixels": 5049,
+            "visiblePixelsBefore": 7456,
+            "visiblePixelsAfter": 5126,
+            "areaRatioBefore": 1.476728,
+            "areaRatioAfter": 1.015251
+          },
           "requested": {
             "x": -8,
             "y": 33
@@ -2363,21 +2691,29 @@
           },
           "idleGroundY": 168,
           "sourceRootBefore": {
-            "x": 96.964,
-            "y": 82.118
+            "x": 96.987,
+            "y": 90.734
           },
           "rootAfter": {
-            "x": 88.964,
-            "y": 115.118
+            "x": 88.987,
+            "y": 123.734
           },
           "groundYBefore": 135,
           "groundYAfter": 168,
-          "rootDeltaX": -0.08,
+          "rootDeltaX": -0.057,
           "groundDeltaY": 0
         },
         {
           "action": "drinking",
           "direction": "northeast",
+          "scaleNormalization": {
+            "scale": 0.795069,
+            "referenceVisiblePixels": 4186,
+            "visiblePixelsBefore": 6622,
+            "visiblePixelsAfter": 4246,
+            "areaRatioBefore": 1.58194,
+            "areaRatioAfter": 1.014333
+          },
           "requested": {
             "x": -18,
             "y": 29
@@ -2393,21 +2729,29 @@
           },
           "idleGroundY": 159,
           "sourceRootBefore": {
-            "x": 97.532,
-            "y": 71.498
+            "x": 97.64,
+            "y": 82.634
           },
           "rootAfter": {
-            "x": 79.532,
-            "y": 100.498
+            "x": 79.64,
+            "y": 111.634
           },
           "groundYBefore": 130,
           "groundYAfter": 159,
-          "rootDeltaX": 0.067,
+          "rootDeltaX": 0.175,
           "groundDeltaY": 0
         },
         {
           "action": "drinking",
           "direction": "north",
+          "scaleNormalization": {
+            "scale": 0.747527,
+            "referenceVisiblePixels": 3084,
+            "visiblePixelsBefore": 5519,
+            "visiblePixelsAfter": 3115,
+            "areaRatioBefore": 1.789559,
+            "areaRatioAfter": 1.010052
+          },
           "requested": {
             "x": 0,
             "y": 36
@@ -2423,21 +2767,29 @@
           },
           "idleGroundY": 174,
           "sourceRootBefore": {
-            "x": 90.12,
-            "y": 63.714
+            "x": 90.152,
+            "y": 81.968
           },
           "rootAfter": {
-            "x": 90.12,
-            "y": 99.714
+            "x": 90.152,
+            "y": 117.968
           },
           "groundYBefore": 138,
           "groundYAfter": 174,
-          "rootDeltaX": -0.077,
+          "rootDeltaX": -0.044,
           "groundDeltaY": 0
         },
         {
           "action": "drinking",
           "direction": "northwest",
+          "scaleNormalization": {
+            "scale": 0.795069,
+            "referenceVisiblePixels": 4186,
+            "visiblePixelsBefore": 6622,
+            "visiblePixelsAfter": 4246,
+            "areaRatioBefore": 1.58194,
+            "areaRatioAfter": 1.014333
+          },
           "requested": {
             "x": 18,
             "y": 29
@@ -2453,21 +2805,29 @@
           },
           "idleGroundY": 159,
           "sourceRootBefore": {
-            "x": 82.468,
-            "y": 71.498
+            "x": 82.36,
+            "y": 82.634
           },
           "rootAfter": {
-            "x": 100.468,
-            "y": 100.498
+            "x": 100.36,
+            "y": 111.634
           },
           "groundYBefore": 130,
           "groundYAfter": 159,
-          "rootDeltaX": -0.067,
+          "rootDeltaX": -0.175,
           "groundDeltaY": 0
         },
         {
           "action": "drinking",
           "direction": "west",
+          "scaleNormalization": {
+            "scale": 0.820643,
+            "referenceVisiblePixels": 5026,
+            "visiblePixelsBefore": 7463,
+            "visiblePixelsAfter": 5098,
+            "areaRatioBefore": 1.484879,
+            "areaRatioAfter": 1.014326
+          },
           "requested": {
             "x": -1,
             "y": 20
@@ -2483,27 +2843,35 @@
           },
           "idleGroundY": 155,
           "sourceRootBefore": {
-            "x": 83.242,
-            "y": 82.131
+            "x": 82.905,
+            "y": 90.758
           },
           "rootAfter": {
-            "x": 82.242,
-            "y": 102.131
+            "x": 81.905,
+            "y": 110.758
           },
           "groundYBefore": 135,
           "groundYAfter": 155,
-          "rootDeltaX": 0.351,
+          "rootDeltaX": 0.014,
           "groundDeltaY": 0
         },
         {
           "action": "drinking",
           "direction": "southwest",
+          "scaleNormalization": {
+            "scale": 0.788888,
+            "referenceVisiblePixels": 3866,
+            "visiblePixelsBefore": 6212,
+            "visiblePixelsAfter": 3918,
+            "areaRatioBefore": 1.606829,
+            "areaRatioAfter": 1.013451
+          },
           "requested": {
-            "x": -4,
+            "x": -3,
             "y": 34
           },
           "applied": {
-            "x": -4,
+            "x": -3,
             "y": 34
           },
           "capped": false,
@@ -2513,21 +2881,29 @@
           },
           "idleGroundY": 171,
           "sourceRootBefore": {
-            "x": 93.664,
-            "y": 75.956
+            "x": 93.587,
+            "y": 88.374
           },
           "rootAfter": {
-            "x": 89.664,
-            "y": 109.956
+            "x": 90.587,
+            "y": 122.374
           },
           "groundYBefore": 137,
           "groundYAfter": 171,
-          "rootDeltaX": -0.423,
+          "rootDeltaX": 0.499,
           "groundDeltaY": 0
         },
         {
           "action": "drinking",
           "direction": "south",
+          "scaleNormalization": {
+            "scale": 0.724402,
+            "referenceVisiblePixels": 3031,
+            "visiblePixelsBefore": 5776,
+            "visiblePixelsAfter": 3066,
+            "areaRatioBefore": 1.905642,
+            "areaRatioAfter": 1.011547
+          },
           "requested": {
             "x": -10,
             "y": 22
@@ -2543,21 +2919,29 @@
           },
           "idleGroundY": 166,
           "sourceRootBefore": {
-            "x": 86.275,
-            "y": 70.659
+            "x": 86.23,
+            "y": 90.417
           },
           "rootAfter": {
-            "x": 76.275,
-            "y": 92.659
+            "x": 76.23,
+            "y": 112.417
           },
           "groundYBefore": 144,
           "groundYAfter": 166,
-          "rootDeltaX": 0.309,
+          "rootDeltaX": 0.264,
           "groundDeltaY": 0
         },
         {
           "action": "drinking",
           "direction": "southeast",
+          "scaleNormalization": {
+            "scale": 0.794458,
+            "referenceVisiblePixels": 3994,
+            "visiblePixelsBefore": 6328,
+            "visiblePixelsAfter": 4056,
+            "areaRatioBefore": 1.584377,
+            "areaRatioAfter": 1.015523
+          },
           "requested": {
             "x": 5,
             "y": 20
@@ -2573,16 +2957,16 @@
           },
           "idleGroundY": 156,
           "sourceRootBefore": {
-            "x": 82.036,
-            "y": 75.411
+            "x": 82.045,
+            "y": 87.352
           },
           "rootAfter": {
-            "x": 87.036,
-            "y": 95.411
+            "x": 87.045,
+            "y": 107.352
           },
           "groundYBefore": 136,
           "groundYAfter": 156,
-          "rootDeltaX": 0.197,
+          "rootDeltaX": 0.205,
           "groundDeltaY": 0
         }
       ]
@@ -3129,20 +3513,28 @@
         }
       ],
       "output": "public/assets/prey-v3/elk-actions.png",
-      "outputSha256": "97a3068405d9b04250c301b665e225184b3aff412943d9e6d041715fea27219a",
+      "outputSha256": "055121085a19703c8a0414dac9c8c29409d81168fb64b6cb750a13e9309ee28d",
       "width": 1448,
       "height": 2172,
       "frames": 96,
       "quality": {
         "faintAlphaPixels": 0,
         "edgePixels": 0,
-        "minVisiblePixels": 6451,
+        "minVisiblePixels": 5955,
         "minimumUniquePoses": 4
       },
       "alignment": [
         {
           "action": "resting",
           "direction": "east",
+          "scaleNormalization": {
+            "scale": 0.991402,
+            "referenceVisiblePixels": 7922,
+            "visiblePixelsBefore": 8060,
+            "visiblePixelsAfter": 8010,
+            "areaRatioBefore": 1.01742,
+            "areaRatioAfter": 1.011108
+          },
           "requested": {
             "x": -2,
             "y": 20
@@ -3158,21 +3550,29 @@
           },
           "idleGroundY": 178,
           "sourceRootBefore": {
-            "x": 94.999,
-            "y": 123.344
+            "x": 94.948,
+            "y": 123.597
           },
           "rootAfter": {
-            "x": 92.999,
-            "y": 143.344
+            "x": 92.948,
+            "y": 143.597
           },
           "groundYBefore": 158,
           "groundYAfter": 178,
-          "rootDeltaX": 0.415,
+          "rootDeltaX": 0.364,
           "groundDeltaY": 0
         },
         {
           "action": "resting",
           "direction": "northeast",
+          "scaleNormalization": {
+            "scale": 0.921531,
+            "referenceVisiblePixels": 7288,
+            "visiblePixelsBefore": 8582,
+            "visiblePixelsAfter": 7345,
+            "areaRatioBefore": 1.177552,
+            "areaRatioAfter": 1.007821
+          },
           "requested": {
             "x": -9,
             "y": 13
@@ -3188,21 +3588,29 @@
           },
           "idleGroundY": 178,
           "sourceRootBefore": {
-            "x": 102.733,
-            "y": 115.466
+            "x": 102.606,
+            "y": 119.501
           },
           "rootAfter": {
-            "x": 93.733,
-            "y": 128.466
+            "x": 93.606,
+            "y": 132.501
           },
           "groundYBefore": 165,
           "groundYAfter": 178,
-          "rootDeltaX": 0.343,
+          "rootDeltaX": 0.217,
           "groundDeltaY": 0
         },
         {
           "action": "resting",
           "direction": "north",
+          "scaleNormalization": {
+            "scale": 0.95553,
+            "referenceVisiblePixels": 5890,
+            "visiblePixelsBefore": 6451,
+            "visiblePixelsAfter": 5955,
+            "areaRatioBefore": 1.095246,
+            "areaRatioAfter": 1.011036
+          },
           "requested": {
             "x": -5,
             "y": 13
@@ -3218,21 +3626,29 @@
           },
           "idleGroundY": 178,
           "sourceRootBefore": {
-            "x": 95.193,
-            "y": 108.588
+            "x": 95.208,
+            "y": 111.032
           },
           "rootAfter": {
-            "x": 90.193,
-            "y": 121.588
+            "x": 90.208,
+            "y": 124.032
           },
           "groundYBefore": 165,
           "groundYAfter": 178,
-          "rootDeltaX": -0.149,
+          "rootDeltaX": -0.134,
           "groundDeltaY": 0
         },
         {
           "action": "resting",
           "direction": "northwest",
+          "scaleNormalization": {
+            "scale": 0.918854,
+            "referenceVisiblePixels": 7190,
+            "visiblePixelsBefore": 8516,
+            "visiblePixelsAfter": 7258,
+            "areaRatioBefore": 1.184423,
+            "areaRatioAfter": 1.009458
+          },
           "requested": {
             "x": -4,
             "y": 11
@@ -3248,21 +3664,29 @@
           },
           "idleGroundY": 178,
           "sourceRootBefore": {
-            "x": 91.353,
-            "y": 118.685
+            "x": 91.485,
+            "y": 122.822
           },
           "rootAfter": {
-            "x": 87.353,
-            "y": 129.685
+            "x": 87.485,
+            "y": 133.822
           },
           "groundYBefore": 167,
           "groundYAfter": 178,
-          "rootDeltaX": 0.007,
+          "rootDeltaX": 0.139,
           "groundDeltaY": 0
         },
         {
           "action": "resting",
           "direction": "west",
+          "scaleNormalization": {
+            "scale": 0.967246,
+            "referenceVisiblePixels": 7739,
+            "visiblePixelsBefore": 8272,
+            "visiblePixelsAfter": 7775,
+            "areaRatioBefore": 1.068872,
+            "areaRatioAfter": 1.004652
+          },
           "requested": {
             "x": -5,
             "y": 17
@@ -3278,21 +3702,29 @@
           },
           "idleGroundY": 178,
           "sourceRootBefore": {
-            "x": 99.197,
-            "y": 126.354
+            "x": 99.26,
+            "y": 127.526
           },
           "rootAfter": {
-            "x": 94.197,
-            "y": 143.354
+            "x": 94.26,
+            "y": 144.526
           },
           "groundYBefore": 161,
           "groundYAfter": 178,
-          "rootDeltaX": 0.32,
+          "rootDeltaX": 0.383,
           "groundDeltaY": 0
         },
         {
           "action": "resting",
           "direction": "southwest",
+          "scaleNormalization": {
+            "scale": 0.901648,
+            "referenceVisiblePixels": 6607,
+            "visiblePixelsBefore": 8127,
+            "visiblePixelsAfter": 6664,
+            "areaRatioBefore": 1.230059,
+            "areaRatioAfter": 1.008627
+          },
           "requested": {
             "x": -7,
             "y": 10
@@ -3308,21 +3740,29 @@
           },
           "idleGroundY": 178,
           "sourceRootBefore": {
-            "x": 102.752,
-            "y": 116.583
+            "x": 102.946,
+            "y": 121.579
           },
           "rootAfter": {
-            "x": 95.752,
-            "y": 126.583
+            "x": 95.946,
+            "y": 131.579
           },
           "groundYBefore": 168,
           "groundYAfter": 178,
-          "rootDeltaX": 0.039,
+          "rootDeltaX": 0.233,
           "groundDeltaY": 0
         },
         {
           "action": "resting",
           "direction": "south",
+          "scaleNormalization": {
+            "scale": 0.931317,
+            "referenceVisiblePixels": 5996,
+            "visiblePixelsBefore": 6913,
+            "visiblePixelsAfter": 6043,
+            "areaRatioBefore": 1.152935,
+            "areaRatioAfter": 1.007839
+          },
           "requested": {
             "x": 3,
             "y": 0
@@ -3338,21 +3778,29 @@
           },
           "idleGroundY": 178,
           "sourceRootBefore": {
-            "x": 87.146,
-            "y": 111.302
+            "x": 87.147,
+            "y": 115.904
           },
           "rootAfter": {
-            "x": 90.146,
-            "y": 111.302
+            "x": 90.147,
+            "y": 115.904
           },
           "groundYBefore": 178,
           "groundYAfter": 178,
-          "rootDeltaX": -0.112,
+          "rootDeltaX": -0.11,
           "groundDeltaY": 0
         },
         {
           "action": "resting",
           "direction": "southeast",
+          "scaleNormalization": {
+            "scale": 0.912971,
+            "referenceVisiblePixels": 6814,
+            "visiblePixelsBefore": 8175,
+            "visiblePixelsAfter": 6877,
+            "areaRatioBefore": 1.199736,
+            "areaRatioAfter": 1.009246
+          },
           "requested": {
             "x": 12,
             "y": 11
@@ -3368,21 +3816,29 @@
           },
           "idleGroundY": 178,
           "sourceRootBefore": {
-            "x": 73.985,
-            "y": 116.49
+            "x": 73.854,
+            "y": 120.931
           },
           "rootAfter": {
-            "x": 85.985,
-            "y": 127.49
+            "x": 85.854,
+            "y": 131.931
           },
           "groundYBefore": 167,
           "groundYAfter": 178,
-          "rootDeltaX": 0.375,
+          "rootDeltaX": 0.243,
           "groundDeltaY": 0
         },
         {
           "action": "foraging",
           "direction": "east",
+          "scaleNormalization": {
+            "scale": 0.875978,
+            "referenceVisiblePixels": 7922,
+            "visiblePixelsBefore": 10324,
+            "visiblePixelsAfter": 8009,
+            "areaRatioBefore": 1.303206,
+            "areaRatioAfter": 1.010982
+          },
           "requested": {
             "x": -4,
             "y": 17
@@ -3398,28 +3854,36 @@
           },
           "idleGroundY": 178,
           "sourceRootBefore": {
-            "x": 96.421,
-            "y": 92.401
+            "x": 96.499,
+            "y": 100.312
           },
           "rootAfter": {
-            "x": 92.421,
-            "y": 109.401
+            "x": 92.499,
+            "y": 117.312
           },
           "groundYBefore": 161,
           "groundYAfter": 178,
-          "rootDeltaX": -0.163,
+          "rootDeltaX": -0.085,
           "groundDeltaY": 0
         },
         {
           "action": "foraging",
           "direction": "northeast",
+          "scaleNormalization": {
+            "scale": 0.889848,
+            "referenceVisiblePixels": 7288,
+            "visiblePixelsBefore": 9204,
+            "visiblePixelsAfter": 7377,
+            "areaRatioBefore": 1.262898,
+            "areaRatioAfter": 1.012212
+          },
           "requested": {
             "x": 2,
-            "y": 7
+            "y": 8
           },
           "applied": {
             "x": 2,
-            "y": 7
+            "y": 8
           },
           "capped": false,
           "idleRoot": {
@@ -3428,21 +3892,29 @@
           },
           "idleGroundY": 178,
           "sourceRootBefore": {
-            "x": 91.179,
-            "y": 84.811
+            "x": 91.287,
+            "y": 93.796
           },
           "rootAfter": {
-            "x": 93.179,
-            "y": 91.811
+            "x": 93.287,
+            "y": 101.796
           },
-          "groundYBefore": 171,
+          "groundYBefore": 170,
           "groundYAfter": 178,
-          "rootDeltaX": -0.21,
+          "rootDeltaX": -0.102,
           "groundDeltaY": 0
         },
         {
           "action": "foraging",
           "direction": "north",
+          "scaleNormalization": {
+            "scale": 0.907558,
+            "referenceVisiblePixels": 5890,
+            "visiblePixelsBefore": 7151,
+            "visiblePixelsAfter": 5980,
+            "areaRatioBefore": 1.214092,
+            "areaRatioAfter": 1.01528
+          },
           "requested": {
             "x": -5,
             "y": 10
@@ -3458,21 +3930,29 @@
           },
           "idleGroundY": 178,
           "sourceRootBefore": {
-            "x": 95.428,
-            "y": 85.54
+            "x": 95.45,
+            "y": 92.866
           },
           "rootAfter": {
-            "x": 90.428,
-            "y": 95.54
+            "x": 90.45,
+            "y": 102.866
           },
           "groundYBefore": 168,
           "groundYAfter": 178,
-          "rootDeltaX": 0.087,
+          "rootDeltaX": 0.109,
           "groundDeltaY": 0
         },
         {
           "action": "foraging",
           "direction": "northwest",
+          "scaleNormalization": {
+            "scale": 0.880503,
+            "referenceVisiblePixels": 7190,
+            "visiblePixelsBefore": 9274,
+            "visiblePixelsAfter": 7273,
+            "areaRatioBefore": 1.289847,
+            "areaRatioAfter": 1.011544
+          },
           "requested": {
             "x": -15,
             "y": 7
@@ -3488,111 +3968,143 @@
           },
           "idleGroundY": 178,
           "sourceRootBefore": {
-            "x": 102.379,
-            "y": 85.863
+            "x": 102.248,
+            "y": 95.574
           },
           "rootAfter": {
-            "x": 87.379,
-            "y": 92.863
+            "x": 87.248,
+            "y": 102.574
           },
           "groundYBefore": 171,
+          "groundYAfter": 178,
+          "rootDeltaX": -0.097,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "foraging",
+          "direction": "west",
+          "scaleNormalization": {
+            "scale": 0.836271,
+            "referenceVisiblePixels": 7739,
+            "visiblePixelsBefore": 11066,
+            "visiblePixelsAfter": 7826,
+            "areaRatioBefore": 1.429901,
+            "areaRatioAfter": 1.011242
+          },
+          "requested": {
+            "x": -6,
+            "y": 16
+          },
+          "applied": {
+            "x": -6,
+            "y": 16
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 93.877,
+            "y": 121.845
+          },
+          "idleGroundY": 178,
+          "sourceRootBefore": {
+            "x": 100.278,
+            "y": 100.998
+          },
+          "rootAfter": {
+            "x": 94.278,
+            "y": 116.998
+          },
+          "groundYBefore": 162,
+          "groundYAfter": 178,
+          "rootDeltaX": 0.4,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "foraging",
+          "direction": "southwest",
+          "scaleNormalization": {
+            "scale": 0.847024,
+            "referenceVisiblePixels": 6607,
+            "visiblePixelsBefore": 9209,
+            "visiblePixelsAfter": 6663,
+            "areaRatioBefore": 1.393825,
+            "areaRatioAfter": 1.008476
+          },
+          "requested": {
+            "x": -14,
+            "y": 11
+          },
+          "applied": {
+            "x": -14,
+            "y": 11
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 95.713,
+            "y": 107.325
+          },
+          "idleGroundY": 178,
+          "sourceRootBefore": {
+            "x": 109.936,
+            "y": 95.234
+          },
+          "rootAfter": {
+            "x": 95.936,
+            "y": 106.234
+          },
+          "groundYBefore": 167,
+          "groundYAfter": 178,
+          "rootDeltaX": 0.222,
+          "groundDeltaY": 0
+        },
+        {
+          "action": "foraging",
+          "direction": "south",
+          "scaleNormalization": {
+            "scale": 0.931924,
+            "referenceVisiblePixels": 5996,
+            "visiblePixelsBefore": 6904,
+            "visiblePixelsAfter": 6039,
+            "areaRatioBefore": 1.151434,
+            "areaRatioAfter": 1.007171
+          },
+          "requested": {
+            "x": 3,
+            "y": 11
+          },
+          "applied": {
+            "x": 3,
+            "y": 11
+          },
+          "capped": false,
+          "idleRoot": {
+            "x": 90.257,
+            "y": 101.592
+          },
+          "idleGroundY": 178,
+          "sourceRootBefore": {
+            "x": 87.291,
+            "y": 93.133
+          },
+          "rootAfter": {
+            "x": 90.291,
+            "y": 104.133
+          },
+          "groundYBefore": 167,
           "groundYAfter": 178,
           "rootDeltaX": 0.034,
           "groundDeltaY": 0
         },
         {
           "action": "foraging",
-          "direction": "west",
-          "requested": {
-            "x": -7,
-            "y": 16
-          },
-          "applied": {
-            "x": -7,
-            "y": 16
-          },
-          "capped": false,
-          "idleRoot": {
-            "x": 93.877,
-            "y": 121.845
-          },
-          "idleGroundY": 178,
-          "sourceRootBefore": {
-            "x": 100.529,
-            "y": 90.312
-          },
-          "rootAfter": {
-            "x": 93.529,
-            "y": 106.312
-          },
-          "groundYBefore": 162,
-          "groundYAfter": 178,
-          "rootDeltaX": -0.348,
-          "groundDeltaY": 0
-        },
-        {
-          "action": "foraging",
-          "direction": "southwest",
-          "requested": {
-            "x": -14,
-            "y": 11
-          },
-          "applied": {
-            "x": -14,
-            "y": 11
-          },
-          "capped": false,
-          "idleRoot": {
-            "x": 95.713,
-            "y": 107.325
-          },
-          "idleGroundY": 178,
-          "sourceRootBefore": {
-            "x": 109.788,
-            "y": 83.075
-          },
-          "rootAfter": {
-            "x": 95.788,
-            "y": 94.075
-          },
-          "groundYBefore": 167,
-          "groundYAfter": 178,
-          "rootDeltaX": 0.074,
-          "groundDeltaY": 0
-        },
-        {
-          "action": "foraging",
-          "direction": "south",
-          "requested": {
-            "x": 3,
-            "y": 11
-          },
-          "applied": {
-            "x": 3,
-            "y": 11
-          },
-          "capped": false,
-          "idleRoot": {
-            "x": 90.257,
-            "y": 101.592
-          },
-          "idleGroundY": 178,
-          "sourceRootBefore": {
-            "x": 87.28,
-            "y": 87.758
-          },
-          "rootAfter": {
-            "x": 90.28,
-            "y": 98.758
-          },
-          "groundYBefore": 167,
-          "groundYAfter": 178,
-          "rootDeltaX": 0.022,
-          "groundDeltaY": 0
-        },
-        {
-          "action": "foraging",
           "direction": "southeast",
+          "scaleNormalization": {
+            "scale": 0.868675,
+            "referenceVisiblePixels": 6814,
+            "visiblePixelsBefore": 9030,
+            "visiblePixelsAfter": 6873,
+            "areaRatioBefore": 1.325213,
+            "areaRatioAfter": 1.008659
+          },
           "requested": {
             "x": 9,
             "y": 10
@@ -3608,21 +4120,29 @@
           },
           "idleGroundY": 178,
           "sourceRootBefore": {
-            "x": 76.343,
-            "y": 85.232
+            "x": 76.25,
+            "y": 95.532
           },
           "rootAfter": {
-            "x": 85.343,
-            "y": 95.232
+            "x": 85.25,
+            "y": 105.532
           },
           "groundYBefore": 168,
           "groundYAfter": 178,
-          "rootDeltaX": -0.267,
+          "rootDeltaX": -0.36,
           "groundDeltaY": 0
         },
         {
           "action": "drinking",
           "direction": "east",
+          "scaleNormalization": {
+            "scale": 0.880769,
+            "referenceVisiblePixels": 7922,
+            "visiblePixelsBefore": 10212,
+            "visiblePixelsAfter": 8012,
+            "areaRatioBefore": 1.289068,
+            "areaRatioAfter": 1.011361
+          },
           "requested": {
             "x": -3,
             "y": 31
@@ -3638,21 +4158,29 @@
           },
           "idleGroundY": 178,
           "sourceRootBefore": {
-            "x": 95.348,
-            "y": 83.151
+            "x": 95.263,
+            "y": 90.325
           },
           "rootAfter": {
-            "x": 92.348,
-            "y": 114.151
+            "x": 92.263,
+            "y": 121.325
           },
           "groundYBefore": 147,
           "groundYAfter": 178,
-          "rootDeltaX": -0.236,
+          "rootDeltaX": -0.321,
           "groundDeltaY": 0
         },
         {
           "action": "drinking",
           "direction": "northeast",
+          "scaleNormalization": {
+            "scale": 0.906856,
+            "referenceVisiblePixels": 7288,
+            "visiblePixelsBefore": 8862,
+            "visiblePixelsAfter": 7354,
+            "areaRatioBefore": 1.215971,
+            "areaRatioAfter": 1.009056
+          },
           "requested": {
             "x": 2,
             "y": 17
@@ -3668,21 +4196,29 @@
           },
           "idleGroundY": 178,
           "sourceRootBefore": {
-            "x": 91.886,
-            "y": 83.771
+            "x": 91.768,
+            "y": 90.812
           },
           "rootAfter": {
-            "x": 93.886,
-            "y": 100.771
+            "x": 93.768,
+            "y": 107.812
           },
           "groundYBefore": 161,
           "groundYAfter": 178,
-          "rootDeltaX": 0.496,
+          "rootDeltaX": 0.379,
           "groundDeltaY": 0
         },
         {
           "action": "drinking",
           "direction": "north",
+          "scaleNormalization": {
+            "scale": 0.942613,
+            "referenceVisiblePixels": 5890,
+            "visiblePixelsBefore": 6629,
+            "visiblePixelsAfter": 5984,
+            "areaRatioBefore": 1.125467,
+            "areaRatioAfter": 1.015959
+          },
           "requested": {
             "x": -6,
             "y": 27
@@ -3698,21 +4234,29 @@
           },
           "idleGroundY": 178,
           "sourceRootBefore": {
-            "x": 96.064,
-            "y": 76.298
+            "x": 96.111,
+            "y": 80.612
           },
           "rootAfter": {
-            "x": 90.064,
-            "y": 103.298
+            "x": 90.111,
+            "y": 107.612
           },
           "groundYBefore": 151,
           "groundYAfter": 178,
-          "rootDeltaX": -0.278,
+          "rootDeltaX": -0.231,
           "groundDeltaY": 0
         },
         {
           "action": "drinking",
           "direction": "northwest",
+          "scaleNormalization": {
+            "scale": 0.919773,
+            "referenceVisiblePixels": 7190,
+            "visiblePixelsBefore": 8499,
+            "visiblePixelsAfter": 7272,
+            "areaRatioBefore": 1.182058,
+            "areaRatioAfter": 1.011405
+          },
           "requested": {
             "x": -14,
             "y": 16
@@ -3728,21 +4272,29 @@
           },
           "idleGroundY": 178,
           "sourceRootBefore": {
-            "x": 101.556,
-            "y": 84.577
+            "x": 101.58,
+            "y": 90.707
           },
           "rootAfter": {
-            "x": 87.556,
-            "y": 100.577
+            "x": 87.58,
+            "y": 106.707
           },
           "groundYBefore": 162,
           "groundYAfter": 178,
-          "rootDeltaX": 0.21,
+          "rootDeltaX": 0.234,
           "groundDeltaY": 0
         },
         {
           "action": "drinking",
           "direction": "west",
+          "scaleNormalization": {
+            "scale": 0.873105,
+            "referenceVisiblePixels": 7739,
+            "visiblePixelsBefore": 10152,
+            "visiblePixelsAfter": 7805,
+            "areaRatioBefore": 1.311797,
+            "areaRatioAfter": 1.008528
+          },
           "requested": {
             "x": -14,
             "y": 31
@@ -3758,21 +4310,29 @@
           },
           "idleGroundY": 178,
           "sourceRootBefore": {
-            "x": 107.84,
-            "y": 84.277
+            "x": 108.067,
+            "y": 91.779
           },
           "rootAfter": {
-            "x": 93.84,
-            "y": 115.277
+            "x": 94.067,
+            "y": 122.779
           },
           "groundYBefore": 147,
           "groundYAfter": 178,
-          "rootDeltaX": -0.037,
+          "rootDeltaX": 0.19,
           "groundDeltaY": 0
         },
         {
           "action": "drinking",
           "direction": "southwest",
+          "scaleNormalization": {
+            "scale": 0.867965,
+            "referenceVisiblePixels": 6607,
+            "visiblePixelsBefore": 8770,
+            "visiblePixelsAfter": 6678,
+            "areaRatioBefore": 1.32738,
+            "areaRatioAfter": 1.010746
+          },
           "requested": {
             "x": -17,
             "y": 28
@@ -3788,21 +4348,29 @@
           },
           "idleGroundY": 178,
           "sourceRootBefore": {
-            "x": 112.336,
-            "y": 78.667
+            "x": 112.5,
+            "y": 87.714
           },
           "rootAfter": {
-            "x": 95.336,
-            "y": 106.667
+            "x": 95.5,
+            "y": 115.714
           },
           "groundYBefore": 150,
           "groundYAfter": 178,
-          "rootDeltaX": -0.378,
+          "rootDeltaX": -0.213,
           "groundDeltaY": 0
         },
         {
           "action": "drinking",
           "direction": "south",
+          "scaleNormalization": {
+            "scale": 0.916265,
+            "referenceVisiblePixels": 5996,
+            "visiblePixelsBefore": 7142,
+            "visiblePixelsAfter": 6055,
+            "areaRatioBefore": 1.191127,
+            "areaRatioAfter": 1.00984
+          },
           "requested": {
             "x": 3,
             "y": 27
@@ -3818,21 +4386,29 @@
           },
           "idleGroundY": 178,
           "sourceRootBefore": {
-            "x": 87.245,
-            "y": 70.849
+            "x": 87.249,
+            "y": 77.541
           },
           "rootAfter": {
-            "x": 90.245,
-            "y": 97.849
+            "x": 90.249,
+            "y": 104.541
           },
           "groundYBefore": 151,
           "groundYAfter": 178,
-          "rootDeltaX": -0.012,
+          "rootDeltaX": -0.008,
           "groundDeltaY": 0
         },
         {
           "action": "drinking",
           "direction": "southeast",
+          "scaleNormalization": {
+            "scale": 0.878308,
+            "referenceVisiblePixels": 6814,
+            "visiblePixelsBefore": 8833,
+            "visiblePixelsAfter": 6885,
+            "areaRatioBefore": 1.296302,
+            "areaRatioAfter": 1.01042
+          },
           "requested": {
             "x": 11,
             "y": 32
@@ -3848,16 +4424,16 @@
           },
           "idleGroundY": 178,
           "sourceRootBefore": {
-            "x": 74.376,
-            "y": 73.909
+            "x": 74.336,
+            "y": 82.327
           },
           "rootAfter": {
-            "x": 85.376,
-            "y": 105.909
+            "x": 85.336,
+            "y": 114.327
           },
           "groundYBefore": 146,
           "groundYAfter": 178,
-          "rootDeltaX": -0.234,
+          "rootDeltaX": -0.274,
           "groundDeltaY": 0
         }
       ]
@@ -4404,20 +4980,28 @@
         }
       ],
       "output": "public/assets/prey-v4/boar-actions.png",
-      "outputSha256": "52957199008a8c3dbc4ac9cd0b0c69dfc183447b6b4c4de16aefddc53db0b55c",
+      "outputSha256": "791ed757db5778abdc16d1695c6f90173a70e1fbe94645a9b5e6ad79ddedf67d",
       "width": 1448,
       "height": 2172,
       "frames": 96,
       "quality": {
         "faintAlphaPixels": 0,
         "edgePixels": 0,
-        "minVisiblePixels": 6780,
+        "minVisiblePixels": 6401,
         "minimumUniquePoses": 4
       },
       "alignment": [
         {
           "action": "resting",
           "direction": "east",
+          "scaleNormalization": {
+            "scale": 0.981814,
+            "referenceVisiblePixels": 8398,
+            "visiblePixelsBefore": 8712,
+            "visiblePixelsAfter": 8463,
+            "areaRatioBefore": 1.03739,
+            "areaRatioAfter": 1.00774
+          },
           "requested": {
             "x": 2,
             "y": 1
@@ -4433,21 +5017,29 @@
           },
           "idleGroundY": 171,
           "sourceRootBefore": {
-            "x": 88.604,
-            "y": 130.926
+            "x": 88.636,
+            "y": 131.588
           },
           "rootAfter": {
-            "x": 90.604,
-            "y": 131.926
+            "x": 90.636,
+            "y": 132.588
           },
           "groundYBefore": 170,
           "groundYAfter": 171,
-          "rootDeltaX": 0.189,
+          "rootDeltaX": 0.22,
           "groundDeltaY": 0
         },
         {
           "action": "resting",
           "direction": "northeast",
+          "scaleNormalization": {
+            "scale": 0.928217,
+            "referenceVisiblePixels": 7034,
+            "visiblePixelsBefore": 8164,
+            "visiblePixelsAfter": 7098,
+            "areaRatioBefore": 1.160648,
+            "areaRatioAfter": 1.009099
+          },
           "requested": {
             "x": -1,
             "y": -1
@@ -4463,21 +5055,29 @@
           },
           "idleGroundY": 169,
           "sourceRootBefore": {
-            "x": 85.763,
-            "y": 117.313
+            "x": 85.797,
+            "y": 121.107
           },
           "rootAfter": {
-            "x": 84.763,
-            "y": 116.313
+            "x": 84.797,
+            "y": 120.107
           },
           "groundYBefore": 170,
           "groundYAfter": 169,
-          "rootDeltaX": -0.217,
+          "rootDeltaX": -0.183,
           "groundDeltaY": 0
         },
         {
           "action": "resting",
           "direction": "north",
+          "scaleNormalization": {
+            "scale": 0.969597,
+            "referenceVisiblePixels": 6374,
+            "visiblePixelsBefore": 6780,
+            "visiblePixelsAfter": 6418,
+            "areaRatioBefore": 1.063696,
+            "areaRatioAfter": 1.006903
+          },
           "requested": {
             "x": -1,
             "y": 2
@@ -4493,21 +5093,29 @@
           },
           "idleGroundY": 172,
           "sourceRootBefore": {
-            "x": 89.959,
-            "y": 108.687
+            "x": 89.92,
+            "y": 110.516
           },
           "rootAfter": {
-            "x": 88.959,
-            "y": 110.687
+            "x": 88.92,
+            "y": 112.516
           },
           "groundYBefore": 170,
           "groundYAfter": 172,
-          "rootDeltaX": -0.396,
+          "rootDeltaX": -0.435,
           "groundDeltaY": 0
         },
         {
           "action": "resting",
           "direction": "northwest",
+          "scaleNormalization": {
+            "scale": 0.966835,
+            "referenceVisiblePixels": 7724,
+            "visiblePixelsBefore": 8263,
+            "visiblePixelsAfter": 7810,
+            "areaRatioBefore": 1.069782,
+            "areaRatioAfter": 1.011134
+          },
           "requested": {
             "x": 1,
             "y": 0
@@ -4523,21 +5131,29 @@
           },
           "idleGroundY": 170,
           "sourceRootBefore": {
-            "x": 93.612,
-            "y": 117.029
+            "x": 93.557,
+            "y": 118.782
           },
           "rootAfter": {
-            "x": 94.612,
-            "y": 117.029
+            "x": 94.557,
+            "y": 118.782
           },
           "groundYBefore": 170,
           "groundYAfter": 170,
-          "rootDeltaX": 0.205,
+          "rootDeltaX": 0.15,
           "groundDeltaY": 0
         },
         {
           "action": "resting",
           "direction": "west",
+          "scaleNormalization": {
+            "scale": 0.972558,
+            "referenceVisiblePixels": 8702,
+            "visiblePixelsBefore": 9200,
+            "visiblePixelsAfter": 8751,
+            "areaRatioBefore": 1.057228,
+            "areaRatioAfter": 1.005631
+          },
           "requested": {
             "x": 3,
             "y": 1
@@ -4553,21 +5169,29 @@
           },
           "idleGroundY": 171,
           "sourceRootBefore": {
-            "x": 95.482,
-            "y": 131.38
+            "x": 95.443,
+            "y": 132.41
           },
           "rootAfter": {
-            "x": 98.482,
-            "y": 132.38
+            "x": 98.443,
+            "y": 133.41
           },
           "groundYBefore": 170,
           "groundYAfter": 171,
-          "rootDeltaX": 0.385,
+          "rootDeltaX": 0.346,
           "groundDeltaY": 0
         },
         {
           "action": "resting",
           "direction": "southwest",
+          "scaleNormalization": {
+            "scale": 0.944012,
+            "referenceVisiblePixels": 7287,
+            "visiblePixelsBefore": 8177,
+            "visiblePixelsAfter": 7338,
+            "areaRatioBefore": 1.122135,
+            "areaRatioAfter": 1.006999
+          },
           "requested": {
             "x": 2,
             "y": 1
@@ -4583,21 +5207,29 @@
           },
           "idleGroundY": 171,
           "sourceRootBefore": {
-            "x": 93.655,
-            "y": 117.59
+            "x": 93.666,
+            "y": 120.526
           },
           "rootAfter": {
-            "x": 95.655,
-            "y": 118.59
+            "x": 95.666,
+            "y": 121.526
           },
           "groundYBefore": 170,
           "groundYAfter": 171,
-          "rootDeltaX": 0.001,
+          "rootDeltaX": 0.012,
           "groundDeltaY": 0
         },
         {
           "action": "resting",
           "direction": "south",
+          "scaleNormalization": {
+            "scale": 0.959178,
+            "referenceVisiblePixels": 6350,
+            "visiblePixelsBefore": 6902,
+            "visiblePixelsAfter": 6416,
+            "areaRatioBefore": 1.086929,
+            "areaRatioAfter": 1.010394
+          },
           "requested": {
             "x": -1,
             "y": 1
@@ -4613,21 +5245,29 @@
           },
           "idleGroundY": 171,
           "sourceRootBefore": {
-            "x": 90.058,
-            "y": 103.76
+            "x": 90.066,
+            "y": 106.464
           },
           "rootAfter": {
-            "x": 89.058,
-            "y": 104.76
+            "x": 89.066,
+            "y": 107.464
           },
           "groundYBefore": 170,
           "groundYAfter": 171,
-          "rootDeltaX": -0.263,
+          "rootDeltaX": -0.255,
           "groundDeltaY": 0
         },
         {
           "action": "resting",
           "direction": "southeast",
+          "scaleNormalization": {
+            "scale": 0.927866,
+            "referenceVisiblePixels": 7330,
+            "visiblePixelsBefore": 8514,
+            "visiblePixelsAfter": 7412,
+            "areaRatioBefore": 1.161528,
+            "areaRatioAfter": 1.011187
+          },
           "requested": {
             "x": -2,
             "y": 0
@@ -4643,21 +5283,29 @@
           },
           "idleGroundY": 170,
           "sourceRootBefore": {
-            "x": 85.931,
-            "y": 118.341
+            "x": 85.848,
+            "y": 122.025
           },
           "rootAfter": {
-            "x": 83.931,
-            "y": 118.341
+            "x": 83.848,
+            "y": 122.025
           },
           "groundYBefore": 170,
           "groundYAfter": 170,
-          "rootDeltaX": 0.39,
+          "rootDeltaX": 0.307,
           "groundDeltaY": 0
         },
         {
           "action": "foraging",
           "direction": "east",
+          "scaleNormalization": {
+            "scale": 0.938486,
+            "referenceVisiblePixels": 8398,
+            "visiblePixelsBefore": 9535,
+            "visiblePixelsAfter": 8459,
+            "areaRatioBefore": 1.135389,
+            "areaRatioAfter": 1.007264
+          },
           "requested": {
             "x": 0,
             "y": 1
@@ -4673,21 +5321,29 @@
           },
           "idleGroundY": 171,
           "sourceRootBefore": {
-            "x": 90.592,
-            "y": 116.122
+            "x": 90.706,
+            "y": 119.21
           },
           "rootAfter": {
-            "x": 90.592,
-            "y": 117.122
+            "x": 90.706,
+            "y": 120.21
           },
           "groundYBefore": 170,
           "groundYAfter": 171,
-          "rootDeltaX": 0.176,
+          "rootDeltaX": 0.29,
           "groundDeltaY": 0
         },
         {
           "action": "foraging",
           "direction": "northeast",
+          "scaleNormalization": {
+            "scale": 0.904961,
+            "referenceVisiblePixels": 7034,
+            "visiblePixelsBefore": 8589,
+            "visiblePixelsAfter": 7103,
+            "areaRatioBefore": 1.221069,
+            "areaRatioAfter": 1.009809
+          },
           "requested": {
             "x": 1,
             "y": -2
@@ -4703,21 +5359,29 @@
           },
           "idleGroundY": 169,
           "sourceRootBefore": {
-            "x": 84.155,
-            "y": 96.519
+            "x": 84.253,
+            "y": 103.357
           },
           "rootAfter": {
-            "x": 85.155,
-            "y": 94.519
+            "x": 85.253,
+            "y": 101.357
           },
           "groundYBefore": 171,
           "groundYAfter": 169,
-          "rootDeltaX": 0.175,
+          "rootDeltaX": 0.273,
           "groundDeltaY": 0
         },
         {
           "action": "foraging",
           "direction": "north",
+          "scaleNormalization": {
+            "scale": 0.929788,
+            "referenceVisiblePixels": 6374,
+            "visiblePixelsBefore": 7373,
+            "visiblePixelsAfter": 6432,
+            "areaRatioBefore": 1.15673,
+            "areaRatioAfter": 1.009099
+          },
           "requested": {
             "x": -1,
             "y": 2
@@ -4733,21 +5397,29 @@
           },
           "idleGroundY": 172,
           "sourceRootBefore": {
-            "x": 90.083,
-            "y": 98.828
+            "x": 90.043,
+            "y": 104.031
           },
           "rootAfter": {
-            "x": 89.083,
-            "y": 100.828
+            "x": 89.043,
+            "y": 106.031
           },
           "groundYBefore": 170,
           "groundYAfter": 172,
-          "rootDeltaX": -0.272,
+          "rootDeltaX": -0.312,
           "groundDeltaY": 0
         },
         {
           "action": "foraging",
           "direction": "northwest",
+          "scaleNormalization": {
+            "scale": 0.939705,
+            "referenceVisiblePixels": 7724,
+            "visiblePixelsBefore": 8747,
+            "visiblePixelsAfter": 7810,
+            "areaRatioBefore": 1.132444,
+            "areaRatioAfter": 1.011134
+          },
           "requested": {
             "x": -2,
             "y": -1
@@ -4763,21 +5435,29 @@
           },
           "idleGroundY": 170,
           "sourceRootBefore": {
-            "x": 95.996,
-            "y": 96.21
+            "x": 95.992,
+            "y": 100.556
           },
           "rootAfter": {
-            "x": 93.996,
-            "y": 95.21
+            "x": 93.992,
+            "y": 99.556
           },
           "groundYBefore": 171,
           "groundYAfter": 170,
-          "rootDeltaX": -0.411,
+          "rootDeltaX": -0.415,
           "groundDeltaY": 0
         },
         {
           "action": "foraging",
           "direction": "west",
+          "scaleNormalization": {
+            "scale": 0.941596,
+            "referenceVisiblePixels": 8702,
+            "visiblePixelsBefore": 9815,
+            "visiblePixelsAfter": 8794,
+            "areaRatioBefore": 1.127902,
+            "areaRatioAfter": 1.010572
+          },
           "requested": {
             "x": 8,
             "y": 1
@@ -4793,21 +5473,29 @@
           },
           "idleGroundY": 171,
           "sourceRootBefore": {
-            "x": 89.802,
-            "y": 115.993
+            "x": 89.826,
+            "y": 118.901
           },
           "rootAfter": {
-            "x": 97.802,
-            "y": 116.993
+            "x": 97.826,
+            "y": 119.901
           },
           "groundYBefore": 170,
           "groundYAfter": 171,
-          "rootDeltaX": -0.295,
+          "rootDeltaX": -0.271,
           "groundDeltaY": 0
         },
         {
           "action": "foraging",
           "direction": "southwest",
+          "scaleNormalization": {
+            "scale": 0.900766,
+            "referenceVisiblePixels": 7287,
+            "visiblePixelsBefore": 8981,
+            "visiblePixelsAfter": 7370,
+            "areaRatioBefore": 1.232469,
+            "areaRatioAfter": 1.01139
+          },
           "requested": {
             "x": 3,
             "y": 1
@@ -4823,21 +5511,29 @@
           },
           "idleGroundY": 171,
           "sourceRootBefore": {
-            "x": 93.017,
-            "y": 102.084
+            "x": 92.998,
+            "y": 108.553
           },
           "rootAfter": {
-            "x": 96.017,
-            "y": 103.084
+            "x": 95.998,
+            "y": 109.553
           },
           "groundYBefore": 170,
           "groundYAfter": 171,
-          "rootDeltaX": 0.363,
+          "rootDeltaX": 0.344,
           "groundDeltaY": 0
         },
         {
           "action": "foraging",
           "direction": "south",
+          "scaleNormalization": {
+            "scale": 0.935295,
+            "referenceVisiblePixels": 6350,
+            "visiblePixelsBefore": 7259,
+            "visiblePixelsAfter": 6401,
+            "areaRatioBefore": 1.14315,
+            "areaRatioAfter": 1.008031
+          },
           "requested": {
             "x": 0,
             "y": 1
@@ -4853,21 +5549,29 @@
           },
           "idleGroundY": 171,
           "sourceRootBefore": {
-            "x": 89.629,
-            "y": 98.662
+            "x": 89.628,
+            "y": 103.253
           },
           "rootAfter": {
-            "x": 89.629,
-            "y": 99.662
+            "x": 89.628,
+            "y": 104.253
           },
           "groundYBefore": 170,
           "groundYAfter": 171,
-          "rootDeltaX": 0.308,
+          "rootDeltaX": 0.307,
           "groundDeltaY": 0
         },
         {
           "action": "foraging",
           "direction": "southeast",
+          "scaleNormalization": {
+            "scale": 0.922464,
+            "referenceVisiblePixels": 7330,
+            "visiblePixelsBefore": 8614,
+            "visiblePixelsAfter": 7410,
+            "areaRatioBefore": 1.175171,
+            "areaRatioAfter": 1.010914
+          },
           "requested": {
             "x": -4,
             "y": 0
@@ -4883,21 +5587,29 @@
           },
           "idleGroundY": 170,
           "sourceRootBefore": {
-            "x": 87.578,
-            "y": 104.492
+            "x": 87.484,
+            "y": 109.435
           },
           "rootAfter": {
-            "x": 83.578,
-            "y": 104.492
+            "x": 83.484,
+            "y": 109.435
           },
           "groundYBefore": 170,
           "groundYAfter": 170,
-          "rootDeltaX": 0.037,
+          "rootDeltaX": -0.056,
           "groundDeltaY": 0
         },
         {
           "action": "drinking",
           "direction": "east",
+          "scaleNormalization": {
+            "scale": 0.936181,
+            "referenceVisiblePixels": 8398,
+            "visiblePixelsBefore": 9582,
+            "visiblePixelsAfter": 8475,
+            "areaRatioBefore": 1.140986,
+            "areaRatioAfter": 1.009169
+          },
           "requested": {
             "x": 0,
             "y": 1
@@ -4913,21 +5625,29 @@
           },
           "idleGroundY": 171,
           "sourceRootBefore": {
-            "x": 90.374,
-            "y": 121.453
+            "x": 90.475,
+            "y": 124.409
           },
           "rootAfter": {
-            "x": 90.374,
-            "y": 122.453
+            "x": 90.475,
+            "y": 125.409
           },
           "groundYBefore": 170,
           "groundYAfter": 171,
-          "rootDeltaX": -0.042,
+          "rootDeltaX": 0.059,
           "groundDeltaY": 0
         },
         {
           "action": "drinking",
           "direction": "northeast",
+          "scaleNormalization": {
+            "scale": 0.919972,
+            "referenceVisiblePixels": 7034,
+            "visiblePixelsBefore": 8311,
+            "visiblePixelsAfter": 7108,
+            "areaRatioBefore": 1.181547,
+            "areaRatioAfter": 1.01052
+          },
           "requested": {
             "x": 0,
             "y": -1
@@ -4943,21 +5663,29 @@
           },
           "idleGroundY": 169,
           "sourceRootBefore": {
-            "x": 85.251,
-            "y": 101.019
+            "x": 85.454,
+            "y": 106.329
           },
           "rootAfter": {
-            "x": 85.251,
-            "y": 100.019
+            "x": 85.454,
+            "y": 105.329
           },
           "groundYBefore": 170,
           "groundYAfter": 169,
-          "rootDeltaX": 0.271,
+          "rootDeltaX": 0.474,
           "groundDeltaY": 0
         },
         {
           "action": "drinking",
           "direction": "north",
+          "scaleNormalization": {
+            "scale": 0.949772,
+            "referenceVisiblePixels": 6374,
+            "visiblePixelsBefore": 7066,
+            "visiblePixelsAfter": 6439,
+            "areaRatioBefore": 1.108566,
+            "areaRatioAfter": 1.010198
+          },
           "requested": {
             "x": 0,
             "y": 1
@@ -4973,21 +5701,29 @@
           },
           "idleGroundY": 172,
           "sourceRootBefore": {
-            "x": 89.48,
-            "y": 102.809
+            "x": 89.445,
+            "y": 106.323
           },
           "rootAfter": {
-            "x": 89.48,
-            "y": 103.809
+            "x": 89.445,
+            "y": 107.323
           },
           "groundYBefore": 171,
           "groundYAfter": 172,
-          "rootDeltaX": 0.125,
+          "rootDeltaX": 0.09,
           "groundDeltaY": 0
         },
         {
           "action": "drinking",
           "direction": "northwest",
+          "scaleNormalization": {
+            "scale": 0.945069,
+            "referenceVisiblePixels": 7724,
+            "visiblePixelsBefore": 8648,
+            "visiblePixelsAfter": 7807,
+            "areaRatioBefore": 1.119627,
+            "areaRatioAfter": 1.010746
+          },
           "requested": {
             "x": 0,
             "y": 0
@@ -5003,27 +5739,35 @@
           },
           "idleGroundY": 170,
           "sourceRootBefore": {
-            "x": 94.469,
-            "y": 100.757
+            "x": 94.502,
+            "y": 104.548
           },
           "rootAfter": {
-            "x": 94.469,
-            "y": 100.757
+            "x": 94.502,
+            "y": 104.548
           },
           "groundYBefore": 170,
           "groundYAfter": 170,
-          "rootDeltaX": 0.062,
+          "rootDeltaX": 0.095,
           "groundDeltaY": 0
         },
         {
           "action": "drinking",
           "direction": "west",
+          "scaleNormalization": {
+            "scale": 0.941643,
+            "referenceVisiblePixels": 8702,
+            "visiblePixelsBefore": 9814,
+            "visiblePixelsAfter": 8783,
+            "areaRatioBefore": 1.127787,
+            "areaRatioAfter": 1.009308
+          },
           "requested": {
-            "x": 7,
+            "x": 8,
             "y": 1
           },
           "applied": {
-            "x": 7,
+            "x": 8,
             "y": 1
           },
           "capped": false,
@@ -5033,21 +5777,29 @@
           },
           "idleGroundY": 171,
           "sourceRootBefore": {
-            "x": 90.622,
-            "y": 121.652
+            "x": 90.485,
+            "y": 124.373
           },
           "rootAfter": {
-            "x": 97.622,
-            "y": 122.652
+            "x": 98.485,
+            "y": 125.373
           },
           "groundYBefore": 170,
           "groundYAfter": 171,
-          "rootDeltaX": -0.475,
+          "rootDeltaX": 0.388,
           "groundDeltaY": 0
         },
         {
           "action": "drinking",
           "direction": "southwest",
+          "scaleNormalization": {
+            "scale": 0.927869,
+            "referenceVisiblePixels": 7287,
+            "visiblePixelsBefore": 8464,
+            "visiblePixelsAfter": 7342,
+            "areaRatioBefore": 1.161521,
+            "areaRatioAfter": 1.007548
+          },
           "requested": {
             "x": 3,
             "y": 1
@@ -5063,21 +5815,29 @@
           },
           "idleGroundY": 171,
           "sourceRootBefore": {
-            "x": 92.584,
-            "y": 112.005
+            "x": 92.633,
+            "y": 116.071
           },
           "rootAfter": {
-            "x": 95.584,
-            "y": 113.005
+            "x": 95.633,
+            "y": 117.071
           },
           "groundYBefore": 170,
           "groundYAfter": 171,
-          "rootDeltaX": -0.07,
+          "rootDeltaX": -0.02,
           "groundDeltaY": 0
         },
         {
           "action": "drinking",
           "direction": "south",
+          "scaleNormalization": {
+            "scale": 0.950947,
+            "referenceVisiblePixels": 6350,
+            "visiblePixelsBefore": 7022,
+            "visiblePixelsAfter": 6421,
+            "areaRatioBefore": 1.105827,
+            "areaRatioAfter": 1.011181
+          },
           "requested": {
             "x": -1,
             "y": 1
@@ -5093,21 +5853,29 @@
           },
           "idleGroundY": 171,
           "sourceRootBefore": {
-            "x": 90.057,
-            "y": 103.092
+            "x": 90.089,
+            "y": 106.422
           },
           "rootAfter": {
-            "x": 89.057,
-            "y": 104.092
+            "x": 89.089,
+            "y": 107.422
           },
           "groundYBefore": 170,
           "groundYAfter": 171,
-          "rootDeltaX": -0.264,
+          "rootDeltaX": -0.232,
           "groundDeltaY": 0
         },
         {
           "action": "drinking",
           "direction": "southeast",
+          "scaleNormalization": {
+            "scale": 0.919427,
+            "referenceVisiblePixels": 7330,
+            "visiblePixelsBefore": 8671,
+            "visiblePixelsAfter": 7395,
+            "areaRatioBefore": 1.182947,
+            "areaRatioAfter": 1.008868
+          },
           "requested": {
             "x": -4,
             "y": 0
@@ -5123,16 +5891,16 @@
           },
           "idleGroundY": 170,
           "sourceRootBefore": {
-            "x": 87.44,
-            "y": 111.607
+            "x": 87.403,
+            "y": 116.232
           },
           "rootAfter": {
-            "x": 83.44,
-            "y": 111.607
+            "x": 83.403,
+            "y": 116.232
           },
           "groundYBefore": 170,
           "groundYAfter": 170,
-          "rootDeltaX": -0.1,
+          "rootDeltaX": -0.138,
           "groundDeltaY": 0
         }
       ]

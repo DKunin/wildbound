@@ -1,7 +1,7 @@
 import Phaser from 'phaser';
 import type { Prey } from '../entities/Prey';
 import type { PackWolf } from '../entities/PackWolf';
-import { distanceToAreas, type AxisAlignedArea, type PointLike } from './geometry';
+import { distanceToArea, distanceToAreas, type AxisAlignedArea, type PointLike } from './geometry';
 import {
   CACHED_MEAT_SCENT_RADIUS,
   getCachedMeatScentStrength,
@@ -20,11 +20,13 @@ import {
   getStableScentPhase,
 } from './ScentMotionSystem';
 import { getTerritoryMarkColor, getTerritoryMarkStrength, type TerritoryMark } from './TerritoryMarkSystem';
+import type { SenseKind } from './SenseHudSystem';
 
 interface ScentMark extends PointLike {
   createdAt: number;
   species: ScentSpecies;
-  source?: Prey;
+  source?: Prey | PackWolf;
+  sourceId: string;
   readonly phase: number;
 }
 
@@ -37,6 +39,14 @@ export interface ScentReading extends ScentDirection {
   summary: string;
   clues: ScentClue[];
   trackingTarget: boolean;
+  signals: ScentSignal[];
+}
+
+export interface ScentSignal extends PointLike {
+  sourceId: string;
+  kind: SenseKind;
+  strength: number;
+  targeted: boolean;
 }
 
 export const EMPTY_SCENT_READING: ScentReading = {
@@ -45,12 +55,15 @@ export const EMPTY_SCENT_READING: ScentReading = {
   summary: '',
   clues: [],
   trackingTarget: false,
+  signals: [],
 };
 
 export class ScentSystem {
   private readonly graphics: Phaser.GameObjects.Graphics;
   private readonly marks: ScentMark[] = [];
   private cachedFood: Prey[] = [];
+  private readonly sourceIds = new WeakMap<object, string>();
+  private nextSourceId = 1;
   private lastMarkAt = 0;
   private active = false;
 
@@ -81,6 +94,15 @@ export class ScentSystem {
     this.wind.set(x, y).normalize().scale(0.55 + strength * 0.7);
   }
 
+  getSourceId(source: object, prefix = 'animal'): string {
+    const existing = this.sourceIds.get(source);
+    if (existing) return existing;
+    const sourceId = `${prefix}:${this.nextSourceId}`;
+    this.nextSourceId += 1;
+    this.sourceIds.set(source, sourceId);
+    return sourceId;
+  }
+
   record(time: number, prey: readonly Prey[], pack: readonly PackWolf[] = []): void {
     if (time - this.lastMarkAt < 580) return;
     this.lastMarkAt = time;
@@ -94,6 +116,7 @@ export class ScentSystem {
         createdAt: time,
         species,
         source: animal,
+        sourceId: this.getSourceId(animal),
         phase: getStableScentPhase(animal.x, animal.y, time, species.length),
       });
     }
@@ -103,6 +126,8 @@ export class ScentSystem {
         y: wolf.y,
         createdAt: time,
         species: 'pack',
+        source: wolf,
+        sourceId: this.getSourceId(wolf, 'pack'),
         phase: getStableScentPhase(wolf.x, wolf.y, time, wolf.wolfName === 'Niva' ? 1 : 2),
       });
     }
@@ -132,6 +157,7 @@ export class ScentSystem {
     if (!this.active) return EMPTY_SCENT_READING;
 
     const strongestBySpecies = new Map<ScentMark['species'], { strength: number; x: number; y: number }>();
+    const signalsById = new Map<string, ScentSignal>();
     let strongest: { strength: number; x: number; y: number } | undefined;
     let strongestTarget: { strength: number; x: number; y: number } | undefined;
     for (const mark of this.marks) {
@@ -152,6 +178,20 @@ export class ScentSystem {
         phase: mark.phase,
       });
       const targeted = mark.source === targetedPrey;
+      const signalKey = `${mark.sourceId}:${mark.species}`;
+      const scentSignal = signalsById.get(signalKey);
+      if (!scentSignal || strength > scentSignal.strength) {
+        signalsById.set(signalKey, {
+          sourceId: mark.sourceId,
+          kind: mark.species,
+          x,
+          y,
+          strength,
+          targeted,
+        });
+      } else if (targeted) {
+        scentSignal.targeted = true;
+      }
       const speciesReading = strongestBySpecies.get(mark.species);
       if (!targeted && (!speciesReading || strength > speciesReading.strength)) {
         strongestBySpecies.set(mark.species, { strength, x, y });
@@ -178,6 +218,14 @@ export class ScentSystem {
       if (!strongestTerritory || strength > strongestTerritory.strength) {
         strongestTerritory = { strength, x: mark.x, y: mark.y };
       }
+      signalsById.set(`territory:${mark.ownerId ?? 'player'}:${mark.createdAt}:${mark.x}:${mark.y}`, {
+        sourceId: `territory:${mark.ownerId ?? 'player'}:${mark.createdAt}:${mark.x}:${mark.y}`,
+        kind: 'territory',
+        x: mark.x,
+        y: mark.y,
+        strength,
+        targeted: false,
+      });
       if (!strongest || strength > strongest.strength) strongest = { strength, x: mark.x, y: mark.y };
       const color = getTerritoryMarkColor(mark);
       const pulse = getStablePulse(
@@ -206,6 +254,15 @@ export class ScentSystem {
       const strength = getCachedMeatScentStrength(distance);
       if (!strongestCache || strength > strongestCache.strength) strongestCache = { strength, x: cache.x, y: cache.y };
       if (!strongest || strength > strongest.strength) strongest = { strength, x: cache.x, y: cache.y };
+      const sourceId = this.getSourceId(cache);
+      signalsById.set(`${sourceId}:cache`, {
+        sourceId,
+        kind: 'cache',
+        x: cache.x,
+        y: cache.y,
+        strength,
+        targeted: false,
+      });
       if (distance <= SCENT_RENDER_RADIUS) {
         const pulse = getStablePulse(
           time,
@@ -222,6 +279,28 @@ export class ScentSystem {
     }
 
     const waterDistance = distanceToAreas(player, this.waterAreas);
+    let nearestWaterPoint: PointLike | undefined;
+    let nearestWaterDistance = Number.POSITIVE_INFINITY;
+    for (const [index, area] of this.waterAreas.entries()) {
+      const distance = distanceToArea(player, area);
+      if (distance >= 520) continue;
+      const point = {
+        x: Phaser.Math.Clamp(player.x, area.x, area.x + area.width),
+        y: Phaser.Math.Clamp(player.y, area.y, area.y + area.height),
+      };
+      const strength = (1 - distance / 520) * 0.72;
+      signalsById.set(`water:${area.x}:${area.y}:${area.width}:${area.height}:${index}`, {
+        sourceId: `water:${area.x}:${area.y}:${area.width}:${area.height}:${index}`,
+        kind: 'water',
+        ...point,
+        strength,
+        targeted: false,
+      });
+      if (distance < nearestWaterDistance) {
+        nearestWaterDistance = distance;
+        nearestWaterPoint = point;
+      }
+    }
     if (waterDistance < 520) {
       for (let index = 0; index < 9; index += 1) {
         const angle = index * 0.71 + time / 2600;
@@ -235,7 +314,11 @@ export class ScentSystem {
       }
       const waterStrength = (1 - waterDistance / 520) * 0.72;
       if (!strongest || waterStrength > strongest.strength) {
-        strongest = { strength: waterStrength, x: player.x - this.wind.x * 120, y: player.y - this.wind.y * 120 };
+        strongest = {
+          strength: waterStrength,
+          x: nearestWaterPoint?.x ?? player.x - this.wind.x * 120,
+          y: nearestWaterPoint?.y ?? player.y - this.wind.y * 120,
+        };
       }
     }
 
@@ -255,6 +338,7 @@ export class ScentSystem {
     addClue('rabbit', 'fresh rabbit spoor');
     addClue('deer', 'faint deer musk');
     addClue('elk', 'heavy elk musk');
+    addClue('boar', 'earthy boar musk');
     addClue('carcass', 'carrion nearby');
     addClue('pack', 'pack nearby');
     if (strongestCache) {
@@ -277,6 +361,7 @@ export class ScentSystem {
       summary: clues.map((clue) => clue.text).join(' · '),
       clues,
       trackingTarget: targetedPrey !== undefined,
+      signals: [...signalsById.values()],
     };
   }
 

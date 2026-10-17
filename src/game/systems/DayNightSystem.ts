@@ -21,8 +21,8 @@ export class DayNightSystem {
       return {
         phase: 'DAWN',
         icon: '◐',
-        overlay: '#233246',
-        overlayOpacity: 0.34 * (1 - light),
+        overlay: '#31587e',
+        overlayOpacity: 0.16 * (1 - light),
         visibility: 0.72 + light * 0.28,
       };
     }
@@ -34,11 +34,11 @@ export class DayNightSystem {
       return {
         phase: 'DUSK',
         icon: '◐',
-        overlay: '#182842',
-        overlayOpacity: 0.08 + dark * 0.28,
+        overlay: '#294f7a',
+        overlayOpacity: 0.03 + dark * 0.14,
         visibility: 0.94 - dark * 0.22,
       };
     }
-    return { phase: 'NIGHT', icon: '☾', overlay: '#111d38', overlayOpacity: 0.4, visibility: 0.68 };
+    return { phase: 'NIGHT', icon: '☾', overlay: '#24486f', overlayOpacity: 0.18, visibility: 0.68 };
   }
 }

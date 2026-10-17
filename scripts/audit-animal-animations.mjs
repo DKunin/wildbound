@@ -78,6 +78,11 @@ export const THRESHOLDS = Object.freeze({
   }),
 });
 
+export const STATE_TRANSITION_THRESHOLDS = Object.freeze({
+  warningLinearScaleRatio: 1.06,
+  hardLinearScaleRatio: 1.08,
+});
+
 const round = (value, places = 6) => {
   if (!Number.isFinite(value)) return null;
   const scale = 10 ** places;
@@ -487,6 +492,9 @@ const inspectFrame = (image) => {
   let corePixels = 0;
   let coreX = 0;
   let coreY = 0;
+  let coreXX = 0;
+  let coreYY = 0;
+  let coreXY = 0;
   const signal = Buffer.allocUnsafe(image.width * image.height * 2);
   for (let y = 0; y < image.height; y += 1) {
     for (let x = 0; x < image.width; x += 1) {
@@ -509,6 +517,9 @@ const inspectFrame = (image) => {
         corePixels += 1;
         coreX += x;
         coreY += y;
+        coreXX += x * x;
+        coreYY += y * y;
+        coreXY += x * y;
       }
     }
   }
@@ -519,6 +530,7 @@ const inspectFrame = (image) => {
       visiblePixels: 0,
       alphaCentroid: { x: 0, y: 0 },
       coreCentroid: { x: 0, y: 0 },
+      bodyScale: 0,
       groundContact: { x: 0, y: 0 },
       signal,
       hash: createHash('sha256').update(signal).digest('hex'),
@@ -534,12 +546,21 @@ const inspectFrame = (image) => {
     }
   }
   const alphaCentroid = { x: alphaX / alphaWeight, y: alphaY / alphaWeight };
+  const coreCentroid = corePixels > 0 ? { x: coreX / corePixels, y: coreY / corePixels } : alphaCentroid;
+  const coreVarianceX = corePixels > 0 ? Math.max(0, coreXX / corePixels - coreCentroid.x ** 2) : 0;
+  const coreVarianceY = corePixels > 0 ? Math.max(0, coreYY / corePixels - coreCentroid.y ** 2) : 0;
+  const coreCovariance = corePixels > 0 ? coreXY / corePixels - coreCentroid.x * coreCentroid.y : 0;
+  const coreTrace = coreVarianceX + coreVarianceY;
+  const coreDiscriminant = Math.sqrt(Math.max(0, (coreVarianceX - coreVarianceY) ** 2 + 4 * coreCovariance ** 2));
   return {
     empty: false,
     bbox: { x: minX, y: minY, width: maxX - minX + 1, height: maxY - minY + 1, area: (maxX - minX + 1) * (maxY - minY + 1) },
     visiblePixels,
     alphaCentroid,
-    coreCentroid: corePixels > 0 ? { x: coreX / corePixels, y: coreY / corePixels } : alphaCentroid,
+    coreCentroid,
+    // The minor axis of the opaque core is a pose-tolerant scale proxy: a
+    // lowered head may lengthen a quadruped, but should not thicken its torso.
+    bodyScale: Math.sqrt(Math.max(0, (coreTrace - coreDiscriminant) / 2)),
     groundContact: { x: groundPixels > 0 ? groundX / groundPixels : alphaCentroid.x, y: maxY },
     signal,
     hash: createHash('sha256').update(signal).digest('hex'),
@@ -670,11 +691,12 @@ const analyzeAnimation = (animation, cache) => {
     status,
     metrics,
     issues,
-    frameGeometry: inspected.map(({ bbox, visiblePixels, alphaCentroid, coreCentroid, groundContact }) => ({
+    frameGeometry: inspected.map(({ bbox, visiblePixels, alphaCentroid, coreCentroid, bodyScale, groundContact }) => ({
       bbox,
       visiblePixels,
       alphaCentroid: { x: round(alphaCentroid.x), y: round(alphaCentroid.y) },
       coreCentroid: { x: round(coreCentroid.x), y: round(coreCentroid.y) },
+      bodyScale: round(bodyScale),
       groundContact: { x: round(groundContact.x), y: round(groundContact.y) },
     })),
   };
@@ -687,6 +709,100 @@ const summarizeInventory = (inventory) => ({
     .map((state) => [state, inventory.animations.filter((animation) => animation.state === state).length])),
   animationIds: inventory.animations.map(({ id }) => id),
 });
+
+const symmetricRatio = (left, right) => {
+  if (left <= 0 || right <= 0) return Number.POSITIVE_INFINITY;
+  return Math.max(left / right, right / left);
+};
+
+const representativeFrames = (from, to) => [
+  from.frames[0],
+  to.frames[0],
+  from.frames.at(-1),
+  to.frames.at(-1),
+];
+
+const scaleSensitiveStates = Object.freeze({
+  'player-wolf': new Set(['attacking', 'eating', 'drinking']),
+  'pack-wolf': new Set(['rest', 'feed']),
+  prey: new Set(['resting', 'foraging', 'drinking']),
+});
+
+const transitionBaselineState = (family) => family === 'pack-wolf' ? 'pace-6' : 'idle';
+
+const buildStateTransitions = (animations) => {
+  const variants = new Map();
+  for (const animation of animations) {
+    const key = [animation.family, animation.subject, animation.direction, animation.carrying, animation.woundLevel].join('/');
+    if (!variants.has(key)) variants.set(key, []);
+    variants.get(key).push(animation);
+  }
+
+  const transitions = [];
+  for (const variant of variants.values()) {
+    const family = variant[0].family;
+    const baseline = variant.find(({ state }) => state === transitionBaselineState(family));
+    if (!baseline) continue;
+    const fromVisibleArea = median(baseline.frameGeometry.map(({ visiblePixels }) => visiblePixels));
+    const fromBodyScale = median(baseline.frameGeometry.map(({ bodyScale }) => bodyScale));
+    const fromGround = median(baseline.frameGeometry.map(({ groundContact }) => groundContact.y));
+    for (const target of variant) {
+      if (target === baseline) continue;
+      const toVisibleArea = median(target.frameGeometry.map(({ visiblePixels }) => visiblePixels));
+      const toBodyScale = median(target.frameGeometry.map(({ bodyScale }) => bodyScale));
+      const toGround = median(target.frameGeometry.map(({ groundContact }) => groundContact.y));
+      const visibleAreaRatio = symmetricRatio(fromVisibleArea, toVisibleArea);
+      const linearScaleRatio = Math.sqrt(visibleAreaRatio);
+      const sensitive = scaleSensitiveStates[family]?.has(target.state) ?? false;
+      const issues = [];
+      if (sensitive && linearScaleRatio > STATE_TRANSITION_THRESHOLDS.hardLinearScaleRatio) {
+        issues.push(issue(
+          'fail',
+          'linearScaleRatio',
+          linearScaleRatio,
+          STATE_TRANSITION_THRESHOLDS.hardLinearScaleRatio,
+          'Alternating states change the apparent anatomical scale.',
+        ));
+      } else if (sensitive && linearScaleRatio > STATE_TRANSITION_THRESHOLDS.warningLinearScaleRatio) {
+        issues.push(issue(
+          'warn',
+          'linearScaleRatio',
+          linearScaleRatio,
+          STATE_TRANSITION_THRESHOLDS.warningLinearScaleRatio,
+          'Alternating states may show a subtle apparent scale change.',
+        ));
+      }
+      const status = issues.some(({ severity }) => severity === 'fail')
+        ? 'fail'
+        : issues.some(({ severity }) => severity === 'warn') ? 'warn' : 'pass';
+      transitions.push({
+        id: ['state-transition', family, target.subject, `${baseline.state}-to-${target.state}`, target.direction, target.carrying ? 'carry' : 'plain', `wound-${target.woundLevel}`].join('/'),
+        family,
+        subject: target.subject,
+        direction: target.direction,
+        carrying: target.carrying,
+        woundLevel: target.woundLevel,
+        fromState: baseline.state,
+        toState: target.state,
+        scaleSensitive: sensitive,
+        status,
+        metrics: {
+          fromMedianVisiblePixels: round(fromVisibleArea),
+          toMedianVisiblePixels: round(toVisibleArea),
+          visibleAreaRatio: round(visibleAreaRatio),
+          linearScaleRatio: round(linearScaleRatio),
+          bodyScaleRatio: round(symmetricRatio(fromBodyScale, toBodyScale)),
+          medianGroundContactDeltaPx: round(Math.abs(fromGround - toGround)),
+        },
+        issues,
+        sequenceStates: [baseline.state, target.state, baseline.state, target.state],
+        frames: representativeFrames(baseline, target),
+      });
+    }
+  }
+  transitions.sort((left, right) => left.id.localeCompare(right.id));
+  return transitions;
+};
 
 export const runAudit = ({ root = DEFAULT_ROOT, families } = {}) => {
   const preyAnimationContract = readPreyAnimationContract(root);
@@ -743,8 +859,15 @@ export const runAudit = ({ root = DEFAULT_ROOT, families } = {}) => {
     .sort((left, right) => `${left.animationId}/${left.metric}`.localeCompare(`${right.animationId}/${right.metric}`));
   const hardFailures = flattenIssues('fail');
   const warnings = flattenIssues('warn');
+  const stateTransitions = buildStateTransitions(analyzed);
+  const stateTransitionHardFailures = stateTransitions.flatMap((transition) => transition.issues
+    .filter(({ severity }) => severity === 'fail')
+    .map((entry) => ({ transitionId: transition.id, ...entry })));
+  const stateTransitionWarnings = stateTransitions.flatMap((transition) => transition.issues
+    .filter(({ severity }) => severity === 'warn')
+    .map((entry) => ({ transitionId: transition.id, ...entry })));
   return {
-    schemaVersion: 1,
+    schemaVersion: 2,
     contract: {
       runtime: 'Phaser 3.90 fixed-cell spritesheets and numeric frame sequences',
       alphaThreshold: ALPHA_THRESHOLD,
@@ -752,9 +875,11 @@ export const runAudit = ({ root = DEFAULT_ROOT, families } = {}) => {
       anchor: 'untrimmed fixed cell; alpha/core centroid plus lowest visible contact line',
       preyGroundTransitionLimitPx: preyAnimationContract.transitionLimits.groundContactY,
       preyGroundTransitionCoverage: 'all idle phases x all interruptible action phases; retaliation endpoints only',
+      alternatingStateCoverage: 'every runtime state alternated against same-subject, same-direction, same-carry, same-wound idle (pack wolves use pace-6)',
       reportOrder: 'stable animation id; no wall-clock fields',
     },
     thresholds: THRESHOLDS,
+    stateTransitionThresholds: STATE_TRANSITION_THRESHOLDS,
     inventory: summarizeInventory(inventory),
     selection: families?.length ? [...families].sort() : ['all'],
     summary: {
@@ -765,15 +890,23 @@ export const runAudit = ({ root = DEFAULT_ROOT, families } = {}) => {
       failing: analyzed.filter(({ status }) => status === 'fail').length,
       hardFailureMetrics: hardFailures.length,
       warningMetrics: warnings.length,
+      stateTransitions: stateTransitions.length,
+      stateTransitionPassing: stateTransitions.filter(({ status }) => status === 'pass').length,
+      stateTransitionWarnings: stateTransitions.filter(({ status }) => status === 'warn').length,
+      stateTransitionFailing: stateTransitions.filter(({ status }) => status === 'fail').length,
     },
     hardFailures,
     warnings,
+    stateTransitionHardFailures,
+    stateTransitionWarnings,
+    stateTransitions,
     animations: analyzed,
     limitations: [
       'Image metrics flag likely registration, pulsing, duplicate-pose, and loop-seam defects; they cannot prove anatomical correctness or that a gait semantically reads as walking.',
       'Ground contact is the lowest non-transparent pixel, so a baked shadow, tail, carried carcass, dirt, or extended limb can influence that metric.',
       'Only wound variants supported by the current runtime are composited: player wolf, deer, elk, and boar levels 1-3. Rabbit, Niva, and Torr expose healthy art only.',
       'The inventory is an explicit mirror of WildScene animation creation and should be updated with any runtime frame-contract change.',
+      'Alternating-state scale gates apply only to equivalent full-body states; crouching, locomotion, lying down, burial effects, retaliation, and death remain visual-review-only because pose or VFX legitimately changes silhouette area.',
     ],
   };
 };
@@ -845,17 +978,17 @@ const buildHtml = (root, report, reviewScale) => {
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Wildbound animal animation lab</title>
 <style>
-:root{color-scheme:dark;--bg:#0c1210;--panel:#151e19;--ink:#e8f0e9;--muted:#9eada2;--line:#304138;--pass:#62ce86;--warn:#f2bb55;--fail:#ff6b69}*{box-sizing:border-box}body{margin:0;background:linear-gradient(135deg,#0b100e,#111a15);color:var(--ink);font:14px/1.45 ui-monospace,SFMono-Regular,Menlo,monospace}header{position:sticky;top:0;z-index:3;padding:16px 20px;background:#0c1210ee;border-bottom:1px solid var(--line);backdrop-filter:blur(8px)}h1{font:700 22px/1.1 system-ui;margin:0 0 9px}.summary{display:flex;flex-wrap:wrap;gap:8px}.pill{padding:3px 8px;border:1px solid var(--line);border-radius:999px}.pass{color:var(--pass)}.warn{color:var(--warn)}.fail{color:var(--fail)}.controls{display:grid;grid-template-columns:minmax(220px,1fr) repeat(3,minmax(120px,auto));gap:8px;margin-top:12px}input,select{width:100%;border:1px solid var(--line);border-radius:6px;background:#111a15;color:var(--ink);padding:8px}main{padding:18px 20px}.notes{max-width:1100px;color:var(--muted);margin:0 0 16px}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(390px,1fr));gap:12px}.card{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--pass);border-radius:8px;padding:10px;min-width:0}.card.warn{border-left-color:var(--warn);color:var(--ink)}.card.fail{border-left-color:var(--fail);color:var(--ink)}.card h2{font-size:13px;margin:0 0 5px;overflow-wrap:anywhere}.meta,.metrics{color:var(--muted);font-size:11px}.stage{display:flex;align-items:center;gap:10px;margin:8px 0}.checker{background-color:#d0d0c8;background-image:linear-gradient(45deg,#999 25%,transparent 25%),linear-gradient(-45deg,#999 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#999 75%),linear-gradient(-45deg,transparent 75%,#999 75%);background-size:16px 16px;background-position:0 0,0 8px,8px -8px,-8px 0;border:1px solid #4d5d53}.animation{max-width:180px;max-height:150px;width:auto;height:auto;image-rendering:auto}.contact{display:block;max-width:100%;height:auto;max-height:150px;overflow:auto}.issues{margin:6px 0 0;padding-left:18px;font-size:11px}.issues li{margin:2px 0}.hidden{display:none!important}@media(max-width:760px){.controls{grid-template-columns:1fr 1fr}.controls input{grid-column:1/-1}.grid{grid-template-columns:1fr}}
+:root{color-scheme:dark;--bg:#0c1210;--panel:#151e19;--ink:#e8f0e9;--muted:#9eada2;--line:#304138;--pass:#62ce86;--warn:#f2bb55;--fail:#ff6b69}*{box-sizing:border-box}body{margin:0;background:linear-gradient(135deg,#0b100e,#111a15);color:var(--ink);font:14px/1.45 ui-monospace,SFMono-Regular,Menlo,monospace}header{position:sticky;top:0;z-index:3;padding:16px 20px;background:#0c1210ee;border-bottom:1px solid var(--line);backdrop-filter:blur(8px)}h1{font:700 22px/1.1 system-ui;margin:0 0 9px}.summary{display:flex;flex-wrap:wrap;gap:8px}.pill{padding:3px 8px;border:1px solid var(--line);border-radius:999px}.pass{color:var(--pass)}.warn{color:var(--warn)}.fail{color:var(--fail)}.controls{display:grid;grid-template-columns:minmax(220px,1fr) repeat(4,minmax(120px,auto));gap:8px;margin-top:12px}input,select{width:100%;border:1px solid var(--line);border-radius:6px;background:#111a15;color:var(--ink);padding:8px}main{padding:18px 20px}.notes{max-width:1100px;color:var(--muted);margin:0 0 16px}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(390px,1fr));gap:12px}.card{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--pass);border-radius:8px;padding:10px;min-width:0}.card.warn{border-left-color:var(--warn);color:var(--ink)}.card.fail{border-left-color:var(--fail);color:var(--ink)}.card h2{font-size:13px;margin:0 0 5px;overflow-wrap:anywhere}.meta,.metrics{color:var(--muted);font-size:11px}.stage{display:flex;align-items:center;gap:10px;margin:8px 0}.checker{background-color:#d0d0c8;background-image:linear-gradient(45deg,#999 25%,transparent 25%),linear-gradient(-45deg,#999 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#999 75%),linear-gradient(-45deg,transparent 75%,#999 75%);background-size:16px 16px;background-position:0 0,0 8px,8px -8px,-8px 0;border:1px solid #4d5d53}.animation{max-width:180px;max-height:150px;width:auto;height:auto;image-rendering:auto}.contact{display:block;max-width:100%;height:auto;max-height:150px;overflow:auto}.issues{margin:6px 0 0;padding-left:18px;font-size:11px}.issues li{margin:2px 0}.hidden{display:none!important}@media(max-width:760px){.controls{grid-template-columns:1fr 1fr}.controls input{grid-column:1/-1}.grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <header>
   <h1>Wildbound animal animation lab</h1>
-  <div class="summary"><span class="pill">${report.summary.animations} cycles</span><span class="pill">${report.summary.framesPlayed} runtime frames</span><span class="pill pass">${report.summary.passing} pass</span><span class="pill warn">${report.summary.warnings} warn</span><span class="pill fail">${report.summary.failing} fail</span></div>
-  <div class="controls"><input id="search" placeholder="Filter subject, state, direction…"><select id="family"><option value="">all families</option></select><select id="status"><option value="">all statuses</option><option>fail</option><option>warn</option><option>pass</option></select><select id="wound"><option value="">all wounds</option><option value="0">healthy</option><option value="1">wound 1</option><option value="2">wound 2</option><option value="3">wound 3</option></select></div>
+  <div class="summary"><span class="pill">${report.summary.animations} cycles</span><span class="pill">${report.summary.framesPlayed} runtime frames</span><span class="pill">${report.summary.stateTransitions} alternating transitions</span><span class="pill pass">${report.summary.passing} cycle pass</span><span class="pill warn">${report.summary.warnings} cycle warn</span><span class="pill fail">${report.summary.failing} cycle fail</span><span class="pill pass">${report.summary.stateTransitionPassing} transition pass</span><span class="pill warn">${report.summary.stateTransitionWarnings} transition warn</span><span class="pill fail">${report.summary.stateTransitionFailing} transition fail</span></div>
+  <div class="controls"><input id="search" placeholder="Filter subject, state, direction…"><select id="view"><option value="transition">alternating states</option><option value="cycle">animation cycles</option><option value="">both views</option></select><select id="family"><option value="">all families</option></select><select id="status"><option value="">all statuses</option><option>fail</option><option>warn</option><option>pass</option></select><select id="wound"><option value="">all wounds</option><option value="0">healthy</option><option value="1">wound 1</option><option value="2">wound 2</option><option value="3">wound 3</option></select></div>
 </header>
 <main>
-  <p class="notes">Animated canvases play the exact runtime frame order and cadence. Contact strips expose pose order. Orange is a sensitive curation warning; red crosses a tolerant hard limit. Metrics cannot judge anatomy or action meaning, so visually confirm that walking has planted/support/passing poses and that drinking, feeding, attacks, recovery, and loop transitions read correctly.</p>
+  <p class="notes">Alternating-state canvases switch between the baseline and target state at one shared display size; animation-cycle canvases play exact runtime order and cadence. Contact strips expose the compared endpoints. Orange is a sensitive curation warning; red crosses a tolerant hard limit. Metrics cannot judge anatomy or action meaning, so visually confirm gait, action recovery, silhouette identity, and intentional pose compression.</p>
   <div id="grid" class="grid"></div>
 </main>
 <script type="application/json" id="report">${reportJson}</script>
@@ -867,10 +1000,11 @@ const ready=(image)=>image.complete?Promise.resolve():new Promise(resolve=>{imag
 function drawFrame(canvas,animation,index){const ref=animation.frames[index];const proxy=proxies[ref.asset];const image=imageFor(ref.asset);const column=ref.frame%proxy.columns;const row=Math.floor(ref.frame/proxy.columns);canvas.width=proxy.cellWidth;canvas.height=proxy.cellHeight;const context=canvas.getContext('2d');context.clearRect(0,0,canvas.width,canvas.height);context.imageSmoothingEnabled=false;context.drawImage(image,column*proxy.cellWidth,row*proxy.cellHeight,proxy.cellWidth,proxy.cellHeight,0,0,canvas.width,canvas.height);if(ref.woundAsset){const woundProxy=proxies[ref.woundAsset];const wound=imageFor(ref.woundAsset);const woundRow=(ref.woundLevel-1)*woundProxy.sourceRows+row;context.drawImage(wound,column*woundProxy.cellWidth,woundRow*woundProxy.cellHeight,woundProxy.cellWidth,woundProxy.cellHeight,0,0,canvas.width,canvas.height)}}
 async function renderCard(card,animation){const allPaths=[...new Set(animation.frames.flatMap(frame=>[frame.asset,frame.woundAsset].filter(Boolean)))];await Promise.all(allPaths.map(path=>ready(imageFor(path))));const animationCanvas=card.querySelector('.animation');const contact=card.querySelector('.contact');const first=proxies[animation.frames[0].asset];contact.width=first.cellWidth*animation.frames.length;contact.height=first.cellHeight;const context=contact.getContext('2d');context.imageSmoothingEnabled=false;animation.frames.forEach((frame,index)=>{const scratch=document.createElement('canvas');drawFrame(scratch,animation,index);context.drawImage(scratch,index*first.cellWidth,0)});drawFrame(animationCanvas,animation,0);card.dataset.ready='1'}
 const familySelect=document.querySelector('#family');[...new Set(report.animations.map(item=>item.family))].forEach(value=>familySelect.add(new Option(value,value)));
-const grid=document.querySelector('#grid');for(const animation of report.animations){const card=document.createElement('article');card.className='card '+animation.status;card.dataset.search=[animation.id,animation.subject,animation.state,animation.direction].join(' ').toLowerCase();card.dataset.family=animation.family;card.dataset.status=animation.status;card.dataset.wound=String(animation.woundLevel);card.innerHTML='<h2>'+animation.id+'</h2><div class="meta">'+animation.frameRate+' fps · '+(animation.loop?'loop':'one-shot')+' · '+animation.frames.length+' frames</div><div class="stage"><canvas class="animation checker"></canvas><canvas class="contact checker"></canvas></div><div class="metrics">anchor α '+animation.metrics.alphaAnchorXRange+'/'+animation.metrics.alphaAnchorYRange+' · core '+animation.metrics.coreAnchorXRange+'/'+animation.metrics.coreAnchorYRange+' · area pulse '+animation.metrics.alphaAreaPulse+' · seam ×'+animation.metrics.loopSeamRatio+' · motion '+animation.metrics.semanticMotionScore+'</div>'+(animation.issues.length?'<ul class="issues">'+animation.issues.map(entry=>'<li class="'+entry.severity+'">'+entry.metric+': '+entry.value+' (limit '+entry.threshold+')</li>').join('')+'</ul>':'');grid.append(card);card._animation=animation}
+const grid=document.querySelector('#grid');for(const animation of report.animations){const card=document.createElement('article');card.className='card '+animation.status;card.dataset.view='cycle';card.dataset.search=[animation.id,animation.subject,animation.state,animation.direction].join(' ').toLowerCase();card.dataset.family=animation.family;card.dataset.status=animation.status;card.dataset.wound=String(animation.woundLevel);card.innerHTML='<h2>'+animation.id+'</h2><div class="meta">'+animation.frameRate+' fps · '+(animation.loop?'loop':'one-shot')+' · '+animation.frames.length+' frames</div><div class="stage"><canvas class="animation checker"></canvas><canvas class="contact checker"></canvas></div><div class="metrics">anchor α '+animation.metrics.alphaAnchorXRange+'/'+animation.metrics.alphaAnchorYRange+' · core '+animation.metrics.coreAnchorXRange+'/'+animation.metrics.coreAnchorYRange+' · area pulse '+animation.metrics.alphaAreaPulse+' · seam ×'+animation.metrics.loopSeamRatio+' · motion '+animation.metrics.semanticMotionScore+'</div>'+(animation.issues.length?'<ul class="issues">'+animation.issues.map(entry=>'<li class="'+entry.severity+'">'+entry.metric+': '+entry.value+' (limit '+entry.threshold+')</li>').join('')+'</ul>':'');grid.append(card);card._animation=animation}
+for(const transition of report.stateTransitions){const card=document.createElement('article');card.className='card '+transition.status;card.dataset.view='transition';card.dataset.search=[transition.id,transition.subject,transition.fromState,transition.toState,transition.direction].join(' ').toLowerCase();card.dataset.family=transition.family;card.dataset.status=transition.status;card.dataset.wound=String(transition.woundLevel);card.innerHTML='<h2>'+transition.id+'</h2><div class="meta">2 fps alternation · '+(transition.scaleSensitive?'scale-gated':'visual review')+' · '+transition.frames.length+' endpoints</div><div class="stage"><canvas class="animation checker"></canvas><canvas class="contact checker"></canvas></div><div class="metrics">linear scale ×'+transition.metrics.linearScaleRatio+' · area ×'+transition.metrics.visibleAreaRatio+' · core minor axis ×'+transition.metrics.bodyScaleRatio+' · ground Δ'+transition.metrics.medianGroundContactDeltaPx+'px</div>'+(transition.issues.length?'<ul class="issues">'+transition.issues.map(entry=>'<li class="'+entry.severity+'">'+entry.metric+': '+entry.value+' (limit '+entry.threshold+')</li>').join('')+'</ul>':'');grid.append(card);card._animation={frames:transition.frames,frameRate:2,loop:true}}
 const observer=new IntersectionObserver(entries=>entries.forEach(async entry=>{const card=entry.target;if(entry.isIntersecting){active.add(card);if(!card.dataset.ready)await renderCard(card,card._animation)}else active.delete(card)}),{rootMargin:'300px'});document.querySelectorAll('.card').forEach(card=>observer.observe(card));
 function tick(now){for(const card of active){if(card.dataset.ready!=='1')continue;const animation=card._animation;const elapsed=Math.floor(now/(1000/animation.frameRate));const frame=animation.loop?elapsed%animation.frames.length:Math.min(elapsed,animation.frames.length-1);drawFrame(card.querySelector('.animation'),animation,frame)}requestAnimationFrame(tick)}requestAnimationFrame(tick);
-function filter(){const query=document.querySelector('#search').value.trim().toLowerCase();const family=familySelect.value;const status=document.querySelector('#status').value;const wound=document.querySelector('#wound').value;document.querySelectorAll('.card').forEach(card=>card.classList.toggle('hidden',!!((query&&!card.dataset.search.includes(query))||(family&&card.dataset.family!==family)||(status&&card.dataset.status!==status)||(wound&&card.dataset.wound!==wound))))}document.querySelectorAll('.controls input,.controls select').forEach(control=>control.addEventListener('input',filter));
+function filter(){const query=document.querySelector('#search').value.trim().toLowerCase();const view=document.querySelector('#view').value;const family=familySelect.value;const status=document.querySelector('#status').value;const wound=document.querySelector('#wound').value;document.querySelectorAll('.card').forEach(card=>card.classList.toggle('hidden',!!((query&&!card.dataset.search.includes(query))||(view&&card.dataset.view!==view)||(family&&card.dataset.family!==family)||(status&&card.dataset.status!==status)||(wound&&card.dataset.wound!==wound))))}document.querySelectorAll('.controls input,.controls select').forEach(control=>control.addEventListener('input',filter));filter();
 </script>
 </body>
 </html>\n`;
@@ -920,10 +1054,10 @@ export const main = (argv = process.argv.slice(2)) => {
   if (options.stdout) process.stdout.write(`${JSON.stringify(report.summary)}\n`);
   else {
     const shownOutput = relative(options.root, options.output) || '.';
-    process.stdout.write(`Animal animation audit: ${report.summary.passing} pass, ${report.summary.warnings} warn, ${report.summary.failing} fail (${report.summary.animations} cycles).\n`);
+    process.stdout.write(`Animal animation audit: ${report.summary.passing} pass, ${report.summary.warnings} warn, ${report.summary.failing} fail (${report.summary.animations} cycles); ${report.summary.stateTransitionPassing} pass, ${report.summary.stateTransitionWarnings} warn, ${report.summary.stateTransitionFailing} fail (${report.summary.stateTransitions} alternating transitions).\n`);
     process.stdout.write(`Report: ${shownOutput}/report.json${options.html ? `\nReview: ${shownOutput}/index.html` : ''}\n`);
   }
-  if (options.failOnHard && report.hardFailures.length > 0) process.exitCode = 2;
+  if (options.failOnHard && (report.hardFailures.length > 0 || report.stateTransitionHardFailures.length > 0)) process.exitCode = 2;
   return report;
 };
 

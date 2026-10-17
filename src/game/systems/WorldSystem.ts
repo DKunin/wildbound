@@ -16,10 +16,38 @@ import { distanceToAreas } from './geometry';
 import { getObstacleCollisionGeometry } from './ObstacleCollision';
 import { getPathRenderPieces } from './PathRendering';
 import { getDecorationDepth, getObstacleDepth, getTerrainFeatureDepth } from './WorldDepth';
+import {
+  ENVIRONMENT_MOTION_INTERVAL_MS,
+  getEnvironmentMotionBucketKey,
+  getEnvironmentMotionPhase,
+  getEnvironmentMotionSample,
+  getNearbyEnvironmentMotionBucketKeys,
+  isEnvironmentMotionNearby,
+  type EnvironmentMotionKind,
+} from './EnvironmentMotion';
+
+type EnvironmentMotionTarget = Phaser.GameObjects.Image | Phaser.Physics.Arcade.Image | Phaser.GameObjects.Graphics;
+
+interface EnvironmentMotionActor {
+  target: EnvironmentMotionTarget;
+  kind: EnvironmentMotionKind;
+  anchor: WorldPoint;
+  flow: WorldPoint;
+  phase: number;
+  baseX: number;
+  baseY: number;
+  baseAngle: number;
+  baseScaleX: number;
+  baseScaleY: number;
+  baseAlpha: number;
+}
 
 export class WorldSystem {
   readonly layout: ProceduralWorld;
   readonly obstacles: Phaser.Physics.Arcade.StaticGroup;
+  private readonly environmentMotionByBucket = new Map<string, EnvironmentMotionActor[]>();
+  private activeEnvironmentMotion = new Set<EnvironmentMotionActor>();
+  private nextEnvironmentMotionAt = 0;
 
   constructor(private readonly scene: Phaser.Scene, seed: string) {
     this.layout = new ProceduralWorld(seed);
@@ -42,11 +70,12 @@ export class WorldSystem {
           .setDepth(-94);
       }
       if (cell.water) {
-        this.scene.add.image(x, y, 'terrain-overlays', cell.waterFrame)
+        const water = this.scene.add.image(x, y, 'terrain-overlays', cell.waterFrame)
           .setDisplaySize(cell.waterDisplayWidth, cell.waterDisplayHeight)
           .setAngle(cell.waterAngle)
           .setFlipX(cell.waterFlipX)
           .setDepth(-90);
+        this.registerEnvironmentMotion(water, 'water', { x, y });
         if (cell.waterFlow) this.createWaterFlow(x, y, cell.waterFlow, cell.column, cell.row);
       }
       if (cell.feature) this.createTerrainFeature(x, y, cell.feature);
@@ -58,10 +87,13 @@ export class WorldSystem {
 
   private createTerrainFeature(x: number, y: number, feature: ProceduralTerrainFeature): void {
     if (!feature.blocked) {
-      this.scene.add.image(x, y, 'terrain-features', feature.frame)
+      const sprite = this.scene.add.image(x, y, 'terrain-features', feature.frame)
         .setScale(feature.scale)
         .setFlipX(feature.flipX)
         .setDepth(feature.kind === 'wetland' ? -91 : getTerrainFeatureDepth(feature, y));
+      if (feature.kind === 'berryThicket' || feature.kind === 'wetland') {
+        this.registerEnvironmentMotion(sprite, 'bush', { x, y });
+      }
       return;
     }
     const sprite = this.scene.physics.add.staticImage(x, y, 'terrain-features', feature.frame)
@@ -124,6 +156,7 @@ export class WorldSystem {
       .setScale(scale)
       .setFlipX(flipX)
       .setDepth(getObstacleDepth(kind, y));
+    if (kind === 'pine' || kind === 'birch') this.registerEnvironmentMotion(sprite, 'tree', { x, y });
     this.obstacles.add(sprite);
     sprite.refreshBody();
     const body = sprite.body as Phaser.Physics.Arcade.StaticBody;
@@ -145,11 +178,13 @@ export class WorldSystem {
   private createDecoration(x: number, y: number, decoration: ProceduralDecoration): void {
     const texture = decoration.atlas === 'obstacle' ? 'obstacle-atlas' : 'terrain-overlays';
     const decorationY = y + decoration.offsetY;
-    this.scene.add.image(x + decoration.offsetX, decorationY, texture, decoration.frame)
+    const sprite = this.scene.add.image(x + decoration.offsetX, decorationY, texture, decoration.frame)
       .setScale(decoration.scale)
       .setFlipX(decoration.flipX)
       .setAlpha(decoration.alpha)
       .setDepth(getDecorationDepth(decoration, decorationY));
+    if (decoration.kind === 'sapling') this.registerEnvironmentMotion(sprite, 'tree', { x: sprite.x, y: sprite.y });
+    if (decoration.kind === 'brush') this.registerEnvironmentMotion(sprite, 'bush', { x: sprite.x, y: sprite.y });
   }
 
   private createWaterFlow(x: number, y: number, flow: WaterFlow, column: number, row: number): void {
@@ -161,7 +196,7 @@ export class WorldSystem {
     const glints = this.scene.add.graphics({ x, y })
       .setBlendMode(Phaser.BlendModes.ADD)
       .setDepth(-89.5)
-      .setAlpha(0.18);
+      .setAlpha(0.16);
     glints.lineStyle(1.4, 0xdaf6ff, 0.34);
     for (const offset of [-22, 1, 24]) {
       const start = -18 - ((column * 11 + row * 7 + offset) % 9);
@@ -171,16 +206,7 @@ export class WorldSystem {
       glints.lineTo(directionX * end + normalX * offset, directionY * end + normalY * offset);
       glints.strokePath();
     }
-    this.scene.tweens.add({
-      targets: glints,
-      x: x + directionX * 18,
-      y: y + directionY * 18,
-      alpha: 0.78,
-      duration: 1_800 + ((column * 97 + row * 53) % 500),
-      delay: (column * 83 + row * 47) % 650,
-      repeat: -1,
-      ease: 'Linear',
-    });
+    this.registerEnvironmentMotion(glints, 'water-flow', { x, y }, flow, column * 41 + row * 67);
   }
 
   private createPuddle(area: WaterArea, index: number): void {
@@ -215,11 +241,12 @@ export class WorldSystem {
     const maskShape = this.scene.make.graphics({}, false).setPosition(centerX, centerY);
     maskShape.fillStyle(0xffffff, 1).fillPoints(waterContour, true);
     const waterFrames = [5, 6, 10, 11, 14, 15] as const;
-    this.scene.add.image(centerX, centerY, 'water-tiles', waterFrames[index % waterFrames.length])
+    const water = this.scene.add.image(centerX, centerY, 'water-tiles', waterFrames[index % waterFrames.length])
       .setDisplaySize(area.width * 1.34, area.height * 1.42)
       .setAlpha(0.78)
       .setMask(maskShape.createGeometryMask())
       .setDepth(-92);
+    this.registerEnvironmentMotion(water, 'water', { x: centerX, y: centerY }, undefined, index);
 
     const details = this.scene.add.graphics().setPosition(centerX, centerY).setDepth(-91);
     const detailCount = area.width < 130 ? 3 : area.width < 210 ? 5 : 8;
@@ -263,5 +290,66 @@ export class WorldSystem {
       ));
     }
     return points;
+  }
+
+  updateEnvironmentMotion(time: number, player: WorldPoint): void {
+    if (time < this.nextEnvironmentMotionAt) return;
+    this.nextEnvironmentMotionAt = time + ENVIRONMENT_MOTION_INTERVAL_MS;
+
+    const nearby = new Set<EnvironmentMotionActor>();
+    for (const key of getNearbyEnvironmentMotionBucketKeys(player)) {
+      for (const actor of this.environmentMotionByBucket.get(key) ?? []) {
+        if (!isEnvironmentMotionNearby(actor.anchor, player)) continue;
+        nearby.add(actor);
+        this.applyEnvironmentMotion(actor, time);
+      }
+    }
+    for (const actor of this.activeEnvironmentMotion) {
+      if (!nearby.has(actor)) this.resetEnvironmentMotion(actor);
+    }
+    this.activeEnvironmentMotion = nearby;
+  }
+
+  private registerEnvironmentMotion(
+    target: EnvironmentMotionTarget,
+    kind: EnvironmentMotionKind,
+    anchor: WorldPoint,
+    flow: WorldPoint = { x: 0, y: 0 },
+    salt = 0,
+  ): void {
+    const actor: EnvironmentMotionActor = {
+      target,
+      kind,
+      anchor,
+      flow,
+      phase: getEnvironmentMotionPhase(anchor, salt),
+      baseX: target.x,
+      baseY: target.y,
+      baseAngle: target.angle,
+      baseScaleX: target.scaleX,
+      baseScaleY: target.scaleY,
+      baseAlpha: target.alpha,
+    };
+    const key = getEnvironmentMotionBucketKey(anchor);
+    const bucket = this.environmentMotionByBucket.get(key) ?? [];
+    bucket.push(actor);
+    this.environmentMotionByBucket.set(key, bucket);
+  }
+
+  private applyEnvironmentMotion(actor: EnvironmentMotionActor, time: number): void {
+    const motion = getEnvironmentMotionSample(actor.kind, time, actor.phase, actor.flow);
+    actor.target
+      .setPosition(actor.baseX + motion.x, actor.baseY + motion.y)
+      .setAngle(actor.baseAngle + motion.angle)
+      .setScale(actor.baseScaleX * motion.scaleX, actor.baseScaleY * motion.scaleY)
+      .setAlpha(actor.baseAlpha * motion.alpha);
+  }
+
+  private resetEnvironmentMotion(actor: EnvironmentMotionActor): void {
+    actor.target
+      .setPosition(actor.baseX, actor.baseY)
+      .setAngle(actor.baseAngle)
+      .setScale(actor.baseScaleX, actor.baseScaleY)
+      .setAlpha(actor.baseAlpha);
   }
 }

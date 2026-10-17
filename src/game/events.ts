@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
-import type { ScentClue } from './systems/ScentSystem';
 import type { DifficultyMode } from './systems/BalanceConfig';
+import type { SenseHudCue } from './systems/SenseHudSystem';
 
 export interface HudState {
   health: number;
@@ -18,12 +18,7 @@ export interface HudState {
   willEatMeat: boolean;
   eventLine: string;
   scentActive: boolean;
-  scentSummary: string;
-  scentClues: ScentClue[];
-  trackingTarget: boolean;
-  scentDirectionArrow: string;
-  scentDirectionLabel: string;
-  soundSummary: string;
+  senseCues: SenseHudCue[];
   sneaking: boolean;
   canSkipRest: boolean;
   canMarkTerritory: boolean;

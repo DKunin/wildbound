@@ -1116,394 +1116,26 @@
     "rabbit-actions": [
       {
         "anchor": [
-          81.5,
+          82,
           172
         ],
         "root": [
-          85.20859052204075,
-          124.37868621743162
+          85.18496397182054,
+          128.13166479258442
         ],
         "bbox": [
-          10,
-          56,
-          144,
-          117
-        ],
-        "components": [
-          10331
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "1337a26b9cbed659c36f9af35d0cb20a256456d600884c09b83403892970e5da",
-        "opaquePixels": 10331
-      },
-      {
-        "anchor": [
-          91,
-          173
-        ],
-        "root": [
-          94.60340490331956,
-          123.59067010706883
-        ],
-        "bbox": [
-          25,
-          52,
+          16,
+          65,
           133,
-          122
-        ],
-        "components": [
-          9850
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "5379cef3ec1070b59d32986fa2c6093b1d72a2834ab578f6a27682a27d06827b",
-        "opaquePixels": 9850
-      },
-      {
-        "anchor": [
-          88,
-          174
-        ],
-        "root": [
-          88.27999822420313,
-          113.61587978951326
-        ],
-        "bbox": [
-          46,
-          41,
-          85,
-          134
-        ],
-        "components": [
-          7459
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "df0006a6de8133047c94ee517ff75d3de69151bd5c868958fa85e3fe5926ca7e",
-        "opaquePixels": 7459
-      },
-      {
-        "anchor": [
-          92,
-          174
-        ],
-        "root": [
-          87.64579920012324,
-          124.52468315160635
-        ],
-        "bbox": [
-          28,
-          54,
-          129,
-          121
-        ],
-        "components": [
-          9601
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "3e5b6f41224b42d02e0614af27cccf9b917b61cd3de22020398cc6667f18b51f",
-        "opaquePixels": 9601
-      },
-      {
-        "anchor": [
-          91,
-          174
-        ],
-        "root": [
-          88.82349643064087,
-          131.6561661075512
-        ],
-        "bbox": [
-          20,
-          76,
-          143,
-          99
-        ],
-        "components": [
-          9171
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "8ab35d92981c31a13893573a02713197e93445f91b4c1a0f9cb10d5bc95497d4",
-        "opaquePixels": 9171
-      },
-      {
-        "anchor": [
-          93.5,
-          174
-        ],
-        "root": [
-          93.38006581785768,
-          127.62114534095855
-        ],
-        "bbox": [
-          33,
-          68,
-          122,
-          107
-        ],
-        "components": [
-          8613
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "dc5dcf03f27175274b47ad81a1a22ee5c1c739a968ba3c76fb28787aa954b8c6",
-        "opaquePixels": 8613
-      },
-      {
-        "anchor": [
-          91,
-          170
-        ],
-        "root": [
-          91.14460378319824,
-          109.74348912577717
-        ],
-        "bbox": [
-          50,
-          37,
-          83,
-          134
-        ],
-        "components": [
-          7322
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "2b8117790b782f48b4259cebc12325dcbfbde55d6a4647ccb662fcb5893935e5",
-        "opaquePixels": 7322
-      },
-      {
-        "anchor": [
-          90,
-          173
-        ],
-        "root": [
-          89.90037776262723,
-          126.04740424037853
-        ],
-        "bbox": [
-          29,
-          66,
-          123,
           108
         ],
         "components": [
-          8795
+          8802
         ],
         "detachedShare": 0,
         "edgePixels": 0,
-        "hash": "8f3f7c60d9680920c6295292d5cd02a5fad48286a0d363128840dae65c68d3b7",
-        "opaquePixels": 8795
-      },
-      {
-        "anchor": [
-          81.5,
-          172
-        ],
-        "root": [
-          85.11672372751993,
-          123.42877956610704
-        ],
-        "bbox": [
-          9,
-          53,
-          146,
-          120
-        ],
-        "components": [
-          10707
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "4d17e4824c69433653168fb12244ee15545b271108c8934eaba489f0c5819721",
-        "opaquePixels": 10707
-      },
-      {
-        "anchor": [
-          91,
-          173
-        ],
-        "root": [
-          94.86845333292553,
-          122.64496014591032
-        ],
-        "bbox": [
-          24,
-          49,
-          135,
-          125
-        ],
-        "components": [
-          10204
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "58109a4836bdb7bc4172db3ff1313318c444cdb8294031e78736c9140215bbf1",
-        "opaquePixels": 10204
-      },
-      {
-        "anchor": [
-          88.5,
-          174
-        ],
-        "root": [
-          88.66893929586342,
-          112.03157822690355
-        ],
-        "bbox": [
-          46,
-          38,
-          86,
-          137
-        ],
-        "components": [
-          7753
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "ab77d4a71c84bd81355e83203c1bd683ea249ae67b1a06707465a80c3855f9a5",
-        "opaquePixels": 7753
-      },
-      {
-        "anchor": [
-          92.5,
-          174
-        ],
-        "root": [
-          87.97071636110908,
-          122.87632446350663
-        ],
-        "bbox": [
-          28,
-          50,
-          130,
-          125
-        ],
-        "components": [
-          10015
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "dc1d10bceda4686eb56ac2212a31abf9a8a5566c584a3d64b147da1e9a3dd66f",
-        "opaquePixels": 10015
-      },
-      {
-        "anchor": [
-          91,
-          174
-        ],
-        "root": [
-          88.77339472085632,
-          130.14753454659183
-        ],
-        "bbox": [
-          19,
-          72,
-          145,
-          103
-        ],
-        "components": [
-          9600
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "ec94bd49ae65e535bb8f849cce215e1809e0109fcbeccc124e842547a61f06aa",
-        "opaquePixels": 9600
-      },
-      {
-        "anchor": [
-          93,
-          174
-        ],
-        "root": [
-          93.02937760585354,
-          126.13077621363209
-        ],
-        "bbox": [
-          32,
-          65,
-          123,
-          110
-        ],
-        "components": [
-          9024
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "fb40be976d6e1fa945dd150914102ddc15e299a4eecb530674ce1eb8bad741ef",
-        "opaquePixels": 9024
-      },
-      {
-        "anchor": [
-          91,
-          170
-        ],
-        "root": [
-          90.77977301362735,
-          108.06281740895389
-        ],
-        "bbox": [
-          50,
-          33,
-          83,
-          138
-        ],
-        "components": [
-          7653
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "b5609dedf749f747da5c1c6cc82b27ee9842f7f23ee746cc68a5d10d52916c74",
-        "opaquePixels": 7653
-      },
-      {
-        "anchor": [
-          89,
-          173
-        ],
-        "root": [
-          89.55988990883355,
-          124.94077750763836
-        ],
-        "bbox": [
-          28,
-          63,
-          123,
-          111
-        ],
-        "components": [
-          9147
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "1522425f09909034012992bfc4ac4994a4d5a0f6618520e98706820d83fc75a7",
-        "opaquePixels": 9147
-      },
-      {
-        "anchor": [
-          81.5,
-          172
-        ],
-        "root": [
-          85.02642061515112,
-          122.46696008845826
-        ],
-        "bbox": [
-          9,
-          50,
-          146,
-          123
-        ],
-        "components": [
-          11047
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "246f70b22268f6a8fd1f4dabfc100d792dd7807ab10bfe3a9fc05e136e880f20",
-        "opaquePixels": 11047
+        "hash": "4fdf01bc0ea89ba8f75e6bb6c72dee0c12ad7039fac0e2ba7ebf0e6e5b49bfd4",
+        "opaquePixels": 8802
       },
       {
         "anchor": [
@@ -1511,206 +1143,22 @@
           173
         ],
         "root": [
-          95.13338739824272,
-          121.6986079131817
+          94.54520732695498,
+          132.30775930339172
         ],
         "bbox": [
-          24,
-          47,
-          136,
-          127
+          37,
+          73,
+          110,
+          101
         ],
         "components": [
-          10527
+          6710
         ],
         "detachedShare": 0,
         "edgePixels": 0,
-        "hash": "ca54ac7119e949f41d308147e5d198185968d6981641aec25a2b703ac7bedf3d",
-        "opaquePixels": 10527
-      },
-      {
-        "anchor": [
-          88.5,
-          174
-        ],
-        "root": [
-          89.08359253898878,
-          110.48988995152358
-        ],
-        "bbox": [
-          46,
-          34,
-          86,
-          141
-        ],
-        "components": [
-          8008
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "466776488fd120e9fec1648f62f0231726b2f735205dbfdec3af3faed9e90b01",
-        "opaquePixels": 8008
-      },
-      {
-        "anchor": [
-          92,
-          174
-        ],
-        "root": [
-          88.29908311988531,
-          121.23954348700931
-        ],
-        "bbox": [
-          27,
-          46,
-          131,
-          129
-        ],
-        "components": [
-          10377
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "091b1109a67e568922a31c89be5da2b8a0d3cb1e21ac9b8e293e1fe6c889a1e1",
-        "opaquePixels": 10377
-      },
-      {
-        "anchor": [
-          91,
-          174
-        ],
-        "root": [
-          88.74736237474562,
-          128.64258146315885
-        ],
-        "bbox": [
-          19,
-          69,
-          145,
-          106
-        ],
-        "components": [
-          9953
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "087e60ea875324b51d676d4a4f59a6e3671a347e7363df149b53641702f100d9",
-        "opaquePixels": 9953
-      },
-      {
-        "anchor": [
-          93,
-          173
-        ],
-        "root": [
-          92.73173941326955,
-          124.64841411645885
-        ],
-        "bbox": [
-          31,
-          61,
-          125,
-          113
-        ],
-        "components": [
-          9394
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "991c8e2d7a2e0317ced8e0b8f90d84dd39fddc57caa978a612c82f1060a8041a",
-        "opaquePixels": 9394
-      },
-      {
-        "anchor": [
-          90.5,
-          170
-        ],
-        "root": [
-          90.44114437636789,
-          106.3569979894524
-        ],
-        "bbox": [
-          49,
-          29,
-          84,
-          142
-        ],
-        "components": [
-          7946
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "51f19b43037dca1c79d7c47fda2dbad5c00b625ebacf461f34a9d9b185c6698a",
-        "opaquePixels": 7946
-      },
-      {
-        "anchor": [
-          89,
-          173
-        ],
-        "root": [
-          89.22265073669189,
-          123.80408830580829
-        ],
-        "bbox": [
-          28,
-          60,
-          123,
-          114
-        ],
-        "components": [
-          9457
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "2a166d75e31d6a70684d6447f2dc8c308036b4c83480a87248d870417fb944b5",
-        "opaquePixels": 9457
-      },
-      {
-        "anchor": [
-          81.5,
-          172
-        ],
-        "root": [
-          85.23079036946034,
-          123.01114564059223
-        ],
-        "bbox": [
-          9,
-          53,
-          146,
-          120
-        ],
-        "components": [
-          10713
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "32cacaae78be81c41bfaa2131d44d6da0fe40940e2cb1ea9a8c8dd0082a6c3b6",
-        "opaquePixels": 10713
-      },
-      {
-        "anchor": [
-          90.5,
-          173
-        ],
-        "root": [
-          94.40357620146064,
-          122.22508192645647
-        ],
-        "bbox": [
-          24,
-          49,
-          134,
-          125
-        ],
-        "components": [
-          10216
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "d170c68fae9ed6f10e8bc1694f82655994fe78ee10d24ff3d583d727ee5ef739",
-        "opaquePixels": 10216
+        "hash": "4cd865ff75b104004a29f4a20479dcbe8f4b49a03bfdd6181f8b5e3903ba9027",
+        "opaquePixels": 6710
       },
       {
         "anchor": [
@@ -1718,45 +1166,45 @@
           174
         ],
         "root": [
-          88.01462701407179,
-          112.20525828660763
+          88.27849309587386,
+          124.52001910781216
         ],
         "bbox": [
-          46,
-          38,
-          85,
-          137
+          54,
+          65,
+          69,
+          110
         ],
         "components": [
-          7717
+          5039
         ],
         "detachedShare": 0,
         "edgePixels": 0,
-        "hash": "4d65fb55fd88cdb9a656afc7884570f180aba10529869b298648fdeee59d6e2a",
-        "opaquePixels": 7717
+        "hash": "3dcf6dd827861d00a9379c4ba1cb29a98f9b40bcfa8d8327e50469fdfab9a7c0",
+        "opaquePixels": 5039
       },
       {
         "anchor": [
-          91.5,
+          91,
           174
         ],
         "root": [
-          87.46380721173082,
-          123.6159522175668
+          87.70316326441502,
+          133.11695507730386
         ],
         "bbox": [
-          27,
-          52,
-          130,
-          123
+          38,
+          75,
+          107,
+          100
         ],
         "components": [
-          9912
+          6594
         ],
         "detachedShare": 0,
         "edgePixels": 0,
-        "hash": "c83d4443f175f0ba77dc2186b347d2759f3050d9e47ac8a0b0be1d5bd93c6434",
-        "opaquePixels": 9912
+        "hash": "e791cbfc306eea917295fbbf45ccd8c1b5267cf64c047c675bc36bddcd6eeee0",
+        "opaquePixels": 6594
       },
       {
         "anchor": [
@@ -1764,22 +1212,22 @@
           174
         ],
         "root": [
-          88.90547116880224,
-          130.90149511218345
+          88.87008337275307,
+          137.17255144276254
         ],
         "bbox": [
-          19,
-          73,
-          144,
-          102
+          29,
+          88,
+          124,
+          87
         ],
         "components": [
-          9473
+          6967
         ],
         "detachedShare": 0,
         "edgePixels": 0,
-        "hash": "82c7847f1ffa26b48b8e128d58d71c938565dd50e1a98ed2bafc4aa9e5c977ee",
-        "opaquePixels": 9473
+        "hash": "1f0aace4d652e958573b92262c4a6306ab97bd186f01ab08a63786644169f499",
+        "opaquePixels": 6967
       },
       {
         "anchor": [
@@ -1787,22 +1235,22 @@
           174
         ],
         "root": [
-          93.59960310047698,
-          126.64047764804667
+          93.4397318481902,
+          134.42322069719992
         ],
         "bbox": [
-          33,
-          65,
-          122,
-          110
+          42,
+          84,
+          104,
+          91
         ],
         "components": [
-          8882
+          6302
         ],
         "detachedShare": 0,
         "edgePixels": 0,
-        "hash": "3091094ddfece72dc051d58fa41dba7c845f22dd431b4d2e19e97acc9f5ee42e",
-        "opaquePixels": 8882
+        "hash": "8a7c366e4920de5a66ae9dedb11b99d71907c9bceed078bc0ca2761b7992748f",
+        "opaquePixels": 6302
       },
       {
         "anchor": [
@@ -1810,22 +1258,22 @@
           170
         ],
         "root": [
-          91.3865207744676,
-          108.30763008254522
+          91.1377453992704,
+          120.59914883072325
         ],
         "bbox": [
-          50,
-          34,
-          84,
-          137
+          58,
+          61,
+          68,
+          110
         ],
         "components": [
-          7586
+          4945
         ],
         "detachedShare": 0,
         "edgePixels": 0,
-        "hash": "98468c594c4dd2032f1f3557df05a86f056d78107d480a943629a906a9d4a44d",
-        "opaquePixels": 7586
+        "hash": "4647ae0d85d8be99628bd42afb234b8e9ec33f9e585575bf04d6c4de773090db",
+        "opaquePixels": 4945
       },
       {
         "anchor": [
@@ -1833,22 +1281,22 @@
           173
         ],
         "root": [
-          90.1311292831074,
-          124.79109258440768
+          89.80954168300224,
+          133.062767769344
         ],
         "bbox": [
-          28,
-          63,
-          124,
-          111
+          38,
+          82,
+          104,
+          92
         ],
         "components": [
-          9140
+          6394
         ],
         "detachedShare": 0,
         "edgePixels": 0,
-        "hash": "dfcd35d67e07f942501414c045d81b1e2d6b69d60c5f9830667a31e6a645bbb1",
-        "opaquePixels": 9140
+        "hash": "d28fe97871e29f5c7669fe5b7d9f373b68dc81bb3ede882fd02fe4b1172638b7",
+        "opaquePixels": 6394
       },
       {
         "anchor": [
@@ -1856,206 +1304,114 @@
           172
         ],
         "root": [
-          85.06748761384482,
-          124.46894504686716
+          85.08393860751573,
+          127.30327183566284
         ],
         "bbox": [
-          13,
-          70,
-          139,
-          103
-        ],
-        "components": [
-          9683
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "9be50c4e6c936d6e084d84bb109e0782f4a8ef514ec940891d41eaeb6337302c",
-        "opaquePixels": 9683
-      },
-      {
-        "anchor": [
-          92.5,
-          173
-        ],
-        "root": [
-          94.77221749948585,
-          123.46811612921226
-        ],
-        "bbox": [
-          31,
-          61,
-          124,
-          113
-        ],
-        "components": [
-          9077
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "38a350b7a23a90b3aa9e82a47a84560b47318bd094c453efc00cee5a7ea39b71",
-        "opaquePixels": 9077
-      },
-      {
-        "anchor": [
-          88,
-          174
-        ],
-        "root": [
-          88.27517734170121,
-          103.53116877176993
-        ],
-        "bbox": [
-          52,
-          34,
-          73,
-          141
-        ],
-        "components": [
-          7419
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "fed2a6d1466e3f66fd15d1232525dc9f5da54cdf2c296c98b92283521a47e1a8",
-        "opaquePixels": 7419
-      },
-      {
-        "anchor": [
-          89.5,
-          174
-        ],
-        "root": [
-          87.47566329708947,
-          124.45674276471699
-        ],
-        "bbox": [
-          30,
+          15,
           62,
-          120,
-          113
-        ],
-        "components": [
-          8808
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "2a8dc45a854b3a967384fef6c6a35262a53408ecb6ca2b2c9c8c4d0ca5f77281",
-        "opaquePixels": 8808
-      },
-      {
-        "anchor": [
-          90.5,
-          174
-        ],
-        "root": [
-          88.36776184567346,
-          128.04947712923413
-        ],
-        "bbox": [
-          21,
-          81,
-          140,
-          94
-        ],
-        "components": [
-          9426
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "a6e75ce6d1861ef7b91c1cba6f49b823f4f78fa4046089354153cdf9fe0a0f2f",
-        "opaquePixels": 9426
-      },
-      {
-        "anchor": [
-          90.5,
-          173
-        ],
-        "root": [
-          93.46469028484611,
-          117.43939333475969
-        ],
-        "bbox": [
-          32,
-          63,
-          118,
+          135,
           111
         ],
         "components": [
-          8504
+          9125
         ],
         "detachedShare": 0,
         "edgePixels": 0,
-        "hash": "aa2be57752313710d476219a02449939c04440f0645a45b1b4e846d9f3ab502e",
-        "opaquePixels": 8504
+        "hash": "3187f56e61ec6c4235dfbbeac58e7a5a69cdcdf141d5f502eb0a45d10297e748",
+        "opaquePixels": 9125
+      },
+      {
+        "anchor": [
+          92,
+          173
+        ],
+        "root": [
+          94.80473260022653,
+          131.62941879867512
+        ],
+        "bbox": [
+          37,
+          71,
+          111,
+          103
+        ],
+        "components": [
+          6929
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "6113cc16354dca9aaafb4b171f602bc33a4af97b4605a9865c9035359a928353",
+        "opaquePixels": 6929
+      },
+      {
+        "anchor": [
+          88.5,
+          174
+        ],
+        "root": [
+          88.68372443056596,
+          123.26935893712505
+        ],
+        "bbox": [
+          54,
+          62,
+          70,
+          113
+        ],
+        "components": [
+          5236
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "a9a759391e2c420a279a77da575175302b7cec416f59048d904db1b09c140e89",
+        "opaquePixels": 5236
+      },
+      {
+        "anchor": [
+          91.5,
+          174
+        ],
+        "root": [
+          88.01737856777648,
+          131.7282318265211
+        ],
+        "bbox": [
+          38,
+          72,
+          108,
+          103
+        ],
+        "components": [
+          6881
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "a3316649514be2de1ad0ffcbdfbbae4efda7af5b89c150a3fcbae7a0751f9b70",
+        "opaquePixels": 6881
       },
       {
         "anchor": [
           90.5,
-          170
+          174
         ],
         "root": [
-          90.8335412934966,
-          98.76143195277977
+          88.81073998741768,
+          135.83435429762602
         ],
         "bbox": [
-          53,
-          29,
-          76,
-          142
+          28,
+          85,
+          126,
+          90
         ],
         "components": [
-          7845
+          7306
         ],
         "detachedShare": 0,
         "edgePixels": 0,
-        "hash": "6516489c483bfe6d48a00661970a138a82f774312bda115ac9c04736c13cceb6",
-        "opaquePixels": 7845
-      },
-      {
-        "anchor": [
-          91,
-          172
-        ],
-        "root": [
-          89.07966157112124,
-          115.84595847114683
-        ],
-        "bbox": [
-          32,
-          61,
-          119,
-          112
-        ],
-        "components": [
-          8620
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "7ef9d7e8dafcd2b2a99cb0a21c7d6d3d9d7c4cb963d48cdfdbdd12370c27e27b",
-        "opaquePixels": 8620
-      },
-      {
-        "anchor": [
-          82.5,
-          172
-        ],
-        "root": [
-          85.41656154493695,
-          124.26632662793543
-        ],
-        "bbox": [
-          13,
-          70,
-          140,
-          103
-        ],
-        "components": [
-          9926
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "f52f054f8aa878837fa0402946d44e2e3c2676a3c61ba540bba5a464681994df",
-        "opaquePixels": 9926
+        "hash": "0d57c2424881ada29f38f157e28e33dbdb03947202d10c14f9d8975d9f4e4c30",
+        "opaquePixels": 7306
       },
       {
         "anchor": [
@@ -2063,114 +1419,22 @@
           173
         ],
         "root": [
-          95.14739736482969,
-          123.40303781462357
+          93.10087962312969,
+          133.14039873240003
         ],
         "bbox": [
-          31,
-          60,
-          125,
-          114
-        ],
-        "components": [
-          9331
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "ad153aa36e3930a2fcd29311e57eb5c2c9e17c7a479ca8d44545eb4e49b9ec71",
-        "opaquePixels": 9331
-      },
-      {
-        "anchor": [
-          88,
-          174
-        ],
-        "root": [
-          88.3833051485217,
-          103.23735521945228
-        ],
-        "bbox": [
-          52,
-          32,
-          73,
-          143
-        ],
-        "components": [
-          7585
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "a2b661aea1ec1c46affd6c5ed4a824dccb5580397f1346e43b0ba526eaebbc8a",
-        "opaquePixels": 7585
-      },
-      {
-        "anchor": [
-          89,
-          174
-        ],
-        "root": [
-          87.37663985054331,
-          124.56399863882467
-        ],
-        "bbox": [
-          29,
-          61,
-          121,
-          114
-        ],
-        "components": [
-          9045
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "ae1eb7d51cab3b5551fb6477423f3a50c9f8c170bbbc8adaacacb42dc0654f7e",
-        "opaquePixels": 9045
-      },
-      {
-        "anchor": [
-          90,
-          174
-        ],
-        "root": [
-          88.16183303224273,
-          128.06236746630003
-        ],
-        "bbox": [
-          20,
+          41,
           81,
-          141,
-          94
+          105,
+          93
         ],
         "components": [
-          9617
+          6611
         ],
         "detachedShare": 0,
         "edgePixels": 0,
-        "hash": "25bdff56c6f1a0a8a1ab65c087188c2d161622477eb352189c5128084b2aa85b",
-        "opaquePixels": 9617
-      },
-      {
-        "anchor": [
-          90,
-          173
-        ],
-        "root": [
-          93.33853312224922,
-          117.53245041836526
-        ],
-        "bbox": [
-          31,
-          61,
-          119,
-          113
-        ],
-        "components": [
-          8731
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "19abad884faac782ce73e37654319371e043c4b145d324d1b6f5721bc40bea11",
-        "opaquePixels": 8731
+        "hash": "4df5ca2a1b576e18fe93ff0ab2d70abf5a3525011fb31bff1bd1b428c1541808",
+        "opaquePixels": 6611
       },
       {
         "anchor": [
@@ -2178,45 +1442,781 @@
           170
         ],
         "root": [
-          90.95066911451165,
-          98.45005042935168
+          90.76519720352249,
+          119.25874379387503
         ],
         "bbox": [
-          53,
-          27,
-          77,
-          144
+          57,
+          58,
+          69,
+          113
         ],
         "components": [
-          8032
+          5166
         ],
         "detachedShare": 0,
         "edgePixels": 0,
-        "hash": "22d92db3e52f75e6f51c1bdfeead759980988806aee12c8448a49eba527cdff2",
-        "opaquePixels": 8032
+        "hash": "148ce9c8f543ec5c3da3ee6fc4bc51d8f711b3b722cf2a43188fd4d647a94feb",
+        "opaquePixels": 5166
+      },
+      {
+        "anchor": [
+          89,
+          173
+        ],
+        "root": [
+          89.47548052277693,
+          132.15220142141175
+        ],
+        "bbox": [
+          37,
+          79,
+          105,
+          95
+        ],
+        "components": [
+          6642
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "b86f070363ff17b12e186ee9cc29aae984efcbfc9b38b8810b0e78858e957e43",
+        "opaquePixels": 6642
+      },
+      {
+        "anchor": [
+          82,
+          172
+        ],
+        "root": [
+          84.98905520533854,
+          126.43749945049632
+        ],
+        "bbox": [
+          15,
+          60,
+          135,
+          113
+        ],
+        "components": [
+          9405
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "6d72186b3350fb26e9b22f565a95fb252e81e80dba8753009c9b622d004a6c71",
+        "opaquePixels": 9405
+      },
+      {
+        "anchor": [
+          91.5,
+          173
+        ],
+        "root": [
+          95.07040643980532,
+          130.94179086255411
+        ],
+        "bbox": [
+          36,
+          69,
+          112,
+          105
+        ],
+        "components": [
+          7152
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "546e6468aee5fae72d8fa7f4e1d1720acaef7f60fa2fb4170a867ffec69ed047",
+        "opaquePixels": 7152
+      },
+      {
+        "anchor": [
+          88.5,
+          174
+        ],
+        "root": [
+          89.10309090727586,
+          122.06356974410996
+        ],
+        "bbox": [
+          54,
+          59,
+          70,
+          116
+        ],
+        "components": [
+          5397
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "acf00676c308b941600caf56269ad6b2406c573839bfca19a37d5ef5c3bb5cba",
+        "opaquePixels": 5397
+      },
+      {
+        "anchor": [
+          91.5,
+          174
+        ],
+        "root": [
+          88.35900847015421,
+          130.3608786021953
+        ],
+        "bbox": [
+          38,
+          68,
+          108,
+          107
+        ],
+        "components": [
+          7130
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "60850382ead5446e90432014c4a3efbafabffca6b262f3ce62974a4f32e85224",
+        "opaquePixels": 7130
+      },
+      {
+        "anchor": [
+          90.5,
+          174
+        ],
+        "root": [
+          88.78358140000252,
+          134.49226385188499
+        ],
+        "bbox": [
+          28,
+          83,
+          126,
+          92
+        ],
+        "components": [
+          7591
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "a603bc05c17164aed7629d54265b00b45057d4dfd2f3e6c96f113785ed6cf0fc",
+        "opaquePixels": 7591
+      },
+      {
+        "anchor": [
+          93,
+          173
+        ],
+        "root": [
+          92.78638299050213,
+          131.85742739408178
+        ],
+        "bbox": [
+          40,
+          78,
+          107,
+          96
+        ],
+        "components": [
+          6900
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "eee993f46aa5de66faa53ed710fbcd0c0f114df9f58e2af2d22bb8f63516b4db",
+        "opaquePixels": 6900
+      },
+      {
+        "anchor": [
+          90.5,
+          170
+        ],
+        "root": [
+          90.42529035917377,
+          117.85061385601452
+        ],
+        "bbox": [
+          56,
+          54,
+          70,
+          117
+        ],
+        "components": [
+          5370
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "2c3e8af3a925724a4bcac9ff052376fb6eba718756a936639f0a677447c8c8aa",
+        "opaquePixels": 5370
+      },
+      {
+        "anchor": [
+          89,
+          173
+        ],
+        "root": [
+          89.13261583583362,
+          131.2158512446844
+        ],
+        "bbox": [
+          37,
+          77,
+          105,
+          97
+        ],
+        "components": [
+          6859
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "85aec58e8828b3a4c91e723417f60e3490df8733d0c45682c47912992eaf4314",
+        "opaquePixels": 6859
+      },
+      {
+        "anchor": [
+          81.5,
+          172
+        ],
+        "root": [
+          85.20838649207518,
+          126.85512702204993
+        ],
+        "bbox": [
+          15,
+          62,
+          134,
+          111
+        ],
+        "components": [
+          9138
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "3fd8f712830b1ad87ec06f01c8d21c56af89bd9a7616077f71e371409a6829c9",
+        "opaquePixels": 9138
+      },
+      {
+        "anchor": [
+          91.5,
+          173
+        ],
+        "root": [
+          94.33715323282843,
+          131.16566785834218
+        ],
+        "bbox": [
+          37,
+          71,
+          110,
+          103
+        ],
+        "components": [
+          6955
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "5d989e025240edb331afc3482bc4e12a85d708f87ad7b05be33cc457c8c5e362",
+        "opaquePixels": 6955
+      },
+      {
+        "anchor": [
+          88,
+          174
+        ],
+        "root": [
+          88.0156154519152,
+          123.37858670266911
+        ],
+        "bbox": [
+          53,
+          63,
+          71,
+          112
+        ],
+        "components": [
+          5205
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "fdf6c0f01df9cfba57a60a9c0ce99fb23d808609377ffc28c270171fe1c72071",
+        "opaquePixels": 5205
+      },
+      {
+        "anchor": [
+          90.5,
+          174
+        ],
+        "root": [
+          87.52137655940462,
+          132.41770687817296
+        ],
+        "bbox": [
+          37,
+          73,
+          108,
+          102
+        ],
+        "components": [
+          6802
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "b743ecdd5e3f21909b69d73c3047edd71eb72f414202fd81c51b404fb5fc0943",
+        "opaquePixels": 6802
+      },
+      {
+        "anchor": [
+          90.5,
+          174
+        ],
+        "root": [
+          88.94926060529205,
+          136.54887037319907
+        ],
+        "bbox": [
+          28,
+          86,
+          126,
+          89
+        ],
+        "components": [
+          7200
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "2424101b35ab215dda46967c4f8d7e3939ae32a2ec7c335fbfeaedcd6f58b4e8",
+        "opaquePixels": 7200
+      },
+      {
+        "anchor": [
+          93.5,
+          173
+        ],
+        "root": [
+          93.66842922310516,
+          133.5967800632408
+        ],
+        "bbox": [
+          42,
+          81,
+          104,
+          93
+        ],
+        "components": [
+          6511
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "3febcc7f84a34d9bf252fb428aebb9abb8e9ab96b0cfb45d59f1e3ac83126766",
+        "opaquePixels": 6511
+      },
+      {
+        "anchor": [
+          91.5,
+          170
+        ],
+        "root": [
+          91.37659434455261,
+          119.43917942464887
+        ],
+        "bbox": [
+          58,
+          58,
+          68,
+          113
+        ],
+        "components": [
+          5136
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "1c759c2285ea3cf016c23ef5c52b2cee0a28196d119685925ed86657bdade6df",
+        "opaquePixels": 5136
+      },
+      {
+        "anchor": [
+          89.5,
+          173
+        ],
+        "root": [
+          90.0488172001545,
+          131.9870956546186
+        ],
+        "bbox": [
+          37,
+          80,
+          106,
+          94
+        ],
+        "components": [
+          6651
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "02ff875f94efb2b13c93243242e74487b95efc7d1a78c00d15e0db1b504e285e",
+        "opaquePixels": 6651
+      },
+      {
+        "anchor": [
+          82.5,
+          172
+        ],
+        "root": [
+          85.05974873486382,
+          126.8066158664693
+        ],
+        "bbox": [
+          17,
+          75,
+          132,
+          98
+        ],
+        "components": [
+          8797
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "0e347713ecc7c4ba14ffffe8ffc98a7086de4530d5b8b546d484da3af2d4c2bf",
+        "opaquePixels": 8797
+      },
+      {
+        "anchor": [
+          92.5,
+          173
+        ],
+        "root": [
+          94.72104592008604,
+          130.51726275275524
+        ],
+        "bbox": [
+          40,
+          77,
+          106,
+          97
+        ],
+        "components": [
+          6707
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "33a52d6e3673eab11f8d86a3ad7ec4fe883bfa2de8c5d7676344404c8b6481e3",
+        "opaquePixels": 6707
+      },
+      {
+        "anchor": [
+          88,
+          174
+        ],
+        "root": [
+          88.28217179823446,
+          116.02334732851821
+        ],
+        "bbox": [
+          58,
+          59,
+          61,
+          116
+        ],
+        "components": [
+          5040
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "5b737373cd7e99dfcaff15e5c43233c70b5565c894bf7f5567e6edee1b671c39",
+        "opaquePixels": 5040
+      },
+      {
+        "anchor": [
+          89.5,
+          174
+        ],
+        "root": [
+          87.55106631984735,
+          131.2237969237442
+        ],
+        "bbox": [
+          38,
+          78,
+          104,
+          97
+        ],
+        "components": [
+          6595
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "d56a5da36531efa8996b2972a95b3d354aa9eb15c3af64cf5be6d244288f6b85",
+        "opaquePixels": 6595
+      },
+      {
+        "anchor": [
+          90,
+          174
+        ],
+        "root": [
+          88.41680510417164,
+          134.55392752656556
+        ],
+        "bbox": [
+          30,
+          94,
+          121,
+          81
+        ],
+        "components": [
+          6974
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "fc42a2d5b5079ee53ff98bcbb244253273b890b3d92618d1a308879b048fd52e",
+        "opaquePixels": 6974
       },
       {
         "anchor": [
           91,
-          172
+          173
         ],
         "root": [
-          89.48348345429561,
-          115.73807212933869
+          93.51994408894608,
+          125.42423947785026
         ],
         "bbox": [
-          31,
-          60,
-          121,
-          113
+          41,
+          78,
+          101,
+          96
         ],
         "components": [
-          8852
+          6307
         ],
         "detachedShare": 0,
         "edgePixels": 0,
-        "hash": "39e06c979e348f39eb25c939ff3a57cf4f917762f40748812d4d35f8d2f7f988",
-        "opaquePixels": 8852
+        "hash": "ea4a067ab41054d963fc2e57d7c46031cccb6a437efa868fdc25abab488739d4",
+        "opaquePixels": 6307
+      },
+      {
+        "anchor": [
+          91,
+          170
+        ],
+        "root": [
+          90.84328920960127,
+          113.47739397625705
+        ],
+        "bbox": [
+          61,
+          58,
+          61,
+          113
+        ],
+        "components": [
+          4964
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "f0dff4a4cc4b074663e13d7944c793f9284840a760b79a322293b985ecedd44d",
+        "opaquePixels": 4964
+      },
+      {
+        "anchor": [
+          92,
+          172
+        ],
+        "root": [
+          90.04147622195416,
+          123.90876465791972
+        ],
+        "bbox": [
+          41,
+          77,
+          103,
+          96
+        ],
+        "components": [
+          6392
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "7e5e0ff91619bf033db88a9f4a776718be806d0f10cbfaffbd9ecc3a7b091fae",
+        "opaquePixels": 6392
+      },
+      {
+        "anchor": [
+          82.5,
+          172
+        ],
+        "root": [
+          85.4042697848386,
+          126.63830954263331
+        ],
+        "bbox": [
+          16,
+          75,
+          134,
+          98
+        ],
+        "components": [
+          8995
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "16ac9ab83b651624affb1fd7f7f3e8c55be5a554f39d1709b1d4fdb46acebb9d",
+        "opaquePixels": 8995
+      },
+      {
+        "anchor": [
+          93,
+          173
+        ],
+        "root": [
+          95.07717907561343,
+          130.51116491360216
+        ],
+        "bbox": [
+          40,
+          76,
+          107,
+          98
+        ],
+        "components": [
+          6904
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "264368d1cee5c3f97636515e215404cea23330e21a6171c26ce1e88f8f55df2c",
+        "opaquePixels": 6904
+      },
+      {
+        "anchor": [
+          88,
+          174
+        ],
+        "root": [
+          88.40298946305357,
+          115.84052282046284
+        ],
+        "bbox": [
+          58,
+          58,
+          61,
+          117
+        ],
+        "components": [
+          5165
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "599f4f0d1a3fff8f4e3bc2b6b824a9d0bfb6476d6187f98a6d021761b13386fa",
+        "opaquePixels": 5165
+      },
+      {
+        "anchor": [
+          89,
+          174
+        ],
+        "root": [
+          87.47065094089649,
+          131.3592855756069
+        ],
+        "bbox": [
+          37,
+          77,
+          105,
+          98
+        ],
+        "components": [
+          6766
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "4301b28b3cc8ead8325ea28990aa51fe5ccc0443e0724612a9e4a0992e06d691",
+        "opaquePixels": 6766
+      },
+      {
+        "anchor": [
+          89.5,
+          174
+        ],
+        "root": [
+          88.21461802090712,
+          134.63211436096793
+        ],
+        "bbox": [
+          29,
+          94,
+          122,
+          81
+        ],
+        "components": [
+          7127
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "58bb9da3f25d4e676e47824a1bb63ad24d049c68b7acb3d252f7330cf7593b67",
+        "opaquePixels": 7127
+      },
+      {
+        "anchor": [
+          90.5,
+          173
+        ],
+        "root": [
+          93.41290099088225,
+          125.5794523991191
+        ],
+        "bbox": [
+          40,
+          77,
+          102,
+          97
+        ],
+        "components": [
+          6488
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "b4a0e2911703ae97201f6a29c2fdd2d047d66108f48c76768bb9abaa78b9e767",
+        "opaquePixels": 6488
+      },
+      {
+        "anchor": [
+          91,
+          170
+        ],
+        "root": [
+          90.96928096882723,
+          113.2983494385169
+        ],
+        "bbox": [
+          61,
+          57,
+          61,
+          114
+        ],
+        "components": [
+          5091
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "8eee7b01aba0199c86befdd8975f2e019f19ef7d1f5266cf39d01e17e10f8d76",
+        "opaquePixels": 5091
+      },
+      {
+        "anchor": [
+          92.5,
+          172
+        ],
+        "root": [
+          90.44790539108271,
+          123.87500203822839
+        ],
+        "bbox": [
+          41,
+          76,
+          104,
+          97
+        ],
+        "components": [
+          6577
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "63e7fdaa1b59fe03ae0d9a359ff2c34af02af2b00f64917a1a7f3f4ab976d895",
+        "opaquePixels": 6577
       },
       {
         "anchor": [
@@ -2224,22 +2224,22 @@
           172
         ],
         "root": [
-          85.96151653686431,
-          124.17600982250282
+          85.94994260325147,
+          126.58716605121116
         ],
         "bbox": [
-          13,
-          69,
-          142,
-          104
+          16,
+          74,
+          136,
+          99
         ],
         "components": [
-          10166
+          9231
         ],
         "detachedShare": 0,
         "edgePixels": 0,
-        "hash": "a3451f438242ba0216503599fbcb56c38ffc36f4db46ec68e877758eeddc945b",
-        "opaquePixels": 10166
+        "hash": "40aaa1f794b2f65d8a15610dd50d3b611f96b54a3685c59ec7494fd02d669a1b",
+        "opaquePixels": 9231
       },
       {
         "anchor": [
@@ -2247,206 +2247,22 @@
           173
         ],
         "root": [
-          95.34958149199193,
-          123.36350915531581
+          95.25145696551012,
+          130.5113092072565
         ],
         "bbox": [
-          31,
-          59,
-          126,
-          115
+          40,
+          75,
+          108,
+          99
         ],
         "components": [
-          9605
+          7107
         ],
         "detachedShare": 0,
         "edgePixels": 0,
-        "hash": "d0cc4e728cdc78a27520b21155e01a82819b543cacd05d50ccda01adc8daca17",
-        "opaquePixels": 9605
-      },
-      {
-        "anchor": [
-          88.5,
-          174
-        ],
-        "root": [
-          88.20250735098972,
-          102.67310312932749
-        ],
-        "bbox": [
-          52,
-          30,
-          74,
-          145
-        ],
-        "components": [
-          7820
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "9fb9f41975ff098c44d3f2a6872706b0ceb5f7cd39d3dc3e99406885139d5776",
-        "opaquePixels": 7820
-      },
-      {
-        "anchor": [
-          88.5,
-          174
-        ],
-        "root": [
-          86.7710960066701,
-          124.26279151554054
-        ],
-        "bbox": [
-          28,
-          60,
-          122,
-          115
-        ],
-        "components": [
-          9351
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "5e41c8713579ddbe716a4bff7ad30cd8868d1fd7c5285b648b8484ef5557ca7b",
-        "opaquePixels": 9351
-      },
-      {
-        "anchor": [
-          89,
-          174
-        ],
-        "root": [
-          87.49220174211673,
-          127.653335708079
-        ],
-        "bbox": [
-          18,
-          80,
-          143,
-          95
-        ],
-        "components": [
-          9897
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "6a5f5b027e17e6b0503dd14c4817a49aab19a170d6e0606d3ba00ec79de8d123",
-        "opaquePixels": 9897
-      },
-      {
-        "anchor": [
-          89.5,
-          173
-        ],
-        "root": [
-          92.68967037041412,
-          117.19903636530515
-        ],
-        "bbox": [
-          29,
-          60,
-          122,
-          114
-        ],
-        "components": [
-          9050
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "e08a60ba7751cd6adcaa0a8bd73a4822bd788efa65f8a384335ef7fa68f38c9a",
-        "opaquePixels": 9050
-      },
-      {
-        "anchor": [
-          90.5,
-          170
-        ],
-        "root": [
-          90.77837994663444,
-          97.84561746209093
-        ],
-        "bbox": [
-          52,
-          25,
-          78,
-          146
-        ],
-        "components": [
-          8269
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "68b9892e66533c5085ca7746213dfb749f410ea8794ed8f7b3a8da09f890aa5c",
-        "opaquePixels": 8269
-      },
-      {
-        "anchor": [
-          92,
-          172
-        ],
-        "root": [
-          89.75559048239616,
-          115.72689696900262
-        ],
-        "bbox": [
-          31,
-          59,
-          123,
-          114
-        ],
-        "components": [
-          9164
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "2f79c1859f7a4421d7db87c5f9af51997b6bd2881ae9ce0b34eb58b1385f500f",
-        "opaquePixels": 9164
-      },
-      {
-        "anchor": [
-          82.5,
-          172
-        ],
-        "root": [
-          85.02758412542049,
-          124.62930195026357
-        ],
-        "bbox": [
-          13,
-          70,
-          140,
-          103
-        ],
-        "components": [
-          9805
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "3a63e22857fb00a38522a77e6ad5b4b48beba5a954e7efd1de461d5d4f556664",
-        "opaquePixels": 9805
-      },
-      {
-        "anchor": [
-          92.5,
-          173
-        ],
-        "root": [
-          94.55434838142162,
-          123.63930392132907
-        ],
-        "bbox": [
-          31,
-          61,
-          124,
-          113
-        ],
-        "components": [
-          9233
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "66dbf68a3b73495200d3e0f2d15e2f8b68b2a5c51bd4b5a785cae9f020f872dd",
-        "opaquePixels": 9233
+        "hash": "d5760120332eac7943cb9d314da0368dd6fa568120e67da70acd5fcf10f24b99",
+        "opaquePixels": 7107
       },
       {
         "anchor": [
@@ -2454,505 +2270,137 @@
           174
         ],
         "root": [
-          87.99025008594718,
-          103.24655898964126
+          88.2045052554852,
+          115.46540840024659
         ],
         "bbox": [
-          52,
-          33,
-          73,
-          142
-        ],
-        "components": [
-          7557
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "e067e16b992d700e9ab7a55400719cb6362ceb74930dc926d158e090cffb3e54",
-        "opaquePixels": 7557
-      },
-      {
-        "anchor": [
-          89,
-          174
-        ],
-        "root": [
-          87.07401056864101,
-          124.1928480728228
-        ],
-        "bbox": [
-          29,
-          61,
-          121,
-          114
-        ],
-        "components": [
-          9000
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "bd022b6f29ef9288f16a4f0f56f452945bdf432e612ea6569869b4bb15576691",
-        "opaquePixels": 9000
-      },
-      {
-        "anchor": [
-          90,
-          174
-        ],
-        "root": [
-          88.17125190206589,
-          127.69024514373449
-        ],
-        "bbox": [
-          20,
-          80,
-          141,
-          95
-        ],
-        "components": [
-          9607
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "cd4c42b2ed5f4ac7fc996afc09dc039be9f1caa330b540cceaf560714bdba2e5",
-        "opaquePixels": 9607
-      },
-      {
-        "anchor": [
-          90,
-          173
-        ],
-        "root": [
-          93.05296356767,
-          117.11959557963532
-        ],
-        "bbox": [
-          31,
-          62,
-          119,
-          112
-        ],
-        "components": [
-          8686
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "2cc644a5f47f5927646ce52204661e7aca98575d08f9f17d9b5658f650d0a61f",
-        "opaquePixels": 8686
-      },
-      {
-        "anchor": [
-          90.5,
-          170
-        ],
-        "root": [
-          90.55007845973556,
-          98.44319920662501
-        ],
-        "bbox": [
-          53,
-          27,
-          76,
-          144
-        ],
-        "components": [
-          7993
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "4889ccc8faf4989614e0917ad6dbfc820108a75c0efbe147ab50ac1c64a1d54f",
-        "opaquePixels": 7993
-      },
-      {
-        "anchor": [
-          90.5,
-          172
-        ],
-        "root": [
-          88.88967519752133,
-          116.03445336012707
-        ],
-        "bbox": [
-          31,
-          61,
-          120,
-          112
-        ],
-        "components": [
-          8784
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "0076efd52d46f0c64a2b66b5e1918d4ac63049de4c13de2f06db739a47b6ffd9",
-        "opaquePixels": 8784
-      },
-      {
-        "anchor": [
-          81.5,
-          172
-        ],
-        "root": [
-          85.22863653247111,
-          127.43396303554917
-        ],
-        "bbox": [
-          8,
-          81,
-          148,
-          92
-        ],
-        "components": [
-          9390
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "c8fdc587ee1c24db68447b81b949eb8c2c9fa827dc458f84db6223bc485d8b12",
-        "opaquePixels": 9390
-      },
-      {
-        "anchor": [
-          91,
-          173
-        ],
-        "root": [
-          94.94820556884376,
-          127.54730734056662
-        ],
-        "bbox": [
-          29,
-          73,
-          125,
-          101
-        ],
-        "components": [
-          8563
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "5509f3b82f3613759f00669e297b19eb53fda588ef302cef243069850b51d0e3",
-        "opaquePixels": 8563
-      },
-      {
-        "anchor": [
-          89,
-          174
-        ],
-        "root": [
-          89.186037212557,
-          107.25273537982636
-        ],
-        "bbox": [
-          52,
-          42,
-          75,
-          133
-        ],
-        "components": [
-          7028
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "7e90d8594f21f39e3ce9ad94008d0776f7851e7f3e5334e658b977b03ebbead1",
-        "opaquePixels": 7028
-      },
-      {
-        "anchor": [
-          91,
-          174
-        ],
-        "root": [
-          87.35862033769794,
-          128.65737365489488
-        ],
-        "bbox": [
-          30,
-          74,
-          123,
-          101
-        ],
-        "components": [
-          8392
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "210b299fec3b21a60aa23d8bfd2dbc94ecaa3fe92fab2c51394b1b791703aee6",
-        "opaquePixels": 8392
-      },
-      {
-        "anchor": [
-          91.5,
-          174
-        ],
-        "root": [
-          88.28207247001224,
-          129.269564454432
-        ],
-        "bbox": [
-          18,
-          83,
-          148,
-          92
-        ],
-        "components": [
-          9366
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "560cd5ff46d50e6e5afc7eaeff6acc44974a9de78aae1d5d48c8189fb705dc97",
-        "opaquePixels": 9366
-      },
-      {
-        "anchor": [
-          89.5,
-          174
-        ],
-        "root": [
-          92.74964906758,
-          116.17505219285543
-        ],
-        "bbox": [
-          35,
+          58,
           56,
-          110,
+          61,
           119
         ],
         "components": [
-          8115
+          5332
         ],
         "detachedShare": 0,
         "edgePixels": 0,
-        "hash": "5543e4d2cd4d8d1d5e3fe97b3d1bd175d01de01f7d97e096e8b1e91103ea4c8c",
-        "opaquePixels": 8115
+        "hash": "338bfb31192cf567c4218a07f74ca45cb46df1119ec65f10e204f2d8f85609a4",
+        "opaquePixels": 5332
       },
       {
         "anchor": [
-          91.5,
-          170
+          88.5,
+          174
         ],
         "root": [
-          91.52049432745766,
-          103.34995218206987
+          86.88654874891131,
+          131.12512772524724
         ],
         "bbox": [
-          55,
-          38,
-          74,
-          133
+          36,
+          75,
+          106,
+          100
         ],
         "components": [
-          6915
+          7008
         ],
         "detachedShare": 0,
         "edgePixels": 0,
-        "hash": "84815d1ee97d0fcd575d407cc060a08b5846625c61ca0a69ba221c5bb50cfec9",
-        "opaquePixels": 6915
+        "hash": "5a66f3b8523952d142c82ccd59b9ee14193beac3c3b31a66b5ccd1bccc7ea355",
+        "opaquePixels": 7008
+      },
+      {
+        "anchor": [
+          88.5,
+          174
+        ],
+        "root": [
+          87.55109931377758,
+          134.30879670766495
+        ],
+        "bbox": [
+          27,
+          93,
+          124,
+          82
+        ],
+        "components": [
+          7343
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "6c5f2d6a689854155eaf2582bdff1d228bc53f610c0870f090773ef8b134f84c",
+        "opaquePixels": 7343
+      },
+      {
+        "anchor": [
+          90,
+          173
+        ],
+        "root": [
+          92.78598165300255,
+          125.32783300945296
+        ],
+        "bbox": [
+          38,
+          76,
+          105,
+          98
+        ],
+        "components": [
+          6698
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "e149a19d944f8431932e288b84f3f747254ff7ccbe2af4f7bdef28ca7e831c58",
+        "opaquePixels": 6698
+      },
+      {
+        "anchor": [
+          90.5,
+          170
+        ],
+        "root": [
+          90.78841664505133,
+          112.91581210496149
+        ],
+        "bbox": [
+          60,
+          55,
+          62,
+          116
+        ],
+        "components": [
+          5244
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "1dccdd86764d904ffb07423b8cc531e78c1862314c25d31e5aee2d275ad9bd21",
+        "opaquePixels": 5244
       },
       {
         "anchor": [
           92.5,
-          173
-        ],
-        "root": [
-          89.82592051082084,
-          114.85416131347631
-        ],
-        "bbox": [
-          37,
-          56,
-          112,
-          118
-        ],
-        "components": [
-          8168
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "61d5683b335d2aed3339aecb8c69a79c9880fee402613a3b215d5d12219fe80e",
-        "opaquePixels": 8168
-      },
-      {
-        "anchor": [
-          81.5,
           172
         ],
         "root": [
-          85.33993747509021,
-          127.51160940936826
+          90.67926491887927,
+          123.93971993159725
         ],
         "bbox": [
-          7,
-          81,
-          150,
-          92
-        ],
-        "components": [
-          9584
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "c4143c5cbd8aef00971e7758db62e6a6527cee3c5153261237e2137c7fc09909",
-        "opaquePixels": 9584
-      },
-      {
-        "anchor": [
-          91.5,
-          173
-        ],
-        "root": [
-          94.8689712365035,
-          127.51522462087121
-        ],
-        "bbox": [
-          29,
-          72,
-          126,
-          102
-        ],
-        "components": [
-          8762
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "712f39310a18502a8760dcdf4f0eda4c4447fce822b96fb64c075d2f82115b1c",
-        "opaquePixels": 8762
-      },
-      {
-        "anchor": [
-          89,
-          174
-        ],
-        "root": [
-          89.09609712229191,
-          106.99904545317338
-        ],
-        "bbox": [
-          52,
-          41,
+          40,
           75,
-          134
+          106,
+          98
         ],
         "components": [
-          7202
+          6810
         ],
         "detachedShare": 0,
         "edgePixels": 0,
-        "hash": "a26ee0173f11b8b0f1db6bc127585f9fc72bf1b8a1b861674f93d84a4769a3f9",
-        "opaquePixels": 7202
-      },
-      {
-        "anchor": [
-          90.5,
-          174
-        ],
-        "root": [
-          87.19617515758179,
-          128.52782015427056
-        ],
-        "bbox": [
-          29,
-          73,
-          124,
-          102
-        ],
-        "components": [
-          8609
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "fc78ba995c8d3e6251d98cbf90030c4bcf8864b68e3ccd6d1d70bc8730296290",
-        "opaquePixels": 8609
-      },
-      {
-        "anchor": [
-          91.5,
-          174
-        ],
-        "root": [
-          88.08079574069458,
-          129.16939075431645
-        ],
-        "bbox": [
-          17,
-          82,
-          150,
-          93
-        ],
-        "components": [
-          9580
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "5ce64924048ee08f70267429d650cdcd3ce2a18db8776260ecc6eb7fe4c320e7",
-        "opaquePixels": 9580
-      },
-      {
-        "anchor": [
-          89.5,
-          174
-        ],
-        "root": [
-          92.50668361022001,
-          116.0233651337388
-        ],
-        "bbox": [
-          34,
-          55,
-          112,
-          120
-        ],
-        "components": [
-          8317
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "423941c4dac78830c6bc8b824da991eadd621f7e72e7d04dace313616075180d",
-        "opaquePixels": 8317
-      },
-      {
-        "anchor": [
-          91.5,
-          170
-        ],
-        "root": [
-          91.43349277695485,
-          103.09947045870986
-        ],
-        "bbox": [
-          55,
-          37,
-          74,
-          134
-        ],
-        "components": [
-          7086
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "3c6f606f4d6d95b3da849c94c938254d7e0235667fb40d79c840e164a56d2da7",
-        "opaquePixels": 7086
-      },
-      {
-        "anchor": [
-          93,
-          173
-        ],
-        "root": [
-          89.81637601926579,
-          114.83850099018957
-        ],
-        "bbox": [
-          37,
-          54,
-          113,
-          120
-        ],
-        "components": [
-          8361
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "8583221d84ba4e1533bc9b3a93a1cf8ce1d5d30e5c4c190ec8efb1401f6d3220",
-        "opaquePixels": 8361
+        "hash": "c3d533a64e5b86c90d070face466e3643c4ac65d217ac79ac260a4718836e563",
+        "opaquePixels": 6810
       },
       {
         "anchor": [
@@ -2960,114 +2408,68 @@
           172
         ],
         "root": [
-          85.68524366965997,
-          127.20065330598602
+          85.00830175678732,
+          126.99185239216422
         ],
         "bbox": [
-          7,
-          80,
-          152,
-          93
+          17,
+          75,
+          132,
+          98
         ],
         "components": [
-          9822
+          8918
         ],
         "detachedShare": 0,
         "edgePixels": 0,
-        "hash": "682ddc5b47d9db7be6dcede920050ff8b5ededdf49aee1ad6b216418ea2d5e21",
-        "opaquePixels": 9822
+        "hash": "308dc80a6b8c2ea10d6df48bdc066da2552c7acce0eecdecd5a23ba3ff7d11d4",
+        "opaquePixels": 8918
       },
       {
         "anchor": [
-          91.5,
+          92.5,
           173
         ],
         "root": [
-          95.17196574712236,
-          127.17097875046223
+          94.46848869928293,
+          130.70936371062902
         ],
         "bbox": [
-          28,
-          70,
-          128,
-          104
+          40,
+          77,
+          106,
+          97
         ],
         "components": [
-          9004
+          6824
         ],
         "detachedShare": 0,
         "edgePixels": 0,
-        "hash": "fe7891fde127ff14b39ec72e9810b6ee1ba04b34430051c6de3c62674f1b0e13",
-        "opaquePixels": 9004
+        "hash": "ff45bb6c7b39f87d2e73f31fd7d37c794fd778b7a7f209ff8ca709d7b593bc88",
+        "opaquePixels": 6824
       },
       {
         "anchor": [
-          89.5,
+          88,
           174
         ],
         "root": [
-          89.27437787743098,
-          106.48636978715447
+          87.9672004393508,
+          115.84107255550899
         ],
         "bbox": [
-          52,
-          39,
-          76,
-          136
+          58,
+          58,
+          61,
+          117
         ],
         "components": [
-          7435
+          5157
         ],
         "detachedShare": 0,
         "edgePixels": 0,
-        "hash": "45d1f87188433ab7183e45c2a2a5fd24c306f9ccd05305d8be42efec643810cd",
-        "opaquePixels": 7435
-      },
-      {
-        "anchor": [
-          90,
-          174
-        ],
-        "root": [
-          87.35429251144029,
-          128.33554052564176
-        ],
-        "bbox": [
-          28,
-          71,
-          125,
-          104
-        ],
-        "components": [
-          8812
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "dfb66ba6eec3618483ef24ff79b36544117af79b369ccf7392886048a2b67be7",
-        "opaquePixels": 8812
-      },
-      {
-        "anchor": [
-          91,
-          174
-        ],
-        "root": [
-          87.94683317219624,
-          129.19571930674866
-        ],
-        "bbox": [
-          16,
-          82,
-          151,
-          93
-        ],
-        "components": [
-          9779
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "ef81bd57a23fc12d6d76968df49a8f4086f3877d40443dcca6af7532fe96f5ed",
-        "opaquePixels": 9779
+        "hash": "02eed2a0171362a4de2bc1af2f5ab5fc38ab02d832c67e493e1deb34b86fa921",
+        "opaquePixels": 5157
       },
       {
         "anchor": [
@@ -3075,68 +2477,114 @@
           174
         ],
         "root": [
-          92.62012644813322,
-          115.83345127013364
+          87.15381396782828,
+          131.00749910688506
         ],
         "bbox": [
-          33,
-          53,
-          113,
-          122
+          37,
+          77,
+          105,
+          98
         ],
         "components": [
-          8538
+          6748
         ],
         "detachedShare": 0,
         "edgePixels": 0,
-        "hash": "9dce61e878a1c5e577448aa4e68b1dc6ae567f22f8bec1cc2c64ff1df7e9bd48",
-        "opaquePixels": 8538
+        "hash": "7deb0f7b2b533f43b620057eb5649667c4dd3728a4eccb86ec8e3ad1a47206b0",
+        "opaquePixels": 6748
       },
       {
         "anchor": [
-          91.5,
-          170
+          90,
+          174
         ],
         "root": [
-          91.61267860489644,
-          102.58379789695496
+          88.2193501296949,
+          134.25404845820103
         ],
         "bbox": [
-          55,
-          35,
-          74,
-          136
+          30,
+          93,
+          121,
+          82
         ],
         "components": [
-          7307
+          7120
         ],
         "detachedShare": 0,
         "edgePixels": 0,
-        "hash": "3da275aabf24977fbc04f8f807850ee6a310f3379706c2f6a4084833ffbfb7fa",
-        "opaquePixels": 7307
+        "hash": "ec3dd6b7036631bfdbf972cc835cc5129457119b0c75b27305e26c063854a02a",
+        "opaquePixels": 7120
       },
       {
         "anchor": [
-          93,
+          90.5,
           173
         ],
         "root": [
-          90.20428668327254,
-          114.41353700500753
+          93.10846418284865,
+          125.16165150723904
         ],
         "bbox": [
-          36,
-          53,
-          115,
-          121
+          40,
+          77,
+          102,
+          97
         ],
         "components": [
-          8618
+          6448
         ],
         "detachedShare": 0,
         "edgePixels": 0,
-        "hash": "6a4d740693aa59c9cb51f51d681ce385cb978a0c6fcdb705837a6fc1dedbcf08",
-        "opaquePixels": 8618
+        "hash": "4e58ae9751439bd29bcf81d18d5c1294fbf1d324a3529fd4502eebc23aa2b25d",
+        "opaquePixels": 6448
+      },
+      {
+        "anchor": [
+          90.5,
+          170
+        ],
+        "root": [
+          90.53169716614929,
+          113.27411068016828
+        ],
+        "bbox": [
+          61,
+          57,
+          60,
+          114
+        ],
+        "components": [
+          5065
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "a1f4118f42ecc0efc2562b03ec63ae7361d09a43426af0ad92dd27224fa50550",
+        "opaquePixels": 5065
+      },
+      {
+        "anchor": [
+          92,
+          172
+        ],
+        "root": [
+          89.84379482898721,
+          124.14627241330608
+        ],
+        "bbox": [
+          41,
+          76,
+          103,
+          97
+        ],
+        "components": [
+          6522
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "708f1a51c9a9dcc5e3219cc5e22cad9ad5b0b06a1c606de663d9d6bfbdb83952",
+        "opaquePixels": 6522
       },
       {
         "anchor": [
@@ -3144,22 +2592,22 @@
           172
         ],
         "root": [
-          85.35955384910831,
-          127.09035320278926
+          85.22554476742366,
+          128.98378446088344
         ],
         "bbox": [
-          7,
-          80,
-          150,
-          93
+          10,
+          84,
+          144,
+          89
         ],
         "components": [
-          9570
+          8797
         ],
         "detachedShare": 0,
         "edgePixels": 0,
-        "hash": "b6f47ed173d1a648fe4981ae8166e72220b213152c6ed76e6146b8a9d6333360",
-        "opaquePixels": 9570
+        "hash": "bf5a38d3dd27777350dbb3acd56c4b359a382127d77664f3f2f5ca958be7d3eb",
+        "opaquePixels": 8797
       },
       {
         "anchor": [
@@ -3167,22 +2615,22 @@
           173
         ],
         "root": [
-          95.26430531643906,
-          127.2688148839653
+          94.90611781559537,
+          132.81964513286604
         ],
         "bbox": [
-          29,
-          72,
-          126,
-          102
+          37,
+          84,
+          110,
+          90
         ],
         "components": [
-          8739
+          6719
         ],
         "detachedShare": 0,
         "edgePixels": 0,
-        "hash": "430e6140128bacd0d2d08d0facd797f568c3b01db25cca0dcbc80d714fe200c5",
-        "opaquePixels": 8739
+        "hash": "bb12b9b4254740c5cebfe7df9a21b0df2c3e2ff9014e14dde9c3e4d26d0e1cf0",
+        "opaquePixels": 6719
       },
       {
         "anchor": [
@@ -3190,68 +2638,68 @@
           174
         ],
         "root": [
-          89.47522331556586,
-          106.96374301637572
+          89.18237080331967,
+          117.60823101372651
         ],
         "bbox": [
-          52,
-          41,
-          75,
-          134
+          58,
+          63,
+          63,
+          112
         ],
         "components": [
-          7165
+          5043
         ],
         "detachedShare": 0,
         "edgePixels": 0,
-        "hash": "7c3e683557c8707f26a8fab7294dfa38e8cc12636af7ae39fd64f8f72c0fa62a",
-        "opaquePixels": 7165
+        "hash": "49de925b3756f8f2bd7db31838cf1cef81ac0acc3bd8d290d981eba3f2048745",
+        "opaquePixels": 5043
       },
       {
         "anchor": [
-          91,
+          90.5,
           174
         ],
         "root": [
-          87.76470576902793,
-          128.67153997274931
+          87.38381568188598,
+          133.92754402975734
         ],
         "bbox": [
-          30,
-          73,
-          123,
-          102
+          37,
+          85,
+          108,
+          90
         ],
         "components": [
-          8514
+          6599
         ],
         "detachedShare": 0,
         "edgePixels": 0,
-        "hash": "c59975c3bb69839b2224f03c512981d76da33944c422d5038edc9f0accfd952d",
-        "opaquePixels": 8514
+        "hash": "3a3349a44b420cd24ccca5b40ee26454ffe882b362ff028ab8b2af2f723ffca0",
+        "opaquePixels": 6599
       },
       {
         "anchor": [
-          92,
+          91.5,
           174
         ],
         "root": [
-          88.46230457626508,
-          129.46240911167027
+          88.29523685027148,
+          135.46206574113492
         ],
         "bbox": [
-          18,
-          83,
-          149,
-          92
+          28,
+          96,
+          128,
+          79
         ],
         "components": [
-          9481
+          6980
         ],
         "detachedShare": 0,
         "edgePixels": 0,
-        "hash": "c92c9204923401ac61828156389fa98dad27ab1bec197807ce064d7aa9cda66d",
-        "opaquePixels": 9481
+        "hash": "1e91f078965e824b3c4cba4b731cbf29c8a4bcc65efbda4c9ce8d9dbd809ca78",
+        "opaquePixels": 6980
       },
       {
         "anchor": [
@@ -3259,22 +2707,22 @@
           174
         ],
         "root": [
-          93.1343977786184,
-          116.2297871342321
+          92.80097819601092,
+          123.15697959157056
         ],
         "bbox": [
-          35,
-          55,
-          111,
-          120
+          42,
+          70,
+          97,
+          105
         ],
         "components": [
-          8229
+          6309
         ],
         "detachedShare": 0,
         "edgePixels": 0,
-        "hash": "17cfad018aec5fe92c8b999bb0e9b1a6437915e3f6c9b12a9763ffb36e70cbd0",
-        "opaquePixels": 8229
+        "hash": "30698148d9048fa4b6e238f144d8324e18d417293cbdeda51589c5ab146db4ba",
+        "opaquePixels": 6309
       },
       {
         "anchor": [
@@ -3282,45 +2730,597 @@
           170
         ],
         "root": [
-          91.81668934213938,
-          103.06381606355735
+          91.52294649813761,
+          113.71514711995705
         ],
         "bbox": [
-          55,
-          37,
-          74,
-          134
+          61,
+          59,
+          62,
+          112
         ],
         "components": [
-          7049
+          4968
         ],
         "detachedShare": 0,
         "edgePixels": 0,
-        "hash": "a198750c08f09bd03b6e39b9968ae11403ca166fc26a5237c74a342f8edd3074",
-        "opaquePixels": 7049
+        "hash": "064eb6e05dfc5db716bf28aa27e76bc81262327c5a4497cdd89bb22d64f08444",
+        "opaquePixels": 4968
       },
       {
         "anchor": [
-          93,
+          92,
           173
         ],
         "root": [
-          90.19733087955888,
-          114.47435932188688
+          89.77807512406925,
+          121.6387737421802
         ],
         "bbox": [
-          37,
-          55,
-          113,
-          119
+          43,
+          69,
+          99,
+          105
         ],
         "components": [
-          8328
+          6404
         ],
         "detachedShare": 0,
         "edgePixels": 0,
-        "hash": "4ac3d432f5526b494f5737507504c1cc3f30356d83df9ad895a50e165dd67203",
-        "opaquePixels": 8328
+        "hash": "06328df21923741c082a68ef31a4fb735dfdcbc65d9b3b19cdc2605ea152d538",
+        "opaquePixels": 6404
+      },
+      {
+        "anchor": [
+          82,
+          172
+        ],
+        "root": [
+          85.3266715357546,
+          129.07447445204318
+        ],
+        "bbox": [
+          10,
+          84,
+          145,
+          89
+        ],
+        "components": [
+          8971
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "1231751c3cefefbab112cb832e157b06adb82fd3006984e3d8aa5e9150b699bc",
+        "opaquePixels": 8971
+      },
+      {
+        "anchor": [
+          91.5,
+          173
+        ],
+        "root": [
+          94.8195368918352,
+          132.82569918434245
+        ],
+        "bbox": [
+          36,
+          83,
+          112,
+          91
+        ],
+        "components": [
+          6879
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "81b0e5b6d00c9dbce56128584f2f8d77d63ef1271d15e8f9134546629aa518a6",
+        "opaquePixels": 6879
+      },
+      {
+        "anchor": [
+          89,
+          174
+        ],
+        "root": [
+          89.0961660994917,
+          117.44067658570783
+        ],
+        "bbox": [
+          58,
+          62,
+          63,
+          113
+        ],
+        "components": [
+          5169
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "76b8bef8aaf930ce97bae74f4cba87dd6a91fbae8184c7b6f32e68546b01532a",
+        "opaquePixels": 5169
+      },
+      {
+        "anchor": [
+          90.5,
+          174
+        ],
+        "root": [
+          87.2218045112782,
+          133.84042064720026
+        ],
+        "bbox": [
+          36,
+          85,
+          110,
+          90
+        ],
+        "components": [
+          6756
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "67f42d17525a13d7f233b449ec2e1187fea6d642c3af5c9d3d9cf1cd1df22aa6",
+        "opaquePixels": 6756
+      },
+      {
+        "anchor": [
+          91,
+          174
+        ],
+        "root": [
+          88.10603075388772,
+          135.42353333410642
+        ],
+        "bbox": [
+          27,
+          95,
+          129,
+          80
+        ],
+        "components": [
+          7143
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "d241fb679fb40aadd0d941291e1f12776c1b54f97c54d53959853351f2e16e19",
+        "opaquePixels": 7143
+      },
+      {
+        "anchor": [
+          90,
+          174
+        ],
+        "root": [
+          92.56914535999208,
+          123.06384500212295
+        ],
+        "bbox": [
+          41,
+          69,
+          99,
+          106
+        ],
+        "components": [
+          6463
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "5f6edd223cb93997667b4cf519e22a10b5657cb06618825e91e5a700c4354800",
+        "opaquePixels": 6463
+      },
+      {
+        "anchor": [
+          91.5,
+          170
+        ],
+        "root": [
+          91.43485771441154,
+          113.54897950726765
+        ],
+        "bbox": [
+          61,
+          58,
+          62,
+          113
+        ],
+        "components": [
+          5087
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "7ace851783b7cdc71320ca459ebc86ba9422b4d4dba525752a669119e983d8c4",
+        "opaquePixels": 5087
+      },
+      {
+        "anchor": [
+          92.5,
+          173
+        ],
+        "root": [
+          89.7589073034842,
+          121.66871076244499
+        ],
+        "bbox": [
+          43,
+          68,
+          100,
+          106
+        ],
+        "components": [
+          6560
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "e8faeb976b665d5bb44bab62d9c978e633d87c3f63aa02e3770f678b944013e3",
+        "opaquePixels": 6560
+      },
+      {
+        "anchor": [
+          83,
+          172
+        ],
+        "root": [
+          85.67398447183182,
+          128.79342742218375
+        ],
+        "bbox": [
+          10,
+          83,
+          147,
+          90
+        ],
+        "components": [
+          9187
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "ce17563bd0f6251a91fbe35782153d2cb86684b2805ca5d9acd4dcbd110e899d",
+        "opaquePixels": 9187
+      },
+      {
+        "anchor": [
+          92,
+          173
+        ],
+        "root": [
+          95.13024694271253,
+          132.52488858358257
+        ],
+        "bbox": [
+          36,
+          82,
+          113,
+          92
+        ],
+        "components": [
+          7076
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "00c1bcb37cf180c1d66ec30e5a87d9be8fd917ffa345954eab5b4219c10f8e1e",
+        "opaquePixels": 7076
+      },
+      {
+        "anchor": [
+          89,
+          174
+        ],
+        "root": [
+          89.28208018331866,
+          117.08632027931615
+        ],
+        "bbox": [
+          57,
+          60,
+          65,
+          115
+        ],
+        "components": [
+          5336
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "5d43380ee11f96d472c1321b327ee0bd507cd09e20104cc297dc1f6b7c1f6069",
+        "opaquePixels": 5336
+      },
+      {
+        "anchor": [
+          90,
+          174
+        ],
+        "root": [
+          87.3864968481037,
+          133.68852013236116
+        ],
+        "bbox": [
+          35,
+          83,
+          111,
+          92
+        ],
+        "components": [
+          6934
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "88467cfff1902f6a045b53abaef58cc92ba7c4faf37e7baaca8b7914f2f51916",
+        "opaquePixels": 6934
+      },
+      {
+        "anchor": [
+          90,
+          174
+        ],
+        "root": [
+          88.00483522105533,
+          135.54379069734392
+        ],
+        "bbox": [
+          25,
+          95,
+          131,
+          80
+        ],
+        "components": [
+          7281
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "acb4da8c54000ca763e6e00cd25f6ef6de5c6ec1eaafbb941586884e0ccae259",
+        "opaquePixels": 7281
+      },
+      {
+        "anchor": [
+          90,
+          174
+        ],
+        "root": [
+          92.71478675199701,
+          122.93934382834276
+        ],
+        "bbox": [
+          41,
+          68,
+          99,
+          107
+        ],
+        "components": [
+          6636
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "aac8d87b5406245822c84232e940addd9754ffa80e2fd8e9715b3a80d3d5f8be",
+        "opaquePixels": 6636
+      },
+      {
+        "anchor": [
+          91.5,
+          170
+        ],
+        "root": [
+          91.61337771275106,
+          113.19682140307843
+        ],
+        "bbox": [
+          61,
+          56,
+          62,
+          115
+        ],
+        "components": [
+          5241
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "7b637cccba2a80c560d5a4cbccfafd486381a05e5701b41059c596f0eb9922c8",
+        "opaquePixels": 5241
+      },
+      {
+        "anchor": [
+          92.5,
+          173
+        ],
+        "root": [
+          90.1266418277405,
+          121.32268810838448
+        ],
+        "bbox": [
+          42,
+          67,
+          102,
+          107
+        ],
+        "components": [
+          6755
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "81a58d5dcead6c873a8376b4651fff7b24b2de274c20641f11df9534b0a4bdc0",
+        "opaquePixels": 6755
+      },
+      {
+        "anchor": [
+          81.5,
+          172
+        ],
+        "root": [
+          85.34599962877013,
+          128.6514608634142
+        ],
+        "bbox": [
+          10,
+          83,
+          144,
+          90
+        ],
+        "components": [
+          8952
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "011059859ded64e36769688dcf021b922b4d4d25ba9d3cfeebb73ddbeb692434",
+        "opaquePixels": 8952
+      },
+      {
+        "anchor": [
+          92,
+          173
+        ],
+        "root": [
+          95.22783976780171,
+          132.57721301982718
+        ],
+        "bbox": [
+          37,
+          83,
+          111,
+          91
+        ],
+        "components": [
+          6861
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "3c353705a3d47356409cb52dfa446bbf3cbd6dd1e7cf3f220328aaf83d9aaffa",
+        "opaquePixels": 6861
+      },
+      {
+        "anchor": [
+          89.5,
+          174
+        ],
+        "root": [
+          89.48586388107364,
+          117.40152344481007
+        ],
+        "bbox": [
+          58,
+          62,
+          64,
+          113
+        ],
+        "components": [
+          5148
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "8ab0cb7617b8f6bb9c94763783202a03b46f08c2148ec76566819f3754c42d50",
+        "opaquePixels": 5148
+      },
+      {
+        "anchor": [
+          91,
+          174
+        ],
+        "root": [
+          87.79838626944702,
+          133.96584233249325
+        ],
+        "bbox": [
+          37,
+          85,
+          109,
+          90
+        ],
+        "components": [
+          6677
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "bf3e43d386f403220c077bd367d5eaf4bfffde29bad16bc9399687221cd5db4d",
+        "opaquePixels": 6677
+      },
+      {
+        "anchor": [
+          91.5,
+          174
+        ],
+        "root": [
+          88.50123092159431,
+          135.70064197791314
+        ],
+        "bbox": [
+          28,
+          96,
+          128,
+          79
+        ],
+        "components": [
+          7065
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "159d3393401f4b0658178f7bdef9bda6c2e98cbcda63126e15a44f7517649752",
+        "opaquePixels": 7065
+      },
+      {
+        "anchor": [
+          90,
+          174
+        ],
+        "root": [
+          93.19396523564869,
+          123.2604751977511
+        ],
+        "bbox": [
+          42,
+          70,
+          97,
+          105
+        ],
+        "components": [
+          6389
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "13dd12127f14120d284dda024791683381561d39b6edbf88e3cc58536a4bdf86",
+        "opaquePixels": 6389
+      },
+      {
+        "anchor": [
+          91.5,
+          170
+        ],
+        "root": [
+          91.82854413884861,
+          113.50654246571757
+        ],
+        "bbox": [
+          61,
+          58,
+          62,
+          113
+        ],
+        "components": [
+          5065
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "3d119e5d6f7647f5bb774490ec68269e415333b807e1d4d6270e67f9641118f1",
+        "opaquePixels": 5065
+      },
+      {
+        "anchor": [
+          92.5,
+          173
+        ],
+        "root": [
+          90.14762857953687,
+          121.31472367084599
+        ],
+        "bbox": [
+          43,
+          68,
+          100,
+          106
+        ],
+        "components": [
+          6538
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "23bef0dbfed6ca1e09163b04086cd60d311b5ef2f0f30bc4e22b95d2dcb43754",
+        "opaquePixels": 6538
       }
     ],
     "deer": [
@@ -4432,762 +4432,26 @@
     "deer-actions": [
       {
         "anchor": [
-          92,
+          91.5,
           168
         ],
         "root": [
-          90.22141551494323,
-          131.3024839984396
+          90.01193350071472,
+          136.87181726212663
         ],
         "bbox": [
-          28,
-          86,
-          129,
-          83
-        ],
-        "components": [
-          6950
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "73e2064995c627c018d71a150a718ce45d74e5c3ec410777dd01ba173e4d8f64",
-        "opaquePixels": 6950
-      },
-      {
-        "anchor": [
-          84,
-          159
-        ],
-        "root": [
-          81.0127411885338,
-          121.59933655276853
-        ],
-        "bbox": [
-          22,
-          74,
-          125,
-          86
-        ],
-        "components": [
-          6647
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "1c0a2e28ea68a3c2e89bfc980b1c31c2ff76a5ec68b85aac0e8cb06da028501e",
-        "opaquePixels": 6647
-      },
-      {
-        "anchor": [
-          89.5,
-          174
-        ],
-        "root": [
-          89.85447872741814,
-          123.24614923384978
-        ],
-        "bbox": [
-          58,
-          65,
-          64,
-          110
-        ],
-        "components": [
-          4828
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "025088952e8d0bd226b66dfbd005f8ddb9ed7b6223f8899e4ed8760e3c81988e",
-        "opaquePixels": 4828
-      },
-      {
-        "anchor": [
-          96,
-          159
-        ],
-        "root": [
-          98.9872588114662,
-          121.59933655276853
-        ],
-        "bbox": [
-          34,
-          74,
-          125,
-          86
-        ],
-        "components": [
-          6647
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "abeab7ee06fcea1c54604b8f700c15a868f56f9c94ddf3e682b871592d563e57",
-        "opaquePixels": 6647
-      },
-      {
-        "anchor": [
-          78,
-          155
-        ],
-        "root": [
-          80.43889768525649,
-          117.17031774400317
-        ],
-        "bbox": [
-          10,
-          69,
-          137,
-          87
-        ],
-        "components": [
-          7400
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "ee392142b1b3bb422709ea8bbd56d70fd21ba11f99520430d882ac54a28b5174",
-        "opaquePixels": 7400
-      },
-      {
-        "anchor": [
-          85.5,
-          171
-        ],
-        "root": [
-          88.4450524741551,
-          130.6820927697046
-        ],
-        "bbox": [
-          29,
-          79,
-          114,
-          93
-        ],
-        "components": [
-          6265
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "d64a39872c194d7f23c5c60ba1dccd4b6438393c4b3691907555debcc4f1b3e1",
-        "opaquePixels": 6265
-      },
-      {
-        "anchor": [
-          76,
-          165
-        ],
-        "root": [
-          76.06190207136744,
-          106.39641204859909
-        ],
-        "bbox": [
-          45,
-          49,
-          63,
-          117
-        ],
-        "components": [
-          5121
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "74f56efb217c7891fdbcce375fb522164ab11865ffc64a7db05f339f5fa961ec",
-        "opaquePixels": 5121
-      },
-      {
-        "anchor": [
-          90.5,
-          156
-        ],
-        "root": [
-          87.7773730373889,
-          113.89265438512882
-        ],
-        "bbox": [
-          36,
-          59,
+          37,
+          98,
           110,
-          98
+          71
         ],
         "components": [
-          6287
+          5044
         ],
         "detachedShare": 0,
         "edgePixels": 0,
-        "hash": "e97de8c5c7836427efd9303642d46b1fc5f4d61bc7c54a9ef841ee83f8b0fd90",
-        "opaquePixels": 6287
-      },
-      {
-        "anchor": [
-          92,
-          168
-        ],
-        "root": [
-          90.30136611445535,
-          130.64221973788253
-        ],
-        "bbox": [
-          27,
-          84,
-          131,
-          85
-        ],
-        "components": [
-          7243
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "3c4e383b20f30fb9da3dcccb86c7a7e67eb71e501ecaba0afbb0e5db5ec509b2",
-        "opaquePixels": 7243
-      },
-      {
-        "anchor": [
-          84,
-          159
-        ],
-        "root": [
-          81.22069990461011,
-          121.00883866549846
-        ],
-        "bbox": [
-          21,
-          72,
-          127,
-          88
-        ],
-        "components": [
-          6899
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "99c1f235c7a46a97d27c1543d36183ca4f4a83655c3b3a736209837cddf30b02",
-        "opaquePixels": 6899
-      },
-      {
-        "anchor": [
-          90,
-          174
-        ],
-        "root": [
-          90.24252158880394,
-          121.94449170899159
-        ],
-        "bbox": [
-          58,
-          62,
-          65,
-          113
-        ],
-        "components": [
-          5024
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "a2a07354fb0d56939c2093d2a2b4a7112409673cc7bbb9260b212deb2172f896",
-        "opaquePixels": 5024
-      },
-      {
-        "anchor": [
-          96.5,
-          159
-        ],
-        "root": [
-          99.27506821363323,
-          120.3136658599663
-        ],
-        "bbox": [
-          34,
-          71,
-          126,
-          89
-        ],
-        "components": [
-          6952
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "c35eb2e74ebc5532e0cf35c01da00b58d9d952640486710a2e8b9c359682f4c6",
-        "opaquePixels": 6952
-      },
-      {
-        "anchor": [
-          77.5,
-          155
-        ],
-        "root": [
-          80.51130673717887,
-          115.82277883075201
-        ],
-        "bbox": [
-          9,
-          66,
-          138,
-          90
-        ],
-        "components": [
-          7739
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "f0477f2503101f09d81570f0b0676556262fbf023157bc1d59e55f11c9902be2",
-        "opaquePixels": 7739
-      },
-      {
-        "anchor": [
-          85,
-          171
-        ],
-        "root": [
-          88.19780218401061,
-          129.43415902037046
-        ],
-        "bbox": [
-          28,
-          76,
-          115,
-          96
-        ],
-        "components": [
-          6575
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "88d252e3a71fe5ec3fc7ca1e7856bb66686f6d58e86a26a631179a4d8959ffc5",
-        "opaquePixels": 6575
-      },
-      {
-        "anchor": [
-          76,
-          165
-        ],
-        "root": [
-          75.65943012420331,
-          104.74274391420722
-        ],
-        "bbox": [
-          45,
-          45,
-          63,
-          121
-        ],
-        "components": [
-          5363
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "4a2e81386b3d2edc13a48868c54d7d1930fe9baf141b5f9999003254789ba943",
-        "opaquePixels": 5363
-      },
-      {
-        "anchor": [
-          89.5,
-          156
-        ],
-        "root": [
-          87.6817987297362,
-          112.89142996110783
-        ],
-        "bbox": [
-          35,
-          56,
-          110,
-          101
-        ],
-        "components": [
-          6558
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "8c8638585050ca38873b80a0be9d1279706e69663af8e17c46229ac5b0c681bb",
-        "opaquePixels": 6558
-      },
-      {
-        "anchor": [
-          92,
-          168
-        ],
-        "root": [
-          90.40112557514608,
-          129.96367396898054
-        ],
-        "bbox": [
-          27,
-          82,
-          131,
-          87
-        ],
-        "components": [
-          7477
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "d929c723aa97768da9f6429332cea87850fadf5e6334d1f6be233938d043629c",
-        "opaquePixels": 7477
-      },
-      {
-        "anchor": [
-          84.5,
-          159
-        ],
-        "root": [
-          81.42958441833338,
-          120.42875693014092
-        ],
-        "bbox": [
-          21,
-          70,
-          128,
-          90
-        ],
-        "components": [
-          7086
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "f393324461692972dd399a60988d0ed96cfdde2c9da9fa36063a3e8ad06565e4",
-        "opaquePixels": 7086
-      },
-      {
-        "anchor": [
-          90.5,
-          174
-        ],
-        "root": [
-          90.64500387135581,
-          120.67007889887122
-        ],
-        "bbox": [
-          58,
-          59,
-          66,
-          116
-        ],
-        "components": [
-          5195
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "ee6763f9af050368de1483d0813c5d7b03e736078f6521fc6af6d9fdc3ec8dee",
-        "opaquePixels": 5195
-      },
-      {
-        "anchor": [
-          97,
-          159
-        ],
-        "root": [
-          99.59717729103276,
-          119.02164481350981
-        ],
-        "bbox": [
-          35,
-          68,
-          125,
-          92
-        ],
-        "components": [
-          7200
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "a6489475c54facada0e70947ec0e34a39fb1d92450b3a1576ae9dd223724c0ec",
-        "opaquePixels": 7200
-      },
-      {
-        "anchor": [
-          78,
-          155
-        ],
-        "root": [
-          80.60000555653595,
-          114.48720170276957
-        ],
-        "bbox": [
-          9,
-          64,
-          139,
-          92
-        ],
-        "components": [
-          8030
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "4d8a1b3c2f4c51d85d64b167f0eb8ce822414c2582ddc330e3ac5cfad67448bd",
-        "opaquePixels": 8030
-      },
-      {
-        "anchor": [
-          85,
-          171
-        ],
-        "root": [
-          87.98660501928943,
-          128.19009200684158
-        ],
-        "bbox": [
-          27,
-          73,
-          117,
-          99
-        ],
-        "components": [
-          6842
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "a19ede01067804ed0720a2eb9e72aa89ef34242b6095669eada6103527a5ee0c",
-        "opaquePixels": 6842
-      },
-      {
-        "anchor": [
-          76,
-          165
-        ],
-        "root": [
-          75.28193478571635,
-          103.02399816902859
-        ],
-        "bbox": [
-          45,
-          42,
-          63,
-          124
-        ],
-        "components": [
-          5567
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "78f149a278d5f8482271d62939855696b3ac90ba761bdf9a2bc33ded2c148d4a",
-        "opaquePixels": 5567
-      },
-      {
-        "anchor": [
-          89.5,
-          156
-        ],
-        "root": [
-          87.60289034568568,
-          111.8649302219643
-        ],
-        "bbox": [
-          35,
-          53,
-          110,
-          104
-        ],
-        "components": [
-          6808
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "2998fb9d992b6a476523be0bad83e0d72d1d740d79706b92336d83a1bdfec86d",
-        "opaquePixels": 6808
-      },
-      {
-        "anchor": [
-          92,
-          168
-        ],
-        "root": [
-          90.1795493416991,
-          130.2306974239604
-        ],
-        "bbox": [
-          27,
-          84,
-          131,
-          85
-        ],
-        "components": [
-          7229
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "2c6b46b74fb4ebaeadc8c838628dfc28b1e0bec538400bcbb72564ff4036710f",
-        "opaquePixels": 7229
-      },
-      {
-        "anchor": [
-          83.5,
-          159
-        ],
-        "root": [
-          80.82609043287944,
-          120.52526706274834
-        ],
-        "bbox": [
-          21,
-          71,
-          126,
-          89
-        ],
-        "components": [
-          6910
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "f7b1e3562e3c64940098746becc320c67a6319dfcbdb596737cd3bc8b1ce1c9c",
-        "opaquePixels": 6910
-      },
-      {
-        "anchor": [
-          89,
-          174
-        ],
-        "root": [
-          89.59902551896299,
-          122.09626296889125
-        ],
-        "bbox": [
-          57,
-          63,
-          65,
-          112
-        ],
-        "components": [
-          4984
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "3b475f6ca7c5e86894bfc6b7540fd177c2ffe7538606c44c2e14dc8b95601abf",
-        "opaquePixels": 4984
-      },
-      {
-        "anchor": [
-          96.5,
-          159
-        ],
-        "root": [
-          98.83442722697063,
-          120.98817298760774
-        ],
-        "bbox": [
-          34,
-          72,
-          126,
-          88
-        ],
-        "components": [
-          6874
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "5dea2ff85daef1f6b35c4e0dc5cd099edd86738e26138f0b7f259ed0d25437a7",
-        "opaquePixels": 6874
-      },
-      {
-        "anchor": [
-          77.5,
-          155
-        ],
-        "root": [
-          80.38405037970153,
-          116.50025273917532
-        ],
-        "bbox": [
-          9,
-          67,
-          138,
-          89
-        ],
-        "components": [
-          7665
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "e8877533b05037b50997c5df0d433879462ed6dd89859cfcbcb5d0f96d5d2bdb",
-        "opaquePixels": 7665
-      },
-      {
-        "anchor": [
-          85.5,
-          171
-        ],
-        "root": [
-          88.49617964402599,
-          129.83528186830802
-        ],
-        "bbox": [
-          29,
-          76,
-          114,
-          96
-        ],
-        "components": [
-          6505
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "8e58e9962b5a616e749c52e0247dab2eff8584d80a6eb28cd41b879d68c1b6e9",
-        "opaquePixels": 6505
-      },
-      {
-        "anchor": [
-          76,
-          165
-        ],
-        "root": [
-          76.32642325629695,
-          104.98043531160444
-        ],
-        "bbox": [
-          45,
-          46,
-          63,
-          120
-        ],
-        "components": [
-          5329
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "f27b2edc3ebbeec4cb96e2e092104279be8c35d29b357dbc10f8da838c9e993e",
-        "opaquePixels": 5329
-      },
-      {
-        "anchor": [
-          90.5,
-          156
-        ],
-        "root": [
-          87.94666328032831,
-          112.79389677634033
-        ],
-        "bbox": [
-          36,
-          57,
-          110,
-          100
-        ],
-        "components": [
-          6549
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "aff3c750ac7d5f5a4fa1901be50dbbf6d9d931157009d22d2636f09c706e23ee",
-        "opaquePixels": 6549
-      },
-      {
-        "anchor": [
-          95.5,
-          168
-        ],
-        "root": [
-          89.66006527870906,
-          116.10251195575677
-        ],
-        "bbox": [
-          32,
-          73,
-          128,
-          96
-        ],
-        "components": [
-          7449
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "03565d4885f1618e30b06d6c1b1456cbfe3a3da49bddc8cb6c37b5895ee13b19",
-        "opaquePixels": 7449
+        "hash": "c55e8eae2daf364b1199b82168b35d1a2a7eaf8a6096343c4a8f669aed09e126",
+        "opaquePixels": 5044
       },
       {
         "anchor": [
@@ -5195,22 +4459,22 @@
           159
         ],
         "root": [
-          78.69370845492064,
-          100.28354027294458
+          80.70026337486033,
+          129.4955238150853
         ],
         "bbox": [
-          24,
-          56,
-          119,
-          104
+          34,
+          92,
+          99,
+          68
         ],
         "components": [
-          6797
+          4162
         ],
         "detachedShare": 0,
         "edgePixels": 0,
-        "hash": "d2bc38d29371546c220a8ac3df1a5045d4b77e98ab8e0937ad2281710ecf157f",
-        "opaquePixels": 6797
+        "hash": "bc82909f0b8509081af7d86d1f4b872ba3b831fc12061305467b6076c387b035",
+        "opaquePixels": 4162
       },
       {
         "anchor": [
@@ -5218,22 +4482,22 @@
           174
         ],
         "root": [
-          90.0639014244076,
-          108.14402975844033
+          89.8563584384592,
+          133.66337138830923
         ],
         "bbox": [
-          59,
-          48,
-          63,
-          127
+          65,
+          88,
+          51,
+          87
         ],
         "components": [
-          5387
+          3074
         ],
         "detachedShare": 0,
         "edgePixels": 0,
-        "hash": "d9a45adb2e4579677d552d335a5a0eecfb8dffb9951e4557d89b09071a766d2c",
-        "opaquePixels": 5387
+        "hash": "b20a187cc18cda9edfa3d6fb2b4bdd75313c78b8a9c540e4cd546dd5ad8fc355",
+        "opaquePixels": 3074
       },
       {
         "anchor": [
@@ -5241,160 +4505,160 @@
           159
         ],
         "root": [
-          101.30629154507936,
-          100.28354027294458
+          99.29973662513967,
+          129.4955238150853
         ],
         "bbox": [
-          38,
-          56,
-          119,
-          104
+          48,
+          92,
+          99,
+          68
         ],
         "components": [
-          6797
+          4162
         ],
         "detachedShare": 0,
         "edgePixels": 0,
-        "hash": "7feaf01c53407db19b7abc71c0bf554fae7374234f53adf9cb14b956be7b8785",
-        "opaquePixels": 6797
+        "hash": "a192c6172e97250447f783df8919a0238c56793501bd4176e489129edd377048",
+        "opaquePixels": 4162
       },
       {
         "anchor": [
-          75.5,
+          78.5,
           155
         ],
         "root": [
-          81.66487385620843,
-          102.64078410486519
+          80.71829012028782,
+          124.01702137844856
         ],
         "bbox": [
-          10,
-          59,
-          132,
-          97
+          23,
+          85,
+          112,
+          71
         ],
         "components": [
-          7556
+          5008
         ],
         "detachedShare": 0,
         "edgePixels": 0,
-        "hash": "bed5220ed72c662ae2436c0b573e03e97685ac5f0e38fc8b2a054cbe11bd12e8",
-        "opaquePixels": 7556
+        "hash": "7a4cc11235dadb24e0ede84ad3fb0327cffdd0d9b9f137382ad1bea0480aedde",
+        "opaquePixels": 5008
       },
       {
         "anchor": [
-          87.5,
+          86,
           171
         ],
         "root": [
-          89.27683060752119,
-          112.59820001383213
+          88.742278722424,
+          139.49229425819377
         ],
         "bbox": [
-          37,
-          60,
-          102,
-          112
+          42,
+          99,
+          89,
+          73
         ],
         "components": [
-          6393
+          3847
         ],
         "detachedShare": 0,
         "edgePixels": 0,
-        "hash": "a4e43efa45768351986966fa017669fff705855d5d11fcbc8bdf600f049e50cb",
-        "opaquePixels": 6393
+        "hash": "085471be70b534b2399e67745a295e9d80e649ebc21b3b6c1327354dc59071fc",
+        "opaquePixels": 3847
       },
       {
         "anchor": [
-          75.5,
-          166
+          76.5,
+          165
         ],
         "root": [
-          75.91086955591042,
-          103.96765905039979
+          76.05715019199361,
+          120.37245123689773
         ],
         "bbox": [
-          44,
-          44,
-          64,
-          123
+          53,
+          76,
+          48,
+          90
         ],
         "components": [
-          5710
+          3025
         ],
         "detachedShare": 0,
         "edgePixels": 0,
-        "hash": "92e6510e2d451c4841bd2b95a8633c0190384f7cd6e0a61ab99ed1138239bbe7",
-        "opaquePixels": 5710
+        "hash": "12a7cc929d6d7b2707e28a00dd27a6c0365887c6159df97c81e18588a50dee54",
+        "opaquePixels": 3025
       },
       {
         "anchor": [
-          87.5,
+          90.5,
           156
         ],
         "root": [
-          86.5300578943588,
-          96.55781250303319
+          88.53971685004758,
+          122.63244570953003
         ],
         "bbox": [
-          39,
-          45,
-          98,
-          112
+          48,
+          79,
+          86,
+          78
         ],
         "components": [
-          6368
+          3979
         ],
         "detachedShare": 0,
         "edgePixels": 0,
-        "hash": "e433b205df7b69085a53fe8d5a39c58e203d1736174e1a70fd3ef3bd4d35c03a",
-        "opaquePixels": 6368
+        "hash": "de7536f89cd0a7331935978171a1a3917e1895b688445a72422326bf5705fc80",
+        "opaquePixels": 3979
       },
       {
         "anchor": [
-          95.5,
+          91.5,
           168
         ],
         "root": [
-          90.11582552881235,
-          115.95408261797918
+          90.08494047326177,
+          136.37878003913957
         ],
         "bbox": [
-          31,
-          72,
-          130,
-          97
+          36,
+          97,
+          112,
+          72
         ],
         "components": [
-          7681
+          5258
         ],
         "detachedShare": 0,
         "edgePixels": 0,
-        "hash": "6edf7d39e2acf7f917c9e33004d5d3f4d57a265304053aeec1eb0da15383513b",
-        "opaquePixels": 7681
+        "hash": "25f166192ccf183df50da8b325f58d8667964375faaac752ac893a98fa0f3135",
+        "opaquePixels": 5258
       },
       {
         "anchor": [
-          83.5,
+          83,
           159
         ],
         "root": [
-          79.21409492549242,
-          100.1833450234702
+          80.90768618941532,
+          129.14366382622194
         ],
         "bbox": [
-          24,
-          55,
-          120,
-          105
+          33,
+          91,
+          101,
+          69
         ],
         "components": [
-          7033
+          4301
         ],
         "detachedShare": 0,
         "edgePixels": 0,
-        "hash": "4075deaceb33c9371f71462a3eb99d77dc49af86d868eecc50c354eda4e0be08",
-        "opaquePixels": 7033
+        "hash": "042cfdcab5a79a8686a297ef4ca24bca6eda713eeaa90499d2d4a3169366510a",
+        "opaquePixels": 4301
       },
       {
         "anchor": [
@@ -5402,252 +4666,436 @@
           174
         ],
         "root": [
-          90.19741351462741,
-          107.98570935271032
+          90.36160525950324,
+          132.69391273815418
         ],
         "bbox": [
-          59,
-          47,
-          64,
-          128
+          65,
+          85,
+          52,
+          90
         ],
         "components": [
-          5529
+          3210
         ],
         "detachedShare": 0,
         "edgePixels": 0,
-        "hash": "92e8a25c04fa983d80f8cccd28897f49e4bf0b50bf400cf6e8fe31966528aa7b",
-        "opaquePixels": 5529
+        "hash": "4ac321c7c473496d1b1412e050e1c60ec9566071be49f11e93144c9386d50f81",
+        "opaquePixels": 3210
       },
       {
         "anchor": [
-          97,
+          98,
           159
         ],
         "root": [
-          100.94142696434395,
-          100.40772523299557
+          99.58355244007768,
+          128.44513678464233
         ],
         "bbox": [
-          38,
-          55,
-          119,
-          105
+          49,
+          89,
+          99,
+          71
         ],
         "components": [
-          7058
+          4370
         ],
         "detachedShare": 0,
         "edgePixels": 0,
-        "hash": "1b288010ef709b9cb6eadf9cadc8b28075c553d328e39dd5a39b875c5d3fde8c",
-        "opaquePixels": 7058
+        "hash": "7f6162fad5d41675cc14c0d552df39894cd94f4cc880e196c21839e94bca9d03",
+        "opaquePixels": 4370
       },
       {
         "anchor": [
-          75,
+          78.5,
           155
         ],
         "root": [
-          81.28943862987632,
-          102.78282949839857
+          80.78253381927766,
+          122.87419355864154
         ],
         "bbox": [
-          9,
-          58,
-          133,
-          98
+          22,
+          82,
+          114,
+          74
         ],
         "components": [
-          7765
+          5253
         ],
         "detachedShare": 0,
         "edgePixels": 0,
-        "hash": "7392c43f5f089d4565aded6b8d78a41dbc09c7c0cc82697516c74fdd640e683b",
-        "opaquePixels": 7765
+        "hash": "97515d6f73231a665c7d9429d8e62935e9eae42079e2f2a2c2ba67c193f0c499",
+        "opaquePixels": 5253
       },
       {
         "anchor": [
-          87.5,
+          86,
           171
         ],
         "root": [
-          89.23924617166877,
-          112.58761830002469
+          88.50186597252969,
+          138.50809204437246
         ],
         "bbox": [
-          37,
-          59,
-          102,
-          113
+          41,
+          97,
+          91,
+          75
         ],
         "components": [
-          6589
+          4062
         ],
         "detachedShare": 0,
         "edgePixels": 0,
-        "hash": "ad5b5e3e4587d8a9f5d0f0ac2e99c5ba2c763a117191d429f992e5877e4a0f99",
-        "opaquePixels": 6589
+        "hash": "eb09c80c07b08a6ceeba6bec037e7dfa273e77e98a70a4b9075d4baab2ab269e",
+        "opaquePixels": 4062
       },
       {
         "anchor": [
           76,
-          166
+          165
         ],
         "root": [
-          76.0397937933822,
-          103.74887449283997
+          75.52936462582353,
+          119.13264495109728
         ],
         "bbox": [
-          44,
-          43,
-          65,
-          124
+          52,
+          74,
+          49,
+          92
         ],
         "components": [
-          5866
+          3171
         ],
         "detachedShare": 0,
         "edgePixels": 0,
-        "hash": "909fb8d02842b3a9e54a5f3da1f3024772abc4eef9a228e7348e11062539ae4c",
-        "opaquePixels": 5866
-      },
-      {
-        "anchor": [
-          87.5,
-          156
-        ],
-        "root": [
-          86.86289111286295,
-          96.30231678259648
-        ],
-        "bbox": [
-          38,
-          44,
-          100,
-          113
-        ],
-        "components": [
-          6563
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "39c7f5f8f952f2c300e249571a91ce184b4e8d7a5ee2af14553033b08bc3d252",
-        "opaquePixels": 6563
-      },
-      {
-        "anchor": [
-          96,
-          168
-        ],
-        "root": [
-          90.7976228189243,
-          116.05880538836102
-        ],
-        "bbox": [
-          31,
-          70,
-          131,
-          99
-        ],
-        "components": [
-          7950
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "cbd9067098963e6b75030fc4a9e1a61f816450aa43501694edc257e038818682",
-        "opaquePixels": 7950
-      },
-      {
-        "anchor": [
-          84,
-          159
-        ],
-        "root": [
-          79.7909798059253,
-          100.26069890953586
-        ],
-        "bbox": [
-          24,
-          53,
-          121,
-          107
-        ],
-        "components": [
-          7360
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "1096cb757c42d8700c18e57fa6152d84958f3dfb5af9033b2cc83826bd241f1c",
-        "opaquePixels": 7360
+        "hash": "880674e81c6881acea32f0989d12505fb048946c8df635e67d1d682cd7626b8b",
+        "opaquePixels": 3171
       },
       {
         "anchor": [
           90,
-          174
+          156
         ],
         "root": [
-          90.0040935554589,
-          107.53606059383921
+          88.4401572964103,
+          121.89819939114301
         ],
         "bbox": [
-          58,
-          45,
-          65,
-          130
+          47,
+          77,
+          87,
+          80
         ],
         "components": [
-          5721
+          4161
         ],
         "detachedShare": 0,
         "edgePixels": 0,
-        "hash": "eb48d3af054dd6fec297bde2ea93367a7dc565a8042a17af01c9ba6f3525b893",
-        "opaquePixels": 5721
+        "hash": "91fccd56fba4f452cab7157087a47a51b54793aaa12c686d949f9087a1de8767",
+        "opaquePixels": 4161
       },
       {
         "anchor": [
-          96,
-          159
+          91.5,
+          168
         ],
         "root": [
-          100.12665172395181,
-          100.14818457377753
+          90.15554534600888,
+          135.86593644505976
         ],
         "bbox": [
           36,
-          53,
-          121,
-          107
+          95,
+          112,
+          74
         ],
         "components": [
-          7351
+          5421
         ],
         "detachedShare": 0,
         "edgePixels": 0,
-        "hash": "b94561f8adf7947692bbd794f7a63fe81c15e4b2c1d5bb5ea0f22b0d27645029",
-        "opaquePixels": 7351
+        "hash": "155625912c56fcf50d6a6e0949131b07ebca7312234c25666a09a98320995500",
+        "opaquePixels": 5421
       },
       {
         "anchor": [
-          74.5,
-          155
+          83.5,
+          159
         ],
         "root": [
-          80.49277161963568,
-          102.44663923551812
+          81.08501531239354,
+          128.79628869743954
         ],
         "bbox": [
-          7,
-          57,
-          136,
-          99
+          33,
+          90,
+          102,
+          70
         ],
         "components": [
-          8055
+          4426
         ],
         "detachedShare": 0,
         "edgePixels": 0,
-        "hash": "8ba5d9670afeea50dc514026a8ffbc0479f5e71c51b7c0212f2c1fca3fd370db",
-        "opaquePixels": 8055
+        "hash": "aa956a014f08da818634e8c7f9150d616ed0623bcc6d13397682e8ff274b97ca",
+        "opaquePixels": 4426
+      },
+      {
+        "anchor": [
+          91,
+          174
+        ],
+        "root": [
+          90.89582177957793,
+          131.77464790528023
+        ],
+        "bbox": [
+          65,
+          83,
+          53,
+          92
+        ],
+        "components": [
+          3291
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "84bef8facbe3e4b0d47a669ee138ce1aa428ecd94a3c7819c13f7cb1563453ff",
+        "opaquePixels": 3291
+      },
+      {
+        "anchor": [
+          98,
+          159
+        ],
+        "root": [
+          99.89945839678447,
+          127.39584755513916
+        ],
+        "bbox": [
+          49,
+          87,
+          99,
+          73
+        ],
+        "components": [
+          4535
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "bd1a64af6b9eb11772728061845f092be713f0c0127e47365b75d65531028b92",
+        "opaquePixels": 4535
+      },
+      {
+        "anchor": [
+          78.5,
+          155
+        ],
+        "root": [
+          80.85531367880442,
+          121.74898800932777
+        ],
+        "bbox": [
+          22,
+          80,
+          114,
+          76
+        ],
+        "components": [
+          5438
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "1bde619a0e191e075f02df8fefc4d0bb95dfd49c61320bed6407a9a9d044f431",
+        "opaquePixels": 5438
+      },
+      {
+        "anchor": [
+          85.5,
+          171
+        ],
+        "root": [
+          88.28568414847295,
+          137.52755649359676
+        ],
+        "bbox": [
+          40,
+          94,
+          92,
+          78
+        ],
+        "components": [
+          4236
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "4d3078aa6939eff84fb28ce6c1ea6e7fd4737e3cb576c8898702bb44ad677705",
+        "opaquePixels": 4236
+      },
+      {
+        "anchor": [
+          76,
+          165
+        ],
+        "root": [
+          75.0261984477056,
+          117.84189069154792
+        ],
+        "bbox": [
+          52,
+          71,
+          49,
+          95
+        ],
+        "components": [
+          3296
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "cebc061f48ca8e1e3f345efcf9738254b21f73102472e274515fd638aa3172e5",
+        "opaquePixels": 3296
+      },
+      {
+        "anchor": [
+          90,
+          156
+        ],
+        "root": [
+          88.35799485045624,
+          121.12912355229534
+        ],
+        "bbox": [
+          47,
+          75,
+          87,
+          82
+        ],
+        "components": [
+          4304
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "4942b91dce792f40c40c2d1f6735de71c210bc13ae3bc06da40c80941a1e3003",
+        "opaquePixels": 4304
+      },
+      {
+        "anchor": [
+          91.5,
+          168
+        ],
+        "root": [
+          89.97868140513435,
+          135.92593443183128
+        ],
+        "bbox": [
+          36,
+          96,
+          112,
+          73
+        ],
+        "components": [
+          5243
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "054d9811713487a8a5eeded0217d635f11904dfacb68f9ad811870bc657913b7",
+        "opaquePixels": 5243
+      },
+      {
+        "anchor": [
+          82,
+          159
+        ],
+        "root": [
+          80.52781428912958,
+          128.61780567682445
+        ],
+        "bbox": [
+          33,
+          90,
+          99,
+          70
+        ],
+        "components": [
+          4339
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "9450b0af8a85e2566b20910650bd810a2304cae383e28952a80aa0486e993a05",
+        "opaquePixels": 4339
+      },
+      {
+        "anchor": [
+          89.5,
+          174
+        ],
+        "root": [
+          89.52681105223932,
+          132.77163910529492
+        ],
+        "bbox": [
+          64,
+          86,
+          52,
+          89
+        ],
+        "components": [
+          3189
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "385efac01087150939192250032fb77f12ec19eb633e9836aa21f24bb33c5c0a",
+        "opaquePixels": 3189
+      },
+      {
+        "anchor": [
+          97.5,
+          159
+        ],
+        "root": [
+          99.14740243479135,
+          129.0746942007644
+        ],
+        "bbox": [
+          48,
+          91,
+          100,
+          69
+        ],
+        "components": [
+          4308
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "b5732694f65cabc555e1321b9a2f806e341d739209254e8aeab5d0354bd415be",
+        "opaquePixels": 4308
+      },
+      {
+        "anchor": [
+          79,
+          155
+        ],
+        "root": [
+          80.65967291763133,
+          123.51423830838092
+        ],
+        "bbox": [
+          23,
+          83,
+          113,
+          73
+        ],
+        "components": [
+          5185
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "c469544606401f3399eaf6bd38f9895a5e7fffcdbd2712384d47fc0b15e2c2ee",
+        "opaquePixels": 5185
       },
       {
         "anchor": [
@@ -5655,22 +5103,206 @@
           171
         ],
         "root": [
-          88.63675589845548,
-          112.0696080183736
+          88.78697471556309,
+          138.85605671042086
         ],
         "bbox": [
-          35,
-          57,
-          104,
-          115
+          42,
+          97,
+          90,
+          75
         ],
         "components": [
-          6817
+          3998
         ],
         "detachedShare": 0,
         "edgePixels": 0,
-        "hash": "50ff4d483163ef041e90a4815fd3cf0ccfbbf10b1df41df33358d91b1aade970",
-        "opaquePixels": 6817
+        "hash": "ad19820779cb831de270ac11d301858357c414625ece6cf3b3f77d50433909c7",
+        "opaquePixels": 3998
+      },
+      {
+        "anchor": [
+          76.5,
+          165
+        ],
+        "root": [
+          76.41980420839428,
+          119.3023014449394
+        ],
+        "bbox": [
+          53,
+          74,
+          48,
+          92
+        ],
+        "components": [
+          3151
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "81356b83d9f4ea17b78d9658c98adff1af0af830e6cb993540eed6c06c4804be",
+        "opaquePixels": 3151
+      },
+      {
+        "anchor": [
+          90.5,
+          156
+        ],
+        "root": [
+          88.7047598873176,
+          121.75870367061081
+        ],
+        "bbox": [
+          47,
+          78,
+          88,
+          79
+        ],
+        "components": [
+          4154
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "b33a6eaab15e0ac452d05cc48bd994fed8598bf0553c674751aa1c6983f69e81",
+        "opaquePixels": 4154
+      },
+      {
+        "anchor": [
+          93,
+          168
+        ],
+        "root": [
+          88.63217959499475,
+          125.57645795993116
+        ],
+        "bbox": [
+          41,
+          90,
+          105,
+          79
+        ],
+        "components": [
+          5036
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "d2df879519c7745453deccf6a35c776561d2d3ab1042cf515046163aa236f5bc",
+        "opaquePixels": 5036
+      },
+      {
+        "anchor": [
+          82,
+          159
+        ],
+        "root": [
+          78.74720106467436,
+          113.20108374374348
+        ],
+        "bbox": [
+          36,
+          79,
+          93,
+          81
+        ],
+        "components": [
+          4173
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "5850bf1cdec83229a86ffd029815c8c0630da829e430d94251c301eaad75d89e",
+        "opaquePixels": 4173
+      },
+      {
+        "anchor": [
+          90.5,
+          174
+        ],
+        "root": [
+          90.05047147739415,
+          124.42501344109449
+        ],
+        "bbox": [
+          67,
+          79,
+          48,
+          96
+        ],
+        "components": [
+          3080
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "2dafadc9000c8df0109226125f4962b442278eca3ba9ab54947814ee0c3ecb4b",
+        "opaquePixels": 3080
+      },
+      {
+        "anchor": [
+          98,
+          159
+        ],
+        "root": [
+          101.25279893532564,
+          113.20108374374348
+        ],
+        "bbox": [
+          52,
+          79,
+          93,
+          81
+        ],
+        "components": [
+          4173
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "0996bff87914cd21f40f025e91603cf5f228b448b670c7e31c77605f24149a8b",
+        "opaquePixels": 4173
+      },
+      {
+        "anchor": [
+          76.5,
+          155
+        ],
+        "root": [
+          81.6545823142137,
+          112.51266926263035
+        ],
+        "bbox": [
+          23,
+          77,
+          108,
+          79
+        ],
+        "components": [
+          5018
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "afd483c7335a14bc1353c8e1640c121d1905a7ac887a555ef79cc10163a57b07",
+        "opaquePixels": 5018
+      },
+      {
+        "anchor": [
+          88,
+          171
+        ],
+        "root": [
+          89.35343097151363,
+          125.88282441836998
+        ],
+        "bbox": [
+          49,
+          85,
+          79,
+          87
+        ],
+        "components": [
+          3846
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "bcc90bb25ee0d922b1e3a599142c3332071f213b2653a602527231004e53522a",
+        "opaquePixels": 3846
       },
       {
         "anchor": [
@@ -5678,68 +5310,252 @@
           166
         ],
         "root": [
-          75.84858970975176,
-          103.2371140612713
+          75.90039235539805,
+          121.0449106074772
         ],
         "bbox": [
-          44,
-          42,
-          65,
-          125
+          53,
+          78,
+          47,
+          89
         ],
         "components": [
-          6045
+          3024
         ],
         "detachedShare": 0,
         "edgePixels": 0,
-        "hash": "ad222f8e8d54c21f9f9dafc0e31968e92168b25f0517591f49de5ff3e26772b1",
-        "opaquePixels": 6045
+        "hash": "71946b1aa5b127a61de9f4833c61e2caa7532e12cd01ad5c26ff6fb246b3ea9d",
+        "opaquePixels": 3024
+      },
+      {
+        "anchor": [
+          87,
+          156
+        ],
+        "root": [
+          86.5840176879343,
+          109.22553266703761
+        ],
+        "bbox": [
+          49,
+          69,
+          77,
+          88
+        ],
+        "components": [
+          3973
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "ed3af92c35e21b4e325697fdd5aa6ebb73e55df77fa63b8e8fba4369539c58da",
+        "opaquePixels": 3973
+      },
+      {
+        "anchor": [
+          93.5,
+          168
+        ],
+        "root": [
+          89.08284438615046,
+          125.52093348667972
+        ],
+        "bbox": [
+          41,
+          89,
+          106,
+          80
+        ],
+        "components": [
+          5198
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "69c020e65d780143a5b92d467a8676fb3804ba76f046300300d899c5190cc80d",
+        "opaquePixels": 5198
+      },
+      {
+        "anchor": [
+          82.5,
+          159
+        ],
+        "root": [
+          79.25831909250331,
+          113.2296130806198
+        ],
+        "bbox": [
+          36,
+          78,
+          94,
+          82
+        ],
+        "components": [
+          4355
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "2b96e915bd50a9b90c367e029e2c3283f44cd58152c2ba14f1208300568f09c1",
+        "opaquePixels": 4355
+      },
+      {
+        "anchor": [
+          90.5,
+          174
+        ],
+        "root": [
+          90.24433361302583,
+          124.43434153328994
+        ],
+        "bbox": [
+          67,
+          78,
+          48,
+          97
+        ],
+        "components": [
+          3187
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "875c725a1551ccbfe4dbaffb8bd2a9eb9b087dcb40d22ac91f358fb1502bd561",
+        "opaquePixels": 3187
+      },
+      {
+        "anchor": [
+          97.5,
+          159
+        ],
+        "root": [
+          100.90756570163471,
+          113.45589676116309
+        ],
+        "bbox": [
+          51,
+          78,
+          94,
+          82
+        ],
+        "components": [
+          4356
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "699f71a283e2a208c062c1dacc9418de11555f8a3fed7650af87425114c258e0",
+        "opaquePixels": 4356
+      },
+      {
+        "anchor": [
+          76,
+          155
+        ],
+        "root": [
+          81.28914365304651,
+          112.75529988637427
+        ],
+        "bbox": [
+          22,
+          76,
+          109,
+          80
+        ],
+        "components": [
+          5177
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "8bafab19fe910c4adfdb61a00cc43696c6ea80136da81481a39a72cc4f68cf56",
+        "opaquePixels": 5177
       },
       {
         "anchor": [
           88,
-          156
+          171
         ],
         "root": [
-          87.01407812471295,
-          96.10002204491038
+          89.33676365802661,
+          125.980157141507
         ],
         "bbox": [
-          38,
-          42,
-          101,
-          115
+          49,
+          85,
+          79,
+          87
         ],
         "components": [
-          6786
+          3976
         ],
         "detachedShare": 0,
         "edgePixels": 0,
-        "hash": "ac4d564eb38d11de659375da9ebae00729a0e3e86d4ada3bd6c7c0b7bedecbe0",
-        "opaquePixels": 6786
+        "hash": "64d9e6b639cee52f732b6050e994a06c9ab38637b018f4f8d76ca9c25a39b96b",
+        "opaquePixels": 3976
       },
       {
         "anchor": [
-          95,
-          168
+          76,
+          166
         ],
         "root": [
-          89.74919272210877,
-          116.38308324083987
+          76.08317551428617,
+          121.00149750770032
         ],
         "bbox": [
-          31,
-          72,
-          129,
-          97
+          53,
+          77,
+          47,
+          90
         ],
         "components": [
-          7628
+          3128
         ],
         "detachedShare": 0,
         "edgePixels": 0,
-        "hash": "e2862099532c80b3b713e6776a543e109969d841d89a80eb2ebf97153c59ad61",
-        "opaquePixels": 7628
+        "hash": "4a75b089a7fc7414da9aeeb83d62450c81b6682b1053318f13219b9a0cce29bb",
+        "opaquePixels": 3128
+      },
+      {
+        "anchor": [
+          87.5,
+          156
+        ],
+        "root": [
+          86.90715330792376,
+          109.07063458921138
+        ],
+        "bbox": [
+          49,
+          68,
+          78,
+          89
+        ],
+        "components": [
+          4105
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "0c0bd94e4368edf17304404aafd99703a49f6879310af4ae5857475601bc5330",
+        "opaquePixels": 4105
+      },
+      {
+        "anchor": [
+          94,
+          168
+        ],
+        "root": [
+          89.74733422570823,
+          125.7582071092533
+        ],
+        "bbox": [
+          40,
+          88,
+          109,
+          81
+        ],
+        "components": [
+          5406
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "db67d99df9936821cf0f6428875da2bee891ea1f1e83bb66a6d3fa652b70f1f9",
+        "opaquePixels": 5406
       },
       {
         "anchor": [
@@ -5747,206 +5563,22 @@
           159
         ],
         "root": [
-          78.74977187413894,
-          100.46283784992718
-        ],
-        "bbox": [
-          24,
-          55,
-          119,
-          105
-        ],
-        "components": [
-          6998
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "5bfd75c1be5f76f6776550ebb6b9fad67a53f2a54d59b7b2120894360c4c6e0e",
-        "opaquePixels": 6998
-      },
-      {
-        "anchor": [
-          90,
-          174
-        ],
-        "root": [
-          89.74345676908635,
-          107.94175739747568
-        ],
-        "bbox": [
-          59,
-          47,
-          63,
-          128
-        ],
-        "components": [
-          5496
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "66adff4ef1a72c1993815e56dc8ffc4946d6bda861398cded28d497358922bcc",
-        "opaquePixels": 5496
-      },
-      {
-        "anchor": [
-          96.5,
-          159
-        ],
-        "root": [
-          100.89974785436644,
-          99.95157546101925
-        ],
-        "bbox": [
-          37,
-          55,
-          120,
-          105
-        ],
-        "components": [
-          6970
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "162413c815d2d5b76d04f47d4d047dce06b2ea6440534626f5ece094466d2c83",
-        "opaquePixels": 6970
-      },
-      {
-        "anchor": [
-          75,
-          155
-        ],
-        "root": [
-          81.43363010457233,
-          102.23337292321739
-        ],
-        "bbox": [
-          9,
-          58,
-          133,
-          98
-        ],
-        "components": [
-          7733
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "52a705a988badef1e962361a0b2a375846d93b1ffdcd1abf13763b7b42a15cb2",
-        "opaquePixels": 7733
-      },
-      {
-        "anchor": [
-          87,
-          171
-        ],
-        "root": [
-          88.87562701463739,
-          112.17812145937518
+          79.80638598474145,
+          113.50873776513696
         ],
         "bbox": [
           36,
-          59,
-          103,
-          113
-        ],
-        "components": [
-          6540
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "4bbd7920e1a1f5780870cd5e4ec53670aca2f12eb42f593e792f7c21ae517e35",
-        "opaquePixels": 6540
-      },
-      {
-        "anchor": [
-          75.5,
-          166
-        ],
-        "root": [
-          75.60648781688407,
-          103.72865440736965
-        ],
-        "bbox": [
-          44,
-          44,
-          64,
-          123
-        ],
-        "components": [
-          5840
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "fbd79988661126567945e5840c98bad03903539e863cb2ac1c567dd8d7763236",
-        "opaquePixels": 5840
-      },
-      {
-        "anchor": [
-          87,
-          156
-        ],
-        "root": [
-          86.24504735538022,
-          96.67486485831643
-        ],
-        "bbox": [
-          38,
-          44,
-          99,
-          113
-        ],
-        "components": [
-          6519
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "585d2b11d720f23938a3d6402c6d2697f3893ca31cabcea6bd150c276e4391e9",
-        "opaquePixels": 6519
-      },
-      {
-        "anchor": [
-          96,
-          168
-        ],
-        "root": [
-          88.64928812778591,
-          118.91967149112583
-        ],
-        "bbox": [
-          28,
           77,
-          137,
-          92
+          95,
+          83
         ],
         "components": [
-          7361
+          4545
         ],
         "detachedShare": 0,
         "edgePixels": 0,
-        "hash": "a0f0abd6f82b6fa47396b705a4895c3f414e2bd501fccdd9f81cc0cc5b56a692",
-        "opaquePixels": 7361
-      },
-      {
-        "anchor": [
-          83.5,
-          159
-        ],
-        "root": [
-          79.62761530905206,
-          104.16116367328131
-        ],
-        "bbox": [
-          26,
-          57,
-          116,
-          103
-        ],
-        "components": [
-          6535
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "280d7226eb54e8f073f38f14bf2f019e52b5effb5658555df81dd074f747d3a6",
-        "opaquePixels": 6535
+        "hash": "4b52a01facc668be31fce5469ad101fb4dec02658b92e6c0fcd4b13631882906",
+        "opaquePixels": 4545
       },
       {
         "anchor": [
@@ -5954,574 +5586,22 @@
           174
         ],
         "root": [
-          90.11720945523983,
-          101.14746565224702
+          89.9652820001766,
+          124.27772381517036
         ],
         "bbox": [
-          58,
-          43,
-          65,
-          132
-        ],
-        "components": [
-          5463
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "ebaccb66f27d466db7272b869f947e61e018bd2dceddd2a25d05e7123f09a487",
-        "opaquePixels": 5463
-      },
-      {
-        "anchor": [
-          96.5,
-          159
-        ],
-        "root": [
-          100.37238469094794,
-          104.16116367328131
-        ],
-        "bbox": [
-          39,
-          57,
-          116,
-          103
-        ],
-        "components": [
-          6535
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "992d9c83cd2e50319a0cfc9e1216de88e46b47c50eadc6d2b4f81a45a9ec3241",
-        "opaquePixels": 6535
-      },
-      {
-        "anchor": [
-          75.5,
-          155
-        ],
-        "root": [
-          82.44582481813212,
-          105.91297141976088
-        ],
-        "bbox": [
-          8,
-          64,
-          136,
-          92
-        ],
-        "components": [
-          7366
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "47d15bc665c2f0cd685387429511aa3616308180b73af83f9557257b3d133587",
-        "opaquePixels": 7366
-      },
-      {
-        "anchor": [
-          89,
-          171
-        ],
-        "root": [
-          90.1767132262657,
-          111.76169840940929
-        ],
-        "bbox": [
-          40,
-          60,
-          99,
-          112
-        ],
-        "components": [
-          6132
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "e139d809009794d6176dcb2b6b04f13da8e9adad45a6a4ef1ef325f278be7bb7",
-        "opaquePixels": 6132
-      },
-      {
-        "anchor": [
-          76.5,
-          166
-        ],
-        "root": [
-          76.27115938727292,
-          93.71370440259683
-        ],
-        "bbox": [
-          44,
-          33,
           66,
-          134
+          77,
+          49,
+          98
         ],
         "components": [
-          5720
+          3301
         ],
         "detachedShare": 0,
         "edgePixels": 0,
-        "hash": "5cc330b22c5633f635ad28a7e4532c3030122d21944b01d7a82fe689a32bc021",
-        "opaquePixels": 5720
-      },
-      {
-        "anchor": [
-          87.5,
-          156
-        ],
-        "root": [
-          86.89819520014747,
-          97.43025072333535
-        ],
-        "bbox": [
-          39,
-          46,
-          98,
-          111
-        ],
-        "components": [
-          6251
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "9dac6692e1473a23bef27cfa756694abb66ee95fd4170964c49e984390d1ceb5",
-        "opaquePixels": 6251
-      },
-      {
-        "anchor": [
-          96.5,
-          168
-        ],
-        "root": [
-          88.77260403321995,
-          119.05505588196316
-        ],
-        "bbox": [
-          28,
-          76,
-          138,
-          93
-        ],
-        "components": [
-          7568
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "abd8c9c7a889a1d63a580dd41683ebd362a68bdbd1a61c5a2869c5fa8693e942",
-        "opaquePixels": 7568
-      },
-      {
-        "anchor": [
-          83.5,
-          159
-        ],
-        "root": [
-          79.78325169055474,
-          104.33289333861573
-        ],
-        "bbox": [
-          25,
-          56,
-          118,
-          104
-        ],
-        "components": [
-          6774
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "8615143b179ac405c80c64c8aac92bb9a9fd8a2a23a24dcb0b93a2289c60f343",
-        "opaquePixels": 6774
-      },
-      {
-        "anchor": [
-          90,
-          174
-        ],
-        "root": [
-          90.01702450065544,
-          101.02676775559283
-        ],
-        "bbox": [
-          58,
-          42,
-          65,
-          133
-        ],
-        "components": [
-          5634
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "0194011cd1c90dbc539175fdc37a2a4308f13f3acf56594061ac5ca5bdeeaff2",
-        "opaquePixels": 5634
-      },
-      {
-        "anchor": [
-          96.5,
-          159
-        ],
-        "root": [
-          100.01842145544681,
-          104.15208224291682
-        ],
-        "bbox": [
-          38,
-          56,
-          118,
-          104
-        ],
-        "components": [
-          6749
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "40146abe75647772d8e0fd7ef128034bab1640a7306819d7ef9a8550de0e032e",
-        "opaquePixels": 6749
-      },
-      {
-        "anchor": [
-          75,
-          155
-        ],
-        "root": [
-          82.2057121389563,
-          105.83626791791389
-        ],
-        "bbox": [
-          7,
-          63,
-          137,
-          93
-        ],
-        "components": [
-          7576
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "8fee41629096210084377c5fc7870ad288a71a767106064f2d21032439230355",
-        "opaquePixels": 7576
-      },
-      {
-        "anchor": [
-          88.5,
-          171
-        ],
-        "root": [
-          89.95834126426747,
-          111.57586917568605
-        ],
-        "bbox": [
-          39,
-          58,
-          100,
-          114
-        ],
-        "components": [
-          6304
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "9b6cb6a8349facf30d747a0e7b57373b2f2145c3455331bfb07b1b20240609ca",
-        "opaquePixels": 6304
-      },
-      {
-        "anchor": [
-          76,
-          166
-        ],
-        "root": [
-          76.16874774752709,
-          93.58529795624167
-        ],
-        "bbox": [
-          43,
-          32,
-          67,
-          135
-        ],
-        "components": [
-          5887
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "ef49c24bd9817d90d132f915634027f7cab968e544ae07c5511bb8075b11ff48",
-        "opaquePixels": 5887
-      },
-      {
-        "anchor": [
-          88,
-          156
-        ],
-        "root": [
-          86.87042737314648,
-          97.41706834447665
-        ],
-        "bbox": [
-          39,
-          45,
-          99,
-          112
-        ],
-        "components": [
-          6436
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "8803693a86db543d19aba56db2767217d6b05a49b056c78d890ad03ef0c8c0ea",
-        "opaquePixels": 6436
-      },
-      {
-        "anchor": [
-          96.5,
-          168
-        ],
-        "root": [
-          89.14134794890064,
-          118.77405074607152
-        ],
-        "bbox": [
-          27,
-          75,
-          140,
-          94
-        ],
-        "components": [
-          7780
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "ff70158f4cd867977107bdda6019ac5e942e6bc8be9f3f7a179a433305056636",
-        "opaquePixels": 7780
-      },
-      {
-        "anchor": [
-          84,
-          158
-        ],
-        "root": [
-          80.24473975834597,
-          104.10039461860978
-        ],
-        "bbox": [
-          25,
-          55,
-          119,
-          104
-        ],
-        "components": [
-          7012
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "2c125ffed39240e0503a80d68b649688c0dbcf1e0cc5527aa9b6aa96b94699aa",
-        "opaquePixels": 7012
-      },
-      {
-        "anchor": [
-          90,
-          174
-        ],
-        "root": [
-          90.21172172121828,
-          100.64478037799253
-        ],
-        "bbox": [
-          58,
-          40,
-          65,
-          135
-        ],
-        "components": [
-          5828
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "e8243a93985a46e683b323ca448008d6e6cd7369d12605935838cbae428bc57a",
-        "opaquePixels": 5828
-      },
-      {
-        "anchor": [
-          96,
-          158
-        ],
-        "root": [
-          99.94050535714285,
-          104.28288690476191
-        ],
-        "bbox": [
-          37,
-          55,
-          119,
-          104
-        ],
-        "components": [
-          7028
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "86fb20fcadc3d3f682b1d8e0dcb35a93873f827b1ccf76b99a714595bc50d6db",
-        "opaquePixels": 7028
-      },
-      {
-        "anchor": [
-          75,
-          155
-        ],
-        "root": [
-          82.12204094852939,
-          105.96738416385428
-        ],
-        "bbox": [
-          6,
-          61,
-          139,
-          95
-        ],
-        "components": [
-          7779
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "f4483d75b919837af9d427ede70f38fcf7f8eabcd0681d94ec96742280c965fc",
-        "opaquePixels": 7779
-      },
-      {
-        "anchor": [
-          88.5,
-          171
-        ],
-        "root": [
-          90.13160092517506,
-          111.36926419511299
-        ],
-        "bbox": [
-          39,
-          57,
-          100,
-          115
-        ],
-        "components": [
-          6520
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "f163ee774461f9ec439f32f60799fcbecedae33833a9cf99a71e27989aebfa55",
-        "opaquePixels": 6520
-      },
-      {
-        "anchor": [
-          76,
-          166
-        ],
-        "root": [
-          76.3737081360275,
-          93.21715834931068
-        ],
-        "bbox": [
-          43,
-          30,
-          67,
-          137
-        ],
-        "components": [
-          6099
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "0923a7d0fe96d0b796c29fcfe4044c4181da4a3ccbca41db5419090738fce01d",
-        "opaquePixels": 6099
-      },
-      {
-        "anchor": [
-          87.5,
-          156
-        ],
-        "root": [
-          87.1821310806889,
-          96.90582812953456
-        ],
-        "bbox": [
-          38,
-          43,
-          100,
-          114
-        ],
-        "components": [
-          6645
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "09b8a9baa7b623acc84f77177f92a810d725e8f614ef1e92cd2f84ca8a4c76ef",
-        "opaquePixels": 6645
-      },
-      {
-        "anchor": [
-          96.5,
-          168
-        ],
-        "root": [
-          88.78218697773193,
-          118.53641327304001
-        ],
-        "bbox": [
-          28,
-          76,
-          138,
-          93
-        ],
-        "components": [
-          7529
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "5192931ace767336a0cbb93cc849dd87e9994efbf1ba1b750948d1c5ac8685ea",
-        "opaquePixels": 7529
-      },
-      {
-        "anchor": [
-          84,
-          159
-        ],
-        "root": [
-          79.99091393377508,
-          103.82065003722776
-        ],
-        "bbox": [
-          26,
-          56,
-          117,
-          104
-        ],
-        "components": [
-          6691
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "55ee60b6fc6f6ea9f7d9b9e1e534398f30914315638a8469a458894ce4f5bf9a",
-        "opaquePixels": 6691
-      },
-      {
-        "anchor": [
-          90,
-          174
-        ],
-        "root": [
-          90.43764001553554,
-          100.90604246873325
-        ],
-        "bbox": [
-          58,
-          42,
-          65,
-          133
-        ],
-        "components": [
-          5585
-        ],
-        "detachedShare": 0,
-        "edgePixels": 0,
-        "hash": "534ef39393760b9897255aa80ed51d0a7446b27f753f1268eae5208ff68fb63f",
-        "opaquePixels": 5585
+        "hash": "3f2982c3a4f56aa5c8bd3340eb439d4031312cf8174a0bd8d33cdbe6f3b37e7e",
+        "opaquePixels": 3301
       },
       {
         "anchor": [
@@ -6529,68 +5609,436 @@
           159
         ],
         "root": [
-          100.56821254517773,
-          104.40851310582026
+          100.11854806697063,
+          113.38027868566617
         ],
         "bbox": [
-          39,
-          56,
-          117,
-          104
+          50,
+          77,
+          95,
+          83
         ],
         "components": [
-          6720
+          4550
         ],
         "detachedShare": 0,
         "edgePixels": 0,
-        "hash": "b6356ca1aca49b7f9786ebd666f28fd83f93f803f31625ba8a9e0870670d98d9",
-        "opaquePixels": 6720
+        "hash": "2d9cdf169353792c613e9346ee0d8efb62ef8732215a9850ac1621927177d681",
+        "opaquePixels": 4550
       },
       {
         "anchor": [
-          75,
+          75.5,
           155
         ],
         "root": [
-          82.632686155206,
-          106.16211659212769
+          80.51144898520002,
+          112.55568798335493
         ],
         "bbox": [
-          7,
-          63,
-          137,
-          93
+          20,
+          75,
+          112,
+          81
         ],
         "components": [
-          7502
+          5372
         ],
         "detachedShare": 0,
         "edgePixels": 0,
-        "hash": "5a3246ef1796b0c269fb93dca8ea67002c50c1b696c5d855093c78103625fb26",
-        "opaquePixels": 7502
+        "hash": "4dcb1e3a93f33543e9ac8ccd65a8cc93c51c171f66b16ea1a3df0c2c81b3c2ac",
+        "opaquePixels": 5372
       },
       {
         "anchor": [
-          89,
+          87.5,
           171
         ],
         "root": [
-          90.59385440728798,
-          111.84504086503736
+          88.78216231159895,
+          125.61873566513762
         ],
         "bbox": [
-          40,
-          59,
-          99,
-          113
+          48,
+          83,
+          80,
+          89
         ],
         "components": [
-          6264
+          4121
         ],
         "detachedShare": 0,
         "edgePixels": 0,
-        "hash": "d489c8de2786db2e8520040da81f90bb10a887ffd0e1044adeb9bdbfe5d3567a",
-        "opaquePixels": 6264
+        "hash": "fecc1176da093c3e3f5388bd1ec7b40ea26d0e63caf15948d523d7ff2ed577cf",
+        "opaquePixels": 4121
+      },
+      {
+        "anchor": [
+          76,
+          166
+        ],
+        "root": [
+          75.82329453446515,
+          120.74452956587213
+        ],
+        "bbox": [
+          53,
+          76,
+          47,
+          91
+        ],
+        "components": [
+          3219
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "52a19c5cd6045d4b7a506626bbee36bc6b125dfd5a61a5670a4544a5bc5d8f88",
+        "opaquePixels": 3219
+      },
+      {
+        "anchor": [
+          87.5,
+          156
+        ],
+        "root": [
+          87.0183649312474,
+          109.01659630294542
+        ],
+        "bbox": [
+          48,
+          66,
+          80,
+          91
+        ],
+        "components": [
+          4253
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "8838924cd8487514dc8d5062cebcae9bdf46fed149a2c78d5e0e683f4b93a152",
+        "opaquePixels": 4253
+      },
+      {
+        "anchor": [
+          93.5,
+          168
+        ],
+        "root": [
+          88.7191805128802,
+          125.92779452008763
+        ],
+        "bbox": [
+          41,
+          89,
+          106,
+          80
+        ],
+        "components": [
+          5153
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "938bb8e7d080491d0ce07189ba0f304428559cf4ccd21b92837e70d272b9b65e",
+        "opaquePixels": 5153
+      },
+      {
+        "anchor": [
+          82,
+          159
+        ],
+        "root": [
+          78.79605783411154,
+          113.48863650839536
+        ],
+        "bbox": [
+          36,
+          78,
+          93,
+          82
+        ],
+        "components": [
+          4315
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "63890610a12e763521ee139aa38337f01a8e07dcedc01a9a8830bbe0fdb571e5",
+        "opaquePixels": 4315
+      },
+      {
+        "anchor": [
+          89.5,
+          174
+        ],
+        "root": [
+          89.60087072213294,
+          124.36719840872567
+        ],
+        "bbox": [
+          66,
+          78,
+          48,
+          97
+        ],
+        "components": [
+          3159
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "c960335e0ae98766e7d65c2764f68a476cf15807fb1e75283cd429b348fe40f2",
+        "opaquePixels": 3159
+      },
+      {
+        "anchor": [
+          97.5,
+          159
+        ],
+        "root": [
+          100.83889062258507,
+          112.97441851994412
+        ],
+        "bbox": [
+          51,
+          78,
+          94,
+          82
+        ],
+        "components": [
+          4305
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "af9ff5f4683451b51f656cf05c7a0a9e07d07457433ebca3b36d3ba6665b45e0",
+        "opaquePixels": 4305
+      },
+      {
+        "anchor": [
+          76.5,
+          155
+        ],
+        "root": [
+          81.44113566812892,
+          112.18103066143055
+        ],
+        "bbox": [
+          23,
+          76,
+          108,
+          80
+        ],
+        "components": [
+          5134
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "08687ab233c7fd15b7209d819fe2e62cbff1b5bc43865b3e26a1ad12c5b72145",
+        "opaquePixels": 5134
+      },
+      {
+        "anchor": [
+          87.5,
+          171
+        ],
+        "root": [
+          88.9470967700647,
+          125.56648982125601
+        ],
+        "bbox": [
+          48,
+          85,
+          80,
+          87
+        ],
+        "components": [
+          3942
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "8e8a927ba47574c8a856bc3db58f6c72490dff9a14ff751ff31da956f32f4903",
+        "opaquePixels": 3942
+      },
+      {
+        "anchor": [
+          76,
+          166
+        ],
+        "root": [
+          75.45655225435911,
+          120.94319566888741
+        ],
+        "bbox": [
+          53,
+          77,
+          47,
+          90
+        ],
+        "components": [
+          3107
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "a6fa6f9ad8cc943cb583d149bf230e60ddf9662d2e60f6ad264a4b1c487c0fb1",
+        "opaquePixels": 3107
+      },
+      {
+        "anchor": [
+          87,
+          156
+        ],
+        "root": [
+          86.2770873085452,
+          109.39869630240834
+        ],
+        "bbox": [
+          49,
+          68,
+          77,
+          89
+        ],
+        "components": [
+          4075
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "2074ae8e9110c5a1f61554c351aaae4b461ee7b9531c9d3087fa00ba6ba5570e",
+        "opaquePixels": 4075
+      },
+      {
+        "anchor": [
+          95,
+          168
+        ],
+        "root": [
+          88.7103742243984,
+          127.60895556609675
+        ],
+        "bbox": [
+          39,
+          93,
+          113,
+          76
+        ],
+        "components": [
+          5030
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "c6ef32d4be644510897e8f187171e78b7f5a9d2025b0507e97a164e3153c933a",
+        "opaquePixels": 5030
+      },
+      {
+        "anchor": [
+          82.5,
+          158
+        ],
+        "root": [
+          79.59049130974145,
+          115.39614561886816
+        ],
+        "bbox": [
+          37,
+          78,
+          92,
+          81
+        ],
+        "components": [
+          4170
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "dca81ca81fd76358999211c1300fa9c4e0732021141a6f0c69277b872dc9b217",
+        "opaquePixels": 4170
+      },
+      {
+        "anchor": [
+          90,
+          174
+        ],
+        "root": [
+          90.11375396978057,
+          119.55011171208011
+        ],
+        "bbox": [
+          66,
+          76,
+          49,
+          99
+        ],
+        "components": [
+          3077
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "44cf367688f1e4aee14f47636a41ba932084fdfe8cb85dd297b99e033564fa89",
+        "opaquePixels": 3077
+      },
+      {
+        "anchor": [
+          97.5,
+          158
+        ],
+        "root": [
+          100.40950869025855,
+          115.39614561886816
+        ],
+        "bbox": [
+          52,
+          78,
+          92,
+          81
+        ],
+        "components": [
+          4170
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "1f91f25998180ec2fed31276b384608bee66a87b15f521acf330dae07bba52c4",
+        "opaquePixels": 4170
+      },
+      {
+        "anchor": [
+          76.5,
+          155
+        ],
+        "root": [
+          82.38657633322805,
+          114.70625269304271
+        ],
+        "bbox": [
+          21,
+          80,
+          112,
+          76
+        ],
+        "components": [
+          5017
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "4e3c665b68d246570ef4dc4ef61e89290645946f50fe2be7fec6b7537d09d1bd",
+        "opaquePixels": 5017
+      },
+      {
+        "anchor": [
+          90,
+          171
+        ],
+        "root": [
+          91.06902877763832,
+          124.23846148035358
+        ],
+        "bbox": [
+          51,
+          83,
+          79,
+          89
+        ],
+        "components": [
+          3852
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "6a9177fd7f1a30763f629aa49940dd639227b3966b40eeb0f0533d83cac33a02",
+        "opaquePixels": 3852
       },
       {
         "anchor": [
@@ -6598,22 +6046,574 @@
           166
         ],
         "root": [
-          76.61014110647048,
-          93.46069489172153
+          76.27012072434607,
+          113.63668833654098
         ],
         "bbox": [
-          44,
-          32,
-          66,
-          135
+          53,
+          70,
+          48,
+          97
         ],
         "components": [
-          5840
+          3023
         ],
         "detachedShare": 0,
         "edgePixels": 0,
-        "hash": "22c4a4256d5f5a33d4f049517f6af5da32aa3f8e061e97fa5b31c599699ecd46",
-        "opaquePixels": 5840
+        "hash": "93de276e4f7993deff2104a8baf023721c0c72331a8530efb495b94a51500169",
+        "opaquePixels": 3023
+      },
+      {
+        "anchor": [
+          87.5,
+          156
+        ],
+        "root": [
+          86.94438515864496,
+          109.46113911653823
+        ],
+        "bbox": [
+          49,
+          68,
+          78,
+          89
+        ],
+        "components": [
+          3983
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "2c270caad73f40837020e864b5c85ce10bf13ca2c1017fa4bd666d9baca8b3ad",
+        "opaquePixels": 3983
+      },
+      {
+        "anchor": [
+          95.5,
+          168
+        ],
+        "root": [
+          88.83300725590328,
+          127.8133593215412
+        ],
+        "bbox": [
+          39,
+          92,
+          114,
+          77
+        ],
+        "components": [
+          5169
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "ddaff738624ac475540669b22ff7d138583f61ab9917350c7653054d38862f39",
+        "opaquePixels": 5169
+      },
+      {
+        "anchor": [
+          83,
+          158
+        ],
+        "root": [
+          79.71550786899773,
+          115.6511681016226
+        ],
+        "bbox": [
+          37,
+          77,
+          93,
+          82
+        ],
+        "components": [
+          4342
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "17f55e836ecaadd24265520e76ebc941bf65eda58b372e982c88da462483c7b6",
+        "opaquePixels": 4342
+      },
+      {
+        "anchor": [
+          90,
+          174
+        ],
+        "root": [
+          89.9898989635072,
+          119.63151988461931
+        ],
+        "bbox": [
+          66,
+          75,
+          49,
+          100
+        ],
+        "components": [
+          3192
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "b6e4cc7579b540de2d818a7048b0ebce4c18834ff0263efbbf6df3f4218dc22b",
+        "opaquePixels": 3192
+      },
+      {
+        "anchor": [
+          97,
+          158
+        ],
+        "root": [
+          100.0772564473059,
+          115.47497812116144
+        ],
+        "bbox": [
+          51,
+          77,
+          93,
+          82
+        ],
+        "components": [
+          4328
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "1195e631f8495214d209b29a0d05e4b57aafb87c5a1b9d1d31d1f0848513bc6d",
+        "opaquePixels": 4328
+      },
+      {
+        "anchor": [
+          76,
+          155
+        ],
+        "root": [
+          82.16543284867467,
+          114.70356441463161
+        ],
+        "bbox": [
+          20,
+          79,
+          113,
+          77
+        ],
+        "components": [
+          5146
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "8d586cb1ab5241beb532b58128fd9e097f639a8184217359344d79020e32d554",
+        "opaquePixels": 5146
+      },
+      {
+        "anchor": [
+          90,
+          171
+        ],
+        "root": [
+          90.87793621329733,
+          124.1385757678029
+        ],
+        "bbox": [
+          51,
+          82,
+          79,
+          90
+        ],
+        "components": [
+          3973
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "28c83b8d5ee975e1526d6a7def576b484fae60ab33d2c2020289d6db15d33b24",
+        "opaquePixels": 3973
+      },
+      {
+        "anchor": [
+          76.5,
+          166
+        ],
+        "root": [
+          76.1398092845982,
+          113.73033803329223
+        ],
+        "bbox": [
+          53,
+          69,
+          48,
+          98
+        ],
+        "components": [
+          3141
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "396841e5f4f37e5fd8d59809942eae4a2e3da1d6c7ef8340197c4db60ee5081e",
+        "opaquePixels": 3141
+      },
+      {
+        "anchor": [
+          87.5,
+          156
+        ],
+        "root": [
+          86.86504486597525,
+          109.5127361643199
+        ],
+        "bbox": [
+          49,
+          67,
+          78,
+          90
+        ],
+        "components": [
+          4116
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "d981e1806b5dbb95bb617747bcb5a06cc2d3eb1a504a7270a180667ba7b4fd17",
+        "opaquePixels": 4116
+      },
+      {
+        "anchor": [
+          95.5,
+          168
+        ],
+        "root": [
+          89.15070778383738,
+          127.6503409023302
+        ],
+        "bbox": [
+          38,
+          91,
+          116,
+          78
+        ],
+        "components": [
+          5332
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "a7e48aebfebd2fc3078da98f6d5825182be832ed8b3b85bb015fdf70995d1fd7",
+        "opaquePixels": 5332
+      },
+      {
+        "anchor": [
+          83,
+          158
+        ],
+        "root": [
+          80.15298543210572,
+          115.543491410484
+        ],
+        "bbox": [
+          36,
+          76,
+          95,
+          83
+        ],
+        "components": [
+          4494
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "99f897892fdb2fd5da31066ea78a004be7d0ad8d9f12654ca62e4b575940bc7e",
+        "opaquePixels": 4494
+      },
+      {
+        "anchor": [
+          90,
+          174
+        ],
+        "root": [
+          90.24080145079851,
+          119.57875046717017
+        ],
+        "bbox": [
+          66,
+          74,
+          49,
+          101
+        ],
+        "components": [
+          3329
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "521d8eaa1739f55364fc3d9641e41c23a6ff78845d2d1097dcaebee6212645ae",
+        "opaquePixels": 3329
+      },
+      {
+        "anchor": [
+          97,
+          158
+        ],
+        "root": [
+          100.05805188899079,
+          115.71702440729437
+        ],
+        "bbox": [
+          50,
+          76,
+          95,
+          83
+        ],
+        "components": [
+          4503
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "3c2659691501ce53b425e3afcccc826c6913d5857a1ca4c8c73369ddacc3ea92",
+        "opaquePixels": 4503
+      },
+      {
+        "anchor": [
+          76,
+          155
+        ],
+        "root": [
+          82.1304699126858,
+          114.9266915132121
+        ],
+        "bbox": [
+          19,
+          78,
+          115,
+          78
+        ],
+        "components": [
+          5298
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "a55522b785a1d1100c50d6d766389be87166b63c909f7ecd7f3d2ce794bc287e",
+        "opaquePixels": 5298
+      },
+      {
+        "anchor": [
+          89.5,
+          171
+        ],
+        "root": [
+          91.08432115436236,
+          124.06122509615247
+        ],
+        "bbox": [
+          50,
+          81,
+          80,
+          91
+        ],
+        "components": [
+          4102
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "0b24da60b84aa7fdef1b73a6a227e3fa51d48a5193103cb30fcfd89fc3fa0a78",
+        "opaquePixels": 4102
+      },
+      {
+        "anchor": [
+          76.5,
+          166
+        ],
+        "root": [
+          76.41788450864175,
+          113.66055034165078
+        ],
+        "bbox": [
+          53,
+          67,
+          48,
+          100
+        ],
+        "components": [
+          3276
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "54231dc5724a2fcf0f0adb12b286a8a7716f647a5c6e78243ac8276b3f9807c3",
+        "opaquePixels": 3276
+      },
+      {
+        "anchor": [
+          87.5,
+          156
+        ],
+        "root": [
+          87.18074522102452,
+          109.14997236326751
+        ],
+        "bbox": [
+          48,
+          66,
+          80,
+          91
+        ],
+        "components": [
+          4248
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "27408701d7bac5934d5633fe5da72a59da970e31a17584e6e8c9b540950d8edd",
+        "opaquePixels": 4248
+      },
+      {
+        "anchor": [
+          95,
+          168
+        ],
+        "root": [
+          88.8599267254996,
+          127.29241284806413
+        ],
+        "bbox": [
+          39,
+          92,
+          113,
+          77
+        ],
+        "components": [
+          5152
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "39e055174f24d5a39078500e61c523c8ce036bc5a3194f2967474fa4132d7f67",
+        "opaquePixels": 5152
+      },
+      {
+        "anchor": [
+          83,
+          158
+        ],
+        "root": [
+          79.95931776119079,
+          115.14659343778271
+        ],
+        "bbox": [
+          37,
+          77,
+          93,
+          82
+        ],
+        "components": [
+          4291
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "5885d1b855a129bad148d32bb486b5fb6c4574bb5359baf09797ffe0e8bfe86f",
+        "opaquePixels": 4291
+      },
+      {
+        "anchor": [
+          90,
+          174
+        ],
+        "root": [
+          90.54210717325749,
+          119.4733993625824
+        ],
+        "bbox": [
+          66,
+          75,
+          49,
+          100
+        ],
+        "components": [
+          3167
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "a728b702f7b97260a09e839b7666fc3467bf0be611fbbaecd64ab66739940f52",
+        "opaquePixels": 3167
+      },
+      {
+        "anchor": [
+          97.5,
+          158
+        ],
+        "root": [
+          100.64397041504674,
+          115.69999063767303
+        ],
+        "bbox": [
+          52,
+          77,
+          92,
+          82
+        ],
+        "components": [
+          4301
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "b0f9af1388578444565813a52a16ab9c4620a85fe6e0003b89996f6d9deba7df",
+        "opaquePixels": 4301
+      },
+      {
+        "anchor": [
+          76.5,
+          155
+        ],
+        "root": [
+          82.59268358252166,
+          115.01430692557437
+        ],
+        "bbox": [
+          21,
+          79,
+          112,
+          77
+        ],
+        "components": [
+          5100
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "bcea36eace573aeb52019a7f128ed2b87db5cd1e15530f65d17999752685ff85",
+        "opaquePixels": 5100
+      },
+      {
+        "anchor": [
+          90,
+          171
+        ],
+        "root": [
+          91.5163437002872,
+          124.37966112552449
+        ],
+        "bbox": [
+          51,
+          82,
+          79,
+          90
+        ],
+        "components": [
+          3941
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "9a0b4f01efc89c89d7c2cd0455bc21cf777e6af213ad67f212c12998dd22ff9c",
+        "opaquePixels": 3941
+      },
+      {
+        "anchor": [
+          76.5,
+          166
+        ],
+        "root": [
+          76.71595600930861,
+          113.583245305479
+        ],
+        "bbox": [
+          53,
+          69,
+          48,
+          98
+        ],
+        "components": [
+          3116
+        ],
+        "detachedShare": 0,
+        "edgePixels": 0,
+        "hash": "9542b2408e58f0471cdf5d6d898e86692168043b8925e1357b33d2440d426db9",
+        "opaquePixels": 3116
       },
       {
         "anchor": [
@@ -6621,22 +6621,22 @@
           156
         ],
         "root": [
-          87.23935192332891,
-          96.99236026690089
+          87.27225601540339,
+          109.12279918622089
         ],
         "bbox": [
-          39,
-          45,
-          99,
-          112
+          49,
+          68,
+          79,
+          89
         ],
         "components": [
-          6384
+          4086
         ],
         "detachedShare": 0,
         "edgePixels": 0,
-        "hash": "4d921c28e20863f941442570782858df03b962f5a89c9a2fa6448332ba11ee99",
-        "opaquePixels": 6384
+        "hash": "a9d05030a3d1f1c15e42b4bdd855ac5740446a7ff313422c5d104e8043dbdb0d",
+        "opaquePixels": 4086
       }
     ]
   }

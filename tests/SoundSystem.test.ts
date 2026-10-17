@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { selectStrongestSound, type AmbientSoundArea, type TimedSound } from '../src/game/systems/SoundModel';
+import { selectAudibleSounds, selectStrongestSound, type AmbientSoundArea, type TimedSound } from '../src/game/systems/SoundModel';
 
 describe('hearing direction', () => {
   it('follows a moving source for the lifetime of its sound cue', () => {
@@ -34,5 +34,32 @@ describe('hearing direction', () => {
     const deer: TimedSound = { source: { x: 35, y: 0 }, label: 'DISTANT HOOVES', createdAt: 100, reach: 760 };
     const river: AmbientSoundArea = { x: 260, y: -100, width: 0, height: 200, label: 'FLOWING WATER', reach: 720, intensity: 0.68 };
     expect(selectStrongestSound(150, { x: 0, y: 0 }, 1, [deer], [river])?.label).toBe('DISTANT HOOVES');
+  });
+
+  it('returns every audible typed source for the directional HUD', () => {
+    const rabbit: TimedSound = {
+      source: { x: -90, y: 0 },
+      sourceId: 'animal:rabbit',
+      kind: 'rabbit',
+      label: 'RUSTLING BRUSH',
+      createdAt: 0,
+      reach: 760,
+    };
+    const river: AmbientSoundArea = {
+      x: 250,
+      y: -50,
+      width: 0,
+      height: 100,
+      label: 'FLOWING WATER',
+      reach: 720,
+      intensity: 0.68,
+      kind: 'water',
+    };
+
+    expect(selectAudibleSounds(100, { x: 0, y: 0 }, 1, [rabbit], [river]))
+      .toEqual(expect.arrayContaining([
+        expect.objectContaining({ sourceId: 'animal:rabbit', kind: 'rabbit' }),
+        expect.objectContaining({ kind: 'water' }),
+      ]));
   });
 });

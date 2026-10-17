@@ -5,6 +5,8 @@ export interface SoundSource {
 
 export interface TimedSound {
   source: SoundSource;
+  sourceId?: string;
+  kind?: AudibleSoundKind;
   label: string;
   createdAt: number;
   reach: number;
@@ -19,11 +21,16 @@ export interface AmbientSoundArea {
   label: string;
   reach: number;
   intensity?: number;
+  kind?: AudibleSoundKind;
 }
+
+export type AudibleSoundKind = 'rabbit' | 'deer' | 'elk' | 'boar' | 'pack' | 'water';
 
 export interface AudibleSound {
   x: number;
   y: number;
+  sourceId: string;
+  kind: AudibleSoundKind;
   label: string;
   strength: number;
 }
@@ -40,26 +47,51 @@ const scoreSound = (listener: SoundSource, source: SoundSource, reach: number, h
   return Math.max(0, intensity * (1 - distance / (reach * hearing)));
 };
 
+export const selectAudibleSounds = (
+  time: number,
+  listener: SoundSource,
+  hearing: number,
+  events: readonly TimedSound[],
+  ambients: readonly AmbientSoundArea[],
+): AudibleSound[] => {
+  const audible = new Map<string, AudibleSound>();
+  const consider = (
+    source: SoundSource,
+    sourceId: string,
+    kind: AudibleSoundKind,
+    label: string,
+    reach: number,
+    intensity: number,
+  ): void => {
+    const strength = scoreSound(listener, source, reach, hearing, intensity);
+    const previous = audible.get(sourceId);
+    if (strength > 0 && (!previous || strength > previous.strength)) {
+      audible.set(sourceId, { ...source, sourceId, kind, label, strength });
+    }
+  };
+  for (const event of events) {
+    const age = Math.max(0, time - event.createdAt);
+    const duration = event.duration ?? 6200;
+    if (age > duration) continue;
+    consider(event.source, event.sourceId ?? `sound:${event.label}`, event.kind ?? 'pack', event.label, event.reach, 1 - age / duration);
+  }
+  for (const [index, ambient] of ambients.entries()) {
+    consider(
+      nearestPointInArea(listener, ambient),
+      `${ambient.kind ?? 'water'}:${ambient.x}:${ambient.y}:${ambient.width}:${ambient.height}:${index}`,
+      ambient.kind ?? 'water',
+      ambient.label,
+      ambient.reach,
+      ambient.intensity ?? 0.62,
+    );
+  }
+  return [...audible.values()].sort((left, right) => right.strength - left.strength);
+};
+
 export const selectStrongestSound = (
   time: number,
   listener: SoundSource,
   hearing: number,
   events: readonly TimedSound[],
   ambients: readonly AmbientSoundArea[],
-): AudibleSound | undefined => {
-  let strongest: AudibleSound | undefined;
-  const consider = (source: SoundSource, label: string, reach: number, intensity: number): void => {
-    const strength = scoreSound(listener, source, reach, hearing, intensity);
-    if (strength > 0 && (!strongest || strength > strongest.strength)) strongest = { ...source, label, strength };
-  };
-  for (const event of events) {
-    const age = Math.max(0, time - event.createdAt);
-    const duration = event.duration ?? 6200;
-    if (age > duration) continue;
-    consider(event.source, event.label, event.reach, 1 - age / duration);
-  }
-  for (const ambient of ambients) {
-    consider(nearestPointInArea(listener, ambient), ambient.label, ambient.reach, ambient.intensity ?? 0.62);
-  }
-  return strongest;
-};
+): AudibleSound | undefined => selectAudibleSounds(time, listener, hearing, events, ambients)[0];

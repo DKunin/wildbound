@@ -1,0 +1,1034 @@
+{
+  "schemaVersion": 1,
+  "generator": "scripts/normalize-player-state-scales.mjs",
+  "art_source": "existing",
+  "method": "shared visible-area scale per same-direction state sequence; premultiplied bilinear sampling around the existing horizontal root and direction-specific vertical anchor",
+  "directions": [
+    {
+      "direction": "east",
+      "idleVisiblePixels": 35044,
+      "groups": [
+        {
+          "state": "attacking",
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "calibrationFrames": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "scale": 0.998051,
+          "targetVisiblePixels": 35044,
+          "visiblePixelsBefore": 35181,
+          "visiblePixelsAfter": 35181,
+          "areaRatioBefore": 1.003909,
+          "areaRatioAfter": 1.003909
+        },
+        {
+          "state": "eating",
+          "frames": [
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "calibrationFrames": [
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "scale": 0.998079,
+          "targetVisiblePixels": 35044,
+          "visiblePixelsBefore": 35179,
+          "visiblePixelsAfter": 35179,
+          "areaRatioBefore": 1.003852,
+          "areaRatioAfter": 1.003852
+        },
+        {
+          "state": "drinking",
+          "frames": [
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "calibrationFrames": [
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "scale": 0.99928,
+          "targetVisiblePixels": 35044,
+          "visiblePixelsBefore": 35094.5,
+          "visiblePixelsAfter": 35094.5,
+          "areaRatioBefore": 1.001441,
+          "areaRatioAfter": 1.001441
+        },
+        {
+          "state": "rest-sequence",
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "calibrationFrames": [
+            0,
+            15
+          ],
+          "scale": 0.999067,
+          "targetVisiblePixels": 35044,
+          "visiblePixelsBefore": 35109.5,
+          "visiblePixelsAfter": 35109.5,
+          "areaRatioBefore": 1.001869,
+          "areaRatioAfter": 1.001869
+        }
+      ],
+      "outputs": [
+        {
+          "file": "public/assets/player-wolf-v2/wolf-east-action.png",
+          "sha256": "f4636bdc67bfe1e93fd87c1fbe1952feafb4e582a4e68371db4ae82663c704da"
+        },
+        {
+          "file": "public/assets/player-wolf-v2/wolf-east-rest.png",
+          "sha256": "711067f3f55835a13c1a354834722b56e82bf0a728acc8b4b0d1c362cadca3b3"
+        }
+      ]
+    },
+    {
+      "direction": "northeast",
+      "idleVisiblePixels": 30475.5,
+      "groups": [
+        {
+          "state": "attacking",
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "calibrationFrames": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "scale": 0.998568,
+          "targetVisiblePixels": 30475.5,
+          "visiblePixelsBefore": 30563,
+          "visiblePixelsAfter": 30563,
+          "areaRatioBefore": 1.002871,
+          "areaRatioAfter": 1.002871
+        },
+        {
+          "state": "eating",
+          "frames": [
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "calibrationFrames": [
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "scale": 0.998225,
+          "targetVisiblePixels": 30475.5,
+          "visiblePixelsBefore": 30584,
+          "visiblePixelsAfter": 30584,
+          "areaRatioBefore": 1.00356,
+          "areaRatioAfter": 1.00356
+        },
+        {
+          "state": "drinking",
+          "frames": [
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "calibrationFrames": [
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "scale": 0.998551,
+          "targetVisiblePixels": 30475.5,
+          "visiblePixelsBefore": 30564,
+          "visiblePixelsAfter": 30564,
+          "areaRatioBefore": 1.002904,
+          "areaRatioAfter": 1.002904
+        },
+        {
+          "state": "rest-sequence",
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "calibrationFrames": [
+            0,
+            15
+          ],
+          "scale": 0.99847,
+          "targetVisiblePixels": 30475.5,
+          "visiblePixelsBefore": 30569,
+          "visiblePixelsAfter": 30569,
+          "areaRatioBefore": 1.003068,
+          "areaRatioAfter": 1.003068
+        }
+      ],
+      "outputs": [
+        {
+          "file": "public/assets/player-wolf-v2/wolf-northeast-action.png",
+          "sha256": "ff7e6476de80d39861eb9277c3d8919167c67e4e41c6bb95d6b894a98edf0ec5"
+        },
+        {
+          "file": "public/assets/player-wolf-v2/wolf-northeast-rest.png",
+          "sha256": "a10e2fa9643f49153491bb292b1edda66909867cb1302f125c402c59ef35a22d"
+        }
+      ]
+    },
+    {
+      "direction": "north",
+      "idleVisiblePixels": 13944.5,
+      "groups": [
+        {
+          "state": "attacking",
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "calibrationFrames": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "scale": 0.997339,
+          "targetVisiblePixels": 13944.5,
+          "visiblePixelsBefore": 14019,
+          "visiblePixelsAfter": 14019,
+          "areaRatioBefore": 1.005343,
+          "areaRatioAfter": 1.005343
+        },
+        {
+          "state": "eating",
+          "frames": [
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "calibrationFrames": [
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "scale": 0.998408,
+          "targetVisiblePixels": 13944.5,
+          "visiblePixelsBefore": 13989,
+          "visiblePixelsAfter": 13989,
+          "areaRatioBefore": 1.003191,
+          "areaRatioAfter": 1.003191
+        },
+        {
+          "state": "drinking",
+          "frames": [
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "calibrationFrames": [
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "scale": 0.99823,
+          "targetVisiblePixels": 13944.5,
+          "visiblePixelsBefore": 13994,
+          "visiblePixelsAfter": 13994,
+          "areaRatioBefore": 1.00355,
+          "areaRatioAfter": 1.00355
+        },
+        {
+          "state": "rest-sequence",
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "calibrationFrames": [
+            0,
+            15
+          ],
+          "scale": 0.99864,
+          "targetVisiblePixels": 13944.5,
+          "visiblePixelsBefore": 13982.5,
+          "visiblePixelsAfter": 13982.5,
+          "areaRatioBefore": 1.002725,
+          "areaRatioAfter": 1.002725
+        }
+      ],
+      "outputs": [
+        {
+          "file": "public/assets/player-wolf-v2/wolf-north-action.png",
+          "sha256": "dd6c73c2a2715f00627983ba13beb736f109775cb4ed8e39405923a34db04f72"
+        },
+        {
+          "file": "public/assets/player-wolf-v2/wolf-north-rest.png",
+          "sha256": "83ed2649475d988c9855e466f2e492ae8475db66cac7fd5174042d5378fc78a2"
+        }
+      ]
+    },
+    {
+      "direction": "northwest",
+      "idleVisiblePixels": 30833,
+      "groups": [
+        {
+          "state": "attacking",
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "calibrationFrames": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "scale": 0.998398,
+          "targetVisiblePixels": 30833,
+          "visiblePixelsBefore": 30932,
+          "visiblePixelsAfter": 30932,
+          "areaRatioBefore": 1.003211,
+          "areaRatioAfter": 1.003211
+        },
+        {
+          "state": "eating",
+          "frames": [
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "calibrationFrames": [
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "scale": 0.999028,
+          "targetVisiblePixels": 30833,
+          "visiblePixelsBefore": 30893,
+          "visiblePixelsAfter": 30893,
+          "areaRatioBefore": 1.001946,
+          "areaRatioAfter": 1.001946
+        },
+        {
+          "state": "drinking",
+          "frames": [
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "calibrationFrames": [
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "scale": 0.998382,
+          "targetVisiblePixels": 30833,
+          "visiblePixelsBefore": 30933,
+          "visiblePixelsAfter": 30933,
+          "areaRatioBefore": 1.003243,
+          "areaRatioAfter": 1.003243
+        },
+        {
+          "state": "rest-sequence",
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "calibrationFrames": [
+            0,
+            15
+          ],
+          "scale": 0.997874,
+          "targetVisiblePixels": 30833,
+          "visiblePixelsBefore": 30964.5,
+          "visiblePixelsAfter": 30964.5,
+          "areaRatioBefore": 1.004265,
+          "areaRatioAfter": 1.004265
+        }
+      ],
+      "outputs": [
+        {
+          "file": "public/assets/player-wolf-v2/wolf-northwest-action.png",
+          "sha256": "334ab1f0df433255bb9d0b77f7e7a3580b7c10ab4ba3cf562b33187e3763822b"
+        },
+        {
+          "file": "public/assets/player-wolf-v2/wolf-northwest-rest.png",
+          "sha256": "0685390c64a26252ec10fe07c69fdf751e9ff3186dee9d2639b145c35ff2b52b"
+        }
+      ]
+    },
+    {
+      "direction": "west",
+      "idleVisiblePixels": 30549.5,
+      "groups": [
+        {
+          "state": "attacking",
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "calibrationFrames": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "scale": 0.998424,
+          "targetVisiblePixels": 30549.5,
+          "visiblePixelsBefore": 30646,
+          "visiblePixelsAfter": 30646,
+          "areaRatioBefore": 1.003159,
+          "areaRatioAfter": 1.003159
+        },
+        {
+          "state": "eating",
+          "frames": [
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "calibrationFrames": [
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "scale": 0.997627,
+          "targetVisiblePixels": 30549.5,
+          "visiblePixelsBefore": 30695,
+          "visiblePixelsAfter": 30695,
+          "areaRatioBefore": 1.004763,
+          "areaRatioAfter": 1.004763
+        },
+        {
+          "state": "drinking",
+          "frames": [
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "calibrationFrames": [
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "scale": 0.998547,
+          "targetVisiblePixels": 30549.5,
+          "visiblePixelsBefore": 30638.5,
+          "visiblePixelsAfter": 30638.5,
+          "areaRatioBefore": 1.002913,
+          "areaRatioAfter": 1.002913
+        },
+        {
+          "state": "rest-sequence",
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "calibrationFrames": [
+            0,
+            15
+          ],
+          "scale": 0.997903,
+          "targetVisiblePixels": 30549.5,
+          "visiblePixelsBefore": 30678,
+          "visiblePixelsAfter": 30678,
+          "areaRatioBefore": 1.004206,
+          "areaRatioAfter": 1.004206
+        }
+      ],
+      "outputs": [
+        {
+          "file": "public/assets/player-wolf-v2/wolf-west-action.png",
+          "sha256": "18d9e6897f0f81c9e8f39f8a0d14cbc870026bdb7264498b9b26709b40bbb122"
+        },
+        {
+          "file": "public/assets/player-wolf-v2/wolf-west-rest.png",
+          "sha256": "41271cd62cd7b6fd49d43bf5813d2e06b72150284becace24f24486e31876eae"
+        }
+      ]
+    },
+    {
+      "direction": "southwest",
+      "idleVisiblePixels": 33347.5,
+      "groups": [
+        {
+          "state": "attacking",
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "calibrationFrames": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "scale": 0.999498,
+          "targetVisiblePixels": 33347.5,
+          "visiblePixelsBefore": 33381,
+          "visiblePixelsAfter": 33381,
+          "areaRatioBefore": 1.001005,
+          "areaRatioAfter": 1.001005
+        },
+        {
+          "state": "eating",
+          "frames": [
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "calibrationFrames": [
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "scale": 0.999483,
+          "targetVisiblePixels": 33347.5,
+          "visiblePixelsBefore": 33382,
+          "visiblePixelsAfter": 33382,
+          "areaRatioBefore": 1.001035,
+          "areaRatioAfter": 1.001035
+        },
+        {
+          "state": "drinking",
+          "frames": [
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "calibrationFrames": [
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "scale": 0.999266,
+          "targetVisiblePixels": 33347.5,
+          "visiblePixelsBefore": 33396.5,
+          "visiblePixelsAfter": 33396.5,
+          "areaRatioBefore": 1.001469,
+          "areaRatioAfter": 1.001469
+        },
+        {
+          "state": "rest-sequence",
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "calibrationFrames": [
+            0,
+            15
+          ],
+          "scale": 0.999858,
+          "targetVisiblePixels": 33347.5,
+          "visiblePixelsBefore": 33357,
+          "visiblePixelsAfter": 33357,
+          "areaRatioBefore": 1.000285,
+          "areaRatioAfter": 1.000285
+        }
+      ],
+      "outputs": [
+        {
+          "file": "public/assets/player-wolf-v2/wolf-southwest-action.png",
+          "sha256": "1deec0ac88fdb49399c8c3f0ee398f67b7140b79535b55b9b1ed18c2045c6ad2"
+        },
+        {
+          "file": "public/assets/player-wolf-v2/wolf-southwest-rest.png",
+          "sha256": "4ce278dfe434f959d7aaca2a9caf55e343d592679de48de980353f2d90af1455"
+        }
+      ]
+    },
+    {
+      "direction": "south",
+      "idleVisiblePixels": 16654.5,
+      "groups": [
+        {
+          "state": "attacking",
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "calibrationFrames": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "scale": 0.99789,
+          "targetVisiblePixels": 16654.5,
+          "visiblePixelsBefore": 16725,
+          "visiblePixelsAfter": 16725,
+          "areaRatioBefore": 1.004233,
+          "areaRatioAfter": 1.004233
+        },
+        {
+          "state": "eating",
+          "frames": [
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "calibrationFrames": [
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "scale": 0.998039,
+          "targetVisiblePixels": 16654.5,
+          "visiblePixelsBefore": 16720,
+          "visiblePixelsAfter": 16720,
+          "areaRatioBefore": 1.003933,
+          "areaRatioAfter": 1.003933
+        },
+        {
+          "state": "drinking",
+          "frames": [
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "calibrationFrames": [
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "scale": 0.997726,
+          "targetVisiblePixels": 16654.5,
+          "visiblePixelsBefore": 16730.5,
+          "visiblePixelsAfter": 16730.5,
+          "areaRatioBefore": 1.004563,
+          "areaRatioAfter": 1.004563
+        },
+        {
+          "state": "rest-sequence",
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "calibrationFrames": [
+            0,
+            15
+          ],
+          "scale": 0.99795,
+          "targetVisiblePixels": 16654.5,
+          "visiblePixelsBefore": 16723,
+          "visiblePixelsAfter": 16723,
+          "areaRatioBefore": 1.004113,
+          "areaRatioAfter": 1.004113
+        }
+      ],
+      "outputs": [
+        {
+          "file": "public/assets/player-wolf-v2/wolf-south-action.png",
+          "sha256": "6e7ed3420807b379ea20c042638c06bc8c40e70136ceac0402de65a26b734a25"
+        },
+        {
+          "file": "public/assets/player-wolf-v2/wolf-south-rest.png",
+          "sha256": "d73673e60fe1a24e2ea074d51b49de92147107e2a33ba3aa1b410f6173c0dab5"
+        }
+      ]
+    },
+    {
+      "direction": "southeast",
+      "idleVisiblePixels": 33144.5,
+      "groups": [
+        {
+          "state": "attacking",
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "calibrationFrames": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "scale": 0.998833,
+          "targetVisiblePixels": 33144.5,
+          "visiblePixelsBefore": 33222,
+          "visiblePixelsAfter": 33222,
+          "areaRatioBefore": 1.002338,
+          "areaRatioAfter": 1.002338
+        },
+        {
+          "state": "eating",
+          "frames": [
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "calibrationFrames": [
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "scale": 0.998833,
+          "targetVisiblePixels": 33144.5,
+          "visiblePixelsBefore": 33222,
+          "visiblePixelsAfter": 33222,
+          "areaRatioBefore": 1.002338,
+          "areaRatioAfter": 1.002338
+        },
+        {
+          "state": "drinking",
+          "frames": [
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "calibrationFrames": [
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "scale": 0.998487,
+          "targetVisiblePixels": 33144.5,
+          "visiblePixelsBefore": 33245,
+          "visiblePixelsAfter": 33245,
+          "areaRatioBefore": 1.003032,
+          "areaRatioAfter": 1.003032
+        },
+        {
+          "state": "rest-sequence",
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "calibrationFrames": [
+            0,
+            15
+          ],
+          "scale": 0.999465,
+          "targetVisiblePixels": 33144.5,
+          "visiblePixelsBefore": 33180,
+          "visiblePixelsAfter": 33180,
+          "areaRatioBefore": 1.001071,
+          "areaRatioAfter": 1.001071
+        }
+      ],
+      "outputs": [
+        {
+          "file": "public/assets/player-wolf-v2/wolf-southeast-action.png",
+          "sha256": "8e7d58f08392a45a1330edde3b38e30010486d2894f1a98feb5b4ee478d3e6e6"
+        },
+        {
+          "file": "public/assets/player-wolf-v2/wolf-southeast-rest.png",
+          "sha256": "88bad207ebc5fa982b434824c14c433c2a9839f0a41684a90deb81c594cc955b"
+        }
+      ]
+    }
+  ],
+  "changed": [
+    {
+      "file": "public/assets/player-wolf-v2/wolf-east-action.png",
+      "beforeSha256": "655b9f9d7f2ea19b28a8490d901d139a03a12f3bb490ce3f721b99a8a83533f8",
+      "afterSha256": "f4636bdc67bfe1e93fd87c1fbe1952feafb4e582a4e68371db4ae82663c704da"
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-east-rest.png",
+      "beforeSha256": "b13779b5ea80799075b3110e6303d9ca1d34db6c7f79b000542d7c2644e21fcd",
+      "afterSha256": "711067f3f55835a13c1a354834722b56e82bf0a728acc8b4b0d1c362cadca3b3"
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-northeast-action.png",
+      "beforeSha256": "56e19c80e0068fbe98a3bf7c5ac25fbface24b4fadcad991680a75d76b659eaa",
+      "afterSha256": "ff7e6476de80d39861eb9277c3d8919167c67e4e41c6bb95d6b894a98edf0ec5"
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-northeast-rest.png",
+      "beforeSha256": "e49037a7d82376f15c53da7d305db5dba3da32eb957c65ff1c884b908491f2a6",
+      "afterSha256": "a10e2fa9643f49153491bb292b1edda66909867cb1302f125c402c59ef35a22d"
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-north-action.png",
+      "beforeSha256": "06d878791fa56e7c81453b4d76c56e876686b686841677fbd40c219c039c950c",
+      "afterSha256": "dd6c73c2a2715f00627983ba13beb736f109775cb4ed8e39405923a34db04f72"
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-north-rest.png",
+      "beforeSha256": "285484a578ccaf810cb143d40ec30cf52350e1b85e5a25bd78327817f3074b9a",
+      "afterSha256": "83ed2649475d988c9855e466f2e492ae8475db66cac7fd5174042d5378fc78a2"
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-northwest-action.png",
+      "beforeSha256": "7a2111256f7bf7ba380c0827d4deef27f6bde6aed0b946d98a6e5ac30553d935",
+      "afterSha256": "334ab1f0df433255bb9d0b77f7e7a3580b7c10ab4ba3cf562b33187e3763822b"
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-northwest-rest.png",
+      "beforeSha256": "e2a412bfa2ffd9073812e77d6a63852a7c7cc3fd7192f79bc74ee20618f353d9",
+      "afterSha256": "0685390c64a26252ec10fe07c69fdf751e9ff3186dee9d2639b145c35ff2b52b"
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-west-action.png",
+      "beforeSha256": "d22b86d7c25a90990b2ed071d4be59097de879a154d048e7f8d312be71ac1945",
+      "afterSha256": "18d9e6897f0f81c9e8f39f8a0d14cbc870026bdb7264498b9b26709b40bbb122"
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-west-rest.png",
+      "beforeSha256": "6b6c489762c88f909f608d56573b01fb8dd3a5ee98073a2b39bb83595179e17d",
+      "afterSha256": "41271cd62cd7b6fd49d43bf5813d2e06b72150284becace24f24486e31876eae"
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-southwest-action.png",
+      "beforeSha256": "707b2842f8f032e9a48ed189eb9eb6993942cbf858412a296a06c18c7450676b",
+      "afterSha256": "1deec0ac88fdb49399c8c3f0ee398f67b7140b79535b55b9b1ed18c2045c6ad2"
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-southwest-rest.png",
+      "beforeSha256": "0b8c06ba5420349b3a65f3fbe6a5fc6c3797ab0a08847248d3d2dc7e34e131a9",
+      "afterSha256": "4ce278dfe434f959d7aaca2a9caf55e343d592679de48de980353f2d90af1455"
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-south-action.png",
+      "beforeSha256": "f1b615b6086052bea5e7fad576b2ced4723e58b121c763e9a70c7f210552f20f",
+      "afterSha256": "6e7ed3420807b379ea20c042638c06bc8c40e70136ceac0402de65a26b734a25"
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-south-rest.png",
+      "beforeSha256": "c71d34980740d9bbdb50c986f7de3e0600ba75200234dab0ec4ca50a6112dacd",
+      "afterSha256": "d73673e60fe1a24e2ea074d51b49de92147107e2a33ba3aa1b410f6173c0dab5"
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-southeast-action.png",
+      "beforeSha256": "d2e03073e13a00435d82126b0e44ee87926493f2730cd6c01050f7e77158f3fd",
+      "afterSha256": "8e7d58f08392a45a1330edde3b38e30010486d2894f1a98feb5b4ee478d3e6e6"
+    },
+    {
+      "file": "public/assets/player-wolf-v2/wolf-southeast-rest.png",
+      "beforeSha256": "c8cc960cb6d86f0c05f8ba9a9302c4a0b46feacfb3b521d4bbf4c2f46db682d1",
+      "afterSha256": "88bad207ebc5fa982b434824c14c433c2a9839f0a41684a90deb81c594cc955b"
+    }
+  ]
+}

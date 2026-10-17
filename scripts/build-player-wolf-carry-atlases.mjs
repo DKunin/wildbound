@@ -7,6 +7,8 @@ const FRAME_HEIGHT = 284;
 const ALPHA_THRESHOLD = 38;
 const MEAT_WIDTH = 82;
 const MEAT_HEIGHT = 28;
+const MIN_EXPOSED_MEAT_PIXELS = 90;
+const MEAT_FORWARD_OFFSETS = [8, 10, 12];
 const CELL_MARGIN = 3;
 
 const directions = {
@@ -123,9 +125,13 @@ const findMuzzle = (atlas, frame, direction) => {
   return best;
 };
 
-const renderMeatBehindWolf = (output, original, frame, direction) => {
+const renderMeatAtOffset = (output, original, frame, direction, forwardOffset) => {
   const cellX = (frame % 4) * FRAME_WIDTH;
   const cellY = Math.floor(frame / 4) * FRAME_HEIGHT;
+  for (let y = 0; y < FRAME_HEIGHT; y += 1) {
+    const start = ((cellY + y) * output.width + cellX) * 4;
+    output.data.fill(0, start, start + FRAME_WIDTH * 4);
+  }
   const [dx, dy] = directions[direction];
   const muzzle = findMuzzle(original, frame, direction);
   const angle = Math.atan2(dy, dx) + Math.PI / 2;
@@ -133,8 +139,8 @@ const renderMeatBehindWolf = (output, original, frame, direction) => {
   const sin = Math.sin(angle);
   const extentX = Math.abs(cos) * MEAT_WIDTH / 2 + Math.abs(sin) * MEAT_HEIGHT / 2;
   const extentY = Math.abs(sin) * MEAT_WIDTH / 2 + Math.abs(cos) * MEAT_HEIGHT / 2;
-  const desiredX = muzzle.x + dx * 8;
-  const desiredY = muzzle.y + dy * 8;
+  const desiredX = muzzle.x + dx * forwardOffset;
+  const desiredY = muzzle.y + dy * forwardOffset;
   const centerX = Math.max(CELL_MARGIN + extentX, Math.min(FRAME_WIDTH - CELL_MARGIN - extentX, desiredX));
   const centerY = Math.max(CELL_MARGIN + extentY, Math.min(FRAME_HEIGHT - CELL_MARGIN - extentY, desiredY));
 
@@ -167,6 +173,27 @@ const renderMeatBehindWolf = (output, original, frame, direction) => {
       ]);
     }
   }
+};
+
+const countExposedMeatPixels = (output, original, frame) => {
+  const cellX = (frame % 4) * FRAME_WIDTH;
+  const cellY = Math.floor(frame / 4) * FRAME_HEIGHT;
+  let added = 0;
+  for (let y = 0; y < FRAME_HEIGHT; y += 1) {
+    for (let x = 0; x < FRAME_WIDTH; x += 1) {
+      const offset = ((cellY + y) * output.width + cellX + x) * 4;
+      if (original.data[offset + 3] < ALPHA_THRESHOLD && output.data[offset + 3] >= ALPHA_THRESHOLD) added += 1;
+    }
+  }
+  return added;
+};
+
+const renderMeatBehindWolf = (output, original, frame, direction) => {
+  for (const forwardOffset of MEAT_FORWARD_OFFSETS) {
+    renderMeatAtOffset(output, original, frame, direction, forwardOffset);
+    if (countExposedMeatPixels(output, original, frame) >= MIN_EXPOSED_MEAT_PIXELS) return;
+  }
+  throw new Error(`${direction} frame ${frame} cannot expose ${MIN_EXPOSED_MEAT_PIXELS} carried-meat pixels`);
 };
 
 const removeFaintPixels = (image) => {

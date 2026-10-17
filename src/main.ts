@@ -5,6 +5,7 @@ import { gameEvents, type HudState, type HuntLogEntry, type SleepTransition } fr
 import { DEFAULT_DIFFICULTY, type DifficultyMode } from './game/systems/BalanceConfig';
 import { runFullReset } from './game/systems/FullResetSystem';
 import { SaveSystem } from './game/systems/SaveSystem';
+import { SENSE_DIRECTIONS, type SenseHudCue, type SenseKind } from './game/systems/SenseHudSystem';
 
 const clampPercent = (value: number) => `${Math.max(0, Math.min(100, value))}%`;
 
@@ -22,9 +23,7 @@ const setText = (selector: string, value: string) => {
 
 const pausePanel = document.querySelector<HTMLElement>('#pause-panel');
 const deathPanel = document.querySelector<HTMLElement>('#death-panel');
-const scentReadout = document.querySelector<HTMLElement>('#scent-readout');
-const scentSummary = document.querySelector<HTMLElement>('#scent-summary');
-const soundReadout = document.querySelector<HTMLElement>('#sound-readout');
+const senseHud = document.querySelector<HTMLElement>('#sense-hud');
 const daylight = document.querySelector<HTMLElement>('#daylight');
 const sleepCurtain = document.querySelector<HTMLElement>('#sleep-curtain');
 const vignette = document.querySelector<HTMLElement>('#vignette');
@@ -95,18 +94,97 @@ const appendHuntLog = ({ time, message }: HuntLogEntry) => {
   while (huntLogList.children.length > 8) huntLogList.lastElementChild?.remove();
 };
 
-const renderScentClues = (state: HudState) => {
-  if (!scentSummary) return;
-  scentSummary.replaceChildren();
-  const clues = state.scentClues.length > 0
-    ? state.scentClues
-    : [{ text: state.scentSummary || 'The wind carries no clear trail.', targeted: false }];
-  for (const clue of clues) {
-    const line = document.createElement('span');
-    line.className = `scent-clue${clue.targeted ? ' targeted' : ''}`;
-    line.textContent = clue.text;
-    scentSummary.append(line);
+const SVG_NAMESPACE = 'http://www.w3.org/2000/svg';
+const SENSE_KIND_LABEL: Record<SenseKind, string> = {
+  rabbit: 'rabbit',
+  deer: 'deer',
+  elk: 'elk',
+  boar: 'boar',
+  pack: 'pack wolf',
+  carcass: 'carrion',
+  cache: 'buried meat cache',
+  territory: 'your territory mark',
+  water: 'water',
+};
+
+const signalLevel = (strength: number): string => (
+  strength >= 0.7 ? 'strong' : strength >= 0.38 ? 'clear' : 'faint'
+);
+
+const createSenseIcon = (kind: SenseKind): SVGSVGElement => {
+  const icon = document.createElementNS(SVG_NAMESPACE, 'svg');
+  const use = document.createElementNS(SVG_NAMESPACE, 'use');
+  icon.classList.add('sense-icon');
+  icon.setAttribute('viewBox', '0 0 36 36');
+  icon.setAttribute('aria-hidden', 'true');
+  use.setAttribute('href', `#sense-icon-${kind}`);
+  icon.append(use);
+  return icon;
+};
+
+const createSenseModality = (kind: 'scent' | 'hearing'): HTMLSpanElement => {
+  const wrapper = document.createElement('span');
+  const icon = document.createElementNS(SVG_NAMESPACE, 'svg');
+  wrapper.className = `sense-modality sense-${kind}`;
+  wrapper.setAttribute('aria-hidden', 'true');
+  icon.setAttribute('viewBox', '0 0 18 24');
+  const paths = kind === 'scent'
+    ? ['M16 3C5 5 14 9 3 11', 'M15 12C5 14 12 18 2 21']
+    : ['M3 8c4 2 4 6 0 8', 'M7 4c8 4 8 12 0 16'];
+  for (const data of paths) {
+    const path = document.createElementNS(SVG_NAMESPACE, 'path');
+    path.setAttribute('d', data);
+    icon.append(path);
   }
+  wrapper.append(icon);
+  return wrapper;
+};
+
+const describeCue = (cue: SenseHudCue): string => {
+  const senses = [
+    cue.scentStrength > 0 ? `${signalLevel(cue.scentStrength)} scent` : '',
+    cue.hearingStrength > 0 ? `${signalLevel(cue.hearingStrength)} sound` : '',
+  ].filter(Boolean).join(' and ');
+  const count = cue.count > 1 ? `${cue.count} ` : '';
+  return `${cue.targeted ? 'Marked ' : ''}${count}${SENSE_KIND_LABEL[cue.kind]}, ${cue.direction}, ${senses}`;
+};
+
+const renderSenseHud = (state: HudState): void => {
+  if (!senseHud) return;
+  const fragment = document.createDocumentFragment();
+  for (const direction of SENSE_DIRECTIONS) {
+    const cues = state.senseCues.filter((cue) => cue.direction === direction);
+    if (cues.length === 0) continue;
+    const slot = document.createElement('div');
+    slot.className = 'sense-slot';
+    slot.dataset.direction = direction;
+    for (const cue of cues) {
+      const element = document.createElement('span');
+      element.className = `sense-cue${cue.targeted ? ' targeted' : ''}`;
+      element.dataset.kind = cue.kind;
+      element.style.setProperty('--sense-strength', String(cue.strength));
+      element.style.setProperty('--scent-strength', String(cue.scentStrength));
+      element.style.setProperty('--hearing-strength', String(cue.hearingStrength));
+      element.setAttribute('role', 'img');
+      element.setAttribute('aria-label', describeCue(cue));
+      element.append(createSenseIcon(cue.kind));
+      if (cue.scentStrength > 0) element.append(createSenseModality('scent'));
+      if (cue.hearingStrength > 0) element.append(createSenseModality('hearing'));
+      if (cue.count > 1) {
+        const dots = document.createElement('span');
+        dots.className = 'sense-count-dots';
+        dots.setAttribute('aria-hidden', 'true');
+        for (let index = 0; index < Math.min(3, cue.count); index += 1) dots.append(document.createElement('i'));
+        element.append(dots);
+      }
+      slot.append(element);
+    }
+    fragment.append(slot);
+  }
+  senseHud.replaceChildren(fragment);
+  senseHud.setAttribute('aria-label', state.scentActive
+    ? 'Off-screen sounds and scents. Scent focus is active.'
+    : 'Off-screen sounds. Press Q to focus on scents.');
 };
 
 const startGame = () => {
@@ -198,10 +276,7 @@ gameEvents.on('hud', (state: HudState) => {
   setText('#hunger-mode', state.willEatMeat ? 'HUNGRY · WILL EAT' : 'SATIATED · WILL CACHE');
   hungerMode?.classList.toggle('hungry', state.willEatMeat);
   setText('#event-line', state.eventLine);
-  renderScentClues(state);
-  setText('#scent-direction-arrow', state.scentDirectionArrow);
-  setText('#scent-direction-label', state.scentDirectionLabel);
-  setText('#sound-summary', state.soundSummary);
+  renderSenseHud(state);
   setText('#niva-status', state.pack.find((wolf) => wolf.name === 'Niva')?.status ?? 'DISTANT');
   setText('#torr-status', state.pack.find((wolf) => wolf.name === 'Torr')?.status ?? 'DISTANT');
   const hasPack = state.pack.length > 0;
@@ -211,11 +286,6 @@ gameEvents.on('hud', (state: HudState) => {
     ? `${state.leanDay ? 'LEAN DAY' : 'SURVIVAL'} · ${state.protectedCacheCount}/${state.cacheCount} CACHES GUARDED`
     : hasPack ? 'EXPLORE TOGETHER' : 'EXPLORE THE WILD');
   setText('#save-status', state.saveStatus);
-  if (scentReadout) {
-    scentReadout.hidden = !state.scentActive;
-    scentReadout.classList.toggle('tracking-target', state.trackingTarget);
-  }
-  if (soundReadout) soundReadout.hidden = !state.soundSummary;
   if (sneakControl) {
     sneakControl.classList.toggle('active', state.sneaking);
     sneakControl.setAttribute('aria-label', state.sneaking ? 'Sneaking enabled' : 'Sneaking disabled');

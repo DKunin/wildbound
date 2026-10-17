@@ -339,6 +339,31 @@ const warpCell = (source, sourceCoordinate) => {
   return sanitizeAlpha(target);
 };
 
+const normalizeVisibleArea = (source, reference) => {
+  const before = measure(source);
+  const target = measure(reference);
+  const scale = Math.sqrt(target.visiblePixels / before.visiblePixels);
+  const anchor = { x: before.root.x, y: before.ground.y };
+  const cell = Math.abs(scale - 1) < 0.002
+    ? source
+    : warpCell(source, (x, y) => ({
+      x: anchor.x + (x - anchor.x) / scale,
+      y: anchor.y + (y - anchor.y) / scale,
+    }));
+  const after = measure(cell);
+  return {
+    cell,
+    report: {
+      scale: round(scale, 6),
+      referenceVisiblePixels: target.visiblePixels,
+      visiblePixelsBefore: before.visiblePixels,
+      visiblePixelsAfter: after.visiblePixels,
+      areaRatioBefore: round(before.visiblePixels / target.visiblePixels, 6),
+      areaRatioAfter: round(after.visiblePixels / target.visiblePixels, 6),
+    },
+  };
+};
+
 const warpEdgeFade = (x, y) => Math.max(0, Math.min(
   1,
   (x - (SAFE_MARGIN - 1)) / 4,
@@ -661,11 +686,13 @@ const buildActionAtlas = (definition, movement) => {
     for (let directionIndex = 0; directionIndex < COLUMNS; directionIndex += 1) {
       const sourceCell = sanitizeAlpha(extractCell(source, directionIndex, actionIndex));
       const idleCell = sanitizeAlpha(extractCell(movement, directionIndex, 0));
-      const result = alignToIdle(sourceCell, idleCell);
+      const normalized = normalizeVisibleArea(sourceCell, idleCell);
+      const result = alignToIdle(normalized.cell, idleCell);
       aligned[actionIndex][directionIndex] = result.cell;
       alignment.push({
         action: ACTIONS[actionIndex],
         direction: DIRECTIONS[directionIndex],
+        scaleNormalization: normalized.report,
         ...result.report,
       });
 

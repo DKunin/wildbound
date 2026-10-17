@@ -66,9 +66,33 @@ interface AnimationAudit {
     failing: number;
     hardFailureMetrics: number;
     warningMetrics: number;
+    stateTransitions: number;
+    stateTransitionPassing: number;
+    stateTransitionWarnings: number;
+    stateTransitionFailing: number;
   };
   hardFailures: AuditIssue[];
   warnings: AuditIssue[];
+  stateTransitionHardFailures: Array<Omit<AuditIssue, 'animationId'> & { transitionId: string }>;
+  stateTransitionWarnings: Array<Omit<AuditIssue, 'animationId'> & { transitionId: string }>;
+  stateTransitions: Array<{
+    id: string;
+    family: string;
+    subject: string;
+    fromState: string;
+    toState: string;
+    direction: string;
+    carrying: boolean;
+    woundLevel: number;
+    scaleSensitive: boolean;
+    status: 'pass' | 'warn' | 'fail';
+    metrics: {
+      linearScaleRatio: number;
+      visibleAreaRatio: number;
+    };
+    sequenceStates: string[];
+    frames: AnimationFrameRef[];
+  }>;
   animations: AuditAnimation[];
 }
 
@@ -222,7 +246,7 @@ describe('animal animation visual lab', () => {
     const second = lab.runAudit({ root: ROOT, families: ['boar'] });
 
     expect(second).toEqual(first);
-    expect(first.schemaVersion).toBe(1);
+    expect(first.schemaVersion).toBe(2);
     expect(first.summary.animations).toBe(256);
     expect(first.summary.passing + first.summary.warnings + first.summary.failing).toBe(first.summary.animations);
     expect(first.summary.hardFailureMetrics).toBe(first.hardFailures.length);
@@ -252,6 +276,37 @@ describe('animal animation visual lab', () => {
     expect(audit.hardFailures).toEqual([]);
     expect(audit.summary.hardFailureMetrics).toBe(0);
     expect(audit.summary.failing).toBe(0);
+  }, 60_000);
+
+  it('alternates every animal state against the matching baseline and rejects scale jumps', () => {
+    const audit = getCompleteAudit();
+
+    expect(audit.summary.stateTransitions).toBe(1_424);
+    expect(audit.summary.stateTransitionPassing).toBe(1_424);
+    expect(audit.summary.stateTransitionWarnings).toBe(0);
+    expect(audit.summary.stateTransitionFailing).toBe(0);
+    expect(audit.stateTransitionHardFailures).toEqual([]);
+    expect(audit.stateTransitionWarnings).toEqual([]);
+    expect(new Set(audit.stateTransitions.map(({ id }) => id)).size).toBe(audit.stateTransitions.length);
+    expect(audit.stateTransitions.filter(({ scaleSensitive }) => scaleSensitive)).toHaveLength(424);
+
+    for (const transition of audit.stateTransitions) {
+      expect(transition.frames, transition.id).toHaveLength(4);
+      expect(transition.sequenceStates, transition.id).toEqual([
+        transition.fromState,
+        transition.toState,
+        transition.fromState,
+        transition.toState,
+      ]);
+      if (transition.scaleSensitive) {
+        expect(transition.metrics.linearScaleRatio, transition.id).toBeLessThanOrEqual(1.06);
+      }
+    }
+
+    const southDrink = audit.stateTransitions.find(({ id }) => (
+      id === 'state-transition/player-wolf/player/idle-to-drinking/south/plain/wound-0'
+    ));
+    expect(southDrink?.metrics.linearScaleRatio).toBeLessThanOrEqual(1.01);
   }, 60_000);
 
   it('keeps every authored prey action visually readable between phases', () => {

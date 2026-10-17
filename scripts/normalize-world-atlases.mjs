@@ -13,14 +13,14 @@ const FRAME_MARGIN = 1;
 
 const root = resolve(import.meta.dirname, '..');
 const atlases = [
-  { path: 'public/assets/terrain-overlays-v2.png', ownership: false },
-  { path: 'public/assets/obstacle-atlas-v2.png', ownership: true },
+  { path: 'public/assets/terrain-overlays-v3.png', ownership: false },
+  { path: 'public/assets/obstacle-atlas-v3.png', ownership: true },
   {
-    path: 'public/assets/terrain-features-v3.png',
+    path: 'public/assets/terrain-features-v4.png',
     ownership: true,
-    mirrors: ['art-source/terrain-v3/terrain-features-source.png'],
+    mirrors: ['art-source/terrain-v4/terrain-features-source.png'],
   },
-  { path: 'public/assets/water-tiles-v2.png', ownership: false },
+  { path: 'public/assets/water-tiles-v3.png', ownership: false },
 ];
 
 const roundedEdges = (size) => Array.from(

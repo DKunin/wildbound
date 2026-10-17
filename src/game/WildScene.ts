@@ -29,6 +29,8 @@ import { RunControlSystem } from './systems/RunControlSystem';
 import { SaveSystem, type SaveData } from './systems/SaveSystem';
 import { EMPTY_SCENT_READING, ScentSystem, type ScentReading } from './systems/ScentSystem';
 import { SoundSystem } from './systems/SoundSystem';
+import type { AudibleSound } from './systems/SoundModel';
+import { SenseHudModel, type SenseSourceSignal } from './systems/SenseHudSystem';
 import { WindSystem, type WindState } from './systems/WindSystem';
 import { WorldSystem } from './systems/WorldSystem';
 import { getWolfMovementProfile } from './systems/WolfStealthSystem';
@@ -140,6 +142,7 @@ export class WildScene extends Phaser.Scene {
   private readonly huntLog = new HuntLogSystem();
   private readonly territoryMarks = new TerritoryMarkSystem();
   private readonly targetTracker = new AnimalTargetTracker();
+  private readonly senseHud = new SenseHudModel();
   private keys!: ControlKeys;
   private targetedPrey?: Prey;
   private targetMarker?: Phaser.GameObjects.Image;
@@ -153,7 +156,7 @@ export class WildScene extends Phaser.Scene {
   private lastAutoSaveAt = 0;
   private rallyUntil = 0;
   private eventLine = 'Listen to the forest.';
-  private soundSummary = '';
+  private soundSignals: AudibleSound[] = [];
   private scentReading: ScentReading = EMPTY_SCENT_READING;
   private saveStatus = '';
   private saveStatusUntil = 0;
@@ -225,12 +228,12 @@ export class WildScene extends Phaser.Scene {
   }
 
   preload(): void {
-    this.load.image('ground-base', 'assets/ground-base-v2.png');
+    this.load.image('ground-base', 'assets/ground-base-v3.png');
     this.load.svg('predator-target', 'assets/predator-target.svg', { width: 64, height: 64 });
-    this.load.spritesheet('terrain-overlays', 'assets/terrain-overlays-v2.png', { frameWidth: 313, frameHeight: 313 });
-    this.load.spritesheet('obstacle-atlas', 'assets/obstacle-atlas-v2.png', { frameWidth: 313, frameHeight: 313 });
-    this.load.spritesheet('terrain-features', 'assets/terrain-features-v3.png', { frameWidth: 313, frameHeight: 313 });
-    this.load.spritesheet('water-tiles', 'assets/water-tiles-v2.png', { frameWidth: 313, frameHeight: 313 });
+    this.load.spritesheet('terrain-overlays', 'assets/terrain-overlays-v3.png', { frameWidth: 313, frameHeight: 313 });
+    this.load.spritesheet('obstacle-atlas', 'assets/obstacle-atlas-v3.png', { frameWidth: 313, frameHeight: 313 });
+    this.load.spritesheet('terrain-features', 'assets/terrain-features-v4.png', { frameWidth: 313, frameHeight: 313 });
+    this.load.spritesheet('water-tiles', 'assets/water-tiles-v3.png', { frameWidth: 313, frameHeight: 313 });
     for (const direction of PLAYER_DIRECTIONS) {
       this.load.atlas(`wolf-${direction}-motion`, `assets/player-wolf-v2/wolf-${direction}-motion.png`, 'assets/player-wolf-v2/wolf-grid-atlas.json');
       this.load.atlas(`wolf-${direction}-run`, `assets/player-wolf-v2/wolf-${direction}-run.png`, 'assets/player-wolf-v2/wolf-grid-atlas.json');
@@ -296,8 +299,9 @@ export class WildScene extends Phaser.Scene {
     this.rallyUntil = 0;
     this.eventLine = 'Listen to the forest.';
     this.saveStatus = '';
-    this.soundSummary = '';
+    this.soundSignals = [];
     this.scentReading = EMPTY_SCENT_READING;
+    this.senseHud.reset();
 
     this.world = new WorldSystem(this, WORLD_SEED);
     this.world.create();
@@ -362,6 +366,7 @@ export class WildScene extends Phaser.Scene {
 
     const deltaSeconds = Math.min(delta / 1000, 0.05);
     const activity = this.updatePlayerMovement(time, delta);
+    this.world.updateEnvironmentMotion(time, this.player);
     this.updateCarriedCarcass();
     this.snapshot = this.needs.update(deltaSeconds, activity);
     this.simulationTime = advanceSimulationTime(this.simulationTime, deltaSeconds);
@@ -383,7 +388,7 @@ export class WildScene extends Phaser.Scene {
     );
     this.updateTargetTracking(time);
     this.footprints.record(time, this.player, this.prey, this.pack);
-    this.soundSummary = this.hearing.render(time, this.player, 0.82 + this.dayState.visibility * 0.28);
+    this.soundSignals = this.hearing.render(time, this.player, 0.82 + this.dayState.visibility * 0.28);
 
     if (Phaser.Input.Keyboard.JustDown(this.keys.interact)) this.interact(time);
     if (!this.snapshot.alive) this.handleDeath();
@@ -664,7 +669,7 @@ export class WildScene extends Phaser.Scene {
     this.scent.clearTransientTrails();
     this.footprints.clearTransientTracks();
     this.hearing.clearTransientSounds();
-    this.soundSummary = '';
+    this.soundSignals = [];
     this.refreshWorldTimeState();
     this.handleDayChange();
     this.syncPlayerAnimation(this.time.now);
@@ -964,6 +969,9 @@ export class WildScene extends Phaser.Scene {
         time,
         animal,
         animal.species === 'elk' ? 'HEAVY HOOVES' : animal.species === 'deer' ? 'DISTANT HOOVES' : animal.species === 'boar' ? 'ROOTING AND GRUNTS' : 'RUSTLING BRUSH',
+        760,
+        animal.species,
+        this.scent.getSourceId(animal),
       );
       if (next === 'dead' && previous !== 'dead') {
         const naturalCause = animal.getDeathCause();
@@ -1025,8 +1033,8 @@ export class WildScene extends Phaser.Scene {
   private howl(time: number): void {
     if (!FEATURE_FLAGS.pack || this.pack.length < 2) return;
     this.rallyUntil = time + 13_000;
-    this.hearing.emit(time, this.pack[0].x, this.pack[0].y, 'PACK HOWL', 1050);
-    this.hearing.emit(time + 250, this.pack[1].x, this.pack[1].y, 'PACK HOWL', 1050);
+    this.hearing.emitTracked(time, this.pack[0], 'PACK HOWL', 1050, 'pack', this.scent.getSourceId(this.pack[0], 'pack'));
+    this.hearing.emitTracked(time + 250, this.pack[1], 'PACK HOWL', 1050, 'pack', this.scent.getSourceId(this.pack[1], 'pack'));
     this.setEvent('Niva answers your call. The pack gathers.');
   }
 
@@ -1332,6 +1340,24 @@ export class WildScene extends Phaser.Scene {
       this.balance.cache.maximumProtected,
       TERRITORY_MARK_SCENT_RADIUS,
     );
+    const senseSources: SenseSourceSignal[] = [
+      ...this.scentReading.signals.map((signal) => ({
+        sourceId: signal.sourceId,
+        kind: signal.kind,
+        x: signal.x,
+        y: signal.y,
+        scentStrength: signal.strength,
+        targeted: signal.targeted,
+      })),
+      ...this.soundSignals.map((signal) => ({
+        sourceId: signal.sourceId,
+        kind: signal.kind,
+        x: signal.x,
+        y: signal.y,
+        hearingStrength: signal.strength,
+      })),
+    ];
+    const worldView = this.cameras.main.worldView;
     const state: HudState = {
       ...this.snapshot,
       day: Math.floor(this.simulationTime / 1440) + 1,
@@ -1348,12 +1374,12 @@ export class WildScene extends Phaser.Scene {
       willEatMeat: this.needs.canEat(),
       eventLine: this.eventLine,
       scentActive: this.scent.isActive(),
-      scentSummary: this.scentReading.summary,
-      scentClues: this.scentReading.clues,
-      trackingTarget: this.scentReading.trackingTarget,
-      scentDirectionArrow: this.scentReading.arrow,
-      scentDirectionLabel: this.scentReading.label,
-      soundSummary: this.soundSummary,
+      senseCues: this.senseHud.update(this.player, {
+        left: worldView.left,
+        top: worldView.top,
+        right: worldView.right,
+        bottom: worldView.bottom,
+      }, senseSources),
       sneaking: this.sneaking,
       canSkipRest: !this.restSkipping && this.playerAnimation.snapshot().state === 'resting' && this.needs.canRecoverWhileResting(),
       canMarkTerritory: this.canAttemptTerritoryMark() && this.territoryMarks.canMark(this.simulationTime),
