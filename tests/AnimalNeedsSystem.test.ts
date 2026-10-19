@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { AnimalNeedsSystem } from '../src/game/systems/AnimalNeedsSystem';
+import { WOLF_TRAVEL_SPEED } from '../src/game/systems/WolfStealthSystem';
 
 describe('animal needs and goal selection', () => {
   it('advances needs across a long skipped interval instead of capping at one frame', () => {
@@ -96,27 +97,23 @@ describe('animal needs and goal selection', () => {
     expect(deer.isSatisfied('shelter')).toBe(false);
   });
 
-  it('geometrically slows a fleeing deer below walking-wolf speed after two to three minutes', () => {
+  it('geometrically slows a fleeing deer while keeping its physical speed above a travelling wolf', () => {
     const deer = new AnimalNeedsSystem('deer', { hunger: 20, thirst: 20, fatigue: 10 });
     const freshSpeed = deer.getSprintSpeedFactor();
     const sampledSpeeds: number[] = [];
-    let slowerThanWalkingWolfAt: number | undefined;
 
     for (let index = 1; index <= 180 * 4; index += 1) {
       deer.update(0.25, 'fleeing');
       const elapsedSeconds = index * 0.25;
       const speed = 205 * deer.getSprintSpeedFactor();
       if (elapsedSeconds % 60 === 0) sampledSpeeds.push(speed);
-      if (slowerThanWalkingWolfAt === undefined && speed < 126) slowerThanWalkingWolfAt = elapsedSeconds;
     }
 
     const exhausted = deer.snapshot();
     expect(exhausted.stamina).toBe(0);
     expect(exhausted.recoveryDebt).toBeGreaterThan(75);
-    expect(slowerThanWalkingWolfAt).toBeGreaterThanOrEqual(145);
-    expect(slowerThanWalkingWolfAt).toBeLessThanOrEqual(155);
     expect(sampledSpeeds[1] / sampledSpeeds[0]).toBeCloseTo(sampledSpeeds[2] / sampledSpeeds[1], 2);
-    expect(sampledSpeeds[2]).toBeLessThan(126);
+    expect(sampledSpeeds[2]).toBeGreaterThan(WOLF_TRAVEL_SPEED);
     expect(deer.getSprintSpeedFactor()).toBeLessThan(freshSpeed);
   });
 

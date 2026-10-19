@@ -66,4 +66,13 @@ describe('directional wolf senses HUD', () => {
     expect(model.update(listener, viewport, [atAngle(25)])[0].direction).toBe('E');
     expect(model.update(listener, viewport, [atAngle(40)])[0].direction).toBe('SE');
   });
+
+  it('uses viewport-edge hysteresis so cues do not pop while crossing the screen boundary', () => {
+    const model = new SenseHudModel();
+
+    expect(model.update(listener, viewport, [source('deer:moving', 'deer', 70, 0)])).toHaveLength(0);
+    expect(model.update(listener, viewport, [source('deer:moving', 'deer', 90, 0)])).toHaveLength(1);
+    expect(model.update(listener, viewport, [source('deer:moving', 'deer', 40, 0)])).toHaveLength(1);
+    expect(model.update(listener, viewport, [source('deer:moving', 'deer', 20, 0)])).toHaveLength(0);
+  });
 });

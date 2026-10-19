@@ -1242,8 +1242,9 @@ export class WildScene extends Phaser.Scene {
     const target = this.targetedPrey;
     if (!isAnimalTargetAlive(target)) return;
     const targetInRange = Phaser.Math.Distance.Between(this.player.x, this.player.y, target.x, target.y) <= SCENT_RENDER_RADIUS;
+    const hasAirborneScent = this.scentReading.signals.some((signal) => signal.targeted);
     const hasTrail = this.scent.hasTrackableTrail(time, this.player, target);
-    if (this.targetTracker.update(time, targetInRange || hasTrail) !== 'lost') return;
+    if (this.targetTracker.update(time, hasAirborneScent || targetInRange || hasTrail) !== 'lost') return;
 
     const species = target.species;
     this.clearTargetedAnimal();

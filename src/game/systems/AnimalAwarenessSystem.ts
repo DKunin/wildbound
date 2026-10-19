@@ -1,3 +1,8 @@
+import {
+  ANIMAL_AWARENESS_SCENT_PROFILE,
+  getScentPlumeReading,
+} from './ScentPlumeSystem';
+
 export type AwarenessSense = 'sight' | 'sound' | 'scent';
 
 export interface AwarenessPoint {
@@ -48,7 +53,7 @@ export class AnimalAwarenessSystem {
 
     const sight = this.sight(observer, threat, environment, distance, directionX, directionY);
     const sound = this.sound(observer, threat, distance);
-    const scent = this.scent(observer, threat, environment, distance, directionX, directionY);
+    const scent = this.scent(observer, threat, environment);
     const level = clamp01(1 - (1 - sight) * (1 - sound) * (1 - scent));
     const strongestSense: AwarenessSense = sight >= sound && sight >= scent
       ? 'sight'
@@ -89,24 +94,16 @@ export class AnimalAwarenessSystem {
     observer: AwarenessObserver,
     threat: AwarenessThreat,
     environment: AwarenessEnvironment,
-    distance: number,
-    directionX: number,
-    directionY: number,
   ): number {
-    const windLength = Math.hypot(environment.windX, environment.windY) || 1;
-    const windX = environment.windX / windLength;
-    const windY = environment.windY / windLength;
-    const downwindAlignment = (-directionX) * windX + (-directionY) * windY;
-    const windStrength = clamp01(environment.windStrength);
-    const plumeAlignment = clamp01((downwindAlignment + 0.25) / 1.25);
-    const plumeStrength = Math.pow(plumeAlignment, 1.6);
-    const stillAirStrength = 0.72;
-    const windDirectedStrength = 0.08 + plumeStrength * 0.92;
-    const directionalStrength = stillAirStrength * (1 - windStrength) + windDirectedStrength * windStrength;
-    const rangeMultiplier = 0.9 + windStrength * (-0.15 + plumeStrength * 0.75);
-    const range = observer.scentRange
-      * Math.max(0, threat.scentSignature)
-      * rangeMultiplier;
-    return range > 0 ? clamp01(1 - distance / range) * directionalStrength : 0;
+    return getScentPlumeReading({
+      listener: observer,
+      source: threat,
+      windX: environment.windX,
+      windY: environment.windY,
+      windStrength: environment.windStrength,
+      baseRange: observer.scentRange,
+      sourceStrength: threat.scentSignature,
+      profile: ANIMAL_AWARENESS_SCENT_PROFILE,
+    }).strength;
   }
 }

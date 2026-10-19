@@ -157,40 +157,74 @@ const describeCue = (cue: SenseHudCue): string => {
   return `${cue.targeted ? 'Marked ' : ''}${count}${SENSE_KIND_LABEL[cue.kind]}, ${cue.direction}, ${senses}`;
 };
 
+const SENSE_CUE_EXIT_MS = 320;
+const senseCueRemovalTimers = new Map<string, number>();
+
+const updateSenseCue = (element: HTMLSpanElement, cue: SenseHudCue): void => {
+  element.className = `sense-cue${cue.targeted ? ' targeted' : ''}`;
+  element.dataset.kind = cue.kind;
+  element.style.setProperty('--sense-strength', String(cue.strength));
+  element.style.setProperty('--scent-strength', String(cue.scentStrength));
+  element.style.setProperty('--hearing-strength', String(cue.hearingStrength));
+  element.setAttribute('role', 'img');
+  element.setAttribute('aria-label', describeCue(cue));
+  element.title = describeCue(cue);
+
+  const contentKey = `${cue.kind}:${cue.targeted}:${cue.scentStrength > 0}:${cue.hearingStrength > 0}:${cue.count}`;
+  if (element.dataset.contentKey === contentKey) return;
+  element.dataset.contentKey = contentKey;
+  element.replaceChildren(createSenseIcon(cue.kind));
+  if (cue.scentStrength > 0) element.append(createSenseModality('scent'));
+  if (cue.hearingStrength > 0) element.append(createSenseModality('hearing'));
+  if (cue.count > 1) {
+    const count = document.createElement('span');
+    count.className = 'sense-count';
+    count.setAttribute('aria-hidden', 'true');
+    count.textContent = `×${cue.count}`;
+    element.append(count);
+  }
+};
+
 const renderSenseHud = (cues: readonly SenseHudCue[], scentActive: boolean): void => {
   if (!senseHud) return;
-  const fragment = document.createDocumentFragment();
+  const existingCues = new Map([...senseHud.querySelectorAll<HTMLSpanElement>('.sense-cue[data-cue-id]')]
+    .map((element) => [element.dataset.cueId!, element]));
+  const existingSlots = new Map([...senseHud.querySelectorAll<HTMLDivElement>('.sense-slot[data-direction]')]
+    .map((slot) => [slot.dataset.direction!, slot]));
+  const renderedCueIds = new Set<string>();
   for (const direction of SENSE_DIRECTIONS) {
     const directionalCues = cues.filter((cue) => cue.direction === direction);
     if (directionalCues.length === 0) continue;
-    const slot = document.createElement('div');
-    slot.className = 'sense-slot';
-    slot.dataset.direction = direction;
+    const slot = existingSlots.get(direction) ?? document.createElement('div');
+    if (!slot.isConnected) {
+      slot.className = 'sense-slot';
+      slot.dataset.direction = direction;
+      senseHud.append(slot);
+    }
     for (const cue of directionalCues) {
-      const element = document.createElement('span');
-      element.className = `sense-cue${cue.targeted ? ' targeted' : ''}`;
-      element.dataset.kind = cue.kind;
-      element.style.setProperty('--sense-strength', String(cue.strength));
-      element.style.setProperty('--scent-strength', String(cue.scentStrength));
-      element.style.setProperty('--hearing-strength', String(cue.hearingStrength));
-      element.setAttribute('role', 'img');
-      element.setAttribute('aria-label', describeCue(cue));
-      element.title = describeCue(cue);
-      element.append(createSenseIcon(cue.kind));
-      if (cue.scentStrength > 0) element.append(createSenseModality('scent'));
-      if (cue.hearingStrength > 0) element.append(createSenseModality('hearing'));
-      if (cue.count > 1) {
-        const count = document.createElement('span');
-        count.className = 'sense-count';
-        count.setAttribute('aria-hidden', 'true');
-        count.textContent = `×${cue.count}`;
-        element.append(count);
+      renderedCueIds.add(cue.id);
+      const pendingRemoval = senseCueRemovalTimers.get(cue.id);
+      if (pendingRemoval !== undefined) {
+        window.clearTimeout(pendingRemoval);
+        senseCueRemovalTimers.delete(cue.id);
       }
+      const element = existingCues.get(cue.id) ?? document.createElement('span');
+      element.dataset.cueId = cue.id;
+      updateSenseCue(element, cue);
       slot.append(element);
     }
-    fragment.append(slot);
   }
-  senseHud.replaceChildren(fragment);
+  for (const [cueId, element] of existingCues) {
+    if (renderedCueIds.has(cueId) || senseCueRemovalTimers.has(cueId)) continue;
+    element.classList.add('is-leaving');
+    const timer = window.setTimeout(() => {
+      const slot = element.parentElement;
+      element.remove();
+      senseCueRemovalTimers.delete(cueId);
+      if (slot?.classList.contains('sense-slot') && slot.childElementCount === 0) slot.remove();
+    }, SENSE_CUE_EXIT_MS);
+    senseCueRemovalTimers.set(cueId, timer);
+  }
   senseHud.setAttribute('aria-label', scentActive
     ? 'Off-screen sounds and scents. Scent focus is active.'
     : 'Off-screen sounds. Press Q to focus on scents.');

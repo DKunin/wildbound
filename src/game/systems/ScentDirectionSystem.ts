@@ -1,12 +1,16 @@
+import { metersToWorldUnits } from './WorldScaleSystem';
+
 export interface ScentDirection {
   arrow: string;
   label: 'HERE' | 'E' | 'SE' | 'S' | 'SW' | 'W' | 'NW' | 'N' | 'NE';
 }
 
 export const SCENT_TRAIL_LIFETIME_MS = 22_000;
-export const SCENT_RENDER_RADIUS = 720;
+export const SCENT_TRAIL_RENDER_RADIUS_METERS = 72;
+export const SCENT_RENDER_RADIUS = metersToWorldUnits(SCENT_TRAIL_RENDER_RADIUS_METERS);
 export const SCENT_TRAIL_MIN_STRENGTH = 0.05;
-export const CACHED_MEAT_SCENT_RADIUS = 2_400;
+export const CACHED_MEAT_SCENT_RADIUS_METERS = 240;
+export const CACHED_MEAT_SCENT_RADIUS = metersToWorldUnits(CACHED_MEAT_SCENT_RADIUS_METERS);
 
 const DIRECTIONS: readonly ScentDirection[] = [
   { arrow: '→', label: 'E' },

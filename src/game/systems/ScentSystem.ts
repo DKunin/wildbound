@@ -19,8 +19,18 @@ import {
   getStablePulse,
   getStableScentPhase,
 } from './ScentMotionSystem';
+import {
+  getScentIntermittency,
+  getScentPlumeReading,
+  getStableScentSourcePhase,
+  PLAYER_SCENT_PROFILE,
+} from './ScentPlumeSystem';
 import { getTerritoryMarkColor, getTerritoryMarkStrength, type TerritoryMark } from './TerritoryMarkSystem';
-import type { SenseKind } from './SenseHudSystem';
+import { MIN_SENSE_SIGNAL_STRENGTH, type SenseKind } from './SenseHudSystem';
+import {
+  CARRION_SCENT_RANGE,
+  LIVE_ANIMAL_SCENT_RANGE,
+} from './ScentRangeSystem';
 
 interface ScentMark extends PointLike {
   createdAt: number;
@@ -28,6 +38,13 @@ interface ScentMark extends PointLike {
   source?: Prey | PackWolf;
   sourceId: string;
   readonly phase: number;
+}
+
+interface AirborneScentSource extends PointLike {
+  sourceId: string;
+  kind: Exclude<SenseKind, 'cache' | 'territory' | 'water'>;
+  sourceStrength: number;
+  source: Prey | PackWolf;
 }
 
 export interface ScentClue {
@@ -58,14 +75,27 @@ export const EMPTY_SCENT_READING: ScentReading = {
   signals: [],
 };
 
+export { CARRION_SCENT_RANGE, LIVE_ANIMAL_SCENT_RANGE } from './ScentRangeSystem';
+
+const AIRBORNE_SCENT_STRENGTH: Record<AirborneScentSource['kind'], number> = {
+  rabbit: 0.62,
+  deer: 1,
+  elk: 1.15,
+  boar: 1.1,
+  pack: 1,
+  carcass: 1.3,
+};
+
 export class ScentSystem {
   private readonly graphics: Phaser.GameObjects.Graphics;
   private readonly marks: ScentMark[] = [];
+  private airborneSources: AirborneScentSource[] = [];
   private cachedFood: Prey[] = [];
   private readonly sourceIds = new WeakMap<object, string>();
   private nextSourceId = 1;
   private lastMarkAt = 0;
   private active = false;
+  private windStrength = 0.5;
 
   constructor(
     scene: Phaser.Scene,
@@ -91,6 +121,7 @@ export class ScentSystem {
   }
 
   setWind(x: number, y: number, strength: number): void {
+    this.windStrength = Phaser.Math.Clamp(strength, 0, 1);
     this.wind.set(x, y).normalize().scale(0.55 + strength * 0.7);
   }
 
@@ -104,9 +135,34 @@ export class ScentSystem {
   }
 
   record(time: number, prey: readonly Prey[], pack: readonly PackWolf[] = []): void {
+    this.airborneSources = [];
+    this.cachedFood = prey.filter((animal) => animal.active && animal.isBuried() && animal.hasEdibleMeat());
+    for (const animal of prey) {
+      if (!animal.active || animal.isBuried() || animal.isCarried()) continue;
+      const kind = getAnimalScentSpecies(animal.species, animal.isDead(), animal.hasEdibleMeat());
+      if (!kind) continue;
+      this.airborneSources.push({
+        sourceId: this.getSourceId(animal),
+        kind,
+        x: animal.x,
+        y: animal.y,
+        sourceStrength: AIRBORNE_SCENT_STRENGTH[kind],
+        source: animal,
+      });
+    }
+    for (const wolf of pack) {
+      const kind = 'pack';
+      this.airborneSources.push({
+        sourceId: this.getSourceId(wolf, 'pack'),
+        kind,
+        x: wolf.x,
+        y: wolf.y,
+        sourceStrength: AIRBORNE_SCENT_STRENGTH[kind],
+        source: wolf,
+      });
+    }
     if (time - this.lastMarkAt < 580) return;
     this.lastMarkAt = time;
-    this.cachedFood = prey.filter((animal) => animal.active && animal.isBuried() && animal.hasEdibleMeat());
     for (const animal of prey) {
       if (animal.isBuried() || animal.isCarried()) continue;
       const species = getAnimalScentSpecies(animal.species, animal.isDead(), animal.hasEdibleMeat());
@@ -158,8 +214,49 @@ export class ScentSystem {
 
     const strongestBySpecies = new Map<ScentMark['species'], { strength: number; x: number; y: number }>();
     const signalsById = new Map<string, ScentSignal>();
+    const airborneSignalKeys = new Set<string>();
     let strongest: { strength: number; x: number; y: number } | undefined;
     let strongestTarget: { strength: number; x: number; y: number } | undefined;
+    for (const source of this.airborneSources) {
+      const baseRange = source.kind === 'carcass' ? CARRION_SCENT_RANGE : LIVE_ANIMAL_SCENT_RANGE;
+      const plume = getScentPlumeReading({
+        listener: player,
+        source,
+        windX: this.wind.x,
+        windY: this.wind.y,
+        windStrength: this.windStrength,
+        baseRange,
+        sourceStrength: source.sourceStrength,
+        profile: PLAYER_SCENT_PROFILE,
+      });
+      const strength = plume.strength * getScentIntermittency(
+        time,
+        getStableScentSourcePhase(source.sourceId),
+        plume.distanceRatio,
+      );
+      if (strength < MIN_SENSE_SIGNAL_STRENGTH) continue;
+      const targeted = source.source === targetedPrey;
+      const signalKey = `${source.sourceId}:${source.kind}`;
+      airborneSignalKeys.add(signalKey);
+      signalsById.set(signalKey, {
+        sourceId: source.sourceId,
+        kind: source.kind,
+        x: source.x,
+        y: source.y,
+        strength,
+        targeted,
+      });
+      if (!targeted) {
+        const speciesReading = strongestBySpecies.get(source.kind);
+        if (!speciesReading || strength > speciesReading.strength) {
+          strongestBySpecies.set(source.kind, { strength, x: source.x, y: source.y });
+        }
+      }
+      if (targeted && (!strongestTarget || strength > strongestTarget.strength)) {
+        strongestTarget = { strength, x: source.x, y: source.y };
+      }
+      if (!strongest || strength > strongest.strength) strongest = { strength, x: source.x, y: source.y };
+    }
     for (const mark of this.marks) {
       const distance = Phaser.Math.Distance.Between(player.x, player.y, mark.x, mark.y);
       if (distance > SCENT_RENDER_RADIUS) continue;
@@ -180,7 +277,7 @@ export class ScentSystem {
       const targeted = mark.source === targetedPrey;
       const signalKey = `${mark.sourceId}:${mark.species}`;
       const scentSignal = signalsById.get(signalKey);
-      if (!scentSignal || strength > scentSignal.strength) {
+      if (!airborneSignalKeys.has(signalKey) && (!scentSignal || strength > scentSignal.strength)) {
         signalsById.set(signalKey, {
           sourceId: mark.sourceId,
           kind: mark.species,
@@ -189,7 +286,7 @@ export class ScentSystem {
           strength,
           targeted,
         });
-      } else if (targeted) {
+      } else if (targeted && scentSignal) {
         scentSignal.targeted = true;
       }
       const speciesReading = strongestBySpecies.get(mark.species);
@@ -367,6 +464,7 @@ export class ScentSystem {
 
   clearTransientTrails(): void {
     this.marks.length = 0;
+    this.airborneSources.length = 0;
     this.cachedFood.length = 0;
     this.lastMarkAt = 0;
     this.graphics.clear();
@@ -375,6 +473,7 @@ export class ScentSystem {
   destroy(): void {
     this.graphics.destroy();
     this.marks.length = 0;
+    this.airborneSources.length = 0;
     this.cachedFood.length = 0;
   }
 }

@@ -36,7 +36,9 @@ interface MergedSource extends Required<Omit<SenseSourceSignal, 'targeted'>> {
   strength: number;
 }
 
-const MIN_SIGNAL_STRENGTH = 0.025;
+export const MIN_SENSE_SIGNAL_STRENGTH = 0.025;
+export const SENSE_CUE_ENTRY_MARGIN = 36;
+export const SENSE_CUE_EXIT_INSET = 20;
 const DIRECTION_STEP = Math.PI / 4;
 const DIRECTION_HYSTERESIS = 8 * Math.PI / 180;
 const DIRECTION_BY_ANGLE: readonly SenseDirection[] = ['E', 'SE', 'S', 'SW', 'W', 'NW', 'N', 'NE'];
@@ -58,11 +60,15 @@ const angularDistance = (left: number, right: number): number => {
   return Math.min(difference, Math.PI * 2 - difference);
 };
 
-const isInsideViewport = (source: SenseSourceSignal, viewport: SenseViewport): boolean => (
-  source.x >= viewport.left
-  && source.x <= viewport.right
-  && source.y >= viewport.top
-  && source.y <= viewport.bottom
+const isInsideViewport = (
+  source: SenseSourceSignal,
+  viewport: SenseViewport,
+  expansion = 0,
+): boolean => (
+  source.x >= viewport.left - expansion
+  && source.x <= viewport.right + expansion
+  && source.y >= viewport.top - expansion
+  && source.y <= viewport.bottom + expansion
 );
 
 const directionForAngle = (angle: number): SenseDirection => (
@@ -79,13 +85,16 @@ export class SenseHudModel {
   ): SenseHudCue[] {
     const mergedSources = new Map<string, MergedSource>();
     for (const source of sources) {
-      if (isInsideViewport(source, viewport)) continue;
+      const key = `${source.sourceId}:${source.kind}`;
+      const viewportExpansion = this.previousDirections.has(key)
+        ? -SENSE_CUE_EXIT_INSET
+        : SENSE_CUE_ENTRY_MARGIN;
+      if (isInsideViewport(source, viewport, viewportExpansion)) continue;
       const scentStrength = clamp01(source.scentStrength);
       const hearingStrength = clamp01(source.hearingStrength);
       const strength = Math.max(scentStrength, hearingStrength);
-      if (strength < MIN_SIGNAL_STRENGTH) continue;
+      if (strength < MIN_SENSE_SIGNAL_STRENGTH) continue;
 
-      const key = `${source.sourceId}:${source.kind}`;
       const previous = mergedSources.get(key);
       if (!previous) {
         mergedSources.set(key, {
