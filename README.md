@@ -1,100 +1,53 @@
 # Wildbound
 
-Wildbound is an original browser-based wolf survival simulator. Its forest territory is deterministically assembled from texture layers and spans 10240×10240 game units. Clearings, forest floor, a connected network of straight, diagonal, and turning paths, a main river, two streams, twelve still forest pools, granite scree, wet meadows, berry patches, windfall, trees, birch clusters, boulders, rock outcrops, fallen trunks, and mountain boundaries form a connected world rather than a single background image. Diagonal river segments overlap slightly so water and banks join without square gaps, while subtle highlights move along the current. Trees, saplings, bushes, reeds, and water only move within 1200 units of the wolf; spatial buckets and 10 Hz updates leave the rest of the world unanimated. The muted ground and scenery palette keeps animal silhouettes clear, and night adds a soft blue tone without heavy darkening. Irregular pool banks blend into their surrounding soil, rocks, and vegetation; large pools may contain water lilies. Pool placement depends on the world seed, and drinking and water scent work at every source. Only rivers and streams produce a hearing cue: still pool water is silent. Tracks, sound, and scent help the player read the environment. Two packmates remain implemented but are temporarily disabled by a feature flag, so the active simulation contains only the player-controlled wolf. Human hunters are intentionally not included.
+Wildbound is an original browser survival game about living as a lone wolf. Explore a hand-crafted procedural forest, read the wind, track prey, manage needs, hunt, rest, and decide when to eat or preserve scarce meat.
 
-Elk is the third complete prey species: 5 live in `SURVIVAL` and 10 in `EXPLORER`. It has its own eight-direction movement, rest, feeding, and drinking cycles; leaves heavy tracks and scent; and has separate needs, endurance, and carcass behaviour. Prey no longer stops while it can see a pursuing wolf, retains threat memory for twelve seconds, and keeps increasing distance to its species-specific safety threshold. Exhaustion genuinely reduces speed, and the running animation slows in sync so accumulated fatigue is visible. During full rest, the screen fades to black, the simulation advances behind the curtain, and the game returns at a new time of day.
+## Play
 
-Boar is the fourth prey species: 4 live in `SURVIVAL` and 8 in `EXPLORER`. Family groups stay near wet forest, banks, cover, and berry patches; rest by day; and feed more actively in the evening and at night. A boar normally flees when it detects the wolf, but a short defensive countercharge is possible at close range depending on threat direction, injury, and group support. The species has original eight-direction atlases for idle, walking, running, resting, feeding, drinking, and carcass states. Its defensive dash uses a separate four-phase, head-down cycle instead of flee frames.
-
-## Play in the browser
-
-[Open Wildbound](https://wildbound.kunini.ru/)
+[Play Wildbound in your browser](https://wildbound.kunini.ru/)
 
 ![Wildbound gameplay: a wolf by a forest stream](Screenshot%202026-10-17%20at%2010.20.34.png)
 
-1. Open the game, choose a mode, and press `START`.
-2. Move with `WASD`; hold `Shift` to sprint and press `C` to sneak.
-3. Follow scent with `Q`, hunt, and interact with the world using `E`.
+1. Open the game, choose a difficulty, and press `START`.
+2. Explore quietly, use wind and scent to find prey, and only sprint when the moment is right.
+3. Eat what you need, cache the rest, and rest before exhaustion catches up with you.
 
-## Run locally
+## The world
 
-```bash
-npm install
-npm run dev
-```
+The 1.024 × 1.024 km forest contains clearings, paths, rivers, streams, pools, wetlands, berry patches, windfall, rocks, and dense cover. Day, night, wind, water, obstacles, animal needs, and populations continue to evolve whether the wolf is moving or resting.
 
-To inspect the peripheral senses UI, open `http://localhost:5173/?debug=senses`. `SENSES LAB` does not start the simulation and does not read or modify a save. It shows all nine source types across eight fixed directions, lets you test scent, hearing, and marked prey independently, and changes all signal strengths with a slider.
+You share the territory with rabbits, deer, elk, and boar. Each species has distinct movement, feeding, drinking, resting, escape, tracks, scent, endurance, and carcass behaviour. Prey can see, hear, and smell the wolf; trees, rocks, logs, and terrain block sight, while wind carries scent downwind.
 
-## World scale and scent
+## Tracking, hunting, and survival
 
-One game unit equals 0.1 m: a 256×256 world cell covers 25.6×25.6 m, and the complete 10240×10240 territory covers 1.024×1.024 km. Movement physics use real seconds; accelerated game time deliberately remains a separate survival mechanic. Controls use a compressed exploration pace so continuous travel across the kilometre-wide world remains comfortable: 3 m/s while sneaking, 10 m/s normally, and a short endurance sprint at 18 m/s (≈65 km/h, below a recorded short-term maximum). The base scent range for live prey is 115 m: deer can be detected at up to 276 m in a strong favourable wind, while strong exposed carrion can reach about 499 m. These values model ordinary detection around 300 yards in suitable wind, not rare kilometre-scale cases.
+- **Scent and sound:** press `Q` to read scent. The off-screen senses HUD keeps signals in eight fixed directions: blue lines are scent, amber arcs are sound, and stronger signals are more vivid. Wind stretches airborne scent downwind, so approaching from the right direction matters.
+- **Stealth and pursuit:** sneak to reduce sound and visual movement. Sprinting is powerful but spends endurance and builds recovery debt; exhausted prey slows over a long chase, but can escape a careless wolf.
+- **Hunting:** mark a living target with a left-click, use `E` to attack when close, and account for wounds and defensive behaviour. Deer can kick, while boar may countercharge at close range.
+- **Food and caches:** `E` eats, carries, or buries meat according to context. Buried caches last much longer than exposed carrion, while territory marks can help protect nearby stores.
+- **Rest and recovery:** hunger, thirst, stamina, injuries, and time of day shape every decision. Use `R` to rest, or `T REST UNTIL HEALED` when it becomes available.
 
-For the production build and validation:
+## Difficulty
 
-```bash
-npm test
-npm run test:visual
-npm run build
-npm run check:server
-npm run sprites:animal-actions -- --check
-npm run sprites:state-scales -- --check
-```
-
-Production uses a small loopback-only Node server. It serves the Vite build, accepts anonymised events, and stores aggregates in local SQLite. After `npm run build`, start it with `npm start`; settings are in `.env.example`. Game saves never leave the browser: the primary world snapshot is stored in IndexedDB, with `localStorage` only as a fallback when IndexedDB is unavailable. Telemetry sends only random browser and tab identifiers, event type, and selected difficulty—not save contents, coordinates, needs, or world state.
-
-The `/stats` page reports players online, active sessions, median and total play time, daily activity, and recent sessions. `/stats` and `/api/stats` have two layers of protection: Nginx `auth_request` through `auth.kunini.ru`, plus a server-side allowlist of stable `X-Auth-User-Id` values from `STATS_ALLOWED_USER_IDS`. An empty allowlist closes the page to everyone. Only strictly validated `POST /api/events` remains public; configuration for `wildbound.kunini.ru` and the installation sequence are in `ops/README.md`.
-
-Muted versions of all seven environment-family images are reproducibly built with `npm run sprites:terrain-muted`; sources remain unchanged. `npm run sprites:world-grid` normalises the four runtime world atlases to Phaser’s exact 1252×1252 grid and prevents objects in transparent atlases from crossing frame boundaries.
-
-Visual regression checks 640 base player-wolf frames, 512 meat-carrying frames, 128 burial frames, 32 Niva and Torr frames, movement for four prey species, 96 action frames each (resting, feeding, and drinking) per species, 32 deer counter-kick frames, 32 boar defensive-dash frames, and three complete visible wound levels for every wolf, deer, elk, and boar pose. The audit rejects empty frames, faint background artefacts, crossed cell boundaries, incomplete runtime cycles, and ground-line jumps when entering or leaving an action; the wolf reference model is cleaned independently. `npm run audit:animations` alternates 1,424 pairs of states with matching direction, carrying state, and wound level. The 424 comparable full-body pairs have an automated limit on scale jumps, while compressed stances, lying down, death, and effects remain under manual visual review. Verified contact sheets with expected-direction arrows are retained for gaits, new prey actions, and packmates so mirrored or backwards-facing frames stand out during review. The test separately detects detached body parts, atlas overflow, anchor-point jumps, and collapsed silhouettes. For the overhead kick, it checks anatomy: hind legs extend behind the pelvis while the head stays in place. Wounds are embedded in the final animal texture and clipped to its silhouette rather than drawn as separate game objects. Update the reference only after image review with `npm run test:visual:update`.
-
-## Difficulty and balance
-
-Difficulty is chosen before a run. `SURVIVAL` is the default: 14 rabbits, 10 deer, 5 elk, and 4 boar. Every third day is lean, and new animals arrive only at dawn or dusk, far from the wolf and recently depleted areas. Meat remains count as biomass and delay population recovery. After two kills in one area, nearby prey migrates toward the far edge of the territory. A rabbit yields 20 meat units, a deer 65, an elk 95, and a boar 82.
-
-An attack costs 20 endurance. Wounds reduce maximum endurance and speed, and healing requires hunger and thirst below 60. Injured wolves, deer, elk, and boar switch between complete light, medium, and heavy wound textures for every available pose. A poor attack angle on a deer triggers a deterministic hind-leg counter-kick with a separate eight-direction animation. Exposed meat lasts about six game hours and buried meat two game days; an unprotected cache loses 30% daily, or 35% on a lean day, to scavengers. Burial takes three seconds, costs 15 endurance, is allowed only on dry, soft ground, and must be at least 500 units from another cache. Territory marks protect at most the three nearest caches.
-
-`EXPLORER` retains the previous 20 rabbits and 22 deer, adds 10 elk and 8 boar, and keeps high meat yield, fast healing, unrestricted cache placement, and the previous decay times. Older numerical values for population and storage apply to this compatible mode. A save without a difficulty field loads as `EXPLORER`. `FULL RESET` in the main menu removes the current life from IndexedDB and fallback localStorage before beginning a new run with the selected difficulty.
+`SURVIVAL` is the intended default: prey and meat are scarcer, every third day is lean, and disturbed areas take time to recover. `EXPLORER` provides a more forgiving population, recovery, and caching experience. `FULL RESET` starts a fresh life from the main menu.
 
 ## Controls
 
-- `WASD` — move;
-- left-click a living animal — mark it with the predator-jaws icon and highlight its scent in red; the mark and tracking are removed on death;
-- `Shift` — sprint at an endurance cost; while crouched, immediately burst out of stealth;
-- `C` — enable or disable crouching and stealth movement;
-- `E` — attack, eat, drink, or work with a meat cache contextually;
-- `Q` — scent mode;
-- `M` — leave a scented territory mark at the current position;
-- `R` — lie down to rest;
-- `F5` — save the game;
-- `F9` — load the game;
-- mouse wheel — zoom the camera;
-- `Space` or `Esc` — pause.
+| Input | Action |
+| --- | --- |
+| `WASD` | Move |
+| Left-click a living animal | Mark it and highlight its scent trail |
+| `Shift` | Sprint; burst out of stealth when sneaking |
+| `C` | Toggle sneaking |
+| `E` | Attack, eat, drink, carry, or bury meat contextually |
+| `Q` | Scent mode |
+| `M` | Leave a territory mark |
+| `R` | Lie down to rest |
+| `F5` / `F9` | Save / load |
+| Mouse wheel | Zoom the camera |
+| `Space` / `Esc` | Pause |
 
-`LOG MODE` can be enabled before a run in the main menu or through the `Esc` pause menu. It adds a hunt log on the right that records real prey-perception transitions: when a deer or rabbit saw, heard, or scented the wolf; became alert; fled; or calmed after losing the threat. Repeated herd events are combined, and only the last eight entries are retained so the log does not cover the game in a continuous stream of messages. It is off by default. When an injured wolf has fully lain down to rest, a `T REST UNTIL HEALED` button appears at the bottom. It advances time under the ordinary recovery rules, including hunger and thirst, day and lighting changes, wind, animal needs, carrion decay, and population recovery, then gets the wolf back up.
+`LOG MODE`, available from the main menu or pause menu, records significant prey awareness and hunt events without interrupting play. The game autosaves every 30 seconds; saves remain in the browser.
 
-## Simulation and animal behaviour
+## Release history
 
-The world and its animals operate independently of player actions. The player wolf uses eight individually drawn directions without sprite rotation; north and south views are strictly top-down. Each direction has separate cycles for walking, running, crouching, stealth-crawling, calm idle, attacking, eating, drinking, and burying. A contextual action blocks movement until its one-shot animation completes. Idle frames use one shared anchor point, so breathing and small movements do not shift the wolf on screen. `Shift` starts a faster sixteen-frame gallop and spends endurance; releasing it returns to walking while preserving gait phase. When exhausted, the wolf remains at walking speed until the player releases `Shift` and presses it again after recovering enough endurance. Each sprint builds recovery debt: endurance recovers more slowly after repeated running, while long rest restores both endurance and accumulated strain. Exhaustion also accelerates hunger, especially thirst, and at high load begins to reduce health. `C` enables a separate low stealth stance and crawl animation: the wolf moves more slowly and produces far less sound and visible motion, but its scent does not disappear. Pressing `Shift` in this stance immediately ends stealth and starts a short burst into a run in the current direction. After 20 seconds of normal inactivity, the wolf lies down automatically; new movement first starts a get-up animation. `R` starts rest immediately.
-
-Rabbits, deer, elk, and boar also use eight individually drawn directions without image rotation, separate calm idle cycles, walking, fleeing, four-phase rest, feeding, and drinking cycles, and a carcass appearance for every view. Action transitions align with the matching idle ground line; walk phase is retained when turning and switching between calm movement and fleeing, while playback speed follows actual animal speed. Wolves, deer, elk, and boar support three visible wound levels; a rabbit with one health point transitions directly to a carcass. All living animals have a two-layer soft contact shadow that stays grounded independently of the current frame. Prey combines vision in a wide forward sector, audible movement, and wind-borne scent. Strong wind stretches scent into a narrow downwind plume: approaching against the wind is much harder for prey to smell, while an upwind approach quickly exposes the wolf. Trees, rocks, logs, and mountains block sight; night reduces sight range; and several weak signals combine. Deer become alert even on weak distant visual contact and retain the alert for five seconds after losing the wolf; a started flight remains locked until a safe pursuit-exit window.
-
-Calm prey no longer chooses a random point every few seconds. Each animal accumulates hunger, thirst, and fatigue: deer move to an open feeding patch, shore, or forest cover, while rabbits more often stay between grassy food and protective cover and receive some moisture from food. Feeding cells cover most open terrain, do not deplete, and are used across their full area rather than only at one narrow centre point. Feeding has higher priority at dawn and dusk. During the day, rabbits, deer, and elk rest in cover on species-specific schedules; deer also have a short pre-dawn rest period. Individual offsets keep an entire herd from sleeping at once. Threat, severe hunger, or thirst immediately interrupts sleep. Animals pathfind through free cells to their targets, and random exploration is rare when needs are low. After an alert, an animal returns to its previous target.
-
-While fleeing, prey repeatedly builds a short route to a safe area: it selects reachable cells farther from the predator, favours places with multiple exits, and avoids dead ends and territory-edge corners. Each animal has its own lateral route preference, and nearby deer also spread out from one another; the final direction is always constrained to the half-plane away from the threat. If a direct line is blocked by a wall, trees, or rocks, prey goes around it rather than continually running into the collider. Flight spends endurance and builds recovery debt, but both species can survive one continuous wolf sprint. Speed falls geometrically with accumulated exhaustion: deer retain a major advantage at the start of a chase but become slower than a walking wolf after about two and a half minutes of uninterrupted flight. A successful hunt therefore requires extended pursuit or a stealthy approach, path interception, and repeated sprints. Exhaustion still accelerates hunger and thirst and damages health under extreme prolonged load, but routine movement between abundant resources no longer causes widespread natural death. Full rest removes strain far more effectively than a short break, and extended wolf sleep advances prey sleep cycles as well. Hunger, thirst, and extreme exhaustion can still cause rare natural death; the resulting carcass remains fresh edible carrion and participates in scent and pack feeding.
-
-Exposed or carried carrion decays over about twelve minutes of real time, while a buried cache lasts fifteen times longer; remaining meat and the visibility of the carcass or mound diminish smoothly. A satiated wolf does not waste meat: leftovers can be picked up with `E`, carried, and buried with a second press. While carrying, the original carcass is hidden and the wolf uses complete atlases with one meat bundle built into the pose behind the jaw line. Variants cover idle, walking, running, stealth movement, lying down, resting, and getting up in all eight directions; image size does not depend on prey species. Below the hunger bar, the game shows whether the wolf will eat or cache meat and marks the appetite-return threshold. Buried caches are protected from packmate feeding, persist with the game, and can be dug up for eating or another carry. An asymmetric mound of fresh soil with needles, moss, leaves, and stones blends into the forest floor; its size distinguishes rabbit and deer caches. During burial, the mound is placed at a safe offset in front of the wolf and does not overlap its silhouette.
-
-Large trees, rocks, logs, and cliffs have individual physical boundaries that scale with their art and match the grounded part of the object. The wolf may walk behind a canopy but not through a trunk or rock base. The wolf is controlled only with the keyboard: left-click no longer creates a route and instead selects a living rabbit or deer. A predator-jaws icon appears above the selected animal, its tracks turn red, and a separate red wolf-senses icon leads along its scent. The mark disappears on death and scent highlighting stops immediately. In `EXPLORER`, the expanded territory supports 20 rabbits and 22 deer; in `SURVIVAL`, 14 and 10, or 8 and 6 on a lean day. Populations recover gradually. The pack, cooperative hunting, and howl gathering are temporarily disabled by one flag without removing their implementation.
-
-Scent trails deliberately convey approximate, ageing information rather than exact prey positions, and wind direction changes their spread. Particles retain their own motion phase when older trails disappear, so a plume sways smoothly without jumps. A trail lasts 22 seconds. A peripheral HUD shows only off-screen sources in eight fixed directions: blue lines represent scent, amber arcs sound, and opacity and saturation communicate signal strength. Icons cover rabbits, deer, elk, boar, the pack, carrion, water, personal territory marks, and meat caches. Identical sources in one direction are grouped, while the selected animal remains a separate red target. A territory mark placed with `M` lasts one game day, appears in scent mode as a translucent paw print, scares prey with scent, and persists with the game. Player-wolf marks are green; the owner model and colours leave room for future wolves to use their own shades. A repeat mark can be placed after 15 game minutes, and a nearby mark from the same owner is refreshed instead. Up to 12 active marks are supported. An unfinished carcass continues to emit carrion scent until fully eaten. Buried meat creates a persistent scent cue within 2400 game units, noticeably farther than a normal trail, while the cache exists. A running animal’s hearing signal remains approximate but follows the sound source itself rather than an outdated point. The main river and both streams can always be heard within hearing range, and their icon points to the nearest flowing-water segment. Autosave runs every 30 seconds, using IndexedDB as primary storage with localStorage fallback.
-
-Scent particles remain translucent but are slightly larger and higher-contrast against the forest floor. The selected-prey mark remains while the wolf can see the animal at close range or sense at least one readable part of its trail. After eight continuous seconds without either signal, the trail is considered lost, the mark is removed, and reacquisition before the timer expires starts the count again.
-
-The save format is tied to the procedural-territory version. Saves from version 0.3.0 and older do not load in 0.4.0, preventing the wolf and animals from appearing inside newly placed obstacles or water.
-
-Run the full visual animal audit with `npm run audit:animations`. It collects the exact runtime cycles for every direction, action, carrying state, and wound level; checks anchor drift, size pulsing, repeated poses, cycle seams, and action entry relative to idle; then creates an interactive gallery at `art-source/animal-animation-audit-v1/index.html` with animations and frame-by-frame contact strips. The deterministic `npm run sprites:animal-actions` factory rebuilds twelve-row action atlases from saved sources and the separate boar dash; `--check` only compares output and does not modify files.
-
-## Architecture
-
-The project uses TypeScript, Phaser 3, and Vite. World generation, pathfinding, directional animation, wolf needs, time of day, wind, populations, saves, and water-source geometry are separated from the scene and covered by module tests. Visual assets are made specifically for Wildbound and do not use assets or branding from the original commercial game.
+See [CHANGELOG.md](CHANGELOG.md) for feature, balance, technical, and release history.
