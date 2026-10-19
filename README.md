@@ -1,6 +1,6 @@
 # Wildbound
 
-Wildbound is an original browser survival game about living as a lone wolf. Explore a hand-crafted procedural forest, read the wind, track prey, manage needs, hunt, rest, and decide when to eat or preserve scarce meat.
+Wildbound is an original browser survival game about living as a lone wolf, inspired by the original DOS wolf game from the 1990s. Explore a hand-crafted procedural forest, read the wind, track prey, manage needs, hunt, rest, and decide when to eat or preserve scarce meat.
 
 ## Play
 
