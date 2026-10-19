@@ -2,12 +2,13 @@ import { metersToWorldUnits } from './WorldScaleSystem';
 
 export const SNEAK_ANIMATION_TIME_SCALE = 0.58;
 
-// Yellowstone reports a typical 5 mph (8 km/h) travelling pace and a much
-// higher short-distance top speed. Sprint remains deliberately below that top
-// speed because the endurance system only permits it for a brief burst.
-export const WOLF_SNEAK_SPEED_METERS_PER_SECOND = 1.2;
-export const WOLF_TRAVEL_SPEED_METERS_PER_SECOND = 2.25;
-export const WOLF_SPRINT_SPEED_METERS_PER_SECOND = 14;
+// The player continuously crosses a one-kilometre territory, so its controls
+// use compressed exploration tempo rather than literal day-long travel time.
+// Sprint remains below Yellowstone's reported 45 mph short-distance top speed
+// and is restricted to a brief endurance-limited burst.
+export const WOLF_SNEAK_SPEED_METERS_PER_SECOND = 3;
+export const WOLF_TRAVEL_SPEED_METERS_PER_SECOND = 10;
+export const WOLF_SPRINT_SPEED_METERS_PER_SECOND = 18;
 
 export const WOLF_SNEAK_SPEED = metersToWorldUnits(WOLF_SNEAK_SPEED_METERS_PER_SECOND);
 export const WOLF_TRAVEL_SPEED = metersToWorldUnits(WOLF_TRAVEL_SPEED_METERS_PER_SECOND);

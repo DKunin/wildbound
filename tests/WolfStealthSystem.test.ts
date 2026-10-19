@@ -28,12 +28,12 @@ describe('wolf stealth profile', () => {
     expect(sneakingWithRunRequested.scentSignature).toBeGreaterThan(0.75);
   });
 
-  it('uses metre-calibrated gaits instead of opaque world-unit speeds', () => {
-    expect(WOLF_SNEAK_SPEED_METERS_PER_SECOND).toBe(1.2);
-    expect(WOLF_TRAVEL_SPEED_METERS_PER_SECOND).toBe(2.25);
-    expect(WOLF_SPRINT_SPEED_METERS_PER_SECOND).toBe(14);
-    expect(WOLF_SNEAK_SPEED).toBe(12);
-    expect(WOLF_TRAVEL_SPEED).toBe(22.5);
-    expect(WOLF_SPRINT_SPEED).toBe(140);
+  it('uses metre-calibrated, responsive exploration speeds', () => {
+    expect(WOLF_SNEAK_SPEED_METERS_PER_SECOND).toBe(3);
+    expect(WOLF_TRAVEL_SPEED_METERS_PER_SECOND).toBe(10);
+    expect(WOLF_SPRINT_SPEED_METERS_PER_SECOND).toBe(18);
+    expect(WOLF_SNEAK_SPEED).toBe(30);
+    expect(WOLF_TRAVEL_SPEED).toBe(100);
+    expect(WOLF_SPRINT_SPEED).toBe(180);
   });
 });
