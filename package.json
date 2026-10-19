@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "start": "node server/start.mjs",
     "build": "tsc --noEmit && vite build",
+    "check:server": "node --check server/start.mjs && node --check server/app.mjs && node --check server/stats-store.mjs",
     "sprites:carry": "node scripts/build-player-wolf-carry-atlases.mjs",
     "sprites:balance": "node scripts/build-balance-atlases.mjs",
     "sprites:bury": "node scripts/build-player-wolf-bury-atlases.mjs",
@@ -27,6 +29,9 @@
   },
   "dependencies": {
     "phaser": "^3.90.0"
+  },
+  "engines": {
+    "node": ">=22.13"
   },
   "devDependencies": {
     "@types/node": "^24.10.0",

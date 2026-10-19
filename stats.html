@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow, noarchive" />
+    <title>Wildbound statistics</title>
+  </head>
+  <body>
+    <main class="stats-shell">
+      <header class="stats-header">
+        <div>
+          <a href="/" class="back-link">← Wildbound</a>
+          <h1>Player activity</h1>
+          <p>Anonymous browser sessions. No save data, positions, or gameplay state are collected.</p>
+        </div>
+        <div class="refresh-status">
+          <span class="live-dot" aria-hidden="true"></span>
+          <span id="updated-at">Loading…</span>
+        </div>
+      </header>
+
+      <p id="stats-error" class="stats-error" role="alert" hidden></p>
+
+      <section class="metric-strip" aria-label="Current activity">
+        <article><span>Online now</span><strong id="online-now">—</strong><small>seen within 90 seconds</small></article>
+        <article><span>Playing now</span><strong id="playing-now">—</strong><small>active game heartbeat</small></article>
+        <article><span>Median playtime</span><strong id="median-playtime">—</strong><small>across played sessions</small></article>
+        <article><span>Players today</span><strong id="players-today">—</strong><small>anonymous devices</small></article>
+      </section>
+
+      <section class="activity-panel" aria-labelledby="activity-title">
+        <div class="section-heading">
+          <div><h2 id="activity-title">Last 14 days</h2><p id="activity-timezone"></p></div>
+          <dl class="today-summary">
+            <div><dt>Sessions today</dt><dd id="sessions-today">—</dd></div>
+            <div><dt>Play starts</dt><dd id="starts-today">—</dd></div>
+            <div><dt>Deaths</dt><dd id="deaths-today">—</dd></div>
+          </dl>
+        </div>
+        <div id="activity-chart" class="activity-chart" aria-label="Daily visitors chart"></div>
+      </section>
+
+      <section class="detail-grid">
+        <article class="totals-panel" aria-labelledby="totals-title">
+          <h2 id="totals-title">All-time totals</h2>
+          <dl>
+            <div><dt>Visitors</dt><dd id="total-visitors">—</dd></div>
+            <div><dt>Sessions</dt><dd id="total-sessions">—</dd></div>
+            <div><dt>Played sessions</dt><dd id="played-sessions">—</dd></div>
+            <div><dt>Total playtime</dt><dd id="total-playtime">—</dd></div>
+            <div><dt>Deaths</dt><dd id="total-deaths">—</dd></div>
+          </dl>
+        </article>
+
+        <article class="sessions-panel" aria-labelledby="sessions-title">
+          <div class="section-heading"><div><h2 id="sessions-title">Recent sessions</h2><p>Newest browser sessions first</p></div></div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Status</th><th>Visitor</th><th>Started</th><th>Playtime</th><th>Mode</th></tr></thead>
+              <tbody id="recent-sessions"></tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+    </main>
+    <script type="module" src="/src/stats/main.ts"></script>
+  </body>
+</html>

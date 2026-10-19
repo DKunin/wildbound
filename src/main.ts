@@ -5,7 +5,12 @@ import { gameEvents, type HudState, type HuntLogEntry, type SleepTransition } fr
 import { DEFAULT_DIFFICULTY, type DifficultyMode } from './game/systems/BalanceConfig';
 import { runFullReset } from './game/systems/FullResetSystem';
 import { SaveSystem } from './game/systems/SaveSystem';
+import { buildSenseDebugCues, type SenseDebugFilter } from './game/systems/SenseDebugSystem';
 import { SENSE_DIRECTIONS, type SenseHudCue, type SenseKind } from './game/systems/SenseHudSystem';
+import { createBrowserTelemetry } from './game/systems/TelemetrySystem';
+
+const sensesDebugMode = new URLSearchParams(window.location.search).get('debug') === 'senses';
+document.documentElement.classList.toggle('senses-debug', sensesDebugMode);
 
 const clampPercent = (value: number) => `${Math.max(0, Math.min(100, value))}%`;
 
@@ -24,6 +29,10 @@ const setText = (selector: string, value: string) => {
 const pausePanel = document.querySelector<HTMLElement>('#pause-panel');
 const deathPanel = document.querySelector<HTMLElement>('#death-panel');
 const senseHud = document.querySelector<HTMLElement>('#sense-hud');
+const sensesDebugPanel = document.querySelector<HTMLElement>('#senses-debug-panel');
+const sensesDebugFilterButtons = document.querySelectorAll<HTMLButtonElement>('[data-senses-debug-filter]');
+const sensesDebugClarity = document.querySelector<HTMLInputElement>('#senses-debug-clarity');
+const sensesDebugClarityValue = document.querySelector<HTMLOutputElement>('#senses-debug-clarity-value');
 const daylight = document.querySelector<HTMLElement>('#daylight');
 const sleepCurtain = document.querySelector<HTMLElement>('#sleep-curtain');
 const vignette = document.querySelector<HTMLElement>('#vignette');
@@ -43,10 +52,12 @@ const startButton = document.querySelector<HTMLButtonElement>('#start-button');
 const fullResetButton = document.querySelector<HTMLButtonElement>('#full-reset-button');
 const mainMenuStatus = document.querySelector<HTMLElement>('#main-menu-status');
 const menuSaves = new SaveSystem();
+const telemetry = sensesDebugMode ? undefined : createBrowserTelemetry();
 let logModeEnabled = false;
 let selectedDifficulty: DifficultyMode = DEFAULT_DIFFICULTY;
 let game: Phaser.Game | undefined;
 let menuBusy = false;
+let sensesDebugFilter: SenseDebugFilter = 'all';
 
 const setDifficulty = (difficulty: DifficultyMode) => {
   if (game) return;
@@ -111,14 +122,11 @@ const signalLevel = (strength: number): string => (
   strength >= 0.7 ? 'strong' : strength >= 0.38 ? 'clear' : 'faint'
 );
 
-const createSenseIcon = (kind: SenseKind): SVGSVGElement => {
-  const icon = document.createElementNS(SVG_NAMESPACE, 'svg');
-  const use = document.createElementNS(SVG_NAMESPACE, 'use');
-  icon.classList.add('sense-icon');
-  icon.setAttribute('viewBox', '0 0 36 36');
+const createSenseIcon = (kind: SenseKind): HTMLSpanElement => {
+  const icon = document.createElement('span');
+  icon.className = 'sense-icon';
+  icon.dataset.icon = kind;
   icon.setAttribute('aria-hidden', 'true');
-  use.setAttribute('href', `#sense-icon-${kind}`);
-  icon.append(use);
   return icon;
 };
 
@@ -127,10 +135,10 @@ const createSenseModality = (kind: 'scent' | 'hearing'): HTMLSpanElement => {
   const icon = document.createElementNS(SVG_NAMESPACE, 'svg');
   wrapper.className = `sense-modality sense-${kind}`;
   wrapper.setAttribute('aria-hidden', 'true');
-  icon.setAttribute('viewBox', '0 0 18 24');
+  icon.setAttribute('viewBox', '0 0 20 24');
   const paths = kind === 'scent'
-    ? ['M16 3C5 5 14 9 3 11', 'M15 12C5 14 12 18 2 21']
-    : ['M3 8c4 2 4 6 0 8', 'M7 4c8 4 8 12 0 16'];
+    ? ['M18 3C6 4 15 9 3 10', 'M17 13C6 13 13 19 2 21']
+    : ['M3 8c4 2 4 6 0 8', 'M8 4c8 4 8 12 0 16'];
   for (const data of paths) {
     const path = document.createElementNS(SVG_NAMESPACE, 'path');
     path.setAttribute('d', data);
@@ -149,16 +157,16 @@ const describeCue = (cue: SenseHudCue): string => {
   return `${cue.targeted ? 'Marked ' : ''}${count}${SENSE_KIND_LABEL[cue.kind]}, ${cue.direction}, ${senses}`;
 };
 
-const renderSenseHud = (state: HudState): void => {
+const renderSenseHud = (cues: readonly SenseHudCue[], scentActive: boolean): void => {
   if (!senseHud) return;
   const fragment = document.createDocumentFragment();
   for (const direction of SENSE_DIRECTIONS) {
-    const cues = state.senseCues.filter((cue) => cue.direction === direction);
-    if (cues.length === 0) continue;
+    const directionalCues = cues.filter((cue) => cue.direction === direction);
+    if (directionalCues.length === 0) continue;
     const slot = document.createElement('div');
     slot.className = 'sense-slot';
     slot.dataset.direction = direction;
-    for (const cue of cues) {
+    for (const cue of directionalCues) {
       const element = document.createElement('span');
       element.className = `sense-cue${cue.targeted ? ' targeted' : ''}`;
       element.dataset.kind = cue.kind;
@@ -167,24 +175,36 @@ const renderSenseHud = (state: HudState): void => {
       element.style.setProperty('--hearing-strength', String(cue.hearingStrength));
       element.setAttribute('role', 'img');
       element.setAttribute('aria-label', describeCue(cue));
+      element.title = describeCue(cue);
       element.append(createSenseIcon(cue.kind));
       if (cue.scentStrength > 0) element.append(createSenseModality('scent'));
       if (cue.hearingStrength > 0) element.append(createSenseModality('hearing'));
       if (cue.count > 1) {
-        const dots = document.createElement('span');
-        dots.className = 'sense-count-dots';
-        dots.setAttribute('aria-hidden', 'true');
-        for (let index = 0; index < Math.min(3, cue.count); index += 1) dots.append(document.createElement('i'));
-        element.append(dots);
+        const count = document.createElement('span');
+        count.className = 'sense-count';
+        count.setAttribute('aria-hidden', 'true');
+        count.textContent = `×${cue.count}`;
+        element.append(count);
       }
       slot.append(element);
     }
     fragment.append(slot);
   }
   senseHud.replaceChildren(fragment);
-  senseHud.setAttribute('aria-label', state.scentActive
+  senseHud.setAttribute('aria-label', scentActive
     ? 'Off-screen sounds and scents. Scent focus is active.'
     : 'Off-screen sounds. Press Q to focus on scents.');
+};
+
+const renderSensesDebug = (): void => {
+  if (!sensesDebugMode) return;
+  const clarity = Number(sensesDebugClarity?.value ?? 100) / 100;
+  const cues = buildSenseDebugCues(sensesDebugFilter, clarity);
+  renderSenseHud(cues, sensesDebugFilter !== 'hearing');
+  if (sensesDebugClarityValue) sensesDebugClarityValue.value = `${Math.round(clarity * 100)}%`;
+  for (const button of sensesDebugFilterButtons) {
+    button.setAttribute('aria-pressed', String(button.dataset.sensesDebugFilter === sensesDebugFilter));
+  }
 };
 
 const startGame = () => {
@@ -220,6 +240,7 @@ const startGame = () => {
     },
     scene: [WildScene],
   });
+  telemetry?.startPlay(selectedDifficulty);
 };
 
 const setMenuBusy = (busy: boolean) => {
@@ -252,6 +273,14 @@ for (const button of difficultyButtons) button.addEventListener('click', () => {
 });
 startButton?.addEventListener('click', startGame);
 fullResetButton?.addEventListener('click', () => { void fullResetAndStart(); });
+for (const button of sensesDebugFilterButtons) button.addEventListener('click', () => {
+  const filter = button.dataset.sensesDebugFilter;
+  if (filter === 'all' || filter === 'scent' || filter === 'hearing' || filter === 'marked') {
+    sensesDebugFilter = filter;
+    renderSensesDebug();
+  }
+});
+sensesDebugClarity?.addEventListener('input', renderSensesDebug);
 gameEvents.on('hunt-log', appendHuntLog);
 gameEvents.on('sleep-transition', ({ sleeping, durationMs }: SleepTransition) => {
   if (!sleepCurtain) return;
@@ -259,6 +288,21 @@ gameEvents.on('sleep-transition', ({ sleeping, durationMs }: SleepTransition) =>
   sleepCurtain.classList.toggle('sleeping', sleeping);
 });
 renderLogMode();
+if (sensesDebugMode) {
+  document.title = 'Wildbound — Senses Lab';
+  if (mainMenu) mainMenu.hidden = true;
+  if (sensesDebugPanel) sensesDebugPanel.hidden = false;
+  setText('#time', 'SENSES  LAB');
+  setText('#time-icon', '◇');
+  setText('#weather', 'STATIC VIEW');
+  setText('#wind-arrow', '↗');
+  setText('#wind-label', 'SIGNAL TEST');
+  setText('#territory', 'PINE RIDGE · DEBUG');
+  setText('#difficulty-status', 'PROTOTYPE');
+  setText('#objective-title', 'READ THE FOREST EDGE');
+  setText('#event-line', 'Inspect every fixed direction, signal strength, and modality.');
+  renderSensesDebug();
+}
 
 gameEvents.on('hud', (state: HudState) => {
   setMeter('health', state.health);
@@ -276,7 +320,7 @@ gameEvents.on('hud', (state: HudState) => {
   setText('#hunger-mode', state.willEatMeat ? 'HUNGRY · WILL EAT' : 'SATIATED · WILL CACHE');
   hungerMode?.classList.toggle('hungry', state.willEatMeat);
   setText('#event-line', state.eventLine);
-  renderSenseHud(state);
+  if (!sensesDebugMode) renderSenseHud(state.senseCues, state.scentActive);
   setText('#niva-status', state.pack.find((wolf) => wolf.name === 'Niva')?.status ?? 'DISTANT');
   setText('#torr-status', state.pack.find((wolf) => wolf.name === 'Torr')?.status ?? 'DISTANT');
   const hasPack = state.pack.length > 0;
@@ -313,6 +357,7 @@ gameEvents.on('pause', (paused: boolean) => {
 });
 
 gameEvents.on('death', (cause: string) => {
+  telemetry?.recordDeath();
   if (deathPanel) deathPanel.hidden = false;
   setText('#death-copy', `${cause} The forest carries on without you.`);
 });

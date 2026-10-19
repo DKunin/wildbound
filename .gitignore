@@ -6,6 +6,9 @@ coverage/
 .env.*
 !.env.example
 
+# Runtime statistics are local to the server and are never committed.
+data/
+
 *.log
 *.tsbuildinfo
 .DS_Store
