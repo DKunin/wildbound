@@ -211,7 +211,9 @@ const renderSenseHud = (cues: readonly SenseHudCue[], scentActive: boolean): voi
       const element = existingCues.get(cue.id) ?? document.createElement('span');
       element.dataset.cueId = cue.id;
       updateSenseCue(element, cue);
-      slot.append(element);
+      // Re-appending an existing node restarts its entry animation at every HUD
+      // update. Keep a stable cue in place so its strength can vary smoothly.
+      if (element.parentElement !== slot) slot.append(element);
     }
   }
   for (const [cueId, element] of existingCues) {
