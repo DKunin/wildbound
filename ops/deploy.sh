@@ -24,7 +24,9 @@ fi
 
 git pull --ff-only origin main
 "${NPM_BIN}" ci --no-audit --no-fund
-"${NPM_BIN}" test
+# The production host has fewer CPU cores than developer machines; serialize
+# image-heavy visual checks and extend only their execution budget.
+"${NPM_BIN}" test -- --maxWorkers=1 --testTimeout=60000
 "${NPM_BIN}" run build
 
 mkdir -p "${APP_DIR}/data"
