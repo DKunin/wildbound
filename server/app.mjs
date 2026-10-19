@@ -81,13 +81,18 @@ const serveFile = (response, path, method) => {
   else createReadStream(path).pipe(response);
 };
 
-export const createWildboundServer = ({ statsStore, distDirectory, allowedUserIds = new Set() }) => createServer(async (request, response) => {
+export const createWildboundServer = ({
+  statsStore,
+  distDirectory,
+  allowedUserIds = new Set(),
+  appVersion = 'unknown',
+}) => createServer(async (request, response) => {
   const method = request.method ?? 'GET';
   const url = new URL(request.url ?? '/', 'http://localhost');
   try {
     if (url.pathname === '/healthz') {
       if (method !== 'GET' && method !== 'HEAD') return sendJson(response, 405, { error: 'METHOD_NOT_ALLOWED' });
-      return sendJson(response, 200, { status: 'ok' });
+      return sendJson(response, 200, { status: 'ok', version: appVersion });
     }
 
     if (url.pathname === '/api/events') {

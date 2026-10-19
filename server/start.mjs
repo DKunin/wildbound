@@ -17,6 +17,7 @@ const server = createWildboundServer({
   statsStore,
   distDirectory: resolve('dist'),
   allowedUserIds,
+  appVersion: process.env.APP_VERSION ?? 'unknown',
 });
 
 server.listen(port, host, () => {

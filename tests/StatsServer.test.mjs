@@ -18,6 +18,7 @@ const startServer = async (allowedUserIds = new Set(['owner-user-id'])) => {
     statsStore: store,
     distDirectory: dist,
     allowedUserIds,
+    appVersion: 'test-revision',
   });
   await new Promise((resolve) => server.listen(0, '127.0.0.1', resolve));
   const address = server.address();
@@ -35,6 +36,13 @@ afterEach(async () => {
 });
 
 describe('Wildbound statistics server', () => {
+  it('reports the deployed revision in its health check', async () => {
+    const origin = await startServer();
+    const response = await fetch(`${origin}/healthz`);
+    expect(response.status).toBe(200);
+    expect(await response.json()).toEqual({ status: 'ok', version: 'test-revision' });
+  });
+
   it('keeps ingestion public while stats fail closed to the owner allowlist', async () => {
     const origin = await startServer();
     const event = await fetch(`${origin}/api/events`, {

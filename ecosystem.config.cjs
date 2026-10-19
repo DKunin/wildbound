@@ -9,6 +9,7 @@ module.exports = {
     max_memory_restart: '300M',
     env: {
       NODE_ENV: 'production',
+      APP_VERSION: process.env.APP_VERSION || 'unknown',
       HOST: '127.0.0.1',
       PORT: '4173',
       STATS_DB_PATH: process.env.STATS_DB_PATH || './data/wildbound-stats.sqlite',
