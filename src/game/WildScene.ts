@@ -29,6 +29,8 @@ import { RunControlSystem } from './systems/RunControlSystem';
 import { SaveSystem, type SaveData } from './systems/SaveSystem';
 import { EMPTY_SCENT_READING, ScentSystem, type ScentReading } from './systems/ScentSystem';
 import { SoundSystem } from './systems/SoundSystem';
+import { FOREST_AUDIO_ASSETS, ForestAudioSystem, forestAudioUrl } from './systems/ForestAudioSystem';
+import { ANIMAL_AUDIO_ASSETS, animalAudioUrl, type AnimalAudioSource } from './systems/AnimalAudioSystem';
 import type { AudibleSound } from './systems/SoundModel';
 import { SenseHudModel, type SenseSourceSignal } from './systems/SenseHudSystem';
 import { WindSystem, type WindState } from './systems/WindSystem';
@@ -127,6 +129,7 @@ export class WildScene extends Phaser.Scene {
   private needs = new NeedsSystem();
   private scent!: ScentSystem;
   private hearing!: SoundSystem;
+  private forestAudio!: ForestAudioSystem;
   private footprints!: FootprintSystem;
   private population = new PopulationSystem();
   private difficulty: DifficultyMode = DEFAULT_DIFFICULTY;
@@ -228,6 +231,8 @@ export class WildScene extends Phaser.Scene {
   }
 
   preload(): void {
+    for (const key of FOREST_AUDIO_ASSETS) this.load.audio(`nature-${key}`, forestAudioUrl(key));
+    for (const key of ANIMAL_AUDIO_ASSETS) this.load.audio(`animal-${key}`, animalAudioUrl(key));
     this.load.image('ground-base', 'assets/ground-base-v3.png');
     this.load.svg('predator-target', 'assets/predator-target.svg', { width: 64, height: 64 });
     this.load.spritesheet('terrain-overlays', 'assets/terrain-overlays-v3.png', { frameWidth: 313, frameHeight: 313 });
@@ -330,6 +335,10 @@ export class WildScene extends Phaser.Scene {
     this.scent = new ScentSystem(this, this.world.getWaterAreas());
     this.hearing = new SoundSystem(this);
     this.hearing.addAmbientAreas(this.world.getFlowingWaterAreas(), 'FLOWING WATER', 720, 0.68);
+    this.forestAudio = new ForestAudioSystem(this, this.world.getFlowingWaterAreas(), Math.random, {
+      trees: (listener) => this.world.getNearbyTrees(listener),
+      animals: () => this.animalAudioSources(),
+    });
     this.footprints = new FootprintSystem(this);
     this.keys = this.createKeys();
     this.configureCamera();
@@ -343,6 +352,7 @@ export class WildScene extends Phaser.Scene {
     this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => {
       this.scent.destroy();
       this.hearing.destroy();
+      this.forestAudio.destroy();
       this.footprints.destroy();
       this.player.off(Phaser.Animations.Events.ANIMATION_COMPLETE, this.handlePlayerAnimationComplete, this);
       window.removeEventListener('keydown', this.handleWindowKey, { capture: true });
@@ -356,6 +366,8 @@ export class WildScene extends Phaser.Scene {
   }
 
   update(time: number, delta: number): void {
+    this.forestAudio.update(delta, this.player, this.windState.strength, this.dayState.phase === 'NIGHT',
+      !this.paused && !this.dead && !this.loadingSave && !this.restSkipping);
     this.playerShadow.sync(this.player, !this.dead, this.playerAnimation.snapshot().state === 'resting');
     if (this.paused || this.dead || this.loadingSave || this.restSkipping) {
       this.player.setVelocity(0, 0);
@@ -366,7 +378,7 @@ export class WildScene extends Phaser.Scene {
 
     const deltaSeconds = Math.min(delta / 1000, 0.05);
     const activity = this.updatePlayerMovement(time, delta);
-    this.world.updateEnvironmentMotion(time, this.player);
+    this.world.updateEnvironmentMotion(time, this.player, this.windState.strength);
     this.updateCarriedCarcass();
     this.snapshot = this.needs.update(deltaSeconds, activity);
     this.simulationTime = advanceSimulationTime(this.simulationTime, deltaSeconds);
@@ -1030,9 +1042,23 @@ export class WildScene extends Phaser.Scene {
     }
   }
 
+  private animalAudioSources(): AnimalAudioSource[] {
+    const speed = (animal: Phaser.Physics.Arcade.Sprite) => (animal.body as Phaser.Physics.Arcade.Body).velocity.length();
+    return [
+      { id: this.player, species: 'wolf', x: this.player.x, y: this.player.y, speed: speed(this.player), state: 'idle', vocal: false },
+      ...this.prey.filter(animal => animal.active && !animal.isDead()).map(animal => ({
+        id: animal, species: animal.species, x: animal.x, y: animal.y, speed: speed(animal), state: animal.getState(),
+      })),
+      ...this.pack.filter(wolf => wolf.active).map(wolf => ({
+        id: wolf, species: 'wolf' as const, x: wolf.x, y: wolf.y, speed: speed(wolf), state: 'idle',
+      })),
+    ];
+  }
+
   private howl(time: number): void {
     if (!FEATURE_FLAGS.pack || this.pack.length < 2) return;
     this.rallyUntil = time + 13_000;
+    this.forestAudio.animals.audition(this.animalAudioSources()[0], 'call');
     this.hearing.emitTracked(time, this.pack[0], 'PACK HOWL', 1050, 'pack', this.scent.getSourceId(this.pack[0], 'pack'));
     this.hearing.emitTracked(time + 250, this.pack[1], 'PACK HOWL', 1050, 'pack', this.scent.getSourceId(this.pack[1], 'pack'));
     this.setEvent('Niva answers your call. The pack gathers.');

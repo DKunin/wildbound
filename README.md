@@ -41,12 +41,37 @@ You share the territory with rabbits, deer, elk, and boar. Each species has dist
 | `E` | Attack, eat, drink, carry, or bury meat contextually |
 | `Q` | Scent mode |
 | `M` | Leave a territory mark |
+| `N` | Toggle forest audio (also available in the pause menu) |
 | `R` | Lie down to rest |
 | `F5` / `F9` | Save / load |
 | Mouse wheel | Zoom the camera |
 | `Space` / `Esc` | Pause |
 
 `LOG MODE`, available from the main menu or pause menu, records significant prey awareness and hunt events without interrupting play. The game autosaves every 30 seconds; saves remain in the browser.
+
+The forest has a continuous wind soundscape, occasional birds during daylight, and changing gusts. Flowing water grows louder near rivers and streams and fades with distance. Audio pauses with gameplay or when the tab is hidden; your mute preference is saved in the browser. Browsers may require a click or keypress to enable sound. The synthesized wind and nature recordings are freely reusable under CC0; see [audio credits](public/assets/audio/CREDITS.md).
+
+Wind strength controls its volume, playback speed, gust frequency, and the speed and amount of tree movement. A separate leaf-rustling layer fades in within 40 m of trees and becomes stronger in wind. Try the [forest sound testground](audio.html) to compare calm and strong wind, change your distance from a grove, isolate each sound layer, or follow the game's wind cycle. The testground uses the gameplay systems without reading or writing your save or sound preferences.
+
+Wildlife audio includes wolf paws/howls, rabbit paired hops/alarm thumps, deer light
+hooves/bellows, elk heavy hooves/bugles, and boar short heavy steps/grunts. Footstep
+cadence follows actual movement speed, not animation or accelerated world time.
+Stationary and dead animals do not step; calls occur occasionally while stationary
+(rabbit thumps only on an alarm transition). Player howls follow the existing
+pack howl action, which remains feature-gated. All sounds use distance attenuation,
+stereo positioning, the same N mute/pause/hidden-tab controls, and a bounded
+16-voice mixer with at most two simultaneous calls. This does not alter the
+gameplay hearing/scent HUD or AI detection ranges.
+
+The [audio field lab](audio.html) adds species, behavior, speed, distance, bearing,
+automatic pass-by, an eight-animal crowd test, isolated movement/call toggles,
+manual call/step audition and actual voice diagnostics. Press Play, then Solo
+wildlife to compare animals without ambient layers. Movement runs in place at
+the chosen speed; pass-by tests moving sound placement separately.
+Animal sounds combine CC0 assets, an attributed CC BY 4.0 elk recording and
+recorded movement: dog paws and horse hooves on grass, plus small-animal ground
+Foley. These are adapted stand-ins rather than field recordings of every species;
+see [animal credits and rebuild instructions](public/assets/audio/animals/CREDITS.md).
 
 ## Release history
 

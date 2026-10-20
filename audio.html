@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Audio field lab — Wildbound</title>
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <main>
+      <header>
+        <div><p class="eyebrow">WILDBOUND · FIELD LAB</p><h1>A forest with a heartbeat.</h1>
+          <p>Audition wildlife, paws, hops and hooves alongside wind, leaves and water. Uses the game’s audio systems. No saves or telemetry.</p></div>
+        <a href="./">Back to the game ↗</a>
+      </header>
+      <div class="layout">
+        <section class="landscape" aria-label="Forest sound test area">
+          <div id="audio-stage" role="img" aria-label="Tree grove on the right, stream on the left. Move the listener with the tree-distance slider."></div>
+          <div class="legend"><span>◉ Listener</span><span>● Amber: animals</span><span>○ Leaf hearing range: 40 m</span><span>≈ Flowing stream</span></div>
+          <p id="audio-status" role="status">Loading nature sounds…</p>
+          <div class="transport"><button id="audio-play" disabled>PLAY SOUND</button><span>Headphones reveal left/right positioning.</span></div>
+          <section class="mix" aria-label="Live audio mix">
+            <h2>Live mix</h2>
+            <p>Actual channel gain and playback speed, including smooth transitions.</p>
+            <div id="audio-meters"></div>
+          </section>
+          <section class="mix" aria-label="Animal sound laboratory">
+            <h2>Wildlife sound stage</h2>
+            <p>Movement runs in place at the selected speed. Distance and direction are relative to the listener. Use a pass-by to test moving stereo placement.</p>
+            <div class="animal-grid">
+              <div><label for="animal-species">Animal</label><select id="animal-species">
+                <option value="wolf">Wolf</option><option value="rabbit">Rabbit</option><option value="deer">Deer</option><option value="elk">Elk</option><option value="boar">Boar</option>
+              </select></div>
+              <div><label for="animal-state">Behavior</label><select id="animal-state">
+                <option value="idle">Resting / idle</option><option value="walk" selected>Walking</option><option value="run">Running</option><option value="flee">Fleeing / alarm</option><option value="dead">Dead (silent)</option>
+              </select></div>
+              <div><label for="animal-distance">Distance <output id="animal-distance-value">8 m</output></label><input id="animal-distance" type="range" min="0" max="1600" step="10" value="80" /></div>
+              <div><label for="animal-angle">Bearing <output id="animal-angle-value">Right</output></label><input id="animal-angle" type="range" min="-180" max="180" value="0" /></div>
+              <div><label for="animal-speed">Speed <output id="animal-speed-value">8 m/s</output></label><input id="animal-speed" type="range" min="0" max="360" step="10" value="80" /></div>
+              <div><label for="animal-count">Population</label><select id="animal-count"><option value="1">One animal</option><option value="8">Eight animals (voice-budget test)</option></select></div>
+            </div>
+            <p id="animal-profile" class="hint"></p>
+            <div class="animal-actions">
+              <button id="animal-call" disabled>CALL / SIGNAL</button><button id="animal-step" disabled>ONE STEP</button><button id="animal-solo">SOLO WILDLIFE</button>
+            </div>
+            <label class="check"><input id="animal-passby" type="checkbox" /> Automatic left-to-right pass-by</label>
+            <label class="check"><input id="animal-auto-calls" type="checkbox" checked /> Occasional automatic calls (rabbit: alarm thump only)</label>
+            <label class="check"><input id="animal-calls" type="checkbox" checked /> Calls / signals enabled</label>
+            <label class="check"><input id="animal-steps" type="checkbox" checked /> Movement sounds enabled</label>
+            <p class="hint">Manual audition requires Play. ONE STEP cycles through all three variations. Pause stops all voices immediately. Resting/dead animals never produce automatic steps. Steps now use recorded dog paws and horse hooves on grass, plus small-animal ground foley—not synthesized impacts. These are adapted stand-ins, not field recordings of every species.</p>
+            <output id="animal-readout" aria-live="off">No animal sounds played.</output>
+            <p><a href="assets/audio/animals/CREDITS.md">Animal audio credits · CC0 + CC BY 4.0 ↗</a></p>
+          </section>
+        </section>
+        <section class="controls" aria-label="Sound test controls">
+          <h2>Conditions</h2>
+          <label for="wind-power">Wind power <output id="wind-value">53%</output></label>
+          <input id="wind-power" type="range" min="0" max="100" value="53" />
+          <div class="presets" aria-label="Wind presets">
+            <button data-wind="0">Still</button><button data-wind="25">Light</button><button data-wind="53">Steady</button><button data-wind="100">Strong</button>
+          </div>
+          <label class="check"><input id="follow-wind" type="checkbox" /> Follow the game’s wind cycle</label>
+          <p class="hint">Stronger wind raises volume, playback speed, gust frequency and tree movement. Still air silences wind; nearby leaves remain faint.</p>
+          <label for="tree-distance">Distance to grove <output id="distance-value">16 m</output></label>
+          <input id="tree-distance" type="range" min="0" max="800" step="10" value="160" />
+          <label class="check"><input id="tree-side" type="checkbox" /> Stand to the right of the trees</label>
+          <label class="check"><input id="night" type="checkbox" /> Night (no bird calls)</label>
+          <fieldset><legend>Listen by layer</legend>
+            <label class="check"><input type="checkbox" data-layer="wind" checked /> Wind &amp; gusts</label>
+            <label class="check"><input type="checkbox" data-layer="foliage" checked /> Trees &amp; leaves</label>
+            <label class="check"><input type="checkbox" data-layer="birds" checked /> Birds</label>
+            <label class="check"><input type="checkbox" data-layer="water" checked /> Flowing water</label>
+          </fieldset>
+          <p class="hint">Walk away from the grove toward the stream to hear leaves fade out and water fade in. Changing layers here does not change your game settings.</p>
+          <a href="assets/audio/CREDITS.md">Nature sound sources &amp; credits ↗</a>
+        </section>
+      </div>
+    </main>
+    <script type="module" src="/src/audio-testground/main.ts"></script>
+  </body>
+</html>

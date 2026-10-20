@@ -8,6 +8,7 @@ export default defineConfig({
       input: {
         game: resolve(__dirname, 'index.html'),
         stats: resolve(__dirname, 'stats.html'),
+        audio: resolve(__dirname, 'audio.html'),
       },
     },
   },

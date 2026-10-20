@@ -1,3 +1,5 @@
+import { windResponse } from './WindResponse';
+
 export type EnvironmentMotionKind = 'tree' | 'bush' | 'water' | 'water-flow';
 
 export interface EnvironmentMotionPoint {
@@ -65,13 +67,14 @@ export const getEnvironmentMotionSample = (
   time: number,
   phase: number,
   flow: EnvironmentMotionPoint = { x: 0, y: 0 },
+  windStrength = 0.53,
 ): EnvironmentMotionSample => {
   if (kind === 'tree') {
-    const wave = Math.sin(time / 2_600 + phase);
+    const wave = Math.sin(time / 2_600 + phase) * windResponse(windStrength).motionAmplitude;
     return { x: 0, y: 0, angle: wave * 0.22, scaleX: 1 + wave * 0.0015, scaleY: 1 - wave * 0.001, alpha: 1 };
   }
   if (kind === 'bush') {
-    const wave = Math.sin(time / 1_900 + phase);
+    const wave = Math.sin(time / 1_900 + phase) * windResponse(windStrength).motionAmplitude;
     return { x: 0, y: 0, angle: wave * 0.14, scaleX: 1 + wave * 0.003, scaleY: 1 - wave * 0.002, alpha: 1 };
   }
   if (kind === 'water') {

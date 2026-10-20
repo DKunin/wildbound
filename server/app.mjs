@@ -12,6 +12,7 @@ const CONTENT_TYPES = Object.freeze({
   '.png': 'image/png',
   '.svg': 'image/svg+xml',
   '.webp': 'image/webp',
+  '.wav': 'audio/wav',
   '.woff2': 'font/woff2',
 });
 const BODY_LIMIT = 16 * 1024;

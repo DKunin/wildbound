@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import { WindMotionClock } from './WindResponse';
 import {
   ProceduralWorld,
   WORLD_HEIGHT,
@@ -48,6 +49,8 @@ export class WorldSystem {
   private readonly environmentMotionByBucket = new Map<string, EnvironmentMotionActor[]>();
   private activeEnvironmentMotion = new Set<EnvironmentMotionActor>();
   private nextEnvironmentMotionAt = 0;
+  private readonly windMotion = new WindMotionClock();
+  private lastEnvironmentMotionAt = 0;
 
   constructor(private readonly scene: Phaser.Scene, seed: string) {
     this.layout = new ProceduralWorld(seed);
@@ -292,16 +295,28 @@ export class WorldSystem {
     return points;
   }
 
-  updateEnvironmentMotion(time: number, player: WorldPoint): void {
+  getNearbyTrees(player: WorldPoint, radius = 400): readonly WorldPoint[] {
+    const trees: WorldPoint[] = [];
+    for (const key of getNearbyEnvironmentMotionBucketKeys(player, radius)) {
+      for (const actor of this.environmentMotionByBucket.get(key) ?? []) {
+        if (actor.kind === 'tree' && isEnvironmentMotionNearby(actor.anchor, player, radius)) trees.push(actor.anchor);
+      }
+    }
+    return trees;
+  }
+
+  updateEnvironmentMotion(time: number, player: WorldPoint, windStrength = 0.53): void {
     if (time < this.nextEnvironmentMotionAt) return;
     this.nextEnvironmentMotionAt = time + ENVIRONMENT_MOTION_INTERVAL_MS;
+    this.windMotion.advance(this.lastEnvironmentMotionAt ? time - this.lastEnvironmentMotionAt : 0, windStrength);
+    this.lastEnvironmentMotionAt = time;
 
     const nearby = new Set<EnvironmentMotionActor>();
     for (const key of getNearbyEnvironmentMotionBucketKeys(player)) {
       for (const actor of this.environmentMotionByBucket.get(key) ?? []) {
         if (!isEnvironmentMotionNearby(actor.anchor, player)) continue;
         nearby.add(actor);
-        this.applyEnvironmentMotion(actor, time);
+        this.applyEnvironmentMotion(actor, time, windStrength);
       }
     }
     for (const actor of this.activeEnvironmentMotion) {
@@ -336,8 +351,9 @@ export class WorldSystem {
     this.environmentMotionByBucket.set(key, bucket);
   }
 
-  private applyEnvironmentMotion(actor: EnvironmentMotionActor, time: number): void {
-    const motion = getEnvironmentMotionSample(actor.kind, time, actor.phase, actor.flow);
+  private applyEnvironmentMotion(actor: EnvironmentMotionActor, time: number, windStrength: number): void {
+    const foliage = actor.kind === 'tree' || actor.kind === 'bush';
+    const motion = getEnvironmentMotionSample(actor.kind, foliage ? this.windMotion.time : time, actor.phase, actor.flow, windStrength);
     actor.target
       .setPosition(actor.baseX + motion.x, actor.baseY + motion.y)
       .setAngle(actor.baseAngle + motion.angle)
