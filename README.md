@@ -20,7 +20,7 @@ You share the territory with rabbits, deer, elk, and boar. Each species has dist
 
 ## Tracking, hunting, and survival
 
-- **Scent and sound:** press `Q` to read scent. The off-screen senses HUD keeps signals in eight fixed directions: blue lines are scent, amber arcs are sound, and stronger signals are more vivid. Wind stretches airborne scent downwind, so approaching from the right direction matters.
+- **Scent and sound:** press `Q` to read scent. The off-screen senses HUD keeps signals in eight fixed directions: blue lines are scent, amber arcs are sound, and a longer line beneath either icon means a stronger signal. Wind stretches airborne scent downwind, so approaching from the right direction matters.
 - **Stealth and pursuit:** sneak to reduce sound and visual movement. Sprinting is powerful but spends endurance and builds recovery debt; exhausted prey slows over a long chase, but can escape a careless wolf.
 - **Hunting:** mark a living target with a left-click, use `E` to attack when close, and account for wounds and defensive behaviour. Deer can kick, while boar may countercharge at close range.
 - **Food and caches:** `E` eats, carries, or buries meat according to context. Buried caches last much longer than exposed carrion, while territory marks can help protect nearby stores.

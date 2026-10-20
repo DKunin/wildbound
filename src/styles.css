@@ -387,11 +387,12 @@ body {
   display: grid;
   width: var(--sense-size);
   height: var(--sense-size);
+  margin-inline: 12px;
   flex: 0 0 var(--sense-size);
   place-items: center;
   color: #eee6cd;
-  opacity: calc(0.42 + var(--sense-strength) * 0.58);
-  filter: saturate(calc(0.55 + var(--sense-strength) * 0.72));
+  opacity: 1;
+  filter: saturate(1);
   animation: sense-cue-enter 360ms cubic-bezier(0.2, 0.75, 0.25, 1) both;
   transition: opacity 320ms ease, filter 240ms ease, transform 320ms ease;
 }
@@ -417,7 +418,7 @@ body {
 
 .sense-cue.targeted {
   color: #ff746d;
-  opacity: max(0.78, calc(0.42 + var(--sense-strength) * 0.58));
+  opacity: 1;
 }
 
 .sense-cue.targeted::after {
@@ -456,7 +457,7 @@ body {
     calc(var(--sense-icon-column) + var(--sense-icon-shift-x))
     calc(var(--sense-icon-row) + var(--sense-icon-shift-y));
   background-size: 300% 300%;
-  filter: drop-shadow(0 1px 2px rgb(0 0 0 / 92%)) drop-shadow(0 0 calc(1px + var(--sense-strength) * 3px) currentColor);
+  filter: drop-shadow(0 1px 2px rgb(0 0 0 / 92%));
 }
 
 .sense-icon[data-icon="rabbit"] {
@@ -516,7 +517,7 @@ body {
 }
 
 .sense-cue.targeted .sense-icon {
-  filter: sepia(0.7) saturate(2.4) hue-rotate(320deg) drop-shadow(0 1px 2px rgb(0 0 0 / 92%)) drop-shadow(0 0 5px #ff746d);
+  filter: sepia(0.7) saturate(2.4) hue-rotate(320deg) drop-shadow(0 1px 2px rgb(0 0 0 / 92%));
 }
 
 .sense-modality {
@@ -545,16 +546,32 @@ body {
   stroke-width: 2.2;
 }
 
+.sense-modality::after {
+  position: absolute;
+  top: calc(100% + 3px);
+  left: 50%;
+  width: 14px;
+  height: 2px;
+  border-radius: 999px;
+  background: currentColor;
+  box-shadow: 0 0 4px currentColor;
+  content: "";
+  transform: translateX(-50%) scaleX(var(--modality-strength));
+  transition: transform 240ms ease;
+}
+
 .sense-scent {
+  --modality-strength: var(--scent-strength);
   left: -12px;
   color: #7beadd;
-  opacity: max(0.28, var(--scent-strength));
+  opacity: 1;
 }
 
 .sense-hearing {
+  --modality-strength: var(--hearing-strength);
   right: -12px;
   color: #f4b35e;
-  opacity: max(0.28, var(--hearing-strength));
+  opacity: 1;
 }
 
 @keyframes sense-cue-enter {
